@@ -1,0 +1,14 @@
+{
+  "existing": {
+    "nominations_controller": {
+      "NOMINATIONS_CONTROLLER00": {},
+      "NOMINATIONS_CONTROLLER01": {},
+      "NOMINATIONS_CONTROLLER02": {}
+    }
+  },
+  "new": {
+    "nominations_controller": {
+      "nominations_controller_ref01": {}
+    }
+  }
+}

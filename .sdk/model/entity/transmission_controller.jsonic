@@ -1,0 +1,465 @@
+# Entity: transmission_controller
+
+main: kit: entity: transmission_controller: {
+
+  alias: field: {}
+
+  name: "transmission_controller"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "group"
+                orig: "group"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                example: "2020-06-30T20:59:59.999Z"
+                kind: "query"
+                name: "end"
+                orig: "end"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "field"
+                orig: "field"
+                reqd: false
+                type: "`$ARRAY`"
+              }
+              {
+                example: "2020-05-31T20:59:59.999Z"
+                kind: "query"
+                name: "start"
+                orig: "start"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/api/transmission/cross-border-capacity/{group}/csv"
+          parts: [
+            "api"
+            "transmission"
+            "cross-border-capacity"
+            "{group}"
+            "csv"
+          ]
+          select: {
+            exist: [
+              "end"
+              "field"
+              "group"
+              "start"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            query: [
+              {
+                example: "2020-06-30T20:59:59.999Z"
+                kind: "query"
+                name: "end"
+                orig: "end"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "field"
+                orig: "field"
+                reqd: false
+                type: "`$ARRAY`"
+              }
+              {
+                example: "2020-05-31T20:59:59.999Z"
+                kind: "query"
+                name: "start"
+                orig: "start"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/api/transmission/cross-border-planned-trade/csv"
+          parts: [
+            "api"
+            "transmission"
+            "cross-border-planned-trade"
+            "csv"
+          ]
+          select: {
+            exist: [
+              "end"
+              "field"
+              "start"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            query: [
+              {
+                example: "2020-06-30T20:59:59.999Z"
+                kind: "query"
+                name: "end"
+                orig: "end"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "field"
+                orig: "field"
+                reqd: false
+                type: "`$ARRAY`"
+              }
+              {
+                example: "2020-05-31T20:59:59.999Z"
+                kind: "query"
+                name: "start"
+                orig: "start"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/api/transmission/cross-border/csv"
+          parts: [
+            "api"
+            "transmission"
+            "cross-border"
+            "csv"
+          ]
+          select: {
+            exist: [
+              "end"
+              "field"
+              "start"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            query: [
+              {
+                example: "2020-06-30T20:59:59.999Z"
+                kind: "query"
+                name: "end"
+                orig: "end"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "field"
+                orig: "field"
+                reqd: false
+                type: "`$ARRAY`"
+              }
+              {
+                example: "2020-05-31T20:59:59.999Z"
+                kind: "query"
+                name: "start"
+                orig: "start"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/api/transmission/cross-border/hourly/csv"
+          parts: [
+            "api"
+            "transmission"
+            "cross-border"
+            "hourly"
+            "csv"
+          ]
+          select: {
+            exist: [
+              "end"
+              "field"
+              "start"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "group"
+                orig: "group"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                example: "2020-06-30T20:59:59.999Z"
+                kind: "query"
+                name: "end"
+                orig: "end"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: "2020-05-31T20:59:59.999Z"
+                kind: "query"
+                name: "start"
+                orig: "start"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/api/transmission/cross-border-capacity/{group}"
+          parts: [
+            "api"
+            "transmission"
+            "cross-border-capacity"
+            "{group}"
+          ]
+          select: {
+            exist: [
+              "end"
+              "group"
+              "start"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            query: [
+              {
+                example: "2020-06-30T20:59:59.999Z"
+                kind: "query"
+                name: "end"
+                orig: "end"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: "2020-05-31T20:59:59.999Z"
+                kind: "query"
+                name: "start"
+                orig: "start"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/api/transmission/cross-border"
+          parts: [
+            "api"
+            "transmission"
+            "cross-border"
+          ]
+          select: {
+            exist: [
+              "end"
+              "start"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            query: [
+              {
+                example: "2020-06-30T20:59:59.999Z"
+                kind: "query"
+                name: "end"
+                orig: "end"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: "2020-05-31T20:59:59.999Z"
+                kind: "query"
+                name: "start"
+                orig: "start"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/api/transmission/cross-border-capacity"
+          parts: [
+            "api"
+            "transmission"
+            "cross-border-capacity"
+          ]
+          select: {
+            exist: [
+              "end"
+              "start"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            query: [
+              {
+                example: "2020-06-30T20:59:59.999Z"
+                kind: "query"
+                name: "end"
+                orig: "end"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: "2020-05-31T20:59:59.999Z"
+                kind: "query"
+                name: "start"
+                orig: "start"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/api/transmission/cross-border-planned-trade"
+          parts: [
+            "api"
+            "transmission"
+            "cross-border-planned-trade"
+          ]
+          select: {
+            exist: [
+              "end"
+              "start"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            query: [
+              {
+                example: "2020-06-30T20:59:59.999Z"
+                kind: "query"
+                name: "end"
+                orig: "end"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: "2020-05-31T20:59:59.999Z"
+                kind: "query"
+                name: "start"
+                orig: "start"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/api/transmission/cross-border/hourly"
+          parts: [
+            "api"
+            "transmission"
+            "cross-border"
+            "hourly"
+          ]
+          select: {
+            exist: [
+              "end"
+              "start"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          method: "GET"
+          orig: "/api/transmission/cross-border-planned-trade/latest"
+          parts: [
+            "api"
+            "transmission"
+            "cross-border-planned-trade"
+            "latest"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          method: "GET"
+          orig: "/api/transmission/cross-border/latest"
+          parts: [
+            "api"
+            "transmission"
+            "cross-border"
+            "latest"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  relations: {
+    ancestors: [
+      [
+        "cross_border_capacity"
+      ]
+    ]
+  }
+
+
+
+}

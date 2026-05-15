@@ -1,0 +1,28 @@
+# BasicUmmGasControllerFlow
+
+main: kit: flow: BasicUmmGasControllerFlow:
+{
+  entity: "umm_gas_controller",
+  kind: "basic",
+  name: "BasicUmmGasControllerFlow",
+  step: [
+    {
+      input: {
+        ref: "umm_gas_controller_ref01",
+        srcdatavar: "umm_gas_controller_ref01_data",
+        suffix: "_dt0"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-umm_gas_controller_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicUmmGasControllerFlow"
+}

@@ -1,0 +1,14 @@
+{
+  "existing": {
+    "renomination": {
+      "RENOMINATION00": {},
+      "RENOMINATION01": {},
+      "RENOMINATION02": {}
+    }
+  },
+  "new": {
+    "renomination": {
+      "renomination_ref01": {}
+    }
+  }
+}

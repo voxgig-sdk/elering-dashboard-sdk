@@ -1,0 +1,57 @@
+# Entity: interruptible
+
+main: kit: entity: interruptible: {
+
+  alias: field: {}
+
+  name: "interruptible"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                example: "2020-06-30T20:59:59.999Z"
+                kind: "query"
+                name: "end"
+                orig: "end"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: "2020-05-31T20:59:59.999Z"
+                kind: "query"
+                name: "start"
+                orig: "start"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/api/capacity/interruptible"
+          parts: [
+            "api"
+            "capacity"
+            "interruptible"
+          ]
+          select: {
+            exist: [
+              "end"
+              "start"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

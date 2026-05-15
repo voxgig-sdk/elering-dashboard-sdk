@@ -1,0 +1,14 @@
+{
+  "existing": {
+    "gas_balance_controller": {
+      "GAS_BALANCE_CONTROLLER00": {},
+      "GAS_BALANCE_CONTROLLER01": {},
+      "GAS_BALANCE_CONTROLLER02": {}
+    }
+  },
+  "new": {
+    "gas_balance_controller": {
+      "gas_balance_controller_ref01": {}
+    }
+  }
+}

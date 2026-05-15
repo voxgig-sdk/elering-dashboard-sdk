@@ -1,0 +1,14 @@
+{
+  "existing": {
+    "interruptible_capacity_controller": {
+      "INTERRUPTIBLE_CAPACITY_CONTROLLER00": {},
+      "INTERRUPTIBLE_CAPACITY_CONTROLLER01": {},
+      "INTERRUPTIBLE_CAPACITY_CONTROLLER02": {}
+    }
+  },
+  "new": {
+    "interruptible_capacity_controller": {
+      "interruptible_capacity_controller_ref01": {}
+    }
+  }
+}

@@ -1,0 +1,28 @@
+# BasicNominationFlow
+
+main: kit: flow: BasicNominationFlow:
+{
+  entity: "nomination",
+  kind: "basic",
+  name: "BasicNominationFlow",
+  step: [
+    {
+      input: {
+        ref: "nomination_ref01",
+        srcdatavar: "nomination_ref01_data",
+        suffix: "_dt0"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-nomination_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicNominationFlow"
+}

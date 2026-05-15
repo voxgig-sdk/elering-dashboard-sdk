@@ -1,0 +1,14 @@
+{
+  "existing": {
+    "interruptible": {
+      "INTERRUPTIBLE00": {},
+      "INTERRUPTIBLE01": {},
+      "INTERRUPTIBLE02": {}
+    }
+  },
+  "new": {
+    "interruptible": {
+      "interruptible_ref01": {}
+    }
+  }
+}

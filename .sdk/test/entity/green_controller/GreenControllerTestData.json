@@ -1,0 +1,14 @@
+{
+  "existing": {
+    "green_controller": {
+      "GREEN_CONTROLLER00": {},
+      "GREEN_CONTROLLER01": {},
+      "GREEN_CONTROLLER02": {}
+    }
+  },
+  "new": {
+    "green_controller": {
+      "green_controller_ref01": {}
+    }
+  }
+}

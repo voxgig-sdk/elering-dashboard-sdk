@@ -1,0 +1,28 @@
+# BasicFirmCapacityControllerFlow
+
+main: kit: flow: BasicFirmCapacityControllerFlow:
+{
+  entity: "firm_capacity_controller",
+  kind: "basic",
+  name: "BasicFirmCapacityControllerFlow",
+  step: [
+    {
+      input: {
+        ref: "firm_capacity_controller_ref01",
+        srcdatavar: "firm_capacity_controller_ref01_data",
+        suffix: "_dt0"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-firm_capacity_controller_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicFirmCapacityControllerFlow"
+}

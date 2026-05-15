@@ -1,0 +1,28 @@
+# BasicGasBalanceControllerFlow
+
+main: kit: flow: BasicGasBalanceControllerFlow:
+{
+  entity: "gas_balance_controller",
+  kind: "basic",
+  name: "BasicGasBalanceControllerFlow",
+  step: [
+    {
+      input: {
+        ref: "gas_balance_controller_ref01",
+        srcdatavar: "gas_balance_controller_ref01_data",
+        suffix: "_dt0"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-gas_balance_controller_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicGasBalanceControllerFlow"
+}

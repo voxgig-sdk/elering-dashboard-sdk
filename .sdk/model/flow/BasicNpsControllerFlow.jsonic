@@ -1,0 +1,32 @@
+# BasicNpsControllerFlow
+
+main: kit: flow: BasicNpsControllerFlow:
+{
+  entity: "nps_controller",
+  kind: "basic",
+  name: "BasicNpsControllerFlow",
+  step: [
+    {
+      input: {
+        ref: "nps_controller_ref01",
+        srcdatavar: "nps_controller_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "nps_controller01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-nps_controller_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicNpsControllerFlow"
+}

@@ -1,0 +1,14 @@
+{
+  "existing": {
+    "gas_border_trade_controller": {
+      "GAS_BORDER_TRADE_CONTROLLER00": {},
+      "GAS_BORDER_TRADE_CONTROLLER01": {},
+      "GAS_BORDER_TRADE_CONTROLLER02": {}
+    }
+  },
+  "new": {
+    "gas_border_trade_controller": {
+      "gas_border_trade_controller_ref01": {}
+    }
+  }
+}

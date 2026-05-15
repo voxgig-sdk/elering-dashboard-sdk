@@ -1,0 +1,66 @@
+# Entity: interruptible_capacity_controller
+
+main: kit: entity: interruptible_capacity_controller: {
+
+  alias: field: {}
+
+  name: "interruptible_capacity_controller"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                example: "2020-05-31T20:59:59.999Z"
+                kind: "query"
+                name: "end"
+                orig: "end"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "field"
+                orig: "field"
+                reqd: false
+                type: "`$ARRAY`"
+              }
+              {
+                example: "2020-05-31T20:59:59.999Z"
+                kind: "query"
+                name: "start"
+                orig: "start"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/api/capacity/interruptible/csv"
+          parts: [
+            "api"
+            "capacity"
+            "interruptible"
+            "csv"
+          ]
+          select: {
+            exist: [
+              "end"
+              "field"
+              "start"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

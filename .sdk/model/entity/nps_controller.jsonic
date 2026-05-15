@@ -1,0 +1,296 @@
+# Entity: nps_controller
+
+main: kit: entity: nps_controller: {
+
+  alias: field: {}
+
+  name: "nps_controller"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                example: "2020-06-30T20:59:59.999Z"
+                kind: "query"
+                name: "end"
+                orig: "end"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "field"
+                orig: "field"
+                reqd: false
+                type: "`$ARRAY`"
+              }
+              {
+                example: "2020-05-31T20:59:59.999Z"
+                kind: "query"
+                name: "start"
+                orig: "start"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/api/nps/price/csv"
+          parts: [
+            "api"
+            "nps"
+            "price"
+            "csv"
+          ]
+          select: {
+            exist: [
+              "end"
+              "field"
+              "start"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            query: [
+              {
+                example: "2020-06-30T20:59:59.999Z"
+                kind: "query"
+                name: "end"
+                orig: "end"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "field"
+                orig: "field"
+                reqd: false
+                type: "`$ARRAY`"
+              }
+              {
+                example: "2020-05-31T20:59:59.999Z"
+                kind: "query"
+                name: "start"
+                orig: "start"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/api/nps/turnover/csv"
+          parts: [
+            "api"
+            "nps"
+            "turnover"
+            "csv"
+          ]
+          select: {
+            exist: [
+              "end"
+              "field"
+              "start"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            query: [
+              {
+                example: "2020-06-30T20:59:59.999Z"
+                kind: "query"
+                name: "end"
+                orig: "end"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: "2020-05-31T20:59:59.999Z"
+                kind: "query"
+                name: "start"
+                orig: "start"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/api/nps/price"
+          parts: [
+            "api"
+            "nps"
+            "price"
+          ]
+          select: {
+            exist: [
+              "end"
+              "start"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            query: [
+              {
+                example: "2020-06-30T20:59:59.999Z"
+                kind: "query"
+                name: "end"
+                orig: "end"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: "2020-05-31T20:59:59.999Z"
+                kind: "query"
+                name: "start"
+                orig: "start"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/api/nps/turnover"
+          parts: [
+            "api"
+            "nps"
+            "turnover"
+          ]
+          select: {
+            exist: [
+              "end"
+              "start"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "group"
+                orig: "group"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/api/nps/price/{group}/current"
+          parts: [
+            "api"
+            "nps"
+            "price"
+            "{group}"
+            "current"
+          ]
+          select: {
+            exist: [
+              "group"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "group"
+                orig: "group"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/api/nps/price/{group}/latest"
+          parts: [
+            "api"
+            "nps"
+            "price"
+            "{group}"
+            "latest"
+          ]
+          select: {
+            exist: [
+              "group"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "group"
+                orig: "group"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/api/nps/turnover/{group}/latest"
+          parts: [
+            "api"
+            "nps"
+            "turnover"
+            "{group}"
+            "latest"
+          ]
+          select: {
+            exist: [
+              "group"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  relations: {
+    ancestors: [
+      [
+        "price"
+      ]
+      [
+        "turnover"
+      ]
+    ]
+  }
+
+
+
+}

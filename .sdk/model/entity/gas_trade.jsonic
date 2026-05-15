@@ -1,0 +1,56 @@
+# Entity: gas_trade
+
+main: kit: entity: gas_trade: {
+
+  alias: field: {}
+
+  name: "gas_trade"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                example: "2020-06-30T20:59:59.999Z"
+                kind: "query"
+                name: "end"
+                orig: "end"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: "2020-05-31T20:59:59.999Z"
+                kind: "query"
+                name: "start"
+                orig: "start"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/api/gas-trade"
+          parts: [
+            "api"
+            "gas-trade"
+          ]
+          select: {
+            exist: [
+              "end"
+              "start"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

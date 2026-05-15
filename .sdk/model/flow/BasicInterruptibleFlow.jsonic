@@ -1,0 +1,28 @@
+# BasicInterruptibleFlow
+
+main: kit: flow: BasicInterruptibleFlow:
+{
+  entity: "interruptible",
+  kind: "basic",
+  name: "BasicInterruptibleFlow",
+  step: [
+    {
+      input: {
+        ref: "interruptible_ref01",
+        srcdatavar: "interruptible_ref01_data",
+        suffix: "_dt0"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-interruptible_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicInterruptibleFlow"
+}

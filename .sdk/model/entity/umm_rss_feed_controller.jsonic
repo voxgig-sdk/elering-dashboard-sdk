@@ -1,0 +1,45 @@
+# Entity: umm_rss_feed_controller
+
+main: kit: entity: umm_rss_feed_controller: {
+
+  alias: field: {}
+
+  name: "umm_rss_feed_controller"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          method: "GET"
+          orig: "/umm/gas/rss"
+          parts: [
+            "umm"
+            "gas"
+            "rss"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          method: "GET"
+          orig: "/umm/gas/rss/aris"
+          parts: [
+            "umm"
+            "gas"
+            "rss"
+            "aris"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

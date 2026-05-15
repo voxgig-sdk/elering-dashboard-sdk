@@ -1,0 +1,28 @@
+# BasicRenominationsControllerFlow
+
+main: kit: flow: BasicRenominationsControllerFlow:
+{
+  entity: "renominations_controller",
+  kind: "basic",
+  name: "BasicRenominationsControllerFlow",
+  step: [
+    {
+      input: {
+        ref: "renominations_controller_ref01",
+        srcdatavar: "renominations_controller_ref01_data",
+        suffix: "_dt0"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-renominations_controller_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicRenominationsControllerFlow"
+}

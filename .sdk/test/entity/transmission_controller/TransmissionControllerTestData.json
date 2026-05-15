@@ -1,0 +1,20 @@
+{
+  "existing": {
+    "transmission_controller": {
+      "TRANSMISSION_CONTROLLER00": {
+        "group": "GROUP01"
+      },
+      "TRANSMISSION_CONTROLLER01": {
+        "group": "GROUP01"
+      },
+      "TRANSMISSION_CONTROLLER02": {
+        "group": "GROUP01"
+      }
+    }
+  },
+  "new": {
+    "transmission_controller": {
+      "transmission_controller_ref01": {}
+    }
+  }
+}

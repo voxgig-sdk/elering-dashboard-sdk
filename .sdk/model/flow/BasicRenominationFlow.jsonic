@@ -1,0 +1,28 @@
+# BasicRenominationFlow
+
+main: kit: flow: BasicRenominationFlow:
+{
+  entity: "renomination",
+  kind: "basic",
+  name: "BasicRenominationFlow",
+  step: [
+    {
+      input: {
+        ref: "renomination_ref01",
+        srcdatavar: "renomination_ref01_data",
+        suffix: "_dt0"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-renomination_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicRenominationFlow"
+}

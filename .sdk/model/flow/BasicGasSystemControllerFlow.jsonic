@@ -1,0 +1,28 @@
+# BasicGasSystemControllerFlow
+
+main: kit: flow: BasicGasSystemControllerFlow:
+{
+  entity: "gas_system_controller",
+  kind: "basic",
+  name: "BasicGasSystemControllerFlow",
+  step: [
+    {
+      input: {
+        ref: "gas_system_controller_ref01",
+        srcdatavar: "gas_system_controller_ref01_data",
+        suffix: "_dt0"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-gas_system_controller_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicGasSystemControllerFlow"
+}

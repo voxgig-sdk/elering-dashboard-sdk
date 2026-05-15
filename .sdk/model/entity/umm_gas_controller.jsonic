@@ -1,0 +1,182 @@
+# Entity: umm_gas_controller
+
+main: kit: entity: umm_gas_controller: {
+
+  alias: field: {}
+
+  name: "umm_gas_controller"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                kind: "query"
+                name: "affected_asset_name"
+                orig: "affected_asset_name"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "event_duration_date_time_end"
+                orig: "event_duration_date_time_end"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "event_duration_date_time_start"
+                orig: "event_duration_date_time_start"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "event_status"
+                orig: "event_status"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "event_type"
+                orig: "event_type"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: 1
+                kind: "query"
+                name: "page"
+                orig: "page"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                kind: "query"
+                name: "publication_datetime_start"
+                orig: "publication_datetime_start"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: "publicationDateTimeDesc"
+                kind: "query"
+                name: "sort"
+                orig: "sort"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: "current"
+                kind: "query"
+                name: "status"
+                orig: "status"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "unavailability_type"
+                orig: "unavailability_type"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/api/umm/gas"
+          parts: [
+            "api"
+            "umm"
+            "gas"
+          ]
+          select: {
+            exist: [
+              "affected_asset_name"
+              "event_duration_date_time_end"
+              "event_duration_date_time_start"
+              "event_status"
+              "event_type"
+              "page"
+              "publication_datetime_start"
+              "sort"
+              "status"
+              "unavailability_type"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            query: [
+              {
+                kind: "query"
+                name: "id"
+                orig: "id"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/api/umm/gas/messages"
+          parts: [
+            "api"
+            "umm"
+            "gas"
+            "messages"
+          ]
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            query: [
+              {
+                kind: "query"
+                name: "id"
+                orig: "id"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/api/umm/single/{id}"
+          parts: [
+            "api"
+            "umm"
+            "single"
+            "{id}"
+          ]
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

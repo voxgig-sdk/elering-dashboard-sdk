@@ -1,0 +1,14 @@
+{
+  "existing": {
+    "nomination": {
+      "NOMINATION00": {},
+      "NOMINATION01": {},
+      "NOMINATION02": {}
+    }
+  },
+  "new": {
+    "nomination": {
+      "nomination_ref01": {}
+    }
+  }
+}

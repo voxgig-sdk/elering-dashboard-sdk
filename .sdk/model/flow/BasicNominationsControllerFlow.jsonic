@@ -1,0 +1,28 @@
+# BasicNominationsControllerFlow
+
+main: kit: flow: BasicNominationsControllerFlow:
+{
+  entity: "nominations_controller",
+  kind: "basic",
+  name: "BasicNominationsControllerFlow",
+  step: [
+    {
+      input: {
+        ref: "nominations_controller_ref01",
+        srcdatavar: "nominations_controller_ref01_data",
+        suffix: "_dt0"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-nominations_controller_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicNominationsControllerFlow"
+}

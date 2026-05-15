@@ -1,0 +1,14 @@
+{
+  "existing": {
+    "balance": {
+      "BALANCE00": {},
+      "BALANCE01": {},
+      "BALANCE02": {}
+    }
+  },
+  "new": {
+    "balance": {
+      "balance_ref01": {}
+    }
+  }
+}

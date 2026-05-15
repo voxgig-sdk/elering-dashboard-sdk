@@ -1,0 +1,14 @@
+{
+  "existing": {
+    "gas_trade": {
+      "GAS_TRADE00": {},
+      "GAS_TRADE01": {},
+      "GAS_TRADE02": {}
+    }
+  },
+  "new": {
+    "gas_trade": {
+      "gas_trade_ref01": {}
+    }
+  }
+}

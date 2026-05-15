@@ -1,0 +1,266 @@
+# Guide
+
+guide: {
+  metrics: count: entity: 24
+  metrics: count: path: 62
+  metrics: count: method: 62
+
+  entity: balance: {
+    path: "/api/balance": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: balance_controller: {
+    path: "/api/balance/commerce": {
+      op: load: method: *GET
+    }
+    path: "/api/balance/commerce/csv": {
+      op: load: method: *GET
+    }
+    path: "/api/balance/commerce/latest": {
+      op: load: method: *GET
+    }
+    path: "/api/balance/csv": {
+      op: load: method: *GET
+    }
+    path: "/api/balance/total": {
+      op: load: method: *GET
+    }
+    path: "/api/balance/total/csv": {
+      op: load: method: *GET
+    }
+    path: "/api/balance/total/latest": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: firm: {
+    path: "/api/capacity/firm": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: firm_capacity_controller: {
+    path: "/api/capacity/firm/csv": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: gas_balance_controller: {
+    path: "/api/gas-balance/price": {
+      op: load: method: *GET
+    }
+    path: "/api/gas-balance/price/csv": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: gas_border_trade_controller: {
+    path: "/api/gas/border-trade/current": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: gas_system: {
+    path: "/api/gas-system": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: gas_system_controller: {
+    path: "/api/gas-system/csv": {
+      op: load: method: *GET
+    }
+    path: "/api/gas-system/daily": {
+      op: load: method: *GET
+    }
+    path: "/api/gas-system/daily-average": {
+      op: load: method: *GET
+    }
+    path: "/api/gas-system/daily/csv": {
+      op: load: method: *GET
+    }
+    path: "/api/gas-system/latest": {
+      op: load: method: *GET
+    }
+    path: "/api/gas-system/m3": {
+      op: load: method: *GET
+    }
+    path: "/api/gas-system/m3/csv": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: gas_trade: {
+    path: "/api/gas-trade": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: gas_trade_controller: {
+    path: "/api/gas-trade/csv": {
+      op: load: method: *GET
+    }
+    path: "/api/gas-trade/{group}/latest": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: gas_transmission_controller: {
+    path: "/api/gas-transmission/cross-border": {
+      op: load: method: *GET
+    }
+    path: "/api/gas-transmission/cross-border/csv": {
+      op: load: method: *GET
+    }
+    path: "/api/gas-transmission/cross-border/latest": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: green_controller: {
+    path: "/api/green/certificates": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: interruptible: {
+    path: "/api/capacity/interruptible": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: interruptible_capacity_controller: {
+    path: "/api/capacity/interruptible/csv": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: nomination: {
+    path: "/api/nominations": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: nominations_controller: {
+    path: "/api/nominations/csv": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: nps_controller: {
+    path: "/api/nps/price": {
+      op: load: method: *GET
+    }
+    path: "/api/nps/price/csv": {
+      op: load: method: *GET
+    }
+    path: "/api/nps/price/{group}/current": {
+      op: load: method: *GET
+    }
+    path: "/api/nps/price/{group}/latest": {
+      op: load: method: *GET
+    }
+    path: "/api/nps/turnover": {
+      op: load: method: *GET
+    }
+    path: "/api/nps/turnover/csv": {
+      op: load: method: *GET
+    }
+    path: "/api/nps/turnover/{group}/latest": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: renomination: {
+    path: "/api/nominations/renominations": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: renominations_controller: {
+    path: "/api/nominations/renominations/csv": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: system: {
+    path: "/api/system": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: system_controller: {
+    path: "/api/system/csv": {
+      op: load: method: *GET
+    }
+    path: "/api/system/latest": {
+      op: load: method: *GET
+    }
+    path: "/api/system/with-plan": {
+      op: load: method: *GET
+    }
+    path: "/api/system/with-plan/csv": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: transmission_controller: {
+    path: "/api/transmission/cross-border": {
+      op: load: method: *GET
+    }
+    path: "/api/transmission/cross-border-capacity": {
+      op: load: method: *GET
+    }
+    path: "/api/transmission/cross-border-capacity/{group}": {
+      op: load: method: *GET
+    }
+    path: "/api/transmission/cross-border-capacity/{group}/csv": {
+      op: load: method: *GET
+    }
+    path: "/api/transmission/cross-border-planned-trade": {
+      op: load: method: *GET
+    }
+    path: "/api/transmission/cross-border-planned-trade/csv": {
+      op: load: method: *GET
+    }
+    path: "/api/transmission/cross-border-planned-trade/latest": {
+      op: load: method: *GET
+    }
+    path: "/api/transmission/cross-border/csv": {
+      op: load: method: *GET
+    }
+    path: "/api/transmission/cross-border/hourly": {
+      op: load: method: *GET
+    }
+    path: "/api/transmission/cross-border/hourly/csv": {
+      op: load: method: *GET
+    }
+    path: "/api/transmission/cross-border/latest": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: umm_gas_controller: {
+    path: "/api/umm/gas": {
+      op: load: method: *GET
+    }
+    path: "/api/umm/gas/messages": {
+      op: load: method: *GET
+    }
+    path: "/api/umm/single/{id}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: umm_rss_feed_controller: {
+    path: "/umm/gas/rss": {
+      op: load: method: *GET
+    }
+    path: "/umm/gas/rss/aris": {
+      op: load: method: *GET
+    }
+  }
+
+}

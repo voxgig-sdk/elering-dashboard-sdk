@@ -1,0 +1,28 @@
+# BasicGreenControllerFlow
+
+main: kit: flow: BasicGreenControllerFlow:
+{
+  entity: "green_controller",
+  kind: "basic",
+  name: "BasicGreenControllerFlow",
+  step: [
+    {
+      input: {
+        ref: "green_controller_ref01",
+        srcdatavar: "green_controller_ref01_data",
+        suffix: "_dt0"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-green_controller_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicGreenControllerFlow"
+}

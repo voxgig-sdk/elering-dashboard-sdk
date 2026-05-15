@@ -1,0 +1,28 @@
+# BasicGasTransmissionControllerFlow
+
+main: kit: flow: BasicGasTransmissionControllerFlow:
+{
+  entity: "gas_transmission_controller",
+  kind: "basic",
+  name: "BasicGasTransmissionControllerFlow",
+  step: [
+    {
+      input: {
+        ref: "gas_transmission_controller_ref01",
+        srcdatavar: "gas_transmission_controller_ref01_data",
+        suffix: "_dt0"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-gas_transmission_controller_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicGasTransmissionControllerFlow"
+}

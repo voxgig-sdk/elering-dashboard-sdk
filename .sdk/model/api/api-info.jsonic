@@ -1,0 +1,24 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        email: "klienditugi@elering.ee"
+        name: "Elering AS"
+        url: "https://elering.ee/"
+      }
+      description: "This document describes different data sets that Elering Dashboard is providing."
+      servers: [
+        {
+          url: "https://dashboard.elering.ee"
+        }
+      ]
+      title: "Elering dashboard API documentation"
+      version: "1.3.0"
+    }
+  }
+}
+
+}

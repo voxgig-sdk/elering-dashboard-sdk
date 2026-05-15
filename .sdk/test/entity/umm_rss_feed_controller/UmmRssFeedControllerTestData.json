@@ -1,0 +1,14 @@
+{
+  "existing": {
+    "umm_rss_feed_controller": {
+      "UMM_RSS_FEED_CONTROLLER00": {},
+      "UMM_RSS_FEED_CONTROLLER01": {},
+      "UMM_RSS_FEED_CONTROLLER02": {}
+    }
+  },
+  "new": {
+    "umm_rss_feed_controller": {
+      "umm_rss_feed_controller_ref01": {}
+    }
+  }
+}

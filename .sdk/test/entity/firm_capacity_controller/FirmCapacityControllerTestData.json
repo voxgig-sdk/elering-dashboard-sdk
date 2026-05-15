@@ -1,0 +1,14 @@
+{
+  "existing": {
+    "firm_capacity_controller": {
+      "FIRM_CAPACITY_CONTROLLER00": {},
+      "FIRM_CAPACITY_CONTROLLER01": {},
+      "FIRM_CAPACITY_CONTROLLER02": {}
+    }
+  },
+  "new": {
+    "firm_capacity_controller": {
+      "firm_capacity_controller_ref01": {}
+    }
+  }
+}

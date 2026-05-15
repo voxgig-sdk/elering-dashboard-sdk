@@ -1,0 +1,103 @@
+# Entity: gas_trade_controller
+
+main: kit: entity: gas_trade_controller: {
+
+  alias: field: {}
+
+  name: "gas_trade_controller"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                example: "2020-06-30T20:59:59.999Z"
+                kind: "query"
+                name: "end"
+                orig: "end"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "field"
+                orig: "field"
+                reqd: false
+                type: "`$ARRAY`"
+              }
+              {
+                example: "2020-05-31T20:59:59.999Z"
+                kind: "query"
+                name: "start"
+                orig: "start"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/api/gas-trade/csv"
+          parts: [
+            "api"
+            "gas-trade"
+            "csv"
+          ]
+          select: {
+            exist: [
+              "end"
+              "field"
+              "start"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "group"
+                orig: "group"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/api/gas-trade/{group}/latest"
+          parts: [
+            "api"
+            "gas-trade"
+            "{group}"
+            "latest"
+          ]
+          select: {
+            exist: [
+              "group"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  relations: {
+    ancestors: [
+      [
+        "gas_trade"
+      ]
+    ]
+  }
+
+
+
+}

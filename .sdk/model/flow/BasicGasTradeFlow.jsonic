@@ -1,0 +1,28 @@
+# BasicGasTradeFlow
+
+main: kit: flow: BasicGasTradeFlow:
+{
+  entity: "gas_trade",
+  kind: "basic",
+  name: "BasicGasTradeFlow",
+  step: [
+    {
+      input: {
+        ref: "gas_trade_ref01",
+        srcdatavar: "gas_trade_ref01_data",
+        suffix: "_dt0"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-gas_trade_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicGasTradeFlow"
+}

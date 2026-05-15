@@ -1,0 +1,14 @@
+{
+  "existing": {
+    "balance_controller": {
+      "BALANCE_CONTROLLER00": {},
+      "BALANCE_CONTROLLER01": {},
+      "BALANCE_CONTROLLER02": {}
+    }
+  },
+  "new": {
+    "balance_controller": {
+      "balance_controller_ref01": {}
+    }
+  }
+}

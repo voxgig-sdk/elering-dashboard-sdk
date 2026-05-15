@@ -1,0 +1,86 @@
+# Entity: firm_capacity_controller
+
+main: kit: entity: firm_capacity_controller: {
+
+  alias: field: {}
+
+  name: "firm_capacity_controller"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                example: "2020-05-31T20:59:59.999Z"
+                kind: "query"
+                name: "end"
+                orig: "end"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: [
+                  "[\"narva_technical_entry\""
+                  "\"narva_booked_entry\""
+                  "\"narva_available_entry\""
+                  "\"varska_technical_entry\""
+                  "\"varska_booked_entry\""
+                  "\"varska_available_entry\""
+                  "\"varska_technical_exit\""
+                  "\"varska_booked_exit\""
+                  "\"varska_available_exit\""
+                  "\"balticconnector_technical_entry\""
+                  "\"balticconnector_booked_entry\""
+                  "\"balticconnector_available_entry\""
+                  "\"balticconnector_technical_exit\""
+                  "\"balticconnector_booked_exit\""
+                  "\"balticconnector_available_exit\""
+                  "\"production_technical\""
+                  "\"production_booked\""
+                  "\"production_available\"]"
+                ]
+                kind: "query"
+                name: "field"
+                orig: "field"
+                reqd: false
+                type: "`$ARRAY`"
+              }
+              {
+                example: "2020-05-31T20:59:59.999Z"
+                kind: "query"
+                name: "start"
+                orig: "start"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/api/capacity/firm/csv"
+          parts: [
+            "api"
+            "capacity"
+            "firm"
+            "csv"
+          ]
+          select: {
+            exist: [
+              "end"
+              "field"
+              "start"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

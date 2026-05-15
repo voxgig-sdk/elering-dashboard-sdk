@@ -1,0 +1,14 @@
+{
+  "existing": {
+    "system_controller": {
+      "SYSTEM_CONTROLLER00": {},
+      "SYSTEM_CONTROLLER01": {},
+      "SYSTEM_CONTROLLER02": {}
+    }
+  },
+  "new": {
+    "system_controller": {
+      "system_controller_ref01": {}
+    }
+  }
+}

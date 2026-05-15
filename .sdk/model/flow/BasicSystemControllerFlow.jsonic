@@ -1,0 +1,28 @@
+# BasicSystemControllerFlow
+
+main: kit: flow: BasicSystemControllerFlow:
+{
+  entity: "system_controller",
+  kind: "basic",
+  name: "BasicSystemControllerFlow",
+  step: [
+    {
+      input: {
+        ref: "system_controller_ref01",
+        srcdatavar: "system_controller_ref01_data",
+        suffix: "_dt0"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-system_controller_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicSystemControllerFlow"
+}

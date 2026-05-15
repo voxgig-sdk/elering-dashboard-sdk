@@ -1,0 +1,14 @@
+{
+  "existing": {
+    "gas_system": {
+      "GAS_SYSTEM00": {},
+      "GAS_SYSTEM01": {},
+      "GAS_SYSTEM02": {}
+    }
+  },
+  "new": {
+    "gas_system": {
+      "gas_system_ref01": {}
+    }
+  }
+}

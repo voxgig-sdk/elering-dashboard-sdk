@@ -1,0 +1,28 @@
+# BasicUmmRssFeedControllerFlow
+
+main: kit: flow: BasicUmmRssFeedControllerFlow:
+{
+  entity: "umm_rss_feed_controller",
+  kind: "basic",
+  name: "BasicUmmRssFeedControllerFlow",
+  step: [
+    {
+      input: {
+        ref: "umm_rss_feed_controller_ref01",
+        srcdatavar: "umm_rss_feed_controller_ref01_data",
+        suffix: "_dt0"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-umm_rss_feed_controller_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicUmmRssFeedControllerFlow"
+}

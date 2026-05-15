@@ -1,0 +1,28 @@
+# BasicInterruptibleCapacityControllerFlow
+
+main: kit: flow: BasicInterruptibleCapacityControllerFlow:
+{
+  entity: "interruptible_capacity_controller",
+  kind: "basic",
+  name: "BasicInterruptibleCapacityControllerFlow",
+  step: [
+    {
+      input: {
+        ref: "interruptible_capacity_controller_ref01",
+        srcdatavar: "interruptible_capacity_controller_ref01_data",
+        suffix: "_dt0"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-interruptible_capacity_controller_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicInterruptibleCapacityControllerFlow"
+}

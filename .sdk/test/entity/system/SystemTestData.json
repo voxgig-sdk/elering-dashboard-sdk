@@ -1,0 +1,14 @@
+{
+  "existing": {
+    "system": {
+      "SYSTEM00": {},
+      "SYSTEM01": {},
+      "SYSTEM02": {}
+    }
+  },
+  "new": {
+    "system": {
+      "system_ref01": {}
+    }
+  }
+}
