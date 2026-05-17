@@ -2,13 +2,16 @@
   "existing": {
     "transmission_controller": {
       "TRANSMISSION_CONTROLLER00": {
-        "group": "GROUP01"
+        "group": "GROUP01",
+        "id": "TRANSMISSION_CONTROLLER00"
       },
       "TRANSMISSION_CONTROLLER01": {
-        "group": "GROUP01"
+        "group": "GROUP01",
+        "id": "TRANSMISSION_CONTROLLER01"
       },
       "TRANSMISSION_CONTROLLER02": {
-        "group": "GROUP01"
+        "group": "GROUP01",
+        "id": "TRANSMISSION_CONTROLLER02"
       }
     }
   },

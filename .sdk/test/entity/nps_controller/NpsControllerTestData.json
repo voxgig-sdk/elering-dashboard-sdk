@@ -2,13 +2,16 @@
   "existing": {
     "nps_controller": {
       "NPS_CONTROLLER00": {
-        "group": "GROUP01"
+        "group": "GROUP01",
+        "id": "NPS_CONTROLLER00"
       },
       "NPS_CONTROLLER01": {
-        "group": "GROUP01"
+        "group": "GROUP01",
+        "id": "NPS_CONTROLLER01"
       },
       "NPS_CONTROLLER02": {
-        "group": "GROUP01"
+        "group": "GROUP01",
+        "id": "NPS_CONTROLLER02"
       }
     }
   },

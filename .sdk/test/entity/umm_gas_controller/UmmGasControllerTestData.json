@@ -1,9 +1,15 @@
 {
   "existing": {
     "umm_gas_controller": {
-      "UMM_GAS_CONTROLLER00": {},
-      "UMM_GAS_CONTROLLER01": {},
-      "UMM_GAS_CONTROLLER02": {}
+      "UMM_GAS_CONTROLLER00": {
+        "id": "UMM_GAS_CONTROLLER00"
+      },
+      "UMM_GAS_CONTROLLER01": {
+        "id": "UMM_GAS_CONTROLLER01"
+      },
+      "UMM_GAS_CONTROLLER02": {
+        "id": "UMM_GAS_CONTROLLER02"
+      }
     }
   },
   "new": {

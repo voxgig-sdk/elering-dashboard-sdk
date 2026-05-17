@@ -1,9 +1,15 @@
 {
   "existing": {
     "firm": {
-      "FIRM00": {},
-      "FIRM01": {},
-      "FIRM02": {}
+      "FIRM00": {
+        "id": "FIRM00"
+      },
+      "FIRM01": {
+        "id": "FIRM01"
+      },
+      "FIRM02": {
+        "id": "FIRM02"
+      }
     }
   },
   "new": {

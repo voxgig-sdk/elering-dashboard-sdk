@@ -1,9 +1,15 @@
 {
   "existing": {
     "system_controller": {
-      "SYSTEM_CONTROLLER00": {},
-      "SYSTEM_CONTROLLER01": {},
-      "SYSTEM_CONTROLLER02": {}
+      "SYSTEM_CONTROLLER00": {
+        "id": "SYSTEM_CONTROLLER00"
+      },
+      "SYSTEM_CONTROLLER01": {
+        "id": "SYSTEM_CONTROLLER01"
+      },
+      "SYSTEM_CONTROLLER02": {
+        "id": "SYSTEM_CONTROLLER02"
+      }
     }
   },
   "new": {

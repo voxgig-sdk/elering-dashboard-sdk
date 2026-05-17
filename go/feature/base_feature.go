@@ -1,7 +1,7 @@
 package feature
 
 import (
-	"github.com/voxgig-sdk/elering-dashboard-sdk/core"
+	"github.com/voxgig-sdk/elering-dashboard-sdk/go/core"
 )
 
 type BaseFeature struct {

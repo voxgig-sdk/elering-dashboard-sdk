@@ -1,9 +1,9 @@
 package entity
 
 import (
-	"github.com/voxgig-sdk/elering-dashboard-sdk/core"
+	"github.com/voxgig-sdk/elering-dashboard-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/elering-dashboard-sdk/go/utility/struct"
 )
 
 type BalanceControllerEntity struct {

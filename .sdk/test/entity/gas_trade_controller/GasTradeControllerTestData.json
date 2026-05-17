@@ -2,13 +2,16 @@
   "existing": {
     "gas_trade_controller": {
       "GAS_TRADE_CONTROLLER00": {
-        "group": "GROUP01"
+        "group": "GROUP01",
+        "id": "GAS_TRADE_CONTROLLER00"
       },
       "GAS_TRADE_CONTROLLER01": {
-        "group": "GROUP01"
+        "group": "GROUP01",
+        "id": "GAS_TRADE_CONTROLLER01"
       },
       "GAS_TRADE_CONTROLLER02": {
-        "group": "GROUP01"
+        "group": "GROUP01",
+        "id": "GAS_TRADE_CONTROLLER02"
       }
     }
   },

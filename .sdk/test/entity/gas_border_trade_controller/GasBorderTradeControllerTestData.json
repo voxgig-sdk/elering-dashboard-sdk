@@ -1,9 +1,15 @@
 {
   "existing": {
     "gas_border_trade_controller": {
-      "GAS_BORDER_TRADE_CONTROLLER00": {},
-      "GAS_BORDER_TRADE_CONTROLLER01": {},
-      "GAS_BORDER_TRADE_CONTROLLER02": {}
+      "GAS_BORDER_TRADE_CONTROLLER00": {
+        "id": "GAS_BORDER_TRADE_CONTROLLER00"
+      },
+      "GAS_BORDER_TRADE_CONTROLLER01": {
+        "id": "GAS_BORDER_TRADE_CONTROLLER01"
+      },
+      "GAS_BORDER_TRADE_CONTROLLER02": {
+        "id": "GAS_BORDER_TRADE_CONTROLLER02"
+      }
     }
   },
   "new": {

@@ -1,9 +1,15 @@
 {
   "existing": {
     "renomination": {
-      "RENOMINATION00": {},
-      "RENOMINATION01": {},
-      "RENOMINATION02": {}
+      "RENOMINATION00": {
+        "id": "RENOMINATION00"
+      },
+      "RENOMINATION01": {
+        "id": "RENOMINATION01"
+      },
+      "RENOMINATION02": {
+        "id": "RENOMINATION02"
+      }
     }
   },
   "new": {

@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/elering-dashboard-sdk"
-	"github.com/voxgig-sdk/elering-dashboard-sdk/core"
+	sdk "github.com/voxgig-sdk/elering-dashboard-sdk/go"
+	"github.com/voxgig-sdk/elering-dashboard-sdk/go/core"
 )
 
 func TestNominationsControllerDirect(t *testing.T) {

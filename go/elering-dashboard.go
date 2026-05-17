@@ -1,10 +1,10 @@
 package voxgigeleringdashboardsdk
 
 import (
-	"github.com/voxgig-sdk/elering-dashboard-sdk/core"
-	"github.com/voxgig-sdk/elering-dashboard-sdk/entity"
-	"github.com/voxgig-sdk/elering-dashboard-sdk/feature"
-	_ "github.com/voxgig-sdk/elering-dashboard-sdk/utility"
+	"github.com/voxgig-sdk/elering-dashboard-sdk/go/core"
+	"github.com/voxgig-sdk/elering-dashboard-sdk/go/entity"
+	"github.com/voxgig-sdk/elering-dashboard-sdk/go/feature"
+	_ "github.com/voxgig-sdk/elering-dashboard-sdk/go/utility"
 )
 
 // Type aliases preserve external API.

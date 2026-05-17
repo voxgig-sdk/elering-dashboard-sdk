@@ -1,9 +1,15 @@
 {
   "existing": {
     "gas_transmission_controller": {
-      "GAS_TRANSMISSION_CONTROLLER00": {},
-      "GAS_TRANSMISSION_CONTROLLER01": {},
-      "GAS_TRANSMISSION_CONTROLLER02": {}
+      "GAS_TRANSMISSION_CONTROLLER00": {
+        "id": "GAS_TRANSMISSION_CONTROLLER00"
+      },
+      "GAS_TRANSMISSION_CONTROLLER01": {
+        "id": "GAS_TRANSMISSION_CONTROLLER01"
+      },
+      "GAS_TRANSMISSION_CONTROLLER02": {
+        "id": "GAS_TRANSMISSION_CONTROLLER02"
+      }
     }
   },
   "new": {

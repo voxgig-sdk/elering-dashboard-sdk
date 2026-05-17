@@ -1,9 +1,15 @@
 {
   "existing": {
     "umm_rss_feed_controller": {
-      "UMM_RSS_FEED_CONTROLLER00": {},
-      "UMM_RSS_FEED_CONTROLLER01": {},
-      "UMM_RSS_FEED_CONTROLLER02": {}
+      "UMM_RSS_FEED_CONTROLLER00": {
+        "id": "UMM_RSS_FEED_CONTROLLER00"
+      },
+      "UMM_RSS_FEED_CONTROLLER01": {
+        "id": "UMM_RSS_FEED_CONTROLLER01"
+      },
+      "UMM_RSS_FEED_CONTROLLER02": {
+        "id": "UMM_RSS_FEED_CONTROLLER02"
+      }
     }
   },
   "new": {

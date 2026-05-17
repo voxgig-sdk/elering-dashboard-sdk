@@ -1,9 +1,15 @@
 {
   "existing": {
     "balance_controller": {
-      "BALANCE_CONTROLLER00": {},
-      "BALANCE_CONTROLLER01": {},
-      "BALANCE_CONTROLLER02": {}
+      "BALANCE_CONTROLLER00": {
+        "id": "BALANCE_CONTROLLER00"
+      },
+      "BALANCE_CONTROLLER01": {
+        "id": "BALANCE_CONTROLLER01"
+      },
+      "BALANCE_CONTROLLER02": {
+        "id": "BALANCE_CONTROLLER02"
+      }
     }
   },
   "new": {

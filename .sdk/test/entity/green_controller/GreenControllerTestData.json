@@ -1,9 +1,15 @@
 {
   "existing": {
     "green_controller": {
-      "GREEN_CONTROLLER00": {},
-      "GREEN_CONTROLLER01": {},
-      "GREEN_CONTROLLER02": {}
+      "GREEN_CONTROLLER00": {
+        "id": "GREEN_CONTROLLER00"
+      },
+      "GREEN_CONTROLLER01": {
+        "id": "GREEN_CONTROLLER01"
+      },
+      "GREEN_CONTROLLER02": {
+        "id": "GREEN_CONTROLLER02"
+      }
     }
   },
   "new": {

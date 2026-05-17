@@ -9,10 +9,10 @@ import (
 	"testing"
 	"time"
 
-	sdk "github.com/voxgig-sdk/elering-dashboard-sdk"
-	"github.com/voxgig-sdk/elering-dashboard-sdk/core"
+	sdk "github.com/voxgig-sdk/elering-dashboard-sdk/go"
+	"github.com/voxgig-sdk/elering-dashboard-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/elering-dashboard-sdk/go/utility/struct"
 )
 
 func TestSystemEntity(t *testing.T) {

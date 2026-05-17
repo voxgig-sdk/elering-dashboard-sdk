@@ -1,9 +1,15 @@
 {
   "existing": {
     "nominations_controller": {
-      "NOMINATIONS_CONTROLLER00": {},
-      "NOMINATIONS_CONTROLLER01": {},
-      "NOMINATIONS_CONTROLLER02": {}
+      "NOMINATIONS_CONTROLLER00": {
+        "id": "NOMINATIONS_CONTROLLER00"
+      },
+      "NOMINATIONS_CONTROLLER01": {
+        "id": "NOMINATIONS_CONTROLLER01"
+      },
+      "NOMINATIONS_CONTROLLER02": {
+        "id": "NOMINATIONS_CONTROLLER02"
+      }
     }
   },
   "new": {

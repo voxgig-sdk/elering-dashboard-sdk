@@ -4,9 +4,9 @@ import (
 	"strings"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/elering-dashboard-sdk"
+	sdk "github.com/voxgig-sdk/elering-dashboard-sdk/go"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/elering-dashboard-sdk/go/utility/struct"
 )
 
 func TestPrimaryUtility(t *testing.T) {

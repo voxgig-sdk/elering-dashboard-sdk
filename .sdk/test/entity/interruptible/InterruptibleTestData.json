@@ -1,9 +1,15 @@
 {
   "existing": {
     "interruptible": {
-      "INTERRUPTIBLE00": {},
-      "INTERRUPTIBLE01": {},
-      "INTERRUPTIBLE02": {}
+      "INTERRUPTIBLE00": {
+        "id": "INTERRUPTIBLE00"
+      },
+      "INTERRUPTIBLE01": {
+        "id": "INTERRUPTIBLE01"
+      },
+      "INTERRUPTIBLE02": {
+        "id": "INTERRUPTIBLE02"
+      }
     }
   },
   "new": {

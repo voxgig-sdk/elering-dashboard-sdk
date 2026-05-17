@@ -3,7 +3,7 @@ package sdktest
 import (
 	"testing"
 
-	sdk "github.com/voxgig-sdk/elering-dashboard-sdk"
+	sdk "github.com/voxgig-sdk/elering-dashboard-sdk/go"
 )
 
 func TestCustomUtility(t *testing.T) {

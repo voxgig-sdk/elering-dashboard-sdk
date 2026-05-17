@@ -1,9 +1,15 @@
 {
   "existing": {
     "gas_system_controller": {
-      "GAS_SYSTEM_CONTROLLER00": {},
-      "GAS_SYSTEM_CONTROLLER01": {},
-      "GAS_SYSTEM_CONTROLLER02": {}
+      "GAS_SYSTEM_CONTROLLER00": {
+        "id": "GAS_SYSTEM_CONTROLLER00"
+      },
+      "GAS_SYSTEM_CONTROLLER01": {
+        "id": "GAS_SYSTEM_CONTROLLER01"
+      },
+      "GAS_SYSTEM_CONTROLLER02": {
+        "id": "GAS_SYSTEM_CONTROLLER02"
+      }
     }
   },
   "new": {

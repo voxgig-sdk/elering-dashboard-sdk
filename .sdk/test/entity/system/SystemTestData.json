@@ -1,9 +1,15 @@
 {
   "existing": {
     "system": {
-      "SYSTEM00": {},
-      "SYSTEM01": {},
-      "SYSTEM02": {}
+      "SYSTEM00": {
+        "id": "SYSTEM00"
+      },
+      "SYSTEM01": {
+        "id": "SYSTEM01"
+      },
+      "SYSTEM02": {
+        "id": "SYSTEM02"
+      }
     }
   },
   "new": {

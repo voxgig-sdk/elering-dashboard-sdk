@@ -1,9 +1,15 @@
 {
   "existing": {
     "firm_capacity_controller": {
-      "FIRM_CAPACITY_CONTROLLER00": {},
-      "FIRM_CAPACITY_CONTROLLER01": {},
-      "FIRM_CAPACITY_CONTROLLER02": {}
+      "FIRM_CAPACITY_CONTROLLER00": {
+        "id": "FIRM_CAPACITY_CONTROLLER00"
+      },
+      "FIRM_CAPACITY_CONTROLLER01": {
+        "id": "FIRM_CAPACITY_CONTROLLER01"
+      },
+      "FIRM_CAPACITY_CONTROLLER02": {
+        "id": "FIRM_CAPACITY_CONTROLLER02"
+      }
     }
   },
   "new": {

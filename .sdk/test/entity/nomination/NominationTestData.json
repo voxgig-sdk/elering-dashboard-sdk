@@ -1,9 +1,15 @@
 {
   "existing": {
     "nomination": {
-      "NOMINATION00": {},
-      "NOMINATION01": {},
-      "NOMINATION02": {}
+      "NOMINATION00": {
+        "id": "NOMINATION00"
+      },
+      "NOMINATION01": {
+        "id": "NOMINATION01"
+      },
+      "NOMINATION02": {
+        "id": "NOMINATION02"
+      }
     }
   },
   "new": {

@@ -1,9 +1,15 @@
 {
   "existing": {
     "balance": {
-      "BALANCE00": {},
-      "BALANCE01": {},
-      "BALANCE02": {}
+      "BALANCE00": {
+        "id": "BALANCE00"
+      },
+      "BALANCE01": {
+        "id": "BALANCE01"
+      },
+      "BALANCE02": {
+        "id": "BALANCE02"
+      }
     }
   },
   "new": {

@@ -1,9 +1,15 @@
 {
   "existing": {
     "renominations_controller": {
-      "RENOMINATIONS_CONTROLLER00": {},
-      "RENOMINATIONS_CONTROLLER01": {},
-      "RENOMINATIONS_CONTROLLER02": {}
+      "RENOMINATIONS_CONTROLLER00": {
+        "id": "RENOMINATIONS_CONTROLLER00"
+      },
+      "RENOMINATIONS_CONTROLLER01": {
+        "id": "RENOMINATIONS_CONTROLLER01"
+      },
+      "RENOMINATIONS_CONTROLLER02": {
+        "id": "RENOMINATIONS_CONTROLLER02"
+      }
     }
   },
   "new": {
