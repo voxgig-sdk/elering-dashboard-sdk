@@ -91,7 +91,6 @@ def _gas_system_controller_basic_setup(extra):
         "ELERINGDASHBOARD_TEST_GAS_SYSTEM_CONTROLLER_ENTID": idmap,
         "ELERINGDASHBOARD_TEST_LIVE": "FALSE",
         "ELERINGDASHBOARD_TEST_EXPLAIN": "FALSE",
-        "ELERINGDASHBOARD_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -102,7 +101,6 @@ def _gas_system_controller_basic_setup(extra):
     if env.get("ELERINGDASHBOARD_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("ELERINGDASHBOARD_APIKEY"),
             },
             extra or {},
         ])

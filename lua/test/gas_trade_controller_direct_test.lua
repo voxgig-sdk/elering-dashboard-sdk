@@ -62,14 +62,12 @@ function gas_trade_controller_direct_setup(mockres)
   local env = runner.env_override({
     ["ELERINGDASHBOARD_TEST_GAS_TRADE_CONTROLLER_ENTID"] = {},
     ["ELERINGDASHBOARD_TEST_LIVE"] = "FALSE",
-    ["ELERINGDASHBOARD_APIKEY"] = "NONE",
   })
 
   local live = env["ELERINGDASHBOARD_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {
-      apikey = env["ELERINGDASHBOARD_APIKEY"],
     }
     local client = sdk.new(merged_opts)
     return {

@@ -99,14 +99,12 @@ func nominations_controllerDirectSetup(mockres any) *nominations_controllerDirec
 	env := envOverride(map[string]any{
 		"ELERINGDASHBOARD_TEST_NOMINATIONS_CONTROLLER_ENTID": map[string]any{},
 		"ELERINGDASHBOARD_TEST_LIVE":    "FALSE",
-		"ELERINGDASHBOARD_APIKEY":       "NONE",
 	})
 
 	live := env["ELERINGDASHBOARD_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
-			"apikey": env["ELERINGDASHBOARD_APIKEY"],
 		}
 		client := sdk.NewEleringDashboardSDK(mergedOpts)
 

@@ -99,14 +99,12 @@ func systemDirectSetup(mockres any) *systemDirectSetupResult {
 	env := envOverride(map[string]any{
 		"ELERINGDASHBOARD_TEST_SYSTEM_ENTID": map[string]any{},
 		"ELERINGDASHBOARD_TEST_LIVE":    "FALSE",
-		"ELERINGDASHBOARD_APIKEY":       "NONE",
 	})
 
 	live := env["ELERINGDASHBOARD_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
-			"apikey": env["ELERINGDASHBOARD_APIKEY"],
 		}
 		client := sdk.NewEleringDashboardSDK(mergedOpts)
 

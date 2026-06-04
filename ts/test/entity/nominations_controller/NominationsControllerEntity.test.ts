@@ -113,7 +113,6 @@ function basicSetup(extra?: any) {
     'ELERING_DASHBOARD_TEST_NOMINATIONS_CONTROLLER_ENTID': idmap,
     'ELERING_DASHBOARD_TEST_LIVE': 'FALSE',
     'ELERING_DASHBOARD_TEST_EXPLAIN': 'FALSE',
-    'ELERING_DASHBOARD_APIKEY': 'NONE',
   })
 
   idmap = env['ELERING_DASHBOARD_TEST_NOMINATIONS_CONTROLLER_ENTID']
@@ -123,7 +122,6 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new EleringDashboardSDK(merge([
       {
-        apikey: env.ELERING_DASHBOARD_APIKEY,
       },
       extra
     ]))

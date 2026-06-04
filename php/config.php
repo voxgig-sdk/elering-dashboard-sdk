@@ -20,9 +20,6 @@ class EleringDashboardConfig
             ],
             "options" => [
                 "base" => "https://dashboard.elering.ee",
-                "auth" => [
-                    "prefix" => "Bearer",
-                ],
                 "headers" => [
           'content-type' => 'application/json',
         ],

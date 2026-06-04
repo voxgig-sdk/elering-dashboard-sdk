@@ -59,14 +59,12 @@ def _gas_balance_controller_direct_setup(mockres):
     env = runner.env_override({
         "ELERINGDASHBOARD_TEST_GAS_BALANCE_CONTROLLER_ENTID": {},
         "ELERINGDASHBOARD_TEST_LIVE": "FALSE",
-        "ELERINGDASHBOARD_APIKEY": "NONE",
     })
 
     live = env.get("ELERINGDASHBOARD_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
-            "apikey": env.get("ELERINGDASHBOARD_APIKEY"),
         }
         client = EleringDashboardSDK(merged_opts)
         return {
