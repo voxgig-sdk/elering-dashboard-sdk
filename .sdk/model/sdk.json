@@ -1,63 +1,13 @@
 {
-  "name": "elering-dashboard",
-  "origin": "voxgig-sdk",
   "def": "elering-dashboard_0.1.0.json",
   "main": {
+    "def": {
+      "desc": ""
+    },
     "kit": {
-      "info": {
-        "contact": {
-          "email": "klienditugi@elering.ee",
-          "name": "Elering AS",
-          "url": "https://elering.ee/"
-        },
-        "description": "This document describes different data sets that Elering Dashboard is providing.",
-        "servers": [
-          {
-            "url": "https://dashboard.elering.ee"
-          }
-        ],
-        "title": "Elering dashboard API documentation",
-        "version": "1.3.0",
-        "tagline": "Open data from Estonia's electricity and gas TSO Elering: prices, balance, capacity, nominations and grid messages",
-        "homepage": "https://dashboard.elering.ee",
-        "docs_url": "https://dashboard.elering.ee",
-        "license_short": "Public dashboard data from Elering AS; check Elering's Terms of Service before redistribution.",
-        "license_md": "- Data is published by Elering AS, the Estonian electricity and gas transmission system operator (TSO).\n- The Elering Live dashboard links to a Terms of Service and Privacy Policy; review them before commercial reuse or redistribution.\n- Nord Pool Spot price data is sourced from Nord Pool; attribution and Nord Pool's own usage terms may apply.\n- No authentication is documented for the public dashboard endpoints, but Elering may rate-limit or change the API without notice.",
-        "about_md": "[Elering](https://elering.ee) is Estonia's independent electricity and gas transmission system operator. The [Elering Live dashboard](https://dashboard.elering.ee) publishes near-real-time and historical operational data for the Estonian power grid and gas system, and exposes it through a small public HTTP API at `https://dashboard.elering.ee/api`.\n\nWhat you typically get from this API:\n\n- Nord Pool Spot day-ahead electricity prices for Estonia (and other Baltic/Nordic bidding zones), e.g. `GET /api/nps/price/EE/current` and `GET /api/nps/price?start=...&end=...` returning prices in EUR/MWh at hourly resolution in UTC.\n- Power system status data: balance, generation/consumption, cross-border transmission and renewable (green) shares.\n- Gas system data: gas balance, transmission, cross-border trade, nominations and renominations.\n- Firm and interruptible capacity allocations for the gas network.\n- Urgent Market Messages (UMM) for both gas and the wider grid, available as a controller endpoint and an RSS feed.\n\nOperational notes: the freepublicapis.com community profile reports CORS is disabled and response times of roughly 300 ms. No API key or OAuth flow is documented for the read endpoints, but consumers should cache responses and respect Elering's terms of service.",
-        "entity_desc": {
-          "balance": "Power system balance figures (generation vs. consumption and balancing energy) for the Estonian grid.",
-          "balance_controller": "HTTP endpoints under the balance controller that return time-series balance data for the power system.",
-          "firm": "Firm (guaranteed) gas transmission capacity bookings and availability on the Estonian gas network.",
-          "firm_capacity_controller": "Endpoints exposing firm gas capacity allocations and remaining firm capacity per interconnection point.",
-          "gas_balance_controller": "Endpoints returning gas system balance data (entries vs. exits, linepack, imbalance).",
-          "gas_border_trade_controller": "Endpoints reporting gas flows across Estonia's cross-border interconnection points.",
-          "gas_system": "Operational snapshot of the Estonian gas transmission system.",
-          "gas_system_controller": "Endpoints aggregating gas system status, consumption and supply figures.",
-          "gas_trade": "Traded gas volumes within and across the Estonian gas market.",
-          "gas_trade_controller": "Endpoints returning gas trade and market data.",
-          "gas_transmission_controller": "Endpoints describing gas transmission flows through the Estonian network.",
-          "green_controller": "Endpoints for renewable/green energy share and green-certificate-related data in the power system.",
-          "interruptible": "Interruptible gas transmission capacity that the TSO may curtail before firm capacity.",
-          "interruptible_capacity_controller": "Endpoints exposing interruptible gas capacity offers and bookings per interconnection point.",
-          "nomination": "Shipper nominations (planned gas volumes) submitted to the gas TSO for a given gas day.",
-          "nominations_controller": "Endpoints returning aggregated nomination data per interconnection point and gas day.",
-          "nps_controller": "Nord Pool Spot price endpoints such as `GET /api/nps/price/EE/current` and `GET /api/nps/price?start=...&end=...` returning day-ahead electricity prices per bidding zone in EUR/MWh.",
-          "renomination": "Revisions to previously submitted gas nominations during the gas day.",
-          "renominations_controller": "Endpoints returning renomination volumes and history for the gas system.",
-          "system": "General Estonian power system state: load, generation mix and transmission overview.",
-          "system_controller": "Endpoints aggregating overall electricity system status and time-series.",
-          "transmission_controller": "Endpoints describing cross-border electricity transmission flows on Estonia's interconnectors.",
-          "umm_gas_controller": "Urgent Market Messages for the gas system, where the TSO publishes outages and capacity-affecting events.",
-          "umm_rss_feed_controller": "RSS feed of Urgent Market Messages for grid and market participants."
-        },
-        "auth": false
-      },
       "config": {
         "auth": {
           "prefix": "Bearer"
-        },
-        "headers": {
-          "content-type": "application/json"
         },
         "docs_order": [
           "ts",
@@ -66,38 +16,45 @@
           "go",
           "rb",
           "lua"
-        ]
+        ],
+        "headers": {
+          "content-type": "application/json"
+        }
       },
       "entity": {
         "balance": {
+          "active": true,
           "alias": {
             "field": {}
           },
+          "fields": [],
           "name": "balance",
           "op": {
             "load": {
+              "input": "data",
               "name": "load",
               "points": [
                 {
+                  "active": true,
                   "args": {
                     "query": [
                       {
+                        "active": true,
                         "example": "2020-06-30T20:59:59.999Z",
                         "kind": "query",
                         "name": "end",
                         "orig": "end",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       },
                       {
+                        "active": true,
                         "example": "2020-05-31T20:59:59.999Z",
                         "kind": "query",
                         "name": "start",
                         "orig": "start",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       }
                     ]
                   },
@@ -116,56 +73,56 @@
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true
+                  }
                 }
-              ],
-              "input": "data"
+              ]
             }
           },
-          "active": true,
-          "fields": [],
           "relations": {
             "ancestors": []
           }
         },
         "balance_controller": {
+          "active": true,
           "alias": {
             "field": {}
           },
+          "fields": [],
           "name": "balance_controller",
           "op": {
             "load": {
+              "input": "data",
               "name": "load",
               "points": [
                 {
+                  "active": true,
                   "args": {
                     "query": [
                       {
+                        "active": true,
                         "example": "2020-06-30T20:59:59.999Z",
                         "kind": "query",
                         "name": "end",
                         "orig": "end",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       },
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "field",
                         "orig": "field",
                         "reqd": false,
-                        "type": "`$ARRAY`",
-                        "active": true
+                        "type": "`$ARRAY`"
                       },
                       {
+                        "active": true,
                         "example": "2020-05-31T20:59:59.999Z",
                         "kind": "query",
                         "name": "start",
                         "orig": "start",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       }
                     ]
                   },
@@ -187,37 +144,37 @@
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true
+                  }
                 },
                 {
+                  "active": true,
                   "args": {
                     "query": [
                       {
+                        "active": true,
                         "example": "2020-05-31T20:59:59.999Z",
                         "kind": "query",
                         "name": "end",
                         "orig": "end",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       },
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "field",
                         "orig": "field",
                         "reqd": false,
-                        "type": "`$ARRAY`",
-                        "active": true
+                        "type": "`$ARRAY`"
                       },
                       {
+                        "active": true,
                         "example": "2020-05-31T20:59:59.999Z",
                         "kind": "query",
                         "name": "start",
                         "orig": "start",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       }
                     ]
                   },
@@ -238,37 +195,37 @@
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true
+                  }
                 },
                 {
+                  "active": true,
                   "args": {
                     "query": [
                       {
+                        "active": true,
                         "example": "2020-06-30T20:59:59.999Z",
                         "kind": "query",
                         "name": "end",
                         "orig": "end",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       },
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "field",
                         "orig": "field",
                         "reqd": false,
-                        "type": "`$ARRAY`",
-                        "active": true
+                        "type": "`$ARRAY`"
                       },
                       {
+                        "active": true,
                         "example": "2020-05-31T20:59:59.999Z",
                         "kind": "query",
                         "name": "start",
                         "orig": "start",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       }
                     ]
                   },
@@ -290,29 +247,29 @@
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true
+                  }
                 },
                 {
+                  "active": true,
                   "args": {
                     "query": [
                       {
+                        "active": true,
                         "example": "2020-06-30T20:59:59.999Z",
                         "kind": "query",
                         "name": "end",
                         "orig": "end",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       },
                       {
+                        "active": true,
                         "example": "2020-05-31T20:59:59.999Z",
                         "kind": "query",
                         "name": "field",
                         "orig": "field",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       }
                     ]
                   },
@@ -332,29 +289,29 @@
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true
+                  }
                 },
                 {
+                  "active": true,
                   "args": {
                     "query": [
                       {
+                        "active": true,
                         "example": "2020-06-30T20:59:59.999Z",
                         "kind": "query",
                         "name": "end",
                         "orig": "end",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       },
                       {
+                        "active": true,
                         "example": "2020-05-31T20:59:59.999Z",
                         "kind": "query",
                         "name": "start",
                         "orig": "start",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       }
                     ]
                   },
@@ -374,10 +331,11 @@
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true
+                  }
                 },
                 {
+                  "active": true,
+                  "args": {},
                   "method": "GET",
                   "orig": "/api/balance/commerce/latest",
                   "parts": [
@@ -386,15 +344,15 @@
                     "commerce",
                     "latest"
                   ],
+                  "select": {},
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true,
-                  "args": {},
-                  "select": {}
+                  }
                 },
                 {
+                  "active": true,
+                  "args": {},
                   "method": "GET",
                   "orig": "/api/balance/total/latest",
                   "parts": [
@@ -403,53 +361,52 @@
                     "total",
                     "latest"
                   ],
+                  "select": {},
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true,
-                  "args": {},
-                  "select": {}
+                  }
                 }
-              ],
-              "input": "data"
+              ]
             }
           },
-          "active": true,
-          "fields": [],
           "relations": {
             "ancestors": []
           }
         },
         "firm": {
+          "active": true,
           "alias": {
             "field": {}
           },
+          "fields": [],
           "name": "firm",
           "op": {
             "load": {
+              "input": "data",
               "name": "load",
               "points": [
                 {
+                  "active": true,
                   "args": {
                     "query": [
                       {
+                        "active": true,
                         "example": "2020-06-30T20:59:59.999Z",
                         "kind": "query",
                         "name": "end",
                         "orig": "end",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       },
                       {
+                        "active": true,
                         "example": "2020-05-31T20:59:59.999Z",
                         "kind": "query",
                         "name": "start",
                         "orig": "start",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       }
                     ]
                   },
@@ -469,41 +426,42 @@
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true
+                  }
                 }
-              ],
-              "input": "data"
+              ]
             }
           },
-          "active": true,
-          "fields": [],
           "relations": {
             "ancestors": []
           }
         },
         "firm_capacity_controller": {
+          "active": true,
           "alias": {
             "field": {}
           },
+          "fields": [],
           "name": "firm_capacity_controller",
           "op": {
             "load": {
+              "input": "data",
               "name": "load",
               "points": [
                 {
+                  "active": true,
                   "args": {
                     "query": [
                       {
+                        "active": true,
                         "example": "2020-05-31T20:59:59.999Z",
                         "kind": "query",
                         "name": "end",
                         "orig": "end",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       },
                       {
+                        "active": true,
                         "example": [
                           "[\"narva_technical_entry\"",
                           "\"narva_booked_entry\"",
@@ -528,17 +486,16 @@
                         "name": "field",
                         "orig": "field",
                         "reqd": false,
-                        "type": "`$ARRAY`",
-                        "active": true
+                        "type": "`$ARRAY`"
                       },
                       {
+                        "active": true,
                         "example": "2020-05-31T20:59:59.999Z",
                         "kind": "query",
                         "name": "start",
                         "orig": "start",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       }
                     ]
                   },
@@ -560,56 +517,56 @@
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true
+                  }
                 }
-              ],
-              "input": "data"
+              ]
             }
           },
-          "active": true,
-          "fields": [],
           "relations": {
             "ancestors": []
           }
         },
         "gas_balance_controller": {
+          "active": true,
           "alias": {
             "field": {}
           },
+          "fields": [],
           "name": "gas_balance_controller",
           "op": {
             "load": {
+              "input": "data",
               "name": "load",
               "points": [
                 {
+                  "active": true,
                   "args": {
                     "query": [
                       {
+                        "active": true,
                         "example": "2020-06-30T20:59:59.999Z",
                         "kind": "query",
                         "name": "end",
                         "orig": "end",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       },
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "field",
                         "orig": "field",
                         "reqd": false,
-                        "type": "`$ARRAY`",
-                        "active": true
+                        "type": "`$ARRAY`"
                       },
                       {
+                        "active": true,
                         "example": "2020-05-31T20:59:59.999Z",
                         "kind": "query",
                         "name": "start",
                         "orig": "start",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       }
                     ]
                   },
@@ -631,29 +588,29 @@
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true
+                  }
                 },
                 {
+                  "active": true,
                   "args": {
                     "query": [
                       {
+                        "active": true,
                         "example": "2020-06-30T20:59:59.999Z",
                         "kind": "query",
                         "name": "end",
                         "orig": "end",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       },
                       {
+                        "active": true,
                         "example": "2020-05-31T20:59:59.999Z",
                         "kind": "query",
                         "name": "start",
                         "orig": "start",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       }
                     ]
                   },
@@ -673,29 +630,30 @@
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true
+                  }
                 }
-              ],
-              "input": "data"
+              ]
             }
           },
-          "active": true,
-          "fields": [],
           "relations": {
             "ancestors": []
           }
         },
         "gas_border_trade_controller": {
+          "active": true,
           "alias": {
             "field": {}
           },
+          "fields": [],
           "name": "gas_border_trade_controller",
           "op": {
             "load": {
+              "input": "data",
               "name": "load",
               "points": [
                 {
+                  "active": true,
+                  "args": {},
                   "method": "GET",
                   "orig": "/api/gas/border-trade/current",
                   "parts": [
@@ -704,53 +662,52 @@
                     "border-trade",
                     "current"
                   ],
+                  "select": {},
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true,
-                  "args": {},
-                  "select": {}
+                  }
                 }
-              ],
-              "input": "data"
+              ]
             }
           },
-          "active": true,
-          "fields": [],
           "relations": {
             "ancestors": []
           }
         },
         "gas_system": {
+          "active": true,
           "alias": {
             "field": {}
           },
+          "fields": [],
           "name": "gas_system",
           "op": {
             "load": {
+              "input": "data",
               "name": "load",
               "points": [
                 {
+                  "active": true,
                   "args": {
                     "query": [
                       {
+                        "active": true,
                         "example": "2020-06-30T20:59:59.999Z",
                         "kind": "query",
                         "name": "end",
                         "orig": "end",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       },
                       {
+                        "active": true,
                         "example": "2020-05-31T20:59:59.999Z",
                         "kind": "query",
                         "name": "start",
                         "orig": "start",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       }
                     ]
                   },
@@ -769,56 +726,56 @@
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true
+                  }
                 }
-              ],
-              "input": "data"
+              ]
             }
           },
-          "active": true,
-          "fields": [],
           "relations": {
             "ancestors": []
           }
         },
         "gas_system_controller": {
+          "active": true,
           "alias": {
             "field": {}
           },
+          "fields": [],
           "name": "gas_system_controller",
           "op": {
             "load": {
+              "input": "data",
               "name": "load",
               "points": [
                 {
+                  "active": true,
                   "args": {
                     "query": [
                       {
+                        "active": true,
                         "example": "2020-06-30T20:59:59.999Z",
                         "kind": "query",
                         "name": "end",
                         "orig": "end",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       },
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "field",
                         "orig": "field",
                         "reqd": false,
-                        "type": "`$ARRAY`",
-                        "active": true
+                        "type": "`$ARRAY`"
                       },
                       {
+                        "active": true,
                         "example": "2020-05-31T20:59:59.999Z",
                         "kind": "query",
                         "name": "start",
                         "orig": "start",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       }
                     ]
                   },
@@ -839,37 +796,37 @@
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true
+                  }
                 },
                 {
+                  "active": true,
                   "args": {
                     "query": [
                       {
+                        "active": true,
                         "example": "2020-06-30T20:59:59.999Z",
                         "kind": "query",
                         "name": "end",
                         "orig": "end",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       },
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "field",
                         "orig": "field",
                         "reqd": false,
-                        "type": "`$ARRAY`",
-                        "active": true
+                        "type": "`$ARRAY`"
                       },
                       {
+                        "active": true,
                         "example": "2020-05-31T20:59:59.999Z",
                         "kind": "query",
                         "name": "start",
                         "orig": "start",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       }
                     ]
                   },
@@ -891,37 +848,37 @@
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true
+                  }
                 },
                 {
+                  "active": true,
                   "args": {
                     "query": [
                       {
+                        "active": true,
                         "example": "2020-06-30T20:59:59.999Z",
                         "kind": "query",
                         "name": "end",
                         "orig": "end",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       },
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "field",
                         "orig": "field",
                         "reqd": false,
-                        "type": "`$ARRAY`",
-                        "active": true
+                        "type": "`$ARRAY`"
                       },
                       {
+                        "active": true,
                         "example": "2020-05-31T20:59:59.999Z",
                         "kind": "query",
                         "name": "start",
                         "orig": "start",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       }
                     ]
                   },
@@ -943,29 +900,29 @@
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true
+                  }
                 },
                 {
+                  "active": true,
                   "args": {
                     "query": [
                       {
+                        "active": true,
                         "example": "2020-06-30T20:59:59.999Z",
                         "kind": "query",
                         "name": "end",
                         "orig": "end",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       },
                       {
+                        "active": true,
                         "example": "2020-05-31T20:59:59.999Z",
                         "kind": "query",
                         "name": "start",
                         "orig": "start",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       }
                     ]
                   },
@@ -985,29 +942,29 @@
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true
+                  }
                 },
                 {
+                  "active": true,
                   "args": {
                     "query": [
                       {
+                        "active": true,
                         "example": "2020-06-30T20:59:59.999Z",
                         "kind": "query",
                         "name": "end",
                         "orig": "end",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       },
                       {
+                        "active": true,
                         "example": "2020-05-31T20:59:59.999Z",
                         "kind": "query",
                         "name": "start",
                         "orig": "start",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       }
                     ]
                   },
@@ -1027,29 +984,29 @@
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true
+                  }
                 },
                 {
+                  "active": true,
                   "args": {
                     "query": [
                       {
+                        "active": true,
                         "example": "2020-06-30T20:59:59.999Z",
                         "kind": "query",
                         "name": "end",
                         "orig": "end",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       },
                       {
+                        "active": true,
                         "example": "2020-05-31T20:59:59.999Z",
                         "kind": "query",
                         "name": "start",
                         "orig": "start",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       }
                     ]
                   },
@@ -1069,10 +1026,11 @@
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true
+                  }
                 },
                 {
+                  "active": true,
+                  "args": {},
                   "method": "GET",
                   "orig": "/api/gas-system/latest",
                   "parts": [
@@ -1080,53 +1038,52 @@
                     "gas-system",
                     "latest"
                   ],
+                  "select": {},
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true,
-                  "args": {},
-                  "select": {}
+                  }
                 }
-              ],
-              "input": "data"
+              ]
             }
           },
-          "active": true,
-          "fields": [],
           "relations": {
             "ancestors": []
           }
         },
         "gas_trade": {
+          "active": true,
           "alias": {
             "field": {}
           },
+          "fields": [],
           "name": "gas_trade",
           "op": {
             "load": {
+              "input": "data",
               "name": "load",
               "points": [
                 {
+                  "active": true,
                   "args": {
                     "query": [
                       {
+                        "active": true,
                         "example": "2020-06-30T20:59:59.999Z",
                         "kind": "query",
                         "name": "end",
                         "orig": "end",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       },
                       {
+                        "active": true,
                         "example": "2020-05-31T20:59:59.999Z",
                         "kind": "query",
                         "name": "start",
                         "orig": "start",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       }
                     ]
                   },
@@ -1145,56 +1102,56 @@
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true
+                  }
                 }
-              ],
-              "input": "data"
+              ]
             }
           },
-          "active": true,
-          "fields": [],
           "relations": {
             "ancestors": []
           }
         },
         "gas_trade_controller": {
+          "active": true,
           "alias": {
             "field": {}
           },
+          "fields": [],
           "name": "gas_trade_controller",
           "op": {
             "load": {
+              "input": "data",
               "name": "load",
               "points": [
                 {
+                  "active": true,
                   "args": {
                     "query": [
                       {
+                        "active": true,
                         "example": "2020-06-30T20:59:59.999Z",
                         "kind": "query",
                         "name": "end",
                         "orig": "end",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       },
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "field",
                         "orig": "field",
                         "reqd": false,
-                        "type": "`$ARRAY`",
-                        "active": true
+                        "type": "`$ARRAY`"
                       },
                       {
+                        "active": true,
                         "example": "2020-05-31T20:59:59.999Z",
                         "kind": "query",
                         "name": "start",
                         "orig": "start",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       }
                     ]
                   },
@@ -1215,19 +1172,19 @@
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true
+                  }
                 },
                 {
+                  "active": true,
                   "args": {
                     "params": [
                       {
+                        "active": true,
                         "kind": "param",
                         "name": "group",
                         "orig": "group",
                         "reqd": true,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       }
                     ]
                   },
@@ -1247,11 +1204,9 @@
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true
+                  }
                 }
-              ],
-              "input": "data"
+              ]
             }
           },
           "relations": {
@@ -1260,47 +1215,49 @@
                 "gas_trade"
               ]
             ]
-          },
-          "active": true,
-          "fields": []
+          }
         },
         "gas_transmission_controller": {
+          "active": true,
           "alias": {
             "field": {}
           },
+          "fields": [],
           "name": "gas_transmission_controller",
           "op": {
             "load": {
+              "input": "data",
               "name": "load",
               "points": [
                 {
+                  "active": true,
                   "args": {
                     "query": [
                       {
+                        "active": true,
                         "example": "2020-06-30T20:59:59.999Z",
                         "kind": "query",
                         "name": "end",
                         "orig": "end",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       },
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "field",
                         "orig": "field",
                         "reqd": false,
-                        "type": "`$ARRAY`",
-                        "active": true
+                        "type": "`$ARRAY`"
                       },
                       {
+                        "active": true,
                         "example": "2020-05-31T20:59:59.999Z",
                         "kind": "query",
                         "name": "start",
                         "orig": "start",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       }
                     ]
                   },
@@ -1322,29 +1279,29 @@
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true
+                  }
                 },
                 {
+                  "active": true,
                   "args": {
                     "query": [
                       {
+                        "active": true,
                         "example": "2020-06-30T20:59:59.999Z",
                         "kind": "query",
                         "name": "end",
                         "orig": "end",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       },
                       {
+                        "active": true,
                         "example": "2020-05-31T20:59:59.999Z",
                         "kind": "query",
                         "name": "start",
                         "orig": "start",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       }
                     ]
                   },
@@ -1364,10 +1321,11 @@
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true
+                  }
                 },
                 {
+                  "active": true,
+                  "args": {},
                   "method": "GET",
                   "orig": "/api/gas-transmission/cross-border/latest",
                   "parts": [
@@ -1376,62 +1334,61 @@
                     "cross-border",
                     "latest"
                   ],
+                  "select": {},
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true,
-                  "args": {},
-                  "select": {}
+                  }
                 }
-              ],
-              "input": "data"
+              ]
             }
           },
-          "active": true,
-          "fields": [],
           "relations": {
             "ancestors": []
           }
         },
         "green_controller": {
+          "active": true,
           "alias": {
             "field": {}
           },
+          "fields": [],
           "name": "green_controller",
           "op": {
             "load": {
+              "input": "data",
               "name": "load",
               "points": [
                 {
+                  "active": true,
                   "args": {
                     "query": [
                       {
+                        "active": true,
                         "example": "Kõik kütused",
                         "kind": "query",
                         "name": "fuel",
                         "orig": "fuel",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       },
                       {
+                        "active": true,
                         "example": "Kõik tehnoloogiad",
                         "kind": "query",
                         "name": "technology",
                         "orig": "technology",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       },
                       {
+                        "active": true,
                         "example": "TRANSACTION",
                         "kind": "query",
                         "name": "type",
                         "orig": "type",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       }
                     ]
                   },
@@ -1452,48 +1409,48 @@
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true
+                  }
                 }
-              ],
-              "input": "data"
+              ]
             }
           },
-          "active": true,
-          "fields": [],
           "relations": {
             "ancestors": []
           }
         },
         "interruptible": {
+          "active": true,
           "alias": {
             "field": {}
           },
+          "fields": [],
           "name": "interruptible",
           "op": {
             "load": {
+              "input": "data",
               "name": "load",
               "points": [
                 {
+                  "active": true,
                   "args": {
                     "query": [
                       {
+                        "active": true,
                         "example": "2020-06-30T20:59:59.999Z",
                         "kind": "query",
                         "name": "end",
                         "orig": "end",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       },
                       {
+                        "active": true,
                         "example": "2020-05-31T20:59:59.999Z",
                         "kind": "query",
                         "name": "start",
                         "orig": "start",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       }
                     ]
                   },
@@ -1513,56 +1470,56 @@
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true
+                  }
                 }
-              ],
-              "input": "data"
+              ]
             }
           },
-          "active": true,
-          "fields": [],
           "relations": {
             "ancestors": []
           }
         },
         "interruptible_capacity_controller": {
+          "active": true,
           "alias": {
             "field": {}
           },
+          "fields": [],
           "name": "interruptible_capacity_controller",
           "op": {
             "load": {
+              "input": "data",
               "name": "load",
               "points": [
                 {
+                  "active": true,
                   "args": {
                     "query": [
                       {
+                        "active": true,
                         "example": "2020-05-31T20:59:59.999Z",
                         "kind": "query",
                         "name": "end",
                         "orig": "end",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       },
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "field",
                         "orig": "field",
                         "reqd": false,
-                        "type": "`$ARRAY`",
-                        "active": true
+                        "type": "`$ARRAY`"
                       },
                       {
+                        "active": true,
                         "example": "2020-05-31T20:59:59.999Z",
                         "kind": "query",
                         "name": "start",
                         "orig": "start",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       }
                     ]
                   },
@@ -1584,48 +1541,48 @@
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true
+                  }
                 }
-              ],
-              "input": "data"
+              ]
             }
           },
-          "active": true,
-          "fields": [],
           "relations": {
             "ancestors": []
           }
         },
         "nomination": {
+          "active": true,
           "alias": {
             "field": {}
           },
+          "fields": [],
           "name": "nomination",
           "op": {
             "load": {
+              "input": "data",
               "name": "load",
               "points": [
                 {
+                  "active": true,
                   "args": {
                     "query": [
                       {
+                        "active": true,
                         "example": "2020-06-30T20:59:59.999Z",
                         "kind": "query",
                         "name": "end",
                         "orig": "end",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       },
                       {
+                        "active": true,
                         "example": "2020-05-31T20:59:59.999Z",
                         "kind": "query",
                         "name": "start",
                         "orig": "start",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       }
                     ]
                   },
@@ -1644,56 +1601,56 @@
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true
+                  }
                 }
-              ],
-              "input": "data"
+              ]
             }
           },
-          "active": true,
-          "fields": [],
           "relations": {
             "ancestors": []
           }
         },
         "nominations_controller": {
+          "active": true,
           "alias": {
             "field": {}
           },
+          "fields": [],
           "name": "nominations_controller",
           "op": {
             "load": {
+              "input": "data",
               "name": "load",
               "points": [
                 {
+                  "active": true,
                   "args": {
                     "query": [
                       {
+                        "active": true,
                         "example": "2020-06-30T20:59:59.999Z",
                         "kind": "query",
                         "name": "end",
                         "orig": "end",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       },
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "field",
                         "orig": "field",
                         "reqd": false,
-                        "type": "`$ARRAY`",
-                        "active": true
+                        "type": "`$ARRAY`"
                       },
                       {
+                        "active": true,
                         "example": "2020-05-31T20:59:59.999Z",
                         "kind": "query",
                         "name": "start",
                         "orig": "start",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       }
                     ]
                   },
@@ -1714,56 +1671,56 @@
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true
+                  }
                 }
-              ],
-              "input": "data"
+              ]
             }
           },
-          "active": true,
-          "fields": [],
           "relations": {
             "ancestors": []
           }
         },
         "nps_controller": {
+          "active": true,
           "alias": {
             "field": {}
           },
+          "fields": [],
           "name": "nps_controller",
           "op": {
             "load": {
+              "input": "data",
               "name": "load",
               "points": [
                 {
+                  "active": true,
                   "args": {
                     "query": [
                       {
+                        "active": true,
                         "example": "2020-06-30T20:59:59.999Z",
                         "kind": "query",
                         "name": "end",
                         "orig": "end",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       },
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "field",
                         "orig": "field",
                         "reqd": false,
-                        "type": "`$ARRAY`",
-                        "active": true
+                        "type": "`$ARRAY`"
                       },
                       {
+                        "active": true,
                         "example": "2020-05-31T20:59:59.999Z",
                         "kind": "query",
                         "name": "start",
                         "orig": "start",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       }
                     ]
                   },
@@ -1785,37 +1742,37 @@
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true
+                  }
                 },
                 {
+                  "active": true,
                   "args": {
                     "query": [
                       {
+                        "active": true,
                         "example": "2020-06-30T20:59:59.999Z",
                         "kind": "query",
                         "name": "end",
                         "orig": "end",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       },
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "field",
                         "orig": "field",
                         "reqd": false,
-                        "type": "`$ARRAY`",
-                        "active": true
+                        "type": "`$ARRAY`"
                       },
                       {
+                        "active": true,
                         "example": "2020-05-31T20:59:59.999Z",
                         "kind": "query",
                         "name": "start",
                         "orig": "start",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       }
                     ]
                   },
@@ -1837,29 +1794,29 @@
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true
+                  }
                 },
                 {
+                  "active": true,
                   "args": {
                     "query": [
                       {
+                        "active": true,
                         "example": "2020-06-30T20:59:59.999Z",
                         "kind": "query",
                         "name": "end",
                         "orig": "end",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       },
                       {
+                        "active": true,
                         "example": "2020-05-31T20:59:59.999Z",
                         "kind": "query",
                         "name": "start",
                         "orig": "start",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       }
                     ]
                   },
@@ -1879,29 +1836,29 @@
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true
+                  }
                 },
                 {
+                  "active": true,
                   "args": {
                     "query": [
                       {
+                        "active": true,
                         "example": "2020-06-30T20:59:59.999Z",
                         "kind": "query",
                         "name": "end",
                         "orig": "end",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       },
                       {
+                        "active": true,
                         "example": "2020-05-31T20:59:59.999Z",
                         "kind": "query",
                         "name": "start",
                         "orig": "start",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       }
                     ]
                   },
@@ -1921,19 +1878,19 @@
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true
+                  }
                 },
                 {
+                  "active": true,
                   "args": {
                     "params": [
                       {
+                        "active": true,
                         "kind": "param",
                         "name": "group",
                         "orig": "group",
                         "reqd": true,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       }
                     ]
                   },
@@ -1954,19 +1911,19 @@
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true
+                  }
                 },
                 {
+                  "active": true,
                   "args": {
                     "params": [
                       {
+                        "active": true,
                         "kind": "param",
                         "name": "group",
                         "orig": "group",
                         "reqd": true,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       }
                     ]
                   },
@@ -1987,19 +1944,19 @@
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true
+                  }
                 },
                 {
+                  "active": true,
                   "args": {
                     "params": [
                       {
+                        "active": true,
                         "kind": "param",
                         "name": "group",
                         "orig": "group",
                         "reqd": true,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       }
                     ]
                   },
@@ -2020,11 +1977,9 @@
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true
+                  }
                 }
-              ],
-              "input": "data"
+              ]
             }
           },
           "relations": {
@@ -2036,39 +1991,41 @@
                 "turnover"
               ]
             ]
-          },
-          "active": true,
-          "fields": []
+          }
         },
         "renomination": {
+          "active": true,
           "alias": {
             "field": {}
           },
+          "fields": [],
           "name": "renomination",
           "op": {
             "load": {
+              "input": "data",
               "name": "load",
               "points": [
                 {
+                  "active": true,
                   "args": {
                     "query": [
                       {
+                        "active": true,
                         "example": "2020-06-30T20:59:59.999Z",
                         "kind": "query",
                         "name": "end",
                         "orig": "end",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       },
                       {
+                        "active": true,
                         "example": "2020-05-31T20:59:59.999Z",
                         "kind": "query",
                         "name": "start",
                         "orig": "start",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       }
                     ]
                   },
@@ -2088,56 +2045,56 @@
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true
+                  }
                 }
-              ],
-              "input": "data"
+              ]
             }
           },
-          "active": true,
-          "fields": [],
           "relations": {
             "ancestors": []
           }
         },
         "renominations_controller": {
+          "active": true,
           "alias": {
             "field": {}
           },
+          "fields": [],
           "name": "renominations_controller",
           "op": {
             "load": {
+              "input": "data",
               "name": "load",
               "points": [
                 {
+                  "active": true,
                   "args": {
                     "query": [
                       {
+                        "active": true,
                         "example": "2020-06-30T20:59:59.999Z",
                         "kind": "query",
                         "name": "end",
                         "orig": "end",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       },
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "field",
                         "orig": "field",
                         "reqd": false,
-                        "type": "`$ARRAY`",
-                        "active": true
+                        "type": "`$ARRAY`"
                       },
                       {
+                        "active": true,
                         "example": "2020-05-31T20:59:59.999Z",
                         "kind": "query",
                         "name": "start",
                         "orig": "start",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       }
                     ]
                   },
@@ -2159,48 +2116,48 @@
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true
+                  }
                 }
-              ],
-              "input": "data"
+              ]
             }
           },
-          "active": true,
-          "fields": [],
           "relations": {
             "ancestors": []
           }
         },
         "system": {
+          "active": true,
           "alias": {
             "field": {}
           },
+          "fields": [],
           "name": "system",
           "op": {
             "load": {
+              "input": "data",
               "name": "load",
               "points": [
                 {
+                  "active": true,
                   "args": {
                     "query": [
                       {
+                        "active": true,
                         "example": "2020-06-30T20:59:59.999Z",
                         "kind": "query",
                         "name": "end",
                         "orig": "end",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       },
                       {
+                        "active": true,
                         "example": "2020-05-31T20:59:59.999Z",
                         "kind": "query",
                         "name": "start",
                         "orig": "start",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       }
                     ]
                   },
@@ -2219,56 +2176,56 @@
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true
+                  }
                 }
-              ],
-              "input": "data"
+              ]
             }
           },
-          "active": true,
-          "fields": [],
           "relations": {
             "ancestors": []
           }
         },
         "system_controller": {
+          "active": true,
           "alias": {
             "field": {}
           },
+          "fields": [],
           "name": "system_controller",
           "op": {
             "load": {
+              "input": "data",
               "name": "load",
               "points": [
                 {
+                  "active": true,
                   "args": {
                     "query": [
                       {
+                        "active": true,
                         "example": "2020-06-30T20:59:59.999Z",
                         "kind": "query",
                         "name": "end",
                         "orig": "end",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       },
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "field",
                         "orig": "field",
                         "reqd": false,
-                        "type": "`$ARRAY`",
-                        "active": true
+                        "type": "`$ARRAY`"
                       },
                       {
+                        "active": true,
                         "example": "2020-05-31T20:59:59.999Z",
                         "kind": "query",
                         "name": "start",
                         "orig": "start",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       }
                     ]
                   },
@@ -2289,37 +2246,37 @@
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true
+                  }
                 },
                 {
+                  "active": true,
                   "args": {
                     "query": [
                       {
+                        "active": true,
                         "example": "2020-06-30T20:59:59.999Z",
                         "kind": "query",
                         "name": "end",
                         "orig": "end",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       },
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "field",
                         "orig": "field",
                         "reqd": false,
-                        "type": "`$ARRAY`",
-                        "active": true
+                        "type": "`$ARRAY`"
                       },
                       {
+                        "active": true,
                         "example": "2020-05-31T20:59:59.999Z",
                         "kind": "query",
                         "name": "start",
                         "orig": "start",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       }
                     ]
                   },
@@ -2341,29 +2298,29 @@
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true
+                  }
                 },
                 {
+                  "active": true,
                   "args": {
                     "query": [
                       {
+                        "active": true,
                         "example": "2020-06-30T20:59:59.999Z",
                         "kind": "query",
                         "name": "end",
                         "orig": "end",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       },
                       {
+                        "active": true,
                         "example": "2020-05-31T20:59:59.999Z",
                         "kind": "query",
                         "name": "start",
                         "orig": "start",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       }
                     ]
                   },
@@ -2383,10 +2340,11 @@
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true
+                  }
                 },
                 {
+                  "active": true,
+                  "args": {},
                   "method": "GET",
                   "orig": "/api/system/latest",
                   "parts": [
@@ -2394,71 +2352,70 @@
                     "system",
                     "latest"
                   ],
+                  "select": {},
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true,
-                  "args": {},
-                  "select": {}
+                  }
                 }
-              ],
-              "input": "data"
+              ]
             }
           },
-          "active": true,
-          "fields": [],
           "relations": {
             "ancestors": []
           }
         },
         "transmission_controller": {
+          "active": true,
           "alias": {
             "field": {}
           },
+          "fields": [],
           "name": "transmission_controller",
           "op": {
             "load": {
+              "input": "data",
               "name": "load",
               "points": [
                 {
+                  "active": true,
                   "args": {
                     "params": [
                       {
+                        "active": true,
                         "kind": "param",
                         "name": "group",
                         "orig": "group",
                         "reqd": true,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       }
                     ],
                     "query": [
                       {
+                        "active": true,
                         "example": "2020-06-30T20:59:59.999Z",
                         "kind": "query",
                         "name": "end",
                         "orig": "end",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       },
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "field",
                         "orig": "field",
                         "reqd": false,
-                        "type": "`$ARRAY`",
-                        "active": true
+                        "type": "`$ARRAY`"
                       },
                       {
+                        "active": true,
                         "example": "2020-05-31T20:59:59.999Z",
                         "kind": "query",
                         "name": "start",
                         "orig": "start",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       }
                     ]
                   },
@@ -2482,37 +2439,37 @@
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true
+                  }
                 },
                 {
+                  "active": true,
                   "args": {
                     "query": [
                       {
+                        "active": true,
                         "example": "2020-06-30T20:59:59.999Z",
                         "kind": "query",
                         "name": "end",
                         "orig": "end",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       },
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "field",
                         "orig": "field",
                         "reqd": false,
-                        "type": "`$ARRAY`",
-                        "active": true
+                        "type": "`$ARRAY`"
                       },
                       {
+                        "active": true,
                         "example": "2020-05-31T20:59:59.999Z",
                         "kind": "query",
                         "name": "start",
                         "orig": "start",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       }
                     ]
                   },
@@ -2534,37 +2491,37 @@
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true
+                  }
                 },
                 {
+                  "active": true,
                   "args": {
                     "query": [
                       {
+                        "active": true,
                         "example": "2020-06-30T20:59:59.999Z",
                         "kind": "query",
                         "name": "end",
                         "orig": "end",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       },
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "field",
                         "orig": "field",
                         "reqd": false,
-                        "type": "`$ARRAY`",
-                        "active": true
+                        "type": "`$ARRAY`"
                       },
                       {
+                        "active": true,
                         "example": "2020-05-31T20:59:59.999Z",
                         "kind": "query",
                         "name": "start",
                         "orig": "start",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       }
                     ]
                   },
@@ -2586,37 +2543,37 @@
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true
+                  }
                 },
                 {
+                  "active": true,
                   "args": {
                     "query": [
                       {
+                        "active": true,
                         "example": "2020-06-30T20:59:59.999Z",
                         "kind": "query",
                         "name": "end",
                         "orig": "end",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       },
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "field",
                         "orig": "field",
                         "reqd": false,
-                        "type": "`$ARRAY`",
-                        "active": true
+                        "type": "`$ARRAY`"
                       },
                       {
+                        "active": true,
                         "example": "2020-05-31T20:59:59.999Z",
                         "kind": "query",
                         "name": "start",
                         "orig": "start",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       }
                     ]
                   },
@@ -2639,39 +2596,39 @@
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true
+                  }
                 },
                 {
+                  "active": true,
                   "args": {
                     "params": [
                       {
+                        "active": true,
                         "kind": "param",
                         "name": "group",
                         "orig": "group",
                         "reqd": true,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       }
                     ],
                     "query": [
                       {
+                        "active": true,
                         "example": "2020-06-30T20:59:59.999Z",
                         "kind": "query",
                         "name": "end",
                         "orig": "end",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       },
                       {
+                        "active": true,
                         "example": "2020-05-31T20:59:59.999Z",
                         "kind": "query",
                         "name": "start",
                         "orig": "start",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       }
                     ]
                   },
@@ -2693,29 +2650,29 @@
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true
+                  }
                 },
                 {
+                  "active": true,
                   "args": {
                     "query": [
                       {
+                        "active": true,
                         "example": "2020-06-30T20:59:59.999Z",
                         "kind": "query",
                         "name": "end",
                         "orig": "end",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       },
                       {
+                        "active": true,
                         "example": "2020-05-31T20:59:59.999Z",
                         "kind": "query",
                         "name": "start",
                         "orig": "start",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       }
                     ]
                   },
@@ -2735,29 +2692,29 @@
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true
+                  }
                 },
                 {
+                  "active": true,
                   "args": {
                     "query": [
                       {
+                        "active": true,
                         "example": "2020-06-30T20:59:59.999Z",
                         "kind": "query",
                         "name": "end",
                         "orig": "end",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       },
                       {
+                        "active": true,
                         "example": "2020-05-31T20:59:59.999Z",
                         "kind": "query",
                         "name": "start",
                         "orig": "start",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       }
                     ]
                   },
@@ -2777,29 +2734,29 @@
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true
+                  }
                 },
                 {
+                  "active": true,
                   "args": {
                     "query": [
                       {
+                        "active": true,
                         "example": "2020-06-30T20:59:59.999Z",
                         "kind": "query",
                         "name": "end",
                         "orig": "end",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       },
                       {
+                        "active": true,
                         "example": "2020-05-31T20:59:59.999Z",
                         "kind": "query",
                         "name": "start",
                         "orig": "start",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       }
                     ]
                   },
@@ -2819,29 +2776,29 @@
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true
+                  }
                 },
                 {
+                  "active": true,
                   "args": {
                     "query": [
                       {
+                        "active": true,
                         "example": "2020-06-30T20:59:59.999Z",
                         "kind": "query",
                         "name": "end",
                         "orig": "end",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       },
                       {
+                        "active": true,
                         "example": "2020-05-31T20:59:59.999Z",
                         "kind": "query",
                         "name": "start",
                         "orig": "start",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       }
                     ]
                   },
@@ -2862,10 +2819,11 @@
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true
+                  }
                 },
                 {
+                  "active": true,
+                  "args": {},
                   "method": "GET",
                   "orig": "/api/transmission/cross-border-planned-trade/latest",
                   "parts": [
@@ -2874,15 +2832,15 @@
                     "cross-border-planned-trade",
                     "latest"
                   ],
+                  "select": {},
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true,
-                  "args": {},
-                  "select": {}
+                  }
                 },
                 {
+                  "active": true,
+                  "args": {},
                   "method": "GET",
                   "orig": "/api/transmission/cross-border/latest",
                   "parts": [
@@ -2891,16 +2849,13 @@
                     "cross-border",
                     "latest"
                   ],
+                  "select": {},
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true,
-                  "args": {},
-                  "select": {}
+                  }
                 }
-              ],
-              "input": "data"
+              ]
             }
           },
           "relations": {
@@ -2909,104 +2864,106 @@
                 "cross_border_capacity"
               ]
             ]
-          },
-          "active": true,
-          "fields": []
+          }
         },
         "umm_gas_controller": {
+          "active": true,
           "alias": {
             "field": {}
           },
+          "fields": [],
           "name": "umm_gas_controller",
           "op": {
             "load": {
+              "input": "data",
               "name": "load",
               "points": [
                 {
+                  "active": true,
                   "args": {
                     "query": [
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "affected_asset_name",
                         "orig": "affected_asset_name",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       },
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "event_duration_date_time_end",
                         "orig": "event_duration_date_time_end",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       },
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "event_duration_date_time_start",
                         "orig": "event_duration_date_time_start",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       },
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "event_status",
                         "orig": "event_status",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       },
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "event_type",
                         "orig": "event_type",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       },
                       {
+                        "active": true,
                         "example": 1,
                         "kind": "query",
                         "name": "page",
                         "orig": "page",
                         "reqd": false,
-                        "type": "`$INTEGER`",
-                        "active": true
+                        "type": "`$INTEGER`"
                       },
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "publication_datetime_start",
                         "orig": "publication_datetime_start",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       },
                       {
+                        "active": true,
                         "example": "publicationDateTimeDesc",
                         "kind": "query",
                         "name": "sort",
                         "orig": "sort",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       },
                       {
+                        "active": true,
                         "example": "current",
                         "kind": "query",
                         "name": "status",
                         "orig": "status",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       },
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "unavailability_type",
                         "orig": "unavailability_type",
                         "reqd": false,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       }
                     ]
                   },
@@ -3034,19 +2991,19 @@
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true
+                  }
                 },
                 {
+                  "active": true,
                   "args": {
                     "query": [
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "id",
                         "orig": "id",
                         "reqd": true,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       }
                     ]
                   },
@@ -3066,19 +3023,19 @@
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true
+                  }
                 },
                 {
+                  "active": true,
                   "args": {
                     "query": [
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "id",
                         "orig": "id",
                         "reqd": true,
-                        "type": "`$INTEGER`",
-                        "active": true
+                        "type": "`$INTEGER`"
                       }
                     ]
                   },
@@ -3098,29 +3055,30 @@
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true
+                  }
                 }
-              ],
-              "input": "data"
+              ]
             }
           },
-          "active": true,
-          "fields": [],
           "relations": {
             "ancestors": []
           }
         },
         "umm_rss_feed_controller": {
+          "active": true,
           "alias": {
             "field": {}
           },
+          "fields": [],
           "name": "umm_rss_feed_controller",
           "op": {
             "load": {
+              "input": "data",
               "name": "load",
               "points": [
                 {
+                  "active": true,
+                  "args": {},
                   "method": "GET",
                   "orig": "/umm/gas/rss",
                   "parts": [
@@ -3128,15 +3086,15 @@
                     "gas",
                     "rss"
                   ],
+                  "select": {},
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true,
-                  "args": {},
-                  "select": {}
+                  }
                 },
                 {
+                  "active": true,
+                  "args": {},
                   "method": "GET",
                   "orig": "/umm/gas/rss/aris",
                   "parts": [
@@ -3145,20 +3103,15 @@
                     "rss",
                     "aris"
                   ],
+                  "select": {},
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true,
-                  "args": {},
-                  "select": {}
+                  }
                 }
-              ],
-              "input": "data"
+              ]
             }
           },
-          "active": true,
-          "fields": [],
           "relations": {
             "ancestors": []
           }
@@ -3166,9 +3119,6 @@
       },
       "feature": {
         "test": {
-          "name": "test",
-          "title": "In-memory mock transport for testing without a live server",
-          "version": "0.0.1",
           "active": true,
           "config": {
             "options": {
@@ -3176,6 +3126,14 @@
             }
           },
           "hook": {
+            "GetData": {
+              "active": true,
+              "await": false
+            },
+            "GetMatch": {
+              "active": true,
+              "await": false
+            },
             "PostConstruct": {
               "active": true,
               "await": false
@@ -3184,25 +3142,11 @@
               "active": true,
               "await": false
             },
-            "SetData": {
-              "active": true,
-              "await": false
-            },
-            "GetData": {
-              "active": true,
-              "await": false
-            },
-            "SetMatch": {
-              "active": true
-            },
-            "GetMatch": {
-              "active": true,
+            "PostOperation": {
+              "active": false,
               "await": false
             },
             "PrePoint": {
-              "active": true
-            },
-            "PreSpec": {
               "active": true,
               "await": false
             },
@@ -3218,20 +3162,32 @@
               "active": true,
               "await": false
             },
+            "PreSpec": {
+              "active": true,
+              "await": false
+            },
             "PreTarget": {
               "active": false,
               "await": false
             },
-            "PostOperation": {
-              "active": false,
+            "SetData": {
+              "active": true,
+              "await": false
+            },
+            "SetMatch": {
+              "active": true,
               "await": false
             }
           },
+          "name": "test",
           "target": {
-            "ts": {
+            "go": {
               "deps": {}
             },
-            "go": {
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
               "deps": {}
             },
             "lua": {
@@ -3246,28 +3202,34 @@
             "rb": {
               "deps": {}
             },
-            "go-cli": {
-              "deps": {}
-            },
-            "go-mcp": {
+            "ts": {
               "deps": {}
             }
-          }
+          },
+          "title": "In-memory mock transport for testing without a live server",
+          "version": "0.0.1"
         }
       },
       "flow": {
         "BasicBalanceControllerFlow": {
+          "active": true,
           "entity": "balance_controller",
+          "key$": "BasicBalanceControllerFlow",
           "kind": "basic",
           "name": "BasicBalanceControllerFlow",
+          "param": {},
           "step": [
             {
+              "active": true,
+              "data": {},
               "input": {
                 "ref": "balance_controller_ref01",
                 "srcdatavar": "balance_controller_ref01_data",
                 "suffix": "_dt0"
               },
+              "match": {},
               "op": "load",
+              "spec": [],
               "valid": [
                 {
                   "apply": "TextFieldMark",
@@ -3275,29 +3237,29 @@
                     "mark": "Mark01-balance_controller_ref01"
                   }
                 }
-              ],
-              "active": true,
-              "match": {},
-              "data": {},
-              "spec": []
+              ]
             }
-          ],
-          "key$": "BasicBalanceControllerFlow",
-          "active": true,
-          "param": {}
+          ]
         },
         "BasicBalanceFlow": {
+          "active": true,
           "entity": "balance",
+          "key$": "BasicBalanceFlow",
           "kind": "basic",
           "name": "BasicBalanceFlow",
+          "param": {},
           "step": [
             {
+              "active": true,
+              "data": {},
               "input": {
                 "ref": "balance_ref01",
                 "srcdatavar": "balance_ref01_data",
                 "suffix": "_dt0"
               },
+              "match": {},
               "op": "load",
+              "spec": [],
               "valid": [
                 {
                   "apply": "TextFieldMark",
@@ -3305,29 +3267,29 @@
                     "mark": "Mark01-balance_ref01"
                   }
                 }
-              ],
-              "active": true,
-              "match": {},
-              "data": {},
-              "spec": []
+              ]
             }
-          ],
-          "key$": "BasicBalanceFlow",
-          "active": true,
-          "param": {}
+          ]
         },
         "BasicFirmCapacityControllerFlow": {
+          "active": true,
           "entity": "firm_capacity_controller",
+          "key$": "BasicFirmCapacityControllerFlow",
           "kind": "basic",
           "name": "BasicFirmCapacityControllerFlow",
+          "param": {},
           "step": [
             {
+              "active": true,
+              "data": {},
               "input": {
                 "ref": "firm_capacity_controller_ref01",
                 "srcdatavar": "firm_capacity_controller_ref01_data",
                 "suffix": "_dt0"
               },
+              "match": {},
               "op": "load",
+              "spec": [],
               "valid": [
                 {
                   "apply": "TextFieldMark",
@@ -3335,29 +3297,29 @@
                     "mark": "Mark01-firm_capacity_controller_ref01"
                   }
                 }
-              ],
-              "active": true,
-              "match": {},
-              "data": {},
-              "spec": []
+              ]
             }
-          ],
-          "key$": "BasicFirmCapacityControllerFlow",
-          "active": true,
-          "param": {}
+          ]
         },
         "BasicFirmFlow": {
+          "active": true,
           "entity": "firm",
+          "key$": "BasicFirmFlow",
           "kind": "basic",
           "name": "BasicFirmFlow",
+          "param": {},
           "step": [
             {
+              "active": true,
+              "data": {},
               "input": {
                 "ref": "firm_ref01",
                 "srcdatavar": "firm_ref01_data",
                 "suffix": "_dt0"
               },
+              "match": {},
               "op": "load",
+              "spec": [],
               "valid": [
                 {
                   "apply": "TextFieldMark",
@@ -3365,29 +3327,29 @@
                     "mark": "Mark01-firm_ref01"
                   }
                 }
-              ],
-              "active": true,
-              "match": {},
-              "data": {},
-              "spec": []
+              ]
             }
-          ],
-          "key$": "BasicFirmFlow",
-          "active": true,
-          "param": {}
+          ]
         },
         "BasicGasBalanceControllerFlow": {
+          "active": true,
           "entity": "gas_balance_controller",
+          "key$": "BasicGasBalanceControllerFlow",
           "kind": "basic",
           "name": "BasicGasBalanceControllerFlow",
+          "param": {},
           "step": [
             {
+              "active": true,
+              "data": {},
               "input": {
                 "ref": "gas_balance_controller_ref01",
                 "srcdatavar": "gas_balance_controller_ref01_data",
                 "suffix": "_dt0"
               },
+              "match": {},
               "op": "load",
+              "spec": [],
               "valid": [
                 {
                   "apply": "TextFieldMark",
@@ -3395,29 +3357,29 @@
                     "mark": "Mark01-gas_balance_controller_ref01"
                   }
                 }
-              ],
-              "active": true,
-              "match": {},
-              "data": {},
-              "spec": []
+              ]
             }
-          ],
-          "key$": "BasicGasBalanceControllerFlow",
-          "active": true,
-          "param": {}
+          ]
         },
         "BasicGasBorderTradeControllerFlow": {
+          "active": true,
           "entity": "gas_border_trade_controller",
+          "key$": "BasicGasBorderTradeControllerFlow",
           "kind": "basic",
           "name": "BasicGasBorderTradeControllerFlow",
+          "param": {},
           "step": [
             {
+              "active": true,
+              "data": {},
               "input": {
                 "ref": "gas_border_trade_controller_ref01",
                 "srcdatavar": "gas_border_trade_controller_ref01_data",
                 "suffix": "_dt0"
               },
+              "match": {},
               "op": "load",
+              "spec": [],
               "valid": [
                 {
                   "apply": "TextFieldMark",
@@ -3425,29 +3387,29 @@
                     "mark": "Mark01-gas_border_trade_controller_ref01"
                   }
                 }
-              ],
-              "active": true,
-              "match": {},
-              "data": {},
-              "spec": []
+              ]
             }
-          ],
-          "key$": "BasicGasBorderTradeControllerFlow",
-          "active": true,
-          "param": {}
+          ]
         },
         "BasicGasSystemControllerFlow": {
+          "active": true,
           "entity": "gas_system_controller",
+          "key$": "BasicGasSystemControllerFlow",
           "kind": "basic",
           "name": "BasicGasSystemControllerFlow",
+          "param": {},
           "step": [
             {
+              "active": true,
+              "data": {},
               "input": {
                 "ref": "gas_system_controller_ref01",
                 "srcdatavar": "gas_system_controller_ref01_data",
                 "suffix": "_dt0"
               },
+              "match": {},
               "op": "load",
+              "spec": [],
               "valid": [
                 {
                   "apply": "TextFieldMark",
@@ -3455,29 +3417,29 @@
                     "mark": "Mark01-gas_system_controller_ref01"
                   }
                 }
-              ],
-              "active": true,
-              "match": {},
-              "data": {},
-              "spec": []
+              ]
             }
-          ],
-          "key$": "BasicGasSystemControllerFlow",
-          "active": true,
-          "param": {}
+          ]
         },
         "BasicGasSystemFlow": {
+          "active": true,
           "entity": "gas_system",
+          "key$": "BasicGasSystemFlow",
           "kind": "basic",
           "name": "BasicGasSystemFlow",
+          "param": {},
           "step": [
             {
+              "active": true,
+              "data": {},
               "input": {
                 "ref": "gas_system_ref01",
                 "srcdatavar": "gas_system_ref01_data",
                 "suffix": "_dt0"
               },
+              "match": {},
               "op": "load",
+              "spec": [],
               "valid": [
                 {
                   "apply": "TextFieldMark",
@@ -3485,23 +3447,21 @@
                     "mark": "Mark01-gas_system_ref01"
                   }
                 }
-              ],
-              "active": true,
-              "match": {},
-              "data": {},
-              "spec": []
+              ]
             }
-          ],
-          "key$": "BasicGasSystemFlow",
-          "active": true,
-          "param": {}
+          ]
         },
         "BasicGasTradeControllerFlow": {
+          "active": true,
           "entity": "gas_trade_controller",
+          "key$": "BasicGasTradeControllerFlow",
           "kind": "basic",
           "name": "BasicGasTradeControllerFlow",
+          "param": {},
           "step": [
             {
+              "active": true,
+              "data": {},
               "input": {
                 "ref": "gas_trade_controller_ref01",
                 "srcdatavar": "gas_trade_controller_ref01_data",
@@ -3511,6 +3471,7 @@
                 "id": "gas_trade_controller01"
               },
               "op": "load",
+              "spec": [],
               "valid": [
                 {
                   "apply": "TextFieldMark",
@@ -3518,28 +3479,29 @@
                     "mark": "Mark01-gas_trade_controller_ref01"
                   }
                 }
-              ],
-              "active": true,
-              "data": {},
-              "spec": []
+              ]
             }
-          ],
-          "key$": "BasicGasTradeControllerFlow",
-          "active": true,
-          "param": {}
+          ]
         },
         "BasicGasTradeFlow": {
+          "active": true,
           "entity": "gas_trade",
+          "key$": "BasicGasTradeFlow",
           "kind": "basic",
           "name": "BasicGasTradeFlow",
+          "param": {},
           "step": [
             {
+              "active": true,
+              "data": {},
               "input": {
                 "ref": "gas_trade_ref01",
                 "srcdatavar": "gas_trade_ref01_data",
                 "suffix": "_dt0"
               },
+              "match": {},
               "op": "load",
+              "spec": [],
               "valid": [
                 {
                   "apply": "TextFieldMark",
@@ -3547,29 +3509,29 @@
                     "mark": "Mark01-gas_trade_ref01"
                   }
                 }
-              ],
-              "active": true,
-              "match": {},
-              "data": {},
-              "spec": []
+              ]
             }
-          ],
-          "key$": "BasicGasTradeFlow",
-          "active": true,
-          "param": {}
+          ]
         },
         "BasicGasTransmissionControllerFlow": {
+          "active": true,
           "entity": "gas_transmission_controller",
+          "key$": "BasicGasTransmissionControllerFlow",
           "kind": "basic",
           "name": "BasicGasTransmissionControllerFlow",
+          "param": {},
           "step": [
             {
+              "active": true,
+              "data": {},
               "input": {
                 "ref": "gas_transmission_controller_ref01",
                 "srcdatavar": "gas_transmission_controller_ref01_data",
                 "suffix": "_dt0"
               },
+              "match": {},
               "op": "load",
+              "spec": [],
               "valid": [
                 {
                   "apply": "TextFieldMark",
@@ -3577,29 +3539,29 @@
                     "mark": "Mark01-gas_transmission_controller_ref01"
                   }
                 }
-              ],
-              "active": true,
-              "match": {},
-              "data": {},
-              "spec": []
+              ]
             }
-          ],
-          "key$": "BasicGasTransmissionControllerFlow",
-          "active": true,
-          "param": {}
+          ]
         },
         "BasicGreenControllerFlow": {
+          "active": true,
           "entity": "green_controller",
+          "key$": "BasicGreenControllerFlow",
           "kind": "basic",
           "name": "BasicGreenControllerFlow",
+          "param": {},
           "step": [
             {
+              "active": true,
+              "data": {},
               "input": {
                 "ref": "green_controller_ref01",
                 "srcdatavar": "green_controller_ref01_data",
                 "suffix": "_dt0"
               },
+              "match": {},
               "op": "load",
+              "spec": [],
               "valid": [
                 {
                   "apply": "TextFieldMark",
@@ -3607,29 +3569,29 @@
                     "mark": "Mark01-green_controller_ref01"
                   }
                 }
-              ],
-              "active": true,
-              "match": {},
-              "data": {},
-              "spec": []
+              ]
             }
-          ],
-          "key$": "BasicGreenControllerFlow",
-          "active": true,
-          "param": {}
+          ]
         },
         "BasicInterruptibleCapacityControllerFlow": {
+          "active": true,
           "entity": "interruptible_capacity_controller",
+          "key$": "BasicInterruptibleCapacityControllerFlow",
           "kind": "basic",
           "name": "BasicInterruptibleCapacityControllerFlow",
+          "param": {},
           "step": [
             {
+              "active": true,
+              "data": {},
               "input": {
                 "ref": "interruptible_capacity_controller_ref01",
                 "srcdatavar": "interruptible_capacity_controller_ref01_data",
                 "suffix": "_dt0"
               },
+              "match": {},
               "op": "load",
+              "spec": [],
               "valid": [
                 {
                   "apply": "TextFieldMark",
@@ -3637,29 +3599,29 @@
                     "mark": "Mark01-interruptible_capacity_controller_ref01"
                   }
                 }
-              ],
-              "active": true,
-              "match": {},
-              "data": {},
-              "spec": []
+              ]
             }
-          ],
-          "key$": "BasicInterruptibleCapacityControllerFlow",
-          "active": true,
-          "param": {}
+          ]
         },
         "BasicInterruptibleFlow": {
+          "active": true,
           "entity": "interruptible",
+          "key$": "BasicInterruptibleFlow",
           "kind": "basic",
           "name": "BasicInterruptibleFlow",
+          "param": {},
           "step": [
             {
+              "active": true,
+              "data": {},
               "input": {
                 "ref": "interruptible_ref01",
                 "srcdatavar": "interruptible_ref01_data",
                 "suffix": "_dt0"
               },
+              "match": {},
               "op": "load",
+              "spec": [],
               "valid": [
                 {
                   "apply": "TextFieldMark",
@@ -3667,29 +3629,29 @@
                     "mark": "Mark01-interruptible_ref01"
                   }
                 }
-              ],
-              "active": true,
-              "match": {},
-              "data": {},
-              "spec": []
+              ]
             }
-          ],
-          "key$": "BasicInterruptibleFlow",
-          "active": true,
-          "param": {}
+          ]
         },
         "BasicNominationFlow": {
+          "active": true,
           "entity": "nomination",
+          "key$": "BasicNominationFlow",
           "kind": "basic",
           "name": "BasicNominationFlow",
+          "param": {},
           "step": [
             {
+              "active": true,
+              "data": {},
               "input": {
                 "ref": "nomination_ref01",
                 "srcdatavar": "nomination_ref01_data",
                 "suffix": "_dt0"
               },
+              "match": {},
               "op": "load",
+              "spec": [],
               "valid": [
                 {
                   "apply": "TextFieldMark",
@@ -3697,29 +3659,29 @@
                     "mark": "Mark01-nomination_ref01"
                   }
                 }
-              ],
-              "active": true,
-              "match": {},
-              "data": {},
-              "spec": []
+              ]
             }
-          ],
-          "key$": "BasicNominationFlow",
-          "active": true,
-          "param": {}
+          ]
         },
         "BasicNominationsControllerFlow": {
+          "active": true,
           "entity": "nominations_controller",
+          "key$": "BasicNominationsControllerFlow",
           "kind": "basic",
           "name": "BasicNominationsControllerFlow",
+          "param": {},
           "step": [
             {
+              "active": true,
+              "data": {},
               "input": {
                 "ref": "nominations_controller_ref01",
                 "srcdatavar": "nominations_controller_ref01_data",
                 "suffix": "_dt0"
               },
+              "match": {},
               "op": "load",
+              "spec": [],
               "valid": [
                 {
                   "apply": "TextFieldMark",
@@ -3727,23 +3689,21 @@
                     "mark": "Mark01-nominations_controller_ref01"
                   }
                 }
-              ],
-              "active": true,
-              "match": {},
-              "data": {},
-              "spec": []
+              ]
             }
-          ],
-          "key$": "BasicNominationsControllerFlow",
-          "active": true,
-          "param": {}
+          ]
         },
         "BasicNpsControllerFlow": {
+          "active": true,
           "entity": "nps_controller",
+          "key$": "BasicNpsControllerFlow",
           "kind": "basic",
           "name": "BasicNpsControllerFlow",
+          "param": {},
           "step": [
             {
+              "active": true,
+              "data": {},
               "input": {
                 "ref": "nps_controller_ref01",
                 "srcdatavar": "nps_controller_ref01_data",
@@ -3753,6 +3713,7 @@
                 "id": "nps_controller01"
               },
               "op": "load",
+              "spec": [],
               "valid": [
                 {
                   "apply": "TextFieldMark",
@@ -3760,28 +3721,29 @@
                     "mark": "Mark01-nps_controller_ref01"
                   }
                 }
-              ],
-              "active": true,
-              "data": {},
-              "spec": []
+              ]
             }
-          ],
-          "key$": "BasicNpsControllerFlow",
-          "active": true,
-          "param": {}
+          ]
         },
         "BasicRenominationFlow": {
+          "active": true,
           "entity": "renomination",
+          "key$": "BasicRenominationFlow",
           "kind": "basic",
           "name": "BasicRenominationFlow",
+          "param": {},
           "step": [
             {
+              "active": true,
+              "data": {},
               "input": {
                 "ref": "renomination_ref01",
                 "srcdatavar": "renomination_ref01_data",
                 "suffix": "_dt0"
               },
+              "match": {},
               "op": "load",
+              "spec": [],
               "valid": [
                 {
                   "apply": "TextFieldMark",
@@ -3789,29 +3751,29 @@
                     "mark": "Mark01-renomination_ref01"
                   }
                 }
-              ],
-              "active": true,
-              "match": {},
-              "data": {},
-              "spec": []
+              ]
             }
-          ],
-          "key$": "BasicRenominationFlow",
-          "active": true,
-          "param": {}
+          ]
         },
         "BasicRenominationsControllerFlow": {
+          "active": true,
           "entity": "renominations_controller",
+          "key$": "BasicRenominationsControllerFlow",
           "kind": "basic",
           "name": "BasicRenominationsControllerFlow",
+          "param": {},
           "step": [
             {
+              "active": true,
+              "data": {},
               "input": {
                 "ref": "renominations_controller_ref01",
                 "srcdatavar": "renominations_controller_ref01_data",
                 "suffix": "_dt0"
               },
+              "match": {},
               "op": "load",
+              "spec": [],
               "valid": [
                 {
                   "apply": "TextFieldMark",
@@ -3819,29 +3781,29 @@
                     "mark": "Mark01-renominations_controller_ref01"
                   }
                 }
-              ],
-              "active": true,
-              "match": {},
-              "data": {},
-              "spec": []
+              ]
             }
-          ],
-          "key$": "BasicRenominationsControllerFlow",
-          "active": true,
-          "param": {}
+          ]
         },
         "BasicSystemControllerFlow": {
+          "active": true,
           "entity": "system_controller",
+          "key$": "BasicSystemControllerFlow",
           "kind": "basic",
           "name": "BasicSystemControllerFlow",
+          "param": {},
           "step": [
             {
+              "active": true,
+              "data": {},
               "input": {
                 "ref": "system_controller_ref01",
                 "srcdatavar": "system_controller_ref01_data",
                 "suffix": "_dt0"
               },
+              "match": {},
               "op": "load",
+              "spec": [],
               "valid": [
                 {
                   "apply": "TextFieldMark",
@@ -3849,29 +3811,29 @@
                     "mark": "Mark01-system_controller_ref01"
                   }
                 }
-              ],
-              "active": true,
-              "match": {},
-              "data": {},
-              "spec": []
+              ]
             }
-          ],
-          "key$": "BasicSystemControllerFlow",
-          "active": true,
-          "param": {}
+          ]
         },
         "BasicSystemFlow": {
+          "active": true,
           "entity": "system",
+          "key$": "BasicSystemFlow",
           "kind": "basic",
           "name": "BasicSystemFlow",
+          "param": {},
           "step": [
             {
+              "active": true,
+              "data": {},
               "input": {
                 "ref": "system_ref01",
                 "srcdatavar": "system_ref01_data",
                 "suffix": "_dt0"
               },
+              "match": {},
               "op": "load",
+              "spec": [],
               "valid": [
                 {
                   "apply": "TextFieldMark",
@@ -3879,29 +3841,29 @@
                     "mark": "Mark01-system_ref01"
                   }
                 }
-              ],
-              "active": true,
-              "match": {},
-              "data": {},
-              "spec": []
+              ]
             }
-          ],
-          "key$": "BasicSystemFlow",
-          "active": true,
-          "param": {}
+          ]
         },
         "BasicTransmissionControllerFlow": {
+          "active": true,
           "entity": "transmission_controller",
+          "key$": "BasicTransmissionControllerFlow",
           "kind": "basic",
           "name": "BasicTransmissionControllerFlow",
+          "param": {},
           "step": [
             {
+              "active": true,
+              "data": {},
               "input": {
                 "ref": "transmission_controller_ref01",
                 "srcdatavar": "transmission_controller_ref01_data",
                 "suffix": "_dt0"
               },
+              "match": {},
               "op": "load",
+              "spec": [],
               "valid": [
                 {
                   "apply": "TextFieldMark",
@@ -3909,29 +3871,29 @@
                     "mark": "Mark01-transmission_controller_ref01"
                   }
                 }
-              ],
-              "active": true,
-              "match": {},
-              "data": {},
-              "spec": []
+              ]
             }
-          ],
-          "key$": "BasicTransmissionControllerFlow",
-          "active": true,
-          "param": {}
+          ]
         },
         "BasicUmmGasControllerFlow": {
+          "active": true,
           "entity": "umm_gas_controller",
+          "key$": "BasicUmmGasControllerFlow",
           "kind": "basic",
           "name": "BasicUmmGasControllerFlow",
+          "param": {},
           "step": [
             {
+              "active": true,
+              "data": {},
               "input": {
                 "ref": "umm_gas_controller_ref01",
                 "srcdatavar": "umm_gas_controller_ref01_data",
                 "suffix": "_dt0"
               },
+              "match": {},
               "op": "load",
+              "spec": [],
               "valid": [
                 {
                   "apply": "TextFieldMark",
@@ -3939,29 +3901,29 @@
                     "mark": "Mark01-umm_gas_controller_ref01"
                   }
                 }
-              ],
-              "active": true,
-              "match": {},
-              "data": {},
-              "spec": []
+              ]
             }
-          ],
-          "key$": "BasicUmmGasControllerFlow",
-          "active": true,
-          "param": {}
+          ]
         },
         "BasicUmmRssFeedControllerFlow": {
+          "active": true,
           "entity": "umm_rss_feed_controller",
+          "key$": "BasicUmmRssFeedControllerFlow",
           "kind": "basic",
           "name": "BasicUmmRssFeedControllerFlow",
+          "param": {},
           "step": [
             {
+              "active": true,
+              "data": {},
               "input": {
                 "ref": "umm_rss_feed_controller_ref01",
                 "srcdatavar": "umm_rss_feed_controller_ref01_data",
                 "suffix": "_dt0"
               },
+              "match": {},
               "op": "load",
+              "spec": [],
               "valid": [
                 {
                   "apply": "TextFieldMark",
@@ -3969,28 +3931,53 @@
                     "mark": "Mark01-umm_rss_feed_controller_ref01"
                   }
                 }
-              ],
-              "active": true,
-              "match": {},
-              "data": {},
-              "spec": []
+              ]
             }
-          ],
-          "key$": "BasicUmmRssFeedControllerFlow",
-          "active": true,
-          "param": {}
+          ]
         }
       },
+      "info": {
+        "contact": {
+          "email": "klienditugi@elering.ee",
+          "name": "Elering AS",
+          "url": "https://elering.ee/"
+        },
+        "description": "This document describes different data sets that Elering Dashboard is providing.",
+        "servers": [
+          {
+            "url": "https://dashboard.elering.ee"
+          }
+        ],
+        "title": "Elering dashboard API documentation",
+        "version": "1.3.0"
+      },
+      "option": {},
       "target": {
-        "go-cli": {
-          "title": "Go CLI",
-          "ext": "go",
+        "go": {
+          "active": true,
           "comment": {
             "line": "//"
           },
+          "deps": {},
+          "ext": "go",
           "module": {
             "name": "elering-dashboard"
           },
+          "name": "go",
+          "srcfeature": false,
+          "title": "Golang"
+        },
+        "go-cli": {
+          "active": true,
+          "comment": {
+            "line": "//"
+          },
+          "deps": {},
+          "ext": "go",
+          "module": {
+            "name": "elering-dashboard"
+          },
+          "name": "go-cli",
           "phase": {
             "entity": {
               "active": false
@@ -4005,19 +3992,19 @@
               "active": false
             }
           },
-          "deps": {},
-          "name": "go-cli",
-          "active": true
+          "title": "Go CLI"
         },
         "go-mcp": {
-          "title": "Go MCP server",
-          "ext": "go",
+          "active": true,
           "comment": {
             "line": "//"
           },
+          "deps": {},
+          "ext": "go",
           "module": {
             "name": "elering-dashboard"
           },
+          "name": "go-mcp",
           "phase": {
             "entity": {
               "active": false
@@ -4032,138 +4019,120 @@
               "active": false
             }
           },
-          "deps": {},
-          "name": "go-mcp",
-          "active": true
-        },
-        "ts": {
-          "title": "TypeScript",
-          "ext": "ts",
-          "comment": {
-            "line": "//"
-          },
-          "module": {
-            "name": "elering-dashboard"
-          },
-          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
-          "deps": {
-            "dotenv": {
-              "active": true,
-              "version": "^17.4.2",
-              "kind": "dev"
-            },
-            "typescript": {
-              "active": true,
-              "version": "^5.9.3",
-              "kind": "dev"
-            },
-            "@types/node": {
-              "active": true,
-              "version": "^25.6.0",
-              "kind": "dev"
-            }
-          },
-          "name": "ts",
-          "active": true
-        },
-        "go": {
-          "title": "Golang",
-          "ext": "go",
-          "comment": {
-            "line": "//"
-          },
-          "module": {
-            "name": "elering-dashboard"
-          },
-          "srcfeature": false,
-          "deps": {},
-          "name": "go",
-          "active": true
+          "title": "Go MCP server"
         },
         "lua": {
-          "title": "Lua",
-          "ext": "lua",
+          "active": true,
           "comment": {
             "line": "--"
           },
-          "module": {
-            "name": "elering-dashboard"
-          },
-          "srcfeature": false,
           "deps": {
             "dkjson": {
               "active": true,
-              "version": "2.5",
-              "kind": "prod"
+              "kind": "prod",
+              "version": "2.5"
             }
           },
+          "ext": "lua",
+          "module": {
+            "name": "elering-dashboard"
+          },
           "name": "lua",
-          "active": true
+          "srcfeature": false,
+          "title": "Lua"
         },
         "php": {
-          "title": "PHP",
-          "ext": "php",
+          "active": true,
           "comment": {
             "line": "//"
           },
+          "deps": {},
+          "ext": "php",
           "module": {
             "name": "elering-dashboard"
           },
-          "srcfeature": false,
-          "deps": {},
           "name": "php",
-          "active": true
+          "srcfeature": false,
+          "title": "PHP"
         },
         "py": {
-          "title": "Python",
-          "ext": "py",
+          "active": true,
           "comment": {
             "line": "#"
           },
-          "module": {
-            "name": "elering-dashboard"
-          },
-          "srcfeature": false,
           "deps": {
             "requests": {
               "active": true,
-              "version": "2.33",
-              "kind": "prod"
+              "kind": "prod",
+              "version": "2.33"
             }
           },
-          "name": "py",
-          "active": true
-        },
-        "rb": {
-          "title": "Ruby",
-          "ext": "rb",
-          "comment": {
-            "line": "#"
-          },
+          "ext": "py",
           "module": {
             "name": "elering-dashboard"
           },
+          "name": "py",
           "srcfeature": false,
+          "title": "Python"
+        },
+        "rb": {
+          "active": true,
+          "comment": {
+            "line": "#"
+          },
           "deps": {
-            "voxgig-struct": {
-              "active": true,
-              "version": "0.0.10",
-              "kind": "prod"
-            },
             "json": {
               "active": true,
-              "version": "0",
-              "kind": "prod"
+              "kind": "prod",
+              "version": "0"
+            },
+            "voxgig-struct": {
+              "active": true,
+              "kind": "prod",
+              "version": "0.0.10"
             }
           },
+          "ext": "rb",
+          "module": {
+            "name": "elering-dashboard"
+          },
           "name": "rb",
-          "active": true
+          "srcfeature": false,
+          "title": "Ruby"
+        },
+        "ts": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "comment": {
+            "line": "//"
+          },
+          "deps": {
+            "@types/node": {
+              "active": true,
+              "kind": "dev",
+              "version": "^25.6.0"
+            },
+            "dotenv": {
+              "active": true,
+              "kind": "dev",
+              "version": "^17.4.2"
+            },
+            "typescript": {
+              "active": true,
+              "kind": "dev",
+              "version": "^5.9.3"
+            }
+          },
+          "ext": "ts",
+          "module": {
+            "name": "elering-dashboard"
+          },
+          "name": "ts",
+          "title": "TypeScript"
         }
-      },
-      "option": {}
-    },
-    "def": {
-      "desc": ""
+      }
     }
-  }
+  },
+  "name": "elering-dashboard",
+  "origin": "voxgig-sdk"
 }

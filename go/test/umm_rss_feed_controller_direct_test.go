@@ -99,12 +99,14 @@ func umm_rss_feed_controllerDirectSetup(mockres any) *umm_rss_feed_controllerDir
 	env := envOverride(map[string]any{
 		"ELERINGDASHBOARD_TEST_UMM_RSS_FEED_CONTROLLER_ENTID": map[string]any{},
 		"ELERINGDASHBOARD_TEST_LIVE":    "FALSE",
+		"ELERINGDASHBOARD_APIKEY":       "NONE",
 	})
 
 	live := env["ELERINGDASHBOARD_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
+			"apikey": env["ELERINGDASHBOARD_APIKEY"],
 		}
 		client := sdk.NewEleringDashboardSDK(mergedOpts)
 

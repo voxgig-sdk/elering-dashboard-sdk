@@ -17,52 +17,7 @@ main: {
       ]
       title: "Elering dashboard API documentation"
       version: "1.3.0"
-      tagline: "Open data from Estonia's electricity and gas TSO Elering: prices, balance, capacity, nominations and grid messages"
-      homepage: "https://dashboard.elering.ee"
-      docs_url: "https://dashboard.elering.ee"
-      license_short: "Public dashboard data from Elering AS; check Elering's Terms of Service before redistribution."
-      license_md: `- Data is published by Elering AS, the Estonian electricity and gas transmission system operator (TSO).
-- The Elering Live dashboard links to a Terms of Service and Privacy Policy; review them before commercial reuse or redistribution.
-- Nord Pool Spot price data is sourced from Nord Pool; attribution and Nord Pool's own usage terms may apply.
-- No authentication is documented for the public dashboard endpoints, but Elering may rate-limit or change the API without notice.`
-      about_md: `[Elering](https://elering.ee) is Estonia's independent electricity and gas transmission system operator. The [Elering Live dashboard](https://dashboard.elering.ee) publishes near-real-time and historical operational data for the Estonian power grid and gas system, and exposes it through a small public HTTP API at \`https://dashboard.elering.ee/api\`.
-
-What you typically get from this API:
-
-- Nord Pool Spot day-ahead electricity prices for Estonia (and other Baltic/Nordic bidding zones), e.g. \`GET /api/nps/price/EE/current\` and \`GET /api/nps/price?start=...&end=...\` returning prices in EUR/MWh at hourly resolution in UTC.
-- Power system status data: balance, generation/consumption, cross-border transmission and renewable (green) shares.
-- Gas system data: gas balance, transmission, cross-border trade, nominations and renominations.
-- Firm and interruptible capacity allocations for the gas network.
-- Urgent Market Messages (UMM) for both gas and the wider grid, available as a controller endpoint and an RSS feed.
-
-Operational notes: the freepublicapis.com community profile reports CORS is disabled and response times of roughly 300 ms. No API key or OAuth flow is documented for the read endpoints, but consumers should cache responses and respect Elering's terms of service.`
-      entity_desc: {
-        balance: "Power system balance figures (generation vs. consumption and balancing energy) for the Estonian grid."
-        balance_controller: "HTTP endpoints under the balance controller that return time-series balance data for the power system."
-        firm: "Firm (guaranteed) gas transmission capacity bookings and availability on the Estonian gas network."
-        firm_capacity_controller: "Endpoints exposing firm gas capacity allocations and remaining firm capacity per interconnection point."
-        gas_balance_controller: "Endpoints returning gas system balance data (entries vs. exits, linepack, imbalance)."
-        gas_border_trade_controller: "Endpoints reporting gas flows across Estonia's cross-border interconnection points."
-        gas_system: "Operational snapshot of the Estonian gas transmission system."
-        gas_system_controller: "Endpoints aggregating gas system status, consumption and supply figures."
-        gas_trade: "Traded gas volumes within and across the Estonian gas market."
-        gas_trade_controller: "Endpoints returning gas trade and market data."
-        gas_transmission_controller: "Endpoints describing gas transmission flows through the Estonian network."
-        green_controller: "Endpoints for renewable/green energy share and green-certificate-related data in the power system."
-        interruptible: "Interruptible gas transmission capacity that the TSO may curtail before firm capacity."
-        interruptible_capacity_controller: "Endpoints exposing interruptible gas capacity offers and bookings per interconnection point."
-        nomination: "Shipper nominations (planned gas volumes) submitted to the gas TSO for a given gas day."
-        nominations_controller: "Endpoints returning aggregated nomination data per interconnection point and gas day."
-        nps_controller: "Nord Pool Spot price endpoints such as `GET /api/nps/price/EE/current` and `GET /api/nps/price?start=...&end=...` returning day-ahead electricity prices per bidding zone in EUR/MWh."
-        renomination: "Revisions to previously submitted gas nominations during the gas day."
-        renominations_controller: "Endpoints returning renomination volumes and history for the gas system."
-        system: "General Estonian power system state: load, generation mix and transmission overview."
-        system_controller: "Endpoints aggregating overall electricity system status and time-series."
-        transmission_controller: "Endpoints describing cross-border electricity transmission flows on Estonia's interconnectors."
-        umm_gas_controller: "Urgent Market Messages for the gas system, where the TSO publishes outages and capacity-affecting events."
-        umm_rss_feed_controller: "RSS feed of Urgent Market Messages for grid and market participants."
-      }
-      auth: false
     }
   }
 }
+

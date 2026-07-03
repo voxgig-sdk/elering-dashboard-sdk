@@ -74,12 +74,14 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'ELERINGDASHBOARD_TEST_RENOMINATIONS_CONTROLLER_ENTID': {},
     'ELERINGDASHBOARD_TEST_LIVE': 'FALSE',
+    'ELERINGDASHBOARD_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.ELERINGDASHBOARD_TEST_LIVE
 
   if (live) {
     const client = new EleringDashboardSDK({
+      apikey: env.ELERINGDASHBOARD_APIKEY,
     })
 
     let idmap: any = env['ELERINGDASHBOARD_TEST_RENOMINATIONS_CONTROLLER_ENTID']

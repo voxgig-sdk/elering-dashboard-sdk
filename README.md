@@ -1,22 +1,8 @@
 # EleringDashboard SDK
 
-Open data from Estonia's electricity and gas TSO Elering: prices, balance, capacity, nominations and grid messages
+Elering dashboard API documentation client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About Elering dashboard API documentation
-
-[Elering](https://elering.ee) is Estonia's independent electricity and gas transmission system operator. The [Elering Live dashboard](https://dashboard.elering.ee) publishes near-real-time and historical operational data for the Estonian power grid and gas system, and exposes it through a small public HTTP API at `https://dashboard.elering.ee/api`.
-
-What you typically get from this API:
-
-- Nord Pool Spot day-ahead electricity prices for Estonia (and other Baltic/Nordic bidding zones), e.g. `GET /api/nps/price/EE/current` and `GET /api/nps/price?start=...&end=...` returning prices in EUR/MWh at hourly resolution in UTC.
-- Power system status data: balance, generation/consumption, cross-border transmission and renewable (green) shares.
-- Gas system data: gas balance, transmission, cross-border trade, nominations and renominations.
-- Firm and interruptible capacity allocations for the gas network.
-- Urgent Market Messages (UMM) for both gas and the wider grid, available as a controller endpoint and an RSS feed.
-
-Operational notes: the freepublicapis.com community profile reports CORS is disabled and response times of roughly 300 ms. No API key or OAuth flow is documented for the read endpoints, but consumers should cache responses and respect Elering's terms of service.
 
 ## Try it
 
@@ -50,27 +36,31 @@ gem install elering-dashboard-sdk
 luarocks install elering-dashboard-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { EleringDashboardSDK } from 'elering-dashboard'
 
-const client = new EleringDashboardSDK({})
+const client = new EleringDashboardSDK({
+  apikey: process.env.ELERING-DASHBOARD_APIKEY,
+})
 
+// Load balance data
+const balance = await client.Balance().load({})
+console.log(balance.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -100,30 +90,30 @@ The API exposes 24 entities:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **Balance** | Power system balance figures (generation vs. consumption and balancing energy) for the Estonian grid. | `/api/balance` |
-| **BalanceController** | HTTP endpoints under the balance controller that return time-series balance data for the power system. | `/api/balance/commerce/csv` |
-| **Firm** | Firm (guaranteed) gas transmission capacity bookings and availability on the Estonian gas network. | `/api/capacity/firm` |
-| **FirmCapacityController** | Endpoints exposing firm gas capacity allocations and remaining firm capacity per interconnection point. | `/api/capacity/firm/csv` |
-| **GasBalanceController** | Endpoints returning gas system balance data (entries vs. exits, linepack, imbalance). | `/api/gas-balance/price/csv` |
-| **GasBorderTradeController** | Endpoints reporting gas flows across Estonia's cross-border interconnection points. | `/api/gas/border-trade/current` |
-| **GasSystem** | Operational snapshot of the Estonian gas transmission system. | `/api/gas-system` |
-| **GasSystemController** | Endpoints aggregating gas system status, consumption and supply figures. | `/api/gas-system/csv` |
-| **GasTrade** | Traded gas volumes within and across the Estonian gas market. | `/api/gas-trade` |
-| **GasTradeController** | Endpoints returning gas trade and market data. | `/api/gas-trade/csv` |
-| **GasTransmissionController** | Endpoints describing gas transmission flows through the Estonian network. | `/api/gas-transmission/cross-border/csv` |
-| **GreenController** | Endpoints for renewable/green energy share and green-certificate-related data in the power system. | `/api/green/certificates` |
-| **Interruptible** | Interruptible gas transmission capacity that the TSO may curtail before firm capacity. | `/api/capacity/interruptible` |
-| **InterruptibleCapacityController** | Endpoints exposing interruptible gas capacity offers and bookings per interconnection point. | `/api/capacity/interruptible/csv` |
-| **Nomination** | Shipper nominations (planned gas volumes) submitted to the gas TSO for a given gas day. | `/api/nominations` |
-| **NominationsController** | Endpoints returning aggregated nomination data per interconnection point and gas day. | `/api/nominations/csv` |
-| **NpsController** | Nord Pool Spot price endpoints such as `GET /api/nps/price/EE/current` and `GET /api/nps/price?start=...&end=...` returning day-ahead electricity prices per bidding zone in EUR/MWh. | `/api/nps/price/csv` |
-| **Renomination** | Revisions to previously submitted gas nominations during the gas day. | `/api/nominations/renominations` |
-| **RenominationsController** | Endpoints returning renomination volumes and history for the gas system. | `/api/nominations/renominations/csv` |
-| **System** | General Estonian power system state: load, generation mix and transmission overview. | `/api/system` |
-| **SystemController** | Endpoints aggregating overall electricity system status and time-series. | `/api/system/csv` |
-| **TransmissionController** | Endpoints describing cross-border electricity transmission flows on Estonia's interconnectors. | `/api/transmission/cross-border-capacity/{group}/csv` |
-| **UmmGasController** | Urgent Market Messages for the gas system, where the TSO publishes outages and capacity-affecting events. | `/api/umm/gas` |
-| **UmmRssFeedController** | RSS feed of Urgent Market Messages for grid and market participants. | `/umm/gas/rss` |
+| **Balance** |  | `/api/balance` |
+| **BalanceController** |  | `/api/balance/commerce/csv` |
+| **Firm** |  | `/api/capacity/firm` |
+| **FirmCapacityController** |  | `/api/capacity/firm/csv` |
+| **GasBalanceController** |  | `/api/gas-balance/price/csv` |
+| **GasBorderTradeController** |  | `/api/gas/border-trade/current` |
+| **GasSystem** |  | `/api/gas-system` |
+| **GasSystemController** |  | `/api/gas-system/csv` |
+| **GasTrade** |  | `/api/gas-trade` |
+| **GasTradeController** |  | `/api/gas-trade/csv` |
+| **GasTransmissionController** |  | `/api/gas-transmission/cross-border/csv` |
+| **GreenController** |  | `/api/green/certificates` |
+| **Interruptible** |  | `/api/capacity/interruptible` |
+| **InterruptibleCapacityController** |  | `/api/capacity/interruptible/csv` |
+| **Nomination** |  | `/api/nominations` |
+| **NominationsController** |  | `/api/nominations/csv` |
+| **NpsController** |  | `/api/nps/price/csv` |
+| **Renomination** |  | `/api/nominations/renominations` |
+| **RenominationsController** |  | `/api/nominations/renominations/csv` |
+| **System** |  | `/api/system` |
+| **SystemController** |  | `/api/system/csv` |
+| **TransmissionController** |  | `/api/transmission/cross-border-capacity/{group}/csv` |
+| **UmmGasController** |  | `/api/umm/gas` |
+| **UmmRssFeedController** |  | `/umm/gas/rss` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -133,15 +123,17 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from eleringdashboard_sdk import EleringDashboardSDK
 
-client = EleringDashboardSDK({})
+client = EleringDashboardSDK({
+    "apikey": os.environ.get("ELERING-DASHBOARD_APIKEY"),
+})
 
 
 # Load a specific balance
-balance, err = client.Balance(None).load(
-    {"id": "example_id"}, None
-)
+balance, err = client.Balance().load({"id": "example_id"})
+print(balance)
 ```
 
 ### PHP
@@ -150,13 +142,14 @@ balance, err = client.Balance(None).load(
 <?php
 require_once 'eleringdashboard_sdk.php';
 
-$client = new EleringDashboardSDK([]);
+$client = new EleringDashboardSDK([
+    "apikey" => getenv("ELERING-DASHBOARD_APIKEY"),
+]);
 
 
 // Load a specific balance
-[$balance, $err] = $client->Balance(null)->load(
-    ["id" => "example_id"], null
-);
+[$balance, $err] = $client->Balance()->load(["id" => "example_id"]);
+print_r($balance);
 ```
 
 ### Golang
@@ -164,8 +157,13 @@ $client = new EleringDashboardSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/elering-dashboard-sdk/go"
 
-client := sdk.NewEleringDashboardSDK(map[string]any{})
+client := sdk.NewEleringDashboardSDK(map[string]any{
+    "apikey": os.Getenv("ELERING-DASHBOARD_APIKEY"),
+})
 
+// Load balance data
+balance, err := client.Balance(nil).Load(map[string]any{}, nil)
+fmt.Println(balance)
 ```
 
 ### Ruby
@@ -173,13 +171,14 @@ client := sdk.NewEleringDashboardSDK(map[string]any{})
 ```ruby
 require_relative "EleringDashboard_sdk"
 
-client = EleringDashboardSDK.new({})
+client = EleringDashboardSDK.new({
+  "apikey" => ENV["ELERING-DASHBOARD_APIKEY"],
+})
 
 
 # Load a specific balance
-balance, err = client.Balance(nil).load(
-  { "id" => "example_id" }, nil
-)
+balance, err = client.Balance().load({ "id" => "example_id" })
+puts balance
 ```
 
 ### Lua
@@ -187,13 +186,14 @@ balance, err = client.Balance(nil).load(
 ```lua
 local sdk = require("elering-dashboard_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("ELERING-DASHBOARD_APIKEY"),
+})
 
 
 -- Load a specific balance
-local balance, err = client:Balance(nil):load(
-  { id = "example_id" }, nil
-)
+local balance, err = client:Balance():load({ id = "example_id" })
+print(balance)
 ```
 
 ## Unit testing in offline mode
@@ -212,25 +212,21 @@ const result = await client.Balance().load({ id: 'test01' })
 ### Python
 
 ```python
-client = EleringDashboardSDK.test(None, None)
-result, err = client.Balance(None).load(
-    {"id": "test01"}, None
-)
+client = EleringDashboardSDK.test()
+result, err = client.Balance().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = EleringDashboardSDK::test(null, null);
-[$result, $err] = $client->Balance(null)->load(
-    ["id" => "test01"], null
-);
+$client = EleringDashboardSDK::test();
+[$result, $err] = $client->Balance()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.Balance(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -239,19 +235,15 @@ result, err := client.Balance(nil).Load(
 ### Ruby
 
 ```ruby
-client = EleringDashboardSDK.test(nil, nil)
-result, err = client.Balance(nil).load(
-  { "id" => "test01" }, nil
-)
+client = EleringDashboardSDK.test
+result, err = client.Balance().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:Balance(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:Balance():load({ id = "test01" })
 ```
 
 ## How it works
@@ -355,15 +347,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the Elering dashboard API documentation
-
-- Upstream: [https://dashboard.elering.ee](https://dashboard.elering.ee)
-
-- Data is published by Elering AS, the Estonian electricity and gas transmission system operator (TSO).
-- The Elering Live dashboard links to a Terms of Service and Privacy Policy; review them before commercial reuse or redistribution.
-- Nord Pool Spot price data is sourced from Nord Pool; attribution and Nord Pool's own usage terms may apply.
-- No authentication is documented for the public dashboard endpoints, but Elering may rate-limit or change the API without notice.
 
 ---
 

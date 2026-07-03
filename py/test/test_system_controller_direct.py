@@ -59,12 +59,14 @@ def _system_controller_direct_setup(mockres):
     env = runner.env_override({
         "ELERINGDASHBOARD_TEST_SYSTEM_CONTROLLER_ENTID": {},
         "ELERINGDASHBOARD_TEST_LIVE": "FALSE",
+        "ELERINGDASHBOARD_APIKEY": "NONE",
     })
 
     live = env.get("ELERINGDASHBOARD_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
+            "apikey": env.get("ELERINGDASHBOARD_APIKEY"),
         }
         client = EleringDashboardSDK(merged_opts)
         return {

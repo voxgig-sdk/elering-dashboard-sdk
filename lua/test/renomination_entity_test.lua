@@ -91,6 +91,7 @@ function renomination_basic_setup(extra)
     ["ELERINGDASHBOARD_TEST_RENOMINATION_ENTID"] = idmap,
     ["ELERINGDASHBOARD_TEST_LIVE"] = "FALSE",
     ["ELERINGDASHBOARD_TEST_EXPLAIN"] = "FALSE",
+    ["ELERINGDASHBOARD_APIKEY"] = "NONE",
   })
 
   local idmap_resolved = helpers.to_map(
@@ -102,6 +103,7 @@ function renomination_basic_setup(extra)
   if env["ELERINGDASHBOARD_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
       {
+        apikey = env["ELERINGDASHBOARD_APIKEY"],
       },
       extra or {},
     })
