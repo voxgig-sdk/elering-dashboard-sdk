@@ -10,13 +10,13 @@ The Ruby SDK for the EleringDashboard API — an entity-oriented client using id
 
 ## Install
 ```bash
-gem install elering-dashboard-sdk
+gem install voxgig-sdk-elering-dashboard
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "elering-dashboard-sdk"
+gem "voxgig-sdk-elering-dashboard"
 ```
 
 Then run:

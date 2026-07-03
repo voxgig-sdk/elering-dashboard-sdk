@@ -10,7 +10,7 @@ The TypeScript SDK for the EleringDashboard API — a type-safe, entity-oriented
 
 ## Install
 ```bash
-npm install elering-dashboard
+npm install @voxgig-sdk/elering-dashboard
 ```
 ## Tutorial: your first API call
 

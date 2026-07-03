@@ -8,12 +8,14 @@ source = {
   dir = "elering-dashboard-sdk/lua"
 }
 description = {
-  summary = "EleringDashboard SDK for Lua",
-  license = "MIT"
+  summary = "Unofficial generated Lua SDK for the Elering dashboard API documentation public API. Not affiliated with or endorsed by the upstream API provider.",
+  homepage = "https://github.com/voxgig-sdk/elering-dashboard-sdk",
+  issues_url = "https://github.com/voxgig-sdk/elering-dashboard-sdk/issues",
+  license = "MIT",
+  labels = { "voxgig", "sdk", "generated-sdk", "openapi", "api-client", "elering-dashboard" }
 }
 dependencies = {
   "lua >= 5.3",
-  "dkjson >= 2.5",
   "dkjson >= 2.5",
 }
 build = {

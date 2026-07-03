@@ -10,7 +10,7 @@ The Lua SDK for the EleringDashboard API — an entity-oriented client using Lua
 
 ## Install
 ```bash
-luarocks install elering-dashboard-sdk
+luarocks install voxgig-sdk-elering-dashboard
 ```
 
 If the module is not yet published, add the source directory to

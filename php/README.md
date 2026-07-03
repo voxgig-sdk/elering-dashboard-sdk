@@ -10,7 +10,7 @@ The PHP SDK for the EleringDashboard API — an entity-oriented client using PHP
 
 ## Install
 ```bash
-composer require voxgig/elering-dashboard-sdk
+composer require voxgig-sdk/elering-dashboard
 ```
 
 

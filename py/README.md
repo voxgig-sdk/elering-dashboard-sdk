@@ -10,7 +10,7 @@ The Python SDK for the EleringDashboard API — an entity-oriented client follow
 
 ## Install
 ```bash
-pip install elering-dashboard-sdk
+pip install voxgig-sdk-elering-dashboard
 ```
 
 Or install from source:
