@@ -33,9 +33,10 @@ $client = new EleringDashboardSDK();
 
 ```php
 try {
-    $result = $client->balance()->load(["id" => "example_id"]);
-    print_r($result);
-} catch (\Exception $err) {
+    // load() returns the bare Balance record (throws on error).
+    $balance = $client->Balance()->load(["id" => "example_id"]);
+    print_r($balance);
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -81,13 +82,17 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```php
-$client = EleringDashboardSDK::test();
+$client = EleringDashboardSDK::test([
+    "entity" => ["balance" => ["test01" => ["id" => "test01"]]],
+]);
 
-$result = $client->balance()->load(["id" => "test01"]);
-// $result contains mock response data
+// load() returns the bare mock record (throws on error).
+$balance = $client->Balance()->load(["id" => "test01"]);
+print_r($balance);
 ```
 
 ### Use a custom fetch function
@@ -178,8 +183,8 @@ Creates a test-mode client with mock transport. Both arguments may be `null`.
 | `GasTradeController` | `($data): GasTradeControllerEntity` | Create a GasTradeController entity instance. |
 | `GasTransmissionController` | `($data): GasTransmissionControllerEntity` | Create a GasTransmissionController entity instance. |
 | `GreenController` | `($data): GreenControllerEntity` | Create a GreenController entity instance. |
-| `Interruptible` | `($data): InterruptibleEntity` | Create a Interruptible entity instance. |
-| `InterruptibleCapacityController` | `($data): InterruptibleCapacityControllerEntity` | Create a InterruptibleCapacityController entity instance. |
+| `Interruptible` | `($data): InterruptibleEntity` | Create an Interruptible entity instance. |
+| `InterruptibleCapacityController` | `($data): InterruptibleCapacityControllerEntity` | Create an InterruptibleCapacityController entity instance. |
 | `Nomination` | `($data): NominationEntity` | Create a Nomination entity instance. |
 | `NominationsController` | `($data): NominationsControllerEntity` | Create a NominationsController entity instance. |
 | `NpsController` | `($data): NpsControllerEntity` | Create a NpsController entity instance. |
@@ -188,8 +193,8 @@ Creates a test-mode client with mock transport. Both arguments may be `null`.
 | `System` | `($data): SystemEntity` | Create a System entity instance. |
 | `SystemController` | `($data): SystemControllerEntity` | Create a SystemController entity instance. |
 | `TransmissionController` | `($data): TransmissionControllerEntity` | Create a TransmissionController entity instance. |
-| `UmmGasController` | `($data): UmmGasControllerEntity` | Create a UmmGasController entity instance. |
-| `UmmRssFeedController` | `($data): UmmRssFeedControllerEntity` | Create a UmmRssFeedController entity instance. |
+| `UmmGasController` | `($data): UmmGasControllerEntity` | Create an UmmGasController entity instance. |
+| `UmmRssFeedController` | `($data): UmmRssFeedControllerEntity` | Create an UmmRssFeedController entity instance. |
 
 ### Entity interface
 
@@ -452,7 +457,7 @@ API path: `/umm/gas/rss`
 
 ### Balance
 
-Create an instance: `const balance = client.balance`
+Create an instance: `$balance = $client->Balance();`
 
 #### Operations
 
@@ -462,14 +467,15 @@ Create an instance: `const balance = client.balance`
 
 #### Example: Load
 
-```ts
-const balance = await client.balance.load({ id: 'balance_id' })
+```php
+// load() returns the bare Balance record (throws on error).
+$balance = $client->Balance()->load(["id" => "balance_id"]);
 ```
 
 
 ### BalanceController
 
-Create an instance: `const balance_controller = client.balance_controller`
+Create an instance: `$balance_controller = $client->BalanceController();`
 
 #### Operations
 
@@ -479,14 +485,15 @@ Create an instance: `const balance_controller = client.balance_controller`
 
 #### Example: Load
 
-```ts
-const balance_controller = await client.balance_controller.load({ id: 'balance_controller_id' })
+```php
+// load() returns the bare BalanceController record (throws on error).
+$balance_controller = $client->BalanceController()->load(["id" => "balance_controller_id"]);
 ```
 
 
 ### Firm
 
-Create an instance: `const firm = client.firm`
+Create an instance: `$firm = $client->Firm();`
 
 #### Operations
 
@@ -496,14 +503,15 @@ Create an instance: `const firm = client.firm`
 
 #### Example: Load
 
-```ts
-const firm = await client.firm.load({ id: 'firm_id' })
+```php
+// load() returns the bare Firm record (throws on error).
+$firm = $client->Firm()->load(["id" => "firm_id"]);
 ```
 
 
 ### FirmCapacityController
 
-Create an instance: `const firm_capacity_controller = client.firm_capacity_controller`
+Create an instance: `$firm_capacity_controller = $client->FirmCapacityController();`
 
 #### Operations
 
@@ -513,14 +521,15 @@ Create an instance: `const firm_capacity_controller = client.firm_capacity_contr
 
 #### Example: Load
 
-```ts
-const firm_capacity_controller = await client.firm_capacity_controller.load({ id: 'firm_capacity_controller_id' })
+```php
+// load() returns the bare FirmCapacityController record (throws on error).
+$firm_capacity_controller = $client->FirmCapacityController()->load(["id" => "firm_capacity_controller_id"]);
 ```
 
 
 ### GasBalanceController
 
-Create an instance: `const gas_balance_controller = client.gas_balance_controller`
+Create an instance: `$gas_balance_controller = $client->GasBalanceController();`
 
 #### Operations
 
@@ -530,14 +539,15 @@ Create an instance: `const gas_balance_controller = client.gas_balance_controlle
 
 #### Example: Load
 
-```ts
-const gas_balance_controller = await client.gas_balance_controller.load({ id: 'gas_balance_controller_id' })
+```php
+// load() returns the bare GasBalanceController record (throws on error).
+$gas_balance_controller = $client->GasBalanceController()->load(["id" => "gas_balance_controller_id"]);
 ```
 
 
 ### GasBorderTradeController
 
-Create an instance: `const gas_border_trade_controller = client.gas_border_trade_controller`
+Create an instance: `$gas_border_trade_controller = $client->GasBorderTradeController();`
 
 #### Operations
 
@@ -547,14 +557,15 @@ Create an instance: `const gas_border_trade_controller = client.gas_border_trade
 
 #### Example: Load
 
-```ts
-const gas_border_trade_controller = await client.gas_border_trade_controller.load({ id: 'gas_border_trade_controller_id' })
+```php
+// load() returns the bare GasBorderTradeController record (throws on error).
+$gas_border_trade_controller = $client->GasBorderTradeController()->load(["id" => "gas_border_trade_controller_id"]);
 ```
 
 
 ### GasSystem
 
-Create an instance: `const gas_system = client.gas_system`
+Create an instance: `$gas_system = $client->GasSystem();`
 
 #### Operations
 
@@ -564,14 +575,15 @@ Create an instance: `const gas_system = client.gas_system`
 
 #### Example: Load
 
-```ts
-const gas_system = await client.gas_system.load({ id: 'gas_system_id' })
+```php
+// load() returns the bare GasSystem record (throws on error).
+$gas_system = $client->GasSystem()->load(["id" => "gas_system_id"]);
 ```
 
 
 ### GasSystemController
 
-Create an instance: `const gas_system_controller = client.gas_system_controller`
+Create an instance: `$gas_system_controller = $client->GasSystemController();`
 
 #### Operations
 
@@ -581,14 +593,15 @@ Create an instance: `const gas_system_controller = client.gas_system_controller`
 
 #### Example: Load
 
-```ts
-const gas_system_controller = await client.gas_system_controller.load({ id: 'gas_system_controller_id' })
+```php
+// load() returns the bare GasSystemController record (throws on error).
+$gas_system_controller = $client->GasSystemController()->load(["id" => "gas_system_controller_id"]);
 ```
 
 
 ### GasTrade
 
-Create an instance: `const gas_trade = client.gas_trade`
+Create an instance: `$gas_trade = $client->GasTrade();`
 
 #### Operations
 
@@ -598,14 +611,15 @@ Create an instance: `const gas_trade = client.gas_trade`
 
 #### Example: Load
 
-```ts
-const gas_trade = await client.gas_trade.load({ id: 'gas_trade_id' })
+```php
+// load() returns the bare GasTrade record (throws on error).
+$gas_trade = $client->GasTrade()->load(["id" => "gas_trade_id"]);
 ```
 
 
 ### GasTradeController
 
-Create an instance: `const gas_trade_controller = client.gas_trade_controller`
+Create an instance: `$gas_trade_controller = $client->GasTradeController();`
 
 #### Operations
 
@@ -615,14 +629,15 @@ Create an instance: `const gas_trade_controller = client.gas_trade_controller`
 
 #### Example: Load
 
-```ts
-const gas_trade_controller = await client.gas_trade_controller.load({ id: 'gas_trade_controller_id' })
+```php
+// load() returns the bare GasTradeController record (throws on error).
+$gas_trade_controller = $client->GasTradeController()->load(["id" => "gas_trade_controller_id"]);
 ```
 
 
 ### GasTransmissionController
 
-Create an instance: `const gas_transmission_controller = client.gas_transmission_controller`
+Create an instance: `$gas_transmission_controller = $client->GasTransmissionController();`
 
 #### Operations
 
@@ -632,14 +647,15 @@ Create an instance: `const gas_transmission_controller = client.gas_transmission
 
 #### Example: Load
 
-```ts
-const gas_transmission_controller = await client.gas_transmission_controller.load({ id: 'gas_transmission_controller_id' })
+```php
+// load() returns the bare GasTransmissionController record (throws on error).
+$gas_transmission_controller = $client->GasTransmissionController()->load(["id" => "gas_transmission_controller_id"]);
 ```
 
 
 ### GreenController
 
-Create an instance: `const green_controller = client.green_controller`
+Create an instance: `$green_controller = $client->GreenController();`
 
 #### Operations
 
@@ -649,14 +665,15 @@ Create an instance: `const green_controller = client.green_controller`
 
 #### Example: Load
 
-```ts
-const green_controller = await client.green_controller.load({ id: 'green_controller_id' })
+```php
+// load() returns the bare GreenController record (throws on error).
+$green_controller = $client->GreenController()->load(["id" => "green_controller_id"]);
 ```
 
 
 ### Interruptible
 
-Create an instance: `const interruptible = client.interruptible`
+Create an instance: `$interruptible = $client->Interruptible();`
 
 #### Operations
 
@@ -666,14 +683,15 @@ Create an instance: `const interruptible = client.interruptible`
 
 #### Example: Load
 
-```ts
-const interruptible = await client.interruptible.load({ id: 'interruptible_id' })
+```php
+// load() returns the bare Interruptible record (throws on error).
+$interruptible = $client->Interruptible()->load(["id" => "interruptible_id"]);
 ```
 
 
 ### InterruptibleCapacityController
 
-Create an instance: `const interruptible_capacity_controller = client.interruptible_capacity_controller`
+Create an instance: `$interruptible_capacity_controller = $client->InterruptibleCapacityController();`
 
 #### Operations
 
@@ -683,14 +701,15 @@ Create an instance: `const interruptible_capacity_controller = client.interrupti
 
 #### Example: Load
 
-```ts
-const interruptible_capacity_controller = await client.interruptible_capacity_controller.load({ id: 'interruptible_capacity_controller_id' })
+```php
+// load() returns the bare InterruptibleCapacityController record (throws on error).
+$interruptible_capacity_controller = $client->InterruptibleCapacityController()->load(["id" => "interruptible_capacity_controller_id"]);
 ```
 
 
 ### Nomination
 
-Create an instance: `const nomination = client.nomination`
+Create an instance: `$nomination = $client->Nomination();`
 
 #### Operations
 
@@ -700,14 +719,15 @@ Create an instance: `const nomination = client.nomination`
 
 #### Example: Load
 
-```ts
-const nomination = await client.nomination.load({ id: 'nomination_id' })
+```php
+// load() returns the bare Nomination record (throws on error).
+$nomination = $client->Nomination()->load(["id" => "nomination_id"]);
 ```
 
 
 ### NominationsController
 
-Create an instance: `const nominations_controller = client.nominations_controller`
+Create an instance: `$nominations_controller = $client->NominationsController();`
 
 #### Operations
 
@@ -717,14 +737,15 @@ Create an instance: `const nominations_controller = client.nominations_controlle
 
 #### Example: Load
 
-```ts
-const nominations_controller = await client.nominations_controller.load({ id: 'nominations_controller_id' })
+```php
+// load() returns the bare NominationsController record (throws on error).
+$nominations_controller = $client->NominationsController()->load(["id" => "nominations_controller_id"]);
 ```
 
 
 ### NpsController
 
-Create an instance: `const nps_controller = client.nps_controller`
+Create an instance: `$nps_controller = $client->NpsController();`
 
 #### Operations
 
@@ -734,14 +755,15 @@ Create an instance: `const nps_controller = client.nps_controller`
 
 #### Example: Load
 
-```ts
-const nps_controller = await client.nps_controller.load({ id: 'nps_controller_id' })
+```php
+// load() returns the bare NpsController record (throws on error).
+$nps_controller = $client->NpsController()->load(["id" => "nps_controller_id"]);
 ```
 
 
 ### Renomination
 
-Create an instance: `const renomination = client.renomination`
+Create an instance: `$renomination = $client->Renomination();`
 
 #### Operations
 
@@ -751,14 +773,15 @@ Create an instance: `const renomination = client.renomination`
 
 #### Example: Load
 
-```ts
-const renomination = await client.renomination.load({ id: 'renomination_id' })
+```php
+// load() returns the bare Renomination record (throws on error).
+$renomination = $client->Renomination()->load(["id" => "renomination_id"]);
 ```
 
 
 ### RenominationsController
 
-Create an instance: `const renominations_controller = client.renominations_controller`
+Create an instance: `$renominations_controller = $client->RenominationsController();`
 
 #### Operations
 
@@ -768,14 +791,15 @@ Create an instance: `const renominations_controller = client.renominations_contr
 
 #### Example: Load
 
-```ts
-const renominations_controller = await client.renominations_controller.load({ id: 'renominations_controller_id' })
+```php
+// load() returns the bare RenominationsController record (throws on error).
+$renominations_controller = $client->RenominationsController()->load(["id" => "renominations_controller_id"]);
 ```
 
 
 ### System
 
-Create an instance: `const system = client.system`
+Create an instance: `$system = $client->System();`
 
 #### Operations
 
@@ -785,14 +809,15 @@ Create an instance: `const system = client.system`
 
 #### Example: Load
 
-```ts
-const system = await client.system.load({ id: 'system_id' })
+```php
+// load() returns the bare System record (throws on error).
+$system = $client->System()->load(["id" => "system_id"]);
 ```
 
 
 ### SystemController
 
-Create an instance: `const system_controller = client.system_controller`
+Create an instance: `$system_controller = $client->SystemController();`
 
 #### Operations
 
@@ -802,14 +827,15 @@ Create an instance: `const system_controller = client.system_controller`
 
 #### Example: Load
 
-```ts
-const system_controller = await client.system_controller.load({ id: 'system_controller_id' })
+```php
+// load() returns the bare SystemController record (throws on error).
+$system_controller = $client->SystemController()->load(["id" => "system_controller_id"]);
 ```
 
 
 ### TransmissionController
 
-Create an instance: `const transmission_controller = client.transmission_controller`
+Create an instance: `$transmission_controller = $client->TransmissionController();`
 
 #### Operations
 
@@ -819,14 +845,15 @@ Create an instance: `const transmission_controller = client.transmission_control
 
 #### Example: Load
 
-```ts
-const transmission_controller = await client.transmission_controller.load({ id: 'transmission_controller_id' })
+```php
+// load() returns the bare TransmissionController record (throws on error).
+$transmission_controller = $client->TransmissionController()->load(["id" => "transmission_controller_id"]);
 ```
 
 
 ### UmmGasController
 
-Create an instance: `const umm_gas_controller = client.umm_gas_controller`
+Create an instance: `$umm_gas_controller = $client->UmmGasController();`
 
 #### Operations
 
@@ -836,14 +863,15 @@ Create an instance: `const umm_gas_controller = client.umm_gas_controller`
 
 #### Example: Load
 
-```ts
-const umm_gas_controller = await client.umm_gas_controller.load({ id: 'umm_gas_controller_id' })
+```php
+// load() returns the bare UmmGasController record (throws on error).
+$umm_gas_controller = $client->UmmGasController()->load(["id" => "umm_gas_controller_id"]);
 ```
 
 
 ### UmmRssFeedController
 
-Create an instance: `const umm_rss_feed_controller = client.umm_rss_feed_controller`
+Create an instance: `$umm_rss_feed_controller = $client->UmmRssFeedController();`
 
 #### Operations
 
@@ -853,8 +881,9 @@ Create an instance: `const umm_rss_feed_controller = client.umm_rss_feed_control
 
 #### Example: Load
 
-```ts
-const umm_rss_feed_controller = await client.umm_rss_feed_controller.load({ id: 'umm_rss_feed_controller_id' })
+```php
+// load() returns the bare UmmRssFeedController record (throws on error).
+$umm_rss_feed_controller = $client->UmmRssFeedController()->load(["id" => "umm_rss_feed_controller_id"]);
 ```
 
 
@@ -929,7 +958,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$balance = $client->balance();
+$balance = $client->Balance();
 $balance->load(["id" => "example_id"]);
 
 // $balance->dataGet() now returns the loaded balance data

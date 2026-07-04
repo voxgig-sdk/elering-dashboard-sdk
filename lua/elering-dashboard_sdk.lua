@@ -244,8 +244,9 @@ end
 
 
 
--- Idiomatic facade: client:balance():list() / client:balance():load({ id = ... })
-function EleringDashboardSDK:balance(data)
+-- Idiomatic facade: client:Balance():list() / client:Balance():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function EleringDashboardSDK:Balance(data)
   local EntityMod = require("entity.balance_entity")
   if data == nil then
     if self._balance == nil then
@@ -256,15 +257,10 @@ function EleringDashboardSDK:balance(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:balance() instead.
-function EleringDashboardSDK:Balance(data)
-  local EntityMod = require("entity.balance_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:balance_controller():list() / client:balance_controller():load({ id = ... })
-function EleringDashboardSDK:balance_controller(data)
+-- Idiomatic facade: client:BalanceController():list() / client:BalanceController():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function EleringDashboardSDK:BalanceController(data)
   local EntityMod = require("entity.balance_controller_entity")
   if data == nil then
     if self._balance_controller == nil then
@@ -275,15 +271,10 @@ function EleringDashboardSDK:balance_controller(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:balance_controller() instead.
-function EleringDashboardSDK:BalanceController(data)
-  local EntityMod = require("entity.balance_controller_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:firm():list() / client:firm():load({ id = ... })
-function EleringDashboardSDK:firm(data)
+-- Idiomatic facade: client:Firm():list() / client:Firm():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function EleringDashboardSDK:Firm(data)
   local EntityMod = require("entity.firm_entity")
   if data == nil then
     if self._firm == nil then
@@ -294,15 +285,10 @@ function EleringDashboardSDK:firm(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:firm() instead.
-function EleringDashboardSDK:Firm(data)
-  local EntityMod = require("entity.firm_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:firm_capacity_controller():list() / client:firm_capacity_controller():load({ id = ... })
-function EleringDashboardSDK:firm_capacity_controller(data)
+-- Idiomatic facade: client:FirmCapacityController():list() / client:FirmCapacityController():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function EleringDashboardSDK:FirmCapacityController(data)
   local EntityMod = require("entity.firm_capacity_controller_entity")
   if data == nil then
     if self._firm_capacity_controller == nil then
@@ -313,15 +299,10 @@ function EleringDashboardSDK:firm_capacity_controller(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:firm_capacity_controller() instead.
-function EleringDashboardSDK:FirmCapacityController(data)
-  local EntityMod = require("entity.firm_capacity_controller_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:gas_balance_controller():list() / client:gas_balance_controller():load({ id = ... })
-function EleringDashboardSDK:gas_balance_controller(data)
+-- Idiomatic facade: client:GasBalanceController():list() / client:GasBalanceController():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function EleringDashboardSDK:GasBalanceController(data)
   local EntityMod = require("entity.gas_balance_controller_entity")
   if data == nil then
     if self._gas_balance_controller == nil then
@@ -332,15 +313,10 @@ function EleringDashboardSDK:gas_balance_controller(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:gas_balance_controller() instead.
-function EleringDashboardSDK:GasBalanceController(data)
-  local EntityMod = require("entity.gas_balance_controller_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:gas_border_trade_controller():list() / client:gas_border_trade_controller():load({ id = ... })
-function EleringDashboardSDK:gas_border_trade_controller(data)
+-- Idiomatic facade: client:GasBorderTradeController():list() / client:GasBorderTradeController():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function EleringDashboardSDK:GasBorderTradeController(data)
   local EntityMod = require("entity.gas_border_trade_controller_entity")
   if data == nil then
     if self._gas_border_trade_controller == nil then
@@ -351,15 +327,10 @@ function EleringDashboardSDK:gas_border_trade_controller(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:gas_border_trade_controller() instead.
-function EleringDashboardSDK:GasBorderTradeController(data)
-  local EntityMod = require("entity.gas_border_trade_controller_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:gas_system():list() / client:gas_system():load({ id = ... })
-function EleringDashboardSDK:gas_system(data)
+-- Idiomatic facade: client:GasSystem():list() / client:GasSystem():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function EleringDashboardSDK:GasSystem(data)
   local EntityMod = require("entity.gas_system_entity")
   if data == nil then
     if self._gas_system == nil then
@@ -370,15 +341,10 @@ function EleringDashboardSDK:gas_system(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:gas_system() instead.
-function EleringDashboardSDK:GasSystem(data)
-  local EntityMod = require("entity.gas_system_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:gas_system_controller():list() / client:gas_system_controller():load({ id = ... })
-function EleringDashboardSDK:gas_system_controller(data)
+-- Idiomatic facade: client:GasSystemController():list() / client:GasSystemController():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function EleringDashboardSDK:GasSystemController(data)
   local EntityMod = require("entity.gas_system_controller_entity")
   if data == nil then
     if self._gas_system_controller == nil then
@@ -389,15 +355,10 @@ function EleringDashboardSDK:gas_system_controller(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:gas_system_controller() instead.
-function EleringDashboardSDK:GasSystemController(data)
-  local EntityMod = require("entity.gas_system_controller_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:gas_trade():list() / client:gas_trade():load({ id = ... })
-function EleringDashboardSDK:gas_trade(data)
+-- Idiomatic facade: client:GasTrade():list() / client:GasTrade():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function EleringDashboardSDK:GasTrade(data)
   local EntityMod = require("entity.gas_trade_entity")
   if data == nil then
     if self._gas_trade == nil then
@@ -408,15 +369,10 @@ function EleringDashboardSDK:gas_trade(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:gas_trade() instead.
-function EleringDashboardSDK:GasTrade(data)
-  local EntityMod = require("entity.gas_trade_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:gas_trade_controller():list() / client:gas_trade_controller():load({ id = ... })
-function EleringDashboardSDK:gas_trade_controller(data)
+-- Idiomatic facade: client:GasTradeController():list() / client:GasTradeController():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function EleringDashboardSDK:GasTradeController(data)
   local EntityMod = require("entity.gas_trade_controller_entity")
   if data == nil then
     if self._gas_trade_controller == nil then
@@ -427,15 +383,10 @@ function EleringDashboardSDK:gas_trade_controller(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:gas_trade_controller() instead.
-function EleringDashboardSDK:GasTradeController(data)
-  local EntityMod = require("entity.gas_trade_controller_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:gas_transmission_controller():list() / client:gas_transmission_controller():load({ id = ... })
-function EleringDashboardSDK:gas_transmission_controller(data)
+-- Idiomatic facade: client:GasTransmissionController():list() / client:GasTransmissionController():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function EleringDashboardSDK:GasTransmissionController(data)
   local EntityMod = require("entity.gas_transmission_controller_entity")
   if data == nil then
     if self._gas_transmission_controller == nil then
@@ -446,15 +397,10 @@ function EleringDashboardSDK:gas_transmission_controller(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:gas_transmission_controller() instead.
-function EleringDashboardSDK:GasTransmissionController(data)
-  local EntityMod = require("entity.gas_transmission_controller_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:green_controller():list() / client:green_controller():load({ id = ... })
-function EleringDashboardSDK:green_controller(data)
+-- Idiomatic facade: client:GreenController():list() / client:GreenController():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function EleringDashboardSDK:GreenController(data)
   local EntityMod = require("entity.green_controller_entity")
   if data == nil then
     if self._green_controller == nil then
@@ -465,15 +411,10 @@ function EleringDashboardSDK:green_controller(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:green_controller() instead.
-function EleringDashboardSDK:GreenController(data)
-  local EntityMod = require("entity.green_controller_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:interruptible():list() / client:interruptible():load({ id = ... })
-function EleringDashboardSDK:interruptible(data)
+-- Idiomatic facade: client:Interruptible():list() / client:Interruptible():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function EleringDashboardSDK:Interruptible(data)
   local EntityMod = require("entity.interruptible_entity")
   if data == nil then
     if self._interruptible == nil then
@@ -484,15 +425,10 @@ function EleringDashboardSDK:interruptible(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:interruptible() instead.
-function EleringDashboardSDK:Interruptible(data)
-  local EntityMod = require("entity.interruptible_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:interruptible_capacity_controller():list() / client:interruptible_capacity_controller():load({ id = ... })
-function EleringDashboardSDK:interruptible_capacity_controller(data)
+-- Idiomatic facade: client:InterruptibleCapacityController():list() / client:InterruptibleCapacityController():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function EleringDashboardSDK:InterruptibleCapacityController(data)
   local EntityMod = require("entity.interruptible_capacity_controller_entity")
   if data == nil then
     if self._interruptible_capacity_controller == nil then
@@ -503,15 +439,10 @@ function EleringDashboardSDK:interruptible_capacity_controller(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:interruptible_capacity_controller() instead.
-function EleringDashboardSDK:InterruptibleCapacityController(data)
-  local EntityMod = require("entity.interruptible_capacity_controller_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:nomination():list() / client:nomination():load({ id = ... })
-function EleringDashboardSDK:nomination(data)
+-- Idiomatic facade: client:Nomination():list() / client:Nomination():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function EleringDashboardSDK:Nomination(data)
   local EntityMod = require("entity.nomination_entity")
   if data == nil then
     if self._nomination == nil then
@@ -522,15 +453,10 @@ function EleringDashboardSDK:nomination(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:nomination() instead.
-function EleringDashboardSDK:Nomination(data)
-  local EntityMod = require("entity.nomination_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:nominations_controller():list() / client:nominations_controller():load({ id = ... })
-function EleringDashboardSDK:nominations_controller(data)
+-- Idiomatic facade: client:NominationsController():list() / client:NominationsController():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function EleringDashboardSDK:NominationsController(data)
   local EntityMod = require("entity.nominations_controller_entity")
   if data == nil then
     if self._nominations_controller == nil then
@@ -541,15 +467,10 @@ function EleringDashboardSDK:nominations_controller(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:nominations_controller() instead.
-function EleringDashboardSDK:NominationsController(data)
-  local EntityMod = require("entity.nominations_controller_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:nps_controller():list() / client:nps_controller():load({ id = ... })
-function EleringDashboardSDK:nps_controller(data)
+-- Idiomatic facade: client:NpsController():list() / client:NpsController():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function EleringDashboardSDK:NpsController(data)
   local EntityMod = require("entity.nps_controller_entity")
   if data == nil then
     if self._nps_controller == nil then
@@ -560,15 +481,10 @@ function EleringDashboardSDK:nps_controller(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:nps_controller() instead.
-function EleringDashboardSDK:NpsController(data)
-  local EntityMod = require("entity.nps_controller_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:renomination():list() / client:renomination():load({ id = ... })
-function EleringDashboardSDK:renomination(data)
+-- Idiomatic facade: client:Renomination():list() / client:Renomination():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function EleringDashboardSDK:Renomination(data)
   local EntityMod = require("entity.renomination_entity")
   if data == nil then
     if self._renomination == nil then
@@ -579,15 +495,10 @@ function EleringDashboardSDK:renomination(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:renomination() instead.
-function EleringDashboardSDK:Renomination(data)
-  local EntityMod = require("entity.renomination_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:renominations_controller():list() / client:renominations_controller():load({ id = ... })
-function EleringDashboardSDK:renominations_controller(data)
+-- Idiomatic facade: client:RenominationsController():list() / client:RenominationsController():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function EleringDashboardSDK:RenominationsController(data)
   local EntityMod = require("entity.renominations_controller_entity")
   if data == nil then
     if self._renominations_controller == nil then
@@ -598,15 +509,10 @@ function EleringDashboardSDK:renominations_controller(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:renominations_controller() instead.
-function EleringDashboardSDK:RenominationsController(data)
-  local EntityMod = require("entity.renominations_controller_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:system():list() / client:system():load({ id = ... })
-function EleringDashboardSDK:system(data)
+-- Idiomatic facade: client:System():list() / client:System():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function EleringDashboardSDK:System(data)
   local EntityMod = require("entity.system_entity")
   if data == nil then
     if self._system == nil then
@@ -617,15 +523,10 @@ function EleringDashboardSDK:system(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:system() instead.
-function EleringDashboardSDK:System(data)
-  local EntityMod = require("entity.system_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:system_controller():list() / client:system_controller():load({ id = ... })
-function EleringDashboardSDK:system_controller(data)
+-- Idiomatic facade: client:SystemController():list() / client:SystemController():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function EleringDashboardSDK:SystemController(data)
   local EntityMod = require("entity.system_controller_entity")
   if data == nil then
     if self._system_controller == nil then
@@ -636,15 +537,10 @@ function EleringDashboardSDK:system_controller(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:system_controller() instead.
-function EleringDashboardSDK:SystemController(data)
-  local EntityMod = require("entity.system_controller_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:transmission_controller():list() / client:transmission_controller():load({ id = ... })
-function EleringDashboardSDK:transmission_controller(data)
+-- Idiomatic facade: client:TransmissionController():list() / client:TransmissionController():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function EleringDashboardSDK:TransmissionController(data)
   local EntityMod = require("entity.transmission_controller_entity")
   if data == nil then
     if self._transmission_controller == nil then
@@ -655,15 +551,10 @@ function EleringDashboardSDK:transmission_controller(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:transmission_controller() instead.
-function EleringDashboardSDK:TransmissionController(data)
-  local EntityMod = require("entity.transmission_controller_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:umm_gas_controller():list() / client:umm_gas_controller():load({ id = ... })
-function EleringDashboardSDK:umm_gas_controller(data)
+-- Idiomatic facade: client:UmmGasController():list() / client:UmmGasController():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function EleringDashboardSDK:UmmGasController(data)
   local EntityMod = require("entity.umm_gas_controller_entity")
   if data == nil then
     if self._umm_gas_controller == nil then
@@ -674,15 +565,10 @@ function EleringDashboardSDK:umm_gas_controller(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:umm_gas_controller() instead.
-function EleringDashboardSDK:UmmGasController(data)
-  local EntityMod = require("entity.umm_gas_controller_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:umm_rss_feed_controller():list() / client:umm_rss_feed_controller():load({ id = ... })
-function EleringDashboardSDK:umm_rss_feed_controller(data)
+-- Idiomatic facade: client:UmmRssFeedController():list() / client:UmmRssFeedController():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function EleringDashboardSDK:UmmRssFeedController(data)
   local EntityMod = require("entity.umm_rss_feed_controller_entity")
   if data == nil then
     if self._umm_rss_feed_controller == nil then
@@ -690,12 +576,6 @@ function EleringDashboardSDK:umm_rss_feed_controller(data)
     end
     return self._umm_rss_feed_controller
   end
-  return EntityMod.new(self, data)
-end
-
--- Deprecated: use client:umm_rss_feed_controller() instead.
-function EleringDashboardSDK:UmmRssFeedController(data)
-  local EntityMod = require("entity.umm_rss_feed_controller_entity")
   return EntityMod.new(self, data)
 end
 

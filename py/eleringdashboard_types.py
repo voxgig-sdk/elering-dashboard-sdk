@@ -4,249 +4,205 @@
 # params (op.<name>.points[].args.params[]). Field/param types come from the
 # canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 # @voxgig/apidef VALID_CANON). Do not edit by hand.
+#
+# These are TypedDicts, not dataclasses: the SDK ops return/accept plain dicts
+# at runtime, and a TypedDict IS a dict shape, so the types match the runtime.
+# Optional (req:false) keys are modelled as TypedDict key-optionality
+# (total=False), split into a required base + total=False subclass when a type
+# has both required and optional keys.
 
 from __future__ import annotations
 
-from dataclasses import dataclass
-from typing import Optional, Any
+from typing import TypedDict, Any
 
 
-@dataclass
-class Balance:
+class Balance(TypedDict):
     pass
 
 
-@dataclass
-class BalanceLoadMatch:
+class BalanceLoadMatch(TypedDict):
     pass
 
 
-@dataclass
-class BalanceController:
+class BalanceController(TypedDict):
     pass
 
 
-@dataclass
-class BalanceControllerLoadMatch:
+class BalanceControllerLoadMatch(TypedDict):
     pass
 
 
-@dataclass
-class Firm:
+class Firm(TypedDict):
     pass
 
 
-@dataclass
-class FirmLoadMatch:
+class FirmLoadMatch(TypedDict):
     pass
 
 
-@dataclass
-class FirmCapacityController:
+class FirmCapacityController(TypedDict):
     pass
 
 
-@dataclass
-class FirmCapacityControllerLoadMatch:
+class FirmCapacityControllerLoadMatch(TypedDict):
     pass
 
 
-@dataclass
-class GasBalanceController:
+class GasBalanceController(TypedDict):
     pass
 
 
-@dataclass
-class GasBalanceControllerLoadMatch:
+class GasBalanceControllerLoadMatch(TypedDict):
     pass
 
 
-@dataclass
-class GasBorderTradeController:
+class GasBorderTradeController(TypedDict):
     pass
 
 
-@dataclass
-class GasBorderTradeControllerLoadMatch:
+class GasBorderTradeControllerLoadMatch(TypedDict):
     pass
 
 
-@dataclass
-class GasSystem:
+class GasSystem(TypedDict):
     pass
 
 
-@dataclass
-class GasSystemLoadMatch:
+class GasSystemLoadMatch(TypedDict):
     pass
 
 
-@dataclass
-class GasSystemController:
+class GasSystemController(TypedDict):
     pass
 
 
-@dataclass
-class GasSystemControllerLoadMatch:
+class GasSystemControllerLoadMatch(TypedDict):
     pass
 
 
-@dataclass
-class GasTrade:
+class GasTrade(TypedDict):
     pass
 
 
-@dataclass
-class GasTradeLoadMatch:
+class GasTradeLoadMatch(TypedDict):
     pass
 
 
-@dataclass
-class GasTradeController:
+class GasTradeController(TypedDict):
     pass
 
 
-@dataclass
-class GasTradeControllerLoadMatch:
+class GasTradeControllerLoadMatch(TypedDict):
     group: str
 
 
-@dataclass
-class GasTransmissionController:
+class GasTransmissionController(TypedDict):
     pass
 
 
-@dataclass
-class GasTransmissionControllerLoadMatch:
+class GasTransmissionControllerLoadMatch(TypedDict):
     pass
 
 
-@dataclass
-class GreenController:
+class GreenController(TypedDict):
     pass
 
 
-@dataclass
-class GreenControllerLoadMatch:
+class GreenControllerLoadMatch(TypedDict):
     pass
 
 
-@dataclass
-class Interruptible:
+class Interruptible(TypedDict):
     pass
 
 
-@dataclass
-class InterruptibleLoadMatch:
+class InterruptibleLoadMatch(TypedDict):
     pass
 
 
-@dataclass
-class InterruptibleCapacityController:
+class InterruptibleCapacityController(TypedDict):
     pass
 
 
-@dataclass
-class InterruptibleCapacityControllerLoadMatch:
+class InterruptibleCapacityControllerLoadMatch(TypedDict):
     pass
 
 
-@dataclass
-class Nomination:
+class Nomination(TypedDict):
     pass
 
 
-@dataclass
-class NominationLoadMatch:
+class NominationLoadMatch(TypedDict):
     pass
 
 
-@dataclass
-class NominationsController:
+class NominationsController(TypedDict):
     pass
 
 
-@dataclass
-class NominationsControllerLoadMatch:
+class NominationsControllerLoadMatch(TypedDict):
     pass
 
 
-@dataclass
-class NpsController:
+class NpsController(TypedDict):
     pass
 
 
-@dataclass
-class NpsControllerLoadMatch:
+class NpsControllerLoadMatch(TypedDict):
     group: str
 
 
-@dataclass
-class Renomination:
+class Renomination(TypedDict):
     pass
 
 
-@dataclass
-class RenominationLoadMatch:
+class RenominationLoadMatch(TypedDict):
     pass
 
 
-@dataclass
-class RenominationsController:
+class RenominationsController(TypedDict):
     pass
 
 
-@dataclass
-class RenominationsControllerLoadMatch:
+class RenominationsControllerLoadMatch(TypedDict):
     pass
 
 
-@dataclass
-class System:
+class System(TypedDict):
     pass
 
 
-@dataclass
-class SystemLoadMatch:
+class SystemLoadMatch(TypedDict):
     pass
 
 
-@dataclass
-class SystemController:
+class SystemController(TypedDict):
     pass
 
 
-@dataclass
-class SystemControllerLoadMatch:
+class SystemControllerLoadMatch(TypedDict):
     pass
 
 
-@dataclass
-class TransmissionController:
+class TransmissionController(TypedDict):
     pass
 
 
-@dataclass
-class TransmissionControllerLoadMatch:
+class TransmissionControllerLoadMatch(TypedDict):
     group: str
 
 
-@dataclass
-class UmmGasController:
+class UmmGasController(TypedDict):
     pass
 
 
-@dataclass
-class UmmGasControllerLoadMatch:
+class UmmGasControllerLoadMatch(TypedDict):
     pass
 
 
-@dataclass
-class UmmRssFeedController:
+class UmmRssFeedController(TypedDict):
     pass
 
 
-@dataclass
-class UmmRssFeedControllerLoadMatch:
+class UmmRssFeedControllerLoadMatch(TypedDict):
     pass
-

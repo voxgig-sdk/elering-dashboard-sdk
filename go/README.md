@@ -30,36 +30,30 @@ go mod edit -replace github.com/voxgig-sdk/elering-dashboard-sdk/go=../elering-d
 This tutorial walks through creating a client, listing entities, and
 loading a specific record.
 
-### 1. Create a client
+### Quickstart
+
+A complete program: create a client, then call the entity operations.
+Each operation returns `(value, error)` — the value is the data itself
+(there is no `{ok, data}` wrapper), so check `err` and use the value
+directly.
 
 ```go
 package main
 
 import (
     "fmt"
-
     sdk "github.com/voxgig-sdk/elering-dashboard-sdk/go"
-    "github.com/voxgig-sdk/elering-dashboard-sdk/go/core"
 )
 
 func main() {
     client := sdk.New()
-```
 
-### 3. Load a balance
-
-```go
-    result, err = client.Balance(nil).Load(
-        map[string]any{"id": "example_id"}, nil,
-    )
+    // Load a single balance — the value is the loaded record.
+    balance, err := client.Balance(nil).Load(map[string]any{"id": "example_id"}, nil)
     if err != nil {
         panic(err)
     }
-
-    rm = core.ToMapAny(result)
-    if rm["ok"] == true {
-        fmt.Println(rm["data"])
-    }
+    fmt.Println(balance)
 }
 ```
 
@@ -110,10 +104,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-result, err := client.Balance(nil).Load(
+balance, err := client.Balance(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
-// result contains mock response data
+if err != nil {
+    panic(err)
+}
+fmt.Println(balance) // the loaded mock data
 ```
 
 ### Use a custom fetch function
@@ -202,8 +199,8 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `GasTradeController` | `(data map[string]any) EleringDashboardEntity` | Create a GasTradeController entity instance. |
 | `GasTransmissionController` | `(data map[string]any) EleringDashboardEntity` | Create a GasTransmissionController entity instance. |
 | `GreenController` | `(data map[string]any) EleringDashboardEntity` | Create a GreenController entity instance. |
-| `Interruptible` | `(data map[string]any) EleringDashboardEntity` | Create a Interruptible entity instance. |
-| `InterruptibleCapacityController` | `(data map[string]any) EleringDashboardEntity` | Create a InterruptibleCapacityController entity instance. |
+| `Interruptible` | `(data map[string]any) EleringDashboardEntity` | Create an Interruptible entity instance. |
+| `InterruptibleCapacityController` | `(data map[string]any) EleringDashboardEntity` | Create an InterruptibleCapacityController entity instance. |
 | `Nomination` | `(data map[string]any) EleringDashboardEntity` | Create a Nomination entity instance. |
 | `NominationsController` | `(data map[string]any) EleringDashboardEntity` | Create a NominationsController entity instance. |
 | `NpsController` | `(data map[string]any) EleringDashboardEntity` | Create a NpsController entity instance. |
@@ -212,8 +209,8 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `System` | `(data map[string]any) EleringDashboardEntity` | Create a System entity instance. |
 | `SystemController` | `(data map[string]any) EleringDashboardEntity` | Create a SystemController entity instance. |
 | `TransmissionController` | `(data map[string]any) EleringDashboardEntity` | Create a TransmissionController entity instance. |
-| `UmmGasController` | `(data map[string]any) EleringDashboardEntity` | Create a UmmGasController entity instance. |
-| `UmmRssFeedController` | `(data map[string]any) EleringDashboardEntity` | Create a UmmRssFeedController entity instance. |
+| `UmmGasController` | `(data map[string]any) EleringDashboardEntity` | Create an UmmGasController entity instance. |
+| `UmmRssFeedController` | `(data map[string]any) EleringDashboardEntity` | Create an UmmRssFeedController entity instance. |
 
 ### Entity interface (EleringDashboardEntity)
 
@@ -233,17 +230,24 @@ All entities implement the `EleringDashboardEntity` interface.
 
 ### Result shape
 
-Entity operations return `(any, error)`. The `any` value is a
-`map[string]any` with these keys:
+Entity operations return `(value, error)`. The `value` is the
+operation's data **directly** — there is no wrapper:
 
-| Key | Type | Description |
-| --- | --- | --- |
-| `"ok"` | `bool` | `true` if the HTTP status is 2xx. |
-| `"status"` | `int` | HTTP status code. |
-| `"headers"` | `map[string]any` | Response headers. |
-| `"data"` | `any` | Parsed JSON response body. |
+| Operation | `value` |
+| --- | --- |
+| `Load` / `Create` / `Update` / `Remove` | the entity record (`map[string]any`) |
+| `List` | a `[]any` of entity records |
 
-On error, `"ok"` is `false` and `"err"` contains the error value.
+Check `err` first, then use the value directly (or the typed
+`...Typed` variants, which return the entity's model struct and a typed
+slice):
+
+    balance, err := client.Balance(nil).Load(map[string]any{"id": "example_id"}, nil)
+    if err != nil { /* handle */ }
+    // balance is the loaded record
+
+Only `Direct()` returns a response envelope — a `map[string]any` with
+`"ok"`, `"status"`, `"headers"`, and `"data"` keys.
 
 ### Entities
 
@@ -481,7 +485,11 @@ Create an instance: `balance := client.Balance(nil)`
 #### Example: Load
 
 ```go
-result, err := client.Balance(nil).Load(map[string]any{"id": "balance_id"}, nil)
+balance, err := client.Balance(nil).Load(map[string]any{"id": "balance_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(balance) // the loaded record
 ```
 
 
@@ -498,7 +506,11 @@ Create an instance: `balance_controller := client.BalanceController(nil)`
 #### Example: Load
 
 ```go
-result, err := client.BalanceController(nil).Load(map[string]any{"id": "balance_controller_id"}, nil)
+balance_controller, err := client.BalanceController(nil).Load(map[string]any{"id": "balance_controller_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(balance_controller) // the loaded record
 ```
 
 
@@ -515,7 +527,11 @@ Create an instance: `firm := client.Firm(nil)`
 #### Example: Load
 
 ```go
-result, err := client.Firm(nil).Load(map[string]any{"id": "firm_id"}, nil)
+firm, err := client.Firm(nil).Load(map[string]any{"id": "firm_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(firm) // the loaded record
 ```
 
 
@@ -532,7 +548,11 @@ Create an instance: `firm_capacity_controller := client.FirmCapacityController(n
 #### Example: Load
 
 ```go
-result, err := client.FirmCapacityController(nil).Load(map[string]any{"id": "firm_capacity_controller_id"}, nil)
+firm_capacity_controller, err := client.FirmCapacityController(nil).Load(map[string]any{"id": "firm_capacity_controller_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(firm_capacity_controller) // the loaded record
 ```
 
 
@@ -549,7 +569,11 @@ Create an instance: `gas_balance_controller := client.GasBalanceController(nil)`
 #### Example: Load
 
 ```go
-result, err := client.GasBalanceController(nil).Load(map[string]any{"id": "gas_balance_controller_id"}, nil)
+gas_balance_controller, err := client.GasBalanceController(nil).Load(map[string]any{"id": "gas_balance_controller_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(gas_balance_controller) // the loaded record
 ```
 
 
@@ -566,7 +590,11 @@ Create an instance: `gas_border_trade_controller := client.GasBorderTradeControl
 #### Example: Load
 
 ```go
-result, err := client.GasBorderTradeController(nil).Load(map[string]any{"id": "gas_border_trade_controller_id"}, nil)
+gas_border_trade_controller, err := client.GasBorderTradeController(nil).Load(map[string]any{"id": "gas_border_trade_controller_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(gas_border_trade_controller) // the loaded record
 ```
 
 
@@ -583,7 +611,11 @@ Create an instance: `gas_system := client.GasSystem(nil)`
 #### Example: Load
 
 ```go
-result, err := client.GasSystem(nil).Load(map[string]any{"id": "gas_system_id"}, nil)
+gas_system, err := client.GasSystem(nil).Load(map[string]any{"id": "gas_system_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(gas_system) // the loaded record
 ```
 
 
@@ -600,7 +632,11 @@ Create an instance: `gas_system_controller := client.GasSystemController(nil)`
 #### Example: Load
 
 ```go
-result, err := client.GasSystemController(nil).Load(map[string]any{"id": "gas_system_controller_id"}, nil)
+gas_system_controller, err := client.GasSystemController(nil).Load(map[string]any{"id": "gas_system_controller_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(gas_system_controller) // the loaded record
 ```
 
 
@@ -617,7 +653,11 @@ Create an instance: `gas_trade := client.GasTrade(nil)`
 #### Example: Load
 
 ```go
-result, err := client.GasTrade(nil).Load(map[string]any{"id": "gas_trade_id"}, nil)
+gas_trade, err := client.GasTrade(nil).Load(map[string]any{"id": "gas_trade_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(gas_trade) // the loaded record
 ```
 
 
@@ -634,7 +674,11 @@ Create an instance: `gas_trade_controller := client.GasTradeController(nil)`
 #### Example: Load
 
 ```go
-result, err := client.GasTradeController(nil).Load(map[string]any{"id": "gas_trade_controller_id"}, nil)
+gas_trade_controller, err := client.GasTradeController(nil).Load(map[string]any{"id": "gas_trade_controller_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(gas_trade_controller) // the loaded record
 ```
 
 
@@ -651,7 +695,11 @@ Create an instance: `gas_transmission_controller := client.GasTransmissionContro
 #### Example: Load
 
 ```go
-result, err := client.GasTransmissionController(nil).Load(map[string]any{"id": "gas_transmission_controller_id"}, nil)
+gas_transmission_controller, err := client.GasTransmissionController(nil).Load(map[string]any{"id": "gas_transmission_controller_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(gas_transmission_controller) // the loaded record
 ```
 
 
@@ -668,7 +716,11 @@ Create an instance: `green_controller := client.GreenController(nil)`
 #### Example: Load
 
 ```go
-result, err := client.GreenController(nil).Load(map[string]any{"id": "green_controller_id"}, nil)
+green_controller, err := client.GreenController(nil).Load(map[string]any{"id": "green_controller_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(green_controller) // the loaded record
 ```
 
 
@@ -685,7 +737,11 @@ Create an instance: `interruptible := client.Interruptible(nil)`
 #### Example: Load
 
 ```go
-result, err := client.Interruptible(nil).Load(map[string]any{"id": "interruptible_id"}, nil)
+interruptible, err := client.Interruptible(nil).Load(map[string]any{"id": "interruptible_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(interruptible) // the loaded record
 ```
 
 
@@ -702,7 +758,11 @@ Create an instance: `interruptible_capacity_controller := client.InterruptibleCa
 #### Example: Load
 
 ```go
-result, err := client.InterruptibleCapacityController(nil).Load(map[string]any{"id": "interruptible_capacity_controller_id"}, nil)
+interruptible_capacity_controller, err := client.InterruptibleCapacityController(nil).Load(map[string]any{"id": "interruptible_capacity_controller_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(interruptible_capacity_controller) // the loaded record
 ```
 
 
@@ -719,7 +779,11 @@ Create an instance: `nomination := client.Nomination(nil)`
 #### Example: Load
 
 ```go
-result, err := client.Nomination(nil).Load(map[string]any{"id": "nomination_id"}, nil)
+nomination, err := client.Nomination(nil).Load(map[string]any{"id": "nomination_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(nomination) // the loaded record
 ```
 
 
@@ -736,7 +800,11 @@ Create an instance: `nominations_controller := client.NominationsController(nil)
 #### Example: Load
 
 ```go
-result, err := client.NominationsController(nil).Load(map[string]any{"id": "nominations_controller_id"}, nil)
+nominations_controller, err := client.NominationsController(nil).Load(map[string]any{"id": "nominations_controller_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(nominations_controller) // the loaded record
 ```
 
 
@@ -753,7 +821,11 @@ Create an instance: `nps_controller := client.NpsController(nil)`
 #### Example: Load
 
 ```go
-result, err := client.NpsController(nil).Load(map[string]any{"id": "nps_controller_id"}, nil)
+nps_controller, err := client.NpsController(nil).Load(map[string]any{"id": "nps_controller_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(nps_controller) // the loaded record
 ```
 
 
@@ -770,7 +842,11 @@ Create an instance: `renomination := client.Renomination(nil)`
 #### Example: Load
 
 ```go
-result, err := client.Renomination(nil).Load(map[string]any{"id": "renomination_id"}, nil)
+renomination, err := client.Renomination(nil).Load(map[string]any{"id": "renomination_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(renomination) // the loaded record
 ```
 
 
@@ -787,7 +863,11 @@ Create an instance: `renominations_controller := client.RenominationsController(
 #### Example: Load
 
 ```go
-result, err := client.RenominationsController(nil).Load(map[string]any{"id": "renominations_controller_id"}, nil)
+renominations_controller, err := client.RenominationsController(nil).Load(map[string]any{"id": "renominations_controller_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(renominations_controller) // the loaded record
 ```
 
 
@@ -804,7 +884,11 @@ Create an instance: `system := client.System(nil)`
 #### Example: Load
 
 ```go
-result, err := client.System(nil).Load(map[string]any{"id": "system_id"}, nil)
+system, err := client.System(nil).Load(map[string]any{"id": "system_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(system) // the loaded record
 ```
 
 
@@ -821,7 +905,11 @@ Create an instance: `system_controller := client.SystemController(nil)`
 #### Example: Load
 
 ```go
-result, err := client.SystemController(nil).Load(map[string]any{"id": "system_controller_id"}, nil)
+system_controller, err := client.SystemController(nil).Load(map[string]any{"id": "system_controller_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(system_controller) // the loaded record
 ```
 
 
@@ -838,7 +926,11 @@ Create an instance: `transmission_controller := client.TransmissionController(ni
 #### Example: Load
 
 ```go
-result, err := client.TransmissionController(nil).Load(map[string]any{"id": "transmission_controller_id"}, nil)
+transmission_controller, err := client.TransmissionController(nil).Load(map[string]any{"id": "transmission_controller_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(transmission_controller) // the loaded record
 ```
 
 
@@ -855,7 +947,11 @@ Create an instance: `umm_gas_controller := client.UmmGasController(nil)`
 #### Example: Load
 
 ```go
-result, err := client.UmmGasController(nil).Load(map[string]any{"id": "umm_gas_controller_id"}, nil)
+umm_gas_controller, err := client.UmmGasController(nil).Load(map[string]any{"id": "umm_gas_controller_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(umm_gas_controller) // the loaded record
 ```
 
 
@@ -872,7 +968,11 @@ Create an instance: `umm_rss_feed_controller := client.UmmRssFeedController(nil)
 #### Example: Load
 
 ```go
-result, err := client.UmmRssFeedController(nil).Load(map[string]any{"id": "umm_rss_feed_controller_id"}, nil)
+umm_rss_feed_controller, err := client.UmmRssFeedController(nil).Load(map[string]any{"id": "umm_rss_feed_controller_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(umm_rss_feed_controller) // the loaded record
 ```
 
 

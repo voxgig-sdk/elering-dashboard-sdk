@@ -233,10 +233,10 @@ class EleringDashboardSDK
 
     private $_balance = null;
 
-    // Idiomatic facade: $client->balance()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Balance() (PHP method
-    // names are case-insensitive).
-    public function balance($data = null)
+    // Canonical facade: $client->Balance()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->balance()
+    // resolves here too.
+    public function Balance($data = null)
     {
         require_once __DIR__ . '/entity/balance_entity.php';
         if ($data === null) {
@@ -251,10 +251,10 @@ class EleringDashboardSDK
 
     private $_balance_controller = null;
 
-    // Idiomatic facade: $client->balance_controller()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias BalanceController() (PHP method
-    // names are case-insensitive).
-    public function balance_controller($data = null)
+    // Canonical facade: $client->BalanceController()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->balance_controller()
+    // resolves here too.
+    public function BalanceController($data = null)
     {
         require_once __DIR__ . '/entity/balance_controller_entity.php';
         if ($data === null) {
@@ -269,10 +269,10 @@ class EleringDashboardSDK
 
     private $_firm = null;
 
-    // Idiomatic facade: $client->firm()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Firm() (PHP method
-    // names are case-insensitive).
-    public function firm($data = null)
+    // Canonical facade: $client->Firm()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->firm()
+    // resolves here too.
+    public function Firm($data = null)
     {
         require_once __DIR__ . '/entity/firm_entity.php';
         if ($data === null) {
@@ -287,10 +287,10 @@ class EleringDashboardSDK
 
     private $_firm_capacity_controller = null;
 
-    // Idiomatic facade: $client->firm_capacity_controller()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias FirmCapacityController() (PHP method
-    // names are case-insensitive).
-    public function firm_capacity_controller($data = null)
+    // Canonical facade: $client->FirmCapacityController()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->firm_capacity_controller()
+    // resolves here too.
+    public function FirmCapacityController($data = null)
     {
         require_once __DIR__ . '/entity/firm_capacity_controller_entity.php';
         if ($data === null) {
@@ -305,10 +305,10 @@ class EleringDashboardSDK
 
     private $_gas_balance_controller = null;
 
-    // Idiomatic facade: $client->gas_balance_controller()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias GasBalanceController() (PHP method
-    // names are case-insensitive).
-    public function gas_balance_controller($data = null)
+    // Canonical facade: $client->GasBalanceController()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->gas_balance_controller()
+    // resolves here too.
+    public function GasBalanceController($data = null)
     {
         require_once __DIR__ . '/entity/gas_balance_controller_entity.php';
         if ($data === null) {
@@ -323,10 +323,10 @@ class EleringDashboardSDK
 
     private $_gas_border_trade_controller = null;
 
-    // Idiomatic facade: $client->gas_border_trade_controller()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias GasBorderTradeController() (PHP method
-    // names are case-insensitive).
-    public function gas_border_trade_controller($data = null)
+    // Canonical facade: $client->GasBorderTradeController()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->gas_border_trade_controller()
+    // resolves here too.
+    public function GasBorderTradeController($data = null)
     {
         require_once __DIR__ . '/entity/gas_border_trade_controller_entity.php';
         if ($data === null) {
@@ -341,10 +341,10 @@ class EleringDashboardSDK
 
     private $_gas_system = null;
 
-    // Idiomatic facade: $client->gas_system()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias GasSystem() (PHP method
-    // names are case-insensitive).
-    public function gas_system($data = null)
+    // Canonical facade: $client->GasSystem()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->gas_system()
+    // resolves here too.
+    public function GasSystem($data = null)
     {
         require_once __DIR__ . '/entity/gas_system_entity.php';
         if ($data === null) {
@@ -359,10 +359,10 @@ class EleringDashboardSDK
 
     private $_gas_system_controller = null;
 
-    // Idiomatic facade: $client->gas_system_controller()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias GasSystemController() (PHP method
-    // names are case-insensitive).
-    public function gas_system_controller($data = null)
+    // Canonical facade: $client->GasSystemController()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->gas_system_controller()
+    // resolves here too.
+    public function GasSystemController($data = null)
     {
         require_once __DIR__ . '/entity/gas_system_controller_entity.php';
         if ($data === null) {
@@ -377,10 +377,10 @@ class EleringDashboardSDK
 
     private $_gas_trade = null;
 
-    // Idiomatic facade: $client->gas_trade()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias GasTrade() (PHP method
-    // names are case-insensitive).
-    public function gas_trade($data = null)
+    // Canonical facade: $client->GasTrade()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->gas_trade()
+    // resolves here too.
+    public function GasTrade($data = null)
     {
         require_once __DIR__ . '/entity/gas_trade_entity.php';
         if ($data === null) {
@@ -395,10 +395,10 @@ class EleringDashboardSDK
 
     private $_gas_trade_controller = null;
 
-    // Idiomatic facade: $client->gas_trade_controller()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias GasTradeController() (PHP method
-    // names are case-insensitive).
-    public function gas_trade_controller($data = null)
+    // Canonical facade: $client->GasTradeController()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->gas_trade_controller()
+    // resolves here too.
+    public function GasTradeController($data = null)
     {
         require_once __DIR__ . '/entity/gas_trade_controller_entity.php';
         if ($data === null) {
@@ -413,10 +413,10 @@ class EleringDashboardSDK
 
     private $_gas_transmission_controller = null;
 
-    // Idiomatic facade: $client->gas_transmission_controller()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias GasTransmissionController() (PHP method
-    // names are case-insensitive).
-    public function gas_transmission_controller($data = null)
+    // Canonical facade: $client->GasTransmissionController()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->gas_transmission_controller()
+    // resolves here too.
+    public function GasTransmissionController($data = null)
     {
         require_once __DIR__ . '/entity/gas_transmission_controller_entity.php';
         if ($data === null) {
@@ -431,10 +431,10 @@ class EleringDashboardSDK
 
     private $_green_controller = null;
 
-    // Idiomatic facade: $client->green_controller()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias GreenController() (PHP method
-    // names are case-insensitive).
-    public function green_controller($data = null)
+    // Canonical facade: $client->GreenController()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->green_controller()
+    // resolves here too.
+    public function GreenController($data = null)
     {
         require_once __DIR__ . '/entity/green_controller_entity.php';
         if ($data === null) {
@@ -449,10 +449,10 @@ class EleringDashboardSDK
 
     private $_interruptible = null;
 
-    // Idiomatic facade: $client->interruptible()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Interruptible() (PHP method
-    // names are case-insensitive).
-    public function interruptible($data = null)
+    // Canonical facade: $client->Interruptible()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->interruptible()
+    // resolves here too.
+    public function Interruptible($data = null)
     {
         require_once __DIR__ . '/entity/interruptible_entity.php';
         if ($data === null) {
@@ -467,10 +467,10 @@ class EleringDashboardSDK
 
     private $_interruptible_capacity_controller = null;
 
-    // Idiomatic facade: $client->interruptible_capacity_controller()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias InterruptibleCapacityController() (PHP method
-    // names are case-insensitive).
-    public function interruptible_capacity_controller($data = null)
+    // Canonical facade: $client->InterruptibleCapacityController()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->interruptible_capacity_controller()
+    // resolves here too.
+    public function InterruptibleCapacityController($data = null)
     {
         require_once __DIR__ . '/entity/interruptible_capacity_controller_entity.php';
         if ($data === null) {
@@ -485,10 +485,10 @@ class EleringDashboardSDK
 
     private $_nomination = null;
 
-    // Idiomatic facade: $client->nomination()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Nomination() (PHP method
-    // names are case-insensitive).
-    public function nomination($data = null)
+    // Canonical facade: $client->Nomination()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->nomination()
+    // resolves here too.
+    public function Nomination($data = null)
     {
         require_once __DIR__ . '/entity/nomination_entity.php';
         if ($data === null) {
@@ -503,10 +503,10 @@ class EleringDashboardSDK
 
     private $_nominations_controller = null;
 
-    // Idiomatic facade: $client->nominations_controller()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias NominationsController() (PHP method
-    // names are case-insensitive).
-    public function nominations_controller($data = null)
+    // Canonical facade: $client->NominationsController()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->nominations_controller()
+    // resolves here too.
+    public function NominationsController($data = null)
     {
         require_once __DIR__ . '/entity/nominations_controller_entity.php';
         if ($data === null) {
@@ -521,10 +521,10 @@ class EleringDashboardSDK
 
     private $_nps_controller = null;
 
-    // Idiomatic facade: $client->nps_controller()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias NpsController() (PHP method
-    // names are case-insensitive).
-    public function nps_controller($data = null)
+    // Canonical facade: $client->NpsController()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->nps_controller()
+    // resolves here too.
+    public function NpsController($data = null)
     {
         require_once __DIR__ . '/entity/nps_controller_entity.php';
         if ($data === null) {
@@ -539,10 +539,10 @@ class EleringDashboardSDK
 
     private $_renomination = null;
 
-    // Idiomatic facade: $client->renomination()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Renomination() (PHP method
-    // names are case-insensitive).
-    public function renomination($data = null)
+    // Canonical facade: $client->Renomination()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->renomination()
+    // resolves here too.
+    public function Renomination($data = null)
     {
         require_once __DIR__ . '/entity/renomination_entity.php';
         if ($data === null) {
@@ -557,10 +557,10 @@ class EleringDashboardSDK
 
     private $_renominations_controller = null;
 
-    // Idiomatic facade: $client->renominations_controller()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias RenominationsController() (PHP method
-    // names are case-insensitive).
-    public function renominations_controller($data = null)
+    // Canonical facade: $client->RenominationsController()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->renominations_controller()
+    // resolves here too.
+    public function RenominationsController($data = null)
     {
         require_once __DIR__ . '/entity/renominations_controller_entity.php';
         if ($data === null) {
@@ -575,10 +575,10 @@ class EleringDashboardSDK
 
     private $_system = null;
 
-    // Idiomatic facade: $client->system()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias System() (PHP method
-    // names are case-insensitive).
-    public function system($data = null)
+    // Canonical facade: $client->System()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->system()
+    // resolves here too.
+    public function System($data = null)
     {
         require_once __DIR__ . '/entity/system_entity.php';
         if ($data === null) {
@@ -593,10 +593,10 @@ class EleringDashboardSDK
 
     private $_system_controller = null;
 
-    // Idiomatic facade: $client->system_controller()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias SystemController() (PHP method
-    // names are case-insensitive).
-    public function system_controller($data = null)
+    // Canonical facade: $client->SystemController()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->system_controller()
+    // resolves here too.
+    public function SystemController($data = null)
     {
         require_once __DIR__ . '/entity/system_controller_entity.php';
         if ($data === null) {
@@ -611,10 +611,10 @@ class EleringDashboardSDK
 
     private $_transmission_controller = null;
 
-    // Idiomatic facade: $client->transmission_controller()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias TransmissionController() (PHP method
-    // names are case-insensitive).
-    public function transmission_controller($data = null)
+    // Canonical facade: $client->TransmissionController()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->transmission_controller()
+    // resolves here too.
+    public function TransmissionController($data = null)
     {
         require_once __DIR__ . '/entity/transmission_controller_entity.php';
         if ($data === null) {
@@ -629,10 +629,10 @@ class EleringDashboardSDK
 
     private $_umm_gas_controller = null;
 
-    // Idiomatic facade: $client->umm_gas_controller()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias UmmGasController() (PHP method
-    // names are case-insensitive).
-    public function umm_gas_controller($data = null)
+    // Canonical facade: $client->UmmGasController()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->umm_gas_controller()
+    // resolves here too.
+    public function UmmGasController($data = null)
     {
         require_once __DIR__ . '/entity/umm_gas_controller_entity.php';
         if ($data === null) {
@@ -647,10 +647,10 @@ class EleringDashboardSDK
 
     private $_umm_rss_feed_controller = null;
 
-    // Idiomatic facade: $client->umm_rss_feed_controller()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias UmmRssFeedController() (PHP method
-    // names are case-insensitive).
-    public function umm_rss_feed_controller($data = null)
+    // Canonical facade: $client->UmmRssFeedController()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->umm_rss_feed_controller()
+    // resolves here too.
+    public function UmmRssFeedController($data = null)
     {
         require_once __DIR__ . '/entity/umm_rss_feed_controller_entity.php';
         if ($data === null) {

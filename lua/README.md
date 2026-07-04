@@ -34,9 +34,9 @@ local client = sdk.new()
 ### 3. Load a balance
 
 ```lua
-local result, err = client:balance():load({ id = "example_id" })
+local balance, err = client:Balance():load({ id = "example_id" })
 if err then error(err) end
-print(result)
+print(balance)
 ```
 
 
@@ -82,8 +82,8 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:balance():load({ id = "test01" })
--- result contains mock response data
+local result, err = client:Balance():load({ id = "test01" })
+-- result is the loaded data; err is set on failure
 ```
 
 ### Use a custom fetch function
@@ -173,8 +173,8 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `GasTradeController` | `(data) -> GasTradeControllerEntity` | Create a GasTradeController entity instance. |
 | `GasTransmissionController` | `(data) -> GasTransmissionControllerEntity` | Create a GasTransmissionController entity instance. |
 | `GreenController` | `(data) -> GreenControllerEntity` | Create a GreenController entity instance. |
-| `Interruptible` | `(data) -> InterruptibleEntity` | Create a Interruptible entity instance. |
-| `InterruptibleCapacityController` | `(data) -> InterruptibleCapacityControllerEntity` | Create a InterruptibleCapacityController entity instance. |
+| `Interruptible` | `(data) -> InterruptibleEntity` | Create an Interruptible entity instance. |
+| `InterruptibleCapacityController` | `(data) -> InterruptibleCapacityControllerEntity` | Create an InterruptibleCapacityController entity instance. |
 | `Nomination` | `(data) -> NominationEntity` | Create a Nomination entity instance. |
 | `NominationsController` | `(data) -> NominationsControllerEntity` | Create a NominationsController entity instance. |
 | `NpsController` | `(data) -> NpsControllerEntity` | Create a NpsController entity instance. |
@@ -183,8 +183,8 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `System` | `(data) -> SystemEntity` | Create a System entity instance. |
 | `SystemController` | `(data) -> SystemControllerEntity` | Create a SystemController entity instance. |
 | `TransmissionController` | `(data) -> TransmissionControllerEntity` | Create a TransmissionController entity instance. |
-| `UmmGasController` | `(data) -> UmmGasControllerEntity` | Create a UmmGasController entity instance. |
-| `UmmRssFeedController` | `(data) -> UmmRssFeedControllerEntity` | Create a UmmRssFeedController entity instance. |
+| `UmmGasController` | `(data) -> UmmGasControllerEntity` | Create an UmmGasController entity instance. |
+| `UmmRssFeedController` | `(data) -> UmmRssFeedControllerEntity` | Create an UmmRssFeedController entity instance. |
 
 ### Entity interface
 
@@ -206,17 +206,22 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `(any, err)`. The first value is a
-`table` with these keys:
+Entity operations return `(value, err)`. The `value` is the operation's
+data **directly** — there is no wrapper:
 
-| Key | Type | Description |
-| --- | --- | --- |
-| `ok` | `boolean` | `true` if the HTTP status is 2xx. |
-| `status` | `number` | HTTP status code. |
-| `headers` | `table` | Response headers. |
-| `data` | `any` | Parsed JSON response body. |
+| Operation | `value` |
+| --- | --- |
+| `load` / `create` / `update` / `remove` | the entity record (a `table`) |
+| `list` | an array (`table`) of entity records |
 
-On error, `ok` is `false` and `err` contains the error value.
+Check `err` first (it is non-`nil` on failure), then use `value`:
+
+    local balance, err = client:Balance():load({ id = "example_id" })
+    if err then error(err) end
+    -- balance is the loaded record
+
+Only `direct()` returns a response envelope — a `table` with `ok`,
+`status`, `headers`, and `data` keys.
 
 ### Entities
 
@@ -443,7 +448,7 @@ API path: `/umm/gas/rss`
 
 ### Balance
 
-Create an instance: `const balance = client.balance`
+Create an instance: `local balance = client:Balance(nil)`
 
 #### Operations
 
@@ -453,14 +458,14 @@ Create an instance: `const balance = client.balance`
 
 #### Example: Load
 
-```ts
-const balance = await client.balance.load({ id: 'balance_id' })
+```lua
+local balance, err = client:Balance():load({ id = "balance_id" })
 ```
 
 
 ### BalanceController
 
-Create an instance: `const balance_controller = client.balance_controller`
+Create an instance: `local balance_controller = client:BalanceController(nil)`
 
 #### Operations
 
@@ -470,14 +475,14 @@ Create an instance: `const balance_controller = client.balance_controller`
 
 #### Example: Load
 
-```ts
-const balance_controller = await client.balance_controller.load({ id: 'balance_controller_id' })
+```lua
+local balance_controller, err = client:BalanceController():load({ id = "balance_controller_id" })
 ```
 
 
 ### Firm
 
-Create an instance: `const firm = client.firm`
+Create an instance: `local firm = client:Firm(nil)`
 
 #### Operations
 
@@ -487,14 +492,14 @@ Create an instance: `const firm = client.firm`
 
 #### Example: Load
 
-```ts
-const firm = await client.firm.load({ id: 'firm_id' })
+```lua
+local firm, err = client:Firm():load({ id = "firm_id" })
 ```
 
 
 ### FirmCapacityController
 
-Create an instance: `const firm_capacity_controller = client.firm_capacity_controller`
+Create an instance: `local firm_capacity_controller = client:FirmCapacityController(nil)`
 
 #### Operations
 
@@ -504,14 +509,14 @@ Create an instance: `const firm_capacity_controller = client.firm_capacity_contr
 
 #### Example: Load
 
-```ts
-const firm_capacity_controller = await client.firm_capacity_controller.load({ id: 'firm_capacity_controller_id' })
+```lua
+local firm_capacity_controller, err = client:FirmCapacityController():load({ id = "firm_capacity_controller_id" })
 ```
 
 
 ### GasBalanceController
 
-Create an instance: `const gas_balance_controller = client.gas_balance_controller`
+Create an instance: `local gas_balance_controller = client:GasBalanceController(nil)`
 
 #### Operations
 
@@ -521,14 +526,14 @@ Create an instance: `const gas_balance_controller = client.gas_balance_controlle
 
 #### Example: Load
 
-```ts
-const gas_balance_controller = await client.gas_balance_controller.load({ id: 'gas_balance_controller_id' })
+```lua
+local gas_balance_controller, err = client:GasBalanceController():load({ id = "gas_balance_controller_id" })
 ```
 
 
 ### GasBorderTradeController
 
-Create an instance: `const gas_border_trade_controller = client.gas_border_trade_controller`
+Create an instance: `local gas_border_trade_controller = client:GasBorderTradeController(nil)`
 
 #### Operations
 
@@ -538,14 +543,14 @@ Create an instance: `const gas_border_trade_controller = client.gas_border_trade
 
 #### Example: Load
 
-```ts
-const gas_border_trade_controller = await client.gas_border_trade_controller.load({ id: 'gas_border_trade_controller_id' })
+```lua
+local gas_border_trade_controller, err = client:GasBorderTradeController():load({ id = "gas_border_trade_controller_id" })
 ```
 
 
 ### GasSystem
 
-Create an instance: `const gas_system = client.gas_system`
+Create an instance: `local gas_system = client:GasSystem(nil)`
 
 #### Operations
 
@@ -555,14 +560,14 @@ Create an instance: `const gas_system = client.gas_system`
 
 #### Example: Load
 
-```ts
-const gas_system = await client.gas_system.load({ id: 'gas_system_id' })
+```lua
+local gas_system, err = client:GasSystem():load({ id = "gas_system_id" })
 ```
 
 
 ### GasSystemController
 
-Create an instance: `const gas_system_controller = client.gas_system_controller`
+Create an instance: `local gas_system_controller = client:GasSystemController(nil)`
 
 #### Operations
 
@@ -572,14 +577,14 @@ Create an instance: `const gas_system_controller = client.gas_system_controller`
 
 #### Example: Load
 
-```ts
-const gas_system_controller = await client.gas_system_controller.load({ id: 'gas_system_controller_id' })
+```lua
+local gas_system_controller, err = client:GasSystemController():load({ id = "gas_system_controller_id" })
 ```
 
 
 ### GasTrade
 
-Create an instance: `const gas_trade = client.gas_trade`
+Create an instance: `local gas_trade = client:GasTrade(nil)`
 
 #### Operations
 
@@ -589,14 +594,14 @@ Create an instance: `const gas_trade = client.gas_trade`
 
 #### Example: Load
 
-```ts
-const gas_trade = await client.gas_trade.load({ id: 'gas_trade_id' })
+```lua
+local gas_trade, err = client:GasTrade():load({ id = "gas_trade_id" })
 ```
 
 
 ### GasTradeController
 
-Create an instance: `const gas_trade_controller = client.gas_trade_controller`
+Create an instance: `local gas_trade_controller = client:GasTradeController(nil)`
 
 #### Operations
 
@@ -606,14 +611,14 @@ Create an instance: `const gas_trade_controller = client.gas_trade_controller`
 
 #### Example: Load
 
-```ts
-const gas_trade_controller = await client.gas_trade_controller.load({ id: 'gas_trade_controller_id' })
+```lua
+local gas_trade_controller, err = client:GasTradeController():load({ id = "gas_trade_controller_id" })
 ```
 
 
 ### GasTransmissionController
 
-Create an instance: `const gas_transmission_controller = client.gas_transmission_controller`
+Create an instance: `local gas_transmission_controller = client:GasTransmissionController(nil)`
 
 #### Operations
 
@@ -623,14 +628,14 @@ Create an instance: `const gas_transmission_controller = client.gas_transmission
 
 #### Example: Load
 
-```ts
-const gas_transmission_controller = await client.gas_transmission_controller.load({ id: 'gas_transmission_controller_id' })
+```lua
+local gas_transmission_controller, err = client:GasTransmissionController():load({ id = "gas_transmission_controller_id" })
 ```
 
 
 ### GreenController
 
-Create an instance: `const green_controller = client.green_controller`
+Create an instance: `local green_controller = client:GreenController(nil)`
 
 #### Operations
 
@@ -640,14 +645,14 @@ Create an instance: `const green_controller = client.green_controller`
 
 #### Example: Load
 
-```ts
-const green_controller = await client.green_controller.load({ id: 'green_controller_id' })
+```lua
+local green_controller, err = client:GreenController():load({ id = "green_controller_id" })
 ```
 
 
 ### Interruptible
 
-Create an instance: `const interruptible = client.interruptible`
+Create an instance: `local interruptible = client:Interruptible(nil)`
 
 #### Operations
 
@@ -657,14 +662,14 @@ Create an instance: `const interruptible = client.interruptible`
 
 #### Example: Load
 
-```ts
-const interruptible = await client.interruptible.load({ id: 'interruptible_id' })
+```lua
+local interruptible, err = client:Interruptible():load({ id = "interruptible_id" })
 ```
 
 
 ### InterruptibleCapacityController
 
-Create an instance: `const interruptible_capacity_controller = client.interruptible_capacity_controller`
+Create an instance: `local interruptible_capacity_controller = client:InterruptibleCapacityController(nil)`
 
 #### Operations
 
@@ -674,14 +679,14 @@ Create an instance: `const interruptible_capacity_controller = client.interrupti
 
 #### Example: Load
 
-```ts
-const interruptible_capacity_controller = await client.interruptible_capacity_controller.load({ id: 'interruptible_capacity_controller_id' })
+```lua
+local interruptible_capacity_controller, err = client:InterruptibleCapacityController():load({ id = "interruptible_capacity_controller_id" })
 ```
 
 
 ### Nomination
 
-Create an instance: `const nomination = client.nomination`
+Create an instance: `local nomination = client:Nomination(nil)`
 
 #### Operations
 
@@ -691,14 +696,14 @@ Create an instance: `const nomination = client.nomination`
 
 #### Example: Load
 
-```ts
-const nomination = await client.nomination.load({ id: 'nomination_id' })
+```lua
+local nomination, err = client:Nomination():load({ id = "nomination_id" })
 ```
 
 
 ### NominationsController
 
-Create an instance: `const nominations_controller = client.nominations_controller`
+Create an instance: `local nominations_controller = client:NominationsController(nil)`
 
 #### Operations
 
@@ -708,14 +713,14 @@ Create an instance: `const nominations_controller = client.nominations_controlle
 
 #### Example: Load
 
-```ts
-const nominations_controller = await client.nominations_controller.load({ id: 'nominations_controller_id' })
+```lua
+local nominations_controller, err = client:NominationsController():load({ id = "nominations_controller_id" })
 ```
 
 
 ### NpsController
 
-Create an instance: `const nps_controller = client.nps_controller`
+Create an instance: `local nps_controller = client:NpsController(nil)`
 
 #### Operations
 
@@ -725,14 +730,14 @@ Create an instance: `const nps_controller = client.nps_controller`
 
 #### Example: Load
 
-```ts
-const nps_controller = await client.nps_controller.load({ id: 'nps_controller_id' })
+```lua
+local nps_controller, err = client:NpsController():load({ id = "nps_controller_id" })
 ```
 
 
 ### Renomination
 
-Create an instance: `const renomination = client.renomination`
+Create an instance: `local renomination = client:Renomination(nil)`
 
 #### Operations
 
@@ -742,14 +747,14 @@ Create an instance: `const renomination = client.renomination`
 
 #### Example: Load
 
-```ts
-const renomination = await client.renomination.load({ id: 'renomination_id' })
+```lua
+local renomination, err = client:Renomination():load({ id = "renomination_id" })
 ```
 
 
 ### RenominationsController
 
-Create an instance: `const renominations_controller = client.renominations_controller`
+Create an instance: `local renominations_controller = client:RenominationsController(nil)`
 
 #### Operations
 
@@ -759,14 +764,14 @@ Create an instance: `const renominations_controller = client.renominations_contr
 
 #### Example: Load
 
-```ts
-const renominations_controller = await client.renominations_controller.load({ id: 'renominations_controller_id' })
+```lua
+local renominations_controller, err = client:RenominationsController():load({ id = "renominations_controller_id" })
 ```
 
 
 ### System
 
-Create an instance: `const system = client.system`
+Create an instance: `local system = client:System(nil)`
 
 #### Operations
 
@@ -776,14 +781,14 @@ Create an instance: `const system = client.system`
 
 #### Example: Load
 
-```ts
-const system = await client.system.load({ id: 'system_id' })
+```lua
+local system, err = client:System():load({ id = "system_id" })
 ```
 
 
 ### SystemController
 
-Create an instance: `const system_controller = client.system_controller`
+Create an instance: `local system_controller = client:SystemController(nil)`
 
 #### Operations
 
@@ -793,14 +798,14 @@ Create an instance: `const system_controller = client.system_controller`
 
 #### Example: Load
 
-```ts
-const system_controller = await client.system_controller.load({ id: 'system_controller_id' })
+```lua
+local system_controller, err = client:SystemController():load({ id = "system_controller_id" })
 ```
 
 
 ### TransmissionController
 
-Create an instance: `const transmission_controller = client.transmission_controller`
+Create an instance: `local transmission_controller = client:TransmissionController(nil)`
 
 #### Operations
 
@@ -810,14 +815,14 @@ Create an instance: `const transmission_controller = client.transmission_control
 
 #### Example: Load
 
-```ts
-const transmission_controller = await client.transmission_controller.load({ id: 'transmission_controller_id' })
+```lua
+local transmission_controller, err = client:TransmissionController():load({ id = "transmission_controller_id" })
 ```
 
 
 ### UmmGasController
 
-Create an instance: `const umm_gas_controller = client.umm_gas_controller`
+Create an instance: `local umm_gas_controller = client:UmmGasController(nil)`
 
 #### Operations
 
@@ -827,14 +832,14 @@ Create an instance: `const umm_gas_controller = client.umm_gas_controller`
 
 #### Example: Load
 
-```ts
-const umm_gas_controller = await client.umm_gas_controller.load({ id: 'umm_gas_controller_id' })
+```lua
+local umm_gas_controller, err = client:UmmGasController():load({ id = "umm_gas_controller_id" })
 ```
 
 
 ### UmmRssFeedController
 
-Create an instance: `const umm_rss_feed_controller = client.umm_rss_feed_controller`
+Create an instance: `local umm_rss_feed_controller = client:UmmRssFeedController(nil)`
 
 #### Operations
 
@@ -844,8 +849,8 @@ Create an instance: `const umm_rss_feed_controller = client.umm_rss_feed_control
 
 #### Example: Load
 
-```ts
-const umm_rss_feed_controller = await client.umm_rss_feed_controller.load({ id: 'umm_rss_feed_controller_id' })
+```lua
+local umm_rss_feed_controller, err = client:UmmRssFeedController():load({ id = "umm_rss_feed_controller_id" })
 ```
 
 
@@ -920,7 +925,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local balance = client:balance()
+local balance = client:Balance()
 balance:load({ id = "example_id" })
 
 -- balance:data_get() now returns the loaded balance data

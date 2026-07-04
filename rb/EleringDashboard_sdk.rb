@@ -208,312 +208,168 @@ class EleringDashboardSDK
   end
 
 
-  # Idiomatic facade: client.balance.list / client.balance.load({ "id" => ... })
-  def balance
-    require_relative 'entity/balance_entity'
-    @balance ||= BalanceEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.balance instead.
+  # Canonical facade: client.Balance.list / client.Balance.load({ "id" => ... })
   def Balance(data = nil)
     require_relative 'entity/balance_entity'
     BalanceEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.balance_controller.list / client.balance_controller.load({ "id" => ... })
-  def balance_controller
-    require_relative 'entity/balance_controller_entity'
-    @balance_controller ||= BalanceControllerEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.balance_controller instead.
+  # Canonical facade: client.BalanceController.list / client.BalanceController.load({ "id" => ... })
   def BalanceController(data = nil)
     require_relative 'entity/balance_controller_entity'
     BalanceControllerEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.firm.list / client.firm.load({ "id" => ... })
-  def firm
-    require_relative 'entity/firm_entity'
-    @firm ||= FirmEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.firm instead.
+  # Canonical facade: client.Firm.list / client.Firm.load({ "id" => ... })
   def Firm(data = nil)
     require_relative 'entity/firm_entity'
     FirmEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.firm_capacity_controller.list / client.firm_capacity_controller.load({ "id" => ... })
-  def firm_capacity_controller
-    require_relative 'entity/firm_capacity_controller_entity'
-    @firm_capacity_controller ||= FirmCapacityControllerEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.firm_capacity_controller instead.
+  # Canonical facade: client.FirmCapacityController.list / client.FirmCapacityController.load({ "id" => ... })
   def FirmCapacityController(data = nil)
     require_relative 'entity/firm_capacity_controller_entity'
     FirmCapacityControllerEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.gas_balance_controller.list / client.gas_balance_controller.load({ "id" => ... })
-  def gas_balance_controller
-    require_relative 'entity/gas_balance_controller_entity'
-    @gas_balance_controller ||= GasBalanceControllerEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.gas_balance_controller instead.
+  # Canonical facade: client.GasBalanceController.list / client.GasBalanceController.load({ "id" => ... })
   def GasBalanceController(data = nil)
     require_relative 'entity/gas_balance_controller_entity'
     GasBalanceControllerEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.gas_border_trade_controller.list / client.gas_border_trade_controller.load({ "id" => ... })
-  def gas_border_trade_controller
-    require_relative 'entity/gas_border_trade_controller_entity'
-    @gas_border_trade_controller ||= GasBorderTradeControllerEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.gas_border_trade_controller instead.
+  # Canonical facade: client.GasBorderTradeController.list / client.GasBorderTradeController.load({ "id" => ... })
   def GasBorderTradeController(data = nil)
     require_relative 'entity/gas_border_trade_controller_entity'
     GasBorderTradeControllerEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.gas_system.list / client.gas_system.load({ "id" => ... })
-  def gas_system
-    require_relative 'entity/gas_system_entity'
-    @gas_system ||= GasSystemEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.gas_system instead.
+  # Canonical facade: client.GasSystem.list / client.GasSystem.load({ "id" => ... })
   def GasSystem(data = nil)
     require_relative 'entity/gas_system_entity'
     GasSystemEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.gas_system_controller.list / client.gas_system_controller.load({ "id" => ... })
-  def gas_system_controller
-    require_relative 'entity/gas_system_controller_entity'
-    @gas_system_controller ||= GasSystemControllerEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.gas_system_controller instead.
+  # Canonical facade: client.GasSystemController.list / client.GasSystemController.load({ "id" => ... })
   def GasSystemController(data = nil)
     require_relative 'entity/gas_system_controller_entity'
     GasSystemControllerEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.gas_trade.list / client.gas_trade.load({ "id" => ... })
-  def gas_trade
-    require_relative 'entity/gas_trade_entity'
-    @gas_trade ||= GasTradeEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.gas_trade instead.
+  # Canonical facade: client.GasTrade.list / client.GasTrade.load({ "id" => ... })
   def GasTrade(data = nil)
     require_relative 'entity/gas_trade_entity'
     GasTradeEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.gas_trade_controller.list / client.gas_trade_controller.load({ "id" => ... })
-  def gas_trade_controller
-    require_relative 'entity/gas_trade_controller_entity'
-    @gas_trade_controller ||= GasTradeControllerEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.gas_trade_controller instead.
+  # Canonical facade: client.GasTradeController.list / client.GasTradeController.load({ "id" => ... })
   def GasTradeController(data = nil)
     require_relative 'entity/gas_trade_controller_entity'
     GasTradeControllerEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.gas_transmission_controller.list / client.gas_transmission_controller.load({ "id" => ... })
-  def gas_transmission_controller
-    require_relative 'entity/gas_transmission_controller_entity'
-    @gas_transmission_controller ||= GasTransmissionControllerEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.gas_transmission_controller instead.
+  # Canonical facade: client.GasTransmissionController.list / client.GasTransmissionController.load({ "id" => ... })
   def GasTransmissionController(data = nil)
     require_relative 'entity/gas_transmission_controller_entity'
     GasTransmissionControllerEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.green_controller.list / client.green_controller.load({ "id" => ... })
-  def green_controller
-    require_relative 'entity/green_controller_entity'
-    @green_controller ||= GreenControllerEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.green_controller instead.
+  # Canonical facade: client.GreenController.list / client.GreenController.load({ "id" => ... })
   def GreenController(data = nil)
     require_relative 'entity/green_controller_entity'
     GreenControllerEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.interruptible.list / client.interruptible.load({ "id" => ... })
-  def interruptible
-    require_relative 'entity/interruptible_entity'
-    @interruptible ||= InterruptibleEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.interruptible instead.
+  # Canonical facade: client.Interruptible.list / client.Interruptible.load({ "id" => ... })
   def Interruptible(data = nil)
     require_relative 'entity/interruptible_entity'
     InterruptibleEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.interruptible_capacity_controller.list / client.interruptible_capacity_controller.load({ "id" => ... })
-  def interruptible_capacity_controller
-    require_relative 'entity/interruptible_capacity_controller_entity'
-    @interruptible_capacity_controller ||= InterruptibleCapacityControllerEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.interruptible_capacity_controller instead.
+  # Canonical facade: client.InterruptibleCapacityController.list / client.InterruptibleCapacityController.load({ "id" => ... })
   def InterruptibleCapacityController(data = nil)
     require_relative 'entity/interruptible_capacity_controller_entity'
     InterruptibleCapacityControllerEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.nomination.list / client.nomination.load({ "id" => ... })
-  def nomination
-    require_relative 'entity/nomination_entity'
-    @nomination ||= NominationEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.nomination instead.
+  # Canonical facade: client.Nomination.list / client.Nomination.load({ "id" => ... })
   def Nomination(data = nil)
     require_relative 'entity/nomination_entity'
     NominationEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.nominations_controller.list / client.nominations_controller.load({ "id" => ... })
-  def nominations_controller
-    require_relative 'entity/nominations_controller_entity'
-    @nominations_controller ||= NominationsControllerEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.nominations_controller instead.
+  # Canonical facade: client.NominationsController.list / client.NominationsController.load({ "id" => ... })
   def NominationsController(data = nil)
     require_relative 'entity/nominations_controller_entity'
     NominationsControllerEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.nps_controller.list / client.nps_controller.load({ "id" => ... })
-  def nps_controller
-    require_relative 'entity/nps_controller_entity'
-    @nps_controller ||= NpsControllerEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.nps_controller instead.
+  # Canonical facade: client.NpsController.list / client.NpsController.load({ "id" => ... })
   def NpsController(data = nil)
     require_relative 'entity/nps_controller_entity'
     NpsControllerEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.renomination.list / client.renomination.load({ "id" => ... })
-  def renomination
-    require_relative 'entity/renomination_entity'
-    @renomination ||= RenominationEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.renomination instead.
+  # Canonical facade: client.Renomination.list / client.Renomination.load({ "id" => ... })
   def Renomination(data = nil)
     require_relative 'entity/renomination_entity'
     RenominationEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.renominations_controller.list / client.renominations_controller.load({ "id" => ... })
-  def renominations_controller
-    require_relative 'entity/renominations_controller_entity'
-    @renominations_controller ||= RenominationsControllerEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.renominations_controller instead.
+  # Canonical facade: client.RenominationsController.list / client.RenominationsController.load({ "id" => ... })
   def RenominationsController(data = nil)
     require_relative 'entity/renominations_controller_entity'
     RenominationsControllerEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.system.list / client.system.load({ "id" => ... })
-  def system
-    require_relative 'entity/system_entity'
-    @system ||= SystemEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.system instead.
+  # Canonical facade: client.System.list / client.System.load({ "id" => ... })
   def System(data = nil)
     require_relative 'entity/system_entity'
     SystemEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.system_controller.list / client.system_controller.load({ "id" => ... })
-  def system_controller
-    require_relative 'entity/system_controller_entity'
-    @system_controller ||= SystemControllerEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.system_controller instead.
+  # Canonical facade: client.SystemController.list / client.SystemController.load({ "id" => ... })
   def SystemController(data = nil)
     require_relative 'entity/system_controller_entity'
     SystemControllerEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.transmission_controller.list / client.transmission_controller.load({ "id" => ... })
-  def transmission_controller
-    require_relative 'entity/transmission_controller_entity'
-    @transmission_controller ||= TransmissionControllerEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.transmission_controller instead.
+  # Canonical facade: client.TransmissionController.list / client.TransmissionController.load({ "id" => ... })
   def TransmissionController(data = nil)
     require_relative 'entity/transmission_controller_entity'
     TransmissionControllerEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.umm_gas_controller.list / client.umm_gas_controller.load({ "id" => ... })
-  def umm_gas_controller
-    require_relative 'entity/umm_gas_controller_entity'
-    @umm_gas_controller ||= UmmGasControllerEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.umm_gas_controller instead.
+  # Canonical facade: client.UmmGasController.list / client.UmmGasController.load({ "id" => ... })
   def UmmGasController(data = nil)
     require_relative 'entity/umm_gas_controller_entity'
     UmmGasControllerEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.umm_rss_feed_controller.list / client.umm_rss_feed_controller.load({ "id" => ... })
-  def umm_rss_feed_controller
-    require_relative 'entity/umm_rss_feed_controller_entity'
-    @umm_rss_feed_controller ||= UmmRssFeedControllerEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.umm_rss_feed_controller instead.
+  # Canonical facade: client.UmmRssFeedController.list / client.UmmRssFeedController.load({ "id" => ... })
   def UmmRssFeedController(data = nil)
     require_relative 'entity/umm_rss_feed_controller_entity'
     UmmRssFeedControllerEntity.new(self, data)

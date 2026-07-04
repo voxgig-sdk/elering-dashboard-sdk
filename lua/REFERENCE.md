@@ -175,7 +175,7 @@ same parameters as `direct()`.
 ## BalanceEntity
 
 ```lua
-local balance = client:balance(nil)
+local balance = client:Balance(nil)
 ```
 
 ### Operations
@@ -185,7 +185,7 @@ local balance = client:balance(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:balance():load({ id = "balance_id" })
+local result, err = client:Balance():load({ id = "balance_id" })
 ```
 
 ### Common Methods
@@ -221,7 +221,7 @@ Return the entity name.
 ## BalanceControllerEntity
 
 ```lua
-local balance_controller = client:balance_controller(nil)
+local balance_controller = client:BalanceController(nil)
 ```
 
 ### Operations
@@ -231,7 +231,7 @@ local balance_controller = client:balance_controller(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:balance_controller():load({ id = "balance_controller_id" })
+local result, err = client:BalanceController():load({ id = "balance_controller_id" })
 ```
 
 ### Common Methods
@@ -267,7 +267,7 @@ Return the entity name.
 ## FirmEntity
 
 ```lua
-local firm = client:firm(nil)
+local firm = client:Firm(nil)
 ```
 
 ### Operations
@@ -277,7 +277,7 @@ local firm = client:firm(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:firm():load({ id = "firm_id" })
+local result, err = client:Firm():load({ id = "firm_id" })
 ```
 
 ### Common Methods
@@ -313,7 +313,7 @@ Return the entity name.
 ## FirmCapacityControllerEntity
 
 ```lua
-local firm_capacity_controller = client:firm_capacity_controller(nil)
+local firm_capacity_controller = client:FirmCapacityController(nil)
 ```
 
 ### Operations
@@ -323,7 +323,7 @@ local firm_capacity_controller = client:firm_capacity_controller(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:firm_capacity_controller():load({ id = "firm_capacity_controller_id" })
+local result, err = client:FirmCapacityController():load({ id = "firm_capacity_controller_id" })
 ```
 
 ### Common Methods
@@ -359,7 +359,7 @@ Return the entity name.
 ## GasBalanceControllerEntity
 
 ```lua
-local gas_balance_controller = client:gas_balance_controller(nil)
+local gas_balance_controller = client:GasBalanceController(nil)
 ```
 
 ### Operations
@@ -369,7 +369,7 @@ local gas_balance_controller = client:gas_balance_controller(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:gas_balance_controller():load({ id = "gas_balance_controller_id" })
+local result, err = client:GasBalanceController():load({ id = "gas_balance_controller_id" })
 ```
 
 ### Common Methods
@@ -405,7 +405,7 @@ Return the entity name.
 ## GasBorderTradeControllerEntity
 
 ```lua
-local gas_border_trade_controller = client:gas_border_trade_controller(nil)
+local gas_border_trade_controller = client:GasBorderTradeController(nil)
 ```
 
 ### Operations
@@ -415,7 +415,7 @@ local gas_border_trade_controller = client:gas_border_trade_controller(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:gas_border_trade_controller():load({ id = "gas_border_trade_controller_id" })
+local result, err = client:GasBorderTradeController():load({ id = "gas_border_trade_controller_id" })
 ```
 
 ### Common Methods
@@ -451,7 +451,7 @@ Return the entity name.
 ## GasSystemEntity
 
 ```lua
-local gas_system = client:gas_system(nil)
+local gas_system = client:GasSystem(nil)
 ```
 
 ### Operations
@@ -461,7 +461,7 @@ local gas_system = client:gas_system(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:gas_system():load({ id = "gas_system_id" })
+local result, err = client:GasSystem():load({ id = "gas_system_id" })
 ```
 
 ### Common Methods
@@ -497,7 +497,7 @@ Return the entity name.
 ## GasSystemControllerEntity
 
 ```lua
-local gas_system_controller = client:gas_system_controller(nil)
+local gas_system_controller = client:GasSystemController(nil)
 ```
 
 ### Operations
@@ -507,7 +507,7 @@ local gas_system_controller = client:gas_system_controller(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:gas_system_controller():load({ id = "gas_system_controller_id" })
+local result, err = client:GasSystemController():load({ id = "gas_system_controller_id" })
 ```
 
 ### Common Methods
@@ -543,7 +543,7 @@ Return the entity name.
 ## GasTradeEntity
 
 ```lua
-local gas_trade = client:gas_trade(nil)
+local gas_trade = client:GasTrade(nil)
 ```
 
 ### Operations
@@ -553,7 +553,7 @@ local gas_trade = client:gas_trade(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:gas_trade():load({ id = "gas_trade_id" })
+local result, err = client:GasTrade():load({ id = "gas_trade_id" })
 ```
 
 ### Common Methods
@@ -589,7 +589,7 @@ Return the entity name.
 ## GasTradeControllerEntity
 
 ```lua
-local gas_trade_controller = client:gas_trade_controller(nil)
+local gas_trade_controller = client:GasTradeController(nil)
 ```
 
 ### Operations
@@ -599,7 +599,7 @@ local gas_trade_controller = client:gas_trade_controller(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:gas_trade_controller():load({ id = "gas_trade_controller_id" })
+local result, err = client:GasTradeController():load({ id = "gas_trade_controller_id" })
 ```
 
 ### Common Methods
@@ -635,7 +635,7 @@ Return the entity name.
 ## GasTransmissionControllerEntity
 
 ```lua
-local gas_transmission_controller = client:gas_transmission_controller(nil)
+local gas_transmission_controller = client:GasTransmissionController(nil)
 ```
 
 ### Operations
@@ -645,7 +645,7 @@ local gas_transmission_controller = client:gas_transmission_controller(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:gas_transmission_controller():load({ id = "gas_transmission_controller_id" })
+local result, err = client:GasTransmissionController():load({ id = "gas_transmission_controller_id" })
 ```
 
 ### Common Methods
@@ -681,7 +681,7 @@ Return the entity name.
 ## GreenControllerEntity
 
 ```lua
-local green_controller = client:green_controller(nil)
+local green_controller = client:GreenController(nil)
 ```
 
 ### Operations
@@ -691,7 +691,7 @@ local green_controller = client:green_controller(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:green_controller():load({ id = "green_controller_id" })
+local result, err = client:GreenController():load({ id = "green_controller_id" })
 ```
 
 ### Common Methods
@@ -727,7 +727,7 @@ Return the entity name.
 ## InterruptibleEntity
 
 ```lua
-local interruptible = client:interruptible(nil)
+local interruptible = client:Interruptible(nil)
 ```
 
 ### Operations
@@ -737,7 +737,7 @@ local interruptible = client:interruptible(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:interruptible():load({ id = "interruptible_id" })
+local result, err = client:Interruptible():load({ id = "interruptible_id" })
 ```
 
 ### Common Methods
@@ -773,7 +773,7 @@ Return the entity name.
 ## InterruptibleCapacityControllerEntity
 
 ```lua
-local interruptible_capacity_controller = client:interruptible_capacity_controller(nil)
+local interruptible_capacity_controller = client:InterruptibleCapacityController(nil)
 ```
 
 ### Operations
@@ -783,7 +783,7 @@ local interruptible_capacity_controller = client:interruptible_capacity_controll
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:interruptible_capacity_controller():load({ id = "interruptible_capacity_controller_id" })
+local result, err = client:InterruptibleCapacityController():load({ id = "interruptible_capacity_controller_id" })
 ```
 
 ### Common Methods
@@ -819,7 +819,7 @@ Return the entity name.
 ## NominationEntity
 
 ```lua
-local nomination = client:nomination(nil)
+local nomination = client:Nomination(nil)
 ```
 
 ### Operations
@@ -829,7 +829,7 @@ local nomination = client:nomination(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:nomination():load({ id = "nomination_id" })
+local result, err = client:Nomination():load({ id = "nomination_id" })
 ```
 
 ### Common Methods
@@ -865,7 +865,7 @@ Return the entity name.
 ## NominationsControllerEntity
 
 ```lua
-local nominations_controller = client:nominations_controller(nil)
+local nominations_controller = client:NominationsController(nil)
 ```
 
 ### Operations
@@ -875,7 +875,7 @@ local nominations_controller = client:nominations_controller(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:nominations_controller():load({ id = "nominations_controller_id" })
+local result, err = client:NominationsController():load({ id = "nominations_controller_id" })
 ```
 
 ### Common Methods
@@ -911,7 +911,7 @@ Return the entity name.
 ## NpsControllerEntity
 
 ```lua
-local nps_controller = client:nps_controller(nil)
+local nps_controller = client:NpsController(nil)
 ```
 
 ### Operations
@@ -921,7 +921,7 @@ local nps_controller = client:nps_controller(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:nps_controller():load({ id = "nps_controller_id" })
+local result, err = client:NpsController():load({ id = "nps_controller_id" })
 ```
 
 ### Common Methods
@@ -957,7 +957,7 @@ Return the entity name.
 ## RenominationEntity
 
 ```lua
-local renomination = client:renomination(nil)
+local renomination = client:Renomination(nil)
 ```
 
 ### Operations
@@ -967,7 +967,7 @@ local renomination = client:renomination(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:renomination():load({ id = "renomination_id" })
+local result, err = client:Renomination():load({ id = "renomination_id" })
 ```
 
 ### Common Methods
@@ -1003,7 +1003,7 @@ Return the entity name.
 ## RenominationsControllerEntity
 
 ```lua
-local renominations_controller = client:renominations_controller(nil)
+local renominations_controller = client:RenominationsController(nil)
 ```
 
 ### Operations
@@ -1013,7 +1013,7 @@ local renominations_controller = client:renominations_controller(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:renominations_controller():load({ id = "renominations_controller_id" })
+local result, err = client:RenominationsController():load({ id = "renominations_controller_id" })
 ```
 
 ### Common Methods
@@ -1049,7 +1049,7 @@ Return the entity name.
 ## SystemEntity
 
 ```lua
-local system = client:system(nil)
+local system = client:System(nil)
 ```
 
 ### Operations
@@ -1059,7 +1059,7 @@ local system = client:system(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:system():load({ id = "system_id" })
+local result, err = client:System():load({ id = "system_id" })
 ```
 
 ### Common Methods
@@ -1095,7 +1095,7 @@ Return the entity name.
 ## SystemControllerEntity
 
 ```lua
-local system_controller = client:system_controller(nil)
+local system_controller = client:SystemController(nil)
 ```
 
 ### Operations
@@ -1105,7 +1105,7 @@ local system_controller = client:system_controller(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:system_controller():load({ id = "system_controller_id" })
+local result, err = client:SystemController():load({ id = "system_controller_id" })
 ```
 
 ### Common Methods
@@ -1141,7 +1141,7 @@ Return the entity name.
 ## TransmissionControllerEntity
 
 ```lua
-local transmission_controller = client:transmission_controller(nil)
+local transmission_controller = client:TransmissionController(nil)
 ```
 
 ### Operations
@@ -1151,7 +1151,7 @@ local transmission_controller = client:transmission_controller(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:transmission_controller():load({ id = "transmission_controller_id" })
+local result, err = client:TransmissionController():load({ id = "transmission_controller_id" })
 ```
 
 ### Common Methods
@@ -1187,7 +1187,7 @@ Return the entity name.
 ## UmmGasControllerEntity
 
 ```lua
-local umm_gas_controller = client:umm_gas_controller(nil)
+local umm_gas_controller = client:UmmGasController(nil)
 ```
 
 ### Operations
@@ -1197,7 +1197,7 @@ local umm_gas_controller = client:umm_gas_controller(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:umm_gas_controller():load({ id = "umm_gas_controller_id" })
+local result, err = client:UmmGasController():load({ id = "umm_gas_controller_id" })
 ```
 
 ### Common Methods
@@ -1233,7 +1233,7 @@ Return the entity name.
 ## UmmRssFeedControllerEntity
 
 ```lua
-local umm_rss_feed_controller = client:umm_rss_feed_controller(nil)
+local umm_rss_feed_controller = client:UmmRssFeedController(nil)
 ```
 
 ### Operations
@@ -1243,7 +1243,7 @@ local umm_rss_feed_controller = client:umm_rss_feed_controller(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:umm_rss_feed_controller():load({ id = "umm_rss_feed_controller_id" })
+local result, err = client:UmmRssFeedController():load({ id = "umm_rss_feed_controller_id" })
 ```
 
 ### Common Methods

@@ -26,9 +26,9 @@ import { EleringDashboardSDK } from '@voxgig-sdk/elering-dashboard'
 
 const client = new EleringDashboardSDK()
 
-// Load balance data
-const balance = await client.balance.load({})
-console.log(balance.data)
+// Load balance data (returns a Balance)
+const balance = await client.Balance().load()
+console.log(balance)
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -107,8 +107,8 @@ from eleringdashboard_sdk import EleringDashboardSDK
 client = EleringDashboardSDK()
 
 
-# Load a specific balance
-balance = client.balance.load({"id": "example_id"})
+# Load a specific balance (returns the record, raises on error)
+balance = client.Balance().load({"id": "example_id"})
 print(balance)
 ```
 
@@ -121,8 +121,8 @@ require_once 'eleringdashboard_sdk.php';
 $client = new EleringDashboardSDK();
 
 
-// Load a specific balance
-$balance = $client->balance()->load(["id" => "example_id"]);
+// Load a specific balance (returns the bare record; throws on error)
+$balance = $client->Balance()->load(["id" => "example_id"]);
 print_r($balance);
 ```
 
@@ -146,8 +146,8 @@ require_relative "EleringDashboard_sdk"
 client = EleringDashboardSDK.new
 
 
-# Load a specific balance
-balance = client.balance.load({ "id" => "example_id" })
+# Load a specific balance (returns the bare record; raises on error)
+balance = client.Balance.load({ "id" => "example_id" })
 puts balance
 ```
 
@@ -160,7 +160,7 @@ local client = sdk.new()
 
 
 -- Load a specific balance
-local balance, err = client:balance():load({ id = "example_id" })
+local balance, err = client:Balance():load({ id = "example_id" })
 print(balance)
 ```
 
@@ -173,22 +173,27 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = EleringDashboardSDK.test()
-const result = await client.balance.load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+const balance = await client.Balance().load({ id: 'test01' })
+// balance is a bare Balance populated with mock data
+console.log(balance)
 ```
 
 ### Python
 
 ```python
 client = EleringDashboardSDK.test()
-result = client.balance.load({"id": "test01"})
+balance = client.Balance().load({"id": "test01"})
+print(balance)
 ```
 
 ### PHP
 
 ```php
-$client = EleringDashboardSDK::test();
-$result = $client->balance()->load(["id" => "test01"]);
+// Seed fixture data so offline calls resolve without a live server.
+$client = EleringDashboardSDK::test([
+    "entity" => ["balance" => ["test01" => ["id" => "test01"]]],
+]);
+$balance = $client->Balance()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -203,15 +208,18 @@ result, err := client.Balance(nil).Load(
 ### Ruby
 
 ```ruby
-client = EleringDashboardSDK.test
-result = client.balance.load({ "id" => "test01" })
+# Seed fixture data so offline calls resolve without a live server.
+client = EleringDashboardSDK.test({
+  "entity" => { "balance" => { "test01" => { "id" => "test01" } } },
+})
+balance = client.Balance.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:balance():load({ id = "test01" })
+local result, err = client:Balance():load({ id = "test01" })
 ```
 
 ## How it works
@@ -259,6 +267,9 @@ const result = await client.direct({
   method: 'GET',
   params: { id: 'example' },
 })
+if (result instanceof Error) {
+  throw result
+}
 console.log(result.data)
 ```
 
