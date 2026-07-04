@@ -14,9 +14,6 @@ local function make_config()
     },
     options = {
       base = "https://dashboard.elering.ee",
-      auth = {
-        prefix = "Bearer",
-      },
       headers = {
         ["content-type"] = "application/json",
       },
@@ -1203,6 +1200,7 @@ local function make_config()
                       ["orig"] = "group",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
+                      ["index$"] = 0,
                     },
                   },
                 },
@@ -1901,6 +1899,7 @@ local function make_config()
                       ["orig"] = "group",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
+                      ["index$"] = 0,
                     },
                   },
                 },
@@ -1935,6 +1934,7 @@ local function make_config()
                       ["orig"] = "group",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
+                      ["index$"] = 0,
                     },
                   },
                 },
@@ -1969,6 +1969,7 @@ local function make_config()
                       ["orig"] = "group",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
+                      ["index$"] = 0,
                     },
                   },
                 },
@@ -2393,6 +2394,7 @@ local function make_config()
                       ["orig"] = "group",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
+                      ["index$"] = 0,
                     },
                   },
                   ["query"] = {
@@ -2618,6 +2620,7 @@ local function make_config()
                       ["orig"] = "group",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
+                      ["index$"] = 0,
                     },
                   },
                   ["query"] = {

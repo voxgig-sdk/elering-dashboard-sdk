@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  GasTrade,
+  GasTradeLoadMatch,
+} from '../EleringDashboardTypes'
 
 // TODO: needs Entity superclass
-class GasTradeEntity extends EleringDashboardEntityBase {
+class GasTradeEntity extends EleringDashboardEntityBase<GasTrade> {
 
   constructor(client: EleringDashboardSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +36,7 @@ class GasTradeEntity extends EleringDashboardEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: GasTradeLoadMatch, ctrl?: Control): Promise<GasTrade> {
 
     const utility = this._utility
 
@@ -136,7 +140,9 @@ class GasTradeEntity extends EleringDashboardEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<GasTrade> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

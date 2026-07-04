@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch NominationsControllerLoadMatch
+---@param ctrl? table
+---@return NominationsController
+---@return string? err
 function NominationsControllerEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

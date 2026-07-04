@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  NominationsController,
+  NominationsControllerLoadMatch,
+} from '../EleringDashboardTypes'
 
 // TODO: needs Entity superclass
-class NominationsControllerEntity extends EleringDashboardEntityBase {
+class NominationsControllerEntity extends EleringDashboardEntityBase<NominationsController> {
 
   constructor(client: EleringDashboardSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +36,7 @@ class NominationsControllerEntity extends EleringDashboardEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: NominationsControllerLoadMatch, ctrl?: Control): Promise<NominationsController> {
 
     const utility = this._utility
 
@@ -136,7 +140,9 @@ class NominationsControllerEntity extends EleringDashboardEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<NominationsController> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

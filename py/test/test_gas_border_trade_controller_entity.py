@@ -49,8 +49,7 @@ class TestGasBorderTradeControllerEntity:
         # LOAD
         gas_border_trade_controller_ref01_ent = client.GasBorderTradeController(None)
         gas_border_trade_controller_ref01_match_dt0 = {}
-        gas_border_trade_controller_ref01_data_dt0_loaded, err = gas_border_trade_controller_ref01_ent.load(gas_border_trade_controller_ref01_match_dt0, None)
-        assert err is None
+        gas_border_trade_controller_ref01_data_dt0_loaded = gas_border_trade_controller_ref01_ent.load(gas_border_trade_controller_ref01_match_dt0, None)
         assert gas_border_trade_controller_ref01_data_dt0_loaded is not None
 
 
@@ -91,7 +90,6 @@ def _gas_border_trade_controller_basic_setup(extra):
         "ELERINGDASHBOARD_TEST_GAS_BORDER_TRADE_CONTROLLER_ENTID": idmap,
         "ELERINGDASHBOARD_TEST_LIVE": "FALSE",
         "ELERINGDASHBOARD_TEST_EXPLAIN": "FALSE",
-        "ELERINGDASHBOARD_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -102,7 +100,6 @@ def _gas_border_trade_controller_basic_setup(extra):
     if env.get("ELERINGDASHBOARD_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("ELERINGDASHBOARD_APIKEY"),
             },
             extra or {},
         ])

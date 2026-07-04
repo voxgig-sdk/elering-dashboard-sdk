@@ -85,6 +85,27 @@ func (e *GreenControllerEntity) Match(args ...any) any {
 	return out
 }
 
+// DataTyped is the statically-typed accessor for this entity's data. With no
+// argument it returns the current data as an GreenController; with an argument it
+// sets the data and returns the stored value. It delegates to the untyped Data
+// (identical runtime) and converts at the typed boundary.
+func (e *GreenControllerEntity) DataTyped(data ...GreenController) GreenController {
+	if len(data) > 0 {
+		return typedFrom[GreenController](e.Data(asMap(data[0])))
+	}
+	return typedFrom[GreenController](e.Data())
+}
+
+// MatchTyped mirrors DataTyped for the entity's match filter. The match is a
+// partial of the entity, so it round-trips through GreenController (all fields
+// optional at the wire level).
+func (e *GreenControllerEntity) MatchTyped(match ...GreenController) GreenController {
+	if len(match) > 0 {
+		return typedFrom[GreenController](e.Match(asMap(match[0])))
+	}
+	return typedFrom[GreenController](e.Match())
+}
+
 
 func (e *GreenControllerEntity) Load(reqmatch map[string]any, ctrl map[string]any) (any, error) {
 	utility := e.utility
@@ -109,6 +130,17 @@ func (e *GreenControllerEntity) Load(reqmatch map[string]any, ctrl map[string]an
 			}
 		}
 	})
+}
+
+// LoadTyped is the statically-typed variant of Load: it takes an
+// GreenControllerLoadMatch and returns an GreenController. It delegates to the untyped
+// Load (identical runtime) and converts at the typed boundary.
+func (e *GreenControllerEntity) LoadTyped(reqmatch GreenControllerLoadMatch, ctrl map[string]any) (GreenController, error) {
+	res, err := e.Load(asMap(reqmatch), ctrl)
+	if err != nil {
+		return GreenController{}, err
+	}
+	return typedFrom[GreenController](res), nil
 }
 
 

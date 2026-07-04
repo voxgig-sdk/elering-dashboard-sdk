@@ -9,11 +9,9 @@ The Python SDK for the EleringDashboard API — an entity-oriented client follow
 
 
 ## Install
-```bash
-pip install voxgig-sdk-elering-dashboard
-```
-
-Or install from source:
+This package is not yet published to PyPI. Install it from the GitHub
+release tag (`py/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/elering-dashboard-sdk/releases)) or
+from a source checkout:
 
 ```bash
 pip install -e .
@@ -28,21 +26,19 @@ loading a specific record.
 ### 1. Create a client
 
 ```python
-import os
 from eleringdashboard_sdk import EleringDashboardSDK
 
-client = EleringDashboardSDK({
-    "apikey": os.environ.get("ELERING-DASHBOARD_APIKEY"),
-})
+client = EleringDashboardSDK()
 ```
 
 ### 3. Load a balance
 
 ```python
-result, err = client.Balance().load({"id": "example_id"})
-if err:
-    raise Exception(err)
-print(result)
+try:
+    result = client.balance.load({"id": "example_id"})
+    print(result)
+except Exception as err:
+    print(f"load failed: {err}")
 ```
 
 
@@ -53,29 +49,28 @@ print(result)
 For endpoints not covered by entity methods:
 
 ```python
-result, err = client.direct({
+result = client.direct({
     "path": "/api/resource/{id}",
     "method": "GET",
     "params": {"id": "example"},
 })
-if err:
-    raise Exception(err)
 
 if result["ok"]:
     print(result["status"])  # 200
     print(result["data"])    # response body
+else:
+    print(result["err"])     # error value
 ```
 
 ### Prepare a request without sending it
 
 ```python
-fetchdef, err = client.prepare({
+# prepare() returns the fetch definition and raises on error.
+fetchdef = client.prepare({
     "path": "/api/resource/{id}",
     "method": "DELETE",
     "params": {"id": "example"},
 })
-if err:
-    raise Exception(err)
 
 print(fetchdef["url"])
 print(fetchdef["method"])
@@ -89,7 +84,7 @@ Create a mock client for unit testing — no server required:
 ```python
 client = EleringDashboardSDK.test()
 
-result, err = client.EleringDashboard().load({"id": "test01"})
+result = client.balance.load({"id": "test01"})
 # result contains mock response data
 ```
 
@@ -119,8 +114,7 @@ client = EleringDashboardSDK({
 Create a `.env.local` file at the project root:
 
 ```
-ELERING-DASHBOARD_TEST_LIVE=TRUE
-ELERING-DASHBOARD_APIKEY=<your-key>
+ELERING_DASHBOARD_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -144,7 +138,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `str` | API key for authentication. |
 | `base` | `str` | Base URL of the API server. |
 | `prefix` | `str` | URL path prefix prepended to all requests. |
 | `suffix` | `str` | URL path suffix appended to all requests. |
@@ -166,8 +159,8 @@ Creates a test-mode client with mock transport. Both arguments may be `None`.
 | --- | --- | --- |
 | `options_map` | `() -> dict` | Deep copy of current SDK options. |
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
-| `prepare` | `(fetchargs) -> (dict, err)` | Build an HTTP request definition without sending. |
-| `direct` | `(fetchargs) -> (dict, err)` | Build and send an HTTP request. |
+| `prepare` | `(fetchargs) -> dict` | Build an HTTP request definition without sending. Raises on error. |
+| `direct` | `(fetchargs) -> dict` | Build and send an HTTP request. Returns a result dict (branch on `ok`). |
 | `Balance` | `(data) -> BalanceEntity` | Create a Balance entity instance. |
 | `BalanceController` | `(data) -> BalanceControllerEntity` | Create a BalanceController entity instance. |
 | `Firm` | `(data) -> FirmEntity` | Create a Firm entity instance. |
@@ -199,11 +192,11 @@ All entities share the same interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
-| `load` | `(reqmatch, ctrl) -> (any, err)` | Load a single entity by match criteria. |
-| `list` | `(reqmatch, ctrl) -> (any, err)` | List entities matching the criteria. |
-| `create` | `(reqdata, ctrl) -> (any, err)` | Create a new entity. |
-| `update` | `(reqdata, ctrl) -> (any, err)` | Update an existing entity. |
-| `remove` | `(reqmatch, ctrl) -> (any, err)` | Remove an entity. |
+| `load` | `(reqmatch, ctrl) -> any` | Load a single entity by match criteria. Raises on error. |
+| `list` | `(reqmatch, ctrl) -> list` | List entities matching the criteria. Raises on error. |
+| `create` | `(reqdata, ctrl) -> any` | Create a new entity. Raises on error. |
+| `update` | `(reqdata, ctrl) -> any` | Update an existing entity. Raises on error. |
+| `remove` | `(reqmatch, ctrl) -> any` | Remove an entity. Raises on error. |
 | `data_get` | `() -> dict` | Get entity data. |
 | `data_set` | `(data)` | Set entity data. |
 | `match_get` | `() -> dict` | Get entity match criteria. |
@@ -213,8 +206,12 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `(any, err)`. The first value is a
-`dict` with these keys:
+Entity operations return the bare result data (a `dict` for single-entity
+ops, a `list` for `list`) and raise on error. Wrap calls in
+`try`/`except` to handle failures.
+
+The `direct()` escape hatch never raises — it returns a result `dict`
+you branch on via `result["ok"]`:
 
 | Key | Type | Description |
 | --- | --- | --- |
@@ -450,7 +447,7 @@ API path: `/umm/gas/rss`
 
 ### Balance
 
-Create an instance: `const balance = client.Balance()`
+Create an instance: `const balance = client.balance`
 
 #### Operations
 
@@ -461,13 +458,13 @@ Create an instance: `const balance = client.Balance()`
 #### Example: Load
 
 ```ts
-const balance = await client.Balance().load({ id: 'balance_id' })
+const balance = await client.balance.load({ id: 'balance_id' })
 ```
 
 
 ### BalanceController
 
-Create an instance: `const balance_controller = client.BalanceController()`
+Create an instance: `const balance_controller = client.balance_controller`
 
 #### Operations
 
@@ -478,13 +475,13 @@ Create an instance: `const balance_controller = client.BalanceController()`
 #### Example: Load
 
 ```ts
-const balance_controller = await client.BalanceController().load({ id: 'balance_controller_id' })
+const balance_controller = await client.balance_controller.load({ id: 'balance_controller_id' })
 ```
 
 
 ### Firm
 
-Create an instance: `const firm = client.Firm()`
+Create an instance: `const firm = client.firm`
 
 #### Operations
 
@@ -495,13 +492,13 @@ Create an instance: `const firm = client.Firm()`
 #### Example: Load
 
 ```ts
-const firm = await client.Firm().load({ id: 'firm_id' })
+const firm = await client.firm.load({ id: 'firm_id' })
 ```
 
 
 ### FirmCapacityController
 
-Create an instance: `const firm_capacity_controller = client.FirmCapacityController()`
+Create an instance: `const firm_capacity_controller = client.firm_capacity_controller`
 
 #### Operations
 
@@ -512,13 +509,13 @@ Create an instance: `const firm_capacity_controller = client.FirmCapacityControl
 #### Example: Load
 
 ```ts
-const firm_capacity_controller = await client.FirmCapacityController().load({ id: 'firm_capacity_controller_id' })
+const firm_capacity_controller = await client.firm_capacity_controller.load({ id: 'firm_capacity_controller_id' })
 ```
 
 
 ### GasBalanceController
 
-Create an instance: `const gas_balance_controller = client.GasBalanceController()`
+Create an instance: `const gas_balance_controller = client.gas_balance_controller`
 
 #### Operations
 
@@ -529,13 +526,13 @@ Create an instance: `const gas_balance_controller = client.GasBalanceController(
 #### Example: Load
 
 ```ts
-const gas_balance_controller = await client.GasBalanceController().load({ id: 'gas_balance_controller_id' })
+const gas_balance_controller = await client.gas_balance_controller.load({ id: 'gas_balance_controller_id' })
 ```
 
 
 ### GasBorderTradeController
 
-Create an instance: `const gas_border_trade_controller = client.GasBorderTradeController()`
+Create an instance: `const gas_border_trade_controller = client.gas_border_trade_controller`
 
 #### Operations
 
@@ -546,13 +543,13 @@ Create an instance: `const gas_border_trade_controller = client.GasBorderTradeCo
 #### Example: Load
 
 ```ts
-const gas_border_trade_controller = await client.GasBorderTradeController().load({ id: 'gas_border_trade_controller_id' })
+const gas_border_trade_controller = await client.gas_border_trade_controller.load({ id: 'gas_border_trade_controller_id' })
 ```
 
 
 ### GasSystem
 
-Create an instance: `const gas_system = client.GasSystem()`
+Create an instance: `const gas_system = client.gas_system`
 
 #### Operations
 
@@ -563,13 +560,13 @@ Create an instance: `const gas_system = client.GasSystem()`
 #### Example: Load
 
 ```ts
-const gas_system = await client.GasSystem().load({ id: 'gas_system_id' })
+const gas_system = await client.gas_system.load({ id: 'gas_system_id' })
 ```
 
 
 ### GasSystemController
 
-Create an instance: `const gas_system_controller = client.GasSystemController()`
+Create an instance: `const gas_system_controller = client.gas_system_controller`
 
 #### Operations
 
@@ -580,13 +577,13 @@ Create an instance: `const gas_system_controller = client.GasSystemController()`
 #### Example: Load
 
 ```ts
-const gas_system_controller = await client.GasSystemController().load({ id: 'gas_system_controller_id' })
+const gas_system_controller = await client.gas_system_controller.load({ id: 'gas_system_controller_id' })
 ```
 
 
 ### GasTrade
 
-Create an instance: `const gas_trade = client.GasTrade()`
+Create an instance: `const gas_trade = client.gas_trade`
 
 #### Operations
 
@@ -597,13 +594,13 @@ Create an instance: `const gas_trade = client.GasTrade()`
 #### Example: Load
 
 ```ts
-const gas_trade = await client.GasTrade().load({ id: 'gas_trade_id' })
+const gas_trade = await client.gas_trade.load({ id: 'gas_trade_id' })
 ```
 
 
 ### GasTradeController
 
-Create an instance: `const gas_trade_controller = client.GasTradeController()`
+Create an instance: `const gas_trade_controller = client.gas_trade_controller`
 
 #### Operations
 
@@ -614,13 +611,13 @@ Create an instance: `const gas_trade_controller = client.GasTradeController()`
 #### Example: Load
 
 ```ts
-const gas_trade_controller = await client.GasTradeController().load({ id: 'gas_trade_controller_id' })
+const gas_trade_controller = await client.gas_trade_controller.load({ id: 'gas_trade_controller_id' })
 ```
 
 
 ### GasTransmissionController
 
-Create an instance: `const gas_transmission_controller = client.GasTransmissionController()`
+Create an instance: `const gas_transmission_controller = client.gas_transmission_controller`
 
 #### Operations
 
@@ -631,13 +628,13 @@ Create an instance: `const gas_transmission_controller = client.GasTransmissionC
 #### Example: Load
 
 ```ts
-const gas_transmission_controller = await client.GasTransmissionController().load({ id: 'gas_transmission_controller_id' })
+const gas_transmission_controller = await client.gas_transmission_controller.load({ id: 'gas_transmission_controller_id' })
 ```
 
 
 ### GreenController
 
-Create an instance: `const green_controller = client.GreenController()`
+Create an instance: `const green_controller = client.green_controller`
 
 #### Operations
 
@@ -648,13 +645,13 @@ Create an instance: `const green_controller = client.GreenController()`
 #### Example: Load
 
 ```ts
-const green_controller = await client.GreenController().load({ id: 'green_controller_id' })
+const green_controller = await client.green_controller.load({ id: 'green_controller_id' })
 ```
 
 
 ### Interruptible
 
-Create an instance: `const interruptible = client.Interruptible()`
+Create an instance: `const interruptible = client.interruptible`
 
 #### Operations
 
@@ -665,13 +662,13 @@ Create an instance: `const interruptible = client.Interruptible()`
 #### Example: Load
 
 ```ts
-const interruptible = await client.Interruptible().load({ id: 'interruptible_id' })
+const interruptible = await client.interruptible.load({ id: 'interruptible_id' })
 ```
 
 
 ### InterruptibleCapacityController
 
-Create an instance: `const interruptible_capacity_controller = client.InterruptibleCapacityController()`
+Create an instance: `const interruptible_capacity_controller = client.interruptible_capacity_controller`
 
 #### Operations
 
@@ -682,13 +679,13 @@ Create an instance: `const interruptible_capacity_controller = client.Interrupti
 #### Example: Load
 
 ```ts
-const interruptible_capacity_controller = await client.InterruptibleCapacityController().load({ id: 'interruptible_capacity_controller_id' })
+const interruptible_capacity_controller = await client.interruptible_capacity_controller.load({ id: 'interruptible_capacity_controller_id' })
 ```
 
 
 ### Nomination
 
-Create an instance: `const nomination = client.Nomination()`
+Create an instance: `const nomination = client.nomination`
 
 #### Operations
 
@@ -699,13 +696,13 @@ Create an instance: `const nomination = client.Nomination()`
 #### Example: Load
 
 ```ts
-const nomination = await client.Nomination().load({ id: 'nomination_id' })
+const nomination = await client.nomination.load({ id: 'nomination_id' })
 ```
 
 
 ### NominationsController
 
-Create an instance: `const nominations_controller = client.NominationsController()`
+Create an instance: `const nominations_controller = client.nominations_controller`
 
 #### Operations
 
@@ -716,13 +713,13 @@ Create an instance: `const nominations_controller = client.NominationsController
 #### Example: Load
 
 ```ts
-const nominations_controller = await client.NominationsController().load({ id: 'nominations_controller_id' })
+const nominations_controller = await client.nominations_controller.load({ id: 'nominations_controller_id' })
 ```
 
 
 ### NpsController
 
-Create an instance: `const nps_controller = client.NpsController()`
+Create an instance: `const nps_controller = client.nps_controller`
 
 #### Operations
 
@@ -733,13 +730,13 @@ Create an instance: `const nps_controller = client.NpsController()`
 #### Example: Load
 
 ```ts
-const nps_controller = await client.NpsController().load({ id: 'nps_controller_id' })
+const nps_controller = await client.nps_controller.load({ id: 'nps_controller_id' })
 ```
 
 
 ### Renomination
 
-Create an instance: `const renomination = client.Renomination()`
+Create an instance: `const renomination = client.renomination`
 
 #### Operations
 
@@ -750,13 +747,13 @@ Create an instance: `const renomination = client.Renomination()`
 #### Example: Load
 
 ```ts
-const renomination = await client.Renomination().load({ id: 'renomination_id' })
+const renomination = await client.renomination.load({ id: 'renomination_id' })
 ```
 
 
 ### RenominationsController
 
-Create an instance: `const renominations_controller = client.RenominationsController()`
+Create an instance: `const renominations_controller = client.renominations_controller`
 
 #### Operations
 
@@ -767,13 +764,13 @@ Create an instance: `const renominations_controller = client.RenominationsContro
 #### Example: Load
 
 ```ts
-const renominations_controller = await client.RenominationsController().load({ id: 'renominations_controller_id' })
+const renominations_controller = await client.renominations_controller.load({ id: 'renominations_controller_id' })
 ```
 
 
 ### System
 
-Create an instance: `const system = client.System()`
+Create an instance: `const system = client.system`
 
 #### Operations
 
@@ -784,13 +781,13 @@ Create an instance: `const system = client.System()`
 #### Example: Load
 
 ```ts
-const system = await client.System().load({ id: 'system_id' })
+const system = await client.system.load({ id: 'system_id' })
 ```
 
 
 ### SystemController
 
-Create an instance: `const system_controller = client.SystemController()`
+Create an instance: `const system_controller = client.system_controller`
 
 #### Operations
 
@@ -801,13 +798,13 @@ Create an instance: `const system_controller = client.SystemController()`
 #### Example: Load
 
 ```ts
-const system_controller = await client.SystemController().load({ id: 'system_controller_id' })
+const system_controller = await client.system_controller.load({ id: 'system_controller_id' })
 ```
 
 
 ### TransmissionController
 
-Create an instance: `const transmission_controller = client.TransmissionController()`
+Create an instance: `const transmission_controller = client.transmission_controller`
 
 #### Operations
 
@@ -818,13 +815,13 @@ Create an instance: `const transmission_controller = client.TransmissionControll
 #### Example: Load
 
 ```ts
-const transmission_controller = await client.TransmissionController().load({ id: 'transmission_controller_id' })
+const transmission_controller = await client.transmission_controller.load({ id: 'transmission_controller_id' })
 ```
 
 
 ### UmmGasController
 
-Create an instance: `const umm_gas_controller = client.UmmGasController()`
+Create an instance: `const umm_gas_controller = client.umm_gas_controller`
 
 #### Operations
 
@@ -835,13 +832,13 @@ Create an instance: `const umm_gas_controller = client.UmmGasController()`
 #### Example: Load
 
 ```ts
-const umm_gas_controller = await client.UmmGasController().load({ id: 'umm_gas_controller_id' })
+const umm_gas_controller = await client.umm_gas_controller.load({ id: 'umm_gas_controller_id' })
 ```
 
 
 ### UmmRssFeedController
 
-Create an instance: `const umm_rss_feed_controller = client.UmmRssFeedController()`
+Create an instance: `const umm_rss_feed_controller = client.umm_rss_feed_controller`
 
 #### Operations
 
@@ -852,7 +849,7 @@ Create an instance: `const umm_rss_feed_controller = client.UmmRssFeedController
 #### Example: Load
 
 ```ts
-const umm_rss_feed_controller = await client.UmmRssFeedController().load({ id: 'umm_rss_feed_controller_id' })
+const umm_rss_feed_controller = await client.umm_rss_feed_controller.load({ id: 'umm_rss_feed_controller_id' })
 ```
 
 
@@ -926,11 +923,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-moon = client.Moon()
-moon.load({"planet_id": "earth", "id": "luna"})
+balance = client.balance
+balance.load({"id": "example_id"})
 
-# moon.data_get() now returns the loaded moon data
-# moon.match_get() returns the last match criteria
+# balance.data_get() now returns the loaded balance data
+# balance.match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

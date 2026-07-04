@@ -49,8 +49,7 @@ class InterruptibleCapacityControllerEntityTest extends TestCase
         // LOAD
         $interruptible_capacity_controller_ref01_ent = $client->InterruptibleCapacityController(null);
         $interruptible_capacity_controller_ref01_match_dt0 = [];
-        [$interruptible_capacity_controller_ref01_data_dt0_loaded, $err] = $interruptible_capacity_controller_ref01_ent->load($interruptible_capacity_controller_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $interruptible_capacity_controller_ref01_data_dt0_loaded = $interruptible_capacity_controller_ref01_ent->load($interruptible_capacity_controller_ref01_match_dt0, null);
         $this->assertNotNull($interruptible_capacity_controller_ref01_data_dt0_loaded);
 
     }
@@ -85,7 +84,6 @@ function interruptible_capacity_controller_basic_setup($extra)
         "ELERINGDASHBOARD_TEST_INTERRUPTIBLE_CAPACITY_CONTROLLER_ENTID" => $idmap,
         "ELERINGDASHBOARD_TEST_LIVE" => "FALSE",
         "ELERINGDASHBOARD_TEST_EXPLAIN" => "FALSE",
-        "ELERINGDASHBOARD_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -97,7 +95,6 @@ function interruptible_capacity_controller_basic_setup($extra)
     if ($env["ELERINGDASHBOARD_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["ELERINGDASHBOARD_APIKEY"],
             ],
             $extra ?? [],
         ]);

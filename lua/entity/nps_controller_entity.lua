@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch NpsControllerLoadMatch
+---@param ctrl? table
+---@return NpsController
+---@return string? err
 function NpsControllerEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

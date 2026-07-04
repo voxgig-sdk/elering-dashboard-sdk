@@ -45,6 +45,7 @@ class GasTradeEntity
     end
   end
 
+  # @return [GasTrade, Hash] the current GasTrade data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,12 +58,18 @@ class GasTradeEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of GasTrade fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
   end
 
   
+  # Load a single GasTrade.
+  #
+  # @param reqmatch [GasTradeLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [GasTrade, Hash] the loaded GasTrade; raises EleringDashboardError on failure
   def load(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

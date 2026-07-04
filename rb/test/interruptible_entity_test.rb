@@ -42,8 +42,7 @@ class InterruptibleEntityTest < Minitest::Test
     # LOAD
     interruptible_ref01_ent = client.Interruptible(nil)
     interruptible_ref01_match_dt0 = {}
-    interruptible_ref01_data_dt0_loaded, err = interruptible_ref01_ent.load(interruptible_ref01_match_dt0, nil)
-    assert_nil err
+    interruptible_ref01_data_dt0_loaded = interruptible_ref01_ent.load(interruptible_ref01_match_dt0, nil)
     assert !interruptible_ref01_data_dt0_loaded.nil?
 
   end
@@ -82,7 +81,6 @@ def interruptible_basic_setup(extra)
     "ELERINGDASHBOARD_TEST_INTERRUPTIBLE_ENTID" => idmap,
     "ELERINGDASHBOARD_TEST_LIVE" => "FALSE",
     "ELERINGDASHBOARD_TEST_EXPLAIN" => "FALSE",
-    "ELERINGDASHBOARD_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -94,7 +92,6 @@ def interruptible_basic_setup(extra)
   if env["ELERINGDASHBOARD_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["ELERINGDASHBOARD_APIKEY"],
       },
       extra || {},
     ])

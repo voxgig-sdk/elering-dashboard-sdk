@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Interruptible,
+  InterruptibleLoadMatch,
+} from '../EleringDashboardTypes'
 
 // TODO: needs Entity superclass
-class InterruptibleEntity extends EleringDashboardEntityBase {
+class InterruptibleEntity extends EleringDashboardEntityBase<Interruptible> {
 
   constructor(client: EleringDashboardSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +36,7 @@ class InterruptibleEntity extends EleringDashboardEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: InterruptibleLoadMatch, ctrl?: Control): Promise<Interruptible> {
 
     const utility = this._utility
 
@@ -136,7 +140,9 @@ class InterruptibleEntity extends EleringDashboardEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Interruptible> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

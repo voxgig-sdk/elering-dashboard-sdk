@@ -49,8 +49,7 @@ class SystemEntityTest extends TestCase
         // LOAD
         $system_ref01_ent = $client->System(null);
         $system_ref01_match_dt0 = [];
-        [$system_ref01_data_dt0_loaded, $err] = $system_ref01_ent->load($system_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $system_ref01_data_dt0_loaded = $system_ref01_ent->load($system_ref01_match_dt0, null);
         $this->assertNotNull($system_ref01_data_dt0_loaded);
 
     }
@@ -85,7 +84,6 @@ function system_basic_setup($extra)
         "ELERINGDASHBOARD_TEST_SYSTEM_ENTID" => $idmap,
         "ELERINGDASHBOARD_TEST_LIVE" => "FALSE",
         "ELERINGDASHBOARD_TEST_EXPLAIN" => "FALSE",
-        "ELERINGDASHBOARD_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -97,7 +95,6 @@ function system_basic_setup($extra)
     if ($env["ELERINGDASHBOARD_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["ELERINGDASHBOARD_APIKEY"],
             ],
             $extra ?? [],
         ]);

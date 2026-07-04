@@ -4,6 +4,7 @@
 main: {
   kit: {
     info: {
+      auth: false
       contact: {
         email: "klienditugi@elering.ee"
         name: "Elering AS"

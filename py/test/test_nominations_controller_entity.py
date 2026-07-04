@@ -49,8 +49,7 @@ class TestNominationsControllerEntity:
         # LOAD
         nominations_controller_ref01_ent = client.NominationsController(None)
         nominations_controller_ref01_match_dt0 = {}
-        nominations_controller_ref01_data_dt0_loaded, err = nominations_controller_ref01_ent.load(nominations_controller_ref01_match_dt0, None)
-        assert err is None
+        nominations_controller_ref01_data_dt0_loaded = nominations_controller_ref01_ent.load(nominations_controller_ref01_match_dt0, None)
         assert nominations_controller_ref01_data_dt0_loaded is not None
 
 
@@ -91,7 +90,6 @@ def _nominations_controller_basic_setup(extra):
         "ELERINGDASHBOARD_TEST_NOMINATIONS_CONTROLLER_ENTID": idmap,
         "ELERINGDASHBOARD_TEST_LIVE": "FALSE",
         "ELERINGDASHBOARD_TEST_EXPLAIN": "FALSE",
-        "ELERINGDASHBOARD_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -102,7 +100,6 @@ def _nominations_controller_basic_setup(extra):
     if env.get("ELERINGDASHBOARD_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("ELERINGDASHBOARD_APIKEY"),
             },
             extra or {},
         ])

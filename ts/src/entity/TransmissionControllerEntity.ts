@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  TransmissionController,
+  TransmissionControllerLoadMatch,
+} from '../EleringDashboardTypes'
 
 // TODO: needs Entity superclass
-class TransmissionControllerEntity extends EleringDashboardEntityBase {
+class TransmissionControllerEntity extends EleringDashboardEntityBase<TransmissionController> {
 
   constructor(client: EleringDashboardSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +36,7 @@ class TransmissionControllerEntity extends EleringDashboardEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: TransmissionControllerLoadMatch, ctrl?: Control): Promise<TransmissionController> {
 
     const utility = this._utility
 
@@ -136,7 +140,9 @@ class TransmissionControllerEntity extends EleringDashboardEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<TransmissionController> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

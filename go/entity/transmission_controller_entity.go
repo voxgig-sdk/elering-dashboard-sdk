@@ -85,6 +85,27 @@ func (e *TransmissionControllerEntity) Match(args ...any) any {
 	return out
 }
 
+// DataTyped is the statically-typed accessor for this entity's data. With no
+// argument it returns the current data as an TransmissionController; with an argument it
+// sets the data and returns the stored value. It delegates to the untyped Data
+// (identical runtime) and converts at the typed boundary.
+func (e *TransmissionControllerEntity) DataTyped(data ...TransmissionController) TransmissionController {
+	if len(data) > 0 {
+		return typedFrom[TransmissionController](e.Data(asMap(data[0])))
+	}
+	return typedFrom[TransmissionController](e.Data())
+}
+
+// MatchTyped mirrors DataTyped for the entity's match filter. The match is a
+// partial of the entity, so it round-trips through TransmissionController (all fields
+// optional at the wire level).
+func (e *TransmissionControllerEntity) MatchTyped(match ...TransmissionController) TransmissionController {
+	if len(match) > 0 {
+		return typedFrom[TransmissionController](e.Match(asMap(match[0])))
+	}
+	return typedFrom[TransmissionController](e.Match())
+}
+
 
 func (e *TransmissionControllerEntity) Load(reqmatch map[string]any, ctrl map[string]any) (any, error) {
 	utility := e.utility
@@ -109,6 +130,17 @@ func (e *TransmissionControllerEntity) Load(reqmatch map[string]any, ctrl map[st
 			}
 		}
 	})
+}
+
+// LoadTyped is the statically-typed variant of Load: it takes an
+// TransmissionControllerLoadMatch and returns an TransmissionController. It delegates to the untyped
+// Load (identical runtime) and converts at the typed boundary.
+func (e *TransmissionControllerEntity) LoadTyped(reqmatch TransmissionControllerLoadMatch, ctrl map[string]any) (TransmissionController, error) {
+	res, err := e.Load(asMap(reqmatch), ctrl)
+	if err != nil {
+		return TransmissionController{}, err
+	}
+	return typedFrom[TransmissionController](res), nil
 }
 
 

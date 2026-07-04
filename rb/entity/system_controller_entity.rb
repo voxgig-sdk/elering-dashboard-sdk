@@ -45,6 +45,7 @@ class SystemControllerEntity
     end
   end
 
+  # @return [SystemController, Hash] the current SystemController data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,12 +58,18 @@ class SystemControllerEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of SystemController fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
   end
 
   
+  # Load a single SystemController.
+  #
+  # @param reqmatch [SystemControllerLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [SystemController, Hash] the loaded SystemController; raises EleringDashboardError on failure
   def load(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

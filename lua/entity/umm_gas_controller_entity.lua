@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch UmmGasControllerLoadMatch
+---@param ctrl? table
+---@return UmmGasController
+---@return string? err
 function UmmGasControllerEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

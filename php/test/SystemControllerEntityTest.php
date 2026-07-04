@@ -49,8 +49,7 @@ class SystemControllerEntityTest extends TestCase
         // LOAD
         $system_controller_ref01_ent = $client->SystemController(null);
         $system_controller_ref01_match_dt0 = [];
-        [$system_controller_ref01_data_dt0_loaded, $err] = $system_controller_ref01_ent->load($system_controller_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $system_controller_ref01_data_dt0_loaded = $system_controller_ref01_ent->load($system_controller_ref01_match_dt0, null);
         $this->assertNotNull($system_controller_ref01_data_dt0_loaded);
 
     }
@@ -85,7 +84,6 @@ function system_controller_basic_setup($extra)
         "ELERINGDASHBOARD_TEST_SYSTEM_CONTROLLER_ENTID" => $idmap,
         "ELERINGDASHBOARD_TEST_LIVE" => "FALSE",
         "ELERINGDASHBOARD_TEST_EXPLAIN" => "FALSE",
-        "ELERINGDASHBOARD_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -97,7 +95,6 @@ function system_controller_basic_setup($extra)
     if ($env["ELERINGDASHBOARD_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["ELERINGDASHBOARD_APIKEY"],
             ],
             $extra ?? [],
         ]);

@@ -25,6 +25,8 @@ import { TransmissionControllerEntity } from './entity/TransmissionControllerEnt
 import { UmmGasControllerEntity } from './entity/UmmGasControllerEntity'
 import { UmmRssFeedControllerEntity } from './entity/UmmRssFeedControllerEntity'
 
+export type * from './EleringDashboardTypes'
+
 
 import { inspect } from 'node:util'
 
@@ -225,144 +227,336 @@ class EleringDashboardSDK {
 
 
 
+  _balance?: BalanceEntity
+
+  // Idiomatic facade: `client.balance.list()` / `client.balance.load({ id })`.
+  get balance(): BalanceEntity {
+    return (this._balance ??= new BalanceEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.balance` instead. */
   Balance(data?: any) {
     const self = this
     return new BalanceEntity(self,data)
   }
 
 
+  _balance_controller?: BalanceControllerEntity
+
+  // Idiomatic facade: `client.balance_controller.list()` / `client.balance_controller.load({ id })`.
+  get balance_controller(): BalanceControllerEntity {
+    return (this._balance_controller ??= new BalanceControllerEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.balance_controller` instead. */
   BalanceController(data?: any) {
     const self = this
     return new BalanceControllerEntity(self,data)
   }
 
 
+  _firm?: FirmEntity
+
+  // Idiomatic facade: `client.firm.list()` / `client.firm.load({ id })`.
+  get firm(): FirmEntity {
+    return (this._firm ??= new FirmEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.firm` instead. */
   Firm(data?: any) {
     const self = this
     return new FirmEntity(self,data)
   }
 
 
+  _firm_capacity_controller?: FirmCapacityControllerEntity
+
+  // Idiomatic facade: `client.firm_capacity_controller.list()` / `client.firm_capacity_controller.load({ id })`.
+  get firm_capacity_controller(): FirmCapacityControllerEntity {
+    return (this._firm_capacity_controller ??= new FirmCapacityControllerEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.firm_capacity_controller` instead. */
   FirmCapacityController(data?: any) {
     const self = this
     return new FirmCapacityControllerEntity(self,data)
   }
 
 
+  _gas_balance_controller?: GasBalanceControllerEntity
+
+  // Idiomatic facade: `client.gas_balance_controller.list()` / `client.gas_balance_controller.load({ id })`.
+  get gas_balance_controller(): GasBalanceControllerEntity {
+    return (this._gas_balance_controller ??= new GasBalanceControllerEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.gas_balance_controller` instead. */
   GasBalanceController(data?: any) {
     const self = this
     return new GasBalanceControllerEntity(self,data)
   }
 
 
+  _gas_border_trade_controller?: GasBorderTradeControllerEntity
+
+  // Idiomatic facade: `client.gas_border_trade_controller.list()` / `client.gas_border_trade_controller.load({ id })`.
+  get gas_border_trade_controller(): GasBorderTradeControllerEntity {
+    return (this._gas_border_trade_controller ??= new GasBorderTradeControllerEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.gas_border_trade_controller` instead. */
   GasBorderTradeController(data?: any) {
     const self = this
     return new GasBorderTradeControllerEntity(self,data)
   }
 
 
+  _gas_system?: GasSystemEntity
+
+  // Idiomatic facade: `client.gas_system.list()` / `client.gas_system.load({ id })`.
+  get gas_system(): GasSystemEntity {
+    return (this._gas_system ??= new GasSystemEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.gas_system` instead. */
   GasSystem(data?: any) {
     const self = this
     return new GasSystemEntity(self,data)
   }
 
 
+  _gas_system_controller?: GasSystemControllerEntity
+
+  // Idiomatic facade: `client.gas_system_controller.list()` / `client.gas_system_controller.load({ id })`.
+  get gas_system_controller(): GasSystemControllerEntity {
+    return (this._gas_system_controller ??= new GasSystemControllerEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.gas_system_controller` instead. */
   GasSystemController(data?: any) {
     const self = this
     return new GasSystemControllerEntity(self,data)
   }
 
 
+  _gas_trade?: GasTradeEntity
+
+  // Idiomatic facade: `client.gas_trade.list()` / `client.gas_trade.load({ id })`.
+  get gas_trade(): GasTradeEntity {
+    return (this._gas_trade ??= new GasTradeEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.gas_trade` instead. */
   GasTrade(data?: any) {
     const self = this
     return new GasTradeEntity(self,data)
   }
 
 
+  _gas_trade_controller?: GasTradeControllerEntity
+
+  // Idiomatic facade: `client.gas_trade_controller.list()` / `client.gas_trade_controller.load({ id })`.
+  get gas_trade_controller(): GasTradeControllerEntity {
+    return (this._gas_trade_controller ??= new GasTradeControllerEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.gas_trade_controller` instead. */
   GasTradeController(data?: any) {
     const self = this
     return new GasTradeControllerEntity(self,data)
   }
 
 
+  _gas_transmission_controller?: GasTransmissionControllerEntity
+
+  // Idiomatic facade: `client.gas_transmission_controller.list()` / `client.gas_transmission_controller.load({ id })`.
+  get gas_transmission_controller(): GasTransmissionControllerEntity {
+    return (this._gas_transmission_controller ??= new GasTransmissionControllerEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.gas_transmission_controller` instead. */
   GasTransmissionController(data?: any) {
     const self = this
     return new GasTransmissionControllerEntity(self,data)
   }
 
 
+  _green_controller?: GreenControllerEntity
+
+  // Idiomatic facade: `client.green_controller.list()` / `client.green_controller.load({ id })`.
+  get green_controller(): GreenControllerEntity {
+    return (this._green_controller ??= new GreenControllerEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.green_controller` instead. */
   GreenController(data?: any) {
     const self = this
     return new GreenControllerEntity(self,data)
   }
 
 
+  _interruptible?: InterruptibleEntity
+
+  // Idiomatic facade: `client.interruptible.list()` / `client.interruptible.load({ id })`.
+  get interruptible(): InterruptibleEntity {
+    return (this._interruptible ??= new InterruptibleEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.interruptible` instead. */
   Interruptible(data?: any) {
     const self = this
     return new InterruptibleEntity(self,data)
   }
 
 
+  _interruptible_capacity_controller?: InterruptibleCapacityControllerEntity
+
+  // Idiomatic facade: `client.interruptible_capacity_controller.list()` / `client.interruptible_capacity_controller.load({ id })`.
+  get interruptible_capacity_controller(): InterruptibleCapacityControllerEntity {
+    return (this._interruptible_capacity_controller ??= new InterruptibleCapacityControllerEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.interruptible_capacity_controller` instead. */
   InterruptibleCapacityController(data?: any) {
     const self = this
     return new InterruptibleCapacityControllerEntity(self,data)
   }
 
 
+  _nomination?: NominationEntity
+
+  // Idiomatic facade: `client.nomination.list()` / `client.nomination.load({ id })`.
+  get nomination(): NominationEntity {
+    return (this._nomination ??= new NominationEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.nomination` instead. */
   Nomination(data?: any) {
     const self = this
     return new NominationEntity(self,data)
   }
 
 
+  _nominations_controller?: NominationsControllerEntity
+
+  // Idiomatic facade: `client.nominations_controller.list()` / `client.nominations_controller.load({ id })`.
+  get nominations_controller(): NominationsControllerEntity {
+    return (this._nominations_controller ??= new NominationsControllerEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.nominations_controller` instead. */
   NominationsController(data?: any) {
     const self = this
     return new NominationsControllerEntity(self,data)
   }
 
 
+  _nps_controller?: NpsControllerEntity
+
+  // Idiomatic facade: `client.nps_controller.list()` / `client.nps_controller.load({ id })`.
+  get nps_controller(): NpsControllerEntity {
+    return (this._nps_controller ??= new NpsControllerEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.nps_controller` instead. */
   NpsController(data?: any) {
     const self = this
     return new NpsControllerEntity(self,data)
   }
 
 
+  _renomination?: RenominationEntity
+
+  // Idiomatic facade: `client.renomination.list()` / `client.renomination.load({ id })`.
+  get renomination(): RenominationEntity {
+    return (this._renomination ??= new RenominationEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.renomination` instead. */
   Renomination(data?: any) {
     const self = this
     return new RenominationEntity(self,data)
   }
 
 
+  _renominations_controller?: RenominationsControllerEntity
+
+  // Idiomatic facade: `client.renominations_controller.list()` / `client.renominations_controller.load({ id })`.
+  get renominations_controller(): RenominationsControllerEntity {
+    return (this._renominations_controller ??= new RenominationsControllerEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.renominations_controller` instead. */
   RenominationsController(data?: any) {
     const self = this
     return new RenominationsControllerEntity(self,data)
   }
 
 
+  _system?: SystemEntity
+
+  // Idiomatic facade: `client.system.list()` / `client.system.load({ id })`.
+  get system(): SystemEntity {
+    return (this._system ??= new SystemEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.system` instead. */
   System(data?: any) {
     const self = this
     return new SystemEntity(self,data)
   }
 
 
+  _system_controller?: SystemControllerEntity
+
+  // Idiomatic facade: `client.system_controller.list()` / `client.system_controller.load({ id })`.
+  get system_controller(): SystemControllerEntity {
+    return (this._system_controller ??= new SystemControllerEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.system_controller` instead. */
   SystemController(data?: any) {
     const self = this
     return new SystemControllerEntity(self,data)
   }
 
 
+  _transmission_controller?: TransmissionControllerEntity
+
+  // Idiomatic facade: `client.transmission_controller.list()` / `client.transmission_controller.load({ id })`.
+  get transmission_controller(): TransmissionControllerEntity {
+    return (this._transmission_controller ??= new TransmissionControllerEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.transmission_controller` instead. */
   TransmissionController(data?: any) {
     const self = this
     return new TransmissionControllerEntity(self,data)
   }
 
 
+  _umm_gas_controller?: UmmGasControllerEntity
+
+  // Idiomatic facade: `client.umm_gas_controller.list()` / `client.umm_gas_controller.load({ id })`.
+  get umm_gas_controller(): UmmGasControllerEntity {
+    return (this._umm_gas_controller ??= new UmmGasControllerEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.umm_gas_controller` instead. */
   UmmGasController(data?: any) {
     const self = this
     return new UmmGasControllerEntity(self,data)
   }
 
 
+  _umm_rss_feed_controller?: UmmRssFeedControllerEntity
+
+  // Idiomatic facade: `client.umm_rss_feed_controller.list()` / `client.umm_rss_feed_controller.load({ id })`.
+  get umm_rss_feed_controller(): UmmRssFeedControllerEntity {
+    return (this._umm_rss_feed_controller ??= new UmmRssFeedControllerEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.umm_rss_feed_controller` instead. */
   UmmRssFeedController(data?: any) {
     const self = this
     return new UmmRssFeedControllerEntity(self,data)

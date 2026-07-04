@@ -144,16 +144,23 @@ class EleringDashboardSDK:
 
         _, err = utility.prepare_auth(ctx)
         if err is not None:
-            return None, err
+            raise err
 
-        return utility.make_fetch_def(ctx)
+        fetchdef, err = utility.make_fetch_def(ctx)
+        if err is not None:
+            raise err
+
+        return fetchdef
 
     def direct(self, fetchargs=None):
         utility = self._utility
 
-        fetchdef, err = self.prepare(fetchargs)
-        if err is not None:
-            return {"ok": False, "err": err}, None
+        try:
+            fetchdef = self.prepare(fetchargs)
+        except Exception as err:
+            # direct() is the raw-HTTP escape hatch: it never raises, it
+            # returns a result object callers branch on via result["ok"].
+            return {"ok": False, "err": err}
 
         if fetchargs is None:
             fetchargs = {}
@@ -170,13 +177,13 @@ class EleringDashboardSDK:
         fetched, fetch_err = utility.fetcher(ctx, url, fetchdef)
 
         if fetch_err is not None:
-            return {"ok": False, "err": fetch_err}, None
+            return {"ok": False, "err": fetch_err}
 
         if fetched is None:
             return {
                 "ok": False,
                 "err": ctx.make_error("direct_no_response", "response: undefined"),
-            }, None
+            }
 
         if isinstance(fetched, dict):
             status = helpers.to_int(vs.getprop(fetched, "status"))
@@ -205,130 +212,394 @@ class EleringDashboardSDK:
                 "status": status,
                 "headers": headers,
                 "data": json_data,
-            }, None
+            }
 
         return {
             "ok": False,
             "err": ctx.make_error("direct_invalid", "invalid response type"),
-        }, None
+        }
 
+
+    @property
+    def balance(self):
+        """Idiomatic facade: client.balance.list() / client.balance.load({"id": ...})."""
+        from entity.balance_entity import BalanceEntity
+        cached = getattr(self, "_balance", None)
+        if cached is None:
+            cached = BalanceEntity(self, None)
+            self._balance = cached
+        return cached
 
     def Balance(self, data=None):
+        # Deprecated: use client.balance instead.
         from entity.balance_entity import BalanceEntity
         return BalanceEntity(self, data)
 
 
+    @property
+    def balance_controller(self):
+        """Idiomatic facade: client.balance_controller.list() / client.balance_controller.load({"id": ...})."""
+        from entity.balance_controller_entity import BalanceControllerEntity
+        cached = getattr(self, "_balance_controller", None)
+        if cached is None:
+            cached = BalanceControllerEntity(self, None)
+            self._balance_controller = cached
+        return cached
+
     def BalanceController(self, data=None):
+        # Deprecated: use client.balance_controller instead.
         from entity.balance_controller_entity import BalanceControllerEntity
         return BalanceControllerEntity(self, data)
 
 
+    @property
+    def firm(self):
+        """Idiomatic facade: client.firm.list() / client.firm.load({"id": ...})."""
+        from entity.firm_entity import FirmEntity
+        cached = getattr(self, "_firm", None)
+        if cached is None:
+            cached = FirmEntity(self, None)
+            self._firm = cached
+        return cached
+
     def Firm(self, data=None):
+        # Deprecated: use client.firm instead.
         from entity.firm_entity import FirmEntity
         return FirmEntity(self, data)
 
 
+    @property
+    def firm_capacity_controller(self):
+        """Idiomatic facade: client.firm_capacity_controller.list() / client.firm_capacity_controller.load({"id": ...})."""
+        from entity.firm_capacity_controller_entity import FirmCapacityControllerEntity
+        cached = getattr(self, "_firm_capacity_controller", None)
+        if cached is None:
+            cached = FirmCapacityControllerEntity(self, None)
+            self._firm_capacity_controller = cached
+        return cached
+
     def FirmCapacityController(self, data=None):
+        # Deprecated: use client.firm_capacity_controller instead.
         from entity.firm_capacity_controller_entity import FirmCapacityControllerEntity
         return FirmCapacityControllerEntity(self, data)
 
 
+    @property
+    def gas_balance_controller(self):
+        """Idiomatic facade: client.gas_balance_controller.list() / client.gas_balance_controller.load({"id": ...})."""
+        from entity.gas_balance_controller_entity import GasBalanceControllerEntity
+        cached = getattr(self, "_gas_balance_controller", None)
+        if cached is None:
+            cached = GasBalanceControllerEntity(self, None)
+            self._gas_balance_controller = cached
+        return cached
+
     def GasBalanceController(self, data=None):
+        # Deprecated: use client.gas_balance_controller instead.
         from entity.gas_balance_controller_entity import GasBalanceControllerEntity
         return GasBalanceControllerEntity(self, data)
 
 
+    @property
+    def gas_border_trade_controller(self):
+        """Idiomatic facade: client.gas_border_trade_controller.list() / client.gas_border_trade_controller.load({"id": ...})."""
+        from entity.gas_border_trade_controller_entity import GasBorderTradeControllerEntity
+        cached = getattr(self, "_gas_border_trade_controller", None)
+        if cached is None:
+            cached = GasBorderTradeControllerEntity(self, None)
+            self._gas_border_trade_controller = cached
+        return cached
+
     def GasBorderTradeController(self, data=None):
+        # Deprecated: use client.gas_border_trade_controller instead.
         from entity.gas_border_trade_controller_entity import GasBorderTradeControllerEntity
         return GasBorderTradeControllerEntity(self, data)
 
 
+    @property
+    def gas_system(self):
+        """Idiomatic facade: client.gas_system.list() / client.gas_system.load({"id": ...})."""
+        from entity.gas_system_entity import GasSystemEntity
+        cached = getattr(self, "_gas_system", None)
+        if cached is None:
+            cached = GasSystemEntity(self, None)
+            self._gas_system = cached
+        return cached
+
     def GasSystem(self, data=None):
+        # Deprecated: use client.gas_system instead.
         from entity.gas_system_entity import GasSystemEntity
         return GasSystemEntity(self, data)
 
 
+    @property
+    def gas_system_controller(self):
+        """Idiomatic facade: client.gas_system_controller.list() / client.gas_system_controller.load({"id": ...})."""
+        from entity.gas_system_controller_entity import GasSystemControllerEntity
+        cached = getattr(self, "_gas_system_controller", None)
+        if cached is None:
+            cached = GasSystemControllerEntity(self, None)
+            self._gas_system_controller = cached
+        return cached
+
     def GasSystemController(self, data=None):
+        # Deprecated: use client.gas_system_controller instead.
         from entity.gas_system_controller_entity import GasSystemControllerEntity
         return GasSystemControllerEntity(self, data)
 
 
+    @property
+    def gas_trade(self):
+        """Idiomatic facade: client.gas_trade.list() / client.gas_trade.load({"id": ...})."""
+        from entity.gas_trade_entity import GasTradeEntity
+        cached = getattr(self, "_gas_trade", None)
+        if cached is None:
+            cached = GasTradeEntity(self, None)
+            self._gas_trade = cached
+        return cached
+
     def GasTrade(self, data=None):
+        # Deprecated: use client.gas_trade instead.
         from entity.gas_trade_entity import GasTradeEntity
         return GasTradeEntity(self, data)
 
 
+    @property
+    def gas_trade_controller(self):
+        """Idiomatic facade: client.gas_trade_controller.list() / client.gas_trade_controller.load({"id": ...})."""
+        from entity.gas_trade_controller_entity import GasTradeControllerEntity
+        cached = getattr(self, "_gas_trade_controller", None)
+        if cached is None:
+            cached = GasTradeControllerEntity(self, None)
+            self._gas_trade_controller = cached
+        return cached
+
     def GasTradeController(self, data=None):
+        # Deprecated: use client.gas_trade_controller instead.
         from entity.gas_trade_controller_entity import GasTradeControllerEntity
         return GasTradeControllerEntity(self, data)
 
 
+    @property
+    def gas_transmission_controller(self):
+        """Idiomatic facade: client.gas_transmission_controller.list() / client.gas_transmission_controller.load({"id": ...})."""
+        from entity.gas_transmission_controller_entity import GasTransmissionControllerEntity
+        cached = getattr(self, "_gas_transmission_controller", None)
+        if cached is None:
+            cached = GasTransmissionControllerEntity(self, None)
+            self._gas_transmission_controller = cached
+        return cached
+
     def GasTransmissionController(self, data=None):
+        # Deprecated: use client.gas_transmission_controller instead.
         from entity.gas_transmission_controller_entity import GasTransmissionControllerEntity
         return GasTransmissionControllerEntity(self, data)
 
 
+    @property
+    def green_controller(self):
+        """Idiomatic facade: client.green_controller.list() / client.green_controller.load({"id": ...})."""
+        from entity.green_controller_entity import GreenControllerEntity
+        cached = getattr(self, "_green_controller", None)
+        if cached is None:
+            cached = GreenControllerEntity(self, None)
+            self._green_controller = cached
+        return cached
+
     def GreenController(self, data=None):
+        # Deprecated: use client.green_controller instead.
         from entity.green_controller_entity import GreenControllerEntity
         return GreenControllerEntity(self, data)
 
 
+    @property
+    def interruptible(self):
+        """Idiomatic facade: client.interruptible.list() / client.interruptible.load({"id": ...})."""
+        from entity.interruptible_entity import InterruptibleEntity
+        cached = getattr(self, "_interruptible", None)
+        if cached is None:
+            cached = InterruptibleEntity(self, None)
+            self._interruptible = cached
+        return cached
+
     def Interruptible(self, data=None):
+        # Deprecated: use client.interruptible instead.
         from entity.interruptible_entity import InterruptibleEntity
         return InterruptibleEntity(self, data)
 
 
+    @property
+    def interruptible_capacity_controller(self):
+        """Idiomatic facade: client.interruptible_capacity_controller.list() / client.interruptible_capacity_controller.load({"id": ...})."""
+        from entity.interruptible_capacity_controller_entity import InterruptibleCapacityControllerEntity
+        cached = getattr(self, "_interruptible_capacity_controller", None)
+        if cached is None:
+            cached = InterruptibleCapacityControllerEntity(self, None)
+            self._interruptible_capacity_controller = cached
+        return cached
+
     def InterruptibleCapacityController(self, data=None):
+        # Deprecated: use client.interruptible_capacity_controller instead.
         from entity.interruptible_capacity_controller_entity import InterruptibleCapacityControllerEntity
         return InterruptibleCapacityControllerEntity(self, data)
 
 
+    @property
+    def nomination(self):
+        """Idiomatic facade: client.nomination.list() / client.nomination.load({"id": ...})."""
+        from entity.nomination_entity import NominationEntity
+        cached = getattr(self, "_nomination", None)
+        if cached is None:
+            cached = NominationEntity(self, None)
+            self._nomination = cached
+        return cached
+
     def Nomination(self, data=None):
+        # Deprecated: use client.nomination instead.
         from entity.nomination_entity import NominationEntity
         return NominationEntity(self, data)
 
 
+    @property
+    def nominations_controller(self):
+        """Idiomatic facade: client.nominations_controller.list() / client.nominations_controller.load({"id": ...})."""
+        from entity.nominations_controller_entity import NominationsControllerEntity
+        cached = getattr(self, "_nominations_controller", None)
+        if cached is None:
+            cached = NominationsControllerEntity(self, None)
+            self._nominations_controller = cached
+        return cached
+
     def NominationsController(self, data=None):
+        # Deprecated: use client.nominations_controller instead.
         from entity.nominations_controller_entity import NominationsControllerEntity
         return NominationsControllerEntity(self, data)
 
 
+    @property
+    def nps_controller(self):
+        """Idiomatic facade: client.nps_controller.list() / client.nps_controller.load({"id": ...})."""
+        from entity.nps_controller_entity import NpsControllerEntity
+        cached = getattr(self, "_nps_controller", None)
+        if cached is None:
+            cached = NpsControllerEntity(self, None)
+            self._nps_controller = cached
+        return cached
+
     def NpsController(self, data=None):
+        # Deprecated: use client.nps_controller instead.
         from entity.nps_controller_entity import NpsControllerEntity
         return NpsControllerEntity(self, data)
 
 
+    @property
+    def renomination(self):
+        """Idiomatic facade: client.renomination.list() / client.renomination.load({"id": ...})."""
+        from entity.renomination_entity import RenominationEntity
+        cached = getattr(self, "_renomination", None)
+        if cached is None:
+            cached = RenominationEntity(self, None)
+            self._renomination = cached
+        return cached
+
     def Renomination(self, data=None):
+        # Deprecated: use client.renomination instead.
         from entity.renomination_entity import RenominationEntity
         return RenominationEntity(self, data)
 
 
+    @property
+    def renominations_controller(self):
+        """Idiomatic facade: client.renominations_controller.list() / client.renominations_controller.load({"id": ...})."""
+        from entity.renominations_controller_entity import RenominationsControllerEntity
+        cached = getattr(self, "_renominations_controller", None)
+        if cached is None:
+            cached = RenominationsControllerEntity(self, None)
+            self._renominations_controller = cached
+        return cached
+
     def RenominationsController(self, data=None):
+        # Deprecated: use client.renominations_controller instead.
         from entity.renominations_controller_entity import RenominationsControllerEntity
         return RenominationsControllerEntity(self, data)
 
 
+    @property
+    def system(self):
+        """Idiomatic facade: client.system.list() / client.system.load({"id": ...})."""
+        from entity.system_entity import SystemEntity
+        cached = getattr(self, "_system", None)
+        if cached is None:
+            cached = SystemEntity(self, None)
+            self._system = cached
+        return cached
+
     def System(self, data=None):
+        # Deprecated: use client.system instead.
         from entity.system_entity import SystemEntity
         return SystemEntity(self, data)
 
 
+    @property
+    def system_controller(self):
+        """Idiomatic facade: client.system_controller.list() / client.system_controller.load({"id": ...})."""
+        from entity.system_controller_entity import SystemControllerEntity
+        cached = getattr(self, "_system_controller", None)
+        if cached is None:
+            cached = SystemControllerEntity(self, None)
+            self._system_controller = cached
+        return cached
+
     def SystemController(self, data=None):
+        # Deprecated: use client.system_controller instead.
         from entity.system_controller_entity import SystemControllerEntity
         return SystemControllerEntity(self, data)
 
 
+    @property
+    def transmission_controller(self):
+        """Idiomatic facade: client.transmission_controller.list() / client.transmission_controller.load({"id": ...})."""
+        from entity.transmission_controller_entity import TransmissionControllerEntity
+        cached = getattr(self, "_transmission_controller", None)
+        if cached is None:
+            cached = TransmissionControllerEntity(self, None)
+            self._transmission_controller = cached
+        return cached
+
     def TransmissionController(self, data=None):
+        # Deprecated: use client.transmission_controller instead.
         from entity.transmission_controller_entity import TransmissionControllerEntity
         return TransmissionControllerEntity(self, data)
 
 
+    @property
+    def umm_gas_controller(self):
+        """Idiomatic facade: client.umm_gas_controller.list() / client.umm_gas_controller.load({"id": ...})."""
+        from entity.umm_gas_controller_entity import UmmGasControllerEntity
+        cached = getattr(self, "_umm_gas_controller", None)
+        if cached is None:
+            cached = UmmGasControllerEntity(self, None)
+            self._umm_gas_controller = cached
+        return cached
+
     def UmmGasController(self, data=None):
+        # Deprecated: use client.umm_gas_controller instead.
         from entity.umm_gas_controller_entity import UmmGasControllerEntity
         return UmmGasControllerEntity(self, data)
 
 
+    @property
+    def umm_rss_feed_controller(self):
+        """Idiomatic facade: client.umm_rss_feed_controller.list() / client.umm_rss_feed_controller.load({"id": ...})."""
+        from entity.umm_rss_feed_controller_entity import UmmRssFeedControllerEntity
+        cached = getattr(self, "_umm_rss_feed_controller", None)
+        if cached is None:
+            cached = UmmRssFeedControllerEntity(self, None)
+            self._umm_rss_feed_controller = cached
+        return cached
+
     def UmmRssFeedController(self, data=None):
+        # Deprecated: use client.umm_rss_feed_controller instead.
         from entity.umm_rss_feed_controller_entity import UmmRssFeedControllerEntity
         return UmmRssFeedControllerEntity(self, data)
 

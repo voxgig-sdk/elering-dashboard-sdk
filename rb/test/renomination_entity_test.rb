@@ -42,8 +42,7 @@ class RenominationEntityTest < Minitest::Test
     # LOAD
     renomination_ref01_ent = client.Renomination(nil)
     renomination_ref01_match_dt0 = {}
-    renomination_ref01_data_dt0_loaded, err = renomination_ref01_ent.load(renomination_ref01_match_dt0, nil)
-    assert_nil err
+    renomination_ref01_data_dt0_loaded = renomination_ref01_ent.load(renomination_ref01_match_dt0, nil)
     assert !renomination_ref01_data_dt0_loaded.nil?
 
   end
@@ -82,7 +81,6 @@ def renomination_basic_setup(extra)
     "ELERINGDASHBOARD_TEST_RENOMINATION_ENTID" => idmap,
     "ELERINGDASHBOARD_TEST_LIVE" => "FALSE",
     "ELERINGDASHBOARD_TEST_EXPLAIN" => "FALSE",
-    "ELERINGDASHBOARD_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -94,7 +92,6 @@ def renomination_basic_setup(extra)
   if env["ELERINGDASHBOARD_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["ELERINGDASHBOARD_APIKEY"],
       },
       extra || {},
     ])

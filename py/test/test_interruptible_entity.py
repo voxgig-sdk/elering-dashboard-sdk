@@ -49,8 +49,7 @@ class TestInterruptibleEntity:
         # LOAD
         interruptible_ref01_ent = client.Interruptible(None)
         interruptible_ref01_match_dt0 = {}
-        interruptible_ref01_data_dt0_loaded, err = interruptible_ref01_ent.load(interruptible_ref01_match_dt0, None)
-        assert err is None
+        interruptible_ref01_data_dt0_loaded = interruptible_ref01_ent.load(interruptible_ref01_match_dt0, None)
         assert interruptible_ref01_data_dt0_loaded is not None
 
 
@@ -91,7 +90,6 @@ def _interruptible_basic_setup(extra):
         "ELERINGDASHBOARD_TEST_INTERRUPTIBLE_ENTID": idmap,
         "ELERINGDASHBOARD_TEST_LIVE": "FALSE",
         "ELERINGDASHBOARD_TEST_EXPLAIN": "FALSE",
-        "ELERINGDASHBOARD_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -102,7 +100,6 @@ def _interruptible_basic_setup(extra):
     if env.get("ELERINGDASHBOARD_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("ELERINGDASHBOARD_APIKEY"),
             },
             extra or {},
         ])

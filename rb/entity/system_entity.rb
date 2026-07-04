@@ -45,6 +45,7 @@ class SystemEntity
     end
   end
 
+  # @return [System, Hash] the current System data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,12 +58,18 @@ class SystemEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of System fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
   end
 
   
+  # Load a single System.
+  #
+  # @param reqmatch [SystemLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [System, Hash] the loaded System; raises EleringDashboardError on failure
   def load(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

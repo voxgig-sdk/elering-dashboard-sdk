@@ -85,6 +85,27 @@ func (e *GasTransmissionControllerEntity) Match(args ...any) any {
 	return out
 }
 
+// DataTyped is the statically-typed accessor for this entity's data. With no
+// argument it returns the current data as an GasTransmissionController; with an argument it
+// sets the data and returns the stored value. It delegates to the untyped Data
+// (identical runtime) and converts at the typed boundary.
+func (e *GasTransmissionControllerEntity) DataTyped(data ...GasTransmissionController) GasTransmissionController {
+	if len(data) > 0 {
+		return typedFrom[GasTransmissionController](e.Data(asMap(data[0])))
+	}
+	return typedFrom[GasTransmissionController](e.Data())
+}
+
+// MatchTyped mirrors DataTyped for the entity's match filter. The match is a
+// partial of the entity, so it round-trips through GasTransmissionController (all fields
+// optional at the wire level).
+func (e *GasTransmissionControllerEntity) MatchTyped(match ...GasTransmissionController) GasTransmissionController {
+	if len(match) > 0 {
+		return typedFrom[GasTransmissionController](e.Match(asMap(match[0])))
+	}
+	return typedFrom[GasTransmissionController](e.Match())
+}
+
 
 func (e *GasTransmissionControllerEntity) Load(reqmatch map[string]any, ctrl map[string]any) (any, error) {
 	utility := e.utility
@@ -109,6 +130,17 @@ func (e *GasTransmissionControllerEntity) Load(reqmatch map[string]any, ctrl map
 			}
 		}
 	})
+}
+
+// LoadTyped is the statically-typed variant of Load: it takes an
+// GasTransmissionControllerLoadMatch and returns an GasTransmissionController. It delegates to the untyped
+// Load (identical runtime) and converts at the typed boundary.
+func (e *GasTransmissionControllerEntity) LoadTyped(reqmatch GasTransmissionControllerLoadMatch, ctrl map[string]any) (GasTransmissionController, error) {
+	res, err := e.Load(asMap(reqmatch), ctrl)
+	if err != nil {
+		return GasTransmissionController{}, err
+	}
+	return typedFrom[GasTransmissionController](res), nil
 }
 
 

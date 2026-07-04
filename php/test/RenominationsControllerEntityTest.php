@@ -49,8 +49,7 @@ class RenominationsControllerEntityTest extends TestCase
         // LOAD
         $renominations_controller_ref01_ent = $client->RenominationsController(null);
         $renominations_controller_ref01_match_dt0 = [];
-        [$renominations_controller_ref01_data_dt0_loaded, $err] = $renominations_controller_ref01_ent->load($renominations_controller_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $renominations_controller_ref01_data_dt0_loaded = $renominations_controller_ref01_ent->load($renominations_controller_ref01_match_dt0, null);
         $this->assertNotNull($renominations_controller_ref01_data_dt0_loaded);
 
     }
@@ -85,7 +84,6 @@ function renominations_controller_basic_setup($extra)
         "ELERINGDASHBOARD_TEST_RENOMINATIONS_CONTROLLER_ENTID" => $idmap,
         "ELERINGDASHBOARD_TEST_LIVE" => "FALSE",
         "ELERINGDASHBOARD_TEST_EXPLAIN" => "FALSE",
-        "ELERINGDASHBOARD_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -97,7 +95,6 @@ function renominations_controller_basic_setup($extra)
     if ($env["ELERINGDASHBOARD_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["ELERINGDASHBOARD_APIKEY"],
             ],
             $extra ?? [],
         ]);

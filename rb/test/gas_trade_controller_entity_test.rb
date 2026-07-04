@@ -42,8 +42,7 @@ class GasTradeControllerEntityTest < Minitest::Test
     # LOAD
     gas_trade_controller_ref01_ent = client.GasTradeController(nil)
     gas_trade_controller_ref01_match_dt0 = {}
-    gas_trade_controller_ref01_data_dt0_loaded, err = gas_trade_controller_ref01_ent.load(gas_trade_controller_ref01_match_dt0, nil)
-    assert_nil err
+    gas_trade_controller_ref01_data_dt0_loaded = gas_trade_controller_ref01_ent.load(gas_trade_controller_ref01_match_dt0, nil)
     assert !gas_trade_controller_ref01_data_dt0_loaded.nil?
 
   end
@@ -82,7 +81,6 @@ def gas_trade_controller_basic_setup(extra)
     "ELERINGDASHBOARD_TEST_GAS_TRADE_CONTROLLER_ENTID" => idmap,
     "ELERINGDASHBOARD_TEST_LIVE" => "FALSE",
     "ELERINGDASHBOARD_TEST_EXPLAIN" => "FALSE",
-    "ELERINGDASHBOARD_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -94,7 +92,6 @@ def gas_trade_controller_basic_setup(extra)
   if env["ELERINGDASHBOARD_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["ELERINGDASHBOARD_APIKEY"],
       },
       extra || {},
     ])

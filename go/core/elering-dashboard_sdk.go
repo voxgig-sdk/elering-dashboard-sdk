@@ -245,121 +245,193 @@ func (sdk *EleringDashboardSDK) Direct(fetchargs map[string]any) (map[string]any
 }
 
 
+// Balance returns a Balance entity bound to this client.
+// Idiomatic usage: client.Balance(nil).List(nil, nil) or
+// client.Balance(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *EleringDashboardSDK) Balance(data map[string]any) EleringDashboardEntity {
 	return NewBalanceEntityFunc(sdk, data)
 }
 
 
+// BalanceController returns a BalanceController entity bound to this client.
+// Idiomatic usage: client.BalanceController(nil).List(nil, nil) or
+// client.BalanceController(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *EleringDashboardSDK) BalanceController(data map[string]any) EleringDashboardEntity {
 	return NewBalanceControllerEntityFunc(sdk, data)
 }
 
 
+// Firm returns a Firm entity bound to this client.
+// Idiomatic usage: client.Firm(nil).List(nil, nil) or
+// client.Firm(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *EleringDashboardSDK) Firm(data map[string]any) EleringDashboardEntity {
 	return NewFirmEntityFunc(sdk, data)
 }
 
 
+// FirmCapacityController returns a FirmCapacityController entity bound to this client.
+// Idiomatic usage: client.FirmCapacityController(nil).List(nil, nil) or
+// client.FirmCapacityController(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *EleringDashboardSDK) FirmCapacityController(data map[string]any) EleringDashboardEntity {
 	return NewFirmCapacityControllerEntityFunc(sdk, data)
 }
 
 
+// GasBalanceController returns a GasBalanceController entity bound to this client.
+// Idiomatic usage: client.GasBalanceController(nil).List(nil, nil) or
+// client.GasBalanceController(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *EleringDashboardSDK) GasBalanceController(data map[string]any) EleringDashboardEntity {
 	return NewGasBalanceControllerEntityFunc(sdk, data)
 }
 
 
+// GasBorderTradeController returns a GasBorderTradeController entity bound to this client.
+// Idiomatic usage: client.GasBorderTradeController(nil).List(nil, nil) or
+// client.GasBorderTradeController(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *EleringDashboardSDK) GasBorderTradeController(data map[string]any) EleringDashboardEntity {
 	return NewGasBorderTradeControllerEntityFunc(sdk, data)
 }
 
 
+// GasSystem returns a GasSystem entity bound to this client.
+// Idiomatic usage: client.GasSystem(nil).List(nil, nil) or
+// client.GasSystem(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *EleringDashboardSDK) GasSystem(data map[string]any) EleringDashboardEntity {
 	return NewGasSystemEntityFunc(sdk, data)
 }
 
 
+// GasSystemController returns a GasSystemController entity bound to this client.
+// Idiomatic usage: client.GasSystemController(nil).List(nil, nil) or
+// client.GasSystemController(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *EleringDashboardSDK) GasSystemController(data map[string]any) EleringDashboardEntity {
 	return NewGasSystemControllerEntityFunc(sdk, data)
 }
 
 
+// GasTrade returns a GasTrade entity bound to this client.
+// Idiomatic usage: client.GasTrade(nil).List(nil, nil) or
+// client.GasTrade(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *EleringDashboardSDK) GasTrade(data map[string]any) EleringDashboardEntity {
 	return NewGasTradeEntityFunc(sdk, data)
 }
 
 
+// GasTradeController returns a GasTradeController entity bound to this client.
+// Idiomatic usage: client.GasTradeController(nil).List(nil, nil) or
+// client.GasTradeController(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *EleringDashboardSDK) GasTradeController(data map[string]any) EleringDashboardEntity {
 	return NewGasTradeControllerEntityFunc(sdk, data)
 }
 
 
+// GasTransmissionController returns a GasTransmissionController entity bound to this client.
+// Idiomatic usage: client.GasTransmissionController(nil).List(nil, nil) or
+// client.GasTransmissionController(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *EleringDashboardSDK) GasTransmissionController(data map[string]any) EleringDashboardEntity {
 	return NewGasTransmissionControllerEntityFunc(sdk, data)
 }
 
 
+// GreenController returns a GreenController entity bound to this client.
+// Idiomatic usage: client.GreenController(nil).List(nil, nil) or
+// client.GreenController(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *EleringDashboardSDK) GreenController(data map[string]any) EleringDashboardEntity {
 	return NewGreenControllerEntityFunc(sdk, data)
 }
 
 
+// Interruptible returns a Interruptible entity bound to this client.
+// Idiomatic usage: client.Interruptible(nil).List(nil, nil) or
+// client.Interruptible(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *EleringDashboardSDK) Interruptible(data map[string]any) EleringDashboardEntity {
 	return NewInterruptibleEntityFunc(sdk, data)
 }
 
 
+// InterruptibleCapacityController returns a InterruptibleCapacityController entity bound to this client.
+// Idiomatic usage: client.InterruptibleCapacityController(nil).List(nil, nil) or
+// client.InterruptibleCapacityController(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *EleringDashboardSDK) InterruptibleCapacityController(data map[string]any) EleringDashboardEntity {
 	return NewInterruptibleCapacityControllerEntityFunc(sdk, data)
 }
 
 
+// Nomination returns a Nomination entity bound to this client.
+// Idiomatic usage: client.Nomination(nil).List(nil, nil) or
+// client.Nomination(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *EleringDashboardSDK) Nomination(data map[string]any) EleringDashboardEntity {
 	return NewNominationEntityFunc(sdk, data)
 }
 
 
+// NominationsController returns a NominationsController entity bound to this client.
+// Idiomatic usage: client.NominationsController(nil).List(nil, nil) or
+// client.NominationsController(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *EleringDashboardSDK) NominationsController(data map[string]any) EleringDashboardEntity {
 	return NewNominationsControllerEntityFunc(sdk, data)
 }
 
 
+// NpsController returns a NpsController entity bound to this client.
+// Idiomatic usage: client.NpsController(nil).List(nil, nil) or
+// client.NpsController(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *EleringDashboardSDK) NpsController(data map[string]any) EleringDashboardEntity {
 	return NewNpsControllerEntityFunc(sdk, data)
 }
 
 
+// Renomination returns a Renomination entity bound to this client.
+// Idiomatic usage: client.Renomination(nil).List(nil, nil) or
+// client.Renomination(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *EleringDashboardSDK) Renomination(data map[string]any) EleringDashboardEntity {
 	return NewRenominationEntityFunc(sdk, data)
 }
 
 
+// RenominationsController returns a RenominationsController entity bound to this client.
+// Idiomatic usage: client.RenominationsController(nil).List(nil, nil) or
+// client.RenominationsController(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *EleringDashboardSDK) RenominationsController(data map[string]any) EleringDashboardEntity {
 	return NewRenominationsControllerEntityFunc(sdk, data)
 }
 
 
+// System returns a System entity bound to this client.
+// Idiomatic usage: client.System(nil).List(nil, nil) or
+// client.System(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *EleringDashboardSDK) System(data map[string]any) EleringDashboardEntity {
 	return NewSystemEntityFunc(sdk, data)
 }
 
 
+// SystemController returns a SystemController entity bound to this client.
+// Idiomatic usage: client.SystemController(nil).List(nil, nil) or
+// client.SystemController(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *EleringDashboardSDK) SystemController(data map[string]any) EleringDashboardEntity {
 	return NewSystemControllerEntityFunc(sdk, data)
 }
 
 
+// TransmissionController returns a TransmissionController entity bound to this client.
+// Idiomatic usage: client.TransmissionController(nil).List(nil, nil) or
+// client.TransmissionController(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *EleringDashboardSDK) TransmissionController(data map[string]any) EleringDashboardEntity {
 	return NewTransmissionControllerEntityFunc(sdk, data)
 }
 
 
+// UmmGasController returns a UmmGasController entity bound to this client.
+// Idiomatic usage: client.UmmGasController(nil).List(nil, nil) or
+// client.UmmGasController(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *EleringDashboardSDK) UmmGasController(data map[string]any) EleringDashboardEntity {
 	return NewUmmGasControllerEntityFunc(sdk, data)
 }
 
 
+// UmmRssFeedController returns a UmmRssFeedController entity bound to this client.
+// Idiomatic usage: client.UmmRssFeedController(nil).List(nil, nil) or
+// client.UmmRssFeedController(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *EleringDashboardSDK) UmmRssFeedController(data map[string]any) EleringDashboardEntity {
 	return NewUmmRssFeedControllerEntityFunc(sdk, data)
 }

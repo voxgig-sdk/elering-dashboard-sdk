@@ -45,6 +45,7 @@ class GreenControllerEntity
     end
   end
 
+  # @return [GreenController, Hash] the current GreenController data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,12 +58,18 @@ class GreenControllerEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of GreenController fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
   end
 
   
+  # Load a single GreenController.
+  #
+  # @param reqmatch [GreenControllerLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [GreenController, Hash] the loaded GreenController; raises EleringDashboardError on failure
   def load(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

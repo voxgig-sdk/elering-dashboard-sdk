@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch FirmLoadMatch
+---@param ctrl? table
+---@return Firm
+---@return string? err
 function FirmEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

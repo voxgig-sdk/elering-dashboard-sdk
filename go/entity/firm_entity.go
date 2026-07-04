@@ -85,6 +85,27 @@ func (e *FirmEntity) Match(args ...any) any {
 	return out
 }
 
+// DataTyped is the statically-typed accessor for this entity's data. With no
+// argument it returns the current data as an Firm; with an argument it
+// sets the data and returns the stored value. It delegates to the untyped Data
+// (identical runtime) and converts at the typed boundary.
+func (e *FirmEntity) DataTyped(data ...Firm) Firm {
+	if len(data) > 0 {
+		return typedFrom[Firm](e.Data(asMap(data[0])))
+	}
+	return typedFrom[Firm](e.Data())
+}
+
+// MatchTyped mirrors DataTyped for the entity's match filter. The match is a
+// partial of the entity, so it round-trips through Firm (all fields
+// optional at the wire level).
+func (e *FirmEntity) MatchTyped(match ...Firm) Firm {
+	if len(match) > 0 {
+		return typedFrom[Firm](e.Match(asMap(match[0])))
+	}
+	return typedFrom[Firm](e.Match())
+}
+
 
 func (e *FirmEntity) Load(reqmatch map[string]any, ctrl map[string]any) (any, error) {
 	utility := e.utility
@@ -109,6 +130,17 @@ func (e *FirmEntity) Load(reqmatch map[string]any, ctrl map[string]any) (any, er
 			}
 		}
 	})
+}
+
+// LoadTyped is the statically-typed variant of Load: it takes an
+// FirmLoadMatch and returns an Firm. It delegates to the untyped
+// Load (identical runtime) and converts at the typed boundary.
+func (e *FirmEntity) LoadTyped(reqmatch FirmLoadMatch, ctrl map[string]any) (Firm, error) {
+	res, err := e.Load(asMap(reqmatch), ctrl)
+	if err != nil {
+		return Firm{}, err
+	}
+	return typedFrom[Firm](res), nil
 }
 
 

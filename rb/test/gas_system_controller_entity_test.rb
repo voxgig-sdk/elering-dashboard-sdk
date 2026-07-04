@@ -42,8 +42,7 @@ class GasSystemControllerEntityTest < Minitest::Test
     # LOAD
     gas_system_controller_ref01_ent = client.GasSystemController(nil)
     gas_system_controller_ref01_match_dt0 = {}
-    gas_system_controller_ref01_data_dt0_loaded, err = gas_system_controller_ref01_ent.load(gas_system_controller_ref01_match_dt0, nil)
-    assert_nil err
+    gas_system_controller_ref01_data_dt0_loaded = gas_system_controller_ref01_ent.load(gas_system_controller_ref01_match_dt0, nil)
     assert !gas_system_controller_ref01_data_dt0_loaded.nil?
 
   end
@@ -82,7 +81,6 @@ def gas_system_controller_basic_setup(extra)
     "ELERINGDASHBOARD_TEST_GAS_SYSTEM_CONTROLLER_ENTID" => idmap,
     "ELERINGDASHBOARD_TEST_LIVE" => "FALSE",
     "ELERINGDASHBOARD_TEST_EXPLAIN" => "FALSE",
-    "ELERINGDASHBOARD_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -94,7 +92,6 @@ def gas_system_controller_basic_setup(extra)
   if env["ELERINGDASHBOARD_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["ELERINGDASHBOARD_APIKEY"],
       },
       extra || {},
     ])

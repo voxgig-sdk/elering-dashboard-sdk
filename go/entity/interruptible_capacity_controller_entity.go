@@ -85,6 +85,27 @@ func (e *InterruptibleCapacityControllerEntity) Match(args ...any) any {
 	return out
 }
 
+// DataTyped is the statically-typed accessor for this entity's data. With no
+// argument it returns the current data as an InterruptibleCapacityController; with an argument it
+// sets the data and returns the stored value. It delegates to the untyped Data
+// (identical runtime) and converts at the typed boundary.
+func (e *InterruptibleCapacityControllerEntity) DataTyped(data ...InterruptibleCapacityController) InterruptibleCapacityController {
+	if len(data) > 0 {
+		return typedFrom[InterruptibleCapacityController](e.Data(asMap(data[0])))
+	}
+	return typedFrom[InterruptibleCapacityController](e.Data())
+}
+
+// MatchTyped mirrors DataTyped for the entity's match filter. The match is a
+// partial of the entity, so it round-trips through InterruptibleCapacityController (all fields
+// optional at the wire level).
+func (e *InterruptibleCapacityControllerEntity) MatchTyped(match ...InterruptibleCapacityController) InterruptibleCapacityController {
+	if len(match) > 0 {
+		return typedFrom[InterruptibleCapacityController](e.Match(asMap(match[0])))
+	}
+	return typedFrom[InterruptibleCapacityController](e.Match())
+}
+
 
 func (e *InterruptibleCapacityControllerEntity) Load(reqmatch map[string]any, ctrl map[string]any) (any, error) {
 	utility := e.utility
@@ -109,6 +130,17 @@ func (e *InterruptibleCapacityControllerEntity) Load(reqmatch map[string]any, ct
 			}
 		}
 	})
+}
+
+// LoadTyped is the statically-typed variant of Load: it takes an
+// InterruptibleCapacityControllerLoadMatch and returns an InterruptibleCapacityController. It delegates to the untyped
+// Load (identical runtime) and converts at the typed boundary.
+func (e *InterruptibleCapacityControllerEntity) LoadTyped(reqmatch InterruptibleCapacityControllerLoadMatch, ctrl map[string]any) (InterruptibleCapacityController, error) {
+	res, err := e.Load(asMap(reqmatch), ctrl)
+	if err != nil {
+		return InterruptibleCapacityController{}, err
+	}
+	return typedFrom[InterruptibleCapacityController](res), nil
 }
 
 

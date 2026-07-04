@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  GreenController,
+  GreenControllerLoadMatch,
+} from '../EleringDashboardTypes'
 
 // TODO: needs Entity superclass
-class GreenControllerEntity extends EleringDashboardEntityBase {
+class GreenControllerEntity extends EleringDashboardEntityBase<GreenController> {
 
   constructor(client: EleringDashboardSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +36,7 @@ class GreenControllerEntity extends EleringDashboardEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: GreenControllerLoadMatch, ctrl?: Control): Promise<GreenController> {
 
     const utility = this._utility
 
@@ -136,7 +140,9 @@ class GreenControllerEntity extends EleringDashboardEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<GreenController> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

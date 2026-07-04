@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch UmmRssFeedControllerLoadMatch
+---@param ctrl? table
+---@return UmmRssFeedController
+---@return string? err
 function UmmRssFeedControllerEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

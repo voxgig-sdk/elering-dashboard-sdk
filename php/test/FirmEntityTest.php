@@ -49,8 +49,7 @@ class FirmEntityTest extends TestCase
         // LOAD
         $firm_ref01_ent = $client->Firm(null);
         $firm_ref01_match_dt0 = [];
-        [$firm_ref01_data_dt0_loaded, $err] = $firm_ref01_ent->load($firm_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $firm_ref01_data_dt0_loaded = $firm_ref01_ent->load($firm_ref01_match_dt0, null);
         $this->assertNotNull($firm_ref01_data_dt0_loaded);
 
     }
@@ -85,7 +84,6 @@ function firm_basic_setup($extra)
         "ELERINGDASHBOARD_TEST_FIRM_ENTID" => $idmap,
         "ELERINGDASHBOARD_TEST_LIVE" => "FALSE",
         "ELERINGDASHBOARD_TEST_EXPLAIN" => "FALSE",
-        "ELERINGDASHBOARD_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -97,7 +95,6 @@ function firm_basic_setup($extra)
     if ($env["ELERINGDASHBOARD_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["ELERINGDASHBOARD_APIKEY"],
             ],
             $extra ?? [],
         ]);

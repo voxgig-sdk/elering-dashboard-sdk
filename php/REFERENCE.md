@@ -20,7 +20,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `$options` | `array` | SDK configuration options. |
-| `$options["apikey"]` | `string` | API key for authentication. |
 | `$options["base"]` | `string` | Base URL for API requests. |
 | `$options["prefix"]` | `string` | URL prefix appended after base. |
 | `$options["suffix"]` | `string` | URL suffix appended after path. |
@@ -148,7 +147,10 @@ Return a copy of the SDK utility object.
 
 #### `direct(array $fetchargs = []): array`
 
-Make a direct HTTP request to any API endpoint. Returns `[$result, $err]`.
+Make a direct HTTP request to any API endpoint. This is the raw-HTTP escape
+hatch: it does **not** throw. It returns a result array
+`["ok" => bool, "status" => int, "headers" => array, "data" => mixed]`, or
+`["ok" => false, "err" => \Exception]` on failure. Branch on `$result["ok"]`.
 
 **Parameters:**
 
@@ -162,11 +164,12 @@ Make a direct HTTP request to any API endpoint. Returns `[$result, $err]`.
 | `$fetchargs["body"]` | `mixed` | Request body (arrays are JSON-serialized). |
 | `$fetchargs["ctrl"]` | `array` | Control options. |
 
-**Returns:** `array [$result, $err]`
+**Returns:** `array` — the result dict (see above); never throws.
 
-#### `prepare(array $fetchargs = []): array`
+#### `prepare(array $fetchargs = []): mixed`
 
-Prepare a fetch definition without sending the request. Returns `[$fetchdef, $err]`.
+Prepare a fetch definition without sending the request. Returns the
+`$fetchdef` array. Throws on error.
 
 
 ---
@@ -174,17 +177,17 @@ Prepare a fetch definition without sending the request. Returns `[$fetchdef, $er
 ## BalanceEntity
 
 ```php
-$balance = $client->Balance();
+$balance = $client->balance();
 ```
 
 ### Operations
 
-#### `load(array $reqmatch, ?array $ctrl = null): array`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Throws on error.
 
 ```php
-[$result, $err] = $client->Balance()->load(["id" => "balance_id"]);
+$result = $client->balance()->load(["id" => "balance_id"]);
 ```
 
 ### Common Methods
@@ -220,17 +223,17 @@ Return the entity name.
 ## BalanceControllerEntity
 
 ```php
-$balance_controller = $client->BalanceController();
+$balance_controller = $client->balance_controller();
 ```
 
 ### Operations
 
-#### `load(array $reqmatch, ?array $ctrl = null): array`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Throws on error.
 
 ```php
-[$result, $err] = $client->BalanceController()->load(["id" => "balance_controller_id"]);
+$result = $client->balance_controller()->load(["id" => "balance_controller_id"]);
 ```
 
 ### Common Methods
@@ -266,17 +269,17 @@ Return the entity name.
 ## FirmEntity
 
 ```php
-$firm = $client->Firm();
+$firm = $client->firm();
 ```
 
 ### Operations
 
-#### `load(array $reqmatch, ?array $ctrl = null): array`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Throws on error.
 
 ```php
-[$result, $err] = $client->Firm()->load(["id" => "firm_id"]);
+$result = $client->firm()->load(["id" => "firm_id"]);
 ```
 
 ### Common Methods
@@ -312,17 +315,17 @@ Return the entity name.
 ## FirmCapacityControllerEntity
 
 ```php
-$firm_capacity_controller = $client->FirmCapacityController();
+$firm_capacity_controller = $client->firm_capacity_controller();
 ```
 
 ### Operations
 
-#### `load(array $reqmatch, ?array $ctrl = null): array`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Throws on error.
 
 ```php
-[$result, $err] = $client->FirmCapacityController()->load(["id" => "firm_capacity_controller_id"]);
+$result = $client->firm_capacity_controller()->load(["id" => "firm_capacity_controller_id"]);
 ```
 
 ### Common Methods
@@ -358,17 +361,17 @@ Return the entity name.
 ## GasBalanceControllerEntity
 
 ```php
-$gas_balance_controller = $client->GasBalanceController();
+$gas_balance_controller = $client->gas_balance_controller();
 ```
 
 ### Operations
 
-#### `load(array $reqmatch, ?array $ctrl = null): array`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Throws on error.
 
 ```php
-[$result, $err] = $client->GasBalanceController()->load(["id" => "gas_balance_controller_id"]);
+$result = $client->gas_balance_controller()->load(["id" => "gas_balance_controller_id"]);
 ```
 
 ### Common Methods
@@ -404,17 +407,17 @@ Return the entity name.
 ## GasBorderTradeControllerEntity
 
 ```php
-$gas_border_trade_controller = $client->GasBorderTradeController();
+$gas_border_trade_controller = $client->gas_border_trade_controller();
 ```
 
 ### Operations
 
-#### `load(array $reqmatch, ?array $ctrl = null): array`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Throws on error.
 
 ```php
-[$result, $err] = $client->GasBorderTradeController()->load(["id" => "gas_border_trade_controller_id"]);
+$result = $client->gas_border_trade_controller()->load(["id" => "gas_border_trade_controller_id"]);
 ```
 
 ### Common Methods
@@ -450,17 +453,17 @@ Return the entity name.
 ## GasSystemEntity
 
 ```php
-$gas_system = $client->GasSystem();
+$gas_system = $client->gas_system();
 ```
 
 ### Operations
 
-#### `load(array $reqmatch, ?array $ctrl = null): array`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Throws on error.
 
 ```php
-[$result, $err] = $client->GasSystem()->load(["id" => "gas_system_id"]);
+$result = $client->gas_system()->load(["id" => "gas_system_id"]);
 ```
 
 ### Common Methods
@@ -496,17 +499,17 @@ Return the entity name.
 ## GasSystemControllerEntity
 
 ```php
-$gas_system_controller = $client->GasSystemController();
+$gas_system_controller = $client->gas_system_controller();
 ```
 
 ### Operations
 
-#### `load(array $reqmatch, ?array $ctrl = null): array`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Throws on error.
 
 ```php
-[$result, $err] = $client->GasSystemController()->load(["id" => "gas_system_controller_id"]);
+$result = $client->gas_system_controller()->load(["id" => "gas_system_controller_id"]);
 ```
 
 ### Common Methods
@@ -542,17 +545,17 @@ Return the entity name.
 ## GasTradeEntity
 
 ```php
-$gas_trade = $client->GasTrade();
+$gas_trade = $client->gas_trade();
 ```
 
 ### Operations
 
-#### `load(array $reqmatch, ?array $ctrl = null): array`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Throws on error.
 
 ```php
-[$result, $err] = $client->GasTrade()->load(["id" => "gas_trade_id"]);
+$result = $client->gas_trade()->load(["id" => "gas_trade_id"]);
 ```
 
 ### Common Methods
@@ -588,17 +591,17 @@ Return the entity name.
 ## GasTradeControllerEntity
 
 ```php
-$gas_trade_controller = $client->GasTradeController();
+$gas_trade_controller = $client->gas_trade_controller();
 ```
 
 ### Operations
 
-#### `load(array $reqmatch, ?array $ctrl = null): array`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Throws on error.
 
 ```php
-[$result, $err] = $client->GasTradeController()->load(["id" => "gas_trade_controller_id"]);
+$result = $client->gas_trade_controller()->load(["id" => "gas_trade_controller_id"]);
 ```
 
 ### Common Methods
@@ -634,17 +637,17 @@ Return the entity name.
 ## GasTransmissionControllerEntity
 
 ```php
-$gas_transmission_controller = $client->GasTransmissionController();
+$gas_transmission_controller = $client->gas_transmission_controller();
 ```
 
 ### Operations
 
-#### `load(array $reqmatch, ?array $ctrl = null): array`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Throws on error.
 
 ```php
-[$result, $err] = $client->GasTransmissionController()->load(["id" => "gas_transmission_controller_id"]);
+$result = $client->gas_transmission_controller()->load(["id" => "gas_transmission_controller_id"]);
 ```
 
 ### Common Methods
@@ -680,17 +683,17 @@ Return the entity name.
 ## GreenControllerEntity
 
 ```php
-$green_controller = $client->GreenController();
+$green_controller = $client->green_controller();
 ```
 
 ### Operations
 
-#### `load(array $reqmatch, ?array $ctrl = null): array`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Throws on error.
 
 ```php
-[$result, $err] = $client->GreenController()->load(["id" => "green_controller_id"]);
+$result = $client->green_controller()->load(["id" => "green_controller_id"]);
 ```
 
 ### Common Methods
@@ -726,17 +729,17 @@ Return the entity name.
 ## InterruptibleEntity
 
 ```php
-$interruptible = $client->Interruptible();
+$interruptible = $client->interruptible();
 ```
 
 ### Operations
 
-#### `load(array $reqmatch, ?array $ctrl = null): array`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Throws on error.
 
 ```php
-[$result, $err] = $client->Interruptible()->load(["id" => "interruptible_id"]);
+$result = $client->interruptible()->load(["id" => "interruptible_id"]);
 ```
 
 ### Common Methods
@@ -772,17 +775,17 @@ Return the entity name.
 ## InterruptibleCapacityControllerEntity
 
 ```php
-$interruptible_capacity_controller = $client->InterruptibleCapacityController();
+$interruptible_capacity_controller = $client->interruptible_capacity_controller();
 ```
 
 ### Operations
 
-#### `load(array $reqmatch, ?array $ctrl = null): array`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Throws on error.
 
 ```php
-[$result, $err] = $client->InterruptibleCapacityController()->load(["id" => "interruptible_capacity_controller_id"]);
+$result = $client->interruptible_capacity_controller()->load(["id" => "interruptible_capacity_controller_id"]);
 ```
 
 ### Common Methods
@@ -818,17 +821,17 @@ Return the entity name.
 ## NominationEntity
 
 ```php
-$nomination = $client->Nomination();
+$nomination = $client->nomination();
 ```
 
 ### Operations
 
-#### `load(array $reqmatch, ?array $ctrl = null): array`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Throws on error.
 
 ```php
-[$result, $err] = $client->Nomination()->load(["id" => "nomination_id"]);
+$result = $client->nomination()->load(["id" => "nomination_id"]);
 ```
 
 ### Common Methods
@@ -864,17 +867,17 @@ Return the entity name.
 ## NominationsControllerEntity
 
 ```php
-$nominations_controller = $client->NominationsController();
+$nominations_controller = $client->nominations_controller();
 ```
 
 ### Operations
 
-#### `load(array $reqmatch, ?array $ctrl = null): array`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Throws on error.
 
 ```php
-[$result, $err] = $client->NominationsController()->load(["id" => "nominations_controller_id"]);
+$result = $client->nominations_controller()->load(["id" => "nominations_controller_id"]);
 ```
 
 ### Common Methods
@@ -910,17 +913,17 @@ Return the entity name.
 ## NpsControllerEntity
 
 ```php
-$nps_controller = $client->NpsController();
+$nps_controller = $client->nps_controller();
 ```
 
 ### Operations
 
-#### `load(array $reqmatch, ?array $ctrl = null): array`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Throws on error.
 
 ```php
-[$result, $err] = $client->NpsController()->load(["id" => "nps_controller_id"]);
+$result = $client->nps_controller()->load(["id" => "nps_controller_id"]);
 ```
 
 ### Common Methods
@@ -956,17 +959,17 @@ Return the entity name.
 ## RenominationEntity
 
 ```php
-$renomination = $client->Renomination();
+$renomination = $client->renomination();
 ```
 
 ### Operations
 
-#### `load(array $reqmatch, ?array $ctrl = null): array`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Throws on error.
 
 ```php
-[$result, $err] = $client->Renomination()->load(["id" => "renomination_id"]);
+$result = $client->renomination()->load(["id" => "renomination_id"]);
 ```
 
 ### Common Methods
@@ -1002,17 +1005,17 @@ Return the entity name.
 ## RenominationsControllerEntity
 
 ```php
-$renominations_controller = $client->RenominationsController();
+$renominations_controller = $client->renominations_controller();
 ```
 
 ### Operations
 
-#### `load(array $reqmatch, ?array $ctrl = null): array`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Throws on error.
 
 ```php
-[$result, $err] = $client->RenominationsController()->load(["id" => "renominations_controller_id"]);
+$result = $client->renominations_controller()->load(["id" => "renominations_controller_id"]);
 ```
 
 ### Common Methods
@@ -1048,17 +1051,17 @@ Return the entity name.
 ## SystemEntity
 
 ```php
-$system = $client->System();
+$system = $client->system();
 ```
 
 ### Operations
 
-#### `load(array $reqmatch, ?array $ctrl = null): array`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Throws on error.
 
 ```php
-[$result, $err] = $client->System()->load(["id" => "system_id"]);
+$result = $client->system()->load(["id" => "system_id"]);
 ```
 
 ### Common Methods
@@ -1094,17 +1097,17 @@ Return the entity name.
 ## SystemControllerEntity
 
 ```php
-$system_controller = $client->SystemController();
+$system_controller = $client->system_controller();
 ```
 
 ### Operations
 
-#### `load(array $reqmatch, ?array $ctrl = null): array`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Throws on error.
 
 ```php
-[$result, $err] = $client->SystemController()->load(["id" => "system_controller_id"]);
+$result = $client->system_controller()->load(["id" => "system_controller_id"]);
 ```
 
 ### Common Methods
@@ -1140,17 +1143,17 @@ Return the entity name.
 ## TransmissionControllerEntity
 
 ```php
-$transmission_controller = $client->TransmissionController();
+$transmission_controller = $client->transmission_controller();
 ```
 
 ### Operations
 
-#### `load(array $reqmatch, ?array $ctrl = null): array`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Throws on error.
 
 ```php
-[$result, $err] = $client->TransmissionController()->load(["id" => "transmission_controller_id"]);
+$result = $client->transmission_controller()->load(["id" => "transmission_controller_id"]);
 ```
 
 ### Common Methods
@@ -1186,17 +1189,17 @@ Return the entity name.
 ## UmmGasControllerEntity
 
 ```php
-$umm_gas_controller = $client->UmmGasController();
+$umm_gas_controller = $client->umm_gas_controller();
 ```
 
 ### Operations
 
-#### `load(array $reqmatch, ?array $ctrl = null): array`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Throws on error.
 
 ```php
-[$result, $err] = $client->UmmGasController()->load(["id" => "umm_gas_controller_id"]);
+$result = $client->umm_gas_controller()->load(["id" => "umm_gas_controller_id"]);
 ```
 
 ### Common Methods
@@ -1232,17 +1235,17 @@ Return the entity name.
 ## UmmRssFeedControllerEntity
 
 ```php
-$umm_rss_feed_controller = $client->UmmRssFeedController();
+$umm_rss_feed_controller = $client->umm_rss_feed_controller();
 ```
 
 ### Operations
 
-#### `load(array $reqmatch, ?array $ctrl = null): array`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Throws on error.
 
 ```php
-[$result, $err] = $client->UmmRssFeedController()->load(["id" => "umm_rss_feed_controller_id"]);
+$result = $client->umm_rss_feed_controller()->load(["id" => "umm_rss_feed_controller_id"]);
 ```
 
 ### Common Methods

@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch GasBalanceControllerLoadMatch
+---@param ctrl? table
+---@return GasBalanceController
+---@return string? err
 function GasBalanceControllerEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

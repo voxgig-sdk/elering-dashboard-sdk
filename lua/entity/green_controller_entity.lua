@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch GreenControllerLoadMatch
+---@param ctrl? table
+---@return GreenController
+---@return string? err
 function GreenControllerEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

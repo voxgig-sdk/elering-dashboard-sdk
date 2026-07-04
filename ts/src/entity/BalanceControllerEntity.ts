@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  BalanceController,
+  BalanceControllerLoadMatch,
+} from '../EleringDashboardTypes'
 
 // TODO: needs Entity superclass
-class BalanceControllerEntity extends EleringDashboardEntityBase {
+class BalanceControllerEntity extends EleringDashboardEntityBase<BalanceController> {
 
   constructor(client: EleringDashboardSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +36,7 @@ class BalanceControllerEntity extends EleringDashboardEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: BalanceControllerLoadMatch, ctrl?: Control): Promise<BalanceController> {
 
     const utility = this._utility
 
@@ -136,7 +140,9 @@ class BalanceControllerEntity extends EleringDashboardEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<BalanceController> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

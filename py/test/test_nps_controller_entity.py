@@ -49,8 +49,7 @@ class TestNpsControllerEntity:
         # LOAD
         nps_controller_ref01_ent = client.NpsController(None)
         nps_controller_ref01_match_dt0 = {}
-        nps_controller_ref01_data_dt0_loaded, err = nps_controller_ref01_ent.load(nps_controller_ref01_match_dt0, None)
-        assert err is None
+        nps_controller_ref01_data_dt0_loaded = nps_controller_ref01_ent.load(nps_controller_ref01_match_dt0, None)
         assert nps_controller_ref01_data_dt0_loaded is not None
 
 
@@ -91,7 +90,6 @@ def _nps_controller_basic_setup(extra):
         "ELERINGDASHBOARD_TEST_NPS_CONTROLLER_ENTID": idmap,
         "ELERINGDASHBOARD_TEST_LIVE": "FALSE",
         "ELERINGDASHBOARD_TEST_EXPLAIN": "FALSE",
-        "ELERINGDASHBOARD_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -102,7 +100,6 @@ def _nps_controller_basic_setup(extra):
     if env.get("ELERINGDASHBOARD_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("ELERINGDASHBOARD_APIKEY"),
             },
             extra or {},
         ])

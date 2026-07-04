@@ -45,6 +45,7 @@ class InterruptibleCapacityControllerEntity
     end
   end
 
+  # @return [InterruptibleCapacityController, Hash] the current InterruptibleCapacityController data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,12 +58,18 @@ class InterruptibleCapacityControllerEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of InterruptibleCapacityController fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
   end
 
   
+  # Load a single InterruptibleCapacityController.
+  #
+  # @param reqmatch [InterruptibleCapacityControllerLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [InterruptibleCapacityController, Hash] the loaded InterruptibleCapacityController; raises EleringDashboardError on failure
   def load(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

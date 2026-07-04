@@ -49,8 +49,7 @@ class UmmRssFeedControllerEntityTest extends TestCase
         // LOAD
         $umm_rss_feed_controller_ref01_ent = $client->UmmRssFeedController(null);
         $umm_rss_feed_controller_ref01_match_dt0 = [];
-        [$umm_rss_feed_controller_ref01_data_dt0_loaded, $err] = $umm_rss_feed_controller_ref01_ent->load($umm_rss_feed_controller_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $umm_rss_feed_controller_ref01_data_dt0_loaded = $umm_rss_feed_controller_ref01_ent->load($umm_rss_feed_controller_ref01_match_dt0, null);
         $this->assertNotNull($umm_rss_feed_controller_ref01_data_dt0_loaded);
 
     }
@@ -85,7 +84,6 @@ function umm_rss_feed_controller_basic_setup($extra)
         "ELERINGDASHBOARD_TEST_UMM_RSS_FEED_CONTROLLER_ENTID" => $idmap,
         "ELERINGDASHBOARD_TEST_LIVE" => "FALSE",
         "ELERINGDASHBOARD_TEST_EXPLAIN" => "FALSE",
-        "ELERINGDASHBOARD_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -97,7 +95,6 @@ function umm_rss_feed_controller_basic_setup($extra)
     if ($env["ELERINGDASHBOARD_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["ELERINGDASHBOARD_APIKEY"],
             ],
             $extra ?? [],
         ]);

@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch FirmCapacityControllerLoadMatch
+---@param ctrl? table
+---@return FirmCapacityController
+---@return string? err
 function FirmCapacityControllerEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

@@ -10,26 +10,24 @@ This is an unofficial SDK for the Elering dashboard API documentation public API
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/elering-dashboard` | `npm install @voxgig-sdk/elering-dashboard` |
-| Python | `voxgig-sdk-elering-dashboard` | `pip install voxgig-sdk-elering-dashboard` |
-| PHP | `voxgig-sdk/elering-dashboard` | `composer require voxgig-sdk/elering-dashboard` |
-| Golang | `github.com/voxgig-sdk/elering-dashboard-sdk/go` | `go get github.com/voxgig-sdk/elering-dashboard-sdk/go` |
-| Ruby | `voxgig-sdk-elering-dashboard` | `gem install voxgig-sdk-elering-dashboard` |
-| Lua | `voxgig-sdk-elering-dashboard` | `luarocks install voxgig-sdk-elering-dashboard` |
+| TypeScript | `@voxgig-sdk/elering-dashboard` | publish pending — [install from git tag](https://github.com/voxgig-sdk/elering-dashboard-sdk/releases) |
+| Python | `voxgig-sdk-elering-dashboard` | publish pending — [install from git tag](https://github.com/voxgig-sdk/elering-dashboard-sdk/releases) |
+| PHP | `voxgig-sdk/elering-dashboard` | publish pending — [install from git tag](https://github.com/voxgig-sdk/elering-dashboard-sdk/releases) |
+| Golang | `github.com/voxgig-sdk/elering-dashboard-sdk/go` | `go get github.com/voxgig-sdk/elering-dashboard-sdk/go@latest` |
+| Ruby | `voxgig-sdk-elering-dashboard` | publish pending — [install from git tag](https://github.com/voxgig-sdk/elering-dashboard-sdk/releases) |
+| Lua | `voxgig-sdk-elering-dashboard` | publish pending — [install from git tag](https://github.com/voxgig-sdk/elering-dashboard-sdk/releases) |
 
 ## Quickstart
 
 ### TypeScript
 
 ```ts
-import { EleringDashboardSDK } from 'elering-dashboard'
+import { EleringDashboardSDK } from '@voxgig-sdk/elering-dashboard'
 
-const client = new EleringDashboardSDK({
-  apikey: process.env.ELERING-DASHBOARD_APIKEY,
-})
+const client = new EleringDashboardSDK()
 
 // Load balance data
-const balance = await client.Balance().load({})
+const balance = await client.balance.load({})
 console.log(balance.data)
 ```
 
@@ -71,30 +69,30 @@ The API exposes 24 entities:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **Balance** |  | `/api/balance` |
-| **BalanceController** |  | `/api/balance/commerce/csv` |
-| **Firm** |  | `/api/capacity/firm` |
-| **FirmCapacityController** |  | `/api/capacity/firm/csv` |
-| **GasBalanceController** |  | `/api/gas-balance/price/csv` |
-| **GasBorderTradeController** |  | `/api/gas/border-trade/current` |
-| **GasSystem** |  | `/api/gas-system` |
-| **GasSystemController** |  | `/api/gas-system/csv` |
-| **GasTrade** |  | `/api/gas-trade` |
-| **GasTradeController** |  | `/api/gas-trade/csv` |
-| **GasTransmissionController** |  | `/api/gas-transmission/cross-border/csv` |
-| **GreenController** |  | `/api/green/certificates` |
-| **Interruptible** |  | `/api/capacity/interruptible` |
-| **InterruptibleCapacityController** |  | `/api/capacity/interruptible/csv` |
-| **Nomination** |  | `/api/nominations` |
-| **NominationsController** |  | `/api/nominations/csv` |
-| **NpsController** |  | `/api/nps/price/csv` |
-| **Renomination** |  | `/api/nominations/renominations` |
-| **RenominationsController** |  | `/api/nominations/renominations/csv` |
-| **System** |  | `/api/system` |
-| **SystemController** |  | `/api/system/csv` |
-| **TransmissionController** |  | `/api/transmission/cross-border-capacity/{group}/csv` |
-| **UmmGasController** |  | `/api/umm/gas` |
-| **UmmRssFeedController** |  | `/umm/gas/rss` |
+| **Balance** | The Balance entity (load). | `/api/balance` |
+| **BalanceController** | The BalanceController entity (load). | `/api/balance/commerce/csv` |
+| **Firm** | The Firm entity (load). | `/api/capacity/firm` |
+| **FirmCapacityController** | The FirmCapacityController entity (load). | `/api/capacity/firm/csv` |
+| **GasBalanceController** | The GasBalanceController entity (load). | `/api/gas-balance/price/csv` |
+| **GasBorderTradeController** | The GasBorderTradeController entity (load). | `/api/gas/border-trade/current` |
+| **GasSystem** | The GasSystem entity (load). | `/api/gas-system` |
+| **GasSystemController** | The GasSystemController entity (load). | `/api/gas-system/csv` |
+| **GasTrade** | The GasTrade entity (load). | `/api/gas-trade` |
+| **GasTradeController** | The GasTradeController entity (load). | `/api/gas-trade/csv` |
+| **GasTransmissionController** | The GasTransmissionController entity (load). | `/api/gas-transmission/cross-border/csv` |
+| **GreenController** | The GreenController entity (load). | `/api/green/certificates` |
+| **Interruptible** | The Interruptible entity (load). | `/api/capacity/interruptible` |
+| **InterruptibleCapacityController** | The InterruptibleCapacityController entity (load). | `/api/capacity/interruptible/csv` |
+| **Nomination** | The Nomination entity (load). | `/api/nominations` |
+| **NominationsController** | The NominationsController entity (load). | `/api/nominations/csv` |
+| **NpsController** | The NpsController entity (load). | `/api/nps/price/csv` |
+| **Renomination** | The Renomination entity (load). | `/api/nominations/renominations` |
+| **RenominationsController** | The RenominationsController entity (load). | `/api/nominations/renominations/csv` |
+| **System** | The System entity (load). | `/api/system` |
+| **SystemController** | The SystemController entity (load). | `/api/system/csv` |
+| **TransmissionController** | The TransmissionController entity (load). | `/api/transmission/cross-border-capacity/{group}/csv` |
+| **UmmGasController** | The UmmGasController entity (load). | `/api/umm/gas` |
+| **UmmRssFeedController** | The UmmRssFeedController entity (load). | `/umm/gas/rss` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -104,16 +102,13 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
-import os
 from eleringdashboard_sdk import EleringDashboardSDK
 
-client = EleringDashboardSDK({
-    "apikey": os.environ.get("ELERING-DASHBOARD_APIKEY"),
-})
+client = EleringDashboardSDK()
 
 
 # Load a specific balance
-balance, err = client.Balance().load({"id": "example_id"})
+balance = client.balance.load({"id": "example_id"})
 print(balance)
 ```
 
@@ -123,13 +118,11 @@ print(balance)
 <?php
 require_once 'eleringdashboard_sdk.php';
 
-$client = new EleringDashboardSDK([
-    "apikey" => getenv("ELERING-DASHBOARD_APIKEY"),
-]);
+$client = new EleringDashboardSDK();
 
 
 // Load a specific balance
-[$balance, $err] = $client->Balance()->load(["id" => "example_id"]);
+$balance = $client->balance()->load(["id" => "example_id"]);
 print_r($balance);
 ```
 
@@ -138,9 +131,7 @@ print_r($balance);
 ```go
 import sdk "github.com/voxgig-sdk/elering-dashboard-sdk/go"
 
-client := sdk.NewEleringDashboardSDK(map[string]any{
-    "apikey": os.Getenv("ELERING-DASHBOARD_APIKEY"),
-})
+client := sdk.New()
 
 // Load balance data
 balance, err := client.Balance(nil).Load(map[string]any{}, nil)
@@ -152,13 +143,11 @@ fmt.Println(balance)
 ```ruby
 require_relative "EleringDashboard_sdk"
 
-client = EleringDashboardSDK.new({
-  "apikey" => ENV["ELERING-DASHBOARD_APIKEY"],
-})
+client = EleringDashboardSDK.new
 
 
 # Load a specific balance
-balance, err = client.Balance().load({ "id" => "example_id" })
+balance = client.balance.load({ "id" => "example_id" })
 puts balance
 ```
 
@@ -167,13 +156,11 @@ puts balance
 ```lua
 local sdk = require("elering-dashboard_sdk")
 
-local client = sdk.new({
-  apikey = os.getenv("ELERING-DASHBOARD_APIKEY"),
-})
+local client = sdk.new()
 
 
 -- Load a specific balance
-local balance, err = client:Balance():load({ id = "example_id" })
+local balance, err = client:balance():load({ id = "example_id" })
 print(balance)
 ```
 
@@ -186,7 +173,7 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = EleringDashboardSDK.test()
-const result = await client.Balance().load({ id: 'test01' })
+const result = await client.balance.load({ id: 'test01' })
 // result.ok === true, result.data contains mock data
 ```
 
@@ -194,14 +181,14 @@ const result = await client.Balance().load({ id: 'test01' })
 
 ```python
 client = EleringDashboardSDK.test()
-result, err = client.Balance().load({"id": "test01"})
+result = client.balance.load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
 $client = EleringDashboardSDK::test();
-[$result, $err] = $client->Balance()->load(["id" => "test01"]);
+$result = $client->balance()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -217,14 +204,14 @@ result, err := client.Balance(nil).Load(
 
 ```ruby
 client = EleringDashboardSDK.test
-result, err = client.Balance().load({ "id" => "test01" })
+result = client.balance.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:Balance():load({ id = "test01" })
+local result, err = client:balance():load({ id = "test01" })
 ```
 
 ## How it works
@@ -277,7 +264,7 @@ console.log(result.data)
 
 **Python:**
 ```python
-result, err = client.direct({
+result = client.direct({
     "path": "/api/resource/{id}",
     "method": "GET",
     "params": {"id": "example"},
@@ -286,7 +273,7 @@ result, err = client.direct({
 
 **PHP:**
 ```php
-[$result, $err] = $client->direct([
+$result = $client->direct([
     "path" => "/api/resource/{id}",
     "method" => "GET",
     "params" => ["id" => "example"],
@@ -304,7 +291,7 @@ result, err := client.Direct(map[string]any{
 
 **Ruby:**
 ```ruby
-result, err = client.direct({
+result = client.direct({
   "path" => "/api/resource/{id}",
   "method" => "GET",
   "params" => { "id" => "example" },

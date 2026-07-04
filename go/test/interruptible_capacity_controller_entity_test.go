@@ -117,7 +117,6 @@ func interruptible_capacity_controllerBasicSetup(extra map[string]any) *entityTe
 		"ELERINGDASHBOARD_TEST_INTERRUPTIBLE_CAPACITY_CONTROLLER_ENTID": idmap,
 		"ELERINGDASHBOARD_TEST_LIVE":      "FALSE",
 		"ELERINGDASHBOARD_TEST_EXPLAIN":   "FALSE",
-		"ELERINGDASHBOARD_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["ELERINGDASHBOARD_TEST_INTERRUPTIBLE_CAPACITY_CONTROLLER_ENTID"])
@@ -128,7 +127,6 @@ func interruptible_capacity_controllerBasicSetup(extra map[string]any) *entityTe
 	if env["ELERINGDASHBOARD_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
-				"apikey": env["ELERINGDASHBOARD_APIKEY"],
 			},
 			extra,
 		})

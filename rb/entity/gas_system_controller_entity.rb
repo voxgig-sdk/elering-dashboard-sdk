@@ -45,6 +45,7 @@ class GasSystemControllerEntity
     end
   end
 
+  # @return [GasSystemController, Hash] the current GasSystemController data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,12 +58,18 @@ class GasSystemControllerEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of GasSystemController fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
   end
 
   
+  # Load a single GasSystemController.
+  #
+  # @param reqmatch [GasSystemControllerLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [GasSystemController, Hash] the loaded GasSystemController; raises EleringDashboardError on failure
   def load(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

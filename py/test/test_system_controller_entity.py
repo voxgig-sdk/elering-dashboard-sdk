@@ -49,8 +49,7 @@ class TestSystemControllerEntity:
         # LOAD
         system_controller_ref01_ent = client.SystemController(None)
         system_controller_ref01_match_dt0 = {}
-        system_controller_ref01_data_dt0_loaded, err = system_controller_ref01_ent.load(system_controller_ref01_match_dt0, None)
-        assert err is None
+        system_controller_ref01_data_dt0_loaded = system_controller_ref01_ent.load(system_controller_ref01_match_dt0, None)
         assert system_controller_ref01_data_dt0_loaded is not None
 
 
@@ -91,7 +90,6 @@ def _system_controller_basic_setup(extra):
         "ELERINGDASHBOARD_TEST_SYSTEM_CONTROLLER_ENTID": idmap,
         "ELERINGDASHBOARD_TEST_LIVE": "FALSE",
         "ELERINGDASHBOARD_TEST_EXPLAIN": "FALSE",
-        "ELERINGDASHBOARD_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -102,7 +100,6 @@ def _system_controller_basic_setup(extra):
     if env.get("ELERINGDASHBOARD_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("ELERINGDASHBOARD_APIKEY"),
             },
             extra or {},
         ])

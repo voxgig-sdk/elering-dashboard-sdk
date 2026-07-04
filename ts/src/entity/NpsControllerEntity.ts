@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  NpsController,
+  NpsControllerLoadMatch,
+} from '../EleringDashboardTypes'
 
 // TODO: needs Entity superclass
-class NpsControllerEntity extends EleringDashboardEntityBase {
+class NpsControllerEntity extends EleringDashboardEntityBase<NpsController> {
 
   constructor(client: EleringDashboardSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +36,7 @@ class NpsControllerEntity extends EleringDashboardEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: NpsControllerLoadMatch, ctrl?: Control): Promise<NpsController> {
 
     const utility = this._utility
 
@@ -136,7 +140,9 @@ class NpsControllerEntity extends EleringDashboardEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<NpsController> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

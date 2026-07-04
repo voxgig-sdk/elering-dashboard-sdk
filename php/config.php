@@ -20,9 +20,6 @@ class EleringDashboardConfig
             ],
             "options" => [
                 "base" => "https://dashboard.elering.ee",
-                "auth" => [
-                    "prefix" => "Bearer",
-                ],
                 "headers" => [
           'content-type' => 'application/json',
         ],
@@ -1209,6 +1206,7 @@ class EleringDashboardConfig
                         'orig' => 'group',
                         'reqd' => true,
                         'type' => '`$STRING`',
+                        'index$' => 0,
                       ],
                     ],
                   ],
@@ -1907,6 +1905,7 @@ class EleringDashboardConfig
                         'orig' => 'group',
                         'reqd' => true,
                         'type' => '`$STRING`',
+                        'index$' => 0,
                       ],
                     ],
                   ],
@@ -1941,6 +1940,7 @@ class EleringDashboardConfig
                         'orig' => 'group',
                         'reqd' => true,
                         'type' => '`$STRING`',
+                        'index$' => 0,
                       ],
                     ],
                   ],
@@ -1975,6 +1975,7 @@ class EleringDashboardConfig
                         'orig' => 'group',
                         'reqd' => true,
                         'type' => '`$STRING`',
+                        'index$' => 0,
                       ],
                     ],
                   ],
@@ -2399,6 +2400,7 @@ class EleringDashboardConfig
                         'orig' => 'group',
                         'reqd' => true,
                         'type' => '`$STRING`',
+                        'index$' => 0,
                       ],
                     ],
                     'query' => [
@@ -2624,6 +2626,7 @@ class EleringDashboardConfig
                         'orig' => 'group',
                         'reqd' => true,
                         'type' => '`$STRING`',
+                        'index$' => 0,
                       ],
                     ],
                     'query' => [

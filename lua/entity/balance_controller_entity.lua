@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch BalanceControllerLoadMatch
+---@param ctrl? table
+---@return BalanceController
+---@return string? err
 function BalanceControllerEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

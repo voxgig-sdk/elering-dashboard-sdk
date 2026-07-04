@@ -55,6 +55,9 @@ class GasBalanceControllerEntity
         return new GasBalanceControllerEntity($this->_client, $opts);
     }
 
+    /**
+     * @param GasBalanceController|array $args GasBalanceController data (assoc-array) to store.
+     */
     public function data_set($args): void
     {
         if ($args) {
@@ -63,12 +66,18 @@ class GasBalanceControllerEntity
         }
     }
 
+    /**
+     * @return GasBalanceController|array The current GasBalanceController data as an assoc-array.
+     */
     public function data_get()
     {
         ($this->_utility->feature_hook)($this->_entctx, "GetData");
         return Struct::clone($this->_data);
     }
 
+    /**
+     * @param array $args Match filter (any subset of GasBalanceController fields).
+     */
     public function match_set($args): void
     {
         if ($args) {
@@ -77,6 +86,9 @@ class GasBalanceControllerEntity
         }
     }
 
+    /**
+     * @return array The current match filter (any subset of GasBalanceController fields).
+     */
     public function match_get()
     {
         ($this->_utility->feature_hook)($this->_entctx, "GetMatch");
@@ -84,7 +96,16 @@ class GasBalanceControllerEntity
     }
 
     
-    public function load($reqmatch, $ctrl = null): array
+    /**
+     * Load a single GasBalanceController.
+     *
+     * @param GasBalanceControllerLoadMatch|array|null $reqmatch Match criteria (id/query
+     *   fields) as an assoc-array; a typed GasBalanceControllerLoadMatch names the shape.
+     * @param mixed $ctrl Optional per-call control overrides.
+     * @return GasBalanceController|array The loaded GasBalanceController as an assoc-array at the
+     *   SDK boundary; throws EleringDashboardError on failure (item-5 convention).
+     */
+    public function load(?array $reqmatch = null, $ctrl = null): mixed
     {
         $utility = $this->_utility;
         $ctx = ($utility->make_context)([
@@ -117,7 +138,7 @@ class GasBalanceControllerEntity
 
     
 
-    private function _run_op($ctx, callable $post_done): array
+    private function _run_op($ctx, callable $post_done): mixed
     {
         $utility = $this->_utility;
 

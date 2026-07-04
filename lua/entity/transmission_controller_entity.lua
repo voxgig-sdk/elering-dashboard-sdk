@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch TransmissionControllerLoadMatch
+---@param ctrl? table
+---@return TransmissionController
+---@return string? err
 function TransmissionControllerEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

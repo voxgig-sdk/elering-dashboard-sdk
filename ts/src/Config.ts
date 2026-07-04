@@ -38,10 +38,6 @@ class Config {
   options = {
     base: 'https://dashboard.elering.ee',
 
-    auth: {
-      prefix: 'Bearer',
-    },
-
     headers: {
       "content-type": "application/json"
     },
@@ -1279,7 +1275,8 @@ class Config {
                     "name": "group",
                     "orig": "group",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ]
               },
@@ -1977,7 +1974,8 @@ class Config {
                     "name": "group",
                     "orig": "group",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ]
               },
@@ -2011,7 +2009,8 @@ class Config {
                     "name": "group",
                     "orig": "group",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ]
               },
@@ -2045,7 +2044,8 @@ class Config {
                     "name": "group",
                     "orig": "group",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ]
               },
@@ -2469,7 +2469,8 @@ class Config {
                     "name": "group",
                     "orig": "group",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ],
                 "query": [
@@ -2694,7 +2695,8 @@ class Config {
                     "name": "group",
                     "orig": "group",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ],
                 "query": [

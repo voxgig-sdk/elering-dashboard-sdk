@@ -49,8 +49,7 @@ class TestRenominationEntity:
         # LOAD
         renomination_ref01_ent = client.Renomination(None)
         renomination_ref01_match_dt0 = {}
-        renomination_ref01_data_dt0_loaded, err = renomination_ref01_ent.load(renomination_ref01_match_dt0, None)
-        assert err is None
+        renomination_ref01_data_dt0_loaded = renomination_ref01_ent.load(renomination_ref01_match_dt0, None)
         assert renomination_ref01_data_dt0_loaded is not None
 
 
@@ -91,7 +90,6 @@ def _renomination_basic_setup(extra):
         "ELERINGDASHBOARD_TEST_RENOMINATION_ENTID": idmap,
         "ELERINGDASHBOARD_TEST_LIVE": "FALSE",
         "ELERINGDASHBOARD_TEST_EXPLAIN": "FALSE",
-        "ELERINGDASHBOARD_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -102,7 +100,6 @@ def _renomination_basic_setup(extra):
     if env.get("ELERINGDASHBOARD_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("ELERINGDASHBOARD_APIKEY"),
             },
             extra or {},
         ])

@@ -85,6 +85,27 @@ func (e *UmmRssFeedControllerEntity) Match(args ...any) any {
 	return out
 }
 
+// DataTyped is the statically-typed accessor for this entity's data. With no
+// argument it returns the current data as an UmmRssFeedController; with an argument it
+// sets the data and returns the stored value. It delegates to the untyped Data
+// (identical runtime) and converts at the typed boundary.
+func (e *UmmRssFeedControllerEntity) DataTyped(data ...UmmRssFeedController) UmmRssFeedController {
+	if len(data) > 0 {
+		return typedFrom[UmmRssFeedController](e.Data(asMap(data[0])))
+	}
+	return typedFrom[UmmRssFeedController](e.Data())
+}
+
+// MatchTyped mirrors DataTyped for the entity's match filter. The match is a
+// partial of the entity, so it round-trips through UmmRssFeedController (all fields
+// optional at the wire level).
+func (e *UmmRssFeedControllerEntity) MatchTyped(match ...UmmRssFeedController) UmmRssFeedController {
+	if len(match) > 0 {
+		return typedFrom[UmmRssFeedController](e.Match(asMap(match[0])))
+	}
+	return typedFrom[UmmRssFeedController](e.Match())
+}
+
 
 func (e *UmmRssFeedControllerEntity) Load(reqmatch map[string]any, ctrl map[string]any) (any, error) {
 	utility := e.utility
@@ -109,6 +130,17 @@ func (e *UmmRssFeedControllerEntity) Load(reqmatch map[string]any, ctrl map[stri
 			}
 		}
 	})
+}
+
+// LoadTyped is the statically-typed variant of Load: it takes an
+// UmmRssFeedControllerLoadMatch and returns an UmmRssFeedController. It delegates to the untyped
+// Load (identical runtime) and converts at the typed boundary.
+func (e *UmmRssFeedControllerEntity) LoadTyped(reqmatch UmmRssFeedControllerLoadMatch, ctrl map[string]any) (UmmRssFeedController, error) {
+	res, err := e.Load(asMap(reqmatch), ctrl)
+	if err != nil {
+		return UmmRssFeedController{}, err
+	}
+	return typedFrom[UmmRssFeedController](res), nil
 }
 
 

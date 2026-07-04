@@ -244,144 +244,456 @@ end
 
 
 
+-- Idiomatic facade: client:balance():list() / client:balance():load({ id = ... })
+function EleringDashboardSDK:balance(data)
+  local EntityMod = require("entity.balance_entity")
+  if data == nil then
+    if self._balance == nil then
+      self._balance = EntityMod.new(self, nil)
+    end
+    return self._balance
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:balance() instead.
 function EleringDashboardSDK:Balance(data)
   local EntityMod = require("entity.balance_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:balance_controller():list() / client:balance_controller():load({ id = ... })
+function EleringDashboardSDK:balance_controller(data)
+  local EntityMod = require("entity.balance_controller_entity")
+  if data == nil then
+    if self._balance_controller == nil then
+      self._balance_controller = EntityMod.new(self, nil)
+    end
+    return self._balance_controller
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:balance_controller() instead.
 function EleringDashboardSDK:BalanceController(data)
   local EntityMod = require("entity.balance_controller_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:firm():list() / client:firm():load({ id = ... })
+function EleringDashboardSDK:firm(data)
+  local EntityMod = require("entity.firm_entity")
+  if data == nil then
+    if self._firm == nil then
+      self._firm = EntityMod.new(self, nil)
+    end
+    return self._firm
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:firm() instead.
 function EleringDashboardSDK:Firm(data)
   local EntityMod = require("entity.firm_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:firm_capacity_controller():list() / client:firm_capacity_controller():load({ id = ... })
+function EleringDashboardSDK:firm_capacity_controller(data)
+  local EntityMod = require("entity.firm_capacity_controller_entity")
+  if data == nil then
+    if self._firm_capacity_controller == nil then
+      self._firm_capacity_controller = EntityMod.new(self, nil)
+    end
+    return self._firm_capacity_controller
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:firm_capacity_controller() instead.
 function EleringDashboardSDK:FirmCapacityController(data)
   local EntityMod = require("entity.firm_capacity_controller_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:gas_balance_controller():list() / client:gas_balance_controller():load({ id = ... })
+function EleringDashboardSDK:gas_balance_controller(data)
+  local EntityMod = require("entity.gas_balance_controller_entity")
+  if data == nil then
+    if self._gas_balance_controller == nil then
+      self._gas_balance_controller = EntityMod.new(self, nil)
+    end
+    return self._gas_balance_controller
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:gas_balance_controller() instead.
 function EleringDashboardSDK:GasBalanceController(data)
   local EntityMod = require("entity.gas_balance_controller_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:gas_border_trade_controller():list() / client:gas_border_trade_controller():load({ id = ... })
+function EleringDashboardSDK:gas_border_trade_controller(data)
+  local EntityMod = require("entity.gas_border_trade_controller_entity")
+  if data == nil then
+    if self._gas_border_trade_controller == nil then
+      self._gas_border_trade_controller = EntityMod.new(self, nil)
+    end
+    return self._gas_border_trade_controller
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:gas_border_trade_controller() instead.
 function EleringDashboardSDK:GasBorderTradeController(data)
   local EntityMod = require("entity.gas_border_trade_controller_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:gas_system():list() / client:gas_system():load({ id = ... })
+function EleringDashboardSDK:gas_system(data)
+  local EntityMod = require("entity.gas_system_entity")
+  if data == nil then
+    if self._gas_system == nil then
+      self._gas_system = EntityMod.new(self, nil)
+    end
+    return self._gas_system
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:gas_system() instead.
 function EleringDashboardSDK:GasSystem(data)
   local EntityMod = require("entity.gas_system_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:gas_system_controller():list() / client:gas_system_controller():load({ id = ... })
+function EleringDashboardSDK:gas_system_controller(data)
+  local EntityMod = require("entity.gas_system_controller_entity")
+  if data == nil then
+    if self._gas_system_controller == nil then
+      self._gas_system_controller = EntityMod.new(self, nil)
+    end
+    return self._gas_system_controller
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:gas_system_controller() instead.
 function EleringDashboardSDK:GasSystemController(data)
   local EntityMod = require("entity.gas_system_controller_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:gas_trade():list() / client:gas_trade():load({ id = ... })
+function EleringDashboardSDK:gas_trade(data)
+  local EntityMod = require("entity.gas_trade_entity")
+  if data == nil then
+    if self._gas_trade == nil then
+      self._gas_trade = EntityMod.new(self, nil)
+    end
+    return self._gas_trade
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:gas_trade() instead.
 function EleringDashboardSDK:GasTrade(data)
   local EntityMod = require("entity.gas_trade_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:gas_trade_controller():list() / client:gas_trade_controller():load({ id = ... })
+function EleringDashboardSDK:gas_trade_controller(data)
+  local EntityMod = require("entity.gas_trade_controller_entity")
+  if data == nil then
+    if self._gas_trade_controller == nil then
+      self._gas_trade_controller = EntityMod.new(self, nil)
+    end
+    return self._gas_trade_controller
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:gas_trade_controller() instead.
 function EleringDashboardSDK:GasTradeController(data)
   local EntityMod = require("entity.gas_trade_controller_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:gas_transmission_controller():list() / client:gas_transmission_controller():load({ id = ... })
+function EleringDashboardSDK:gas_transmission_controller(data)
+  local EntityMod = require("entity.gas_transmission_controller_entity")
+  if data == nil then
+    if self._gas_transmission_controller == nil then
+      self._gas_transmission_controller = EntityMod.new(self, nil)
+    end
+    return self._gas_transmission_controller
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:gas_transmission_controller() instead.
 function EleringDashboardSDK:GasTransmissionController(data)
   local EntityMod = require("entity.gas_transmission_controller_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:green_controller():list() / client:green_controller():load({ id = ... })
+function EleringDashboardSDK:green_controller(data)
+  local EntityMod = require("entity.green_controller_entity")
+  if data == nil then
+    if self._green_controller == nil then
+      self._green_controller = EntityMod.new(self, nil)
+    end
+    return self._green_controller
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:green_controller() instead.
 function EleringDashboardSDK:GreenController(data)
   local EntityMod = require("entity.green_controller_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:interruptible():list() / client:interruptible():load({ id = ... })
+function EleringDashboardSDK:interruptible(data)
+  local EntityMod = require("entity.interruptible_entity")
+  if data == nil then
+    if self._interruptible == nil then
+      self._interruptible = EntityMod.new(self, nil)
+    end
+    return self._interruptible
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:interruptible() instead.
 function EleringDashboardSDK:Interruptible(data)
   local EntityMod = require("entity.interruptible_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:interruptible_capacity_controller():list() / client:interruptible_capacity_controller():load({ id = ... })
+function EleringDashboardSDK:interruptible_capacity_controller(data)
+  local EntityMod = require("entity.interruptible_capacity_controller_entity")
+  if data == nil then
+    if self._interruptible_capacity_controller == nil then
+      self._interruptible_capacity_controller = EntityMod.new(self, nil)
+    end
+    return self._interruptible_capacity_controller
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:interruptible_capacity_controller() instead.
 function EleringDashboardSDK:InterruptibleCapacityController(data)
   local EntityMod = require("entity.interruptible_capacity_controller_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:nomination():list() / client:nomination():load({ id = ... })
+function EleringDashboardSDK:nomination(data)
+  local EntityMod = require("entity.nomination_entity")
+  if data == nil then
+    if self._nomination == nil then
+      self._nomination = EntityMod.new(self, nil)
+    end
+    return self._nomination
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:nomination() instead.
 function EleringDashboardSDK:Nomination(data)
   local EntityMod = require("entity.nomination_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:nominations_controller():list() / client:nominations_controller():load({ id = ... })
+function EleringDashboardSDK:nominations_controller(data)
+  local EntityMod = require("entity.nominations_controller_entity")
+  if data == nil then
+    if self._nominations_controller == nil then
+      self._nominations_controller = EntityMod.new(self, nil)
+    end
+    return self._nominations_controller
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:nominations_controller() instead.
 function EleringDashboardSDK:NominationsController(data)
   local EntityMod = require("entity.nominations_controller_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:nps_controller():list() / client:nps_controller():load({ id = ... })
+function EleringDashboardSDK:nps_controller(data)
+  local EntityMod = require("entity.nps_controller_entity")
+  if data == nil then
+    if self._nps_controller == nil then
+      self._nps_controller = EntityMod.new(self, nil)
+    end
+    return self._nps_controller
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:nps_controller() instead.
 function EleringDashboardSDK:NpsController(data)
   local EntityMod = require("entity.nps_controller_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:renomination():list() / client:renomination():load({ id = ... })
+function EleringDashboardSDK:renomination(data)
+  local EntityMod = require("entity.renomination_entity")
+  if data == nil then
+    if self._renomination == nil then
+      self._renomination = EntityMod.new(self, nil)
+    end
+    return self._renomination
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:renomination() instead.
 function EleringDashboardSDK:Renomination(data)
   local EntityMod = require("entity.renomination_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:renominations_controller():list() / client:renominations_controller():load({ id = ... })
+function EleringDashboardSDK:renominations_controller(data)
+  local EntityMod = require("entity.renominations_controller_entity")
+  if data == nil then
+    if self._renominations_controller == nil then
+      self._renominations_controller = EntityMod.new(self, nil)
+    end
+    return self._renominations_controller
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:renominations_controller() instead.
 function EleringDashboardSDK:RenominationsController(data)
   local EntityMod = require("entity.renominations_controller_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:system():list() / client:system():load({ id = ... })
+function EleringDashboardSDK:system(data)
+  local EntityMod = require("entity.system_entity")
+  if data == nil then
+    if self._system == nil then
+      self._system = EntityMod.new(self, nil)
+    end
+    return self._system
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:system() instead.
 function EleringDashboardSDK:System(data)
   local EntityMod = require("entity.system_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:system_controller():list() / client:system_controller():load({ id = ... })
+function EleringDashboardSDK:system_controller(data)
+  local EntityMod = require("entity.system_controller_entity")
+  if data == nil then
+    if self._system_controller == nil then
+      self._system_controller = EntityMod.new(self, nil)
+    end
+    return self._system_controller
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:system_controller() instead.
 function EleringDashboardSDK:SystemController(data)
   local EntityMod = require("entity.system_controller_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:transmission_controller():list() / client:transmission_controller():load({ id = ... })
+function EleringDashboardSDK:transmission_controller(data)
+  local EntityMod = require("entity.transmission_controller_entity")
+  if data == nil then
+    if self._transmission_controller == nil then
+      self._transmission_controller = EntityMod.new(self, nil)
+    end
+    return self._transmission_controller
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:transmission_controller() instead.
 function EleringDashboardSDK:TransmissionController(data)
   local EntityMod = require("entity.transmission_controller_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:umm_gas_controller():list() / client:umm_gas_controller():load({ id = ... })
+function EleringDashboardSDK:umm_gas_controller(data)
+  local EntityMod = require("entity.umm_gas_controller_entity")
+  if data == nil then
+    if self._umm_gas_controller == nil then
+      self._umm_gas_controller = EntityMod.new(self, nil)
+    end
+    return self._umm_gas_controller
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:umm_gas_controller() instead.
 function EleringDashboardSDK:UmmGasController(data)
   local EntityMod = require("entity.umm_gas_controller_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:umm_rss_feed_controller():list() / client:umm_rss_feed_controller():load({ id = ... })
+function EleringDashboardSDK:umm_rss_feed_controller(data)
+  local EntityMod = require("entity.umm_rss_feed_controller_entity")
+  if data == nil then
+    if self._umm_rss_feed_controller == nil then
+      self._umm_rss_feed_controller = EntityMod.new(self, nil)
+    end
+    return self._umm_rss_feed_controller
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:umm_rss_feed_controller() instead.
 function EleringDashboardSDK:UmmRssFeedController(data)
   local EntityMod = require("entity.umm_rss_feed_controller_entity")
   return EntityMod.new(self, data)

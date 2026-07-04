@@ -20,7 +20,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `Hash` | SDK configuration options. |
-| `options["apikey"]` | `String` | API key for authentication. |
 | `options["base"]` | `String` | Base URL for API requests. |
 | `options["prefix"]` | `String` | URL prefix appended after base. |
 | `options["suffix"]` | `String` | URL suffix appended after path. |
@@ -146,9 +145,11 @@ Return a deep copy of the current SDK options.
 
 Return a copy of the SDK utility object.
 
-#### `direct(fetchargs = {}) -> Hash, err`
+#### `direct(fetchargs = {}) -> Hash`
 
-Make a direct HTTP request to any API endpoint.
+Make a direct HTTP request to any API endpoint. Returns a result hash
+(`{ "ok" => ..., "status" => ..., "data" => ..., "err" => ... }`); it
+does not raise — inspect `result["ok"]`.
 
 **Parameters:**
 
@@ -162,14 +163,14 @@ Make a direct HTTP request to any API endpoint.
 | `fetchargs["body"]` | `any` | Request body (hashes are JSON-serialized). |
 | `fetchargs["ctrl"]` | `Hash` | Control options (e.g. `{ "explain" => true }`). |
 
-**Returns:** `Hash, err`
+**Returns:** `Hash`
 
-#### `prepare(fetchargs = {}) -> Hash, err`
+#### `prepare(fetchargs = {}) -> Hash`
 
 Prepare a fetch definition without sending the request. Accepts the
-same parameters as `direct()`.
+same parameters as `direct()`. Raises on error.
 
-**Returns:** `Hash, err`
+**Returns:** `Hash` (the fetch definition; raises on error)
 
 
 ---
@@ -177,17 +178,17 @@ same parameters as `direct()`.
 ## BalanceEntity
 
 ```ruby
-balance = client.Balance
+balance = client.balance
 ```
 
 ### Operations
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.Balance.load({ "id" => "balance_id" })
+result = client.balance.load({ "id" => "balance_id" })
 ```
 
 ### Common Methods
@@ -223,17 +224,17 @@ Return the entity name.
 ## BalanceControllerEntity
 
 ```ruby
-balance_controller = client.BalanceController
+balance_controller = client.balance_controller
 ```
 
 ### Operations
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.BalanceController.load({ "id" => "balance_controller_id" })
+result = client.balance_controller.load({ "id" => "balance_controller_id" })
 ```
 
 ### Common Methods
@@ -269,17 +270,17 @@ Return the entity name.
 ## FirmEntity
 
 ```ruby
-firm = client.Firm
+firm = client.firm
 ```
 
 ### Operations
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.Firm.load({ "id" => "firm_id" })
+result = client.firm.load({ "id" => "firm_id" })
 ```
 
 ### Common Methods
@@ -315,17 +316,17 @@ Return the entity name.
 ## FirmCapacityControllerEntity
 
 ```ruby
-firm_capacity_controller = client.FirmCapacityController
+firm_capacity_controller = client.firm_capacity_controller
 ```
 
 ### Operations
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.FirmCapacityController.load({ "id" => "firm_capacity_controller_id" })
+result = client.firm_capacity_controller.load({ "id" => "firm_capacity_controller_id" })
 ```
 
 ### Common Methods
@@ -361,17 +362,17 @@ Return the entity name.
 ## GasBalanceControllerEntity
 
 ```ruby
-gas_balance_controller = client.GasBalanceController
+gas_balance_controller = client.gas_balance_controller
 ```
 
 ### Operations
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.GasBalanceController.load({ "id" => "gas_balance_controller_id" })
+result = client.gas_balance_controller.load({ "id" => "gas_balance_controller_id" })
 ```
 
 ### Common Methods
@@ -407,17 +408,17 @@ Return the entity name.
 ## GasBorderTradeControllerEntity
 
 ```ruby
-gas_border_trade_controller = client.GasBorderTradeController
+gas_border_trade_controller = client.gas_border_trade_controller
 ```
 
 ### Operations
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.GasBorderTradeController.load({ "id" => "gas_border_trade_controller_id" })
+result = client.gas_border_trade_controller.load({ "id" => "gas_border_trade_controller_id" })
 ```
 
 ### Common Methods
@@ -453,17 +454,17 @@ Return the entity name.
 ## GasSystemEntity
 
 ```ruby
-gas_system = client.GasSystem
+gas_system = client.gas_system
 ```
 
 ### Operations
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.GasSystem.load({ "id" => "gas_system_id" })
+result = client.gas_system.load({ "id" => "gas_system_id" })
 ```
 
 ### Common Methods
@@ -499,17 +500,17 @@ Return the entity name.
 ## GasSystemControllerEntity
 
 ```ruby
-gas_system_controller = client.GasSystemController
+gas_system_controller = client.gas_system_controller
 ```
 
 ### Operations
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.GasSystemController.load({ "id" => "gas_system_controller_id" })
+result = client.gas_system_controller.load({ "id" => "gas_system_controller_id" })
 ```
 
 ### Common Methods
@@ -545,17 +546,17 @@ Return the entity name.
 ## GasTradeEntity
 
 ```ruby
-gas_trade = client.GasTrade
+gas_trade = client.gas_trade
 ```
 
 ### Operations
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.GasTrade.load({ "id" => "gas_trade_id" })
+result = client.gas_trade.load({ "id" => "gas_trade_id" })
 ```
 
 ### Common Methods
@@ -591,17 +592,17 @@ Return the entity name.
 ## GasTradeControllerEntity
 
 ```ruby
-gas_trade_controller = client.GasTradeController
+gas_trade_controller = client.gas_trade_controller
 ```
 
 ### Operations
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.GasTradeController.load({ "id" => "gas_trade_controller_id" })
+result = client.gas_trade_controller.load({ "id" => "gas_trade_controller_id" })
 ```
 
 ### Common Methods
@@ -637,17 +638,17 @@ Return the entity name.
 ## GasTransmissionControllerEntity
 
 ```ruby
-gas_transmission_controller = client.GasTransmissionController
+gas_transmission_controller = client.gas_transmission_controller
 ```
 
 ### Operations
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.GasTransmissionController.load({ "id" => "gas_transmission_controller_id" })
+result = client.gas_transmission_controller.load({ "id" => "gas_transmission_controller_id" })
 ```
 
 ### Common Methods
@@ -683,17 +684,17 @@ Return the entity name.
 ## GreenControllerEntity
 
 ```ruby
-green_controller = client.GreenController
+green_controller = client.green_controller
 ```
 
 ### Operations
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.GreenController.load({ "id" => "green_controller_id" })
+result = client.green_controller.load({ "id" => "green_controller_id" })
 ```
 
 ### Common Methods
@@ -729,17 +730,17 @@ Return the entity name.
 ## InterruptibleEntity
 
 ```ruby
-interruptible = client.Interruptible
+interruptible = client.interruptible
 ```
 
 ### Operations
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.Interruptible.load({ "id" => "interruptible_id" })
+result = client.interruptible.load({ "id" => "interruptible_id" })
 ```
 
 ### Common Methods
@@ -775,17 +776,17 @@ Return the entity name.
 ## InterruptibleCapacityControllerEntity
 
 ```ruby
-interruptible_capacity_controller = client.InterruptibleCapacityController
+interruptible_capacity_controller = client.interruptible_capacity_controller
 ```
 
 ### Operations
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.InterruptibleCapacityController.load({ "id" => "interruptible_capacity_controller_id" })
+result = client.interruptible_capacity_controller.load({ "id" => "interruptible_capacity_controller_id" })
 ```
 
 ### Common Methods
@@ -821,17 +822,17 @@ Return the entity name.
 ## NominationEntity
 
 ```ruby
-nomination = client.Nomination
+nomination = client.nomination
 ```
 
 ### Operations
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.Nomination.load({ "id" => "nomination_id" })
+result = client.nomination.load({ "id" => "nomination_id" })
 ```
 
 ### Common Methods
@@ -867,17 +868,17 @@ Return the entity name.
 ## NominationsControllerEntity
 
 ```ruby
-nominations_controller = client.NominationsController
+nominations_controller = client.nominations_controller
 ```
 
 ### Operations
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.NominationsController.load({ "id" => "nominations_controller_id" })
+result = client.nominations_controller.load({ "id" => "nominations_controller_id" })
 ```
 
 ### Common Methods
@@ -913,17 +914,17 @@ Return the entity name.
 ## NpsControllerEntity
 
 ```ruby
-nps_controller = client.NpsController
+nps_controller = client.nps_controller
 ```
 
 ### Operations
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.NpsController.load({ "id" => "nps_controller_id" })
+result = client.nps_controller.load({ "id" => "nps_controller_id" })
 ```
 
 ### Common Methods
@@ -959,17 +960,17 @@ Return the entity name.
 ## RenominationEntity
 
 ```ruby
-renomination = client.Renomination
+renomination = client.renomination
 ```
 
 ### Operations
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.Renomination.load({ "id" => "renomination_id" })
+result = client.renomination.load({ "id" => "renomination_id" })
 ```
 
 ### Common Methods
@@ -1005,17 +1006,17 @@ Return the entity name.
 ## RenominationsControllerEntity
 
 ```ruby
-renominations_controller = client.RenominationsController
+renominations_controller = client.renominations_controller
 ```
 
 ### Operations
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.RenominationsController.load({ "id" => "renominations_controller_id" })
+result = client.renominations_controller.load({ "id" => "renominations_controller_id" })
 ```
 
 ### Common Methods
@@ -1051,17 +1052,17 @@ Return the entity name.
 ## SystemEntity
 
 ```ruby
-system = client.System
+system = client.system
 ```
 
 ### Operations
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.System.load({ "id" => "system_id" })
+result = client.system.load({ "id" => "system_id" })
 ```
 
 ### Common Methods
@@ -1097,17 +1098,17 @@ Return the entity name.
 ## SystemControllerEntity
 
 ```ruby
-system_controller = client.SystemController
+system_controller = client.system_controller
 ```
 
 ### Operations
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.SystemController.load({ "id" => "system_controller_id" })
+result = client.system_controller.load({ "id" => "system_controller_id" })
 ```
 
 ### Common Methods
@@ -1143,17 +1144,17 @@ Return the entity name.
 ## TransmissionControllerEntity
 
 ```ruby
-transmission_controller = client.TransmissionController
+transmission_controller = client.transmission_controller
 ```
 
 ### Operations
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.TransmissionController.load({ "id" => "transmission_controller_id" })
+result = client.transmission_controller.load({ "id" => "transmission_controller_id" })
 ```
 
 ### Common Methods
@@ -1189,17 +1190,17 @@ Return the entity name.
 ## UmmGasControllerEntity
 
 ```ruby
-umm_gas_controller = client.UmmGasController
+umm_gas_controller = client.umm_gas_controller
 ```
 
 ### Operations
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.UmmGasController.load({ "id" => "umm_gas_controller_id" })
+result = client.umm_gas_controller.load({ "id" => "umm_gas_controller_id" })
 ```
 
 ### Common Methods
@@ -1235,17 +1236,17 @@ Return the entity name.
 ## UmmRssFeedControllerEntity
 
 ```ruby
-umm_rss_feed_controller = client.UmmRssFeedController
+umm_rss_feed_controller = client.umm_rss_feed_controller
 ```
 
 ### Operations
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.UmmRssFeedController.load({ "id" => "umm_rss_feed_controller_id" })
+result = client.umm_rss_feed_controller.load({ "id" => "umm_rss_feed_controller_id" })
 ```
 
 ### Common Methods

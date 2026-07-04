@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch InterruptibleCapacityControllerLoadMatch
+---@param ctrl? table
+---@return InterruptibleCapacityController
+---@return string? err
 function InterruptibleCapacityControllerEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

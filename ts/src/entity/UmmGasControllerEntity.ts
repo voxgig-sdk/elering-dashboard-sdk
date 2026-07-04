@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  UmmGasController,
+  UmmGasControllerLoadMatch,
+} from '../EleringDashboardTypes'
 
 // TODO: needs Entity superclass
-class UmmGasControllerEntity extends EleringDashboardEntityBase {
+class UmmGasControllerEntity extends EleringDashboardEntityBase<UmmGasController> {
 
   constructor(client: EleringDashboardSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +36,7 @@ class UmmGasControllerEntity extends EleringDashboardEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: UmmGasControllerLoadMatch, ctrl?: Control): Promise<UmmGasController> {
 
     const utility = this._utility
 
@@ -136,7 +140,9 @@ class UmmGasControllerEntity extends EleringDashboardEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<UmmGasController> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

@@ -15,9 +15,6 @@ def make_config():
         },
         "options": {
             "base": "https://dashboard.elering.ee",
-            "auth": {
-                "prefix": "Bearer",
-            },
             "headers": {
         "content-type": "application/json",
       },
@@ -1204,6 +1201,7 @@ def make_config():
                       "orig": "group",
                       "reqd": True,
                       "type": "`$STRING`",
+                      "index$": 0,
                     },
                   ],
                 },
@@ -1902,6 +1900,7 @@ def make_config():
                       "orig": "group",
                       "reqd": True,
                       "type": "`$STRING`",
+                      "index$": 0,
                     },
                   ],
                 },
@@ -1936,6 +1935,7 @@ def make_config():
                       "orig": "group",
                       "reqd": True,
                       "type": "`$STRING`",
+                      "index$": 0,
                     },
                   ],
                 },
@@ -1970,6 +1970,7 @@ def make_config():
                       "orig": "group",
                       "reqd": True,
                       "type": "`$STRING`",
+                      "index$": 0,
                     },
                   ],
                 },
@@ -2394,6 +2395,7 @@ def make_config():
                       "orig": "group",
                       "reqd": True,
                       "type": "`$STRING`",
+                      "index$": 0,
                     },
                   ],
                   "query": [
@@ -2619,6 +2621,7 @@ def make_config():
                       "orig": "group",
                       "reqd": True,
                       "type": "`$STRING`",
+                      "index$": 0,
                     },
                   ],
                   "query": [

@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch SystemLoadMatch
+---@param ctrl? table
+---@return System
+---@return string? err
 function SystemEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

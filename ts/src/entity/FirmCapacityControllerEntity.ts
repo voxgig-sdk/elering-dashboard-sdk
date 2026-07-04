@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  FirmCapacityController,
+  FirmCapacityControllerLoadMatch,
+} from '../EleringDashboardTypes'
 
 // TODO: needs Entity superclass
-class FirmCapacityControllerEntity extends EleringDashboardEntityBase {
+class FirmCapacityControllerEntity extends EleringDashboardEntityBase<FirmCapacityController> {
 
   constructor(client: EleringDashboardSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +36,7 @@ class FirmCapacityControllerEntity extends EleringDashboardEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: FirmCapacityControllerLoadMatch, ctrl?: Control): Promise<FirmCapacityController> {
 
     const utility = this._utility
 
@@ -136,7 +140,9 @@ class FirmCapacityControllerEntity extends EleringDashboardEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<FirmCapacityController> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }
