@@ -8,7 +8,7 @@ Complete API reference for the EleringDashboard Python SDK.
 ### Constructor
 
 ```python
-from elering-dashboard_sdk import EleringDashboardSDK
+from eleringdashboard_sdk import EleringDashboardSDK
 
 client = EleringDashboardSDK(options)
 ```
@@ -182,7 +182,7 @@ balance = client.Balance()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Balance().load({"id": "balance_id"})
+result = client.Balance().load()
 ```
 
 ### Common Methods
@@ -227,7 +227,7 @@ balance_controller = client.BalanceController()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.BalanceController().load({"id": "balance_controller_id"})
+result = client.BalanceController().load()
 ```
 
 ### Common Methods
@@ -272,7 +272,7 @@ firm = client.Firm()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Firm().load({"id": "firm_id"})
+result = client.Firm().load()
 ```
 
 ### Common Methods
@@ -317,7 +317,7 @@ firm_capacity_controller = client.FirmCapacityController()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.FirmCapacityController().load({"id": "firm_capacity_controller_id"})
+result = client.FirmCapacityController().load()
 ```
 
 ### Common Methods
@@ -362,7 +362,7 @@ gas_balance_controller = client.GasBalanceController()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.GasBalanceController().load({"id": "gas_balance_controller_id"})
+result = client.GasBalanceController().load()
 ```
 
 ### Common Methods
@@ -407,7 +407,7 @@ gas_border_trade_controller = client.GasBorderTradeController()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.GasBorderTradeController().load({"id": "gas_border_trade_controller_id"})
+result = client.GasBorderTradeController().load()
 ```
 
 ### Common Methods
@@ -452,7 +452,7 @@ gas_system = client.GasSystem()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.GasSystem().load({"id": "gas_system_id"})
+result = client.GasSystem().load()
 ```
 
 ### Common Methods
@@ -497,7 +497,7 @@ gas_system_controller = client.GasSystemController()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.GasSystemController().load({"id": "gas_system_controller_id"})
+result = client.GasSystemController().load()
 ```
 
 ### Common Methods
@@ -542,7 +542,7 @@ gas_trade = client.GasTrade()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.GasTrade().load({"id": "gas_trade_id"})
+result = client.GasTrade().load()
 ```
 
 ### Common Methods
@@ -587,7 +587,7 @@ gas_trade_controller = client.GasTradeController()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.GasTradeController().load({"id": "gas_trade_controller_id"})
+result = client.GasTradeController().load()
 ```
 
 ### Common Methods
@@ -632,7 +632,7 @@ gas_transmission_controller = client.GasTransmissionController()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.GasTransmissionController().load({"id": "gas_transmission_controller_id"})
+result = client.GasTransmissionController().load()
 ```
 
 ### Common Methods
@@ -677,7 +677,7 @@ green_controller = client.GreenController()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.GreenController().load({"id": "green_controller_id"})
+result = client.GreenController().load()
 ```
 
 ### Common Methods
@@ -722,7 +722,7 @@ interruptible = client.Interruptible()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Interruptible().load({"id": "interruptible_id"})
+result = client.Interruptible().load()
 ```
 
 ### Common Methods
@@ -767,7 +767,7 @@ interruptible_capacity_controller = client.InterruptibleCapacityController()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.InterruptibleCapacityController().load({"id": "interruptible_capacity_controller_id"})
+result = client.InterruptibleCapacityController().load()
 ```
 
 ### Common Methods
@@ -812,7 +812,7 @@ nomination = client.Nomination()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Nomination().load({"id": "nomination_id"})
+result = client.Nomination().load()
 ```
 
 ### Common Methods
@@ -857,7 +857,7 @@ nominations_controller = client.NominationsController()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.NominationsController().load({"id": "nominations_controller_id"})
+result = client.NominationsController().load()
 ```
 
 ### Common Methods
@@ -902,7 +902,7 @@ nps_controller = client.NpsController()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.NpsController().load({"id": "nps_controller_id"})
+result = client.NpsController().load()
 ```
 
 ### Common Methods
@@ -947,7 +947,7 @@ renomination = client.Renomination()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Renomination().load({"id": "renomination_id"})
+result = client.Renomination().load()
 ```
 
 ### Common Methods
@@ -992,7 +992,7 @@ renominations_controller = client.RenominationsController()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.RenominationsController().load({"id": "renominations_controller_id"})
+result = client.RenominationsController().load()
 ```
 
 ### Common Methods
@@ -1037,7 +1037,7 @@ system = client.System()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.System().load({"id": "system_id"})
+result = client.System().load()
 ```
 
 ### Common Methods
@@ -1082,7 +1082,7 @@ system_controller = client.SystemController()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.SystemController().load({"id": "system_controller_id"})
+result = client.SystemController().load()
 ```
 
 ### Common Methods
@@ -1127,7 +1127,7 @@ transmission_controller = client.TransmissionController()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.TransmissionController().load({"id": "transmission_controller_id"})
+result = client.TransmissionController().load()
 ```
 
 ### Common Methods
@@ -1172,7 +1172,7 @@ umm_gas_controller = client.UmmGasController()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.UmmGasController().load({"id": "umm_gas_controller_id"})
+result = client.UmmGasController().load()
 ```
 
 ### Common Methods
@@ -1217,7 +1217,7 @@ umm_rss_feed_controller = client.UmmRssFeedController()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.UmmRssFeedController().load({"id": "umm_rss_feed_controller_id"})
+result = client.UmmRssFeedController().load()
 ```
 
 ### Common Methods

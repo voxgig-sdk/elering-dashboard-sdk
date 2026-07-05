@@ -395,7 +395,7 @@ const balance = client.Balance()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Balance().load({ id: 'balance_id' })
+const result = await client.Balance().load()
 ```
 
 ### Common Methods
@@ -439,7 +439,7 @@ const balance_controller = client.BalanceController()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.BalanceController().load({ id: 'balance_controller_id' })
+const result = await client.BalanceController().load()
 ```
 
 ### Common Methods
@@ -483,7 +483,7 @@ const firm = client.Firm()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Firm().load({ id: 'firm_id' })
+const result = await client.Firm().load()
 ```
 
 ### Common Methods
@@ -527,7 +527,7 @@ const firm_capacity_controller = client.FirmCapacityController()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.FirmCapacityController().load({ id: 'firm_capacity_controller_id' })
+const result = await client.FirmCapacityController().load()
 ```
 
 ### Common Methods
@@ -571,7 +571,7 @@ const gas_balance_controller = client.GasBalanceController()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.GasBalanceController().load({ id: 'gas_balance_controller_id' })
+const result = await client.GasBalanceController().load()
 ```
 
 ### Common Methods
@@ -615,7 +615,7 @@ const gas_border_trade_controller = client.GasBorderTradeController()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.GasBorderTradeController().load({ id: 'gas_border_trade_controller_id' })
+const result = await client.GasBorderTradeController().load()
 ```
 
 ### Common Methods
@@ -659,7 +659,7 @@ const gas_system = client.GasSystem()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.GasSystem().load({ id: 'gas_system_id' })
+const result = await client.GasSystem().load()
 ```
 
 ### Common Methods
@@ -703,7 +703,7 @@ const gas_system_controller = client.GasSystemController()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.GasSystemController().load({ id: 'gas_system_controller_id' })
+const result = await client.GasSystemController().load()
 ```
 
 ### Common Methods
@@ -747,7 +747,7 @@ const gas_trade = client.GasTrade()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.GasTrade().load({ id: 'gas_trade_id' })
+const result = await client.GasTrade().load()
 ```
 
 ### Common Methods
@@ -791,7 +791,7 @@ const gas_trade_controller = client.GasTradeController()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.GasTradeController().load({ id: 'gas_trade_controller_id' })
+const result = await client.GasTradeController().load()
 ```
 
 ### Common Methods
@@ -835,7 +835,7 @@ const gas_transmission_controller = client.GasTransmissionController()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.GasTransmissionController().load({ id: 'gas_transmission_controller_id' })
+const result = await client.GasTransmissionController().load()
 ```
 
 ### Common Methods
@@ -879,7 +879,7 @@ const green_controller = client.GreenController()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.GreenController().load({ id: 'green_controller_id' })
+const result = await client.GreenController().load()
 ```
 
 ### Common Methods
@@ -923,7 +923,7 @@ const interruptible = client.Interruptible()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Interruptible().load({ id: 'interruptible_id' })
+const result = await client.Interruptible().load()
 ```
 
 ### Common Methods
@@ -967,7 +967,7 @@ const interruptible_capacity_controller = client.InterruptibleCapacityController
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.InterruptibleCapacityController().load({ id: 'interruptible_capacity_controller_id' })
+const result = await client.InterruptibleCapacityController().load()
 ```
 
 ### Common Methods
@@ -1011,7 +1011,7 @@ const nomination = client.Nomination()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Nomination().load({ id: 'nomination_id' })
+const result = await client.Nomination().load()
 ```
 
 ### Common Methods
@@ -1055,7 +1055,7 @@ const nominations_controller = client.NominationsController()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.NominationsController().load({ id: 'nominations_controller_id' })
+const result = await client.NominationsController().load()
 ```
 
 ### Common Methods
@@ -1099,7 +1099,7 @@ const nps_controller = client.NpsController()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.NpsController().load({ id: 'nps_controller_id' })
+const result = await client.NpsController().load()
 ```
 
 ### Common Methods
@@ -1143,7 +1143,7 @@ const renomination = client.Renomination()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Renomination().load({ id: 'renomination_id' })
+const result = await client.Renomination().load()
 ```
 
 ### Common Methods
@@ -1187,7 +1187,7 @@ const renominations_controller = client.RenominationsController()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.RenominationsController().load({ id: 'renominations_controller_id' })
+const result = await client.RenominationsController().load()
 ```
 
 ### Common Methods
@@ -1231,7 +1231,7 @@ const system = client.System()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.System().load({ id: 'system_id' })
+const result = await client.System().load()
 ```
 
 ### Common Methods
@@ -1275,7 +1275,7 @@ const system_controller = client.SystemController()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.SystemController().load({ id: 'system_controller_id' })
+const result = await client.SystemController().load()
 ```
 
 ### Common Methods
@@ -1319,7 +1319,7 @@ const transmission_controller = client.TransmissionController()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.TransmissionController().load({ id: 'transmission_controller_id' })
+const result = await client.TransmissionController().load()
 ```
 
 ### Common Methods
@@ -1363,7 +1363,7 @@ const umm_gas_controller = client.UmmGasController()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.UmmGasController().load({ id: 'umm_gas_controller_id' })
+const result = await client.UmmGasController().load()
 ```
 
 ### Common Methods
@@ -1407,7 +1407,7 @@ const umm_rss_feed_controller = client.UmmRssFeedController()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.UmmRssFeedController().load({ id: 'umm_rss_feed_controller_id' })
+const result = await client.UmmRssFeedController().load()
 ```
 
 ### Common Methods

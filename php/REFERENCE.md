@@ -8,7 +8,7 @@ Complete API reference for the EleringDashboard PHP SDK.
 ### Constructor
 
 ```php
-require_once __DIR__ . '/elering-dashboard_sdk.php';
+require_once __DIR__ . '/eleringdashboard_sdk.php';
 
 $client = new EleringDashboardSDK($options);
 ```
@@ -137,11 +137,11 @@ Create a new `UmmGasControllerEntity` instance. Pass `null` for no initial data.
 
 Create a new `UmmRssFeedControllerEntity` instance. Pass `null` for no initial data.
 
-#### `optionsMap(): array`
+#### `options_map(): array`
 
 Return a deep copy of the current SDK options.
 
-#### `getUtility(): ProjectNameUtility`
+#### `get_utility(): EleringDashboardUtility`
 
 Return a copy of the SDK utility object.
 
@@ -187,24 +187,24 @@ $balance = $client->Balance();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->Balance()->load(["id" => "balance_id"]);
+$result = $client->Balance()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -213,7 +213,7 @@ Set the entity match criteria.
 Create a new `BalanceEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -233,24 +233,24 @@ $balance_controller = $client->BalanceController();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->BalanceController()->load(["id" => "balance_controller_id"]);
+$result = $client->BalanceController()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -259,7 +259,7 @@ Set the entity match criteria.
 Create a new `BalanceControllerEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -279,24 +279,24 @@ $firm = $client->Firm();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->Firm()->load(["id" => "firm_id"]);
+$result = $client->Firm()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -305,7 +305,7 @@ Set the entity match criteria.
 Create a new `FirmEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -325,24 +325,24 @@ $firm_capacity_controller = $client->FirmCapacityController();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->FirmCapacityController()->load(["id" => "firm_capacity_controller_id"]);
+$result = $client->FirmCapacityController()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -351,7 +351,7 @@ Set the entity match criteria.
 Create a new `FirmCapacityControllerEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -371,24 +371,24 @@ $gas_balance_controller = $client->GasBalanceController();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->GasBalanceController()->load(["id" => "gas_balance_controller_id"]);
+$result = $client->GasBalanceController()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -397,7 +397,7 @@ Set the entity match criteria.
 Create a new `GasBalanceControllerEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -417,24 +417,24 @@ $gas_border_trade_controller = $client->GasBorderTradeController();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->GasBorderTradeController()->load(["id" => "gas_border_trade_controller_id"]);
+$result = $client->GasBorderTradeController()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -443,7 +443,7 @@ Set the entity match criteria.
 Create a new `GasBorderTradeControllerEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -463,24 +463,24 @@ $gas_system = $client->GasSystem();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->GasSystem()->load(["id" => "gas_system_id"]);
+$result = $client->GasSystem()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -489,7 +489,7 @@ Set the entity match criteria.
 Create a new `GasSystemEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -509,24 +509,24 @@ $gas_system_controller = $client->GasSystemController();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->GasSystemController()->load(["id" => "gas_system_controller_id"]);
+$result = $client->GasSystemController()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -535,7 +535,7 @@ Set the entity match criteria.
 Create a new `GasSystemControllerEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -555,24 +555,24 @@ $gas_trade = $client->GasTrade();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->GasTrade()->load(["id" => "gas_trade_id"]);
+$result = $client->GasTrade()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -581,7 +581,7 @@ Set the entity match criteria.
 Create a new `GasTradeEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -601,24 +601,24 @@ $gas_trade_controller = $client->GasTradeController();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->GasTradeController()->load(["id" => "gas_trade_controller_id"]);
+$result = $client->GasTradeController()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -627,7 +627,7 @@ Set the entity match criteria.
 Create a new `GasTradeControllerEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -647,24 +647,24 @@ $gas_transmission_controller = $client->GasTransmissionController();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->GasTransmissionController()->load(["id" => "gas_transmission_controller_id"]);
+$result = $client->GasTransmissionController()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -673,7 +673,7 @@ Set the entity match criteria.
 Create a new `GasTransmissionControllerEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -693,24 +693,24 @@ $green_controller = $client->GreenController();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->GreenController()->load(["id" => "green_controller_id"]);
+$result = $client->GreenController()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -719,7 +719,7 @@ Set the entity match criteria.
 Create a new `GreenControllerEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -739,24 +739,24 @@ $interruptible = $client->Interruptible();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->Interruptible()->load(["id" => "interruptible_id"]);
+$result = $client->Interruptible()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -765,7 +765,7 @@ Set the entity match criteria.
 Create a new `InterruptibleEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -785,24 +785,24 @@ $interruptible_capacity_controller = $client->InterruptibleCapacityController();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->InterruptibleCapacityController()->load(["id" => "interruptible_capacity_controller_id"]);
+$result = $client->InterruptibleCapacityController()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -811,7 +811,7 @@ Set the entity match criteria.
 Create a new `InterruptibleCapacityControllerEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -831,24 +831,24 @@ $nomination = $client->Nomination();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->Nomination()->load(["id" => "nomination_id"]);
+$result = $client->Nomination()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -857,7 +857,7 @@ Set the entity match criteria.
 Create a new `NominationEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -877,24 +877,24 @@ $nominations_controller = $client->NominationsController();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->NominationsController()->load(["id" => "nominations_controller_id"]);
+$result = $client->NominationsController()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -903,7 +903,7 @@ Set the entity match criteria.
 Create a new `NominationsControllerEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -923,24 +923,24 @@ $nps_controller = $client->NpsController();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->NpsController()->load(["id" => "nps_controller_id"]);
+$result = $client->NpsController()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -949,7 +949,7 @@ Set the entity match criteria.
 Create a new `NpsControllerEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -969,24 +969,24 @@ $renomination = $client->Renomination();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->Renomination()->load(["id" => "renomination_id"]);
+$result = $client->Renomination()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -995,7 +995,7 @@ Set the entity match criteria.
 Create a new `RenominationEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -1015,24 +1015,24 @@ $renominations_controller = $client->RenominationsController();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->RenominationsController()->load(["id" => "renominations_controller_id"]);
+$result = $client->RenominationsController()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -1041,7 +1041,7 @@ Set the entity match criteria.
 Create a new `RenominationsControllerEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -1061,24 +1061,24 @@ $system = $client->System();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->System()->load(["id" => "system_id"]);
+$result = $client->System()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -1087,7 +1087,7 @@ Set the entity match criteria.
 Create a new `SystemEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -1107,24 +1107,24 @@ $system_controller = $client->SystemController();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->SystemController()->load(["id" => "system_controller_id"]);
+$result = $client->SystemController()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -1133,7 +1133,7 @@ Set the entity match criteria.
 Create a new `SystemControllerEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -1153,24 +1153,24 @@ $transmission_controller = $client->TransmissionController();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->TransmissionController()->load(["id" => "transmission_controller_id"]);
+$result = $client->TransmissionController()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -1179,7 +1179,7 @@ Set the entity match criteria.
 Create a new `TransmissionControllerEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -1199,24 +1199,24 @@ $umm_gas_controller = $client->UmmGasController();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->UmmGasController()->load(["id" => "umm_gas_controller_id"]);
+$result = $client->UmmGasController()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -1225,7 +1225,7 @@ Set the entity match criteria.
 Create a new `UmmGasControllerEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -1245,24 +1245,24 @@ $umm_rss_feed_controller = $client->UmmRssFeedController();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->UmmRssFeedController()->load(["id" => "umm_rss_feed_controller_id"]);
+$result = $client->UmmRssFeedController()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -1271,7 +1271,7 @@ Set the entity match criteria.
 Create a new `UmmRssFeedControllerEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 

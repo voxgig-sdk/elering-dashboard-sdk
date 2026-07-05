@@ -192,7 +192,7 @@ balance := client.Balance(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.Balance(nil).Load(map[string]any{"id": "balance_id"}, nil)
+result, err := client.Balance(nil).Load(nil, nil)
 ```
 
 ### Common Methods
@@ -232,7 +232,7 @@ balance_controller := client.BalanceController(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.BalanceController(nil).Load(map[string]any{"id": "balance_controller_id"}, nil)
+result, err := client.BalanceController(nil).Load(nil, nil)
 ```
 
 ### Common Methods
@@ -272,7 +272,7 @@ firm := client.Firm(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.Firm(nil).Load(map[string]any{"id": "firm_id"}, nil)
+result, err := client.Firm(nil).Load(nil, nil)
 ```
 
 ### Common Methods
@@ -312,7 +312,7 @@ firm_capacity_controller := client.FirmCapacityController(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.FirmCapacityController(nil).Load(map[string]any{"id": "firm_capacity_controller_id"}, nil)
+result, err := client.FirmCapacityController(nil).Load(nil, nil)
 ```
 
 ### Common Methods
@@ -352,7 +352,7 @@ gas_balance_controller := client.GasBalanceController(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.GasBalanceController(nil).Load(map[string]any{"id": "gas_balance_controller_id"}, nil)
+result, err := client.GasBalanceController(nil).Load(nil, nil)
 ```
 
 ### Common Methods
@@ -392,7 +392,7 @@ gas_border_trade_controller := client.GasBorderTradeController(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.GasBorderTradeController(nil).Load(map[string]any{"id": "gas_border_trade_controller_id"}, nil)
+result, err := client.GasBorderTradeController(nil).Load(nil, nil)
 ```
 
 ### Common Methods
@@ -432,7 +432,7 @@ gas_system := client.GasSystem(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.GasSystem(nil).Load(map[string]any{"id": "gas_system_id"}, nil)
+result, err := client.GasSystem(nil).Load(nil, nil)
 ```
 
 ### Common Methods
@@ -472,7 +472,7 @@ gas_system_controller := client.GasSystemController(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.GasSystemController(nil).Load(map[string]any{"id": "gas_system_controller_id"}, nil)
+result, err := client.GasSystemController(nil).Load(nil, nil)
 ```
 
 ### Common Methods
@@ -512,7 +512,7 @@ gas_trade := client.GasTrade(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.GasTrade(nil).Load(map[string]any{"id": "gas_trade_id"}, nil)
+result, err := client.GasTrade(nil).Load(nil, nil)
 ```
 
 ### Common Methods
@@ -552,7 +552,7 @@ gas_trade_controller := client.GasTradeController(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.GasTradeController(nil).Load(map[string]any{"id": "gas_trade_controller_id"}, nil)
+result, err := client.GasTradeController(nil).Load(nil, nil)
 ```
 
 ### Common Methods
@@ -592,7 +592,7 @@ gas_transmission_controller := client.GasTransmissionController(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.GasTransmissionController(nil).Load(map[string]any{"id": "gas_transmission_controller_id"}, nil)
+result, err := client.GasTransmissionController(nil).Load(nil, nil)
 ```
 
 ### Common Methods
@@ -632,7 +632,7 @@ green_controller := client.GreenController(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.GreenController(nil).Load(map[string]any{"id": "green_controller_id"}, nil)
+result, err := client.GreenController(nil).Load(nil, nil)
 ```
 
 ### Common Methods
@@ -672,7 +672,7 @@ interruptible := client.Interruptible(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.Interruptible(nil).Load(map[string]any{"id": "interruptible_id"}, nil)
+result, err := client.Interruptible(nil).Load(nil, nil)
 ```
 
 ### Common Methods
@@ -712,7 +712,7 @@ interruptible_capacity_controller := client.InterruptibleCapacityController(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.InterruptibleCapacityController(nil).Load(map[string]any{"id": "interruptible_capacity_controller_id"}, nil)
+result, err := client.InterruptibleCapacityController(nil).Load(nil, nil)
 ```
 
 ### Common Methods
@@ -752,7 +752,7 @@ nomination := client.Nomination(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.Nomination(nil).Load(map[string]any{"id": "nomination_id"}, nil)
+result, err := client.Nomination(nil).Load(nil, nil)
 ```
 
 ### Common Methods
@@ -792,7 +792,7 @@ nominations_controller := client.NominationsController(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.NominationsController(nil).Load(map[string]any{"id": "nominations_controller_id"}, nil)
+result, err := client.NominationsController(nil).Load(nil, nil)
 ```
 
 ### Common Methods
@@ -832,7 +832,7 @@ nps_controller := client.NpsController(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.NpsController(nil).Load(map[string]any{"id": "nps_controller_id"}, nil)
+result, err := client.NpsController(nil).Load(nil, nil)
 ```
 
 ### Common Methods
@@ -872,7 +872,7 @@ renomination := client.Renomination(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.Renomination(nil).Load(map[string]any{"id": "renomination_id"}, nil)
+result, err := client.Renomination(nil).Load(nil, nil)
 ```
 
 ### Common Methods
@@ -912,7 +912,7 @@ renominations_controller := client.RenominationsController(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.RenominationsController(nil).Load(map[string]any{"id": "renominations_controller_id"}, nil)
+result, err := client.RenominationsController(nil).Load(nil, nil)
 ```
 
 ### Common Methods
@@ -952,7 +952,7 @@ system := client.System(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.System(nil).Load(map[string]any{"id": "system_id"}, nil)
+result, err := client.System(nil).Load(nil, nil)
 ```
 
 ### Common Methods
@@ -992,7 +992,7 @@ system_controller := client.SystemController(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.SystemController(nil).Load(map[string]any{"id": "system_controller_id"}, nil)
+result, err := client.SystemController(nil).Load(nil, nil)
 ```
 
 ### Common Methods
@@ -1032,7 +1032,7 @@ transmission_controller := client.TransmissionController(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.TransmissionController(nil).Load(map[string]any{"id": "transmission_controller_id"}, nil)
+result, err := client.TransmissionController(nil).Load(nil, nil)
 ```
 
 ### Common Methods
@@ -1072,7 +1072,7 @@ umm_gas_controller := client.UmmGasController(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.UmmGasController(nil).Load(map[string]any{"id": "umm_gas_controller_id"}, nil)
+result, err := client.UmmGasController(nil).Load(nil, nil)
 ```
 
 ### Common Methods
@@ -1112,7 +1112,7 @@ umm_rss_feed_controller := client.UmmRssFeedController(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.UmmRssFeedController(nil).Load(map[string]any{"id": "umm_rss_feed_controller_id"}, nil)
+result, err := client.UmmRssFeedController(nil).Load(nil, nil)
 ```
 
 ### Common Methods

@@ -12,7 +12,7 @@
 class Balance
 end
 
-# Match filter for Balance#load (any subset of Balance fields).
+# Request payload for Balance#load.
 class BalanceLoadMatch
 end
 
@@ -20,7 +20,7 @@ end
 class BalanceController
 end
 
-# Match filter for BalanceController#load (any subset of BalanceController fields).
+# Request payload for BalanceController#load.
 class BalanceControllerLoadMatch
 end
 
@@ -28,7 +28,7 @@ end
 class Firm
 end
 
-# Match filter for Firm#load (any subset of Firm fields).
+# Request payload for Firm#load.
 class FirmLoadMatch
 end
 
@@ -36,7 +36,7 @@ end
 class FirmCapacityController
 end
 
-# Match filter for FirmCapacityController#load (any subset of FirmCapacityController fields).
+# Request payload for FirmCapacityController#load.
 class FirmCapacityControllerLoadMatch
 end
 
@@ -44,7 +44,7 @@ end
 class GasBalanceController
 end
 
-# Match filter for GasBalanceController#load (any subset of GasBalanceController fields).
+# Request payload for GasBalanceController#load.
 class GasBalanceControllerLoadMatch
 end
 
@@ -52,7 +52,7 @@ end
 class GasBorderTradeController
 end
 
-# Match filter for GasBorderTradeController#load (any subset of GasBorderTradeController fields).
+# Request payload for GasBorderTradeController#load.
 class GasBorderTradeControllerLoadMatch
 end
 
@@ -60,7 +60,7 @@ end
 class GasSystem
 end
 
-# Match filter for GasSystem#load (any subset of GasSystem fields).
+# Request payload for GasSystem#load.
 class GasSystemLoadMatch
 end
 
@@ -68,7 +68,7 @@ end
 class GasSystemController
 end
 
-# Match filter for GasSystemController#load (any subset of GasSystemController fields).
+# Request payload for GasSystemController#load.
 class GasSystemControllerLoadMatch
 end
 
@@ -76,7 +76,7 @@ end
 class GasTrade
 end
 
-# Match filter for GasTrade#load (any subset of GasTrade fields).
+# Request payload for GasTrade#load.
 class GasTradeLoadMatch
 end
 
@@ -97,7 +97,7 @@ GasTradeControllerLoadMatch = Struct.new(
 class GasTransmissionController
 end
 
-# Match filter for GasTransmissionController#load (any subset of GasTransmissionController fields).
+# Request payload for GasTransmissionController#load.
 class GasTransmissionControllerLoadMatch
 end
 
@@ -105,7 +105,7 @@ end
 class GreenController
 end
 
-# Match filter for GreenController#load (any subset of GreenController fields).
+# Request payload for GreenController#load.
 class GreenControllerLoadMatch
 end
 
@@ -113,7 +113,7 @@ end
 class Interruptible
 end
 
-# Match filter for Interruptible#load (any subset of Interruptible fields).
+# Request payload for Interruptible#load.
 class InterruptibleLoadMatch
 end
 
@@ -121,7 +121,7 @@ end
 class InterruptibleCapacityController
 end
 
-# Match filter for InterruptibleCapacityController#load (any subset of InterruptibleCapacityController fields).
+# Request payload for InterruptibleCapacityController#load.
 class InterruptibleCapacityControllerLoadMatch
 end
 
@@ -129,7 +129,7 @@ end
 class Nomination
 end
 
-# Match filter for Nomination#load (any subset of Nomination fields).
+# Request payload for Nomination#load.
 class NominationLoadMatch
 end
 
@@ -137,7 +137,7 @@ end
 class NominationsController
 end
 
-# Match filter for NominationsController#load (any subset of NominationsController fields).
+# Request payload for NominationsController#load.
 class NominationsControllerLoadMatch
 end
 
@@ -158,7 +158,7 @@ NpsControllerLoadMatch = Struct.new(
 class Renomination
 end
 
-# Match filter for Renomination#load (any subset of Renomination fields).
+# Request payload for Renomination#load.
 class RenominationLoadMatch
 end
 
@@ -166,7 +166,7 @@ end
 class RenominationsController
 end
 
-# Match filter for RenominationsController#load (any subset of RenominationsController fields).
+# Request payload for RenominationsController#load.
 class RenominationsControllerLoadMatch
 end
 
@@ -174,7 +174,7 @@ end
 class System
 end
 
-# Match filter for System#load (any subset of System fields).
+# Request payload for System#load.
 class SystemLoadMatch
 end
 
@@ -182,7 +182,7 @@ end
 class SystemController
 end
 
-# Match filter for SystemController#load (any subset of SystemController fields).
+# Request payload for SystemController#load.
 class SystemControllerLoadMatch
 end
 
@@ -203,7 +203,7 @@ TransmissionControllerLoadMatch = Struct.new(
 class UmmGasController
 end
 
-# Match filter for UmmGasController#load (any subset of UmmGasController fields).
+# Request payload for UmmGasController#load.
 class UmmGasControllerLoadMatch
 end
 
@@ -211,7 +211,7 @@ end
 class UmmRssFeedController
 end
 
-# Match filter for UmmRssFeedController#load (any subset of UmmRssFeedController fields).
+# Request payload for UmmRssFeedController#load.
 class UmmRssFeedControllerLoadMatch
 end
 

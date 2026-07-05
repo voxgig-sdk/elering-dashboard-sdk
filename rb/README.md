@@ -4,6 +4,8 @@
 
 The Ruby SDK for the EleringDashboard API — an entity-oriented client using idiomatic Ruby conventions.
 
+The SDK exposes the API as capitalised, semantic **Entities** — for example `client.Balance` — with named operations (`load`) instead of raw URL paths and query strings. Working with resources and verbs keeps call sites self-describing and reduces cognitive load.
+
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
 
@@ -33,11 +35,38 @@ client = EleringDashboardSDK.new
 ```ruby
 begin
   # load returns the bare Balance record (raises on error).
-  balance = client.Balance.load({ "id" => "example_id" })
+  balance = client.Balance.load()
   puts balance
 rescue => err
   warn "load failed: #{err}"
 end
+```
+
+
+## Error handling
+
+Entity operations raise on failure, so rescue them:
+
+```ruby
+begin
+  balance = client.Balance.load()
+rescue => err
+  warn "load failed: #{err}"
+end
+```
+
+`direct` does **not** raise — it returns the result hash. Branch on
+`ok`; on failure `status` holds the HTTP status (for error responses) and
+`err` holds a transport error, so read both defensively:
+
+```ruby
+result = client.direct({
+  "path" => "/api/resource/{id}",
+  "method" => "GET",
+  "params" => { "id" => "example_id" },
+})
+
+warn "request failed: #{result["err"] || "HTTP #{result["status"]}"}" unless result["ok"]
 ```
 
 
@@ -58,7 +87,9 @@ if result["ok"]
   puts result["status"]  # 200
   puts result["data"]    # response body
 else
-  warn result["err"]
+  # On an HTTP error status there is no err (only a transport failure sets
+  # it), so fall back to the status code.
+  warn(result["err"] || "HTTP #{result["status"]}")
 end
 ```
 
@@ -81,16 +112,13 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required. Seed fixture
-data via the `entity` option so offline calls resolve without a live server:
+Create a mock client for unit testing — no server required:
 
 ```ruby
-client = EleringDashboardSDK.test({
-  "entity" => { "balance" => { "test01" => { "id" => "test01" } } },
-})
+client = EleringDashboardSDK.test
 
-# load returns the bare mock record (raises on error).
-balance = client.Balance.load({ "id" => "test01" })
+# Entity ops return the bare mock record (raises on error).
+balance = client.Balance.load()
 puts balance
 ```
 
@@ -199,10 +227,6 @@ All entities share the same interface.
 | Method | Signature | Description |
 | --- | --- | --- |
 | `load` | `(reqmatch, ctrl) -> any` | Load a single entity by match criteria. Raises on error. |
-| `list` | `(reqmatch, ctrl) -> Array` | List entities matching the criteria. Raises on error. |
-| `create` | `(reqdata, ctrl) -> any` | Create a new entity. Raises on error. |
-| `update` | `(reqdata, ctrl) -> any` | Update an existing entity. Raises on error. |
-| `remove` | `(reqmatch, ctrl) -> any` | Remove an entity. Raises on error. |
 | `data_get` | `() -> Hash` | Get entity data. |
 | `data_set` | `(data)` | Set entity data. |
 | `match_get` | `() -> Hash` | Get entity match criteria. |
@@ -464,7 +488,7 @@ Create an instance: `balance = client.Balance`
 
 ```ruby
 # load returns the bare Balance record (raises on error).
-balance = client.Balance.load({ "id" => "balance_id" })
+balance = client.Balance.load()
 ```
 
 
@@ -482,7 +506,7 @@ Create an instance: `balance_controller = client.BalanceController`
 
 ```ruby
 # load returns the bare BalanceController record (raises on error).
-balance_controller = client.BalanceController.load({ "id" => "balance_controller_id" })
+balance_controller = client.BalanceController.load()
 ```
 
 
@@ -500,7 +524,7 @@ Create an instance: `firm = client.Firm`
 
 ```ruby
 # load returns the bare Firm record (raises on error).
-firm = client.Firm.load({ "id" => "firm_id" })
+firm = client.Firm.load()
 ```
 
 
@@ -518,7 +542,7 @@ Create an instance: `firm_capacity_controller = client.FirmCapacityController`
 
 ```ruby
 # load returns the bare FirmCapacityController record (raises on error).
-firm_capacity_controller = client.FirmCapacityController.load({ "id" => "firm_capacity_controller_id" })
+firm_capacity_controller = client.FirmCapacityController.load()
 ```
 
 
@@ -536,7 +560,7 @@ Create an instance: `gas_balance_controller = client.GasBalanceController`
 
 ```ruby
 # load returns the bare GasBalanceController record (raises on error).
-gas_balance_controller = client.GasBalanceController.load({ "id" => "gas_balance_controller_id" })
+gas_balance_controller = client.GasBalanceController.load()
 ```
 
 
@@ -554,7 +578,7 @@ Create an instance: `gas_border_trade_controller = client.GasBorderTradeControll
 
 ```ruby
 # load returns the bare GasBorderTradeController record (raises on error).
-gas_border_trade_controller = client.GasBorderTradeController.load({ "id" => "gas_border_trade_controller_id" })
+gas_border_trade_controller = client.GasBorderTradeController.load()
 ```
 
 
@@ -572,7 +596,7 @@ Create an instance: `gas_system = client.GasSystem`
 
 ```ruby
 # load returns the bare GasSystem record (raises on error).
-gas_system = client.GasSystem.load({ "id" => "gas_system_id" })
+gas_system = client.GasSystem.load()
 ```
 
 
@@ -590,7 +614,7 @@ Create an instance: `gas_system_controller = client.GasSystemController`
 
 ```ruby
 # load returns the bare GasSystemController record (raises on error).
-gas_system_controller = client.GasSystemController.load({ "id" => "gas_system_controller_id" })
+gas_system_controller = client.GasSystemController.load()
 ```
 
 
@@ -608,7 +632,7 @@ Create an instance: `gas_trade = client.GasTrade`
 
 ```ruby
 # load returns the bare GasTrade record (raises on error).
-gas_trade = client.GasTrade.load({ "id" => "gas_trade_id" })
+gas_trade = client.GasTrade.load()
 ```
 
 
@@ -626,7 +650,7 @@ Create an instance: `gas_trade_controller = client.GasTradeController`
 
 ```ruby
 # load returns the bare GasTradeController record (raises on error).
-gas_trade_controller = client.GasTradeController.load({ "id" => "gas_trade_controller_id" })
+gas_trade_controller = client.GasTradeController.load()
 ```
 
 
@@ -644,7 +668,7 @@ Create an instance: `gas_transmission_controller = client.GasTransmissionControl
 
 ```ruby
 # load returns the bare GasTransmissionController record (raises on error).
-gas_transmission_controller = client.GasTransmissionController.load({ "id" => "gas_transmission_controller_id" })
+gas_transmission_controller = client.GasTransmissionController.load()
 ```
 
 
@@ -662,7 +686,7 @@ Create an instance: `green_controller = client.GreenController`
 
 ```ruby
 # load returns the bare GreenController record (raises on error).
-green_controller = client.GreenController.load({ "id" => "green_controller_id" })
+green_controller = client.GreenController.load()
 ```
 
 
@@ -680,7 +704,7 @@ Create an instance: `interruptible = client.Interruptible`
 
 ```ruby
 # load returns the bare Interruptible record (raises on error).
-interruptible = client.Interruptible.load({ "id" => "interruptible_id" })
+interruptible = client.Interruptible.load()
 ```
 
 
@@ -698,7 +722,7 @@ Create an instance: `interruptible_capacity_controller = client.InterruptibleCap
 
 ```ruby
 # load returns the bare InterruptibleCapacityController record (raises on error).
-interruptible_capacity_controller = client.InterruptibleCapacityController.load({ "id" => "interruptible_capacity_controller_id" })
+interruptible_capacity_controller = client.InterruptibleCapacityController.load()
 ```
 
 
@@ -716,7 +740,7 @@ Create an instance: `nomination = client.Nomination`
 
 ```ruby
 # load returns the bare Nomination record (raises on error).
-nomination = client.Nomination.load({ "id" => "nomination_id" })
+nomination = client.Nomination.load()
 ```
 
 
@@ -734,7 +758,7 @@ Create an instance: `nominations_controller = client.NominationsController`
 
 ```ruby
 # load returns the bare NominationsController record (raises on error).
-nominations_controller = client.NominationsController.load({ "id" => "nominations_controller_id" })
+nominations_controller = client.NominationsController.load()
 ```
 
 
@@ -752,7 +776,7 @@ Create an instance: `nps_controller = client.NpsController`
 
 ```ruby
 # load returns the bare NpsController record (raises on error).
-nps_controller = client.NpsController.load({ "id" => "nps_controller_id" })
+nps_controller = client.NpsController.load()
 ```
 
 
@@ -770,7 +794,7 @@ Create an instance: `renomination = client.Renomination`
 
 ```ruby
 # load returns the bare Renomination record (raises on error).
-renomination = client.Renomination.load({ "id" => "renomination_id" })
+renomination = client.Renomination.load()
 ```
 
 
@@ -788,7 +812,7 @@ Create an instance: `renominations_controller = client.RenominationsController`
 
 ```ruby
 # load returns the bare RenominationsController record (raises on error).
-renominations_controller = client.RenominationsController.load({ "id" => "renominations_controller_id" })
+renominations_controller = client.RenominationsController.load()
 ```
 
 
@@ -806,7 +830,7 @@ Create an instance: `system = client.System`
 
 ```ruby
 # load returns the bare System record (raises on error).
-system = client.System.load({ "id" => "system_id" })
+system = client.System.load()
 ```
 
 
@@ -824,7 +848,7 @@ Create an instance: `system_controller = client.SystemController`
 
 ```ruby
 # load returns the bare SystemController record (raises on error).
-system_controller = client.SystemController.load({ "id" => "system_controller_id" })
+system_controller = client.SystemController.load()
 ```
 
 
@@ -842,7 +866,7 @@ Create an instance: `transmission_controller = client.TransmissionController`
 
 ```ruby
 # load returns the bare TransmissionController record (raises on error).
-transmission_controller = client.TransmissionController.load({ "id" => "transmission_controller_id" })
+transmission_controller = client.TransmissionController.load()
 ```
 
 
@@ -860,7 +884,7 @@ Create an instance: `umm_gas_controller = client.UmmGasController`
 
 ```ruby
 # load returns the bare UmmGasController record (raises on error).
-umm_gas_controller = client.UmmGasController.load({ "id" => "umm_gas_controller_id" })
+umm_gas_controller = client.UmmGasController.load()
 ```
 
 
@@ -878,16 +902,20 @@ Create an instance: `umm_rss_feed_controller = client.UmmRssFeedController`
 
 ```ruby
 # load returns the bare UmmRssFeedController record (raises on error).
-umm_rss_feed_controller = client.UmmRssFeedController.load({ "id" => "umm_rss_feed_controller_id" })
+umm_rss_feed_controller = client.UmmRssFeedController.load()
 ```
 
 
-## Explanation
+## Advanced
+
+> The sections above cover everyday use. The material below explains the
+> SDK's internals — useful when extending it with custom features, but not
+> needed for normal use.
 
 ### The operation pipeline
 
-Every entity operation (load, list, create, update, remove) follows a
-six-stage pipeline. Each stage fires a feature hook before executing:
+Every entity operation follows a six-stage pipeline. Each stage fires a
+feature hook before executing:
 
 ```
 PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
@@ -904,8 +932,9 @@ PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
 - **PreDone**: Final stage before returning to the caller. Entity
   state (match, data) is updated here.
 
-If any stage returns an error, the pipeline short-circuits and the
-error is returned to the caller as a second return value.
+If any stage errors, the pipeline short-circuits and the error surfaces
+to the caller — see [Error handling](#error-handling) for how that looks
+in this language.
 
 ### Features and hooks
 
@@ -954,9 +983,9 @@ stores the returned data and match criteria internally.
 
 ```ruby
 balance = client.Balance
-balance.load({ "id" => "example_id" })
+balance.load()
 
-# balance.data_get now returns the loaded balance data
+# balance.data_get now returns the balance data from the last load
 # balance.match_get returns the last match criteria
 ```
 

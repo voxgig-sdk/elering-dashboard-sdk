@@ -221,145 +221,145 @@ class EleringDashboardSDK:
 
 
     def Balance(self, data=None) -> "BalanceEntity":
-        """Entity factory: client.Balance().list({}) / client.Balance().load({"id": ...})."""
+        """Entity factory: client.Balance().list() / client.Balance().load({"id": ...})."""
         from entity.balance_entity import BalanceEntity
         return BalanceEntity(self, data)
 
 
     def BalanceController(self, data=None) -> "BalanceControllerEntity":
-        """Entity factory: client.BalanceController().list({}) / client.BalanceController().load({"id": ...})."""
+        """Entity factory: client.BalanceController().list() / client.BalanceController().load({"id": ...})."""
         from entity.balance_controller_entity import BalanceControllerEntity
         return BalanceControllerEntity(self, data)
 
 
     def Firm(self, data=None) -> "FirmEntity":
-        """Entity factory: client.Firm().list({}) / client.Firm().load({"id": ...})."""
+        """Entity factory: client.Firm().list() / client.Firm().load({"id": ...})."""
         from entity.firm_entity import FirmEntity
         return FirmEntity(self, data)
 
 
     def FirmCapacityController(self, data=None) -> "FirmCapacityControllerEntity":
-        """Entity factory: client.FirmCapacityController().list({}) / client.FirmCapacityController().load({"id": ...})."""
+        """Entity factory: client.FirmCapacityController().list() / client.FirmCapacityController().load({"id": ...})."""
         from entity.firm_capacity_controller_entity import FirmCapacityControllerEntity
         return FirmCapacityControllerEntity(self, data)
 
 
     def GasBalanceController(self, data=None) -> "GasBalanceControllerEntity":
-        """Entity factory: client.GasBalanceController().list({}) / client.GasBalanceController().load({"id": ...})."""
+        """Entity factory: client.GasBalanceController().list() / client.GasBalanceController().load({"id": ...})."""
         from entity.gas_balance_controller_entity import GasBalanceControllerEntity
         return GasBalanceControllerEntity(self, data)
 
 
     def GasBorderTradeController(self, data=None) -> "GasBorderTradeControllerEntity":
-        """Entity factory: client.GasBorderTradeController().list({}) / client.GasBorderTradeController().load({"id": ...})."""
+        """Entity factory: client.GasBorderTradeController().list() / client.GasBorderTradeController().load({"id": ...})."""
         from entity.gas_border_trade_controller_entity import GasBorderTradeControllerEntity
         return GasBorderTradeControllerEntity(self, data)
 
 
     def GasSystem(self, data=None) -> "GasSystemEntity":
-        """Entity factory: client.GasSystem().list({}) / client.GasSystem().load({"id": ...})."""
+        """Entity factory: client.GasSystem().list() / client.GasSystem().load({"id": ...})."""
         from entity.gas_system_entity import GasSystemEntity
         return GasSystemEntity(self, data)
 
 
     def GasSystemController(self, data=None) -> "GasSystemControllerEntity":
-        """Entity factory: client.GasSystemController().list({}) / client.GasSystemController().load({"id": ...})."""
+        """Entity factory: client.GasSystemController().list() / client.GasSystemController().load({"id": ...})."""
         from entity.gas_system_controller_entity import GasSystemControllerEntity
         return GasSystemControllerEntity(self, data)
 
 
     def GasTrade(self, data=None) -> "GasTradeEntity":
-        """Entity factory: client.GasTrade().list({}) / client.GasTrade().load({"id": ...})."""
+        """Entity factory: client.GasTrade().list() / client.GasTrade().load({"id": ...})."""
         from entity.gas_trade_entity import GasTradeEntity
         return GasTradeEntity(self, data)
 
 
     def GasTradeController(self, data=None) -> "GasTradeControllerEntity":
-        """Entity factory: client.GasTradeController().list({}) / client.GasTradeController().load({"id": ...})."""
+        """Entity factory: client.GasTradeController().list() / client.GasTradeController().load({"id": ...})."""
         from entity.gas_trade_controller_entity import GasTradeControllerEntity
         return GasTradeControllerEntity(self, data)
 
 
     def GasTransmissionController(self, data=None) -> "GasTransmissionControllerEntity":
-        """Entity factory: client.GasTransmissionController().list({}) / client.GasTransmissionController().load({"id": ...})."""
+        """Entity factory: client.GasTransmissionController().list() / client.GasTransmissionController().load({"id": ...})."""
         from entity.gas_transmission_controller_entity import GasTransmissionControllerEntity
         return GasTransmissionControllerEntity(self, data)
 
 
     def GreenController(self, data=None) -> "GreenControllerEntity":
-        """Entity factory: client.GreenController().list({}) / client.GreenController().load({"id": ...})."""
+        """Entity factory: client.GreenController().list() / client.GreenController().load({"id": ...})."""
         from entity.green_controller_entity import GreenControllerEntity
         return GreenControllerEntity(self, data)
 
 
     def Interruptible(self, data=None) -> "InterruptibleEntity":
-        """Entity factory: client.Interruptible().list({}) / client.Interruptible().load({"id": ...})."""
+        """Entity factory: client.Interruptible().list() / client.Interruptible().load({"id": ...})."""
         from entity.interruptible_entity import InterruptibleEntity
         return InterruptibleEntity(self, data)
 
 
     def InterruptibleCapacityController(self, data=None) -> "InterruptibleCapacityControllerEntity":
-        """Entity factory: client.InterruptibleCapacityController().list({}) / client.InterruptibleCapacityController().load({"id": ...})."""
+        """Entity factory: client.InterruptibleCapacityController().list() / client.InterruptibleCapacityController().load({"id": ...})."""
         from entity.interruptible_capacity_controller_entity import InterruptibleCapacityControllerEntity
         return InterruptibleCapacityControllerEntity(self, data)
 
 
     def Nomination(self, data=None) -> "NominationEntity":
-        """Entity factory: client.Nomination().list({}) / client.Nomination().load({"id": ...})."""
+        """Entity factory: client.Nomination().list() / client.Nomination().load({"id": ...})."""
         from entity.nomination_entity import NominationEntity
         return NominationEntity(self, data)
 
 
     def NominationsController(self, data=None) -> "NominationsControllerEntity":
-        """Entity factory: client.NominationsController().list({}) / client.NominationsController().load({"id": ...})."""
+        """Entity factory: client.NominationsController().list() / client.NominationsController().load({"id": ...})."""
         from entity.nominations_controller_entity import NominationsControllerEntity
         return NominationsControllerEntity(self, data)
 
 
     def NpsController(self, data=None) -> "NpsControllerEntity":
-        """Entity factory: client.NpsController().list({}) / client.NpsController().load({"id": ...})."""
+        """Entity factory: client.NpsController().list() / client.NpsController().load({"id": ...})."""
         from entity.nps_controller_entity import NpsControllerEntity
         return NpsControllerEntity(self, data)
 
 
     def Renomination(self, data=None) -> "RenominationEntity":
-        """Entity factory: client.Renomination().list({}) / client.Renomination().load({"id": ...})."""
+        """Entity factory: client.Renomination().list() / client.Renomination().load({"id": ...})."""
         from entity.renomination_entity import RenominationEntity
         return RenominationEntity(self, data)
 
 
     def RenominationsController(self, data=None) -> "RenominationsControllerEntity":
-        """Entity factory: client.RenominationsController().list({}) / client.RenominationsController().load({"id": ...})."""
+        """Entity factory: client.RenominationsController().list() / client.RenominationsController().load({"id": ...})."""
         from entity.renominations_controller_entity import RenominationsControllerEntity
         return RenominationsControllerEntity(self, data)
 
 
     def System(self, data=None) -> "SystemEntity":
-        """Entity factory: client.System().list({}) / client.System().load({"id": ...})."""
+        """Entity factory: client.System().list() / client.System().load({"id": ...})."""
         from entity.system_entity import SystemEntity
         return SystemEntity(self, data)
 
 
     def SystemController(self, data=None) -> "SystemControllerEntity":
-        """Entity factory: client.SystemController().list({}) / client.SystemController().load({"id": ...})."""
+        """Entity factory: client.SystemController().list() / client.SystemController().load({"id": ...})."""
         from entity.system_controller_entity import SystemControllerEntity
         return SystemControllerEntity(self, data)
 
 
     def TransmissionController(self, data=None) -> "TransmissionControllerEntity":
-        """Entity factory: client.TransmissionController().list({}) / client.TransmissionController().load({"id": ...})."""
+        """Entity factory: client.TransmissionController().list() / client.TransmissionController().load({"id": ...})."""
         from entity.transmission_controller_entity import TransmissionControllerEntity
         return TransmissionControllerEntity(self, data)
 
 
     def UmmGasController(self, data=None) -> "UmmGasControllerEntity":
-        """Entity factory: client.UmmGasController().list({}) / client.UmmGasController().load({"id": ...})."""
+        """Entity factory: client.UmmGasController().list() / client.UmmGasController().load({"id": ...})."""
         from entity.umm_gas_controller_entity import UmmGasControllerEntity
         return UmmGasControllerEntity(self, data)
 
 
     def UmmRssFeedController(self, data=None) -> "UmmRssFeedControllerEntity":
-        """Entity factory: client.UmmRssFeedController().list({}) / client.UmmRssFeedController().load({"id": ...})."""
+        """Entity factory: client.UmmRssFeedController().list() / client.UmmRssFeedController().load({"id": ...})."""
         from entity.umm_rss_feed_controller_entity import UmmRssFeedControllerEntity
         return UmmRssFeedControllerEntity(self, data)
 

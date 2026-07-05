@@ -12,8 +12,7 @@ import "encoding/json"
 type Balance struct {
 }
 
-// BalanceLoadMatch mirrors the balance fields as an all-optional match
-// filter (Go analog of Partial<Balance>).
+// BalanceLoadMatch is the typed request payload for Balance.LoadTyped.
 type BalanceLoadMatch struct {
 }
 
@@ -21,8 +20,7 @@ type BalanceLoadMatch struct {
 type BalanceController struct {
 }
 
-// BalanceControllerLoadMatch mirrors the balance_controller fields as an all-optional match
-// filter (Go analog of Partial<BalanceController>).
+// BalanceControllerLoadMatch is the typed request payload for BalanceController.LoadTyped.
 type BalanceControllerLoadMatch struct {
 }
 
@@ -30,8 +28,7 @@ type BalanceControllerLoadMatch struct {
 type Firm struct {
 }
 
-// FirmLoadMatch mirrors the firm fields as an all-optional match
-// filter (Go analog of Partial<Firm>).
+// FirmLoadMatch is the typed request payload for Firm.LoadTyped.
 type FirmLoadMatch struct {
 }
 
@@ -39,8 +36,7 @@ type FirmLoadMatch struct {
 type FirmCapacityController struct {
 }
 
-// FirmCapacityControllerLoadMatch mirrors the firm_capacity_controller fields as an all-optional match
-// filter (Go analog of Partial<FirmCapacityController>).
+// FirmCapacityControllerLoadMatch is the typed request payload for FirmCapacityController.LoadTyped.
 type FirmCapacityControllerLoadMatch struct {
 }
 
@@ -48,8 +44,7 @@ type FirmCapacityControllerLoadMatch struct {
 type GasBalanceController struct {
 }
 
-// GasBalanceControllerLoadMatch mirrors the gas_balance_controller fields as an all-optional match
-// filter (Go analog of Partial<GasBalanceController>).
+// GasBalanceControllerLoadMatch is the typed request payload for GasBalanceController.LoadTyped.
 type GasBalanceControllerLoadMatch struct {
 }
 
@@ -57,8 +52,7 @@ type GasBalanceControllerLoadMatch struct {
 type GasBorderTradeController struct {
 }
 
-// GasBorderTradeControllerLoadMatch mirrors the gas_border_trade_controller fields as an all-optional match
-// filter (Go analog of Partial<GasBorderTradeController>).
+// GasBorderTradeControllerLoadMatch is the typed request payload for GasBorderTradeController.LoadTyped.
 type GasBorderTradeControllerLoadMatch struct {
 }
 
@@ -66,8 +60,7 @@ type GasBorderTradeControllerLoadMatch struct {
 type GasSystem struct {
 }
 
-// GasSystemLoadMatch mirrors the gas_system fields as an all-optional match
-// filter (Go analog of Partial<GasSystem>).
+// GasSystemLoadMatch is the typed request payload for GasSystem.LoadTyped.
 type GasSystemLoadMatch struct {
 }
 
@@ -75,8 +68,7 @@ type GasSystemLoadMatch struct {
 type GasSystemController struct {
 }
 
-// GasSystemControllerLoadMatch mirrors the gas_system_controller fields as an all-optional match
-// filter (Go analog of Partial<GasSystemController>).
+// GasSystemControllerLoadMatch is the typed request payload for GasSystemController.LoadTyped.
 type GasSystemControllerLoadMatch struct {
 }
 
@@ -84,8 +76,7 @@ type GasSystemControllerLoadMatch struct {
 type GasTrade struct {
 }
 
-// GasTradeLoadMatch mirrors the gas_trade fields as an all-optional match
-// filter (Go analog of Partial<GasTrade>).
+// GasTradeLoadMatch is the typed request payload for GasTrade.LoadTyped.
 type GasTradeLoadMatch struct {
 }
 
@@ -102,8 +93,7 @@ type GasTradeControllerLoadMatch struct {
 type GasTransmissionController struct {
 }
 
-// GasTransmissionControllerLoadMatch mirrors the gas_transmission_controller fields as an all-optional match
-// filter (Go analog of Partial<GasTransmissionController>).
+// GasTransmissionControllerLoadMatch is the typed request payload for GasTransmissionController.LoadTyped.
 type GasTransmissionControllerLoadMatch struct {
 }
 
@@ -111,8 +101,7 @@ type GasTransmissionControllerLoadMatch struct {
 type GreenController struct {
 }
 
-// GreenControllerLoadMatch mirrors the green_controller fields as an all-optional match
-// filter (Go analog of Partial<GreenController>).
+// GreenControllerLoadMatch is the typed request payload for GreenController.LoadTyped.
 type GreenControllerLoadMatch struct {
 }
 
@@ -120,8 +109,7 @@ type GreenControllerLoadMatch struct {
 type Interruptible struct {
 }
 
-// InterruptibleLoadMatch mirrors the interruptible fields as an all-optional match
-// filter (Go analog of Partial<Interruptible>).
+// InterruptibleLoadMatch is the typed request payload for Interruptible.LoadTyped.
 type InterruptibleLoadMatch struct {
 }
 
@@ -129,8 +117,7 @@ type InterruptibleLoadMatch struct {
 type InterruptibleCapacityController struct {
 }
 
-// InterruptibleCapacityControllerLoadMatch mirrors the interruptible_capacity_controller fields as an all-optional match
-// filter (Go analog of Partial<InterruptibleCapacityController>).
+// InterruptibleCapacityControllerLoadMatch is the typed request payload for InterruptibleCapacityController.LoadTyped.
 type InterruptibleCapacityControllerLoadMatch struct {
 }
 
@@ -138,8 +125,7 @@ type InterruptibleCapacityControllerLoadMatch struct {
 type Nomination struct {
 }
 
-// NominationLoadMatch mirrors the nomination fields as an all-optional match
-// filter (Go analog of Partial<Nomination>).
+// NominationLoadMatch is the typed request payload for Nomination.LoadTyped.
 type NominationLoadMatch struct {
 }
 
@@ -147,8 +133,7 @@ type NominationLoadMatch struct {
 type NominationsController struct {
 }
 
-// NominationsControllerLoadMatch mirrors the nominations_controller fields as an all-optional match
-// filter (Go analog of Partial<NominationsController>).
+// NominationsControllerLoadMatch is the typed request payload for NominationsController.LoadTyped.
 type NominationsControllerLoadMatch struct {
 }
 
@@ -165,8 +150,7 @@ type NpsControllerLoadMatch struct {
 type Renomination struct {
 }
 
-// RenominationLoadMatch mirrors the renomination fields as an all-optional match
-// filter (Go analog of Partial<Renomination>).
+// RenominationLoadMatch is the typed request payload for Renomination.LoadTyped.
 type RenominationLoadMatch struct {
 }
 
@@ -174,8 +158,7 @@ type RenominationLoadMatch struct {
 type RenominationsController struct {
 }
 
-// RenominationsControllerLoadMatch mirrors the renominations_controller fields as an all-optional match
-// filter (Go analog of Partial<RenominationsController>).
+// RenominationsControllerLoadMatch is the typed request payload for RenominationsController.LoadTyped.
 type RenominationsControllerLoadMatch struct {
 }
 
@@ -183,8 +166,7 @@ type RenominationsControllerLoadMatch struct {
 type System struct {
 }
 
-// SystemLoadMatch mirrors the system fields as an all-optional match
-// filter (Go analog of Partial<System>).
+// SystemLoadMatch is the typed request payload for System.LoadTyped.
 type SystemLoadMatch struct {
 }
 
@@ -192,8 +174,7 @@ type SystemLoadMatch struct {
 type SystemController struct {
 }
 
-// SystemControllerLoadMatch mirrors the system_controller fields as an all-optional match
-// filter (Go analog of Partial<SystemController>).
+// SystemControllerLoadMatch is the typed request payload for SystemController.LoadTyped.
 type SystemControllerLoadMatch struct {
 }
 
@@ -210,8 +191,7 @@ type TransmissionControllerLoadMatch struct {
 type UmmGasController struct {
 }
 
-// UmmGasControllerLoadMatch mirrors the umm_gas_controller fields as an all-optional match
-// filter (Go analog of Partial<UmmGasController>).
+// UmmGasControllerLoadMatch is the typed request payload for UmmGasController.LoadTyped.
 type UmmGasControllerLoadMatch struct {
 }
 
@@ -219,8 +199,7 @@ type UmmGasControllerLoadMatch struct {
 type UmmRssFeedController struct {
 }
 
-// UmmRssFeedControllerLoadMatch mirrors the umm_rss_feed_controller fields as an all-optional match
-// filter (Go analog of Partial<UmmRssFeedController>).
+// UmmRssFeedControllerLoadMatch is the typed request payload for UmmRssFeedController.LoadTyped.
 type UmmRssFeedControllerLoadMatch struct {
 }
 

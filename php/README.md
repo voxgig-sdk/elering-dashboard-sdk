@@ -4,6 +4,8 @@
 
 The PHP SDK for the EleringDashboard API — an entity-oriented client using PHP conventions.
 
+The SDK exposes the API as capitalised, semantic **Entities** — for example `$client->Balance()` — with named operations (`load`) instead of raw URL paths and query strings. Working with resources and verbs keeps call sites self-describing and reduces cognitive load.
+
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
 
@@ -34,10 +36,41 @@ $client = new EleringDashboardSDK();
 ```php
 try {
     // load() returns the bare Balance record (throws on error).
-    $balance = $client->Balance()->load(["id" => "example_id"]);
+    $balance = $client->Balance()->load();
     print_r($balance);
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
+}
+```
+
+
+## Error handling
+
+Entity operations throw a `\Throwable` on failure, so wrap them in
+`try` / `catch`:
+
+```php
+try {
+    $balance = $client->Balance()->load();
+} catch (\Throwable $err) {
+    echo "Error: " . $err->getMessage();
+}
+```
+
+`direct()` does **not** throw — it returns the result array. Branch on
+`ok`; on failure `status` holds the HTTP status (for error responses) and
+`err` holds a transport error, so read both defensively:
+
+```php
+$result = $client->direct([
+    "path" => "/api/resource/{id}",
+    "method" => "GET",
+    "params" => ["id" => "example_id"],
+]);
+
+if (! $result["ok"]) {
+    $err = $result["err"] ?? null;
+    echo "request failed: " . ($err ? $err->getMessage() : "HTTP " . $result["status"]);
 }
 ```
 
@@ -61,7 +94,10 @@ if ($result["ok"]) {
     echo $result["status"];  // 200
     print_r($result["data"]);  // response body
 } else {
-    echo "Error: " . $result["err"]->getMessage();
+    // On an HTTP error status there is no err (only a transport failure sets
+    // it), so fall back to the status code.
+    $err = $result["err"] ?? null;
+    echo "Error: " . ($err ? $err->getMessage() : "HTTP " . $result["status"]);
 }
 ```
 
@@ -82,16 +118,13 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required. Seed fixture
-data via the `entity` option so offline calls resolve without a live server:
+Create a mock client for unit testing — no server required:
 
 ```php
-$client = EleringDashboardSDK::test([
-    "entity" => ["balance" => ["test01" => ["id" => "test01"]]],
-]);
+$client = EleringDashboardSDK::test();
 
-// load() returns the bare mock record (throws on error).
-$balance = $client->Balance()->load(["id" => "test01"]);
+// Entity ops return the bare mock record (throws on error).
+$balance = $client->Balance()->load();
 print_r($balance);
 ```
 
@@ -203,10 +236,6 @@ All entities share the same interface.
 | Method | Signature | Description |
 | --- | --- | --- |
 | `load` | `($reqmatch, $ctrl): array` | Load a single entity by match criteria. |
-| `list` | `($reqmatch, $ctrl): array` | List entities matching the criteria. |
-| `create` | `($reqdata, $ctrl): array` | Create a new entity. |
-| `update` | `($reqdata, $ctrl): array` | Update an existing entity. |
-| `remove` | `($reqmatch, $ctrl): array` | Remove an entity. |
 | `data_get` | `(): array` | Get entity data. |
 | `data_set` | `($data): void` | Set entity data. |
 | `match_get` | `(): array` | Get entity match criteria. |
@@ -469,7 +498,7 @@ Create an instance: `$balance = $client->Balance();`
 
 ```php
 // load() returns the bare Balance record (throws on error).
-$balance = $client->Balance()->load(["id" => "balance_id"]);
+$balance = $client->Balance()->load();
 ```
 
 
@@ -487,7 +516,7 @@ Create an instance: `$balance_controller = $client->BalanceController();`
 
 ```php
 // load() returns the bare BalanceController record (throws on error).
-$balance_controller = $client->BalanceController()->load(["id" => "balance_controller_id"]);
+$balance_controller = $client->BalanceController()->load();
 ```
 
 
@@ -505,7 +534,7 @@ Create an instance: `$firm = $client->Firm();`
 
 ```php
 // load() returns the bare Firm record (throws on error).
-$firm = $client->Firm()->load(["id" => "firm_id"]);
+$firm = $client->Firm()->load();
 ```
 
 
@@ -523,7 +552,7 @@ Create an instance: `$firm_capacity_controller = $client->FirmCapacityController
 
 ```php
 // load() returns the bare FirmCapacityController record (throws on error).
-$firm_capacity_controller = $client->FirmCapacityController()->load(["id" => "firm_capacity_controller_id"]);
+$firm_capacity_controller = $client->FirmCapacityController()->load();
 ```
 
 
@@ -541,7 +570,7 @@ Create an instance: `$gas_balance_controller = $client->GasBalanceController();`
 
 ```php
 // load() returns the bare GasBalanceController record (throws on error).
-$gas_balance_controller = $client->GasBalanceController()->load(["id" => "gas_balance_controller_id"]);
+$gas_balance_controller = $client->GasBalanceController()->load();
 ```
 
 
@@ -559,7 +588,7 @@ Create an instance: `$gas_border_trade_controller = $client->GasBorderTradeContr
 
 ```php
 // load() returns the bare GasBorderTradeController record (throws on error).
-$gas_border_trade_controller = $client->GasBorderTradeController()->load(["id" => "gas_border_trade_controller_id"]);
+$gas_border_trade_controller = $client->GasBorderTradeController()->load();
 ```
 
 
@@ -577,7 +606,7 @@ Create an instance: `$gas_system = $client->GasSystem();`
 
 ```php
 // load() returns the bare GasSystem record (throws on error).
-$gas_system = $client->GasSystem()->load(["id" => "gas_system_id"]);
+$gas_system = $client->GasSystem()->load();
 ```
 
 
@@ -595,7 +624,7 @@ Create an instance: `$gas_system_controller = $client->GasSystemController();`
 
 ```php
 // load() returns the bare GasSystemController record (throws on error).
-$gas_system_controller = $client->GasSystemController()->load(["id" => "gas_system_controller_id"]);
+$gas_system_controller = $client->GasSystemController()->load();
 ```
 
 
@@ -613,7 +642,7 @@ Create an instance: `$gas_trade = $client->GasTrade();`
 
 ```php
 // load() returns the bare GasTrade record (throws on error).
-$gas_trade = $client->GasTrade()->load(["id" => "gas_trade_id"]);
+$gas_trade = $client->GasTrade()->load();
 ```
 
 
@@ -631,7 +660,7 @@ Create an instance: `$gas_trade_controller = $client->GasTradeController();`
 
 ```php
 // load() returns the bare GasTradeController record (throws on error).
-$gas_trade_controller = $client->GasTradeController()->load(["id" => "gas_trade_controller_id"]);
+$gas_trade_controller = $client->GasTradeController()->load();
 ```
 
 
@@ -649,7 +678,7 @@ Create an instance: `$gas_transmission_controller = $client->GasTransmissionCont
 
 ```php
 // load() returns the bare GasTransmissionController record (throws on error).
-$gas_transmission_controller = $client->GasTransmissionController()->load(["id" => "gas_transmission_controller_id"]);
+$gas_transmission_controller = $client->GasTransmissionController()->load();
 ```
 
 
@@ -667,7 +696,7 @@ Create an instance: `$green_controller = $client->GreenController();`
 
 ```php
 // load() returns the bare GreenController record (throws on error).
-$green_controller = $client->GreenController()->load(["id" => "green_controller_id"]);
+$green_controller = $client->GreenController()->load();
 ```
 
 
@@ -685,7 +714,7 @@ Create an instance: `$interruptible = $client->Interruptible();`
 
 ```php
 // load() returns the bare Interruptible record (throws on error).
-$interruptible = $client->Interruptible()->load(["id" => "interruptible_id"]);
+$interruptible = $client->Interruptible()->load();
 ```
 
 
@@ -703,7 +732,7 @@ Create an instance: `$interruptible_capacity_controller = $client->Interruptible
 
 ```php
 // load() returns the bare InterruptibleCapacityController record (throws on error).
-$interruptible_capacity_controller = $client->InterruptibleCapacityController()->load(["id" => "interruptible_capacity_controller_id"]);
+$interruptible_capacity_controller = $client->InterruptibleCapacityController()->load();
 ```
 
 
@@ -721,7 +750,7 @@ Create an instance: `$nomination = $client->Nomination();`
 
 ```php
 // load() returns the bare Nomination record (throws on error).
-$nomination = $client->Nomination()->load(["id" => "nomination_id"]);
+$nomination = $client->Nomination()->load();
 ```
 
 
@@ -739,7 +768,7 @@ Create an instance: `$nominations_controller = $client->NominationsController();
 
 ```php
 // load() returns the bare NominationsController record (throws on error).
-$nominations_controller = $client->NominationsController()->load(["id" => "nominations_controller_id"]);
+$nominations_controller = $client->NominationsController()->load();
 ```
 
 
@@ -757,7 +786,7 @@ Create an instance: `$nps_controller = $client->NpsController();`
 
 ```php
 // load() returns the bare NpsController record (throws on error).
-$nps_controller = $client->NpsController()->load(["id" => "nps_controller_id"]);
+$nps_controller = $client->NpsController()->load();
 ```
 
 
@@ -775,7 +804,7 @@ Create an instance: `$renomination = $client->Renomination();`
 
 ```php
 // load() returns the bare Renomination record (throws on error).
-$renomination = $client->Renomination()->load(["id" => "renomination_id"]);
+$renomination = $client->Renomination()->load();
 ```
 
 
@@ -793,7 +822,7 @@ Create an instance: `$renominations_controller = $client->RenominationsControlle
 
 ```php
 // load() returns the bare RenominationsController record (throws on error).
-$renominations_controller = $client->RenominationsController()->load(["id" => "renominations_controller_id"]);
+$renominations_controller = $client->RenominationsController()->load();
 ```
 
 
@@ -811,7 +840,7 @@ Create an instance: `$system = $client->System();`
 
 ```php
 // load() returns the bare System record (throws on error).
-$system = $client->System()->load(["id" => "system_id"]);
+$system = $client->System()->load();
 ```
 
 
@@ -829,7 +858,7 @@ Create an instance: `$system_controller = $client->SystemController();`
 
 ```php
 // load() returns the bare SystemController record (throws on error).
-$system_controller = $client->SystemController()->load(["id" => "system_controller_id"]);
+$system_controller = $client->SystemController()->load();
 ```
 
 
@@ -847,7 +876,7 @@ Create an instance: `$transmission_controller = $client->TransmissionController(
 
 ```php
 // load() returns the bare TransmissionController record (throws on error).
-$transmission_controller = $client->TransmissionController()->load(["id" => "transmission_controller_id"]);
+$transmission_controller = $client->TransmissionController()->load();
 ```
 
 
@@ -865,7 +894,7 @@ Create an instance: `$umm_gas_controller = $client->UmmGasController();`
 
 ```php
 // load() returns the bare UmmGasController record (throws on error).
-$umm_gas_controller = $client->UmmGasController()->load(["id" => "umm_gas_controller_id"]);
+$umm_gas_controller = $client->UmmGasController()->load();
 ```
 
 
@@ -883,16 +912,20 @@ Create an instance: `$umm_rss_feed_controller = $client->UmmRssFeedController();
 
 ```php
 // load() returns the bare UmmRssFeedController record (throws on error).
-$umm_rss_feed_controller = $client->UmmRssFeedController()->load(["id" => "umm_rss_feed_controller_id"]);
+$umm_rss_feed_controller = $client->UmmRssFeedController()->load();
 ```
 
 
-## Explanation
+## Advanced
+
+> The sections above cover everyday use. The material below explains the
+> SDK's internals — useful when extending it with custom features, but not
+> needed for normal use.
 
 ### The operation pipeline
 
-Every entity operation (load, list, create, update, remove) follows a
-six-stage pipeline. Each stage fires a feature hook before executing:
+Every entity operation follows a six-stage pipeline. Each stage fires a
+feature hook before executing:
 
 ```
 PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
@@ -909,8 +942,9 @@ PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
 - **PreDone**: Final stage before returning to the caller. Entity
   state (match, data) is updated here.
 
-If any stage returns an error, the pipeline short-circuits and the
-error is returned to the caller as the second element in the return array.
+If any stage errors, the pipeline short-circuits and the error surfaces
+to the caller — see [Error handling](#error-handling) for how that looks
+in this language.
 
 ### Features and hooks
 
@@ -959,10 +993,10 @@ stores the returned data and match criteria internally.
 
 ```php
 $balance = $client->Balance();
-$balance->load(["id" => "example_id"]);
+$balance->load();
 
-// $balance->dataGet() now returns the loaded balance data
-// $balance->matchGet() returns the last match criteria
+// $balance->data_get() now returns the balance data from the last load
+// $balance->match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

@@ -4,6 +4,11 @@
 
 The TypeScript SDK for the EleringDashboard API — a type-safe, entity-oriented client with full async/await support.
 
+The API is exposed as capitalised, semantic **Entities** — e.g.
+`client.Balance()` — each with a small set of operations (`load`)
+instead of raw URL paths and query parameters. This keeps the surface
+predictable and low-friction for both humans and AI agents.
+
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
 
@@ -34,10 +39,39 @@ const client = new EleringDashboardSDK()
 
 ```ts
 try {
-  const balance = await client.Balance().load({ id: 'example_id' })
+  const balance = await client.Balance().load()
   console.log(balance)
 } catch (err) {
   console.error('load failed:', err)
+}
+```
+
+
+## Error handling
+
+Entity operations reject on failure, so wrap them in `try` / `catch`:
+
+```ts
+try {
+  const balance = await client.Balance().load()
+  console.log(balance)
+} catch (err) {
+  console.error('load failed:', err)
+}
+```
+
+The low-level `direct()` method does **not** throw — it returns the
+value or an `Error`, so check the result before using it:
+
+```ts
+const result = await client.direct({
+  path: '/api/resource/{id}',
+  method: 'GET',
+  params: { id: 'example_id' },
+})
+
+if (result instanceof Error) {
+  throw result
 }
 ```
 
@@ -86,7 +120,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = EleringDashboardSDK.test()
 
-const balance = await client.Balance().load({ id: 'test01' })
+const balance = await client.Balance().load()
 // balance is a bare entity populated with mock response data
 console.log(balance)
 ```
@@ -105,12 +139,12 @@ Entity instances remember their last match and data:
 ```ts
 const entity = client.Balance()
 
-// First call sets internal match
-await entity.load({ id: 'example' })
+// First call runs the operation and stores its result
+await entity.load()
 
-// Subsequent calls reuse the stored match
+// Subsequent calls reuse the stored state
 const data = entity.data()
-console.log(data.id) // 'example'
+console.log(data)
 ```
 
 ### Add custom middleware
@@ -222,12 +256,8 @@ All entities share the same interface.
 | Method | Signature | Description |
 | --- | --- | --- |
 | `load` | `load(reqmatch?, ctrl?): Promise<Entity>` | Load a single entity by match criteria. |
-| `list` | `list(reqmatch?, ctrl?): Promise<Entity[]>` | List entities matching the criteria. |
-| `create` | `create(reqdata?, ctrl?): Promise<Entity>` | Create a new entity. |
-| `update` | `update(reqdata?, ctrl?): Promise<Entity>` | Update an existing entity. |
-| `remove` | `remove(reqmatch?, ctrl?): Promise<void>` | Remove an entity. |
-| `data` | `data(data?): any` | Get or set entity data. |
-| `match` | `match(match?): any` | Get or set entity match criteria. |
+| `data` | `data(data?: Partial<Entity>): Entity` | Get or set entity data. |
+| `match` | `match(match?: Partial<Entity>): Partial<Entity>` | Get or set entity match criteria. |
 | `make` | `make(): Entity` | Create a new instance with the same options. |
 | `client` | `client(): EleringDashboardSDK` | Return the parent SDK client. |
 | `entopts` | `entopts(): object` | Return a copy of the entity options. |
@@ -237,10 +267,7 @@ All entities share the same interface.
 Entity operations resolve to the entity data directly — there is no
 result envelope:
 
-- `load`, `create` and `update` resolve to a single entity object.
-- `list` resolves to an **array** of entity objects (iterate it directly;
-  there is no `.data` and no `.ok`).
-- `remove` resolves to `void`.
+- `load` resolves to a single entity object.
 
 On a failed request these methods **throw**, so wrap calls in
 `try`/`catch` to handle errors. Only `direct()` returns the result
@@ -510,7 +537,7 @@ Create an instance: `const balance = client.Balance()`
 #### Example: Load
 
 ```ts
-const balance = await client.Balance().load({ id: 'balance_id' })
+const balance = await client.Balance().load()
 ```
 
 
@@ -527,7 +554,7 @@ Create an instance: `const balance_controller = client.BalanceController()`
 #### Example: Load
 
 ```ts
-const balance_controller = await client.BalanceController().load({ id: 'balance_controller_id' })
+const balance_controller = await client.BalanceController().load()
 ```
 
 
@@ -544,7 +571,7 @@ Create an instance: `const firm = client.Firm()`
 #### Example: Load
 
 ```ts
-const firm = await client.Firm().load({ id: 'firm_id' })
+const firm = await client.Firm().load()
 ```
 
 
@@ -561,7 +588,7 @@ Create an instance: `const firm_capacity_controller = client.FirmCapacityControl
 #### Example: Load
 
 ```ts
-const firm_capacity_controller = await client.FirmCapacityController().load({ id: 'firm_capacity_controller_id' })
+const firm_capacity_controller = await client.FirmCapacityController().load()
 ```
 
 
@@ -578,7 +605,7 @@ Create an instance: `const gas_balance_controller = client.GasBalanceController(
 #### Example: Load
 
 ```ts
-const gas_balance_controller = await client.GasBalanceController().load({ id: 'gas_balance_controller_id' })
+const gas_balance_controller = await client.GasBalanceController().load()
 ```
 
 
@@ -595,7 +622,7 @@ Create an instance: `const gas_border_trade_controller = client.GasBorderTradeCo
 #### Example: Load
 
 ```ts
-const gas_border_trade_controller = await client.GasBorderTradeController().load({ id: 'gas_border_trade_controller_id' })
+const gas_border_trade_controller = await client.GasBorderTradeController().load()
 ```
 
 
@@ -612,7 +639,7 @@ Create an instance: `const gas_system = client.GasSystem()`
 #### Example: Load
 
 ```ts
-const gas_system = await client.GasSystem().load({ id: 'gas_system_id' })
+const gas_system = await client.GasSystem().load()
 ```
 
 
@@ -629,7 +656,7 @@ Create an instance: `const gas_system_controller = client.GasSystemController()`
 #### Example: Load
 
 ```ts
-const gas_system_controller = await client.GasSystemController().load({ id: 'gas_system_controller_id' })
+const gas_system_controller = await client.GasSystemController().load()
 ```
 
 
@@ -646,7 +673,7 @@ Create an instance: `const gas_trade = client.GasTrade()`
 #### Example: Load
 
 ```ts
-const gas_trade = await client.GasTrade().load({ id: 'gas_trade_id' })
+const gas_trade = await client.GasTrade().load()
 ```
 
 
@@ -663,7 +690,7 @@ Create an instance: `const gas_trade_controller = client.GasTradeController()`
 #### Example: Load
 
 ```ts
-const gas_trade_controller = await client.GasTradeController().load({ id: 'gas_trade_controller_id' })
+const gas_trade_controller = await client.GasTradeController().load()
 ```
 
 
@@ -680,7 +707,7 @@ Create an instance: `const gas_transmission_controller = client.GasTransmissionC
 #### Example: Load
 
 ```ts
-const gas_transmission_controller = await client.GasTransmissionController().load({ id: 'gas_transmission_controller_id' })
+const gas_transmission_controller = await client.GasTransmissionController().load()
 ```
 
 
@@ -697,7 +724,7 @@ Create an instance: `const green_controller = client.GreenController()`
 #### Example: Load
 
 ```ts
-const green_controller = await client.GreenController().load({ id: 'green_controller_id' })
+const green_controller = await client.GreenController().load()
 ```
 
 
@@ -714,7 +741,7 @@ Create an instance: `const interruptible = client.Interruptible()`
 #### Example: Load
 
 ```ts
-const interruptible = await client.Interruptible().load({ id: 'interruptible_id' })
+const interruptible = await client.Interruptible().load()
 ```
 
 
@@ -731,7 +758,7 @@ Create an instance: `const interruptible_capacity_controller = client.Interrupti
 #### Example: Load
 
 ```ts
-const interruptible_capacity_controller = await client.InterruptibleCapacityController().load({ id: 'interruptible_capacity_controller_id' })
+const interruptible_capacity_controller = await client.InterruptibleCapacityController().load()
 ```
 
 
@@ -748,7 +775,7 @@ Create an instance: `const nomination = client.Nomination()`
 #### Example: Load
 
 ```ts
-const nomination = await client.Nomination().load({ id: 'nomination_id' })
+const nomination = await client.Nomination().load()
 ```
 
 
@@ -765,7 +792,7 @@ Create an instance: `const nominations_controller = client.NominationsController
 #### Example: Load
 
 ```ts
-const nominations_controller = await client.NominationsController().load({ id: 'nominations_controller_id' })
+const nominations_controller = await client.NominationsController().load()
 ```
 
 
@@ -782,7 +809,7 @@ Create an instance: `const nps_controller = client.NpsController()`
 #### Example: Load
 
 ```ts
-const nps_controller = await client.NpsController().load({ id: 'nps_controller_id' })
+const nps_controller = await client.NpsController().load()
 ```
 
 
@@ -799,7 +826,7 @@ Create an instance: `const renomination = client.Renomination()`
 #### Example: Load
 
 ```ts
-const renomination = await client.Renomination().load({ id: 'renomination_id' })
+const renomination = await client.Renomination().load()
 ```
 
 
@@ -816,7 +843,7 @@ Create an instance: `const renominations_controller = client.RenominationsContro
 #### Example: Load
 
 ```ts
-const renominations_controller = await client.RenominationsController().load({ id: 'renominations_controller_id' })
+const renominations_controller = await client.RenominationsController().load()
 ```
 
 
@@ -833,7 +860,7 @@ Create an instance: `const system = client.System()`
 #### Example: Load
 
 ```ts
-const system = await client.System().load({ id: 'system_id' })
+const system = await client.System().load()
 ```
 
 
@@ -850,7 +877,7 @@ Create an instance: `const system_controller = client.SystemController()`
 #### Example: Load
 
 ```ts
-const system_controller = await client.SystemController().load({ id: 'system_controller_id' })
+const system_controller = await client.SystemController().load()
 ```
 
 
@@ -867,7 +894,7 @@ Create an instance: `const transmission_controller = client.TransmissionControll
 #### Example: Load
 
 ```ts
-const transmission_controller = await client.TransmissionController().load({ id: 'transmission_controller_id' })
+const transmission_controller = await client.TransmissionController().load()
 ```
 
 
@@ -884,7 +911,7 @@ Create an instance: `const umm_gas_controller = client.UmmGasController()`
 #### Example: Load
 
 ```ts
-const umm_gas_controller = await client.UmmGasController().load({ id: 'umm_gas_controller_id' })
+const umm_gas_controller = await client.UmmGasController().load()
 ```
 
 
@@ -901,16 +928,20 @@ Create an instance: `const umm_rss_feed_controller = client.UmmRssFeedController
 #### Example: Load
 
 ```ts
-const umm_rss_feed_controller = await client.UmmRssFeedController().load({ id: 'umm_rss_feed_controller_id' })
+const umm_rss_feed_controller = await client.UmmRssFeedController().load()
 ```
 
 
-## Explanation
+## Advanced
+
+> The sections above cover everyday use. The material below explains the
+> SDK's internals — useful when extending it with custom features, but not
+> needed for normal use.
 
 ### The operation pipeline
 
-Every entity operation (load, list, create, update, remove) follows a
-six-stage pipeline. Each stage fires a feature hook before executing:
+Every entity operation follows a six-stage pipeline. Each stage fires a
+feature hook before executing:
 
 ```
 PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
@@ -927,11 +958,9 @@ PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
 - **PreDone**: Final stage before returning to the caller. Entity
   state (match, data) is updated here.
 
-If any stage returns an error, the pipeline short-circuits and the
-error is returned to the caller.
-
-An unexpected exception triggers the `PreUnexpected` hook before
-propagating.
+If any stage errors, the pipeline short-circuits and the error surfaces
+to the caller — see [Error handling](#error-handling) for how that looks
+in this language.
 
 ### Features and hooks
 
@@ -973,10 +1002,10 @@ calls on the same instance can rely on this state.
 
 ```ts
 const balance = client.Balance()
-await balance.load({ id: "example_id" })
+await balance.load()
 
-// balance.data() now returns the loaded balance data
-// balance.match() returns { id: "example_id" }
+// balance.data() now returns the balance data from the last `load`
+// balance.match() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

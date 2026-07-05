@@ -4,6 +4,8 @@
 
 The Golang SDK for the EleringDashboard API — an entity-oriented client using standard Go conventions. No generics required; data flows as `map[string]any`.
 
+It exposes the API as capitalised, semantic **Entities** — e.g. `client.Balance(nil)` — each with the same small set of operations (`Load`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
+
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
 
@@ -49,12 +51,41 @@ func main() {
     client := sdk.New()
 
     // Load a single balance — the value is the loaded record.
-    balance, err := client.Balance(nil).Load(map[string]any{"id": "example_id"}, nil)
+    balance, err := client.Balance(nil).Load(nil, nil)
     if err != nil {
         panic(err)
     }
     fmt.Println(balance)
 }
+```
+
+
+## Error handling
+
+Every entity operation returns `(value, error)`. Check `err` before
+using the value — there is no exception to catch:
+
+```go
+balance, err := client.Balance(nil).Load(nil, nil)
+if err != nil {
+    // handle err
+    return
+}
+_ = balance
+```
+
+`Direct` follows the same `(value, error)` convention:
+
+```go
+result, err := client.Direct(map[string]any{
+    "path":   "/api/resource/{id}",
+    "method": "GET",
+    "params": map[string]any{"id": "example_id"},
+})
+if err != nil {
+    // handle err
+}
+_ = result
 ```
 
 
@@ -105,12 +136,12 @@ Create a mock client for unit testing — no server required:
 client := sdk.Test()
 
 balance, err := client.Balance(nil).Load(
-    map[string]any{"id": "test01"}, nil,
+    nil, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(balance) // the loaded mock data
+fmt.Println(balance) // the returned mock data
 ```
 
 ### Use a custom fetch function
@@ -219,10 +250,6 @@ All entities implement the `EleringDashboardEntity` interface.
 | Method | Signature | Description |
 | --- | --- | --- |
 | `Load` | `(reqmatch, ctrl map[string]any) (any, error)` | Load a single entity by match criteria. |
-| `List` | `(reqmatch, ctrl map[string]any) (any, error)` | List entities matching the criteria. |
-| `Create` | `(reqdata, ctrl map[string]any) (any, error)` | Create a new entity. |
-| `Update` | `(reqdata, ctrl map[string]any) (any, error)` | Update an existing entity. |
-| `Remove` | `(reqmatch, ctrl map[string]any) (any, error)` | Remove an entity. |
 | `Data` | `(args ...any) any` | Get or set entity data. |
 | `Match` | `(args ...any) any` | Get or set entity match criteria. |
 | `Make` | `() Entity` | Create a new instance with the same options. |
@@ -235,16 +262,15 @@ operation's data **directly** — there is no wrapper:
 
 | Operation | `value` |
 | --- | --- |
-| `Load` / `Create` / `Update` / `Remove` | the entity record (`map[string]any`) |
-| `List` | a `[]any` of entity records |
+| `Load` | the entity record (`map[string]any`) |
 
 Check `err` first, then use the value directly (or the typed
 `...Typed` variants, which return the entity's model struct and a typed
 slice):
 
-    balance, err := client.Balance(nil).Load(map[string]any{"id": "example_id"}, nil)
+    balance, err := client.Balance(nil).Load(nil, nil)
     if err != nil { /* handle */ }
-    // balance is the loaded record
+    // balance is the returned record
 
 Only `Direct()` returns a response envelope — a `map[string]any` with
 `"ok"`, `"status"`, `"headers"`, and `"data"` keys.
@@ -485,7 +511,7 @@ Create an instance: `balance := client.Balance(nil)`
 #### Example: Load
 
 ```go
-balance, err := client.Balance(nil).Load(map[string]any{"id": "balance_id"}, nil)
+balance, err := client.Balance(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
@@ -506,7 +532,7 @@ Create an instance: `balance_controller := client.BalanceController(nil)`
 #### Example: Load
 
 ```go
-balance_controller, err := client.BalanceController(nil).Load(map[string]any{"id": "balance_controller_id"}, nil)
+balance_controller, err := client.BalanceController(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
@@ -527,7 +553,7 @@ Create an instance: `firm := client.Firm(nil)`
 #### Example: Load
 
 ```go
-firm, err := client.Firm(nil).Load(map[string]any{"id": "firm_id"}, nil)
+firm, err := client.Firm(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
@@ -548,7 +574,7 @@ Create an instance: `firm_capacity_controller := client.FirmCapacityController(n
 #### Example: Load
 
 ```go
-firm_capacity_controller, err := client.FirmCapacityController(nil).Load(map[string]any{"id": "firm_capacity_controller_id"}, nil)
+firm_capacity_controller, err := client.FirmCapacityController(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
@@ -569,7 +595,7 @@ Create an instance: `gas_balance_controller := client.GasBalanceController(nil)`
 #### Example: Load
 
 ```go
-gas_balance_controller, err := client.GasBalanceController(nil).Load(map[string]any{"id": "gas_balance_controller_id"}, nil)
+gas_balance_controller, err := client.GasBalanceController(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
@@ -590,7 +616,7 @@ Create an instance: `gas_border_trade_controller := client.GasBorderTradeControl
 #### Example: Load
 
 ```go
-gas_border_trade_controller, err := client.GasBorderTradeController(nil).Load(map[string]any{"id": "gas_border_trade_controller_id"}, nil)
+gas_border_trade_controller, err := client.GasBorderTradeController(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
@@ -611,7 +637,7 @@ Create an instance: `gas_system := client.GasSystem(nil)`
 #### Example: Load
 
 ```go
-gas_system, err := client.GasSystem(nil).Load(map[string]any{"id": "gas_system_id"}, nil)
+gas_system, err := client.GasSystem(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
@@ -632,7 +658,7 @@ Create an instance: `gas_system_controller := client.GasSystemController(nil)`
 #### Example: Load
 
 ```go
-gas_system_controller, err := client.GasSystemController(nil).Load(map[string]any{"id": "gas_system_controller_id"}, nil)
+gas_system_controller, err := client.GasSystemController(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
@@ -653,7 +679,7 @@ Create an instance: `gas_trade := client.GasTrade(nil)`
 #### Example: Load
 
 ```go
-gas_trade, err := client.GasTrade(nil).Load(map[string]any{"id": "gas_trade_id"}, nil)
+gas_trade, err := client.GasTrade(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
@@ -674,7 +700,7 @@ Create an instance: `gas_trade_controller := client.GasTradeController(nil)`
 #### Example: Load
 
 ```go
-gas_trade_controller, err := client.GasTradeController(nil).Load(map[string]any{"id": "gas_trade_controller_id"}, nil)
+gas_trade_controller, err := client.GasTradeController(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
@@ -695,7 +721,7 @@ Create an instance: `gas_transmission_controller := client.GasTransmissionContro
 #### Example: Load
 
 ```go
-gas_transmission_controller, err := client.GasTransmissionController(nil).Load(map[string]any{"id": "gas_transmission_controller_id"}, nil)
+gas_transmission_controller, err := client.GasTransmissionController(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
@@ -716,7 +742,7 @@ Create an instance: `green_controller := client.GreenController(nil)`
 #### Example: Load
 
 ```go
-green_controller, err := client.GreenController(nil).Load(map[string]any{"id": "green_controller_id"}, nil)
+green_controller, err := client.GreenController(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
@@ -737,7 +763,7 @@ Create an instance: `interruptible := client.Interruptible(nil)`
 #### Example: Load
 
 ```go
-interruptible, err := client.Interruptible(nil).Load(map[string]any{"id": "interruptible_id"}, nil)
+interruptible, err := client.Interruptible(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
@@ -758,7 +784,7 @@ Create an instance: `interruptible_capacity_controller := client.InterruptibleCa
 #### Example: Load
 
 ```go
-interruptible_capacity_controller, err := client.InterruptibleCapacityController(nil).Load(map[string]any{"id": "interruptible_capacity_controller_id"}, nil)
+interruptible_capacity_controller, err := client.InterruptibleCapacityController(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
@@ -779,7 +805,7 @@ Create an instance: `nomination := client.Nomination(nil)`
 #### Example: Load
 
 ```go
-nomination, err := client.Nomination(nil).Load(map[string]any{"id": "nomination_id"}, nil)
+nomination, err := client.Nomination(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
@@ -800,7 +826,7 @@ Create an instance: `nominations_controller := client.NominationsController(nil)
 #### Example: Load
 
 ```go
-nominations_controller, err := client.NominationsController(nil).Load(map[string]any{"id": "nominations_controller_id"}, nil)
+nominations_controller, err := client.NominationsController(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
@@ -821,7 +847,7 @@ Create an instance: `nps_controller := client.NpsController(nil)`
 #### Example: Load
 
 ```go
-nps_controller, err := client.NpsController(nil).Load(map[string]any{"id": "nps_controller_id"}, nil)
+nps_controller, err := client.NpsController(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
@@ -842,7 +868,7 @@ Create an instance: `renomination := client.Renomination(nil)`
 #### Example: Load
 
 ```go
-renomination, err := client.Renomination(nil).Load(map[string]any{"id": "renomination_id"}, nil)
+renomination, err := client.Renomination(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
@@ -863,7 +889,7 @@ Create an instance: `renominations_controller := client.RenominationsController(
 #### Example: Load
 
 ```go
-renominations_controller, err := client.RenominationsController(nil).Load(map[string]any{"id": "renominations_controller_id"}, nil)
+renominations_controller, err := client.RenominationsController(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
@@ -884,7 +910,7 @@ Create an instance: `system := client.System(nil)`
 #### Example: Load
 
 ```go
-system, err := client.System(nil).Load(map[string]any{"id": "system_id"}, nil)
+system, err := client.System(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
@@ -905,7 +931,7 @@ Create an instance: `system_controller := client.SystemController(nil)`
 #### Example: Load
 
 ```go
-system_controller, err := client.SystemController(nil).Load(map[string]any{"id": "system_controller_id"}, nil)
+system_controller, err := client.SystemController(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
@@ -926,7 +952,7 @@ Create an instance: `transmission_controller := client.TransmissionController(ni
 #### Example: Load
 
 ```go
-transmission_controller, err := client.TransmissionController(nil).Load(map[string]any{"id": "transmission_controller_id"}, nil)
+transmission_controller, err := client.TransmissionController(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
@@ -947,7 +973,7 @@ Create an instance: `umm_gas_controller := client.UmmGasController(nil)`
 #### Example: Load
 
 ```go
-umm_gas_controller, err := client.UmmGasController(nil).Load(map[string]any{"id": "umm_gas_controller_id"}, nil)
+umm_gas_controller, err := client.UmmGasController(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
@@ -968,7 +994,7 @@ Create an instance: `umm_rss_feed_controller := client.UmmRssFeedController(nil)
 #### Example: Load
 
 ```go
-umm_rss_feed_controller, err := client.UmmRssFeedController(nil).Load(map[string]any{"id": "umm_rss_feed_controller_id"}, nil)
+umm_rss_feed_controller, err := client.UmmRssFeedController(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
@@ -976,12 +1002,16 @@ fmt.Println(umm_rss_feed_controller) // the loaded record
 ```
 
 
-## Explanation
+## Advanced
+
+> The sections above cover everyday use. The material below explains the
+> SDK's internals — useful when extending it with custom features, but not
+> needed for normal use.
 
 ### The operation pipeline
 
-Every entity operation (load, list, create, update, remove) follows a
-six-stage pipeline. Each stage fires a feature hook before executing:
+Every entity operation follows a six-stage pipeline. Each stage fires a
+feature hook before executing:
 
 ```
 PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
@@ -998,9 +1028,9 @@ PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
 - **PreDone**: Final stage before returning to the caller. Entity
   state (match, data) is updated here.
 
-If any stage returns an error, the pipeline short-circuits and the
-error is returned to the caller. An unexpected panic triggers the
-`PreUnexpected` hook.
+If any stage errors, the pipeline short-circuits and the error surfaces
+to the caller — see [Error handling](#error-handling) for how that looks
+in this language.
 
 ### Features and hooks
 
@@ -1046,9 +1076,9 @@ stores the returned data and match criteria internally.
 
 ```go
 balance := client.Balance(nil)
-balance.Load(map[string]any{"id": "example_id"}, nil)
+balance.Load(nil, nil)
 
-// balance.Data() now returns the loaded balance data
+// balance.Data() now returns the balance data from the last load
 // balance.Match() returns the last match criteria
 ```
 

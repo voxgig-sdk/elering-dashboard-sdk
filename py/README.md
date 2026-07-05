@@ -4,6 +4,11 @@
 
 The Python SDK for the EleringDashboard API — an entity-oriented client following Pythonic conventions.
 
+The SDK exposes the API as capitalised, semantic **Entities** — for example `client.Balance()` — each
+carrying a small, uniform set of operations (`load`) instead of raw URL
+paths and query strings. You work with named resources and verbs, which
+keeps the cognitive load low.
+
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
 
@@ -37,10 +42,38 @@ client = EleringDashboardSDK()
 
 ```python
 try:
-    balance = client.Balance().load({"id": "example_id"})
+    balance = client.Balance().load()
     print(balance)
 except Exception as err:
     print(f"load failed: {err}")
+```
+
+
+## Error handling
+
+Entity operations raise on failure, so wrap them in `try` / `except`:
+
+```python
+try:
+    balance = client.Balance().load()
+    print(balance)
+except Exception as err:
+    print(f"load failed: {err}")
+```
+
+`direct()` does **not** raise — it returns the result envelope. Branch
+on `ok`; on failure `status` holds the HTTP status (for error responses)
+and `err` holds a transport error, so read both defensively:
+
+```python
+result = client.direct({
+    "path": "/api/resource/{id}",
+    "method": "GET",
+    "params": {"id": "example_id"},
+})
+
+if not result["ok"]:
+    print("request failed:", result.get("status"), result.get("err"))
 ```
 
 
@@ -61,7 +94,10 @@ if result["ok"]:
     print(result["status"])  # 200
     print(result["data"])    # response body
 else:
-    print(result["err"])     # error value
+    # A non-2xx response carries status + data (the error body); a
+    # transport-level failure carries err instead. Only one is present, so
+    # read both with .get() rather than indexing a key that may be absent.
+    print(result.get("status"), result.get("err"))
 ```
 
 ### Prepare a request without sending it
@@ -87,7 +123,7 @@ Create a mock client for unit testing — no server required:
 client = EleringDashboardSDK.test()
 
 # Entity ops return the bare record and raise on error.
-balance = client.Balance().load({"id": "test01"})
+balance = client.Balance().load()
 # balance contains the mock response record
 ```
 
@@ -196,10 +232,6 @@ All entities share the same interface.
 | Method | Signature | Description |
 | --- | --- | --- |
 | `load` | `(reqmatch, ctrl) -> any` | Load a single entity by match criteria. Raises on error. |
-| `list` | `(reqmatch, ctrl) -> list` | List entities matching the criteria. Raises on error. |
-| `create` | `(reqdata, ctrl) -> any` | Create a new entity. Raises on error. |
-| `update` | `(reqdata, ctrl) -> any` | Update an existing entity. Raises on error. |
-| `remove` | `(reqmatch, ctrl) -> any` | Remove an entity. Raises on error. |
 | `data_get` | `() -> dict` | Get entity data. |
 | `data_set` | `(data)` | Set entity data. |
 | `match_get` | `() -> dict` | Get entity match criteria. |
@@ -461,7 +493,7 @@ Create an instance: `balance = client.Balance()`
 #### Example: Load
 
 ```python
-balance = client.Balance().load({"id": "balance_id"})
+balance = client.Balance().load()
 ```
 
 
@@ -478,7 +510,7 @@ Create an instance: `balance_controller = client.BalanceController()`
 #### Example: Load
 
 ```python
-balance_controller = client.BalanceController().load({"id": "balance_controller_id"})
+balance_controller = client.BalanceController().load()
 ```
 
 
@@ -495,7 +527,7 @@ Create an instance: `firm = client.Firm()`
 #### Example: Load
 
 ```python
-firm = client.Firm().load({"id": "firm_id"})
+firm = client.Firm().load()
 ```
 
 
@@ -512,7 +544,7 @@ Create an instance: `firm_capacity_controller = client.FirmCapacityController()`
 #### Example: Load
 
 ```python
-firm_capacity_controller = client.FirmCapacityController().load({"id": "firm_capacity_controller_id"})
+firm_capacity_controller = client.FirmCapacityController().load()
 ```
 
 
@@ -529,7 +561,7 @@ Create an instance: `gas_balance_controller = client.GasBalanceController()`
 #### Example: Load
 
 ```python
-gas_balance_controller = client.GasBalanceController().load({"id": "gas_balance_controller_id"})
+gas_balance_controller = client.GasBalanceController().load()
 ```
 
 
@@ -546,7 +578,7 @@ Create an instance: `gas_border_trade_controller = client.GasBorderTradeControll
 #### Example: Load
 
 ```python
-gas_border_trade_controller = client.GasBorderTradeController().load({"id": "gas_border_trade_controller_id"})
+gas_border_trade_controller = client.GasBorderTradeController().load()
 ```
 
 
@@ -563,7 +595,7 @@ Create an instance: `gas_system = client.GasSystem()`
 #### Example: Load
 
 ```python
-gas_system = client.GasSystem().load({"id": "gas_system_id"})
+gas_system = client.GasSystem().load()
 ```
 
 
@@ -580,7 +612,7 @@ Create an instance: `gas_system_controller = client.GasSystemController()`
 #### Example: Load
 
 ```python
-gas_system_controller = client.GasSystemController().load({"id": "gas_system_controller_id"})
+gas_system_controller = client.GasSystemController().load()
 ```
 
 
@@ -597,7 +629,7 @@ Create an instance: `gas_trade = client.GasTrade()`
 #### Example: Load
 
 ```python
-gas_trade = client.GasTrade().load({"id": "gas_trade_id"})
+gas_trade = client.GasTrade().load()
 ```
 
 
@@ -614,7 +646,7 @@ Create an instance: `gas_trade_controller = client.GasTradeController()`
 #### Example: Load
 
 ```python
-gas_trade_controller = client.GasTradeController().load({"id": "gas_trade_controller_id"})
+gas_trade_controller = client.GasTradeController().load()
 ```
 
 
@@ -631,7 +663,7 @@ Create an instance: `gas_transmission_controller = client.GasTransmissionControl
 #### Example: Load
 
 ```python
-gas_transmission_controller = client.GasTransmissionController().load({"id": "gas_transmission_controller_id"})
+gas_transmission_controller = client.GasTransmissionController().load()
 ```
 
 
@@ -648,7 +680,7 @@ Create an instance: `green_controller = client.GreenController()`
 #### Example: Load
 
 ```python
-green_controller = client.GreenController().load({"id": "green_controller_id"})
+green_controller = client.GreenController().load()
 ```
 
 
@@ -665,7 +697,7 @@ Create an instance: `interruptible = client.Interruptible()`
 #### Example: Load
 
 ```python
-interruptible = client.Interruptible().load({"id": "interruptible_id"})
+interruptible = client.Interruptible().load()
 ```
 
 
@@ -682,7 +714,7 @@ Create an instance: `interruptible_capacity_controller = client.InterruptibleCap
 #### Example: Load
 
 ```python
-interruptible_capacity_controller = client.InterruptibleCapacityController().load({"id": "interruptible_capacity_controller_id"})
+interruptible_capacity_controller = client.InterruptibleCapacityController().load()
 ```
 
 
@@ -699,7 +731,7 @@ Create an instance: `nomination = client.Nomination()`
 #### Example: Load
 
 ```python
-nomination = client.Nomination().load({"id": "nomination_id"})
+nomination = client.Nomination().load()
 ```
 
 
@@ -716,7 +748,7 @@ Create an instance: `nominations_controller = client.NominationsController()`
 #### Example: Load
 
 ```python
-nominations_controller = client.NominationsController().load({"id": "nominations_controller_id"})
+nominations_controller = client.NominationsController().load()
 ```
 
 
@@ -733,7 +765,7 @@ Create an instance: `nps_controller = client.NpsController()`
 #### Example: Load
 
 ```python
-nps_controller = client.NpsController().load({"id": "nps_controller_id"})
+nps_controller = client.NpsController().load()
 ```
 
 
@@ -750,7 +782,7 @@ Create an instance: `renomination = client.Renomination()`
 #### Example: Load
 
 ```python
-renomination = client.Renomination().load({"id": "renomination_id"})
+renomination = client.Renomination().load()
 ```
 
 
@@ -767,7 +799,7 @@ Create an instance: `renominations_controller = client.RenominationsController()
 #### Example: Load
 
 ```python
-renominations_controller = client.RenominationsController().load({"id": "renominations_controller_id"})
+renominations_controller = client.RenominationsController().load()
 ```
 
 
@@ -784,7 +816,7 @@ Create an instance: `system = client.System()`
 #### Example: Load
 
 ```python
-system = client.System().load({"id": "system_id"})
+system = client.System().load()
 ```
 
 
@@ -801,7 +833,7 @@ Create an instance: `system_controller = client.SystemController()`
 #### Example: Load
 
 ```python
-system_controller = client.SystemController().load({"id": "system_controller_id"})
+system_controller = client.SystemController().load()
 ```
 
 
@@ -818,7 +850,7 @@ Create an instance: `transmission_controller = client.TransmissionController()`
 #### Example: Load
 
 ```python
-transmission_controller = client.TransmissionController().load({"id": "transmission_controller_id"})
+transmission_controller = client.TransmissionController().load()
 ```
 
 
@@ -835,7 +867,7 @@ Create an instance: `umm_gas_controller = client.UmmGasController()`
 #### Example: Load
 
 ```python
-umm_gas_controller = client.UmmGasController().load({"id": "umm_gas_controller_id"})
+umm_gas_controller = client.UmmGasController().load()
 ```
 
 
@@ -852,16 +884,20 @@ Create an instance: `umm_rss_feed_controller = client.UmmRssFeedController()`
 #### Example: Load
 
 ```python
-umm_rss_feed_controller = client.UmmRssFeedController().load({"id": "umm_rss_feed_controller_id"})
+umm_rss_feed_controller = client.UmmRssFeedController().load()
 ```
 
 
-## Explanation
+## Advanced
+
+> The sections above cover everyday use. The material below explains the
+> SDK's internals — useful when extending it with custom features, but not
+> needed for normal use.
 
 ### The operation pipeline
 
-Every entity operation (load, list, create, update, remove) follows a
-six-stage pipeline. Each stage fires a feature hook before executing:
+Every entity operation follows a six-stage pipeline. Each stage fires a
+feature hook before executing:
 
 ```
 PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
@@ -878,8 +914,9 @@ PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
 - **PreDone**: Final stage before returning to the caller. Entity
   state (match, data) is updated here.
 
-If any stage returns an error, the pipeline short-circuits and the
-error is returned to the caller as the second element in the return tuple.
+If any stage errors, the pipeline short-circuits and the error surfaces
+to the caller — see [Error handling](#error-handling) for how that looks
+in this language.
 
 ### Features and hooks
 
@@ -927,9 +964,9 @@ stores the returned data and match criteria internally.
 
 ```python
 balance = client.Balance()
-balance.load({"id": "example_id"})
+balance.load()
 
-# balance.data_get() now returns the loaded balance data
+# balance.data_get() now returns the balance data from the last load
 # balance.match_get() returns the last match criteria
 ```
 

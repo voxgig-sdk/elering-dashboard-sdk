@@ -6,6 +6,21 @@ This is an unofficial SDK for the Elering dashboard API documentation public API
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
 
+## Entities, not endpoints
+
+This SDK exposes the API as a small set of **semantic entities** — Balance, BalanceController, Firm, FirmCapacityController, GasBalanceController, GasBorderTradeController, GasSystem, GasSystemController, GasTrade, GasTradeController, GasTransmissionController, GreenController, Interruptible, InterruptibleCapacityController, Nomination, NominationsController, NpsController, Renomination, RenominationsController, System, SystemController, TransmissionController, UmmGasController and UmmRssFeedController — that you
+call directly, instead of assembling URL paths and query strings. Entities are
+**Capitalised** to mark them as the primary surface, each with the operations they
+support (`load`):
+
+```ts
+const client = new EleringDashboardSDK()
+const balance = await client.Balance().load()
+```
+
+Thinking in entities keeps the mental model small — for people and AI agents alike —
+rather than reasoning about raw HTTP routes and query parameters.
+
 ## Packages
 
 | Language | Package | Install |
@@ -94,8 +109,8 @@ The API exposes 24 entities:
 | **UmmGasController** | The UmmGasController entity (load). | `/api/umm/gas` |
 | **UmmRssFeedController** | The UmmRssFeedController entity (load). | `/umm/gas/rss` |
 
-Each entity supports the following operations where available: **load**,
-**list**, **create**, **update**, and **remove**.
+The operations available across these entities are **load** — see each entity's
+own list above for exactly which it supports.
 
 ## Quickstart in other languages
 
@@ -108,7 +123,7 @@ client = EleringDashboardSDK()
 
 
 # Load a specific balance (returns the record, raises on error)
-balance = client.Balance().load({"id": "example_id"})
+balance = client.Balance().load()
 print(balance)
 ```
 
@@ -122,7 +137,7 @@ $client = new EleringDashboardSDK();
 
 
 // Load a specific balance (returns the bare record; throws on error)
-$balance = $client->Balance()->load(["id" => "example_id"]);
+$balance = $client->Balance()->load();
 print_r($balance);
 ```
 
@@ -147,7 +162,7 @@ client = EleringDashboardSDK.new
 
 
 # Load a specific balance (returns the bare record; raises on error)
-balance = client.Balance.load({ "id" => "example_id" })
+balance = client.Balance.load()
 puts balance
 ```
 
@@ -160,7 +175,7 @@ local client = sdk.new()
 
 
 -- Load a specific balance
-local balance, err = client:Balance():load({ id = "example_id" })
+local balance, err = client:Balance():load()
 print(balance)
 ```
 
@@ -173,7 +188,7 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = EleringDashboardSDK.test()
-const balance = await client.Balance().load({ id: 'test01' })
+const balance = await client.Balance().load()
 // balance is a bare Balance populated with mock data
 console.log(balance)
 ```
@@ -182,7 +197,7 @@ console.log(balance)
 
 ```python
 client = EleringDashboardSDK.test()
-balance = client.Balance().load({"id": "test01"})
+balance = client.Balance().load()
 print(balance)
 ```
 
@@ -191,9 +206,9 @@ print(balance)
 ```php
 // Seed fixture data so offline calls resolve without a live server.
 $client = EleringDashboardSDK::test([
-    "entity" => ["balance" => ["test01" => ["id" => "test01"]]],
+    "entity" => ["balance" => ["test01" => []]],
 ]);
-$balance = $client->Balance()->load(["id" => "test01"]);
+$balance = $client->Balance()->load();
 ```
 
 ### Golang
@@ -201,7 +216,7 @@ $balance = $client->Balance()->load(["id" => "test01"]);
 ```go
 client := sdk.Test()
 result, err := client.Balance(nil).Load(
-    map[string]any{"id": "test01"}, nil,
+    nil, nil,
 )
 ```
 
@@ -210,41 +225,19 @@ result, err := client.Balance(nil).Load(
 ```ruby
 # Seed fixture data so offline calls resolve without a live server.
 client = EleringDashboardSDK.test({
-  "entity" => { "balance" => { "test01" => { "id" => "test01" } } },
+  "entity" => { "balance" => { "test01" => {} } },
 })
-balance = client.Balance.load({ "id" => "test01" })
+balance = client.Balance.load()
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:Balance():load({ id = "test01" })
+local result, err = client:Balance():load()
 ```
 
-## How it works
-
-Every SDK call runs the same five-stage pipeline:
-
-1. **Point** — resolve the API endpoint from the operation definition.
-2. **Spec** — build the HTTP specification (URL, method, headers, body).
-3. **Request** — send the HTTP request.
-4. **Response** — receive and parse the response.
-5. **Result** — extract the result data for the caller.
-
-A feature hook fires at each stage (e.g. `PrePoint`, `PreSpec`,
-`PreRequest`), so features can inspect or modify the pipeline without
-forking the SDK.
-
-### Features
-
-| Feature | Purpose |
-| --- | --- |
-| **TestFeature** | In-memory mock transport for testing without a live server |
-
-Pass custom features via the `extend` option at construction time.
-
-### Direct and Prepare
+## Direct and prepare
 
 For endpoints the entity model doesn't cover, use the low-level methods:
 
@@ -317,6 +310,31 @@ local result, err = client:direct({
   params = { id = "example" },
 })
 ```
+
+## Advanced
+
+> Everyday use only needs the sections above. This explains the internals
+> behind every call — relevant when writing custom features.
+
+Every SDK call runs the same five-stage pipeline:
+
+1. **Point** — resolve the API endpoint from the operation definition.
+2. **Spec** — build the HTTP specification (URL, method, headers, body).
+3. **Request** — send the HTTP request.
+4. **Response** — receive and parse the response.
+5. **Result** — extract the result data for the caller.
+
+A feature hook fires at each stage (e.g. `PrePoint`, `PreSpec`,
+`PreRequest`), so features can inspect or modify the pipeline without
+forking the SDK.
+
+### Features
+
+| Feature | Purpose |
+| --- | --- |
+| **TestFeature** | In-memory mock transport for testing without a live server |
+
+Pass custom features via the `extend` option at construction time.
 
 ## Per-language documentation
 
