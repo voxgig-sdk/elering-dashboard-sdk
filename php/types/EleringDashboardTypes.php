@@ -110,7 +110,7 @@ class GasTradeController
 /** Request payload for GasTradeController#load. */
 class GasTradeControllerLoadMatch
 {
-    public string $group;
+    public ?string $group = null;
 }
 
 /** GasTransmissionController entity data model. */
@@ -181,7 +181,7 @@ class NpsController
 /** Request payload for NpsController#load. */
 class NpsControllerLoadMatch
 {
-    public string $group;
+    public ?string $group = null;
 }
 
 /** Renomination entity data model. */
@@ -232,7 +232,7 @@ class TransmissionController
 /** Request payload for TransmissionController#load. */
 class TransmissionControllerLoadMatch
 {
-    public string $group;
+    public ?string $group = null;
 }
 
 /** UmmGasController entity data model. */

@@ -92,7 +92,7 @@ class GasTradeController(TypedDict):
     pass
 
 
-class GasTradeControllerLoadMatch(TypedDict):
+class GasTradeControllerLoadMatch(TypedDict, total=False):
     group: str
 
 
@@ -148,7 +148,7 @@ class NpsController(TypedDict):
     pass
 
 
-class NpsControllerLoadMatch(TypedDict):
+class NpsControllerLoadMatch(TypedDict, total=False):
     group: str
 
 
@@ -188,7 +188,7 @@ class TransmissionController(TypedDict):
     pass
 
 
-class TransmissionControllerLoadMatch(TypedDict):
+class TransmissionControllerLoadMatch(TypedDict, total=False):
     group: str
 
 

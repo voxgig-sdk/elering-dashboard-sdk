@@ -183,6 +183,7 @@ same parameters as `Direct()`.
 
 ```go
 balance := client.Balance(nil)
+fmt.Println(balance.GetName()) // "balance"
 ```
 
 ### Operations
@@ -193,6 +194,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.Balance(nil).Load(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -222,7 +227,8 @@ Return the entity name.
 ## BalanceControllerEntity
 
 ```go
-balance_controller := client.BalanceController(nil)
+balanceController := client.BalanceController(nil)
+fmt.Println(balanceController.GetName()) // "balance_controller"
 ```
 
 ### Operations
@@ -233,6 +239,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.BalanceController(nil).Load(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -263,6 +273,7 @@ Return the entity name.
 
 ```go
 firm := client.Firm(nil)
+fmt.Println(firm.GetName()) // "firm"
 ```
 
 ### Operations
@@ -273,6 +284,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.Firm(nil).Load(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -302,7 +317,8 @@ Return the entity name.
 ## FirmCapacityControllerEntity
 
 ```go
-firm_capacity_controller := client.FirmCapacityController(nil)
+firmCapacityController := client.FirmCapacityController(nil)
+fmt.Println(firmCapacityController.GetName()) // "firm_capacity_controller"
 ```
 
 ### Operations
@@ -313,6 +329,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.FirmCapacityController(nil).Load(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -342,7 +362,8 @@ Return the entity name.
 ## GasBalanceControllerEntity
 
 ```go
-gas_balance_controller := client.GasBalanceController(nil)
+gasBalanceController := client.GasBalanceController(nil)
+fmt.Println(gasBalanceController.GetName()) // "gas_balance_controller"
 ```
 
 ### Operations
@@ -353,6 +374,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.GasBalanceController(nil).Load(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -382,7 +407,8 @@ Return the entity name.
 ## GasBorderTradeControllerEntity
 
 ```go
-gas_border_trade_controller := client.GasBorderTradeController(nil)
+gasBorderTradeController := client.GasBorderTradeController(nil)
+fmt.Println(gasBorderTradeController.GetName()) // "gas_border_trade_controller"
 ```
 
 ### Operations
@@ -393,6 +419,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.GasBorderTradeController(nil).Load(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -422,7 +452,8 @@ Return the entity name.
 ## GasSystemEntity
 
 ```go
-gas_system := client.GasSystem(nil)
+gasSystem := client.GasSystem(nil)
+fmt.Println(gasSystem.GetName()) // "gas_system"
 ```
 
 ### Operations
@@ -433,6 +464,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.GasSystem(nil).Load(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -462,7 +497,8 @@ Return the entity name.
 ## GasSystemControllerEntity
 
 ```go
-gas_system_controller := client.GasSystemController(nil)
+gasSystemController := client.GasSystemController(nil)
+fmt.Println(gasSystemController.GetName()) // "gas_system_controller"
 ```
 
 ### Operations
@@ -473,6 +509,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.GasSystemController(nil).Load(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -502,7 +542,8 @@ Return the entity name.
 ## GasTradeEntity
 
 ```go
-gas_trade := client.GasTrade(nil)
+gasTrade := client.GasTrade(nil)
+fmt.Println(gasTrade.GetName()) // "gas_trade"
 ```
 
 ### Operations
@@ -513,6 +554,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.GasTrade(nil).Load(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -542,7 +587,8 @@ Return the entity name.
 ## GasTradeControllerEntity
 
 ```go
-gas_trade_controller := client.GasTradeController(nil)
+gasTradeController := client.GasTradeController(nil)
+fmt.Println(gasTradeController.GetName()) // "gas_trade_controller"
 ```
 
 ### Operations
@@ -553,6 +599,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.GasTradeController(nil).Load(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -582,7 +632,8 @@ Return the entity name.
 ## GasTransmissionControllerEntity
 
 ```go
-gas_transmission_controller := client.GasTransmissionController(nil)
+gasTransmissionController := client.GasTransmissionController(nil)
+fmt.Println(gasTransmissionController.GetName()) // "gas_transmission_controller"
 ```
 
 ### Operations
@@ -593,6 +644,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.GasTransmissionController(nil).Load(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -622,7 +677,8 @@ Return the entity name.
 ## GreenControllerEntity
 
 ```go
-green_controller := client.GreenController(nil)
+greenController := client.GreenController(nil)
+fmt.Println(greenController.GetName()) // "green_controller"
 ```
 
 ### Operations
@@ -633,6 +689,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.GreenController(nil).Load(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -663,6 +723,7 @@ Return the entity name.
 
 ```go
 interruptible := client.Interruptible(nil)
+fmt.Println(interruptible.GetName()) // "interruptible"
 ```
 
 ### Operations
@@ -673,6 +734,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.Interruptible(nil).Load(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -702,7 +767,8 @@ Return the entity name.
 ## InterruptibleCapacityControllerEntity
 
 ```go
-interruptible_capacity_controller := client.InterruptibleCapacityController(nil)
+interruptibleCapacityController := client.InterruptibleCapacityController(nil)
+fmt.Println(interruptibleCapacityController.GetName()) // "interruptible_capacity_controller"
 ```
 
 ### Operations
@@ -713,6 +779,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.InterruptibleCapacityController(nil).Load(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -743,6 +813,7 @@ Return the entity name.
 
 ```go
 nomination := client.Nomination(nil)
+fmt.Println(nomination.GetName()) // "nomination"
 ```
 
 ### Operations
@@ -753,6 +824,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.Nomination(nil).Load(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -782,7 +857,8 @@ Return the entity name.
 ## NominationsControllerEntity
 
 ```go
-nominations_controller := client.NominationsController(nil)
+nominationsController := client.NominationsController(nil)
+fmt.Println(nominationsController.GetName()) // "nominations_controller"
 ```
 
 ### Operations
@@ -793,6 +869,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.NominationsController(nil).Load(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -822,7 +902,8 @@ Return the entity name.
 ## NpsControllerEntity
 
 ```go
-nps_controller := client.NpsController(nil)
+npsController := client.NpsController(nil)
+fmt.Println(npsController.GetName()) // "nps_controller"
 ```
 
 ### Operations
@@ -833,6 +914,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.NpsController(nil).Load(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -863,6 +948,7 @@ Return the entity name.
 
 ```go
 renomination := client.Renomination(nil)
+fmt.Println(renomination.GetName()) // "renomination"
 ```
 
 ### Operations
@@ -873,6 +959,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.Renomination(nil).Load(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -902,7 +992,8 @@ Return the entity name.
 ## RenominationsControllerEntity
 
 ```go
-renominations_controller := client.RenominationsController(nil)
+renominationsController := client.RenominationsController(nil)
+fmt.Println(renominationsController.GetName()) // "renominations_controller"
 ```
 
 ### Operations
@@ -913,6 +1004,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.RenominationsController(nil).Load(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -943,6 +1038,7 @@ Return the entity name.
 
 ```go
 system := client.System(nil)
+fmt.Println(system.GetName()) // "system"
 ```
 
 ### Operations
@@ -953,6 +1049,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.System(nil).Load(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -982,7 +1082,8 @@ Return the entity name.
 ## SystemControllerEntity
 
 ```go
-system_controller := client.SystemController(nil)
+systemController := client.SystemController(nil)
+fmt.Println(systemController.GetName()) // "system_controller"
 ```
 
 ### Operations
@@ -993,6 +1094,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.SystemController(nil).Load(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -1022,7 +1127,8 @@ Return the entity name.
 ## TransmissionControllerEntity
 
 ```go
-transmission_controller := client.TransmissionController(nil)
+transmissionController := client.TransmissionController(nil)
+fmt.Println(transmissionController.GetName()) // "transmission_controller"
 ```
 
 ### Operations
@@ -1033,6 +1139,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.TransmissionController(nil).Load(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -1062,7 +1172,8 @@ Return the entity name.
 ## UmmGasControllerEntity
 
 ```go
-umm_gas_controller := client.UmmGasController(nil)
+ummGasController := client.UmmGasController(nil)
+fmt.Println(ummGasController.GetName()) // "umm_gas_controller"
 ```
 
 ### Operations
@@ -1073,6 +1184,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.UmmGasController(nil).Load(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -1102,7 +1217,8 @@ Return the entity name.
 ## UmmRssFeedControllerEntity
 
 ```go
-umm_rss_feed_controller := client.UmmRssFeedController(nil)
+ummRssFeedController := client.UmmRssFeedController(nil)
+fmt.Println(ummRssFeedController.GetName()) // "umm_rss_feed_controller"
 ```
 
 ### Operations
@@ -1113,6 +1229,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.UmmRssFeedController(nil).Load(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods

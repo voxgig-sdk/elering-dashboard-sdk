@@ -87,7 +87,7 @@ end
 # Request payload for GasTradeController#load.
 #
 # @!attribute [rw] group
-#   @return [String]
+#   @return [String, nil]
 GasTradeControllerLoadMatch = Struct.new(
   :group,
   keyword_init: true
@@ -148,7 +148,7 @@ end
 # Request payload for NpsController#load.
 #
 # @!attribute [rw] group
-#   @return [String]
+#   @return [String, nil]
 NpsControllerLoadMatch = Struct.new(
   :group,
   keyword_init: true
@@ -193,7 +193,7 @@ end
 # Request payload for TransmissionController#load.
 #
 # @!attribute [rw] group
-#   @return [String]
+#   @return [String, nil]
 TransmissionControllerLoadMatch = Struct.new(
   :group,
   keyword_init: true

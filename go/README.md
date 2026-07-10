@@ -521,7 +521,7 @@ fmt.Println(balance) // the loaded record
 
 ### BalanceController
 
-Create an instance: `balance_controller := client.BalanceController(nil)`
+Create an instance: `balanceController := client.BalanceController(nil)`
 
 #### Operations
 
@@ -532,11 +532,11 @@ Create an instance: `balance_controller := client.BalanceController(nil)`
 #### Example: Load
 
 ```go
-balance_controller, err := client.BalanceController(nil).Load(nil, nil)
+balanceController, err := client.BalanceController(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(balance_controller) // the loaded record
+fmt.Println(balanceController) // the loaded record
 ```
 
 
@@ -563,7 +563,7 @@ fmt.Println(firm) // the loaded record
 
 ### FirmCapacityController
 
-Create an instance: `firm_capacity_controller := client.FirmCapacityController(nil)`
+Create an instance: `firmCapacityController := client.FirmCapacityController(nil)`
 
 #### Operations
 
@@ -574,17 +574,17 @@ Create an instance: `firm_capacity_controller := client.FirmCapacityController(n
 #### Example: Load
 
 ```go
-firm_capacity_controller, err := client.FirmCapacityController(nil).Load(nil, nil)
+firmCapacityController, err := client.FirmCapacityController(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(firm_capacity_controller) // the loaded record
+fmt.Println(firmCapacityController) // the loaded record
 ```
 
 
 ### GasBalanceController
 
-Create an instance: `gas_balance_controller := client.GasBalanceController(nil)`
+Create an instance: `gasBalanceController := client.GasBalanceController(nil)`
 
 #### Operations
 
@@ -595,17 +595,17 @@ Create an instance: `gas_balance_controller := client.GasBalanceController(nil)`
 #### Example: Load
 
 ```go
-gas_balance_controller, err := client.GasBalanceController(nil).Load(nil, nil)
+gasBalanceController, err := client.GasBalanceController(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(gas_balance_controller) // the loaded record
+fmt.Println(gasBalanceController) // the loaded record
 ```
 
 
 ### GasBorderTradeController
 
-Create an instance: `gas_border_trade_controller := client.GasBorderTradeController(nil)`
+Create an instance: `gasBorderTradeController := client.GasBorderTradeController(nil)`
 
 #### Operations
 
@@ -616,17 +616,17 @@ Create an instance: `gas_border_trade_controller := client.GasBorderTradeControl
 #### Example: Load
 
 ```go
-gas_border_trade_controller, err := client.GasBorderTradeController(nil).Load(nil, nil)
+gasBorderTradeController, err := client.GasBorderTradeController(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(gas_border_trade_controller) // the loaded record
+fmt.Println(gasBorderTradeController) // the loaded record
 ```
 
 
 ### GasSystem
 
-Create an instance: `gas_system := client.GasSystem(nil)`
+Create an instance: `gasSystem := client.GasSystem(nil)`
 
 #### Operations
 
@@ -637,17 +637,17 @@ Create an instance: `gas_system := client.GasSystem(nil)`
 #### Example: Load
 
 ```go
-gas_system, err := client.GasSystem(nil).Load(nil, nil)
+gasSystem, err := client.GasSystem(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(gas_system) // the loaded record
+fmt.Println(gasSystem) // the loaded record
 ```
 
 
 ### GasSystemController
 
-Create an instance: `gas_system_controller := client.GasSystemController(nil)`
+Create an instance: `gasSystemController := client.GasSystemController(nil)`
 
 #### Operations
 
@@ -658,17 +658,17 @@ Create an instance: `gas_system_controller := client.GasSystemController(nil)`
 #### Example: Load
 
 ```go
-gas_system_controller, err := client.GasSystemController(nil).Load(nil, nil)
+gasSystemController, err := client.GasSystemController(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(gas_system_controller) // the loaded record
+fmt.Println(gasSystemController) // the loaded record
 ```
 
 
 ### GasTrade
 
-Create an instance: `gas_trade := client.GasTrade(nil)`
+Create an instance: `gasTrade := client.GasTrade(nil)`
 
 #### Operations
 
@@ -679,17 +679,17 @@ Create an instance: `gas_trade := client.GasTrade(nil)`
 #### Example: Load
 
 ```go
-gas_trade, err := client.GasTrade(nil).Load(nil, nil)
+gasTrade, err := client.GasTrade(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(gas_trade) // the loaded record
+fmt.Println(gasTrade) // the loaded record
 ```
 
 
 ### GasTradeController
 
-Create an instance: `gas_trade_controller := client.GasTradeController(nil)`
+Create an instance: `gasTradeController := client.GasTradeController(nil)`
 
 #### Operations
 
@@ -700,17 +700,17 @@ Create an instance: `gas_trade_controller := client.GasTradeController(nil)`
 #### Example: Load
 
 ```go
-gas_trade_controller, err := client.GasTradeController(nil).Load(nil, nil)
+gasTradeController, err := client.GasTradeController(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(gas_trade_controller) // the loaded record
+fmt.Println(gasTradeController) // the loaded record
 ```
 
 
 ### GasTransmissionController
 
-Create an instance: `gas_transmission_controller := client.GasTransmissionController(nil)`
+Create an instance: `gasTransmissionController := client.GasTransmissionController(nil)`
 
 #### Operations
 
@@ -721,17 +721,17 @@ Create an instance: `gas_transmission_controller := client.GasTransmissionContro
 #### Example: Load
 
 ```go
-gas_transmission_controller, err := client.GasTransmissionController(nil).Load(nil, nil)
+gasTransmissionController, err := client.GasTransmissionController(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(gas_transmission_controller) // the loaded record
+fmt.Println(gasTransmissionController) // the loaded record
 ```
 
 
 ### GreenController
 
-Create an instance: `green_controller := client.GreenController(nil)`
+Create an instance: `greenController := client.GreenController(nil)`
 
 #### Operations
 
@@ -742,11 +742,11 @@ Create an instance: `green_controller := client.GreenController(nil)`
 #### Example: Load
 
 ```go
-green_controller, err := client.GreenController(nil).Load(nil, nil)
+greenController, err := client.GreenController(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(green_controller) // the loaded record
+fmt.Println(greenController) // the loaded record
 ```
 
 
@@ -773,7 +773,7 @@ fmt.Println(interruptible) // the loaded record
 
 ### InterruptibleCapacityController
 
-Create an instance: `interruptible_capacity_controller := client.InterruptibleCapacityController(nil)`
+Create an instance: `interruptibleCapacityController := client.InterruptibleCapacityController(nil)`
 
 #### Operations
 
@@ -784,11 +784,11 @@ Create an instance: `interruptible_capacity_controller := client.InterruptibleCa
 #### Example: Load
 
 ```go
-interruptible_capacity_controller, err := client.InterruptibleCapacityController(nil).Load(nil, nil)
+interruptibleCapacityController, err := client.InterruptibleCapacityController(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(interruptible_capacity_controller) // the loaded record
+fmt.Println(interruptibleCapacityController) // the loaded record
 ```
 
 
@@ -815,7 +815,7 @@ fmt.Println(nomination) // the loaded record
 
 ### NominationsController
 
-Create an instance: `nominations_controller := client.NominationsController(nil)`
+Create an instance: `nominationsController := client.NominationsController(nil)`
 
 #### Operations
 
@@ -826,17 +826,17 @@ Create an instance: `nominations_controller := client.NominationsController(nil)
 #### Example: Load
 
 ```go
-nominations_controller, err := client.NominationsController(nil).Load(nil, nil)
+nominationsController, err := client.NominationsController(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(nominations_controller) // the loaded record
+fmt.Println(nominationsController) // the loaded record
 ```
 
 
 ### NpsController
 
-Create an instance: `nps_controller := client.NpsController(nil)`
+Create an instance: `npsController := client.NpsController(nil)`
 
 #### Operations
 
@@ -847,11 +847,11 @@ Create an instance: `nps_controller := client.NpsController(nil)`
 #### Example: Load
 
 ```go
-nps_controller, err := client.NpsController(nil).Load(nil, nil)
+npsController, err := client.NpsController(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(nps_controller) // the loaded record
+fmt.Println(npsController) // the loaded record
 ```
 
 
@@ -878,7 +878,7 @@ fmt.Println(renomination) // the loaded record
 
 ### RenominationsController
 
-Create an instance: `renominations_controller := client.RenominationsController(nil)`
+Create an instance: `renominationsController := client.RenominationsController(nil)`
 
 #### Operations
 
@@ -889,11 +889,11 @@ Create an instance: `renominations_controller := client.RenominationsController(
 #### Example: Load
 
 ```go
-renominations_controller, err := client.RenominationsController(nil).Load(nil, nil)
+renominationsController, err := client.RenominationsController(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(renominations_controller) // the loaded record
+fmt.Println(renominationsController) // the loaded record
 ```
 
 
@@ -920,7 +920,7 @@ fmt.Println(system) // the loaded record
 
 ### SystemController
 
-Create an instance: `system_controller := client.SystemController(nil)`
+Create an instance: `systemController := client.SystemController(nil)`
 
 #### Operations
 
@@ -931,17 +931,17 @@ Create an instance: `system_controller := client.SystemController(nil)`
 #### Example: Load
 
 ```go
-system_controller, err := client.SystemController(nil).Load(nil, nil)
+systemController, err := client.SystemController(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(system_controller) // the loaded record
+fmt.Println(systemController) // the loaded record
 ```
 
 
 ### TransmissionController
 
-Create an instance: `transmission_controller := client.TransmissionController(nil)`
+Create an instance: `transmissionController := client.TransmissionController(nil)`
 
 #### Operations
 
@@ -952,17 +952,17 @@ Create an instance: `transmission_controller := client.TransmissionController(ni
 #### Example: Load
 
 ```go
-transmission_controller, err := client.TransmissionController(nil).Load(nil, nil)
+transmissionController, err := client.TransmissionController(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(transmission_controller) // the loaded record
+fmt.Println(transmissionController) // the loaded record
 ```
 
 
 ### UmmGasController
 
-Create an instance: `umm_gas_controller := client.UmmGasController(nil)`
+Create an instance: `ummGasController := client.UmmGasController(nil)`
 
 #### Operations
 
@@ -973,17 +973,17 @@ Create an instance: `umm_gas_controller := client.UmmGasController(nil)`
 #### Example: Load
 
 ```go
-umm_gas_controller, err := client.UmmGasController(nil).Load(nil, nil)
+ummGasController, err := client.UmmGasController(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(umm_gas_controller) // the loaded record
+fmt.Println(ummGasController) // the loaded record
 ```
 
 
 ### UmmRssFeedController
 
-Create an instance: `umm_rss_feed_controller := client.UmmRssFeedController(nil)`
+Create an instance: `ummRssFeedController := client.UmmRssFeedController(nil)`
 
 #### Operations
 
@@ -994,11 +994,11 @@ Create an instance: `umm_rss_feed_controller := client.UmmRssFeedController(nil)
 #### Example: Load
 
 ```go
-umm_rss_feed_controller, err := client.UmmRssFeedController(nil).Load(nil, nil)
+ummRssFeedController, err := client.UmmRssFeedController(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(umm_rss_feed_controller) // the loaded record
+fmt.Println(ummRssFeedController) // the loaded record
 ```
 
 

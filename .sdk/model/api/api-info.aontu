@@ -16,9 +16,9 @@ main: {
           url: "https://dashboard.elering.ee"
         }
       ]
+      summary: "This document describes different data sets that Elering Dashboard is providing."
       title: "Elering dashboard API documentation"
       version: "1.3.0"
+      website: "https://dashboard.elering.ee"
     }
   }
-}
-

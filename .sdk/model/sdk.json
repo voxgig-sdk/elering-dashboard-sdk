@@ -6,9 +6,6 @@
     },
     "kit": {
       "config": {
-        "auth": {
-          "prefix": "Bearer"
-        },
         "docs_order": [
           "ts",
           "py",
@@ -3944,13 +3941,16 @@
           "url": "https://elering.ee/"
         },
         "description": "This document describes different data sets that Elering Dashboard is providing.",
+        "meta_source": "https://www.freepublicapis.com",
         "servers": [
           {
             "url": "https://dashboard.elering.ee"
           }
         ],
+        "summary": "This document describes different data sets that Elering Dashboard is providing.",
         "title": "Elering dashboard API documentation",
-        "version": "1.3.0"
+        "version": "1.3.0",
+        "website": "https://dashboard.elering.ee"
       },
       "option": {},
       "target": {
@@ -4003,6 +4003,9 @@
           },
           "name": "go-cli",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },
@@ -4053,6 +4056,9 @@
           },
           "name": "go-mcp",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },

@@ -86,7 +86,7 @@ type GasTradeController struct {
 
 // GasTradeControllerLoadMatch is the typed request payload for GasTradeController.LoadTyped.
 type GasTradeControllerLoadMatch struct {
-	Group string `json:"group"`
+	Group *string `json:"group,omitempty"`
 }
 
 // GasTransmissionController is the typed data model for the gas_transmission_controller entity.
@@ -143,7 +143,7 @@ type NpsController struct {
 
 // NpsControllerLoadMatch is the typed request payload for NpsController.LoadTyped.
 type NpsControllerLoadMatch struct {
-	Group string `json:"group"`
+	Group *string `json:"group,omitempty"`
 }
 
 // Renomination is the typed data model for the renomination entity.
@@ -184,7 +184,7 @@ type TransmissionController struct {
 
 // TransmissionControllerLoadMatch is the typed request payload for TransmissionController.LoadTyped.
 type TransmissionControllerLoadMatch struct {
-	Group string `json:"group"`
+	Group *string `json:"group,omitempty"`
 }
 
 // UmmGasController is the typed data model for the umm_gas_controller entity.
