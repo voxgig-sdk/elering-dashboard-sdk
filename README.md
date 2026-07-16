@@ -16,8 +16,8 @@ Metadata kindly supplied by [www.freepublicapis.com](https://www.freepublicapis.
 
 ## Entities, not endpoints
 
-This SDK exposes the API as a small set of **semantic entities** — Balance, BalanceController, Firm, FirmCapacityController, GasBalanceController, GasBorderTradeController, GasSystem, GasSystemController, GasTrade, GasTradeController, GasTransmissionController, GreenController, Interruptible, InterruptibleCapacityController, Nomination, NominationsController, NpsController, Renomination, RenominationsController, System, SystemController, TransmissionController, UmmGasController and UmmRssFeedController — that you
-call directly, instead of assembling URL paths and query strings. Entities are
+This SDK exposes the API as **24 semantic entities** that you
+call directly, instead of assembling URL paths and query strings. See the [Entities](#entities) table below for the full list. Entities are
 **Capitalised** to mark them as the primary surface, each with the operations they
 support (`load`):
 
