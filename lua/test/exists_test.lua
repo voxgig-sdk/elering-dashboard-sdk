@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- EleringDashboard SDK exists test
 
 local sdk = require("elering-dashboard_sdk")
 
