@@ -19,14 +19,36 @@ import (
 // prompt is the REPL prompt prefix (matches the SDK slug).
 const prompt = "elering-dashboard"
 
-// entitiesHelp is the space-separated entity list shown by :help.
+// entitiesHelp is the space-separated entity list shown by /help.
 const entitiesHelp = "balance balance_controller firm firm_capacity_controller gas_balance_controller gas_border_trade_controller gas_system gas_system_controller gas_trade gas_trade_controller gas_transmission_controller green_controller interruptible interruptible_capacity_controller nomination nominations_controller nps_controller renomination renominations_controller system system_controller transmission_controller umm_gas_controller umm_rss_feed_controller"
 
 func main() {
 	os.Exit(run(os.Args[1:], os.Stdin, os.Stdout, os.Stderr))
 }
 
+// usage prints the CLI help (for --help / -h). No client or network setup.
+func usage(out io.Writer) {
+	fmt.Fprintf(out, "%s-cli — AQL-driven CLI + REPL for the %s SDK\n\n", prompt, prompt)
+	fmt.Fprintln(out, "Usage:")
+	fmt.Fprintf(out, "  %s-cli [--help] [<AQL expression>]\n\n", prompt)
+	fmt.Fprintln(out, "With arguments, they are joined into a single AQL expression and")
+	fmt.Fprintln(out, "evaluated against the API. With no arguments, starts an interactive REPL.")
+	fmt.Fprintln(out)
+	fmt.Fprintln(out, "Words:    list / load / update <query?> <entity>")
+	fmt.Fprintln(out, "Entities:", entitiesHelp)
+	fmt.Fprintln(out, "Env:      ELERING_DASHBOARD_APIKEY (api key), ELERING_DASHBOARD_BASE (base url override)")
+	fmt.Fprintln(out, "REPL:     /help  /quit")
+}
+
 func run(args []string, in io.Reader, out, errOut io.Writer) int {
+	// --help / -h: print usage and exit before any config or network setup.
+	for _, a := range args {
+		if a == "--help" || a == "-h" {
+			usage(out)
+			return 0
+		}
+	}
+
 	// Configure from the environment: ELERING_DASHBOARD_APIKEY carries the API key and
 	// ELERING_DASHBOARD_BASE optionally overrides the API base URL (e.g. production).
 	// Both injectable by a secrets vault. Unset -> nil config defaults.
@@ -94,12 +116,12 @@ func repl(r *eng.Registry, in io.Reader, out io.Writer) {
 			continue
 		}
 		switch line {
-		case ":quit", ":q", ":exit":
+		case "/quit", "/q", "/exit":
 			return
-		case ":help", ":h", ":?":
-			fmt.Fprintln(out, "commands: list / load / update <query?> <entity>")
+		case "/help", "/h", "/?":
+			fmt.Fprintln(out, "words:    list / load / update <query?> <entity>")
 			fmt.Fprintln(out, "entities:", entitiesHelp)
-			fmt.Fprintln(out, "meta:     :quit :help")
+			fmt.Fprintln(out, "meta:     /help  /quit")
 			continue
 		}
 		values, err := parser.Parse(line)
