@@ -26,8 +26,8 @@ import {
 describe('GreenControllerEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when ELERINGDASHBOARD_TEST_LIVE=TRUE.
-  afterEach(liveDelay('ELERINGDASHBOARD_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when ELERING_DASHBOARD_TEST_LIVE=TRUE.
+  afterEach(liveDelay('ELERING_DASHBOARD_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = EleringDashboardSDK.test()
@@ -62,7 +62,7 @@ describe('GreenControllerEntity', async () => {
     // LOAD
     const green_controller_ref01_ent = client.GreenController()
     const green_controller_ref01_match_dt0: any = {}
-    const green_controller_ref01_data_dt0 = await green_controller_ref01_ent.load(green_controller_ref01_match_dt0)
+    const green_controller_ref01_data_dt0 = (await green_controller_ref01_ent.load(green_controller_ref01_match_dt0)).data()
     assert(null != green_controller_ref01_data_dt0)
 
 

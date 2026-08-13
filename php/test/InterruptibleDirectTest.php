@@ -65,11 +65,11 @@ function interruptible_direct_setup($mockres)
     $calls = new \ArrayObject();
 
     $env = Runner::env_override([
-        "ELERINGDASHBOARD_TEST_INTERRUPTIBLE_ENTID" => [],
-        "ELERINGDASHBOARD_TEST_LIVE" => "FALSE",
+        "ELERING_DASHBOARD_TEST_INTERRUPTIBLE_ENTID" => [],
+        "ELERING_DASHBOARD_TEST_LIVE" => "FALSE",
     ]);
 
-    $live = $env["ELERINGDASHBOARD_TEST_LIVE"] === "TRUE";
+    $live = $env["ELERING_DASHBOARD_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [

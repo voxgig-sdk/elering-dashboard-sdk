@@ -35,7 +35,7 @@ $client = new EleringDashboardSDK();
 
 ```php
 try {
-    // load() returns the bare Balance record (throws on error).
+    // load() returns the ENTITY — call data_get() for the Balance record (throws on error).
     $balance = $client->Balance()->load();
     print_r($balance);
 } catch (\Throwable $err) {
@@ -51,7 +51,7 @@ Entity operations throw a `\Throwable` on failure, so wrap them in
 
 ```php
 try {
-    $balance = $client->Balance()->load();
+    $balancecontroller = $client->BalanceController()->load();
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
@@ -123,9 +123,10 @@ Create a mock client for unit testing — no server required:
 ```php
 $client = EleringDashboardSDK::test();
 
-// Entity ops return the bare mock record (throws on error).
-$balance = $client->Balance()->load();
-print_r($balance);
+// Entity ops return the ENTITY (throws on error);
+// call data_get() for the mock record.
+$balancecontroller = $client->BalanceController()->load();
+print_r($balancecontroller);
 ```
 
 ### Use a custom fetch function
@@ -245,7 +246,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (an `array` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
 ops, a `list` for `list`) and throw on error. Wrap calls in
 `try`/`catch` to handle failures.
 
@@ -497,7 +498,7 @@ Create an instance: `$balance = $client->Balance();`
 #### Example: Load
 
 ```php
-// load() returns the bare Balance record (throws on error).
+// load() returns the ENTITY — call data_get() for the Balance record (throws on error).
 $balance = $client->Balance()->load();
 ```
 
@@ -515,7 +516,7 @@ Create an instance: `$balance_controller = $client->BalanceController();`
 #### Example: Load
 
 ```php
-// load() returns the bare BalanceController record (throws on error).
+// load() returns the ENTITY — call data_get() for the BalanceController record (throws on error).
 $balance_controller = $client->BalanceController()->load();
 ```
 
@@ -533,7 +534,7 @@ Create an instance: `$firm = $client->Firm();`
 #### Example: Load
 
 ```php
-// load() returns the bare Firm record (throws on error).
+// load() returns the ENTITY — call data_get() for the Firm record (throws on error).
 $firm = $client->Firm()->load();
 ```
 
@@ -551,7 +552,7 @@ Create an instance: `$firm_capacity_controller = $client->FirmCapacityController
 #### Example: Load
 
 ```php
-// load() returns the bare FirmCapacityController record (throws on error).
+// load() returns the ENTITY — call data_get() for the FirmCapacityController record (throws on error).
 $firm_capacity_controller = $client->FirmCapacityController()->load();
 ```
 
@@ -569,7 +570,7 @@ Create an instance: `$gas_balance_controller = $client->GasBalanceController();`
 #### Example: Load
 
 ```php
-// load() returns the bare GasBalanceController record (throws on error).
+// load() returns the ENTITY — call data_get() for the GasBalanceController record (throws on error).
 $gas_balance_controller = $client->GasBalanceController()->load();
 ```
 
@@ -587,7 +588,7 @@ Create an instance: `$gas_border_trade_controller = $client->GasBorderTradeContr
 #### Example: Load
 
 ```php
-// load() returns the bare GasBorderTradeController record (throws on error).
+// load() returns the ENTITY — call data_get() for the GasBorderTradeController record (throws on error).
 $gas_border_trade_controller = $client->GasBorderTradeController()->load();
 ```
 
@@ -605,7 +606,7 @@ Create an instance: `$gas_system = $client->GasSystem();`
 #### Example: Load
 
 ```php
-// load() returns the bare GasSystem record (throws on error).
+// load() returns the ENTITY — call data_get() for the GasSystem record (throws on error).
 $gas_system = $client->GasSystem()->load();
 ```
 
@@ -623,7 +624,7 @@ Create an instance: `$gas_system_controller = $client->GasSystemController();`
 #### Example: Load
 
 ```php
-// load() returns the bare GasSystemController record (throws on error).
+// load() returns the ENTITY — call data_get() for the GasSystemController record (throws on error).
 $gas_system_controller = $client->GasSystemController()->load();
 ```
 
@@ -641,7 +642,7 @@ Create an instance: `$gas_trade = $client->GasTrade();`
 #### Example: Load
 
 ```php
-// load() returns the bare GasTrade record (throws on error).
+// load() returns the ENTITY — call data_get() for the GasTrade record (throws on error).
 $gas_trade = $client->GasTrade()->load();
 ```
 
@@ -659,7 +660,7 @@ Create an instance: `$gas_trade_controller = $client->GasTradeController();`
 #### Example: Load
 
 ```php
-// load() returns the bare GasTradeController record (throws on error).
+// load() returns the ENTITY — call data_get() for the GasTradeController record (throws on error).
 $gas_trade_controller = $client->GasTradeController()->load();
 ```
 
@@ -677,7 +678,7 @@ Create an instance: `$gas_transmission_controller = $client->GasTransmissionCont
 #### Example: Load
 
 ```php
-// load() returns the bare GasTransmissionController record (throws on error).
+// load() returns the ENTITY — call data_get() for the GasTransmissionController record (throws on error).
 $gas_transmission_controller = $client->GasTransmissionController()->load();
 ```
 
@@ -695,7 +696,7 @@ Create an instance: `$green_controller = $client->GreenController();`
 #### Example: Load
 
 ```php
-// load() returns the bare GreenController record (throws on error).
+// load() returns the ENTITY — call data_get() for the GreenController record (throws on error).
 $green_controller = $client->GreenController()->load();
 ```
 
@@ -713,7 +714,7 @@ Create an instance: `$interruptible = $client->Interruptible();`
 #### Example: Load
 
 ```php
-// load() returns the bare Interruptible record (throws on error).
+// load() returns the ENTITY — call data_get() for the Interruptible record (throws on error).
 $interruptible = $client->Interruptible()->load();
 ```
 
@@ -731,7 +732,7 @@ Create an instance: `$interruptible_capacity_controller = $client->Interruptible
 #### Example: Load
 
 ```php
-// load() returns the bare InterruptibleCapacityController record (throws on error).
+// load() returns the ENTITY — call data_get() for the InterruptibleCapacityController record (throws on error).
 $interruptible_capacity_controller = $client->InterruptibleCapacityController()->load();
 ```
 
@@ -749,7 +750,7 @@ Create an instance: `$nomination = $client->Nomination();`
 #### Example: Load
 
 ```php
-// load() returns the bare Nomination record (throws on error).
+// load() returns the ENTITY — call data_get() for the Nomination record (throws on error).
 $nomination = $client->Nomination()->load();
 ```
 
@@ -767,7 +768,7 @@ Create an instance: `$nominations_controller = $client->NominationsController();
 #### Example: Load
 
 ```php
-// load() returns the bare NominationsController record (throws on error).
+// load() returns the ENTITY — call data_get() for the NominationsController record (throws on error).
 $nominations_controller = $client->NominationsController()->load();
 ```
 
@@ -785,7 +786,7 @@ Create an instance: `$nps_controller = $client->NpsController();`
 #### Example: Load
 
 ```php
-// load() returns the bare NpsController record (throws on error).
+// load() returns the ENTITY — call data_get() for the NpsController record (throws on error).
 $nps_controller = $client->NpsController()->load();
 ```
 
@@ -803,7 +804,7 @@ Create an instance: `$renomination = $client->Renomination();`
 #### Example: Load
 
 ```php
-// load() returns the bare Renomination record (throws on error).
+// load() returns the ENTITY — call data_get() for the Renomination record (throws on error).
 $renomination = $client->Renomination()->load();
 ```
 
@@ -821,7 +822,7 @@ Create an instance: `$renominations_controller = $client->RenominationsControlle
 #### Example: Load
 
 ```php
-// load() returns the bare RenominationsController record (throws on error).
+// load() returns the ENTITY — call data_get() for the RenominationsController record (throws on error).
 $renominations_controller = $client->RenominationsController()->load();
 ```
 
@@ -839,7 +840,7 @@ Create an instance: `$system = $client->System();`
 #### Example: Load
 
 ```php
-// load() returns the bare System record (throws on error).
+// load() returns the ENTITY — call data_get() for the System record (throws on error).
 $system = $client->System()->load();
 ```
 
@@ -857,7 +858,7 @@ Create an instance: `$system_controller = $client->SystemController();`
 #### Example: Load
 
 ```php
-// load() returns the bare SystemController record (throws on error).
+// load() returns the ENTITY — call data_get() for the SystemController record (throws on error).
 $system_controller = $client->SystemController()->load();
 ```
 
@@ -875,7 +876,7 @@ Create an instance: `$transmission_controller = $client->TransmissionController(
 #### Example: Load
 
 ```php
-// load() returns the bare TransmissionController record (throws on error).
+// load() returns the ENTITY — call data_get() for the TransmissionController record (throws on error).
 $transmission_controller = $client->TransmissionController()->load();
 ```
 
@@ -893,7 +894,7 @@ Create an instance: `$umm_gas_controller = $client->UmmGasController();`
 #### Example: Load
 
 ```php
-// load() returns the bare UmmGasController record (throws on error).
+// load() returns the ENTITY — call data_get() for the UmmGasController record (throws on error).
 $umm_gas_controller = $client->UmmGasController()->load();
 ```
 
@@ -911,7 +912,7 @@ Create an instance: `$umm_rss_feed_controller = $client->UmmRssFeedController();
 #### Example: Load
 
 ```php
-// load() returns the bare UmmRssFeedController record (throws on error).
+// load() returns the ENTITY — call data_get() for the UmmRssFeedController record (throws on error).
 $umm_rss_feed_controller = $client->UmmRssFeedController()->load();
 ```
 
@@ -992,11 +993,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$balance = $client->Balance();
-$balance->load();
+$balancecontroller = $client->BalanceController();
+$balancecontroller->load();
 
-// $balance->data_get() now returns the balance data from the last load
-// $balance->match_get() returns the last match criteria
+// $balancecontroller->data_get() now returns the balancecontroller data from the last load
+// $balancecontroller->match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

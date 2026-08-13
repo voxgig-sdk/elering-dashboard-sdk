@@ -59,11 +59,11 @@ def system_controller_direct_setup(mockres)
   calls = []
 
   env = Runner.env_override({
-    "ELERINGDASHBOARD_TEST_SYSTEM_CONTROLLER_ENTID" => {},
-    "ELERINGDASHBOARD_TEST_LIVE" => "FALSE",
+    "ELERING_DASHBOARD_TEST_SYSTEM_CONTROLLER_ENTID" => {},
+    "ELERING_DASHBOARD_TEST_LIVE" => "FALSE",
   })
 
-  live = env["ELERINGDASHBOARD_TEST_LIVE"] == "TRUE"
+  live = env["ELERING_DASHBOARD_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {

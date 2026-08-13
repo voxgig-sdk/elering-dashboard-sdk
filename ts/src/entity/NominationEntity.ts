@@ -36,7 +36,7 @@ class NominationEntity extends EleringDashboardEntityBase<Nomination> {
 
 
 
-  async load(this: any, reqmatch?: NominationLoadMatch, ctrl?: Control): Promise<Nomination> {
+  async load(this: any, reqmatch?: NominationLoadMatch, ctrl?: Control): Promise<NominationEntity> {
 
     const utility = this._utility
 
@@ -127,7 +127,15 @@ class NominationEntity extends EleringDashboardEntityBase<Nomination> {
         }
       }
 
-      return done(ctx)
+      const out = done(ctx)
+
+      // An operation resolves to the ENTITY, not the raw data — the record
+      // has just been absorbed into this instance and is reached through
+      // data(). `done` still runs: it completes the pipeline and raises on
+      // failure, and when throwing is disabled it hands back the error
+      // payload, which passes through unchanged. See AGENTS.md "Entity
+      // operations return ENTITIES".
+      return (ctx.result && ctx.result.ok) ? this : out
     }
     catch (err: any) {
 

@@ -53,8 +53,8 @@ Entity operations reject on failure, so wrap them in `try` / `catch`:
 
 ```ts
 try {
-  const balance = await client.Balance().load()
-  console.log(balance)
+  const balancecontroller = await client.BalanceController().load()
+  console.log(balancecontroller)
 } catch (err) {
   console.error('load failed:', err)
 }
@@ -120,9 +120,10 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = EleringDashboardSDK.test()
 
-const balance = await client.Balance().load()
-// balance is a bare entity populated with mock response data
-console.log(balance)
+const balancecontroller = await client.BalanceController().load()
+// balancecontroller is the entity, populated with mock response data
+// — call balancecontroller.data() for the record itself
+console.log(balancecontroller)
 ```
 
 You can also use the instance method:
@@ -137,7 +138,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Balance()
+const entity = client.BalanceController()
 
 // First call runs the operation and stores its result
 await entity.load()
@@ -1001,11 +1002,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const balance = client.Balance()
-await balance.load()
+const balancecontroller = client.BalanceController()
+await balancecontroller.load()
 
-// balance.data() now returns the balance data from the last `load`
-// balance.match() returns the last match criteria
+// balancecontroller.data() now returns the balancecontroller data from the last `load`
+// balancecontroller.match() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

@@ -33,7 +33,7 @@ class RenominationEntityTest extends TestCase
         // The basic flow consumes synthetic IDs from the fixture. In live mode
         // without an *_ENTID env override, those IDs hit the live API and 4xx.
         if (!empty($setup["synthetic_only"])) {
-            $this->markTestSkipped("live entity test uses synthetic IDs from fixture — set ELERINGDASHBOARD_TEST_RENOMINATION_ENTID JSON to run live");
+            $this->markTestSkipped("live entity test uses synthetic IDs from fixture — set ELERING_DASHBOARD_TEST_RENOMINATION_ENTID JSON to run live");
             return;
         }
         $client = $setup["client"];
@@ -77,22 +77,22 @@ function renomination_basic_setup($extra)
     // Detect ENTID env override before envOverride consumes it. When live
     // mode is on without a real override, the basic test runs against synthetic
     // IDs from the fixture and 4xx's. Surface this so the test can skip.
-    $entid_env_raw = getenv("ELERINGDASHBOARD_TEST_RENOMINATION_ENTID");
+    $entid_env_raw = getenv("ELERING_DASHBOARD_TEST_RENOMINATION_ENTID");
     $idmap_overridden = $entid_env_raw !== false && str_starts_with(trim($entid_env_raw), "{");
 
     $env = Runner::env_override([
-        "ELERINGDASHBOARD_TEST_RENOMINATION_ENTID" => $idmap,
-        "ELERINGDASHBOARD_TEST_LIVE" => "FALSE",
-        "ELERINGDASHBOARD_TEST_EXPLAIN" => "FALSE",
+        "ELERING_DASHBOARD_TEST_RENOMINATION_ENTID" => $idmap,
+        "ELERING_DASHBOARD_TEST_LIVE" => "FALSE",
+        "ELERING_DASHBOARD_TEST_EXPLAIN" => "FALSE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
-        $env["ELERINGDASHBOARD_TEST_RENOMINATION_ENTID"]);
+        $env["ELERING_DASHBOARD_TEST_RENOMINATION_ENTID"]);
     if ($idmap_resolved === null) {
         $idmap_resolved = Helpers::to_map($idmap);
     }
 
-    if ($env["ELERINGDASHBOARD_TEST_LIVE"] === "TRUE") {
+    if ($env["ELERING_DASHBOARD_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
             ],
@@ -101,13 +101,13 @@ function renomination_basic_setup($extra)
         $client = new EleringDashboardSDK(Helpers::to_map($merged_opts));
     }
 
-    $live = $env["ELERINGDASHBOARD_TEST_LIVE"] === "TRUE";
+    $live = $env["ELERING_DASHBOARD_TEST_LIVE"] === "TRUE";
     return [
         "client" => $client,
         "data" => $entity_data,
         "idmap" => $idmap_resolved,
         "env" => $env,
-        "explain" => $env["ELERINGDASHBOARD_TEST_EXPLAIN"] === "TRUE",
+        "explain" => $env["ELERING_DASHBOARD_TEST_EXPLAIN"] === "TRUE",
         "live" => $live,
         "synthetic_only" => $live && !$idmap_overridden,
         "now" => (int)(microtime(true) * 1000),

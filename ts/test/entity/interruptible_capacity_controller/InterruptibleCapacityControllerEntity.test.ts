@@ -26,8 +26,8 @@ import {
 describe('InterruptibleCapacityControllerEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when ELERINGDASHBOARD_TEST_LIVE=TRUE.
-  afterEach(liveDelay('ELERINGDASHBOARD_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when ELERING_DASHBOARD_TEST_LIVE=TRUE.
+  afterEach(liveDelay('ELERING_DASHBOARD_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = EleringDashboardSDK.test()
@@ -62,7 +62,7 @@ describe('InterruptibleCapacityControllerEntity', async () => {
     // LOAD
     const interruptible_capacity_controller_ref01_ent = client.InterruptibleCapacityController()
     const interruptible_capacity_controller_ref01_match_dt0: any = {}
-    const interruptible_capacity_controller_ref01_data_dt0 = await interruptible_capacity_controller_ref01_ent.load(interruptible_capacity_controller_ref01_match_dt0)
+    const interruptible_capacity_controller_ref01_data_dt0 = (await interruptible_capacity_controller_ref01_ent.load(interruptible_capacity_controller_ref01_match_dt0)).data()
     assert(null != interruptible_capacity_controller_ref01_data_dt0)
 
 

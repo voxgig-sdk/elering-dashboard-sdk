@@ -38,18 +38,27 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = EleringDashboardSDK.test()
-const balance = await client.Balance().load()
-// balance is a bare Balance populated with mock data
-console.log(balance)
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = EleringDashboardSDK.test({
+  entity: {
+    balance_controller: {
+      test01: { id: 'test01' },
+    },
+  },
+})
+const balancecontroller = await client.BalanceController().load()
+// balancecontroller is the BalanceController entity, populated with mock data
+// — call balancecontroller.data() for the record itself
+console.log(balancecontroller)
 ```
 
 ### Python
 
 ```python
 client = EleringDashboardSDK.test()
-balance = client.Balance().load()
-print(balance)
+balancecontroller = client.BalanceController().load()
+print(balancecontroller)
 ```
 
 ### PHP
@@ -57,16 +66,16 @@ print(balance)
 ```php
 // Seed fixture data so offline calls resolve without a live server.
 $client = EleringDashboardSDK::test([
-    "entity" => ["balance" => ["test01" => []]],
+    "entity" => ["balancecontroller" => ["test01" => []]],
 ]);
-$balance = $client->Balance()->load();
+$balancecontroller = $client->BalanceController()->load();
 ```
 
 ### Golang
 
 ```go
 client := sdk.Test()
-result, err := client.Balance(nil).Load(
+result, err := client.BalanceController(nil).Load(
     nil, nil,
 )
 ```
@@ -76,16 +85,16 @@ result, err := client.Balance(nil).Load(
 ```ruby
 # Seed fixture data so offline calls resolve without a live server.
 client = EleringDashboardSDK.test({
-  "entity" => { "balance" => { "test01" => {} } },
+  "entity" => { "balancecontroller" => { "test01" => {} } },
 })
-balance = client.Balance.load()
+balancecontroller = client.BalanceController.load()
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:Balance():load()
+local result, err = client:BalanceController():load()
 ```
 
 ## Packages
@@ -205,7 +214,7 @@ require_once 'eleringdashboard_sdk.php';
 $client = new EleringDashboardSDK();
 
 
-// Load a specific balance (returns the bare record; throws on error)
+// Load a specific balance (returns the ENTITY; call data_get() for the record; throws on error)
 $balance = $client->Balance()->load();
 print_r($balance);
 ```
@@ -233,7 +242,7 @@ require_relative "EleringDashboard_sdk"
 client = EleringDashboardSDK.new
 
 
-# Load a specific balance (returns the bare record; raises on error)
+# Load a specific balance (returns the ENTITY; call data_get for the record)
 balance = client.Balance.load()
 puts balance
 ```
@@ -367,6 +376,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://elering.ee/](https://elering.ee/)
 

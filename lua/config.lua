@@ -77,6 +77,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/balance",
                 ["parts"] = {
@@ -143,6 +144,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/balance/commerce/csv",
                 ["parts"] = {
@@ -196,6 +198,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/balance/csv",
                 ["parts"] = {
@@ -248,6 +251,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/balance/total/csv",
                 ["parts"] = {
@@ -293,6 +297,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/balance/total",
                 ["parts"] = {
@@ -336,6 +341,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/balance/commerce",
                 ["parts"] = {
@@ -358,6 +364,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/balance/commerce/latest",
                 ["parts"] = {
@@ -376,6 +383,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/balance/total/latest",
                 ["parts"] = {
@@ -431,6 +439,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/capacity/firm",
                 ["parts"] = {
@@ -518,6 +527,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/capacity/firm/csv",
                 ["parts"] = {
@@ -587,6 +597,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/gas-balance/price/csv",
                 ["parts"] = {
@@ -632,6 +643,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/gas-balance/price",
                 ["parts"] = {
@@ -670,6 +682,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/gas/border-trade/current",
                 ["parts"] = {
@@ -725,6 +738,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/gas-system",
                 ["parts"] = {
@@ -791,6 +805,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/gas-system/csv",
                 ["parts"] = {
@@ -843,6 +858,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/gas-system/daily/csv",
                 ["parts"] = {
@@ -896,6 +912,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/gas-system/m3/csv",
                 ["parts"] = {
@@ -941,6 +958,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/gas-system/daily",
                 ["parts"] = {
@@ -984,6 +1002,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/gas-system/daily-average",
                 ["parts"] = {
@@ -1027,6 +1046,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/gas-system/m3",
                 ["parts"] = {
@@ -1049,6 +1069,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/gas-system/latest",
                 ["parts"] = {
@@ -1103,6 +1124,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/gas-trade",
                 ["parts"] = {
@@ -1169,6 +1191,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/gas-trade/csv",
                 ["parts"] = {
@@ -1204,6 +1227,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/gas-trade/{group}/latest",
                 ["parts"] = {
@@ -1275,6 +1299,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/gas-transmission/cross-border/csv",
                 ["parts"] = {
@@ -1320,6 +1345,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/gas-transmission/cross-border",
                 ["parts"] = {
@@ -1342,6 +1368,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/gas-transmission/cross-border/latest",
                 ["parts"] = {
@@ -1406,6 +1433,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/green/certificates",
                 ["parts"] = {
@@ -1466,6 +1494,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/capacity/interruptible",
                 ["parts"] = {
@@ -1533,6 +1562,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/capacity/interruptible/csv",
                 ["parts"] = {
@@ -1594,6 +1624,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/nominations",
                 ["parts"] = {
@@ -1660,6 +1691,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/nominations/csv",
                 ["parts"] = {
@@ -1728,6 +1760,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/nps/price/csv",
                 ["parts"] = {
@@ -1781,6 +1814,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/nps/turnover/csv",
                 ["parts"] = {
@@ -1826,6 +1860,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/nps/price",
                 ["parts"] = {
@@ -1869,6 +1904,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/nps/turnover",
                 ["parts"] = {
@@ -1903,6 +1939,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/nps/price/{group}/current",
                 ["parts"] = {
@@ -1938,6 +1975,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/nps/price/{group}/latest",
                 ["parts"] = {
@@ -1973,6 +2011,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/nps/turnover/{group}/latest",
                 ["parts"] = {
@@ -2040,6 +2079,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/nominations/renominations",
                 ["parts"] = {
@@ -2107,6 +2147,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/nominations/renominations/csv",
                 ["parts"] = {
@@ -2168,6 +2209,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/system",
                 ["parts"] = {
@@ -2234,6 +2276,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/system/csv",
                 ["parts"] = {
@@ -2286,6 +2329,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/system/with-plan/csv",
                 ["parts"] = {
@@ -2331,6 +2375,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/system/with-plan",
                 ["parts"] = {
@@ -2353,6 +2398,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/system/latest",
                 ["parts"] = {
@@ -2426,6 +2472,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/transmission/cross-border-capacity/{group}/csv",
                 ["parts"] = {
@@ -2481,6 +2528,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/transmission/cross-border-planned-trade/csv",
                 ["parts"] = {
@@ -2534,6 +2582,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/transmission/cross-border/csv",
                 ["parts"] = {
@@ -2587,6 +2636,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/transmission/cross-border/hourly/csv",
                 ["parts"] = {
@@ -2644,6 +2694,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/transmission/cross-border-capacity/{group}",
                 ["parts"] = {
@@ -2689,6 +2740,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/transmission/cross-border",
                 ["parts"] = {
@@ -2732,6 +2784,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/transmission/cross-border-capacity",
                 ["parts"] = {
@@ -2775,6 +2828,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/transmission/cross-border-planned-trade",
                 ["parts"] = {
@@ -2818,6 +2872,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/transmission/cross-border/hourly",
                 ["parts"] = {
@@ -2841,6 +2896,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/transmission/cross-border-planned-trade/latest",
                 ["parts"] = {
@@ -2859,6 +2915,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/transmission/cross-border/latest",
                 ["parts"] = {
@@ -2983,6 +3040,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/umm/gas",
                 ["parts"] = {
@@ -3024,6 +3082,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/umm/gas/messages",
                 ["parts"] = {
@@ -3057,6 +3116,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/umm/single/{id}",
                 ["parts"] = {
@@ -3095,6 +3155,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/umm/gas/rss",
                 ["parts"] = {
@@ -3112,6 +3173,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/umm/gas/rss/aris",
                 ["parts"] = {

@@ -34,7 +34,7 @@ client = EleringDashboardSDK.new
 
 ```ruby
 begin
-  # load returns the bare Balance record (raises on error).
+  # load returns the ENTITY — call data_get for the Balance record (raises on error).
   balance = client.Balance.load()
   puts balance
 rescue => err
@@ -49,7 +49,7 @@ Entity operations raise on failure, so rescue them:
 
 ```ruby
 begin
-  balance = client.Balance.load()
+  balancecontroller = client.BalanceController.load()
 rescue => err
   warn "load failed: #{err}"
 end
@@ -117,9 +117,10 @@ Create a mock client for unit testing — no server required:
 ```ruby
 client = EleringDashboardSDK.test
 
-# Entity ops return the bare mock record (raises on error).
-balance = client.Balance.load()
-puts balance
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
+balancecontroller = client.BalanceController.load()
+puts balancecontroller
 ```
 
 ### Use a custom fetch function
@@ -487,7 +488,7 @@ Create an instance: `balance = client.Balance`
 #### Example: Load
 
 ```ruby
-# load returns the bare Balance record (raises on error).
+# load returns the ENTITY — call data_get for the Balance record (raises on error).
 balance = client.Balance.load()
 ```
 
@@ -505,7 +506,7 @@ Create an instance: `balance_controller = client.BalanceController`
 #### Example: Load
 
 ```ruby
-# load returns the bare BalanceController record (raises on error).
+# load returns the ENTITY — call data_get for the BalanceController record (raises on error).
 balance_controller = client.BalanceController.load()
 ```
 
@@ -523,7 +524,7 @@ Create an instance: `firm = client.Firm`
 #### Example: Load
 
 ```ruby
-# load returns the bare Firm record (raises on error).
+# load returns the ENTITY — call data_get for the Firm record (raises on error).
 firm = client.Firm.load()
 ```
 
@@ -541,7 +542,7 @@ Create an instance: `firm_capacity_controller = client.FirmCapacityController`
 #### Example: Load
 
 ```ruby
-# load returns the bare FirmCapacityController record (raises on error).
+# load returns the ENTITY — call data_get for the FirmCapacityController record (raises on error).
 firm_capacity_controller = client.FirmCapacityController.load()
 ```
 
@@ -559,7 +560,7 @@ Create an instance: `gas_balance_controller = client.GasBalanceController`
 #### Example: Load
 
 ```ruby
-# load returns the bare GasBalanceController record (raises on error).
+# load returns the ENTITY — call data_get for the GasBalanceController record (raises on error).
 gas_balance_controller = client.GasBalanceController.load()
 ```
 
@@ -577,7 +578,7 @@ Create an instance: `gas_border_trade_controller = client.GasBorderTradeControll
 #### Example: Load
 
 ```ruby
-# load returns the bare GasBorderTradeController record (raises on error).
+# load returns the ENTITY — call data_get for the GasBorderTradeController record (raises on error).
 gas_border_trade_controller = client.GasBorderTradeController.load()
 ```
 
@@ -595,7 +596,7 @@ Create an instance: `gas_system = client.GasSystem`
 #### Example: Load
 
 ```ruby
-# load returns the bare GasSystem record (raises on error).
+# load returns the ENTITY — call data_get for the GasSystem record (raises on error).
 gas_system = client.GasSystem.load()
 ```
 
@@ -613,7 +614,7 @@ Create an instance: `gas_system_controller = client.GasSystemController`
 #### Example: Load
 
 ```ruby
-# load returns the bare GasSystemController record (raises on error).
+# load returns the ENTITY — call data_get for the GasSystemController record (raises on error).
 gas_system_controller = client.GasSystemController.load()
 ```
 
@@ -631,7 +632,7 @@ Create an instance: `gas_trade = client.GasTrade`
 #### Example: Load
 
 ```ruby
-# load returns the bare GasTrade record (raises on error).
+# load returns the ENTITY — call data_get for the GasTrade record (raises on error).
 gas_trade = client.GasTrade.load()
 ```
 
@@ -649,7 +650,7 @@ Create an instance: `gas_trade_controller = client.GasTradeController`
 #### Example: Load
 
 ```ruby
-# load returns the bare GasTradeController record (raises on error).
+# load returns the ENTITY — call data_get for the GasTradeController record (raises on error).
 gas_trade_controller = client.GasTradeController.load()
 ```
 
@@ -667,7 +668,7 @@ Create an instance: `gas_transmission_controller = client.GasTransmissionControl
 #### Example: Load
 
 ```ruby
-# load returns the bare GasTransmissionController record (raises on error).
+# load returns the ENTITY — call data_get for the GasTransmissionController record (raises on error).
 gas_transmission_controller = client.GasTransmissionController.load()
 ```
 
@@ -685,7 +686,7 @@ Create an instance: `green_controller = client.GreenController`
 #### Example: Load
 
 ```ruby
-# load returns the bare GreenController record (raises on error).
+# load returns the ENTITY — call data_get for the GreenController record (raises on error).
 green_controller = client.GreenController.load()
 ```
 
@@ -703,7 +704,7 @@ Create an instance: `interruptible = client.Interruptible`
 #### Example: Load
 
 ```ruby
-# load returns the bare Interruptible record (raises on error).
+# load returns the ENTITY — call data_get for the Interruptible record (raises on error).
 interruptible = client.Interruptible.load()
 ```
 
@@ -721,7 +722,7 @@ Create an instance: `interruptible_capacity_controller = client.InterruptibleCap
 #### Example: Load
 
 ```ruby
-# load returns the bare InterruptibleCapacityController record (raises on error).
+# load returns the ENTITY — call data_get for the InterruptibleCapacityController record (raises on error).
 interruptible_capacity_controller = client.InterruptibleCapacityController.load()
 ```
 
@@ -739,7 +740,7 @@ Create an instance: `nomination = client.Nomination`
 #### Example: Load
 
 ```ruby
-# load returns the bare Nomination record (raises on error).
+# load returns the ENTITY — call data_get for the Nomination record (raises on error).
 nomination = client.Nomination.load()
 ```
 
@@ -757,7 +758,7 @@ Create an instance: `nominations_controller = client.NominationsController`
 #### Example: Load
 
 ```ruby
-# load returns the bare NominationsController record (raises on error).
+# load returns the ENTITY — call data_get for the NominationsController record (raises on error).
 nominations_controller = client.NominationsController.load()
 ```
 
@@ -775,7 +776,7 @@ Create an instance: `nps_controller = client.NpsController`
 #### Example: Load
 
 ```ruby
-# load returns the bare NpsController record (raises on error).
+# load returns the ENTITY — call data_get for the NpsController record (raises on error).
 nps_controller = client.NpsController.load()
 ```
 
@@ -793,7 +794,7 @@ Create an instance: `renomination = client.Renomination`
 #### Example: Load
 
 ```ruby
-# load returns the bare Renomination record (raises on error).
+# load returns the ENTITY — call data_get for the Renomination record (raises on error).
 renomination = client.Renomination.load()
 ```
 
@@ -811,7 +812,7 @@ Create an instance: `renominations_controller = client.RenominationsController`
 #### Example: Load
 
 ```ruby
-# load returns the bare RenominationsController record (raises on error).
+# load returns the ENTITY — call data_get for the RenominationsController record (raises on error).
 renominations_controller = client.RenominationsController.load()
 ```
 
@@ -829,7 +830,7 @@ Create an instance: `system = client.System`
 #### Example: Load
 
 ```ruby
-# load returns the bare System record (raises on error).
+# load returns the ENTITY — call data_get for the System record (raises on error).
 system = client.System.load()
 ```
 
@@ -847,7 +848,7 @@ Create an instance: `system_controller = client.SystemController`
 #### Example: Load
 
 ```ruby
-# load returns the bare SystemController record (raises on error).
+# load returns the ENTITY — call data_get for the SystemController record (raises on error).
 system_controller = client.SystemController.load()
 ```
 
@@ -865,7 +866,7 @@ Create an instance: `transmission_controller = client.TransmissionController`
 #### Example: Load
 
 ```ruby
-# load returns the bare TransmissionController record (raises on error).
+# load returns the ENTITY — call data_get for the TransmissionController record (raises on error).
 transmission_controller = client.TransmissionController.load()
 ```
 
@@ -883,7 +884,7 @@ Create an instance: `umm_gas_controller = client.UmmGasController`
 #### Example: Load
 
 ```ruby
-# load returns the bare UmmGasController record (raises on error).
+# load returns the ENTITY — call data_get for the UmmGasController record (raises on error).
 umm_gas_controller = client.UmmGasController.load()
 ```
 
@@ -901,7 +902,7 @@ Create an instance: `umm_rss_feed_controller = client.UmmRssFeedController`
 #### Example: Load
 
 ```ruby
-# load returns the bare UmmRssFeedController record (raises on error).
+# load returns the ENTITY — call data_get for the UmmRssFeedController record (raises on error).
 umm_rss_feed_controller = client.UmmRssFeedController.load()
 ```
 
@@ -982,11 +983,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-balance = client.Balance
-balance.load()
+balancecontroller = client.BalanceController
+balancecontroller.load()
 
-# balance.data_get now returns the balance data from the last load
-# balance.match_get returns the last match criteria
+# balancecontroller.data_get now returns the balancecontroller data from the last load
+# balancecontroller.match_get returns the last match criteria
 ```
 
 Call `make` to create a fresh instance with the same configuration

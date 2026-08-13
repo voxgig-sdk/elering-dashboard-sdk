@@ -48,7 +48,7 @@ Entity operations return `(value, err)`. Check `err` before using
 the value:
 
 ```lua
-local balance, err = client:Balance():load()
+local balancecontroller, err = client:BalanceController():load()
 if err then error(err) end
 ```
 
@@ -106,7 +106,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:Balance():load()
+local result, err = client:BalanceController():load()
 -- result is the returned data; err is set on failure
 ```
 
@@ -949,11 +949,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local balance = client:Balance()
-balance:load()
+local balancecontroller = client:BalanceController()
+balancecontroller:load()
 
--- balance:data_get() now returns the balance data from the last load
--- balance:match_get() returns the last match criteria
+-- balancecontroller:data_get() now returns the balancecontroller data from the last load
+-- balancecontroller:match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

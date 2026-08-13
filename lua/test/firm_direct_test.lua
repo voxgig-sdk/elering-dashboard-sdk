@@ -60,11 +60,11 @@ function firm_direct_setup(mockres)
   local calls = {}
 
   local env = runner.env_override({
-    ["ELERINGDASHBOARD_TEST_FIRM_ENTID"] = {},
-    ["ELERINGDASHBOARD_TEST_LIVE"] = "FALSE",
+    ["ELERING_DASHBOARD_TEST_FIRM_ENTID"] = {},
+    ["ELERING_DASHBOARD_TEST_LIVE"] = "FALSE",
   })
 
-  local live = env["ELERINGDASHBOARD_TEST_LIVE"] == "TRUE"
+  local live = env["ELERING_DASHBOARD_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {

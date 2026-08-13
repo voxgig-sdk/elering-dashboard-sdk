@@ -60,11 +60,11 @@ function umm_rss_feed_controller_direct_setup(mockres)
   local calls = {}
 
   local env = runner.env_override({
-    ["ELERINGDASHBOARD_TEST_UMM_RSS_FEED_CONTROLLER_ENTID"] = {},
-    ["ELERINGDASHBOARD_TEST_LIVE"] = "FALSE",
+    ["ELERING_DASHBOARD_TEST_UMM_RSS_FEED_CONTROLLER_ENTID"] = {},
+    ["ELERING_DASHBOARD_TEST_LIVE"] = "FALSE",
   })
 
-  local live = env["ELERINGDASHBOARD_TEST_LIVE"] == "TRUE"
+  local live = env["ELERING_DASHBOARD_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {

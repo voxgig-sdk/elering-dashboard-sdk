@@ -169,8 +169,29 @@ class EleringDashboardSDK {
   }
 
 
+  // Raw endpoint access is operator-controllable, like every entity op.
+  // Blocking it means denying BOTH the 'direct' and 'graphql' tokens, since
+  // either one reaches the same endpoint.
   async direct(fetchargs?: any) {
+    if (!this._options.allow.op.includes('direct')) {
+      return {
+        ok: false,
+        err: new Error('EleringDashboardSDK: direct: operation not allowed by' +
+          ' SDK option allow.op value: "' + this._options.allow.op + '"'),
+      }
+    }
+
+    return this._rawRequest(fetchargs)
+  }
+
+
+  // Ungated request path shared by direct() and graphql(), each of which
+  // checks its own allow.op token first. Private, rather than a flag on
+  // fetchargs: a caller-supplied marker would let anyone opt straight back
+  // out of the gate by passing it.
+  async _rawRequest(fetchargs?: any) {
     const utility = this._utility
+
     const fetcher = utility.fetcher
     const makeContext = utility.makeContext
 
@@ -231,171 +252,273 @@ class EleringDashboardSDK {
 
 
 
+  // Raw GraphQL access: the pressure valve that makes the generated
+  // surface's deliberate omissions (per-call selection sets, typed filter
+  // builders, batching, subscriptions) livable — the whole schema stays
+  // reachable.
+  //
+  // Thin wrapper over the same prepare/fetch path `direct` uses, with the
+  // one thing raw `direct` cannot do for GraphQL: a GraphQL failure rides
+  // HTTP 200 as a top-level `errors` array, so status alone would report a
+  // failed query as ok.
+  //
+  // NOTE: like `direct`, this bypasses the feature pipeline — no retry,
+  // ratelimit or paging features apply.
+  async graphql(query: string, variables?: any, ctrl?: any) {
+    const options = this._options
+
+    if (!options.allow.op.includes('graphql')) {
+      return {
+        ok: false,
+        err: new Error('EleringDashboardSDK: graphql: operation not allowed by' +
+          ' SDK option allow.op value: "' + options.allow.op + '"'),
+      }
+    }
+
+    const res: any = await this._rawRequest({
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: { query, variables: variables || {} },
+      ctrl,
+    })
+
+    if (res instanceof Error) {
+      return res
+    }
+
+    // Errors are read BEFORE any status check: a GraphQL parse or validation
+    // failure comes back as HTTP 400 carrying the standard { errors: [...] }
+    // body, and the raw path represents a non-2xx as { ok: false } with no
+    // err — so returning early on status would discard the server's own
+    // diagnostics, which are the only useful part of that response.
+    const errors = null == res.data ? undefined : res.data.errors
+
+    if (null != errors && Array.isArray(errors) && 0 < errors.length) {
+      const first = errors[0] || {}
+      const err: any = new Error('EleringDashboardSDK: graphql: ' +
+        (first.message || 'graphql error'))
+      err.graphql = errors
+      return { ok: false, status: res.status, headers: res.headers, err, data: res.data }
+    }
+
+    return res
+  }
+
+
+
   // Entity access: `client.Balance().list()` / `client.Balance().load({ id })`.
-  Balance(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Balance(entopts?: Record<string, any>) {
     const self = this
-    return new BalanceEntity(self,data)
+    return new BalanceEntity(self, entopts)
   }
 
 
   // Entity access: `client.BalanceController().list()` / `client.BalanceController().load({ id })`.
-  BalanceController(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  BalanceController(entopts?: Record<string, any>) {
     const self = this
-    return new BalanceControllerEntity(self,data)
+    return new BalanceControllerEntity(self, entopts)
   }
 
 
   // Entity access: `client.Firm().list()` / `client.Firm().load({ id })`.
-  Firm(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Firm(entopts?: Record<string, any>) {
     const self = this
-    return new FirmEntity(self,data)
+    return new FirmEntity(self, entopts)
   }
 
 
   // Entity access: `client.FirmCapacityController().list()` / `client.FirmCapacityController().load({ id })`.
-  FirmCapacityController(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  FirmCapacityController(entopts?: Record<string, any>) {
     const self = this
-    return new FirmCapacityControllerEntity(self,data)
+    return new FirmCapacityControllerEntity(self, entopts)
   }
 
 
   // Entity access: `client.GasBalanceController().list()` / `client.GasBalanceController().load({ id })`.
-  GasBalanceController(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  GasBalanceController(entopts?: Record<string, any>) {
     const self = this
-    return new GasBalanceControllerEntity(self,data)
+    return new GasBalanceControllerEntity(self, entopts)
   }
 
 
   // Entity access: `client.GasBorderTradeController().list()` / `client.GasBorderTradeController().load({ id })`.
-  GasBorderTradeController(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  GasBorderTradeController(entopts?: Record<string, any>) {
     const self = this
-    return new GasBorderTradeControllerEntity(self,data)
+    return new GasBorderTradeControllerEntity(self, entopts)
   }
 
 
   // Entity access: `client.GasSystem().list()` / `client.GasSystem().load({ id })`.
-  GasSystem(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  GasSystem(entopts?: Record<string, any>) {
     const self = this
-    return new GasSystemEntity(self,data)
+    return new GasSystemEntity(self, entopts)
   }
 
 
   // Entity access: `client.GasSystemController().list()` / `client.GasSystemController().load({ id })`.
-  GasSystemController(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  GasSystemController(entopts?: Record<string, any>) {
     const self = this
-    return new GasSystemControllerEntity(self,data)
+    return new GasSystemControllerEntity(self, entopts)
   }
 
 
   // Entity access: `client.GasTrade().list()` / `client.GasTrade().load({ id })`.
-  GasTrade(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  GasTrade(entopts?: Record<string, any>) {
     const self = this
-    return new GasTradeEntity(self,data)
+    return new GasTradeEntity(self, entopts)
   }
 
 
   // Entity access: `client.GasTradeController().list()` / `client.GasTradeController().load({ id })`.
-  GasTradeController(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  GasTradeController(entopts?: Record<string, any>) {
     const self = this
-    return new GasTradeControllerEntity(self,data)
+    return new GasTradeControllerEntity(self, entopts)
   }
 
 
   // Entity access: `client.GasTransmissionController().list()` / `client.GasTransmissionController().load({ id })`.
-  GasTransmissionController(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  GasTransmissionController(entopts?: Record<string, any>) {
     const self = this
-    return new GasTransmissionControllerEntity(self,data)
+    return new GasTransmissionControllerEntity(self, entopts)
   }
 
 
   // Entity access: `client.GreenController().list()` / `client.GreenController().load({ id })`.
-  GreenController(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  GreenController(entopts?: Record<string, any>) {
     const self = this
-    return new GreenControllerEntity(self,data)
+    return new GreenControllerEntity(self, entopts)
   }
 
 
   // Entity access: `client.Interruptible().list()` / `client.Interruptible().load({ id })`.
-  Interruptible(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Interruptible(entopts?: Record<string, any>) {
     const self = this
-    return new InterruptibleEntity(self,data)
+    return new InterruptibleEntity(self, entopts)
   }
 
 
   // Entity access: `client.InterruptibleCapacityController().list()` / `client.InterruptibleCapacityController().load({ id })`.
-  InterruptibleCapacityController(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  InterruptibleCapacityController(entopts?: Record<string, any>) {
     const self = this
-    return new InterruptibleCapacityControllerEntity(self,data)
+    return new InterruptibleCapacityControllerEntity(self, entopts)
   }
 
 
   // Entity access: `client.Nomination().list()` / `client.Nomination().load({ id })`.
-  Nomination(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Nomination(entopts?: Record<string, any>) {
     const self = this
-    return new NominationEntity(self,data)
+    return new NominationEntity(self, entopts)
   }
 
 
   // Entity access: `client.NominationsController().list()` / `client.NominationsController().load({ id })`.
-  NominationsController(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  NominationsController(entopts?: Record<string, any>) {
     const self = this
-    return new NominationsControllerEntity(self,data)
+    return new NominationsControllerEntity(self, entopts)
   }
 
 
   // Entity access: `client.NpsController().list()` / `client.NpsController().load({ id })`.
-  NpsController(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  NpsController(entopts?: Record<string, any>) {
     const self = this
-    return new NpsControllerEntity(self,data)
+    return new NpsControllerEntity(self, entopts)
   }
 
 
   // Entity access: `client.Renomination().list()` / `client.Renomination().load({ id })`.
-  Renomination(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Renomination(entopts?: Record<string, any>) {
     const self = this
-    return new RenominationEntity(self,data)
+    return new RenominationEntity(self, entopts)
   }
 
 
   // Entity access: `client.RenominationsController().list()` / `client.RenominationsController().load({ id })`.
-  RenominationsController(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  RenominationsController(entopts?: Record<string, any>) {
     const self = this
-    return new RenominationsControllerEntity(self,data)
+    return new RenominationsControllerEntity(self, entopts)
   }
 
 
   // Entity access: `client.System().list()` / `client.System().load({ id })`.
-  System(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  System(entopts?: Record<string, any>) {
     const self = this
-    return new SystemEntity(self,data)
+    return new SystemEntity(self, entopts)
   }
 
 
   // Entity access: `client.SystemController().list()` / `client.SystemController().load({ id })`.
-  SystemController(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  SystemController(entopts?: Record<string, any>) {
     const self = this
-    return new SystemControllerEntity(self,data)
+    return new SystemControllerEntity(self, entopts)
   }
 
 
   // Entity access: `client.TransmissionController().list()` / `client.TransmissionController().load({ id })`.
-  TransmissionController(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  TransmissionController(entopts?: Record<string, any>) {
     const self = this
-    return new TransmissionControllerEntity(self,data)
+    return new TransmissionControllerEntity(self, entopts)
   }
 
 
   // Entity access: `client.UmmGasController().list()` / `client.UmmGasController().load({ id })`.
-  UmmGasController(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  UmmGasController(entopts?: Record<string, any>) {
     const self = this
-    return new UmmGasControllerEntity(self,data)
+    return new UmmGasControllerEntity(self, entopts)
   }
 
 
   // Entity access: `client.UmmRssFeedController().list()` / `client.UmmRssFeedController().load({ id })`.
-  UmmRssFeedController(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  UmmRssFeedController(entopts?: Record<string, any>) {
     const self = this
-    return new UmmRssFeedControllerEntity(self,data)
+    return new UmmRssFeedControllerEntity(self, entopts)
   }
 
 

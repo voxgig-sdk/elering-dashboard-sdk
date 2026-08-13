@@ -62,8 +62,8 @@ function makeCtrl(explain: boolean) {
 // Overrides configuration values with environment variables if available
 function envOverride(m: Record<string, any>) {
   if (
-    'TRUE' === process.env.ELERINGDASHBOARD_TEST_LIVE ||
-    'TRUE' === process.env.ELERINGDASHBOARD_TEST_OVERRIDE
+    'TRUE' === process.env.ELERING_DASHBOARD_TEST_LIVE ||
+    'TRUE' === process.env.ELERING_DASHBOARD_TEST_OVERRIDE
   ) {
     Object.entries(m).map(n => {
       let envval = process.env[n[0]]
@@ -74,7 +74,7 @@ function envOverride(m: Record<string, any>) {
     })
   }
 
-  m.ELERINGDASHBOARD_TEST_EXPLAIN = process.env.ELERINGDASHBOARD_TEST_EXPLAIN || m.ELERINGDASHBOARD_TEST_EXPLAIN
+  m.ELERING_DASHBOARD_TEST_EXPLAIN = process.env.ELERING_DASHBOARD_TEST_EXPLAIN || m.ELERING_DASHBOARD_TEST_EXPLAIN
 
   return m
 }

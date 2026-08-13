@@ -78,6 +78,7 @@ module EleringDashboardConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/balance",
                   "parts" => [
@@ -144,6 +145,7 @@ module EleringDashboardConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/balance/commerce/csv",
                   "parts" => [
@@ -197,6 +199,7 @@ module EleringDashboardConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/balance/csv",
                   "parts" => [
@@ -249,6 +252,7 @@ module EleringDashboardConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/balance/total/csv",
                   "parts" => [
@@ -294,6 +298,7 @@ module EleringDashboardConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/balance/total",
                   "parts" => [
@@ -337,6 +342,7 @@ module EleringDashboardConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/balance/commerce",
                   "parts" => [
@@ -359,6 +365,7 @@ module EleringDashboardConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/balance/commerce/latest",
                   "parts" => [
@@ -377,6 +384,7 @@ module EleringDashboardConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/balance/total/latest",
                   "parts" => [
@@ -432,6 +440,7 @@ module EleringDashboardConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/capacity/firm",
                   "parts" => [
@@ -519,6 +528,7 @@ module EleringDashboardConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/capacity/firm/csv",
                   "parts" => [
@@ -588,6 +598,7 @@ module EleringDashboardConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/gas-balance/price/csv",
                   "parts" => [
@@ -633,6 +644,7 @@ module EleringDashboardConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/gas-balance/price",
                   "parts" => [
@@ -671,6 +683,7 @@ module EleringDashboardConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/gas/border-trade/current",
                   "parts" => [
@@ -726,6 +739,7 @@ module EleringDashboardConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/gas-system",
                   "parts" => [
@@ -792,6 +806,7 @@ module EleringDashboardConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/gas-system/csv",
                   "parts" => [
@@ -844,6 +859,7 @@ module EleringDashboardConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/gas-system/daily/csv",
                   "parts" => [
@@ -897,6 +913,7 @@ module EleringDashboardConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/gas-system/m3/csv",
                   "parts" => [
@@ -942,6 +959,7 @@ module EleringDashboardConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/gas-system/daily",
                   "parts" => [
@@ -985,6 +1003,7 @@ module EleringDashboardConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/gas-system/daily-average",
                   "parts" => [
@@ -1028,6 +1047,7 @@ module EleringDashboardConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/gas-system/m3",
                   "parts" => [
@@ -1050,6 +1070,7 @@ module EleringDashboardConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/gas-system/latest",
                   "parts" => [
@@ -1104,6 +1125,7 @@ module EleringDashboardConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/gas-trade",
                   "parts" => [
@@ -1170,6 +1192,7 @@ module EleringDashboardConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/gas-trade/csv",
                   "parts" => [
@@ -1205,6 +1228,7 @@ module EleringDashboardConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/gas-trade/{group}/latest",
                   "parts" => [
@@ -1276,6 +1300,7 @@ module EleringDashboardConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/gas-transmission/cross-border/csv",
                   "parts" => [
@@ -1321,6 +1346,7 @@ module EleringDashboardConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/gas-transmission/cross-border",
                   "parts" => [
@@ -1343,6 +1369,7 @@ module EleringDashboardConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/gas-transmission/cross-border/latest",
                   "parts" => [
@@ -1407,6 +1434,7 @@ module EleringDashboardConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/green/certificates",
                   "parts" => [
@@ -1467,6 +1495,7 @@ module EleringDashboardConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/capacity/interruptible",
                   "parts" => [
@@ -1534,6 +1563,7 @@ module EleringDashboardConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/capacity/interruptible/csv",
                   "parts" => [
@@ -1595,6 +1625,7 @@ module EleringDashboardConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/nominations",
                   "parts" => [
@@ -1661,6 +1692,7 @@ module EleringDashboardConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/nominations/csv",
                   "parts" => [
@@ -1729,6 +1761,7 @@ module EleringDashboardConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/nps/price/csv",
                   "parts" => [
@@ -1782,6 +1815,7 @@ module EleringDashboardConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/nps/turnover/csv",
                   "parts" => [
@@ -1827,6 +1861,7 @@ module EleringDashboardConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/nps/price",
                   "parts" => [
@@ -1870,6 +1905,7 @@ module EleringDashboardConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/nps/turnover",
                   "parts" => [
@@ -1904,6 +1940,7 @@ module EleringDashboardConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/nps/price/{group}/current",
                   "parts" => [
@@ -1939,6 +1976,7 @@ module EleringDashboardConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/nps/price/{group}/latest",
                   "parts" => [
@@ -1974,6 +2012,7 @@ module EleringDashboardConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/nps/turnover/{group}/latest",
                   "parts" => [
@@ -2041,6 +2080,7 @@ module EleringDashboardConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/nominations/renominations",
                   "parts" => [
@@ -2108,6 +2148,7 @@ module EleringDashboardConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/nominations/renominations/csv",
                   "parts" => [
@@ -2169,6 +2210,7 @@ module EleringDashboardConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/system",
                   "parts" => [
@@ -2235,6 +2277,7 @@ module EleringDashboardConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/system/csv",
                   "parts" => [
@@ -2287,6 +2330,7 @@ module EleringDashboardConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/system/with-plan/csv",
                   "parts" => [
@@ -2332,6 +2376,7 @@ module EleringDashboardConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/system/with-plan",
                   "parts" => [
@@ -2354,6 +2399,7 @@ module EleringDashboardConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/system/latest",
                   "parts" => [
@@ -2427,6 +2473,7 @@ module EleringDashboardConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/transmission/cross-border-capacity/{group}/csv",
                   "parts" => [
@@ -2482,6 +2529,7 @@ module EleringDashboardConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/transmission/cross-border-planned-trade/csv",
                   "parts" => [
@@ -2535,6 +2583,7 @@ module EleringDashboardConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/transmission/cross-border/csv",
                   "parts" => [
@@ -2588,6 +2637,7 @@ module EleringDashboardConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/transmission/cross-border/hourly/csv",
                   "parts" => [
@@ -2645,6 +2695,7 @@ module EleringDashboardConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/transmission/cross-border-capacity/{group}",
                   "parts" => [
@@ -2690,6 +2741,7 @@ module EleringDashboardConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/transmission/cross-border",
                   "parts" => [
@@ -2733,6 +2785,7 @@ module EleringDashboardConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/transmission/cross-border-capacity",
                   "parts" => [
@@ -2776,6 +2829,7 @@ module EleringDashboardConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/transmission/cross-border-planned-trade",
                   "parts" => [
@@ -2819,6 +2873,7 @@ module EleringDashboardConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/transmission/cross-border/hourly",
                   "parts" => [
@@ -2842,6 +2897,7 @@ module EleringDashboardConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/transmission/cross-border-planned-trade/latest",
                   "parts" => [
@@ -2860,6 +2916,7 @@ module EleringDashboardConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/transmission/cross-border/latest",
                   "parts" => [
@@ -2984,6 +3041,7 @@ module EleringDashboardConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/umm/gas",
                   "parts" => [
@@ -3025,6 +3083,7 @@ module EleringDashboardConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/umm/gas/messages",
                   "parts" => [
@@ -3058,6 +3117,7 @@ module EleringDashboardConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/umm/single/{id}",
                   "parts" => [
@@ -3096,6 +3156,7 @@ module EleringDashboardConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/umm/gas/rss",
                   "parts" => [
@@ -3113,6 +3174,7 @@ module EleringDashboardConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/umm/gas/rss/aris",
                   "parts" => [

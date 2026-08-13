@@ -43,8 +43,8 @@ class EleringDashboardTestRunner
 
     public static function env_override(array $m): array
     {
-        $live = self::getenv('ELERINGDASHBOARD_TEST_LIVE');
-        $override = self::getenv('ELERINGDASHBOARD_TEST_OVERRIDE');
+        $live = self::getenv('ELERING_DASHBOARD_TEST_LIVE');
+        $override = self::getenv('ELERING_DASHBOARD_TEST_OVERRIDE');
 
         if ($live === 'TRUE' || $override === 'TRUE') {
             foreach (array_keys($m) as $key) {
@@ -63,9 +63,9 @@ class EleringDashboardTestRunner
             }
         }
 
-        $explain = self::getenv('ELERINGDASHBOARD_TEST_EXPLAIN');
+        $explain = self::getenv('ELERING_DASHBOARD_TEST_EXPLAIN');
         if ($explain !== null && $explain !== '') {
-            $m['ELERINGDASHBOARD_TEST_EXPLAIN'] = $explain;
+            $m['ELERING_DASHBOARD_TEST_EXPLAIN'] = $explain;
         }
 
         return $m;

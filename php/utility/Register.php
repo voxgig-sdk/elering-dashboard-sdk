@@ -23,6 +23,7 @@ require_once __DIR__ . '/MakeUrl.php';
 require_once __DIR__ . '/Param.php';
 require_once __DIR__ . '/PrepareAuth.php';
 require_once __DIR__ . '/PrepareBody.php';
+require_once __DIR__ . '/Graphql.php';
 require_once __DIR__ . '/PrepareHeaders.php';
 require_once __DIR__ . '/PrepareMethod.php';
 require_once __DIR__ . '/PrepareParams.php';
@@ -59,6 +60,8 @@ EleringDashboardUtility::setRegistrar(function (EleringDashboardUtility $u): voi
     $u->prepare_params = [EleringDashboardPrepareParams::class, 'call'];
     $u->prepare_path = [EleringDashboardPreparePath::class, 'call'];
     $u->prepare_query = [EleringDashboardPrepareQuery::class, 'call'];
+    $u->graphql_body = [EleringDashboardGraphql::class, 'body'];
+    $u->graphql_errors = [EleringDashboardGraphql::class, 'errors'];
     $u->result_basic = [EleringDashboardResultBasic::class, 'call'];
     $u->result_body = [EleringDashboardResultBody::class, 'call'];
     $u->result_headers = [EleringDashboardResultHeaders::class, 'call'];

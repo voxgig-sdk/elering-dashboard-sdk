@@ -21,7 +21,7 @@ class Config {
 
 
   main = {
-    name: 'ProjectName',
+    name: 'EleringDashboard',
   }
 
 
@@ -153,6 +153,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/balance",
               "parts": [
@@ -219,6 +220,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/balance/commerce/csv",
               "parts": [
@@ -272,6 +274,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/balance/csv",
               "parts": [
@@ -324,6 +327,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/balance/total/csv",
               "parts": [
@@ -369,6 +373,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/balance/total",
               "parts": [
@@ -412,6 +417,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/balance/commerce",
               "parts": [
@@ -434,6 +440,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/api/balance/commerce/latest",
               "parts": [
@@ -452,6 +459,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/api/balance/total/latest",
               "parts": [
@@ -507,6 +515,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/capacity/firm",
               "parts": [
@@ -594,6 +603,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/capacity/firm/csv",
               "parts": [
@@ -663,6 +673,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/gas-balance/price/csv",
               "parts": [
@@ -708,6 +719,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/gas-balance/price",
               "parts": [
@@ -746,6 +758,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/api/gas/border-trade/current",
               "parts": [
@@ -801,6 +814,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/gas-system",
               "parts": [
@@ -867,6 +881,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/gas-system/csv",
               "parts": [
@@ -919,6 +934,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/gas-system/daily/csv",
               "parts": [
@@ -972,6 +988,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/gas-system/m3/csv",
               "parts": [
@@ -1017,6 +1034,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/gas-system/daily",
               "parts": [
@@ -1060,6 +1078,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/gas-system/daily-average",
               "parts": [
@@ -1103,6 +1122,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/gas-system/m3",
               "parts": [
@@ -1125,6 +1145,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/api/gas-system/latest",
               "parts": [
@@ -1179,6 +1200,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/gas-trade",
               "parts": [
@@ -1245,6 +1267,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/gas-trade/csv",
               "parts": [
@@ -1280,6 +1303,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/gas-trade/{group}/latest",
               "parts": [
@@ -1351,6 +1375,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/gas-transmission/cross-border/csv",
               "parts": [
@@ -1396,6 +1421,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/gas-transmission/cross-border",
               "parts": [
@@ -1418,6 +1444,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/api/gas-transmission/cross-border/latest",
               "parts": [
@@ -1482,6 +1509,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/green/certificates",
               "parts": [
@@ -1542,6 +1570,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/capacity/interruptible",
               "parts": [
@@ -1609,6 +1638,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/capacity/interruptible/csv",
               "parts": [
@@ -1670,6 +1700,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/nominations",
               "parts": [
@@ -1736,6 +1767,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/nominations/csv",
               "parts": [
@@ -1804,6 +1836,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/nps/price/csv",
               "parts": [
@@ -1857,6 +1890,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/nps/turnover/csv",
               "parts": [
@@ -1902,6 +1936,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/nps/price",
               "parts": [
@@ -1945,6 +1980,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/nps/turnover",
               "parts": [
@@ -1979,6 +2015,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/nps/price/{group}/current",
               "parts": [
@@ -2014,6 +2051,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/nps/price/{group}/latest",
               "parts": [
@@ -2049,6 +2087,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/nps/turnover/{group}/latest",
               "parts": [
@@ -2116,6 +2155,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/nominations/renominations",
               "parts": [
@@ -2183,6 +2223,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/nominations/renominations/csv",
               "parts": [
@@ -2244,6 +2285,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/system",
               "parts": [
@@ -2310,6 +2352,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/system/csv",
               "parts": [
@@ -2362,6 +2405,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/system/with-plan/csv",
               "parts": [
@@ -2407,6 +2451,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/system/with-plan",
               "parts": [
@@ -2429,6 +2474,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/api/system/latest",
               "parts": [
@@ -2502,6 +2548,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/transmission/cross-border-capacity/{group}/csv",
               "parts": [
@@ -2557,6 +2604,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/transmission/cross-border-planned-trade/csv",
               "parts": [
@@ -2610,6 +2658,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/transmission/cross-border/csv",
               "parts": [
@@ -2663,6 +2712,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/transmission/cross-border/hourly/csv",
               "parts": [
@@ -2720,6 +2770,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/transmission/cross-border-capacity/{group}",
               "parts": [
@@ -2765,6 +2816,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/transmission/cross-border",
               "parts": [
@@ -2808,6 +2860,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/transmission/cross-border-capacity",
               "parts": [
@@ -2851,6 +2904,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/transmission/cross-border-planned-trade",
               "parts": [
@@ -2894,6 +2948,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/transmission/cross-border/hourly",
               "parts": [
@@ -2917,6 +2972,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/api/transmission/cross-border-planned-trade/latest",
               "parts": [
@@ -2935,6 +2991,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/api/transmission/cross-border/latest",
               "parts": [
@@ -3059,6 +3116,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/umm/gas",
               "parts": [
@@ -3100,6 +3158,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/umm/gas/messages",
               "parts": [
@@ -3133,6 +3192,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/umm/single/{id}",
               "parts": [
@@ -3171,6 +3231,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/umm/gas/rss",
               "parts": [
@@ -3188,6 +3249,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/umm/gas/rss/aris",
               "parts": [

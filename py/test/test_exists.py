@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# EleringDashboard SDK exists test
 
 import pytest
 from eleringdashboard_sdk import EleringDashboardSDK

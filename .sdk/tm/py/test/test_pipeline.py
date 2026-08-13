@@ -16,11 +16,11 @@
 import pytest
 
 from projectname_sdk import EleringDashboardSDK
-from core.error import EleringDashboardError
-from core.result import EleringDashboardResult
-from core.response import EleringDashboardResponse
-from core.spec import EleringDashboardSpec
-from feature.base_feature import EleringDashboardBaseFeature
+from projectname_sdk.core.error import EleringDashboardError
+from projectname_sdk.core.result import EleringDashboardResult
+from projectname_sdk.core.response import EleringDashboardResponse
+from projectname_sdk.core.spec import EleringDashboardSpec
+from projectname_sdk.feature.base_feature import EleringDashboardBaseFeature
 
 
 def _client():

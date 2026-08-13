@@ -59,11 +59,11 @@ def umm_rss_feed_controller_direct_setup(mockres)
   calls = []
 
   env = Runner.env_override({
-    "ELERINGDASHBOARD_TEST_UMM_RSS_FEED_CONTROLLER_ENTID" => {},
-    "ELERINGDASHBOARD_TEST_LIVE" => "FALSE",
+    "ELERING_DASHBOARD_TEST_UMM_RSS_FEED_CONTROLLER_ENTID" => {},
+    "ELERING_DASHBOARD_TEST_LIVE" => "FALSE",
   })
 
-  live = env["ELERINGDASHBOARD_TEST_LIVE"] == "TRUE"
+  live = env["ELERING_DASHBOARD_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {

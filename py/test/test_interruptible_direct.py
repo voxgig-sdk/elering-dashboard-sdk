@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from eleringdashboard_sdk.utility.voxgig_struct import voxgig_struct as vs
 from eleringdashboard_sdk import EleringDashboardSDK
-from core import helpers
+from eleringdashboard_sdk.core import helpers
 from test import runner
 
 
@@ -56,11 +56,11 @@ def _interruptible_direct_setup(mockres):
     calls = []
 
     env = runner.env_override({
-        "ELERINGDASHBOARD_TEST_INTERRUPTIBLE_ENTID": {},
-        "ELERINGDASHBOARD_TEST_LIVE": "FALSE",
+        "ELERING_DASHBOARD_TEST_INTERRUPTIBLE_ENTID": {},
+        "ELERING_DASHBOARD_TEST_LIVE": "FALSE",
     })
 
-    live = env.get("ELERINGDASHBOARD_TEST_LIVE") == "TRUE"
+    live = env.get("ELERING_DASHBOARD_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {

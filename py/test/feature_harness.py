@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import EleringDashboardControl
-from core.error import EleringDashboardError
-from core.result import EleringDashboardResult
-from core.spec import EleringDashboardSpec
+from eleringdashboard_sdk.config import make_config
+from eleringdashboard_sdk.features import _make_feature
+from eleringdashboard_sdk.core.control import EleringDashboardControl
+from eleringdashboard_sdk.core.error import EleringDashboardError
+from eleringdashboard_sdk.core.result import EleringDashboardResult
+from eleringdashboard_sdk.core.spec import EleringDashboardSpec
 
 
 # True when this SDK was generated with the named feature.

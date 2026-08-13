@@ -23,8 +23,8 @@ module EleringDashboardTestRunner
   end
 
   def self.env_override(m)
-    live = getenv("ELERINGDASHBOARD_TEST_LIVE")
-    override = getenv("ELERINGDASHBOARD_TEST_OVERRIDE")
+    live = getenv("ELERING_DASHBOARD_TEST_LIVE")
+    override = getenv("ELERING_DASHBOARD_TEST_OVERRIDE")
 
     if live == "TRUE" || override == "TRUE"
       m.each_key do |key|
@@ -44,8 +44,8 @@ module EleringDashboardTestRunner
       end
     end
 
-    explain = getenv("ELERINGDASHBOARD_TEST_EXPLAIN")
-    m["ELERINGDASHBOARD_TEST_EXPLAIN"] = explain if explain && !explain.empty?
+    explain = getenv("ELERING_DASHBOARD_TEST_EXPLAIN")
+    m["ELERING_DASHBOARD_TEST_EXPLAIN"] = explain if explain && !explain.empty?
 
     m
   end

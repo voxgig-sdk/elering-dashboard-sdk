@@ -26,8 +26,8 @@ import {
 describe('SystemControllerEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when ELERINGDASHBOARD_TEST_LIVE=TRUE.
-  afterEach(liveDelay('ELERINGDASHBOARD_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when ELERING_DASHBOARD_TEST_LIVE=TRUE.
+  afterEach(liveDelay('ELERING_DASHBOARD_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = EleringDashboardSDK.test()
@@ -62,7 +62,7 @@ describe('SystemControllerEntity', async () => {
     // LOAD
     const system_controller_ref01_ent = client.SystemController()
     const system_controller_ref01_match_dt0: any = {}
-    const system_controller_ref01_data_dt0 = await system_controller_ref01_ent.load(system_controller_ref01_match_dt0)
+    const system_controller_ref01_data_dt0 = (await system_controller_ref01_ent.load(system_controller_ref01_match_dt0)).data()
     assert(null != system_controller_ref01_data_dt0)
 
 

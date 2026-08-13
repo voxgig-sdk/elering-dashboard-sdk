@@ -66,12 +66,12 @@ Every entity operation returns `(value, error)`. Check `err` before
 using the value — there is no exception to catch:
 
 ```go
-balance, err := client.Balance(nil).Load(nil, nil)
+balancecontroller, err := client.BalanceController(nil).Load(nil, nil)
 if err != nil {
     // handle err
     return
 }
-_ = balance
+_ = balancecontroller
 ```
 
 `Direct` follows the same `(value, error)` convention:
@@ -135,13 +135,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-balance, err := client.Balance(nil).Load(
+balanceController, err := client.BalanceController(nil).Load(
     nil, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(balance) // the returned mock data
+fmt.Println(balanceController) // the returned mock data
 ```
 
 ### Use a custom fetch function
@@ -1075,11 +1075,11 @@ Entity instances are stateful. After a successful `Load`, the entity
 stores the returned data and match criteria internally.
 
 ```go
-balance := client.Balance(nil)
-balance.Load(nil, nil)
+balancecontroller := client.BalanceController(nil)
+balancecontroller.Load(nil, nil)
 
-// balance.Data() now returns the balance data from the last load
-// balance.Match() returns the last match criteria
+// balancecontroller.Data() now returns the balancecontroller data from the last load
+// balancecontroller.Match() returns the last match criteria
 ```
 
 Call `Make()` to create a fresh instance with the same configuration

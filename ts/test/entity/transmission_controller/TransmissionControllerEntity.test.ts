@@ -26,8 +26,8 @@ import {
 describe('TransmissionControllerEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when ELERINGDASHBOARD_TEST_LIVE=TRUE.
-  afterEach(liveDelay('ELERINGDASHBOARD_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when ELERING_DASHBOARD_TEST_LIVE=TRUE.
+  afterEach(liveDelay('ELERING_DASHBOARD_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = EleringDashboardSDK.test()
