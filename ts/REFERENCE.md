@@ -1319,7 +1319,7 @@ const transmission_controller = client.TransmissionController()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.TransmissionController().load()
+const result = await client.TransmissionController().load({ group: 'group' })
 ```
 
 ### Common Methods

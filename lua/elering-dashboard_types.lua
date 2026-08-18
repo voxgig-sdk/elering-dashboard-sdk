@@ -45,7 +45,6 @@
 ---@class GasTradeController
 
 ---@class GasTradeControllerLoadMatch
----@field group? string
 
 ---@class GasTransmissionController
 
@@ -74,7 +73,6 @@
 ---@class NpsController
 
 ---@class NpsControllerLoadMatch
----@field group? string
 
 ---@class Renomination
 
@@ -95,7 +93,7 @@
 ---@class TransmissionController
 
 ---@class TransmissionControllerLoadMatch
----@field group? string
+---@field group string
 
 ---@class UmmGasController
 

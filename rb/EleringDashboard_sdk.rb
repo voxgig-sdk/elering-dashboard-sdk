@@ -28,7 +28,7 @@ class EleringDashboardSDK
     utility = EleringDashboardUtility.new
     @_utility = utility
 
-    config = EleringDashboardConfig.make_config
+    config = EleringDashboardConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

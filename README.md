@@ -119,9 +119,12 @@ import { EleringDashboardSDK } from '@voxgig-sdk/elering-dashboard'
 
 const client = new EleringDashboardSDK()
 
-// Load balance data (returns a Balance)
-const balance = await client.Balance().load()
-console.log(balance)
+
+// Load a specific transmissioncontroller (returns a TransmissionController)
+const transmissioncontroller = await client.TransmissionController().load({
+  group: 'example_group',
+})
+console.log(transmissioncontroller)
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -226,12 +229,15 @@ import sdk "github.com/voxgig-sdk/elering-dashboard-sdk/go"
 
 client := sdk.New()
 
-// Load balance data
-balance, err := client.Balance(nil).Load(nil, nil)
+
+// Load a specific transmissioncontroller
+transmissionController, err := client.TransmissionController(nil).Load(
+    map[string]any{"group": "example_group"}, nil,
+)
 if err != nil {
     panic(err)
 }
-fmt.Println(balance)
+fmt.Println(transmissionController)
 ```
 
 ### Ruby

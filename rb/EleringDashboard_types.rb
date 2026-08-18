@@ -85,13 +85,8 @@ class GasTradeController
 end
 
 # Request payload for GasTradeController#load.
-#
-# @!attribute [rw] group
-#   @return [String, nil]
-GasTradeControllerLoadMatch = Struct.new(
-  :group,
-  keyword_init: true
-)
+class GasTradeControllerLoadMatch
+end
 
 # GasTransmissionController entity data model.
 class GasTransmissionController
@@ -146,13 +141,8 @@ class NpsController
 end
 
 # Request payload for NpsController#load.
-#
-# @!attribute [rw] group
-#   @return [String, nil]
-NpsControllerLoadMatch = Struct.new(
-  :group,
-  keyword_init: true
-)
+class NpsControllerLoadMatch
+end
 
 # Renomination entity data model.
 class Renomination
@@ -193,7 +183,7 @@ end
 # Request payload for TransmissionController#load.
 #
 # @!attribute [rw] group
-#   @return [String, nil]
+#   @return [String]
 TransmissionControllerLoadMatch = Struct.new(
   :group,
   keyword_init: true

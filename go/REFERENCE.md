@@ -1138,7 +1138,7 @@ fmt.Println(transmissionController.GetName()) // "transmission_controller"
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.TransmissionController(nil).Load(nil, nil)
+result, err := client.TransmissionController(nil).Load(map[string]any{"group": "group"}, nil)
 if err != nil {
     panic(err)
 }

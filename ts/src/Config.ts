@@ -36,7 +36,7 @@ class Config {
 
 
   options = {
-    base: 'https://dashboard.elering.ee',
+    base: "https://dashboard.elering.ee",
 
     headers: {
       "content-type": "application/json"
@@ -130,25 +130,20 @@ class Config {
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {
                 "query": [
                   {
-                    "active": true,
                     "example": "2020-06-30T20:59:59.999Z",
                     "kind": "query",
                     "name": "end",
                     "orig": "end",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "example": "2020-05-31T20:59:59.999Z",
                     "kind": "query",
                     "name": "start",
                     "orig": "start",
-                    "reqd": false,
                     "type": "`$STRING`"
                   }
                 ]
@@ -169,11 +164,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {
@@ -189,33 +182,26 @@ class Config {
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {
                 "query": [
                   {
-                    "active": true,
                     "example": "2020-06-30T20:59:59.999Z",
                     "kind": "query",
                     "name": "end",
                     "orig": "end",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "kind": "query",
                     "name": "field",
                     "orig": "field",
-                    "reqd": false,
                     "type": "`$ARRAY`"
                   },
                   {
-                    "active": true,
                     "example": "2020-05-31T20:59:59.999Z",
                     "kind": "query",
                     "name": "start",
                     "orig": "start",
-                    "reqd": false,
                     "type": "`$STRING`"
                   }
                 ]
@@ -239,37 +225,29 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             },
             {
-              "active": true,
               "args": {
                 "query": [
                   {
-                    "active": true,
                     "example": "2020-05-31T20:59:59.999Z",
                     "kind": "query",
                     "name": "end",
                     "orig": "end",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "kind": "query",
                     "name": "field",
                     "orig": "field",
-                    "reqd": false,
                     "type": "`$ARRAY`"
                   },
                   {
-                    "active": true,
                     "example": "2020-05-31T20:59:59.999Z",
                     "kind": "query",
                     "name": "start",
                     "orig": "start",
-                    "reqd": false,
                     "type": "`$STRING`"
                   }
                 ]
@@ -292,37 +270,29 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 1
+              }
             },
             {
-              "active": true,
               "args": {
                 "query": [
                   {
-                    "active": true,
                     "example": "2020-06-30T20:59:59.999Z",
                     "kind": "query",
                     "name": "end",
                     "orig": "end",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "kind": "query",
                     "name": "field",
                     "orig": "field",
-                    "reqd": false,
                     "type": "`$ARRAY`"
                   },
                   {
-                    "active": true,
                     "example": "2020-05-31T20:59:59.999Z",
                     "kind": "query",
                     "name": "start",
                     "orig": "start",
-                    "reqd": false,
                     "type": "`$STRING`"
                   }
                 ]
@@ -346,29 +316,23 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 2
+              }
             },
             {
-              "active": true,
               "args": {
                 "query": [
                   {
-                    "active": true,
                     "example": "2020-06-30T20:59:59.999Z",
                     "kind": "query",
                     "name": "end",
                     "orig": "end",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "example": "2020-05-31T20:59:59.999Z",
                     "kind": "query",
                     "name": "field",
                     "orig": "field",
-                    "reqd": false,
                     "type": "`$STRING`"
                   }
                 ]
@@ -390,29 +354,23 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 3
+              }
             },
             {
-              "active": true,
               "args": {
                 "query": [
                   {
-                    "active": true,
                     "example": "2020-06-30T20:59:59.999Z",
                     "kind": "query",
                     "name": "end",
                     "orig": "end",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "example": "2020-05-31T20:59:59.999Z",
                     "kind": "query",
                     "name": "start",
                     "orig": "start",
-                    "reqd": false,
                     "type": "`$STRING`"
                   }
                 ]
@@ -434,11 +392,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 4
+              }
             },
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "GET",
@@ -453,11 +409,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 5
+              }
             },
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "GET",
@@ -472,11 +426,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 6
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {
@@ -492,25 +444,20 @@ class Config {
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {
                 "query": [
                   {
-                    "active": true,
                     "example": "2020-06-30T20:59:59.999Z",
                     "kind": "query",
                     "name": "end",
                     "orig": "end",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "example": "2020-05-31T20:59:59.999Z",
                     "kind": "query",
                     "name": "start",
                     "orig": "start",
-                    "reqd": false,
                     "type": "`$STRING`"
                   }
                 ]
@@ -532,11 +479,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {
@@ -552,20 +497,16 @@ class Config {
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {
                 "query": [
                   {
-                    "active": true,
                     "example": "2020-05-31T20:59:59.999Z",
                     "kind": "query",
                     "name": "end",
                     "orig": "end",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "example": [
                       "[\"narva_technical_entry\"",
                       "\"narva_booked_entry\"",
@@ -589,16 +530,13 @@ class Config {
                     "kind": "query",
                     "name": "field",
                     "orig": "field",
-                    "reqd": false,
                     "type": "`$ARRAY`"
                   },
                   {
-                    "active": true,
                     "example": "2020-05-31T20:59:59.999Z",
                     "kind": "query",
                     "name": "start",
                     "orig": "start",
-                    "reqd": false,
                     "type": "`$STRING`"
                   }
                 ]
@@ -622,11 +560,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {
@@ -642,33 +578,26 @@ class Config {
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {
                 "query": [
                   {
-                    "active": true,
                     "example": "2020-06-30T20:59:59.999Z",
                     "kind": "query",
                     "name": "end",
                     "orig": "end",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "kind": "query",
                     "name": "field",
                     "orig": "field",
-                    "reqd": false,
                     "type": "`$ARRAY`"
                   },
                   {
-                    "active": true,
                     "example": "2020-05-31T20:59:59.999Z",
                     "kind": "query",
                     "name": "start",
                     "orig": "start",
-                    "reqd": false,
                     "type": "`$STRING`"
                   }
                 ]
@@ -692,29 +621,23 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             },
             {
-              "active": true,
               "args": {
                 "query": [
                   {
-                    "active": true,
                     "example": "2020-06-30T20:59:59.999Z",
                     "kind": "query",
                     "name": "end",
                     "orig": "end",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "example": "2020-05-31T20:59:59.999Z",
                     "kind": "query",
                     "name": "start",
                     "orig": "start",
-                    "reqd": false,
                     "type": "`$STRING`"
                   }
                 ]
@@ -736,11 +659,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 1
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {
@@ -756,7 +677,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "GET",
@@ -771,11 +691,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {
@@ -791,25 +709,20 @@ class Config {
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {
                 "query": [
                   {
-                    "active": true,
                     "example": "2020-06-30T20:59:59.999Z",
                     "kind": "query",
                     "name": "end",
                     "orig": "end",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "example": "2020-05-31T20:59:59.999Z",
                     "kind": "query",
                     "name": "start",
                     "orig": "start",
-                    "reqd": false,
                     "type": "`$STRING`"
                   }
                 ]
@@ -830,11 +743,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {
@@ -850,33 +761,26 @@ class Config {
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {
                 "query": [
                   {
-                    "active": true,
                     "example": "2020-06-30T20:59:59.999Z",
                     "kind": "query",
                     "name": "end",
                     "orig": "end",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "kind": "query",
                     "name": "field",
                     "orig": "field",
-                    "reqd": false,
                     "type": "`$ARRAY`"
                   },
                   {
-                    "active": true,
                     "example": "2020-05-31T20:59:59.999Z",
                     "kind": "query",
                     "name": "start",
                     "orig": "start",
-                    "reqd": false,
                     "type": "`$STRING`"
                   }
                 ]
@@ -899,37 +803,29 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             },
             {
-              "active": true,
               "args": {
                 "query": [
                   {
-                    "active": true,
                     "example": "2020-06-30T20:59:59.999Z",
                     "kind": "query",
                     "name": "end",
                     "orig": "end",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "kind": "query",
                     "name": "field",
                     "orig": "field",
-                    "reqd": false,
                     "type": "`$ARRAY`"
                   },
                   {
-                    "active": true,
                     "example": "2020-05-31T20:59:59.999Z",
                     "kind": "query",
                     "name": "start",
                     "orig": "start",
-                    "reqd": false,
                     "type": "`$STRING`"
                   }
                 ]
@@ -953,37 +849,29 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 1
+              }
             },
             {
-              "active": true,
               "args": {
                 "query": [
                   {
-                    "active": true,
                     "example": "2020-06-30T20:59:59.999Z",
                     "kind": "query",
                     "name": "end",
                     "orig": "end",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "kind": "query",
                     "name": "field",
                     "orig": "field",
-                    "reqd": false,
                     "type": "`$ARRAY`"
                   },
                   {
-                    "active": true,
                     "example": "2020-05-31T20:59:59.999Z",
                     "kind": "query",
                     "name": "start",
                     "orig": "start",
-                    "reqd": false,
                     "type": "`$STRING`"
                   }
                 ]
@@ -1007,29 +895,23 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 2
+              }
             },
             {
-              "active": true,
               "args": {
                 "query": [
                   {
-                    "active": true,
                     "example": "2020-06-30T20:59:59.999Z",
                     "kind": "query",
                     "name": "end",
                     "orig": "end",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "example": "2020-05-31T20:59:59.999Z",
                     "kind": "query",
                     "name": "start",
                     "orig": "start",
-                    "reqd": false,
                     "type": "`$STRING`"
                   }
                 ]
@@ -1051,29 +933,23 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 3
+              }
             },
             {
-              "active": true,
               "args": {
                 "query": [
                   {
-                    "active": true,
                     "example": "2020-06-30T20:59:59.999Z",
                     "kind": "query",
                     "name": "end",
                     "orig": "end",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "example": "2020-05-31T20:59:59.999Z",
                     "kind": "query",
                     "name": "start",
                     "orig": "start",
-                    "reqd": false,
                     "type": "`$STRING`"
                   }
                 ]
@@ -1095,29 +971,23 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 4
+              }
             },
             {
-              "active": true,
               "args": {
                 "query": [
                   {
-                    "active": true,
                     "example": "2020-06-30T20:59:59.999Z",
                     "kind": "query",
                     "name": "end",
                     "orig": "end",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "example": "2020-05-31T20:59:59.999Z",
                     "kind": "query",
                     "name": "start",
                     "orig": "start",
-                    "reqd": false,
                     "type": "`$STRING`"
                   }
                 ]
@@ -1139,11 +1009,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 5
+              }
             },
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "GET",
@@ -1157,11 +1025,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 6
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {
@@ -1177,25 +1043,20 @@ class Config {
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {
                 "query": [
                   {
-                    "active": true,
                     "example": "2020-06-30T20:59:59.999Z",
                     "kind": "query",
                     "name": "end",
                     "orig": "end",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "example": "2020-05-31T20:59:59.999Z",
                     "kind": "query",
                     "name": "start",
                     "orig": "start",
-                    "reqd": false,
                     "type": "`$STRING`"
                   }
                 ]
@@ -1216,11 +1077,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {
@@ -1236,33 +1095,26 @@ class Config {
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {
                 "query": [
                   {
-                    "active": true,
                     "example": "2020-06-30T20:59:59.999Z",
                     "kind": "query",
                     "name": "end",
                     "orig": "end",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "kind": "query",
                     "name": "field",
                     "orig": "field",
-                    "reqd": false,
                     "type": "`$ARRAY`"
                   },
                   {
-                    "active": true,
                     "example": "2020-05-31T20:59:59.999Z",
                     "kind": "query",
                     "name": "start",
                     "orig": "start",
-                    "reqd": false,
                     "type": "`$STRING`"
                   }
                 ]
@@ -1285,21 +1137,17 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             },
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "group",
                     "orig": "group",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -1320,11 +1168,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 1
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {
@@ -1344,33 +1190,26 @@ class Config {
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {
                 "query": [
                   {
-                    "active": true,
                     "example": "2020-06-30T20:59:59.999Z",
                     "kind": "query",
                     "name": "end",
                     "orig": "end",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "kind": "query",
                     "name": "field",
                     "orig": "field",
-                    "reqd": false,
                     "type": "`$ARRAY`"
                   },
                   {
-                    "active": true,
                     "example": "2020-05-31T20:59:59.999Z",
                     "kind": "query",
                     "name": "start",
                     "orig": "start",
-                    "reqd": false,
                     "type": "`$STRING`"
                   }
                 ]
@@ -1394,29 +1233,23 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             },
             {
-              "active": true,
               "args": {
                 "query": [
                   {
-                    "active": true,
                     "example": "2020-06-30T20:59:59.999Z",
                     "kind": "query",
                     "name": "end",
                     "orig": "end",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "example": "2020-05-31T20:59:59.999Z",
                     "kind": "query",
                     "name": "start",
                     "orig": "start",
-                    "reqd": false,
                     "type": "`$STRING`"
                   }
                 ]
@@ -1438,11 +1271,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 1
+              }
             },
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "GET",
@@ -1457,11 +1288,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 2
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {
@@ -1477,34 +1306,27 @@ class Config {
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {
                 "query": [
                   {
-                    "active": true,
                     "example": "Kõik kütused",
                     "kind": "query",
                     "name": "fuel",
                     "orig": "fuel",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "example": "Kõik tehnoloogiad",
                     "kind": "query",
                     "name": "technology",
                     "orig": "technology",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "example": "TRANSACTION",
                     "kind": "query",
                     "name": "type",
                     "orig": "type",
-                    "reqd": false,
                     "type": "`$STRING`"
                   }
                 ]
@@ -1527,11 +1349,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {
@@ -1547,25 +1367,20 @@ class Config {
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {
                 "query": [
                   {
-                    "active": true,
                     "example": "2020-06-30T20:59:59.999Z",
                     "kind": "query",
                     "name": "end",
                     "orig": "end",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "example": "2020-05-31T20:59:59.999Z",
                     "kind": "query",
                     "name": "start",
                     "orig": "start",
-                    "reqd": false,
                     "type": "`$STRING`"
                   }
                 ]
@@ -1587,11 +1402,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {
@@ -1607,33 +1420,26 @@ class Config {
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {
                 "query": [
                   {
-                    "active": true,
                     "example": "2020-05-31T20:59:59.999Z",
                     "kind": "query",
                     "name": "end",
                     "orig": "end",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "kind": "query",
                     "name": "field",
                     "orig": "field",
-                    "reqd": false,
                     "type": "`$ARRAY`"
                   },
                   {
-                    "active": true,
                     "example": "2020-05-31T20:59:59.999Z",
                     "kind": "query",
                     "name": "start",
                     "orig": "start",
-                    "reqd": false,
                     "type": "`$STRING`"
                   }
                 ]
@@ -1657,11 +1463,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {
@@ -1677,25 +1481,20 @@ class Config {
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {
                 "query": [
                   {
-                    "active": true,
                     "example": "2020-06-30T20:59:59.999Z",
                     "kind": "query",
                     "name": "end",
                     "orig": "end",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "example": "2020-05-31T20:59:59.999Z",
                     "kind": "query",
                     "name": "start",
                     "orig": "start",
-                    "reqd": false,
                     "type": "`$STRING`"
                   }
                 ]
@@ -1716,11 +1515,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {
@@ -1736,33 +1533,26 @@ class Config {
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {
                 "query": [
                   {
-                    "active": true,
                     "example": "2020-06-30T20:59:59.999Z",
                     "kind": "query",
                     "name": "end",
                     "orig": "end",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "kind": "query",
                     "name": "field",
                     "orig": "field",
-                    "reqd": false,
                     "type": "`$ARRAY`"
                   },
                   {
-                    "active": true,
                     "example": "2020-05-31T20:59:59.999Z",
                     "kind": "query",
                     "name": "start",
                     "orig": "start",
-                    "reqd": false,
                     "type": "`$STRING`"
                   }
                 ]
@@ -1785,11 +1575,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {
@@ -1805,33 +1593,26 @@ class Config {
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {
                 "query": [
                   {
-                    "active": true,
                     "example": "2020-06-30T20:59:59.999Z",
                     "kind": "query",
                     "name": "end",
                     "orig": "end",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "kind": "query",
                     "name": "field",
                     "orig": "field",
-                    "reqd": false,
                     "type": "`$ARRAY`"
                   },
                   {
-                    "active": true,
                     "example": "2020-05-31T20:59:59.999Z",
                     "kind": "query",
                     "name": "start",
                     "orig": "start",
-                    "reqd": false,
                     "type": "`$STRING`"
                   }
                 ]
@@ -1855,37 +1636,29 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             },
             {
-              "active": true,
               "args": {
                 "query": [
                   {
-                    "active": true,
                     "example": "2020-06-30T20:59:59.999Z",
                     "kind": "query",
                     "name": "end",
                     "orig": "end",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "kind": "query",
                     "name": "field",
                     "orig": "field",
-                    "reqd": false,
                     "type": "`$ARRAY`"
                   },
                   {
-                    "active": true,
                     "example": "2020-05-31T20:59:59.999Z",
                     "kind": "query",
                     "name": "start",
                     "orig": "start",
-                    "reqd": false,
                     "type": "`$STRING`"
                   }
                 ]
@@ -1909,29 +1682,23 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 1
+              }
             },
             {
-              "active": true,
               "args": {
                 "query": [
                   {
-                    "active": true,
                     "example": "2020-06-30T20:59:59.999Z",
                     "kind": "query",
                     "name": "end",
                     "orig": "end",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "example": "2020-05-31T20:59:59.999Z",
                     "kind": "query",
                     "name": "start",
                     "orig": "start",
-                    "reqd": false,
                     "type": "`$STRING`"
                   }
                 ]
@@ -1953,29 +1720,23 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 2
+              }
             },
             {
-              "active": true,
               "args": {
                 "query": [
                   {
-                    "active": true,
                     "example": "2020-06-30T20:59:59.999Z",
                     "kind": "query",
                     "name": "end",
                     "orig": "end",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "example": "2020-05-31T20:59:59.999Z",
                     "kind": "query",
                     "name": "start",
                     "orig": "start",
-                    "reqd": false,
                     "type": "`$STRING`"
                   }
                 ]
@@ -1997,21 +1758,17 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 3
+              }
             },
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "group",
                     "orig": "group",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -2033,21 +1790,17 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 4
+              }
             },
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "group",
                     "orig": "group",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -2069,21 +1822,17 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 5
+              }
             },
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "group",
                     "orig": "group",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -2105,11 +1854,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 6
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {
@@ -2132,25 +1879,20 @@ class Config {
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {
                 "query": [
                   {
-                    "active": true,
                     "example": "2020-06-30T20:59:59.999Z",
                     "kind": "query",
                     "name": "end",
                     "orig": "end",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "example": "2020-05-31T20:59:59.999Z",
                     "kind": "query",
                     "name": "start",
                     "orig": "start",
-                    "reqd": false,
                     "type": "`$STRING`"
                   }
                 ]
@@ -2172,11 +1914,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {
@@ -2192,33 +1932,26 @@ class Config {
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {
                 "query": [
                   {
-                    "active": true,
                     "example": "2020-06-30T20:59:59.999Z",
                     "kind": "query",
                     "name": "end",
                     "orig": "end",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "kind": "query",
                     "name": "field",
                     "orig": "field",
-                    "reqd": false,
                     "type": "`$ARRAY`"
                   },
                   {
-                    "active": true,
                     "example": "2020-05-31T20:59:59.999Z",
                     "kind": "query",
                     "name": "start",
                     "orig": "start",
-                    "reqd": false,
                     "type": "`$STRING`"
                   }
                 ]
@@ -2242,11 +1975,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {
@@ -2262,25 +1993,20 @@ class Config {
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {
                 "query": [
                   {
-                    "active": true,
                     "example": "2020-06-30T20:59:59.999Z",
                     "kind": "query",
                     "name": "end",
                     "orig": "end",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "example": "2020-05-31T20:59:59.999Z",
                     "kind": "query",
                     "name": "start",
                     "orig": "start",
-                    "reqd": false,
                     "type": "`$STRING`"
                   }
                 ]
@@ -2301,11 +2027,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {
@@ -2321,33 +2045,26 @@ class Config {
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {
                 "query": [
                   {
-                    "active": true,
                     "example": "2020-06-30T20:59:59.999Z",
                     "kind": "query",
                     "name": "end",
                     "orig": "end",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "kind": "query",
                     "name": "field",
                     "orig": "field",
-                    "reqd": false,
                     "type": "`$ARRAY`"
                   },
                   {
-                    "active": true,
                     "example": "2020-05-31T20:59:59.999Z",
                     "kind": "query",
                     "name": "start",
                     "orig": "start",
-                    "reqd": false,
                     "type": "`$STRING`"
                   }
                 ]
@@ -2370,37 +2087,29 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             },
             {
-              "active": true,
               "args": {
                 "query": [
                   {
-                    "active": true,
                     "example": "2020-06-30T20:59:59.999Z",
                     "kind": "query",
                     "name": "end",
                     "orig": "end",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "kind": "query",
                     "name": "field",
                     "orig": "field",
-                    "reqd": false,
                     "type": "`$ARRAY`"
                   },
                   {
-                    "active": true,
                     "example": "2020-05-31T20:59:59.999Z",
                     "kind": "query",
                     "name": "start",
                     "orig": "start",
-                    "reqd": false,
                     "type": "`$STRING`"
                   }
                 ]
@@ -2424,29 +2133,23 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 1
+              }
             },
             {
-              "active": true,
               "args": {
                 "query": [
                   {
-                    "active": true,
                     "example": "2020-06-30T20:59:59.999Z",
                     "kind": "query",
                     "name": "end",
                     "orig": "end",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "example": "2020-05-31T20:59:59.999Z",
                     "kind": "query",
                     "name": "start",
                     "orig": "start",
-                    "reqd": false,
                     "type": "`$STRING`"
                   }
                 ]
@@ -2468,11 +2171,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 2
+              }
             },
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "GET",
@@ -2486,11 +2187,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 3
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {
@@ -2506,44 +2205,35 @@ class Config {
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "group",
                     "orig": "group",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   }
                 ],
                 "query": [
                   {
-                    "active": true,
                     "example": "2020-06-30T20:59:59.999Z",
                     "kind": "query",
                     "name": "end",
                     "orig": "end",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "kind": "query",
                     "name": "field",
                     "orig": "field",
-                    "reqd": false,
                     "type": "`$ARRAY`"
                   },
                   {
-                    "active": true,
                     "example": "2020-05-31T20:59:59.999Z",
                     "kind": "query",
                     "name": "start",
                     "orig": "start",
-                    "reqd": false,
                     "type": "`$STRING`"
                   }
                 ]
@@ -2569,37 +2259,29 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             },
             {
-              "active": true,
               "args": {
                 "query": [
                   {
-                    "active": true,
                     "example": "2020-06-30T20:59:59.999Z",
                     "kind": "query",
                     "name": "end",
                     "orig": "end",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "kind": "query",
                     "name": "field",
                     "orig": "field",
-                    "reqd": false,
                     "type": "`$ARRAY`"
                   },
                   {
-                    "active": true,
                     "example": "2020-05-31T20:59:59.999Z",
                     "kind": "query",
                     "name": "start",
                     "orig": "start",
-                    "reqd": false,
                     "type": "`$STRING`"
                   }
                 ]
@@ -2623,37 +2305,29 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 1
+              }
             },
             {
-              "active": true,
               "args": {
                 "query": [
                   {
-                    "active": true,
                     "example": "2020-06-30T20:59:59.999Z",
                     "kind": "query",
                     "name": "end",
                     "orig": "end",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "kind": "query",
                     "name": "field",
                     "orig": "field",
-                    "reqd": false,
                     "type": "`$ARRAY`"
                   },
                   {
-                    "active": true,
                     "example": "2020-05-31T20:59:59.999Z",
                     "kind": "query",
                     "name": "start",
                     "orig": "start",
-                    "reqd": false,
                     "type": "`$STRING`"
                   }
                 ]
@@ -2677,37 +2351,29 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 2
+              }
             },
             {
-              "active": true,
               "args": {
                 "query": [
                   {
-                    "active": true,
                     "example": "2020-06-30T20:59:59.999Z",
                     "kind": "query",
                     "name": "end",
                     "orig": "end",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "kind": "query",
                     "name": "field",
                     "orig": "field",
-                    "reqd": false,
                     "type": "`$ARRAY`"
                   },
                   {
-                    "active": true,
                     "example": "2020-05-31T20:59:59.999Z",
                     "kind": "query",
                     "name": "start",
                     "orig": "start",
-                    "reqd": false,
                     "type": "`$STRING`"
                   }
                 ]
@@ -2732,40 +2398,32 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 3
+              }
             },
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "group",
                     "orig": "group",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   }
                 ],
                 "query": [
                   {
-                    "active": true,
                     "example": "2020-06-30T20:59:59.999Z",
                     "kind": "query",
                     "name": "end",
                     "orig": "end",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "example": "2020-05-31T20:59:59.999Z",
                     "kind": "query",
                     "name": "start",
                     "orig": "start",
-                    "reqd": false,
                     "type": "`$STRING`"
                   }
                 ]
@@ -2789,29 +2447,23 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 4
+              }
             },
             {
-              "active": true,
               "args": {
                 "query": [
                   {
-                    "active": true,
                     "example": "2020-06-30T20:59:59.999Z",
                     "kind": "query",
                     "name": "end",
                     "orig": "end",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "example": "2020-05-31T20:59:59.999Z",
                     "kind": "query",
                     "name": "start",
                     "orig": "start",
-                    "reqd": false,
                     "type": "`$STRING`"
                   }
                 ]
@@ -2833,29 +2485,23 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 5
+              }
             },
             {
-              "active": true,
               "args": {
                 "query": [
                   {
-                    "active": true,
                     "example": "2020-06-30T20:59:59.999Z",
                     "kind": "query",
                     "name": "end",
                     "orig": "end",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "example": "2020-05-31T20:59:59.999Z",
                     "kind": "query",
                     "name": "start",
                     "orig": "start",
-                    "reqd": false,
                     "type": "`$STRING`"
                   }
                 ]
@@ -2877,29 +2523,23 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 6
+              }
             },
             {
-              "active": true,
               "args": {
                 "query": [
                   {
-                    "active": true,
                     "example": "2020-06-30T20:59:59.999Z",
                     "kind": "query",
                     "name": "end",
                     "orig": "end",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "example": "2020-05-31T20:59:59.999Z",
                     "kind": "query",
                     "name": "start",
                     "orig": "start",
-                    "reqd": false,
                     "type": "`$STRING`"
                   }
                 ]
@@ -2921,29 +2561,23 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 7
+              }
             },
             {
-              "active": true,
               "args": {
                 "query": [
                   {
-                    "active": true,
                     "example": "2020-06-30T20:59:59.999Z",
                     "kind": "query",
                     "name": "end",
                     "orig": "end",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "example": "2020-05-31T20:59:59.999Z",
                     "kind": "query",
                     "name": "start",
                     "orig": "start",
-                    "reqd": false,
                     "type": "`$STRING`"
                   }
                 ]
@@ -2966,11 +2600,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 8
+              }
             },
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "GET",
@@ -2985,11 +2617,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 9
+              }
             },
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "GET",
@@ -3004,11 +2634,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 10
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {
@@ -3028,90 +2656,69 @@ class Config {
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {
                 "query": [
                   {
-                    "active": true,
                     "kind": "query",
                     "name": "affected_asset_name",
                     "orig": "affected_asset_name",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "kind": "query",
                     "name": "event_duration_date_time_end",
                     "orig": "event_duration_date_time_end",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "kind": "query",
                     "name": "event_duration_date_time_start",
                     "orig": "event_duration_date_time_start",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "kind": "query",
                     "name": "event_status",
                     "orig": "event_status",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "kind": "query",
                     "name": "event_type",
                     "orig": "event_type",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "example": 1,
                     "kind": "query",
                     "name": "page",
                     "orig": "page",
-                    "reqd": false,
                     "type": "`$INTEGER`"
                   },
                   {
-                    "active": true,
                     "kind": "query",
                     "name": "publication_datetime_start",
                     "orig": "publication_datetime_start",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "example": "publicationDateTimeDesc",
                     "kind": "query",
                     "name": "sort",
                     "orig": "sort",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "example": "current",
                     "kind": "query",
                     "name": "status",
                     "orig": "status",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "kind": "query",
                     "name": "unavailability_type",
                     "orig": "unavailability_type",
-                    "reqd": false,
                     "type": "`$STRING`"
                   }
                 ]
@@ -3141,15 +2748,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             },
             {
-              "active": true,
               "args": {
                 "query": [
                   {
-                    "active": true,
                     "kind": "query",
                     "name": "id",
                     "orig": "id",
@@ -3175,15 +2779,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 1
+              }
             },
             {
-              "active": true,
               "args": {
                 "query": [
                   {
-                    "active": true,
                     "kind": "query",
                     "name": "id",
                     "orig": "id",
@@ -3209,11 +2810,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 2
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {
@@ -3229,7 +2828,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "GET",
@@ -3243,11 +2841,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             },
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "GET",
@@ -3262,11 +2858,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 1
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {

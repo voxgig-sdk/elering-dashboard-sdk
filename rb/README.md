@@ -30,13 +30,15 @@ require_relative "EleringDashboard_sdk"
 client = EleringDashboardSDK.new
 ```
 
-### 3. Load a balance
+### 3. Load a transmissioncontroller
+
+TransmissionController is nested under group, so provide the `group`.
 
 ```ruby
 begin
-  # load returns the ENTITY — call data_get for the Balance record (raises on error).
-  balance = client.Balance.load()
-  puts balance
+  # load returns the ENTITY — call data_get for the TransmissionController record (raises on error).
+  transmissioncontroller = client.TransmissionController.load({ "group" => "example_group" })
+  puts transmissioncontroller
 rescue => err
   warn "load failed: #{err}"
 end
@@ -867,7 +869,7 @@ Create an instance: `transmission_controller = client.TransmissionController`
 
 ```ruby
 # load returns the ENTITY — call data_get for the TransmissionController record (raises on error).
-transmission_controller = client.TransmissionController.load()
+transmission_controller = client.TransmissionController.load({ "group" => "group" })
 ```
 
 

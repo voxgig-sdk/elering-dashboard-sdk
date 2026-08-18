@@ -1,7 +1,30 @@
 # EleringDashboard SDK configuration
 
 
+_shared_config = None
+
+
+def shared_config():
+    """Return the process-wide config, built once on first use.
+
+    The SDK reads the config on every request and never writes to it, so one
+    instance is shared by every client rather than rebuilt per client.
+
+    The returned dict is shared: treat it as read-only. Callers that need to
+    mutate should use make_config, which always returns a fresh copy.
+    """
+    global _shared_config
+    if _shared_config is None:
+        _shared_config = make_config()
+    return _shared_config
+
+
 def make_config():
+    """Build a fresh, fully materialised config dict.
+
+    Every call rebuilds the whole structure, so prefer shared_config unless
+    you need a private copy you intend to mutate.
+    """
     return {
         "main": {
             "name": "EleringDashboard",
@@ -55,25 +78,20 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "active": True,
                 "args": {
                   "query": [
                     {
-                      "active": True,
                       "example": "2020-06-30T20:59:59.999Z",
                       "kind": "query",
                       "name": "end",
                       "orig": "end",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "example": "2020-05-31T20:59:59.999Z",
                       "kind": "query",
                       "name": "start",
                       "orig": "start",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                   ],
@@ -95,10 +113,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "load",
           },
         },
         "relations": {
@@ -114,33 +130,26 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "active": True,
                 "args": {
                   "query": [
                     {
-                      "active": True,
                       "example": "2020-06-30T20:59:59.999Z",
                       "kind": "query",
                       "name": "end",
                       "orig": "end",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "kind": "query",
                       "name": "field",
                       "orig": "field",
-                      "reqd": False,
                       "type": "`$ARRAY`",
                     },
                     {
-                      "active": True,
                       "example": "2020-05-31T20:59:59.999Z",
                       "kind": "query",
                       "name": "start",
                       "orig": "start",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                   ],
@@ -165,36 +174,28 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
               {
-                "active": True,
                 "args": {
                   "query": [
                     {
-                      "active": True,
                       "example": "2020-05-31T20:59:59.999Z",
                       "kind": "query",
                       "name": "end",
                       "orig": "end",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "kind": "query",
                       "name": "field",
                       "orig": "field",
-                      "reqd": False,
                       "type": "`$ARRAY`",
                     },
                     {
-                      "active": True,
                       "example": "2020-05-31T20:59:59.999Z",
                       "kind": "query",
                       "name": "start",
                       "orig": "start",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                   ],
@@ -218,36 +219,28 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 1,
               },
               {
-                "active": True,
                 "args": {
                   "query": [
                     {
-                      "active": True,
                       "example": "2020-06-30T20:59:59.999Z",
                       "kind": "query",
                       "name": "end",
                       "orig": "end",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "kind": "query",
                       "name": "field",
                       "orig": "field",
-                      "reqd": False,
                       "type": "`$ARRAY`",
                     },
                     {
-                      "active": True,
                       "example": "2020-05-31T20:59:59.999Z",
                       "kind": "query",
                       "name": "start",
                       "orig": "start",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                   ],
@@ -272,28 +265,22 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 2,
               },
               {
-                "active": True,
                 "args": {
                   "query": [
                     {
-                      "active": True,
                       "example": "2020-06-30T20:59:59.999Z",
                       "kind": "query",
                       "name": "end",
                       "orig": "end",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "example": "2020-05-31T20:59:59.999Z",
                       "kind": "query",
                       "name": "field",
                       "orig": "field",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                   ],
@@ -316,28 +303,22 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 3,
               },
               {
-                "active": True,
                 "args": {
                   "query": [
                     {
-                      "active": True,
                       "example": "2020-06-30T20:59:59.999Z",
                       "kind": "query",
                       "name": "end",
                       "orig": "end",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "example": "2020-05-31T20:59:59.999Z",
                       "kind": "query",
                       "name": "start",
                       "orig": "start",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                   ],
@@ -360,10 +341,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 4,
               },
               {
-                "active": True,
                 "args": {},
                 "kind": "http",
                 "method": "GET",
@@ -379,10 +358,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 5,
               },
               {
-                "active": True,
                 "args": {},
                 "kind": "http",
                 "method": "GET",
@@ -398,10 +375,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 6,
               },
             ],
-            "key$": "load",
           },
         },
         "relations": {
@@ -417,25 +392,20 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "active": True,
                 "args": {
                   "query": [
                     {
-                      "active": True,
                       "example": "2020-06-30T20:59:59.999Z",
                       "kind": "query",
                       "name": "end",
                       "orig": "end",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "example": "2020-05-31T20:59:59.999Z",
                       "kind": "query",
                       "name": "start",
                       "orig": "start",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                   ],
@@ -458,10 +428,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "load",
           },
         },
         "relations": {
@@ -477,20 +445,16 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "active": True,
                 "args": {
                   "query": [
                     {
-                      "active": True,
                       "example": "2020-05-31T20:59:59.999Z",
                       "kind": "query",
                       "name": "end",
                       "orig": "end",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "example": [
                         "[\"narva_technical_entry\"",
                         "\"narva_booked_entry\"",
@@ -514,16 +478,13 @@ def make_config():
                       "kind": "query",
                       "name": "field",
                       "orig": "field",
-                      "reqd": False,
                       "type": "`$ARRAY`",
                     },
                     {
-                      "active": True,
                       "example": "2020-05-31T20:59:59.999Z",
                       "kind": "query",
                       "name": "start",
                       "orig": "start",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                   ],
@@ -548,10 +509,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "load",
           },
         },
         "relations": {
@@ -567,33 +526,26 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "active": True,
                 "args": {
                   "query": [
                     {
-                      "active": True,
                       "example": "2020-06-30T20:59:59.999Z",
                       "kind": "query",
                       "name": "end",
                       "orig": "end",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "kind": "query",
                       "name": "field",
                       "orig": "field",
-                      "reqd": False,
                       "type": "`$ARRAY`",
                     },
                     {
-                      "active": True,
                       "example": "2020-05-31T20:59:59.999Z",
                       "kind": "query",
                       "name": "start",
                       "orig": "start",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                   ],
@@ -618,28 +570,22 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
               {
-                "active": True,
                 "args": {
                   "query": [
                     {
-                      "active": True,
                       "example": "2020-06-30T20:59:59.999Z",
                       "kind": "query",
                       "name": "end",
                       "orig": "end",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "example": "2020-05-31T20:59:59.999Z",
                       "kind": "query",
                       "name": "start",
                       "orig": "start",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                   ],
@@ -662,10 +608,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 1,
               },
             ],
-            "key$": "load",
           },
         },
         "relations": {
@@ -681,7 +625,6 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "active": True,
                 "args": {},
                 "kind": "http",
                 "method": "GET",
@@ -697,10 +640,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "load",
           },
         },
         "relations": {
@@ -716,25 +657,20 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "active": True,
                 "args": {
                   "query": [
                     {
-                      "active": True,
                       "example": "2020-06-30T20:59:59.999Z",
                       "kind": "query",
                       "name": "end",
                       "orig": "end",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "example": "2020-05-31T20:59:59.999Z",
                       "kind": "query",
                       "name": "start",
                       "orig": "start",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                   ],
@@ -756,10 +692,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "load",
           },
         },
         "relations": {
@@ -775,33 +709,26 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "active": True,
                 "args": {
                   "query": [
                     {
-                      "active": True,
                       "example": "2020-06-30T20:59:59.999Z",
                       "kind": "query",
                       "name": "end",
                       "orig": "end",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "kind": "query",
                       "name": "field",
                       "orig": "field",
-                      "reqd": False,
                       "type": "`$ARRAY`",
                     },
                     {
-                      "active": True,
                       "example": "2020-05-31T20:59:59.999Z",
                       "kind": "query",
                       "name": "start",
                       "orig": "start",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                   ],
@@ -825,36 +752,28 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
               {
-                "active": True,
                 "args": {
                   "query": [
                     {
-                      "active": True,
                       "example": "2020-06-30T20:59:59.999Z",
                       "kind": "query",
                       "name": "end",
                       "orig": "end",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "kind": "query",
                       "name": "field",
                       "orig": "field",
-                      "reqd": False,
                       "type": "`$ARRAY`",
                     },
                     {
-                      "active": True,
                       "example": "2020-05-31T20:59:59.999Z",
                       "kind": "query",
                       "name": "start",
                       "orig": "start",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                   ],
@@ -879,36 +798,28 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 1,
               },
               {
-                "active": True,
                 "args": {
                   "query": [
                     {
-                      "active": True,
                       "example": "2020-06-30T20:59:59.999Z",
                       "kind": "query",
                       "name": "end",
                       "orig": "end",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "kind": "query",
                       "name": "field",
                       "orig": "field",
-                      "reqd": False,
                       "type": "`$ARRAY`",
                     },
                     {
-                      "active": True,
                       "example": "2020-05-31T20:59:59.999Z",
                       "kind": "query",
                       "name": "start",
                       "orig": "start",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                   ],
@@ -933,28 +844,22 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 2,
               },
               {
-                "active": True,
                 "args": {
                   "query": [
                     {
-                      "active": True,
                       "example": "2020-06-30T20:59:59.999Z",
                       "kind": "query",
                       "name": "end",
                       "orig": "end",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "example": "2020-05-31T20:59:59.999Z",
                       "kind": "query",
                       "name": "start",
                       "orig": "start",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                   ],
@@ -977,28 +882,22 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 3,
               },
               {
-                "active": True,
                 "args": {
                   "query": [
                     {
-                      "active": True,
                       "example": "2020-06-30T20:59:59.999Z",
                       "kind": "query",
                       "name": "end",
                       "orig": "end",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "example": "2020-05-31T20:59:59.999Z",
                       "kind": "query",
                       "name": "start",
                       "orig": "start",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                   ],
@@ -1021,28 +920,22 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 4,
               },
               {
-                "active": True,
                 "args": {
                   "query": [
                     {
-                      "active": True,
                       "example": "2020-06-30T20:59:59.999Z",
                       "kind": "query",
                       "name": "end",
                       "orig": "end",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "example": "2020-05-31T20:59:59.999Z",
                       "kind": "query",
                       "name": "start",
                       "orig": "start",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                   ],
@@ -1065,10 +958,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 5,
               },
               {
-                "active": True,
                 "args": {},
                 "kind": "http",
                 "method": "GET",
@@ -1083,10 +974,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 6,
               },
             ],
-            "key$": "load",
           },
         },
         "relations": {
@@ -1102,25 +991,20 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "active": True,
                 "args": {
                   "query": [
                     {
-                      "active": True,
                       "example": "2020-06-30T20:59:59.999Z",
                       "kind": "query",
                       "name": "end",
                       "orig": "end",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "example": "2020-05-31T20:59:59.999Z",
                       "kind": "query",
                       "name": "start",
                       "orig": "start",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                   ],
@@ -1142,10 +1026,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "load",
           },
         },
         "relations": {
@@ -1161,33 +1043,26 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "active": True,
                 "args": {
                   "query": [
                     {
-                      "active": True,
                       "example": "2020-06-30T20:59:59.999Z",
                       "kind": "query",
                       "name": "end",
                       "orig": "end",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "kind": "query",
                       "name": "field",
                       "orig": "field",
-                      "reqd": False,
                       "type": "`$ARRAY`",
                     },
                     {
-                      "active": True,
                       "example": "2020-05-31T20:59:59.999Z",
                       "kind": "query",
                       "name": "start",
                       "orig": "start",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                   ],
@@ -1211,20 +1086,16 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
               {
-                "active": True,
                 "args": {
                   "params": [
                     {
-                      "active": True,
                       "kind": "param",
                       "name": "group",
                       "orig": "group",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "index$": 0,
                     },
                   ],
                 },
@@ -1246,10 +1117,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 1,
               },
             ],
-            "key$": "load",
           },
         },
         "relations": {
@@ -1269,33 +1138,26 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "active": True,
                 "args": {
                   "query": [
                     {
-                      "active": True,
                       "example": "2020-06-30T20:59:59.999Z",
                       "kind": "query",
                       "name": "end",
                       "orig": "end",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "kind": "query",
                       "name": "field",
                       "orig": "field",
-                      "reqd": False,
                       "type": "`$ARRAY`",
                     },
                     {
-                      "active": True,
                       "example": "2020-05-31T20:59:59.999Z",
                       "kind": "query",
                       "name": "start",
                       "orig": "start",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                   ],
@@ -1320,28 +1182,22 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
               {
-                "active": True,
                 "args": {
                   "query": [
                     {
-                      "active": True,
                       "example": "2020-06-30T20:59:59.999Z",
                       "kind": "query",
                       "name": "end",
                       "orig": "end",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "example": "2020-05-31T20:59:59.999Z",
                       "kind": "query",
                       "name": "start",
                       "orig": "start",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                   ],
@@ -1364,10 +1220,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 1,
               },
               {
-                "active": True,
                 "args": {},
                 "kind": "http",
                 "method": "GET",
@@ -1383,10 +1237,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 2,
               },
             ],
-            "key$": "load",
           },
         },
         "relations": {
@@ -1402,34 +1254,27 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "active": True,
                 "args": {
                   "query": [
                     {
-                      "active": True,
                       "example": "Kõik kütused",
                       "kind": "query",
                       "name": "fuel",
                       "orig": "fuel",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "example": "Kõik tehnoloogiad",
                       "kind": "query",
                       "name": "technology",
                       "orig": "technology",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "example": "TRANSACTION",
                       "kind": "query",
                       "name": "type",
                       "orig": "type",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                   ],
@@ -1453,10 +1298,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "load",
           },
         },
         "relations": {
@@ -1472,25 +1315,20 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "active": True,
                 "args": {
                   "query": [
                     {
-                      "active": True,
                       "example": "2020-06-30T20:59:59.999Z",
                       "kind": "query",
                       "name": "end",
                       "orig": "end",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "example": "2020-05-31T20:59:59.999Z",
                       "kind": "query",
                       "name": "start",
                       "orig": "start",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                   ],
@@ -1513,10 +1351,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "load",
           },
         },
         "relations": {
@@ -1532,33 +1368,26 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "active": True,
                 "args": {
                   "query": [
                     {
-                      "active": True,
                       "example": "2020-05-31T20:59:59.999Z",
                       "kind": "query",
                       "name": "end",
                       "orig": "end",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "kind": "query",
                       "name": "field",
                       "orig": "field",
-                      "reqd": False,
                       "type": "`$ARRAY`",
                     },
                     {
-                      "active": True,
                       "example": "2020-05-31T20:59:59.999Z",
                       "kind": "query",
                       "name": "start",
                       "orig": "start",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                   ],
@@ -1583,10 +1412,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "load",
           },
         },
         "relations": {
@@ -1602,25 +1429,20 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "active": True,
                 "args": {
                   "query": [
                     {
-                      "active": True,
                       "example": "2020-06-30T20:59:59.999Z",
                       "kind": "query",
                       "name": "end",
                       "orig": "end",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "example": "2020-05-31T20:59:59.999Z",
                       "kind": "query",
                       "name": "start",
                       "orig": "start",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                   ],
@@ -1642,10 +1464,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "load",
           },
         },
         "relations": {
@@ -1661,33 +1481,26 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "active": True,
                 "args": {
                   "query": [
                     {
-                      "active": True,
                       "example": "2020-06-30T20:59:59.999Z",
                       "kind": "query",
                       "name": "end",
                       "orig": "end",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "kind": "query",
                       "name": "field",
                       "orig": "field",
-                      "reqd": False,
                       "type": "`$ARRAY`",
                     },
                     {
-                      "active": True,
                       "example": "2020-05-31T20:59:59.999Z",
                       "kind": "query",
                       "name": "start",
                       "orig": "start",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                   ],
@@ -1711,10 +1524,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "load",
           },
         },
         "relations": {
@@ -1730,33 +1541,26 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "active": True,
                 "args": {
                   "query": [
                     {
-                      "active": True,
                       "example": "2020-06-30T20:59:59.999Z",
                       "kind": "query",
                       "name": "end",
                       "orig": "end",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "kind": "query",
                       "name": "field",
                       "orig": "field",
-                      "reqd": False,
                       "type": "`$ARRAY`",
                     },
                     {
-                      "active": True,
                       "example": "2020-05-31T20:59:59.999Z",
                       "kind": "query",
                       "name": "start",
                       "orig": "start",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                   ],
@@ -1781,36 +1585,28 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
               {
-                "active": True,
                 "args": {
                   "query": [
                     {
-                      "active": True,
                       "example": "2020-06-30T20:59:59.999Z",
                       "kind": "query",
                       "name": "end",
                       "orig": "end",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "kind": "query",
                       "name": "field",
                       "orig": "field",
-                      "reqd": False,
                       "type": "`$ARRAY`",
                     },
                     {
-                      "active": True,
                       "example": "2020-05-31T20:59:59.999Z",
                       "kind": "query",
                       "name": "start",
                       "orig": "start",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                   ],
@@ -1835,28 +1631,22 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 1,
               },
               {
-                "active": True,
                 "args": {
                   "query": [
                     {
-                      "active": True,
                       "example": "2020-06-30T20:59:59.999Z",
                       "kind": "query",
                       "name": "end",
                       "orig": "end",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "example": "2020-05-31T20:59:59.999Z",
                       "kind": "query",
                       "name": "start",
                       "orig": "start",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                   ],
@@ -1879,28 +1669,22 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 2,
               },
               {
-                "active": True,
                 "args": {
                   "query": [
                     {
-                      "active": True,
                       "example": "2020-06-30T20:59:59.999Z",
                       "kind": "query",
                       "name": "end",
                       "orig": "end",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "example": "2020-05-31T20:59:59.999Z",
                       "kind": "query",
                       "name": "start",
                       "orig": "start",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                   ],
@@ -1923,20 +1707,16 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 3,
               },
               {
-                "active": True,
                 "args": {
                   "params": [
                     {
-                      "active": True,
                       "kind": "param",
                       "name": "group",
                       "orig": "group",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "index$": 0,
                     },
                   ],
                 },
@@ -1959,20 +1739,16 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 4,
               },
               {
-                "active": True,
                 "args": {
                   "params": [
                     {
-                      "active": True,
                       "kind": "param",
                       "name": "group",
                       "orig": "group",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "index$": 0,
                     },
                   ],
                 },
@@ -1995,20 +1771,16 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 5,
               },
               {
-                "active": True,
                 "args": {
                   "params": [
                     {
-                      "active": True,
                       "kind": "param",
                       "name": "group",
                       "orig": "group",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "index$": 0,
                     },
                   ],
                 },
@@ -2031,10 +1803,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 6,
               },
             ],
-            "key$": "load",
           },
         },
         "relations": {
@@ -2057,25 +1827,20 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "active": True,
                 "args": {
                   "query": [
                     {
-                      "active": True,
                       "example": "2020-06-30T20:59:59.999Z",
                       "kind": "query",
                       "name": "end",
                       "orig": "end",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "example": "2020-05-31T20:59:59.999Z",
                       "kind": "query",
                       "name": "start",
                       "orig": "start",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                   ],
@@ -2098,10 +1863,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "load",
           },
         },
         "relations": {
@@ -2117,33 +1880,26 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "active": True,
                 "args": {
                   "query": [
                     {
-                      "active": True,
                       "example": "2020-06-30T20:59:59.999Z",
                       "kind": "query",
                       "name": "end",
                       "orig": "end",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "kind": "query",
                       "name": "field",
                       "orig": "field",
-                      "reqd": False,
                       "type": "`$ARRAY`",
                     },
                     {
-                      "active": True,
                       "example": "2020-05-31T20:59:59.999Z",
                       "kind": "query",
                       "name": "start",
                       "orig": "start",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                   ],
@@ -2168,10 +1924,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "load",
           },
         },
         "relations": {
@@ -2187,25 +1941,20 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "active": True,
                 "args": {
                   "query": [
                     {
-                      "active": True,
                       "example": "2020-06-30T20:59:59.999Z",
                       "kind": "query",
                       "name": "end",
                       "orig": "end",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "example": "2020-05-31T20:59:59.999Z",
                       "kind": "query",
                       "name": "start",
                       "orig": "start",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                   ],
@@ -2227,10 +1976,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "load",
           },
         },
         "relations": {
@@ -2246,33 +1993,26 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "active": True,
                 "args": {
                   "query": [
                     {
-                      "active": True,
                       "example": "2020-06-30T20:59:59.999Z",
                       "kind": "query",
                       "name": "end",
                       "orig": "end",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "kind": "query",
                       "name": "field",
                       "orig": "field",
-                      "reqd": False,
                       "type": "`$ARRAY`",
                     },
                     {
-                      "active": True,
                       "example": "2020-05-31T20:59:59.999Z",
                       "kind": "query",
                       "name": "start",
                       "orig": "start",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                   ],
@@ -2296,36 +2036,28 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
               {
-                "active": True,
                 "args": {
                   "query": [
                     {
-                      "active": True,
                       "example": "2020-06-30T20:59:59.999Z",
                       "kind": "query",
                       "name": "end",
                       "orig": "end",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "kind": "query",
                       "name": "field",
                       "orig": "field",
-                      "reqd": False,
                       "type": "`$ARRAY`",
                     },
                     {
-                      "active": True,
                       "example": "2020-05-31T20:59:59.999Z",
                       "kind": "query",
                       "name": "start",
                       "orig": "start",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                   ],
@@ -2350,28 +2082,22 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 1,
               },
               {
-                "active": True,
                 "args": {
                   "query": [
                     {
-                      "active": True,
                       "example": "2020-06-30T20:59:59.999Z",
                       "kind": "query",
                       "name": "end",
                       "orig": "end",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "example": "2020-05-31T20:59:59.999Z",
                       "kind": "query",
                       "name": "start",
                       "orig": "start",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                   ],
@@ -2394,10 +2120,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 2,
               },
               {
-                "active": True,
                 "args": {},
                 "kind": "http",
                 "method": "GET",
@@ -2412,10 +2136,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 3,
               },
             ],
-            "key$": "load",
           },
         },
         "relations": {
@@ -2431,44 +2153,35 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "active": True,
                 "args": {
                   "params": [
                     {
-                      "active": True,
                       "kind": "param",
                       "name": "group",
                       "orig": "group",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "index$": 0,
                     },
                   ],
                   "query": [
                     {
-                      "active": True,
                       "example": "2020-06-30T20:59:59.999Z",
                       "kind": "query",
                       "name": "end",
                       "orig": "end",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "kind": "query",
                       "name": "field",
                       "orig": "field",
-                      "reqd": False,
                       "type": "`$ARRAY`",
                     },
                     {
-                      "active": True,
                       "example": "2020-05-31T20:59:59.999Z",
                       "kind": "query",
                       "name": "start",
                       "orig": "start",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                   ],
@@ -2495,36 +2208,28 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
               {
-                "active": True,
                 "args": {
                   "query": [
                     {
-                      "active": True,
                       "example": "2020-06-30T20:59:59.999Z",
                       "kind": "query",
                       "name": "end",
                       "orig": "end",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "kind": "query",
                       "name": "field",
                       "orig": "field",
-                      "reqd": False,
                       "type": "`$ARRAY`",
                     },
                     {
-                      "active": True,
                       "example": "2020-05-31T20:59:59.999Z",
                       "kind": "query",
                       "name": "start",
                       "orig": "start",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                   ],
@@ -2549,36 +2254,28 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 1,
               },
               {
-                "active": True,
                 "args": {
                   "query": [
                     {
-                      "active": True,
                       "example": "2020-06-30T20:59:59.999Z",
                       "kind": "query",
                       "name": "end",
                       "orig": "end",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "kind": "query",
                       "name": "field",
                       "orig": "field",
-                      "reqd": False,
                       "type": "`$ARRAY`",
                     },
                     {
-                      "active": True,
                       "example": "2020-05-31T20:59:59.999Z",
                       "kind": "query",
                       "name": "start",
                       "orig": "start",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                   ],
@@ -2603,36 +2300,28 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 2,
               },
               {
-                "active": True,
                 "args": {
                   "query": [
                     {
-                      "active": True,
                       "example": "2020-06-30T20:59:59.999Z",
                       "kind": "query",
                       "name": "end",
                       "orig": "end",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "kind": "query",
                       "name": "field",
                       "orig": "field",
-                      "reqd": False,
                       "type": "`$ARRAY`",
                     },
                     {
-                      "active": True,
                       "example": "2020-05-31T20:59:59.999Z",
                       "kind": "query",
                       "name": "start",
                       "orig": "start",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                   ],
@@ -2658,39 +2347,31 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 3,
               },
               {
-                "active": True,
                 "args": {
                   "params": [
                     {
-                      "active": True,
                       "kind": "param",
                       "name": "group",
                       "orig": "group",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "index$": 0,
                     },
                   ],
                   "query": [
                     {
-                      "active": True,
                       "example": "2020-06-30T20:59:59.999Z",
                       "kind": "query",
                       "name": "end",
                       "orig": "end",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "example": "2020-05-31T20:59:59.999Z",
                       "kind": "query",
                       "name": "start",
                       "orig": "start",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                   ],
@@ -2715,28 +2396,22 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 4,
               },
               {
-                "active": True,
                 "args": {
                   "query": [
                     {
-                      "active": True,
                       "example": "2020-06-30T20:59:59.999Z",
                       "kind": "query",
                       "name": "end",
                       "orig": "end",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "example": "2020-05-31T20:59:59.999Z",
                       "kind": "query",
                       "name": "start",
                       "orig": "start",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                   ],
@@ -2759,28 +2434,22 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 5,
               },
               {
-                "active": True,
                 "args": {
                   "query": [
                     {
-                      "active": True,
                       "example": "2020-06-30T20:59:59.999Z",
                       "kind": "query",
                       "name": "end",
                       "orig": "end",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "example": "2020-05-31T20:59:59.999Z",
                       "kind": "query",
                       "name": "start",
                       "orig": "start",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                   ],
@@ -2803,28 +2472,22 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 6,
               },
               {
-                "active": True,
                 "args": {
                   "query": [
                     {
-                      "active": True,
                       "example": "2020-06-30T20:59:59.999Z",
                       "kind": "query",
                       "name": "end",
                       "orig": "end",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "example": "2020-05-31T20:59:59.999Z",
                       "kind": "query",
                       "name": "start",
                       "orig": "start",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                   ],
@@ -2847,28 +2510,22 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 7,
               },
               {
-                "active": True,
                 "args": {
                   "query": [
                     {
-                      "active": True,
                       "example": "2020-06-30T20:59:59.999Z",
                       "kind": "query",
                       "name": "end",
                       "orig": "end",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "example": "2020-05-31T20:59:59.999Z",
                       "kind": "query",
                       "name": "start",
                       "orig": "start",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                   ],
@@ -2892,10 +2549,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 8,
               },
               {
-                "active": True,
                 "args": {},
                 "kind": "http",
                 "method": "GET",
@@ -2911,10 +2566,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 9,
               },
               {
-                "active": True,
                 "args": {},
                 "kind": "http",
                 "method": "GET",
@@ -2930,10 +2583,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 10,
               },
             ],
-            "key$": "load",
           },
         },
         "relations": {
@@ -2953,90 +2604,69 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "active": True,
                 "args": {
                   "query": [
                     {
-                      "active": True,
                       "kind": "query",
                       "name": "affected_asset_name",
                       "orig": "affected_asset_name",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "kind": "query",
                       "name": "event_duration_date_time_end",
                       "orig": "event_duration_date_time_end",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "kind": "query",
                       "name": "event_duration_date_time_start",
                       "orig": "event_duration_date_time_start",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "kind": "query",
                       "name": "event_status",
                       "orig": "event_status",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "kind": "query",
                       "name": "event_type",
                       "orig": "event_type",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "example": 1,
                       "kind": "query",
                       "name": "page",
                       "orig": "page",
-                      "reqd": False,
                       "type": "`$INTEGER`",
                     },
                     {
-                      "active": True,
                       "kind": "query",
                       "name": "publication_datetime_start",
                       "orig": "publication_datetime_start",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "example": "publicationDateTimeDesc",
                       "kind": "query",
                       "name": "sort",
                       "orig": "sort",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "example": "current",
                       "kind": "query",
                       "name": "status",
                       "orig": "status",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "kind": "query",
                       "name": "unavailability_type",
                       "orig": "unavailability_type",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                   ],
@@ -3067,14 +2697,11 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
               {
-                "active": True,
                 "args": {
                   "query": [
                     {
-                      "active": True,
                       "kind": "query",
                       "name": "id",
                       "orig": "id",
@@ -3101,14 +2728,11 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 1,
               },
               {
-                "active": True,
                 "args": {
                   "query": [
                     {
-                      "active": True,
                       "kind": "query",
                       "name": "id",
                       "orig": "id",
@@ -3135,10 +2759,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 2,
               },
             ],
-            "key$": "load",
           },
         },
         "relations": {
@@ -3154,7 +2776,6 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "active": True,
                 "args": {},
                 "kind": "http",
                 "method": "GET",
@@ -3169,10 +2790,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
               {
-                "active": True,
                 "args": {},
                 "kind": "http",
                 "method": "GET",
@@ -3188,10 +2807,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 1,
               },
             ],
-            "key$": "load",
           },
         },
         "relations": {

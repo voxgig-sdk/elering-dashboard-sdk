@@ -1153,7 +1153,7 @@ $transmission_controller = $client->TransmissionController();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->TransmissionController()->load();
+$result = $client->TransmissionController()->load(["group" => "group"]);
 ```
 
 ### Common Methods

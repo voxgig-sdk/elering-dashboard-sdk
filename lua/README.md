@@ -33,12 +33,14 @@ local sdk = require("elering-dashboard_sdk")
 local client = sdk.new()
 ```
 
-### 3. Load a balance
+### 3. Load a transmissioncontroller
+
+TransmissionController is nested under group, so provide the `group`.
 
 ```lua
-local balance, err = client:Balance():load()
+local transmissioncontroller, err = client:TransmissionController():load({ group = "example_group" })
 if err then error(err) end
-print(balance)
+print(transmissioncontroller)
 ```
 
 
@@ -835,7 +837,7 @@ Create an instance: `local transmission_controller = client:TransmissionControll
 #### Example: Load
 
 ```lua
-local transmission_controller, err = client:TransmissionController():load()
+local transmission_controller, err = client:TransmissionController():load({ group = "group" })
 ```
 
 

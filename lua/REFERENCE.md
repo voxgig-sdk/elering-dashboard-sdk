@@ -1151,7 +1151,7 @@ local transmission_controller = client:TransmissionController(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:TransmissionController():load()
+local result, err = client:TransmissionController():load({ group = "group" })
 ```
 
 ### Common Methods

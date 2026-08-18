@@ -40,7 +40,7 @@ class EleringDashboardSDK
         $utility = new EleringDashboardUtility();
         $this->_utility = $utility;
 
-        $config = EleringDashboardConfig::make_config();
+        $config = EleringDashboardConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,

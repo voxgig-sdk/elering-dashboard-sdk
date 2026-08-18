@@ -952,7 +952,7 @@ Create an instance: `transmissionController := client.TransmissionController(nil
 #### Example: Load
 
 ```go
-transmissionController, err := client.TransmissionController(nil).Load(nil, nil)
+transmissionController, err := client.TransmissionController(nil).Load(map[string]any{"group": "group"}, nil)
 if err != nil {
     panic(err)
 }

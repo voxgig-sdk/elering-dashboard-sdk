@@ -63,7 +63,6 @@ export interface GasTradeController {
 }
 
 export interface GasTradeControllerLoadMatch {
-  group?: string
 }
 
 export interface GasTransmissionController {
@@ -106,7 +105,6 @@ export interface NpsController {
 }
 
 export interface NpsControllerLoadMatch {
-  group?: string
 }
 
 export interface Renomination {
@@ -137,7 +135,7 @@ export interface TransmissionController {
 }
 
 export interface TransmissionControllerLoadMatch {
-  group?: string
+  group: string
 }
 
 export interface UmmGasController {

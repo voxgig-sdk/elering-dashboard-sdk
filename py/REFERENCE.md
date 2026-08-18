@@ -1127,7 +1127,7 @@ transmission_controller = client.TransmissionController()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.TransmissionController().load()
+result = client.TransmissionController().load({"group": "group"})
 ```
 
 ### Common Methods

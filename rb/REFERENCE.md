@@ -1154,7 +1154,7 @@ transmission_controller = client.TransmissionController
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.TransmissionController.load()
+result = client.TransmissionController.load({ "group" => "group" })
 ```
 
 ### Common Methods

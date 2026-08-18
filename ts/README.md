@@ -33,14 +33,17 @@ import { EleringDashboardSDK } from '@voxgig-sdk/elering-dashboard'
 const client = new EleringDashboardSDK()
 ```
 
-### 3. Load a balance
+### 3. Load a transmissioncontroller
 
+TransmissionController is nested under group, so provide the `group`.
 `load()` returns the entity directly and throws on failure:
 
 ```ts
 try {
-  const balance = await client.Balance().load()
-  console.log(balance)
+  const transmissioncontroller = await client.TransmissionController().load({
+    group: 'example_group',
+  })
+  console.log(transmissioncontroller)
 } catch (err) {
   console.error('load failed:', err)
 }
@@ -895,7 +898,7 @@ Create an instance: `const transmission_controller = client.TransmissionControll
 #### Example: Load
 
 ```ts
-const transmission_controller = await client.TransmissionController().load()
+const transmission_controller = await client.TransmissionController().load({ group: 'group' })
 ```
 
 
