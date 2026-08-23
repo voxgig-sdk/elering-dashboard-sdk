@@ -19,6 +19,9 @@ module EleringDashboardConfig
     {
       "main" => {
         "name" => "EleringDashboard",
+        "slug" => "elering-dashboard",
+        "version" => "0.0.1",
+        "target" => "rb",
       },
       "feature" => {
         "test" => {

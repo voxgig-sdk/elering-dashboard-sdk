@@ -33,6 +33,9 @@ class EleringDashboardConfig
         return [
             "main" => [
                 "name" => "EleringDashboard",
+                "slug" => "elering-dashboard",
+                "version" => "0.0.1",
+                "target" => "php",
             ],
             "feature" => [
                 "test" => [
