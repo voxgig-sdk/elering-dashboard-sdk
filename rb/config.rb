@@ -28,6 +28,7 @@ module EleringDashboardConfig
           "options" => {
             "active" => false,
           },
+          "transport" => "base",
         },
       },
       "options" => {
