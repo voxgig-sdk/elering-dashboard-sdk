@@ -20,40 +20,47 @@ class Balance(TypedDict):
     pass
 
 
-class BalanceLoadMatch(TypedDict):
-    pass
+class BalanceLoadMatch(TypedDict, total=False):
+    end: str
+    start: str
 
 
 class BalanceController(TypedDict):
     pass
 
 
-class BalanceControllerLoadMatch(TypedDict):
-    pass
+class BalanceControllerLoadMatch(TypedDict, total=False):
+    end: str
+    field: list
+    start: str
 
 
 class Firm(TypedDict):
     pass
 
 
-class FirmLoadMatch(TypedDict):
-    pass
+class FirmLoadMatch(TypedDict, total=False):
+    end: str
+    start: str
 
 
 class FirmCapacityController(TypedDict):
     pass
 
 
-class FirmCapacityControllerLoadMatch(TypedDict):
-    pass
+class FirmCapacityControllerLoadMatch(TypedDict, total=False):
+    end: str
+    field: list
+    start: str
 
 
 class GasBalanceController(TypedDict):
     pass
 
 
-class GasBalanceControllerLoadMatch(TypedDict):
-    pass
+class GasBalanceControllerLoadMatch(TypedDict, total=False):
+    end: str
+    start: str
 
 
 class GasBorderTradeController(TypedDict):
@@ -68,128 +75,155 @@ class GasSystem(TypedDict):
     pass
 
 
-class GasSystemLoadMatch(TypedDict):
-    pass
+class GasSystemLoadMatch(TypedDict, total=False):
+    end: str
+    start: str
 
 
 class GasSystemController(TypedDict):
     pass
 
 
-class GasSystemControllerLoadMatch(TypedDict):
-    pass
+class GasSystemControllerLoadMatch(TypedDict, total=False):
+    end: str
+    field: list
+    start: str
 
 
 class GasTrade(TypedDict):
     pass
 
 
-class GasTradeLoadMatch(TypedDict):
-    pass
+class GasTradeLoadMatch(TypedDict, total=False):
+    end: str
+    start: str
 
 
 class GasTradeController(TypedDict):
     pass
 
 
-class GasTradeControllerLoadMatch(TypedDict):
-    pass
+class GasTradeControllerLoadMatch(TypedDict, total=False):
+    end: str
+    field: list
+    start: str
 
 
 class GasTransmissionController(TypedDict):
     pass
 
 
-class GasTransmissionControllerLoadMatch(TypedDict):
-    pass
+class GasTransmissionControllerLoadMatch(TypedDict, total=False):
+    end: str
+    start: str
 
 
 class GreenController(TypedDict):
     pass
 
 
-class GreenControllerLoadMatch(TypedDict):
-    pass
+class GreenControllerLoadMatch(TypedDict, total=False):
+    fuel: str
+    technology: str
+    type: str
 
 
 class Interruptible(TypedDict):
     pass
 
 
-class InterruptibleLoadMatch(TypedDict):
-    pass
+class InterruptibleLoadMatch(TypedDict, total=False):
+    end: str
+    start: str
 
 
 class InterruptibleCapacityController(TypedDict):
     pass
 
 
-class InterruptibleCapacityControllerLoadMatch(TypedDict):
-    pass
+class InterruptibleCapacityControllerLoadMatch(TypedDict, total=False):
+    end: str
+    field: list
+    start: str
 
 
 class Nomination(TypedDict):
     pass
 
 
-class NominationLoadMatch(TypedDict):
-    pass
+class NominationLoadMatch(TypedDict, total=False):
+    end: str
+    start: str
 
 
 class NominationsController(TypedDict):
     pass
 
 
-class NominationsControllerLoadMatch(TypedDict):
-    pass
+class NominationsControllerLoadMatch(TypedDict, total=False):
+    end: str
+    field: list
+    start: str
 
 
 class NpsController(TypedDict):
     pass
 
 
-class NpsControllerLoadMatch(TypedDict):
-    pass
+class NpsControllerLoadMatch(TypedDict, total=False):
+    end: str
+    start: str
 
 
 class Renomination(TypedDict):
     pass
 
 
-class RenominationLoadMatch(TypedDict):
-    pass
+class RenominationLoadMatch(TypedDict, total=False):
+    end: str
+    start: str
 
 
 class RenominationsController(TypedDict):
     pass
 
 
-class RenominationsControllerLoadMatch(TypedDict):
-    pass
+class RenominationsControllerLoadMatch(TypedDict, total=False):
+    end: str
+    field: list
+    start: str
 
 
 class System(TypedDict):
     pass
 
 
-class SystemLoadMatch(TypedDict):
-    pass
+class SystemLoadMatch(TypedDict, total=False):
+    end: str
+    start: str
 
 
 class SystemController(TypedDict):
     pass
 
 
-class SystemControllerLoadMatch(TypedDict):
-    pass
+class SystemControllerLoadMatch(TypedDict, total=False):
+    end: str
+    field: list
+    start: str
 
 
 class TransmissionController(TypedDict):
     pass
 
 
-class TransmissionControllerLoadMatch(TypedDict):
+class TransmissionControllerLoadMatchRequired(TypedDict):
     group: str
+
+
+class TransmissionControllerLoadMatch(TransmissionControllerLoadMatchRequired, total=False):
+    end: str
+    start: str
 
 
 class UmmGasController(TypedDict):
@@ -197,7 +231,7 @@ class UmmGasController(TypedDict):
 
 
 class UmmGasControllerLoadMatch(TypedDict):
-    pass
+    id: int
 
 
 class UmmRssFeedController(TypedDict):

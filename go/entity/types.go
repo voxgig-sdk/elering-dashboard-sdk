@@ -18,6 +18,8 @@ type Balance struct {
 
 // BalanceLoadMatch is the typed request payload for Balance.LoadTyped.
 type BalanceLoadMatch struct {
+	End *string `json:"end,omitempty"`
+	Start *string `json:"start,omitempty"`
 }
 
 // BalanceController is the typed data model for the balance_controller entity.
@@ -26,6 +28,9 @@ type BalanceController struct {
 
 // BalanceControllerLoadMatch is the typed request payload for BalanceController.LoadTyped.
 type BalanceControllerLoadMatch struct {
+	End *string `json:"end,omitempty"`
+	Field *[]any `json:"field,omitempty"`
+	Start *string `json:"start,omitempty"`
 }
 
 // Firm is the typed data model for the firm entity.
@@ -34,6 +39,8 @@ type Firm struct {
 
 // FirmLoadMatch is the typed request payload for Firm.LoadTyped.
 type FirmLoadMatch struct {
+	End *string `json:"end,omitempty"`
+	Start *string `json:"start,omitempty"`
 }
 
 // FirmCapacityController is the typed data model for the firm_capacity_controller entity.
@@ -42,6 +49,9 @@ type FirmCapacityController struct {
 
 // FirmCapacityControllerLoadMatch is the typed request payload for FirmCapacityController.LoadTyped.
 type FirmCapacityControllerLoadMatch struct {
+	End *string `json:"end,omitempty"`
+	Field *[]any `json:"field,omitempty"`
+	Start *string `json:"start,omitempty"`
 }
 
 // GasBalanceController is the typed data model for the gas_balance_controller entity.
@@ -50,6 +60,8 @@ type GasBalanceController struct {
 
 // GasBalanceControllerLoadMatch is the typed request payload for GasBalanceController.LoadTyped.
 type GasBalanceControllerLoadMatch struct {
+	End *string `json:"end,omitempty"`
+	Start *string `json:"start,omitempty"`
 }
 
 // GasBorderTradeController is the typed data model for the gas_border_trade_controller entity.
@@ -66,6 +78,8 @@ type GasSystem struct {
 
 // GasSystemLoadMatch is the typed request payload for GasSystem.LoadTyped.
 type GasSystemLoadMatch struct {
+	End *string `json:"end,omitempty"`
+	Start *string `json:"start,omitempty"`
 }
 
 // GasSystemController is the typed data model for the gas_system_controller entity.
@@ -74,6 +88,9 @@ type GasSystemController struct {
 
 // GasSystemControllerLoadMatch is the typed request payload for GasSystemController.LoadTyped.
 type GasSystemControllerLoadMatch struct {
+	End *string `json:"end,omitempty"`
+	Field *[]any `json:"field,omitempty"`
+	Start *string `json:"start,omitempty"`
 }
 
 // GasTrade is the typed data model for the gas_trade entity.
@@ -82,6 +99,8 @@ type GasTrade struct {
 
 // GasTradeLoadMatch is the typed request payload for GasTrade.LoadTyped.
 type GasTradeLoadMatch struct {
+	End *string `json:"end,omitempty"`
+	Start *string `json:"start,omitempty"`
 }
 
 // GasTradeController is the typed data model for the gas_trade_controller entity.
@@ -90,6 +109,9 @@ type GasTradeController struct {
 
 // GasTradeControllerLoadMatch is the typed request payload for GasTradeController.LoadTyped.
 type GasTradeControllerLoadMatch struct {
+	End *string `json:"end,omitempty"`
+	Field *[]any `json:"field,omitempty"`
+	Start *string `json:"start,omitempty"`
 }
 
 // GasTransmissionController is the typed data model for the gas_transmission_controller entity.
@@ -98,6 +120,8 @@ type GasTransmissionController struct {
 
 // GasTransmissionControllerLoadMatch is the typed request payload for GasTransmissionController.LoadTyped.
 type GasTransmissionControllerLoadMatch struct {
+	End *string `json:"end,omitempty"`
+	Start *string `json:"start,omitempty"`
 }
 
 // GreenController is the typed data model for the green_controller entity.
@@ -106,6 +130,9 @@ type GreenController struct {
 
 // GreenControllerLoadMatch is the typed request payload for GreenController.LoadTyped.
 type GreenControllerLoadMatch struct {
+	Fuel *string `json:"fuel,omitempty"`
+	Technology *string `json:"technology,omitempty"`
+	Type *string `json:"type,omitempty"`
 }
 
 // Interruptible is the typed data model for the interruptible entity.
@@ -114,6 +141,8 @@ type Interruptible struct {
 
 // InterruptibleLoadMatch is the typed request payload for Interruptible.LoadTyped.
 type InterruptibleLoadMatch struct {
+	End *string `json:"end,omitempty"`
+	Start *string `json:"start,omitempty"`
 }
 
 // InterruptibleCapacityController is the typed data model for the interruptible_capacity_controller entity.
@@ -122,6 +151,9 @@ type InterruptibleCapacityController struct {
 
 // InterruptibleCapacityControllerLoadMatch is the typed request payload for InterruptibleCapacityController.LoadTyped.
 type InterruptibleCapacityControllerLoadMatch struct {
+	End *string `json:"end,omitempty"`
+	Field *[]any `json:"field,omitempty"`
+	Start *string `json:"start,omitempty"`
 }
 
 // Nomination is the typed data model for the nomination entity.
@@ -130,6 +162,8 @@ type Nomination struct {
 
 // NominationLoadMatch is the typed request payload for Nomination.LoadTyped.
 type NominationLoadMatch struct {
+	End *string `json:"end,omitempty"`
+	Start *string `json:"start,omitempty"`
 }
 
 // NominationsController is the typed data model for the nominations_controller entity.
@@ -138,6 +172,9 @@ type NominationsController struct {
 
 // NominationsControllerLoadMatch is the typed request payload for NominationsController.LoadTyped.
 type NominationsControllerLoadMatch struct {
+	End *string `json:"end,omitempty"`
+	Field *[]any `json:"field,omitempty"`
+	Start *string `json:"start,omitempty"`
 }
 
 // NpsController is the typed data model for the nps_controller entity.
@@ -146,6 +183,8 @@ type NpsController struct {
 
 // NpsControllerLoadMatch is the typed request payload for NpsController.LoadTyped.
 type NpsControllerLoadMatch struct {
+	End *string `json:"end,omitempty"`
+	Start *string `json:"start,omitempty"`
 }
 
 // Renomination is the typed data model for the renomination entity.
@@ -154,6 +193,8 @@ type Renomination struct {
 
 // RenominationLoadMatch is the typed request payload for Renomination.LoadTyped.
 type RenominationLoadMatch struct {
+	End *string `json:"end,omitempty"`
+	Start *string `json:"start,omitempty"`
 }
 
 // RenominationsController is the typed data model for the renominations_controller entity.
@@ -162,6 +203,9 @@ type RenominationsController struct {
 
 // RenominationsControllerLoadMatch is the typed request payload for RenominationsController.LoadTyped.
 type RenominationsControllerLoadMatch struct {
+	End *string `json:"end,omitempty"`
+	Field *[]any `json:"field,omitempty"`
+	Start *string `json:"start,omitempty"`
 }
 
 // System is the typed data model for the system entity.
@@ -170,6 +214,8 @@ type System struct {
 
 // SystemLoadMatch is the typed request payload for System.LoadTyped.
 type SystemLoadMatch struct {
+	End *string `json:"end,omitempty"`
+	Start *string `json:"start,omitempty"`
 }
 
 // SystemController is the typed data model for the system_controller entity.
@@ -178,6 +224,9 @@ type SystemController struct {
 
 // SystemControllerLoadMatch is the typed request payload for SystemController.LoadTyped.
 type SystemControllerLoadMatch struct {
+	End *string `json:"end,omitempty"`
+	Field *[]any `json:"field,omitempty"`
+	Start *string `json:"start,omitempty"`
 }
 
 // TransmissionController is the typed data model for the transmission_controller entity.
@@ -187,6 +236,8 @@ type TransmissionController struct {
 // TransmissionControllerLoadMatch is the typed request payload for TransmissionController.LoadTyped.
 type TransmissionControllerLoadMatch struct {
 	Group string `json:"group"`
+	End *string `json:"end,omitempty"`
+	Start *string `json:"start,omitempty"`
 }
 
 // UmmGasController is the typed data model for the umm_gas_controller entity.
@@ -195,6 +246,7 @@ type UmmGasController struct {
 
 // UmmGasControllerLoadMatch is the typed request payload for UmmGasController.LoadTyped.
 type UmmGasControllerLoadMatch struct {
+	Id int `json:"id"`
 }
 
 // UmmRssFeedController is the typed data model for the umm_rss_feed_controller entity.
