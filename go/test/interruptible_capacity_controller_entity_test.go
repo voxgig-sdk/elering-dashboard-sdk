@@ -50,7 +50,7 @@ func TestInterruptibleCapacityControllerEntity(t *testing.T) {
 		client := setup.client
 
 		// Bootstrap entity data from existing test data (no create step in flow).
-		interruptibleCapacityControllerRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath("existing.interruptible_capacity_controller", setup.data)))
+		interruptibleCapacityControllerRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.interruptible_capacity_controller")))
 		var interruptibleCapacityControllerRef01Data map[string]any
 		if len(interruptibleCapacityControllerRef01DataRaw) > 0 {
 			interruptibleCapacityControllerRef01Data = core.ToMapAny(interruptibleCapacityControllerRef01DataRaw[0][1])
@@ -97,7 +97,7 @@ func interruptible_capacity_controllerBasicSetup(extra map[string]any) *entityTe
 	client := sdk.TestSDK(options, extra)
 
 	// Generate idmap via transform, matching TS pattern.
-	idmap := vs.Transform(
+	idmap, _ := vs.Transform(
 		[]any{"interruptible_capacity_controller01", "interruptible_capacity_controller02", "interruptible_capacity_controller03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
@@ -125,10 +125,22 @@ func interruptible_capacity_controllerBasicSetup(extra map[string]any) *entityTe
 	}
 
 	if env["ELERING_DASHBOARD_TEST_LIVE"] == "TRUE" {
+		// An empty map, not a nil one: Merge returns nil when its last entry
+		// is nil, and BasicSetup is normally called with no extras - so a
+		// bare nil silently discarded the apikey and server values below.
+		extraOpts := extra
+		if extraOpts == nil {
+			extraOpts = map[string]any{}
+		}
+
 		mergedOpts := vs.Merge([]any{
+			// liveClientOptions() FIRST, so the generated fields below win:
+			// sdk-test-control.json's test.client.options adds to the live
+			// client, it does not redirect it.
+			liveClientOptions(),
 			map[string]any{
 			},
-			extra,
+			extraOpts,
 		})
 		client = sdk.NewEleringDashboardSDK(core.ToMapAny(mergedOpts))
 	}

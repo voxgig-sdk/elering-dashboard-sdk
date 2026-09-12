@@ -39,10 +39,16 @@ main: kit: entity: gas_trade_controller: {
           }
           method: "GET"
           orig: "/api/gas-trade/csv"
-          parts: [
-            "api"
-            "gas-trade"
-            "csv"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "gas-trade"
+            }
+            {
+              lit: "csv"
+            }
           ]
           select: {
             exist: [
@@ -70,11 +76,19 @@ main: kit: entity: gas_trade_controller: {
           }
           method: "GET"
           orig: "/api/gas-trade/{group}/latest"
-          parts: [
-            "api"
-            "gas-trade"
-            "{group}"
-            "latest"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "gas-trade"
+            }
+            {
+              var: "group"
+            }
+            {
+              lit: "latest"
+            }
           ]
           select: {
             exist: [

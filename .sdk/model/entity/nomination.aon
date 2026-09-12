@@ -32,9 +32,13 @@ main: kit: entity: nomination: {
           }
           method: "GET"
           orig: "/api/nominations"
-          parts: [
-            "api"
-            "nominations"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "nominations"
+            }
           ]
           select: {
             exist: [

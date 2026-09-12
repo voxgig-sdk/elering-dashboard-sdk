@@ -39,11 +39,19 @@ main: kit: entity: interruptible_capacity_controller: {
           }
           method: "GET"
           orig: "/api/capacity/interruptible/csv"
-          parts: [
-            "api"
-            "capacity"
-            "interruptible"
-            "csv"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "capacity"
+            }
+            {
+              lit: "interruptible"
+            }
+            {
+              lit: "csv"
+            }
           ]
           select: {
             exist: [

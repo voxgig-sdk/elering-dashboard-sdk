@@ -39,11 +39,19 @@ main: kit: entity: balance_controller: {
           }
           method: "GET"
           orig: "/api/balance/commerce/csv"
-          parts: [
-            "api"
-            "balance"
-            "commerce"
-            "csv"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "balance"
+            }
+            {
+              lit: "commerce"
+            }
+            {
+              lit: "csv"
+            }
           ]
           select: {
             exist: [
@@ -87,10 +95,16 @@ main: kit: entity: balance_controller: {
           }
           method: "GET"
           orig: "/api/balance/csv"
-          parts: [
-            "api"
-            "balance"
-            "csv"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "balance"
+            }
+            {
+              lit: "csv"
+            }
           ]
           select: {
             exist: [
@@ -134,11 +148,19 @@ main: kit: entity: balance_controller: {
           }
           method: "GET"
           orig: "/api/balance/total/csv"
-          parts: [
-            "api"
-            "balance"
-            "total"
-            "csv"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "balance"
+            }
+            {
+              lit: "total"
+            }
+            {
+              lit: "csv"
+            }
           ]
           select: {
             exist: [
@@ -175,10 +197,16 @@ main: kit: entity: balance_controller: {
           }
           method: "GET"
           orig: "/api/balance/total"
-          parts: [
-            "api"
-            "balance"
-            "total"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "balance"
+            }
+            {
+              lit: "total"
+            }
           ]
           select: {
             exist: [
@@ -214,10 +242,16 @@ main: kit: entity: balance_controller: {
           }
           method: "GET"
           orig: "/api/balance/commerce"
-          parts: [
-            "api"
-            "balance"
-            "commerce"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "balance"
+            }
+            {
+              lit: "commerce"
+            }
           ]
           select: {
             exist: [
@@ -233,11 +267,19 @@ main: kit: entity: balance_controller: {
         {
           method: "GET"
           orig: "/api/balance/commerce/latest"
-          parts: [
-            "api"
-            "balance"
-            "commerce"
-            "latest"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "balance"
+            }
+            {
+              lit: "commerce"
+            }
+            {
+              lit: "latest"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -247,11 +289,19 @@ main: kit: entity: balance_controller: {
         {
           method: "GET"
           orig: "/api/balance/total/latest"
-          parts: [
-            "api"
-            "balance"
-            "total"
-            "latest"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "balance"
+            }
+            {
+              lit: "total"
+            }
+            {
+              lit: "latest"
+            }
           ]
           transform: {
             req: "`reqdata`"

@@ -12,10 +12,16 @@ main: kit: entity: umm_rss_feed_controller: {
         {
           method: "GET"
           orig: "/umm/gas/rss"
-          parts: [
-            "umm"
-            "gas"
-            "rss"
+          segments: [
+            {
+              lit: "umm"
+            }
+            {
+              lit: "gas"
+            }
+            {
+              lit: "rss"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -25,11 +31,19 @@ main: kit: entity: umm_rss_feed_controller: {
         {
           method: "GET"
           orig: "/umm/gas/rss/aris"
-          parts: [
-            "umm"
-            "gas"
-            "rss"
-            "aris"
+          segments: [
+            {
+              lit: "umm"
+            }
+            {
+              lit: "gas"
+            }
+            {
+              lit: "rss"
+            }
+            {
+              lit: "aris"
+            }
           ]
           transform: {
             req: "`reqdata`"

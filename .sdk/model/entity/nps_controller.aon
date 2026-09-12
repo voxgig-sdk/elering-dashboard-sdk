@@ -39,11 +39,19 @@ main: kit: entity: nps_controller: {
           }
           method: "GET"
           orig: "/api/nps/price/csv"
-          parts: [
-            "api"
-            "nps"
-            "price"
-            "csv"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "nps"
+            }
+            {
+              lit: "price"
+            }
+            {
+              lit: "csv"
+            }
           ]
           select: {
             exist: [
@@ -87,11 +95,19 @@ main: kit: entity: nps_controller: {
           }
           method: "GET"
           orig: "/api/nps/turnover/csv"
-          parts: [
-            "api"
-            "nps"
-            "turnover"
-            "csv"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "nps"
+            }
+            {
+              lit: "turnover"
+            }
+            {
+              lit: "csv"
+            }
           ]
           select: {
             exist: [
@@ -128,10 +144,16 @@ main: kit: entity: nps_controller: {
           }
           method: "GET"
           orig: "/api/nps/price"
-          parts: [
-            "api"
-            "nps"
-            "price"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "nps"
+            }
+            {
+              lit: "price"
+            }
           ]
           select: {
             exist: [
@@ -167,10 +189,16 @@ main: kit: entity: nps_controller: {
           }
           method: "GET"
           orig: "/api/nps/turnover"
-          parts: [
-            "api"
-            "nps"
-            "turnover"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "nps"
+            }
+            {
+              lit: "turnover"
+            }
           ]
           select: {
             exist: [
@@ -197,12 +225,22 @@ main: kit: entity: nps_controller: {
           }
           method: "GET"
           orig: "/api/nps/price/{group}/current"
-          parts: [
-            "api"
-            "nps"
-            "price"
-            "{group}"
-            "current"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "nps"
+            }
+            {
+              lit: "price"
+            }
+            {
+              var: "group"
+            }
+            {
+              lit: "current"
+            }
           ]
           select: {
             exist: [
@@ -228,12 +266,22 @@ main: kit: entity: nps_controller: {
           }
           method: "GET"
           orig: "/api/nps/price/{group}/latest"
-          parts: [
-            "api"
-            "nps"
-            "price"
-            "{group}"
-            "latest"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "nps"
+            }
+            {
+              lit: "price"
+            }
+            {
+              var: "group"
+            }
+            {
+              lit: "latest"
+            }
           ]
           select: {
             exist: [
@@ -259,12 +307,22 @@ main: kit: entity: nps_controller: {
           }
           method: "GET"
           orig: "/api/nps/turnover/{group}/latest"
-          parts: [
-            "api"
-            "nps"
-            "turnover"
-            "{group}"
-            "latest"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "nps"
+            }
+            {
+              lit: "turnover"
+            }
+            {
+              var: "group"
+            }
+            {
+              lit: "latest"
+            }
           ]
           select: {
             exist: [

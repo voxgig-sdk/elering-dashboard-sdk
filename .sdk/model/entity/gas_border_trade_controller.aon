@@ -12,11 +12,19 @@ main: kit: entity: gas_border_trade_controller: {
         {
           method: "GET"
           orig: "/api/gas/border-trade/current"
-          parts: [
-            "api"
-            "gas"
-            "border-trade"
-            "current"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "gas"
+            }
+            {
+              lit: "border-trade"
+            }
+            {
+              lit: "current"
+            }
           ]
           transform: {
             req: "`reqdata`"

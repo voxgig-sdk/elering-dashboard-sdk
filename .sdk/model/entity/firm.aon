@@ -32,10 +32,16 @@ main: kit: entity: firm: {
           }
           method: "GET"
           orig: "/api/capacity/firm"
-          parts: [
-            "api"
-            "capacity"
-            "firm"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "capacity"
+            }
+            {
+              lit: "firm"
+            }
           ]
           select: {
             exist: [

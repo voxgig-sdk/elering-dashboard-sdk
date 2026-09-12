@@ -32,9 +32,13 @@ main: kit: entity: gas_trade: {
           }
           method: "GET"
           orig: "/api/gas-trade"
-          parts: [
-            "api"
-            "gas-trade"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "gas-trade"
+            }
           ]
           select: {
             exist: [

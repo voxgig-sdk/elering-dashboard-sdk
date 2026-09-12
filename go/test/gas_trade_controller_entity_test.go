@@ -50,7 +50,7 @@ func TestGasTradeControllerEntity(t *testing.T) {
 		client := setup.client
 
 		// Bootstrap entity data from existing test data (no create step in flow).
-		gasTradeControllerRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath("existing.gas_trade_controller", setup.data)))
+		gasTradeControllerRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.gas_trade_controller")))
 		var gasTradeControllerRef01Data map[string]any
 		if len(gasTradeControllerRef01DataRaw) > 0 {
 			gasTradeControllerRef01Data = core.ToMapAny(gasTradeControllerRef01DataRaw[0][1])
@@ -97,7 +97,7 @@ func gas_trade_controllerBasicSetup(extra map[string]any) *entityTestSetup {
 	client := sdk.TestSDK(options, extra)
 
 	// Generate idmap via transform, matching TS pattern.
-	idmap := vs.Transform(
+	idmap, _ := vs.Transform(
 		[]any{"gas_trade_controller01", "gas_trade_controller02", "gas_trade_controller03", "gas_trade01", "gas_trade02", "gas_trade03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
@@ -125,10 +125,22 @@ func gas_trade_controllerBasicSetup(extra map[string]any) *entityTestSetup {
 	}
 
 	if env["ELERING_DASHBOARD_TEST_LIVE"] == "TRUE" {
+		// An empty map, not a nil one: Merge returns nil when its last entry
+		// is nil, and BasicSetup is normally called with no extras - so a
+		// bare nil silently discarded the apikey and server values below.
+		extraOpts := extra
+		if extraOpts == nil {
+			extraOpts = map[string]any{}
+		}
+
 		mergedOpts := vs.Merge([]any{
+			// liveClientOptions() FIRST, so the generated fields below win:
+			// sdk-test-control.json's test.client.options adds to the live
+			// client, it does not redirect it.
+			liveClientOptions(),
 			map[string]any{
 			},
-			extra,
+			extraOpts,
 		})
 		client = sdk.NewEleringDashboardSDK(core.ToMapAny(mergedOpts))
 	}

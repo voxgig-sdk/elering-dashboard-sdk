@@ -32,9 +32,13 @@ main: kit: entity: system: {
           }
           method: "GET"
           orig: "/api/system"
-          parts: [
-            "api"
-            "system"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "system"
+            }
           ]
           select: {
             exist: [

@@ -39,10 +39,16 @@ main: kit: entity: nominations_controller: {
           }
           method: "GET"
           orig: "/api/nominations/csv"
-          parts: [
-            "api"
-            "nominations"
-            "csv"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "nominations"
+            }
+            {
+              lit: "csv"
+            }
           ]
           select: {
             exist: [

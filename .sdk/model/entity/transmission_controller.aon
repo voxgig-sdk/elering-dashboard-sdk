@@ -48,12 +48,22 @@ main: kit: entity: transmission_controller: {
           }
           method: "GET"
           orig: "/api/transmission/cross-border-capacity/{group}/csv"
-          parts: [
-            "api"
-            "transmission"
-            "cross-border-capacity"
-            "{group}"
-            "csv"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "transmission"
+            }
+            {
+              lit: "cross-border-capacity"
+            }
+            {
+              var: "group"
+            }
+            {
+              lit: "csv"
+            }
           ]
           select: {
             exist: [
@@ -98,11 +108,19 @@ main: kit: entity: transmission_controller: {
           }
           method: "GET"
           orig: "/api/transmission/cross-border-planned-trade/csv"
-          parts: [
-            "api"
-            "transmission"
-            "cross-border-planned-trade"
-            "csv"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "transmission"
+            }
+            {
+              lit: "cross-border-planned-trade"
+            }
+            {
+              lit: "csv"
+            }
           ]
           select: {
             exist: [
@@ -146,11 +164,19 @@ main: kit: entity: transmission_controller: {
           }
           method: "GET"
           orig: "/api/transmission/cross-border/csv"
-          parts: [
-            "api"
-            "transmission"
-            "cross-border"
-            "csv"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "transmission"
+            }
+            {
+              lit: "cross-border"
+            }
+            {
+              lit: "csv"
+            }
           ]
           select: {
             exist: [
@@ -194,12 +220,22 @@ main: kit: entity: transmission_controller: {
           }
           method: "GET"
           orig: "/api/transmission/cross-border/hourly/csv"
-          parts: [
-            "api"
-            "transmission"
-            "cross-border"
-            "hourly"
-            "csv"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "transmission"
+            }
+            {
+              lit: "cross-border"
+            }
+            {
+              lit: "hourly"
+            }
+            {
+              lit: "csv"
+            }
           ]
           select: {
             exist: [
@@ -245,11 +281,19 @@ main: kit: entity: transmission_controller: {
           }
           method: "GET"
           orig: "/api/transmission/cross-border-capacity/{group}"
-          parts: [
-            "api"
-            "transmission"
-            "cross-border-capacity"
-            "{group}"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "transmission"
+            }
+            {
+              lit: "cross-border-capacity"
+            }
+            {
+              var: "group"
+            }
           ]
           select: {
             exist: [
@@ -286,10 +330,16 @@ main: kit: entity: transmission_controller: {
           }
           method: "GET"
           orig: "/api/transmission/cross-border"
-          parts: [
-            "api"
-            "transmission"
-            "cross-border"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "transmission"
+            }
+            {
+              lit: "cross-border"
+            }
           ]
           select: {
             exist: [
@@ -325,10 +375,16 @@ main: kit: entity: transmission_controller: {
           }
           method: "GET"
           orig: "/api/transmission/cross-border-capacity"
-          parts: [
-            "api"
-            "transmission"
-            "cross-border-capacity"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "transmission"
+            }
+            {
+              lit: "cross-border-capacity"
+            }
           ]
           select: {
             exist: [
@@ -364,10 +420,16 @@ main: kit: entity: transmission_controller: {
           }
           method: "GET"
           orig: "/api/transmission/cross-border-planned-trade"
-          parts: [
-            "api"
-            "transmission"
-            "cross-border-planned-trade"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "transmission"
+            }
+            {
+              lit: "cross-border-planned-trade"
+            }
           ]
           select: {
             exist: [
@@ -403,11 +465,19 @@ main: kit: entity: transmission_controller: {
           }
           method: "GET"
           orig: "/api/transmission/cross-border/hourly"
-          parts: [
-            "api"
-            "transmission"
-            "cross-border"
-            "hourly"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "transmission"
+            }
+            {
+              lit: "cross-border"
+            }
+            {
+              lit: "hourly"
+            }
           ]
           select: {
             exist: [
@@ -423,11 +493,19 @@ main: kit: entity: transmission_controller: {
         {
           method: "GET"
           orig: "/api/transmission/cross-border-planned-trade/latest"
-          parts: [
-            "api"
-            "transmission"
-            "cross-border-planned-trade"
-            "latest"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "transmission"
+            }
+            {
+              lit: "cross-border-planned-trade"
+            }
+            {
+              lit: "latest"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -437,11 +515,19 @@ main: kit: entity: transmission_controller: {
         {
           method: "GET"
           orig: "/api/transmission/cross-border/latest"
-          parts: [
-            "api"
-            "transmission"
-            "cross-border"
-            "latest"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "transmission"
+            }
+            {
+              lit: "cross-border"
+            }
+            {
+              lit: "latest"
+            }
           ]
           transform: {
             req: "`reqdata`"

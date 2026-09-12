@@ -89,10 +89,16 @@ main: kit: entity: umm_gas_controller: {
           }
           method: "GET"
           orig: "/api/umm/gas"
-          parts: [
-            "api"
-            "umm"
-            "gas"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "umm"
+            }
+            {
+              lit: "gas"
+            }
           ]
           select: {
             exist: [
@@ -127,11 +133,19 @@ main: kit: entity: umm_gas_controller: {
           }
           method: "GET"
           orig: "/api/umm/gas/messages"
-          parts: [
-            "api"
-            "umm"
-            "gas"
-            "messages"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "umm"
+            }
+            {
+              lit: "gas"
+            }
+            {
+              lit: "messages"
+            }
           ]
           select: {
             exist: [
@@ -157,11 +171,19 @@ main: kit: entity: umm_gas_controller: {
           }
           method: "GET"
           orig: "/api/umm/single/{id}"
-          parts: [
-            "api"
-            "umm"
-            "single"
-            "{id}"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "umm"
+            }
+            {
+              lit: "single"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [

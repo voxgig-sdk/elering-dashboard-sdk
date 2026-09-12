@@ -40,10 +40,16 @@ main: kit: entity: green_controller: {
           }
           method: "GET"
           orig: "/api/green/certificates"
-          parts: [
-            "api"
-            "green"
-            "certificates"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "green"
+            }
+            {
+              lit: "certificates"
+            }
           ]
           select: {
             exist: [

@@ -39,11 +39,19 @@ main: kit: entity: gas_transmission_controller: {
           }
           method: "GET"
           orig: "/api/gas-transmission/cross-border/csv"
-          parts: [
-            "api"
-            "gas-transmission"
-            "cross-border"
-            "csv"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "gas-transmission"
+            }
+            {
+              lit: "cross-border"
+            }
+            {
+              lit: "csv"
+            }
           ]
           select: {
             exist: [
@@ -80,10 +88,16 @@ main: kit: entity: gas_transmission_controller: {
           }
           method: "GET"
           orig: "/api/gas-transmission/cross-border"
-          parts: [
-            "api"
-            "gas-transmission"
-            "cross-border"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "gas-transmission"
+            }
+            {
+              lit: "cross-border"
+            }
           ]
           select: {
             exist: [
@@ -99,11 +113,19 @@ main: kit: entity: gas_transmission_controller: {
         {
           method: "GET"
           orig: "/api/gas-transmission/cross-border/latest"
-          parts: [
-            "api"
-            "gas-transmission"
-            "cross-border"
-            "latest"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "gas-transmission"
+            }
+            {
+              lit: "cross-border"
+            }
+            {
+              lit: "latest"
+            }
           ]
           transform: {
             req: "`reqdata`"

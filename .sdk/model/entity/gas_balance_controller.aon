@@ -39,11 +39,19 @@ main: kit: entity: gas_balance_controller: {
           }
           method: "GET"
           orig: "/api/gas-balance/price/csv"
-          parts: [
-            "api"
-            "gas-balance"
-            "price"
-            "csv"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "gas-balance"
+            }
+            {
+              lit: "price"
+            }
+            {
+              lit: "csv"
+            }
           ]
           select: {
             exist: [
@@ -80,10 +88,16 @@ main: kit: entity: gas_balance_controller: {
           }
           method: "GET"
           orig: "/api/gas-balance/price"
-          parts: [
-            "api"
-            "gas-balance"
-            "price"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "gas-balance"
+            }
+            {
+              lit: "price"
+            }
           ]
           select: {
             exist: [

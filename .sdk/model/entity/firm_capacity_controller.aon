@@ -59,11 +59,19 @@ main: kit: entity: firm_capacity_controller: {
           }
           method: "GET"
           orig: "/api/capacity/firm/csv"
-          parts: [
-            "api"
-            "capacity"
-            "firm"
-            "csv"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "capacity"
+            }
+            {
+              lit: "firm"
+            }
+            {
+              lit: "csv"
+            }
           ]
           select: {
             exist: [

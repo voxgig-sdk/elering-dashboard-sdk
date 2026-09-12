@@ -39,10 +39,16 @@ main: kit: entity: system_controller: {
           }
           method: "GET"
           orig: "/api/system/csv"
-          parts: [
-            "api"
-            "system"
-            "csv"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "system"
+            }
+            {
+              lit: "csv"
+            }
           ]
           select: {
             exist: [
@@ -86,11 +92,19 @@ main: kit: entity: system_controller: {
           }
           method: "GET"
           orig: "/api/system/with-plan/csv"
-          parts: [
-            "api"
-            "system"
-            "with-plan"
-            "csv"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "system"
+            }
+            {
+              lit: "with-plan"
+            }
+            {
+              lit: "csv"
+            }
           ]
           select: {
             exist: [
@@ -127,10 +141,16 @@ main: kit: entity: system_controller: {
           }
           method: "GET"
           orig: "/api/system/with-plan"
-          parts: [
-            "api"
-            "system"
-            "with-plan"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "system"
+            }
+            {
+              lit: "with-plan"
+            }
           ]
           select: {
             exist: [
@@ -146,10 +166,16 @@ main: kit: entity: system_controller: {
         {
           method: "GET"
           orig: "/api/system/latest"
-          parts: [
-            "api"
-            "system"
-            "latest"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "system"
+            }
+            {
+              lit: "latest"
+            }
           ]
           transform: {
             req: "`reqdata`"

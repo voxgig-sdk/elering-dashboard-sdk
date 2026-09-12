@@ -32,9 +32,13 @@ main: kit: entity: balance: {
           }
           method: "GET"
           orig: "/api/balance"
-          parts: [
-            "api"
-            "balance"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "balance"
+            }
           ]
           select: {
             exist: [

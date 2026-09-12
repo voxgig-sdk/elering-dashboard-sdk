@@ -32,10 +32,16 @@ main: kit: entity: renomination: {
           }
           method: "GET"
           orig: "/api/nominations/renominations"
-          parts: [
-            "api"
-            "nominations"
-            "renominations"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "nominations"
+            }
+            {
+              lit: "renominations"
+            }
           ]
           select: {
             exist: [

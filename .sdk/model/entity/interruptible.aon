@@ -32,10 +32,16 @@ main: kit: entity: interruptible: {
           }
           method: "GET"
           orig: "/api/capacity/interruptible"
-          parts: [
-            "api"
-            "capacity"
-            "interruptible"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "capacity"
+            }
+            {
+              lit: "interruptible"
+            }
           ]
           select: {
             exist: [

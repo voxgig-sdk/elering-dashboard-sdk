@@ -39,11 +39,19 @@ main: kit: entity: renominations_controller: {
           }
           method: "GET"
           orig: "/api/nominations/renominations/csv"
-          parts: [
-            "api"
-            "nominations"
-            "renominations"
-            "csv"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "nominations"
+            }
+            {
+              lit: "renominations"
+            }
+            {
+              lit: "csv"
+            }
           ]
           select: {
             exist: [

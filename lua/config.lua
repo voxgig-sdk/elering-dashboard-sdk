@@ -82,9 +82,13 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/balance",
-                ["parts"] = {
-                  "api",
-                  "balance",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "balance",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -95,6 +99,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "api",
+                  "balance",
                 },
               },
             },
@@ -140,11 +148,19 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/balance/commerce/csv",
-                ["parts"] = {
-                  "api",
-                  "balance",
-                  "commerce",
-                  "csv",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "balance",
+                  },
+                  {
+                    ["lit"] = "commerce",
+                  },
+                  {
+                    ["lit"] = "csv",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -156,6 +172,12 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "api",
+                  "balance",
+                  "commerce",
+                  "csv",
                 },
               },
               {
@@ -186,10 +208,16 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/balance/csv",
-                ["parts"] = {
-                  "api",
-                  "balance",
-                  "csv",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "balance",
+                  },
+                  {
+                    ["lit"] = "csv",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -201,6 +229,11 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "api",
+                  "balance",
+                  "csv",
                 },
               },
               {
@@ -231,11 +264,19 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/balance/total/csv",
-                ["parts"] = {
-                  "api",
-                  "balance",
-                  "total",
-                  "csv",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "balance",
+                  },
+                  {
+                    ["lit"] = "total",
+                  },
+                  {
+                    ["lit"] = "csv",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -247,6 +288,12 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "api",
+                  "balance",
+                  "total",
+                  "csv",
                 },
               },
               {
@@ -271,10 +318,16 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/balance/total",
-                ["parts"] = {
-                  "api",
-                  "balance",
-                  "total",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "balance",
+                  },
+                  {
+                    ["lit"] = "total",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -285,6 +338,11 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "api",
+                  "balance",
+                  "total",
                 },
               },
               {
@@ -309,10 +367,16 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/balance/commerce",
-                ["parts"] = {
-                  "api",
-                  "balance",
-                  "commerce",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "balance",
+                  },
+                  {
+                    ["lit"] = "commerce",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -324,22 +388,41 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
+                ["parts"] = {
+                  "api",
+                  "balance",
+                  "commerce",
+                },
               },
               {
                 ["args"] = {},
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/balance/commerce/latest",
-                ["parts"] = {
-                  "api",
-                  "balance",
-                  "commerce",
-                  "latest",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "balance",
+                  },
+                  {
+                    ["lit"] = "commerce",
+                  },
+                  {
+                    ["lit"] = "latest",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "api",
+                  "balance",
+                  "commerce",
+                  "latest",
                 },
               },
               {
@@ -347,16 +430,30 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/balance/total/latest",
-                ["parts"] = {
-                  "api",
-                  "balance",
-                  "total",
-                  "latest",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "balance",
+                  },
+                  {
+                    ["lit"] = "total",
+                  },
+                  {
+                    ["lit"] = "latest",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "api",
+                  "balance",
+                  "total",
+                  "latest",
                 },
               },
             },
@@ -396,10 +493,16 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/capacity/firm",
-                ["parts"] = {
-                  "api",
-                  "capacity",
-                  "firm",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "capacity",
+                  },
+                  {
+                    ["lit"] = "firm",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -410,6 +513,11 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "api",
+                  "capacity",
+                  "firm",
                 },
               },
             },
@@ -475,11 +583,19 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/capacity/firm/csv",
-                ["parts"] = {
-                  "api",
-                  "capacity",
-                  "firm",
-                  "csv",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "capacity",
+                  },
+                  {
+                    ["lit"] = "firm",
+                  },
+                  {
+                    ["lit"] = "csv",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -491,6 +607,12 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "api",
+                  "capacity",
+                  "firm",
+                  "csv",
                 },
               },
             },
@@ -536,11 +658,19 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/gas-balance/price/csv",
-                ["parts"] = {
-                  "api",
-                  "gas-balance",
-                  "price",
-                  "csv",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "gas-balance",
+                  },
+                  {
+                    ["lit"] = "price",
+                  },
+                  {
+                    ["lit"] = "csv",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -552,6 +682,12 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "api",
+                  "gas-balance",
+                  "price",
+                  "csv",
                 },
               },
               {
@@ -576,10 +712,16 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/gas-balance/price",
-                ["parts"] = {
-                  "api",
-                  "gas-balance",
-                  "price",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "gas-balance",
+                  },
+                  {
+                    ["lit"] = "price",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -590,6 +732,11 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "api",
+                  "gas-balance",
+                  "price",
                 },
               },
             },
@@ -612,16 +759,30 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/gas/border-trade/current",
-                ["parts"] = {
-                  "api",
-                  "gas",
-                  "border-trade",
-                  "current",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "gas",
+                  },
+                  {
+                    ["lit"] = "border-trade",
+                  },
+                  {
+                    ["lit"] = "current",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "api",
+                  "gas",
+                  "border-trade",
+                  "current",
                 },
               },
             },
@@ -661,9 +822,13 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/gas-system",
-                ["parts"] = {
-                  "api",
-                  "gas-system",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "gas-system",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -674,6 +839,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "api",
+                  "gas-system",
                 },
               },
             },
@@ -719,10 +888,16 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/gas-system/csv",
-                ["parts"] = {
-                  "api",
-                  "gas-system",
-                  "csv",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "gas-system",
+                  },
+                  {
+                    ["lit"] = "csv",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -734,6 +909,11 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "api",
+                  "gas-system",
+                  "csv",
                 },
               },
               {
@@ -764,11 +944,19 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/gas-system/daily/csv",
-                ["parts"] = {
-                  "api",
-                  "gas-system",
-                  "daily",
-                  "csv",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "gas-system",
+                  },
+                  {
+                    ["lit"] = "daily",
+                  },
+                  {
+                    ["lit"] = "csv",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -780,6 +968,12 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "api",
+                  "gas-system",
+                  "daily",
+                  "csv",
                 },
               },
               {
@@ -810,11 +1004,19 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/gas-system/m3/csv",
-                ["parts"] = {
-                  "api",
-                  "gas-system",
-                  "m3",
-                  "csv",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "gas-system",
+                  },
+                  {
+                    ["lit"] = "m3",
+                  },
+                  {
+                    ["lit"] = "csv",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -826,6 +1028,12 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "api",
+                  "gas-system",
+                  "m3",
+                  "csv",
                 },
               },
               {
@@ -850,10 +1058,16 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/gas-system/daily",
-                ["parts"] = {
-                  "api",
-                  "gas-system",
-                  "daily",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "gas-system",
+                  },
+                  {
+                    ["lit"] = "daily",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -864,6 +1078,11 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "api",
+                  "gas-system",
+                  "daily",
                 },
               },
               {
@@ -888,10 +1107,16 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/gas-system/daily-average",
-                ["parts"] = {
-                  "api",
-                  "gas-system",
-                  "daily-average",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "gas-system",
+                  },
+                  {
+                    ["lit"] = "daily-average",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -902,6 +1127,11 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "api",
+                  "gas-system",
+                  "daily-average",
                 },
               },
               {
@@ -926,10 +1156,16 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/gas-system/m3",
-                ["parts"] = {
-                  "api",
-                  "gas-system",
-                  "m3",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "gas-system",
+                  },
+                  {
+                    ["lit"] = "m3",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -941,21 +1177,37 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
+                ["parts"] = {
+                  "api",
+                  "gas-system",
+                  "m3",
+                },
               },
               {
                 ["args"] = {},
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/gas-system/latest",
-                ["parts"] = {
-                  "api",
-                  "gas-system",
-                  "latest",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "gas-system",
+                  },
+                  {
+                    ["lit"] = "latest",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "api",
+                  "gas-system",
+                  "latest",
                 },
               },
             },
@@ -995,9 +1247,13 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/gas-trade",
-                ["parts"] = {
-                  "api",
-                  "gas-trade",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "gas-trade",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -1008,6 +1264,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "api",
+                  "gas-trade",
                 },
               },
             },
@@ -1053,10 +1313,16 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/gas-trade/csv",
-                ["parts"] = {
-                  "api",
-                  "gas-trade",
-                  "csv",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "gas-trade",
+                  },
+                  {
+                    ["lit"] = "csv",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -1068,6 +1334,11 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "api",
+                  "gas-trade",
+                  "csv",
                 },
               },
               {
@@ -1085,11 +1356,19 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/gas-trade/{group}/latest",
-                ["parts"] = {
-                  "api",
-                  "gas-trade",
-                  "{group}",
-                  "latest",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "gas-trade",
+                  },
+                  {
+                    ["var"] = "group",
+                  },
+                  {
+                    ["lit"] = "latest",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -1099,6 +1378,12 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "api",
+                  "gas-trade",
+                  "{group}",
+                  "latest",
                 },
               },
             },
@@ -1148,11 +1433,19 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/gas-transmission/cross-border/csv",
-                ["parts"] = {
-                  "api",
-                  "gas-transmission",
-                  "cross-border",
-                  "csv",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "gas-transmission",
+                  },
+                  {
+                    ["lit"] = "cross-border",
+                  },
+                  {
+                    ["lit"] = "csv",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -1164,6 +1457,12 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "api",
+                  "gas-transmission",
+                  "cross-border",
+                  "csv",
                 },
               },
               {
@@ -1188,10 +1487,16 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/gas-transmission/cross-border",
-                ["parts"] = {
-                  "api",
-                  "gas-transmission",
-                  "cross-border",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "gas-transmission",
+                  },
+                  {
+                    ["lit"] = "cross-border",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -1203,22 +1508,41 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
+                ["parts"] = {
+                  "api",
+                  "gas-transmission",
+                  "cross-border",
+                },
               },
               {
                 ["args"] = {},
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/gas-transmission/cross-border/latest",
-                ["parts"] = {
-                  "api",
-                  "gas-transmission",
-                  "cross-border",
-                  "latest",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "gas-transmission",
+                  },
+                  {
+                    ["lit"] = "cross-border",
+                  },
+                  {
+                    ["lit"] = "latest",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "api",
+                  "gas-transmission",
+                  "cross-border",
+                  "latest",
                 },
               },
             },
@@ -1265,10 +1589,16 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/green/certificates",
-                ["parts"] = {
-                  "api",
-                  "green",
-                  "certificates",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "green",
+                  },
+                  {
+                    ["lit"] = "certificates",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -1280,6 +1610,11 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "api",
+                  "green",
+                  "certificates",
                 },
               },
             },
@@ -1319,10 +1654,16 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/capacity/interruptible",
-                ["parts"] = {
-                  "api",
-                  "capacity",
-                  "interruptible",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "capacity",
+                  },
+                  {
+                    ["lit"] = "interruptible",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -1333,6 +1674,11 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "api",
+                  "capacity",
+                  "interruptible",
                 },
               },
             },
@@ -1378,11 +1724,19 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/capacity/interruptible/csv",
-                ["parts"] = {
-                  "api",
-                  "capacity",
-                  "interruptible",
-                  "csv",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "capacity",
+                  },
+                  {
+                    ["lit"] = "interruptible",
+                  },
+                  {
+                    ["lit"] = "csv",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -1394,6 +1748,12 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "api",
+                  "capacity",
+                  "interruptible",
+                  "csv",
                 },
               },
             },
@@ -1433,9 +1793,13 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/nominations",
-                ["parts"] = {
-                  "api",
-                  "nominations",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "nominations",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -1446,6 +1810,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "api",
+                  "nominations",
                 },
               },
             },
@@ -1491,10 +1859,16 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/nominations/csv",
-                ["parts"] = {
-                  "api",
-                  "nominations",
-                  "csv",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "nominations",
+                  },
+                  {
+                    ["lit"] = "csv",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -1506,6 +1880,11 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "api",
+                  "nominations",
+                  "csv",
                 },
               },
             },
@@ -1551,11 +1930,19 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/nps/price/csv",
-                ["parts"] = {
-                  "api",
-                  "nps",
-                  "price",
-                  "csv",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "nps",
+                  },
+                  {
+                    ["lit"] = "price",
+                  },
+                  {
+                    ["lit"] = "csv",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -1567,6 +1954,12 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "api",
+                  "nps",
+                  "price",
+                  "csv",
                 },
               },
               {
@@ -1597,11 +1990,19 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/nps/turnover/csv",
-                ["parts"] = {
-                  "api",
-                  "nps",
-                  "turnover",
-                  "csv",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "nps",
+                  },
+                  {
+                    ["lit"] = "turnover",
+                  },
+                  {
+                    ["lit"] = "csv",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -1613,6 +2014,12 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "api",
+                  "nps",
+                  "turnover",
+                  "csv",
                 },
               },
               {
@@ -1637,10 +2044,16 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/nps/price",
-                ["parts"] = {
-                  "api",
-                  "nps",
-                  "price",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "nps",
+                  },
+                  {
+                    ["lit"] = "price",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -1651,6 +2064,11 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "api",
+                  "nps",
+                  "price",
                 },
               },
               {
@@ -1675,10 +2093,16 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/nps/turnover",
-                ["parts"] = {
-                  "api",
-                  "nps",
-                  "turnover",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "nps",
+                  },
+                  {
+                    ["lit"] = "turnover",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -1689,6 +2113,11 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "api",
+                  "nps",
+                  "turnover",
                 },
               },
               {
@@ -1706,12 +2135,22 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/nps/price/{group}/current",
-                ["parts"] = {
-                  "api",
-                  "nps",
-                  "price",
-                  "{group}",
-                  "current",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "nps",
+                  },
+                  {
+                    ["lit"] = "price",
+                  },
+                  {
+                    ["var"] = "group",
+                  },
+                  {
+                    ["lit"] = "current",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -1721,6 +2160,13 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "api",
+                  "nps",
+                  "price",
+                  "{group}",
+                  "current",
                 },
               },
               {
@@ -1738,12 +2184,22 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/nps/price/{group}/latest",
-                ["parts"] = {
-                  "api",
-                  "nps",
-                  "price",
-                  "{group}",
-                  "latest",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "nps",
+                  },
+                  {
+                    ["lit"] = "price",
+                  },
+                  {
+                    ["var"] = "group",
+                  },
+                  {
+                    ["lit"] = "latest",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -1753,6 +2209,13 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "api",
+                  "nps",
+                  "price",
+                  "{group}",
+                  "latest",
                 },
               },
               {
@@ -1770,12 +2233,22 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/nps/turnover/{group}/latest",
-                ["parts"] = {
-                  "api",
-                  "nps",
-                  "turnover",
-                  "{group}",
-                  "latest",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "nps",
+                  },
+                  {
+                    ["lit"] = "turnover",
+                  },
+                  {
+                    ["var"] = "group",
+                  },
+                  {
+                    ["lit"] = "latest",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -1785,6 +2258,13 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "api",
+                  "nps",
+                  "turnover",
+                  "{group}",
+                  "latest",
                 },
               },
             },
@@ -1831,10 +2311,16 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/nominations/renominations",
-                ["parts"] = {
-                  "api",
-                  "nominations",
-                  "renominations",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "nominations",
+                  },
+                  {
+                    ["lit"] = "renominations",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -1845,6 +2331,11 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "api",
+                  "nominations",
+                  "renominations",
                 },
               },
             },
@@ -1890,11 +2381,19 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/nominations/renominations/csv",
-                ["parts"] = {
-                  "api",
-                  "nominations",
-                  "renominations",
-                  "csv",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "nominations",
+                  },
+                  {
+                    ["lit"] = "renominations",
+                  },
+                  {
+                    ["lit"] = "csv",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -1906,6 +2405,12 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "api",
+                  "nominations",
+                  "renominations",
+                  "csv",
                 },
               },
             },
@@ -1945,9 +2450,13 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/system",
-                ["parts"] = {
-                  "api",
-                  "system",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "system",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -1958,6 +2467,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "api",
+                  "system",
                 },
               },
             },
@@ -2003,10 +2516,16 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/system/csv",
-                ["parts"] = {
-                  "api",
-                  "system",
-                  "csv",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "system",
+                  },
+                  {
+                    ["lit"] = "csv",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -2018,6 +2537,11 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "api",
+                  "system",
+                  "csv",
                 },
               },
               {
@@ -2048,11 +2572,19 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/system/with-plan/csv",
-                ["parts"] = {
-                  "api",
-                  "system",
-                  "with-plan",
-                  "csv",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "system",
+                  },
+                  {
+                    ["lit"] = "with-plan",
+                  },
+                  {
+                    ["lit"] = "csv",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -2064,6 +2596,12 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "api",
+                  "system",
+                  "with-plan",
+                  "csv",
                 },
               },
               {
@@ -2088,10 +2626,16 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/system/with-plan",
-                ["parts"] = {
-                  "api",
-                  "system",
-                  "with-plan",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "system",
+                  },
+                  {
+                    ["lit"] = "with-plan",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -2103,21 +2647,37 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
+                ["parts"] = {
+                  "api",
+                  "system",
+                  "with-plan",
+                },
               },
               {
                 ["args"] = {},
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/system/latest",
-                ["parts"] = {
-                  "api",
-                  "system",
-                  "latest",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "system",
+                  },
+                  {
+                    ["lit"] = "latest",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "api",
+                  "system",
+                  "latest",
                 },
               },
             },
@@ -2172,12 +2732,22 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/transmission/cross-border-capacity/{group}/csv",
-                ["parts"] = {
-                  "api",
-                  "transmission",
-                  "cross-border-capacity",
-                  "{group}",
-                  "csv",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "transmission",
+                  },
+                  {
+                    ["lit"] = "cross-border-capacity",
+                  },
+                  {
+                    ["var"] = "group",
+                  },
+                  {
+                    ["lit"] = "csv",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -2190,6 +2760,13 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "api",
+                  "transmission",
+                  "cross-border-capacity",
+                  "{group}",
+                  "csv",
                 },
               },
               {
@@ -2220,11 +2797,19 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/transmission/cross-border-planned-trade/csv",
-                ["parts"] = {
-                  "api",
-                  "transmission",
-                  "cross-border-planned-trade",
-                  "csv",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "transmission",
+                  },
+                  {
+                    ["lit"] = "cross-border-planned-trade",
+                  },
+                  {
+                    ["lit"] = "csv",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -2236,6 +2821,12 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "api",
+                  "transmission",
+                  "cross-border-planned-trade",
+                  "csv",
                 },
               },
               {
@@ -2266,11 +2857,19 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/transmission/cross-border/csv",
-                ["parts"] = {
-                  "api",
-                  "transmission",
-                  "cross-border",
-                  "csv",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "transmission",
+                  },
+                  {
+                    ["lit"] = "cross-border",
+                  },
+                  {
+                    ["lit"] = "csv",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -2282,6 +2881,12 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "api",
+                  "transmission",
+                  "cross-border",
+                  "csv",
                 },
               },
               {
@@ -2312,12 +2917,22 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/transmission/cross-border/hourly/csv",
-                ["parts"] = {
-                  "api",
-                  "transmission",
-                  "cross-border",
-                  "hourly",
-                  "csv",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "transmission",
+                  },
+                  {
+                    ["lit"] = "cross-border",
+                  },
+                  {
+                    ["lit"] = "hourly",
+                  },
+                  {
+                    ["lit"] = "csv",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -2329,6 +2944,13 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "api",
+                  "transmission",
+                  "cross-border",
+                  "hourly",
+                  "csv",
                 },
               },
               {
@@ -2362,11 +2984,19 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/transmission/cross-border-capacity/{group}",
-                ["parts"] = {
-                  "api",
-                  "transmission",
-                  "cross-border-capacity",
-                  "{group}",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "transmission",
+                  },
+                  {
+                    ["lit"] = "cross-border-capacity",
+                  },
+                  {
+                    ["var"] = "group",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -2378,6 +3008,12 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "api",
+                  "transmission",
+                  "cross-border-capacity",
+                  "{group}",
                 },
               },
               {
@@ -2402,10 +3038,16 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/transmission/cross-border",
-                ["parts"] = {
-                  "api",
-                  "transmission",
-                  "cross-border",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "transmission",
+                  },
+                  {
+                    ["lit"] = "cross-border",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -2416,6 +3058,11 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "api",
+                  "transmission",
+                  "cross-border",
                 },
               },
               {
@@ -2440,10 +3087,16 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/transmission/cross-border-capacity",
-                ["parts"] = {
-                  "api",
-                  "transmission",
-                  "cross-border-capacity",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "transmission",
+                  },
+                  {
+                    ["lit"] = "cross-border-capacity",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -2454,6 +3107,11 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "api",
+                  "transmission",
+                  "cross-border-capacity",
                 },
               },
               {
@@ -2478,10 +3136,16 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/transmission/cross-border-planned-trade",
-                ["parts"] = {
-                  "api",
-                  "transmission",
-                  "cross-border-planned-trade",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "transmission",
+                  },
+                  {
+                    ["lit"] = "cross-border-planned-trade",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -2492,6 +3156,11 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "api",
+                  "transmission",
+                  "cross-border-planned-trade",
                 },
               },
               {
@@ -2516,11 +3185,19 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/transmission/cross-border/hourly",
-                ["parts"] = {
-                  "api",
-                  "transmission",
-                  "cross-border",
-                  "hourly",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "transmission",
+                  },
+                  {
+                    ["lit"] = "cross-border",
+                  },
+                  {
+                    ["lit"] = "hourly",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -2532,22 +3209,42 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
+                ["parts"] = {
+                  "api",
+                  "transmission",
+                  "cross-border",
+                  "hourly",
+                },
               },
               {
                 ["args"] = {},
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/transmission/cross-border-planned-trade/latest",
-                ["parts"] = {
-                  "api",
-                  "transmission",
-                  "cross-border-planned-trade",
-                  "latest",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "transmission",
+                  },
+                  {
+                    ["lit"] = "cross-border-planned-trade",
+                  },
+                  {
+                    ["lit"] = "latest",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "api",
+                  "transmission",
+                  "cross-border-planned-trade",
+                  "latest",
                 },
               },
               {
@@ -2555,16 +3252,30 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/transmission/cross-border/latest",
-                ["parts"] = {
-                  "api",
-                  "transmission",
-                  "cross-border",
-                  "latest",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "transmission",
+                  },
+                  {
+                    ["lit"] = "cross-border",
+                  },
+                  {
+                    ["lit"] = "latest",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "api",
+                  "transmission",
+                  "cross-border",
+                  "latest",
                 },
               },
             },
@@ -2657,10 +3368,16 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/umm/gas",
-                ["parts"] = {
-                  "api",
-                  "umm",
-                  "gas",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "umm",
+                  },
+                  {
+                    ["lit"] = "gas",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -2680,6 +3397,11 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
+                ["parts"] = {
+                  "api",
+                  "umm",
+                  "gas",
+                },
               },
               {
                 ["args"] = {
@@ -2696,11 +3418,19 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/umm/gas/messages",
-                ["parts"] = {
-                  "api",
-                  "umm",
-                  "gas",
-                  "messages",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "umm",
+                  },
+                  {
+                    ["lit"] = "gas",
+                  },
+                  {
+                    ["lit"] = "messages",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -2710,6 +3440,12 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "api",
+                  "umm",
+                  "gas",
+                  "messages",
                 },
               },
               {
@@ -2727,11 +3463,19 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/umm/single/{id}",
-                ["parts"] = {
-                  "api",
-                  "umm",
-                  "single",
-                  "{id}",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "umm",
+                  },
+                  {
+                    ["lit"] = "single",
+                  },
+                  {
+                    ["var"] = "id",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -2741,6 +3485,12 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "api",
+                  "umm",
+                  "single",
+                  "{id}",
                 },
               },
             },
@@ -2763,15 +3513,26 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/umm/gas/rss",
-                ["parts"] = {
-                  "umm",
-                  "gas",
-                  "rss",
+                ["segments"] = {
+                  {
+                    ["lit"] = "umm",
+                  },
+                  {
+                    ["lit"] = "gas",
+                  },
+                  {
+                    ["lit"] = "rss",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "umm",
+                  "gas",
+                  "rss",
                 },
               },
               {
@@ -2779,16 +3540,30 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/umm/gas/rss/aris",
-                ["parts"] = {
-                  "umm",
-                  "gas",
-                  "rss",
-                  "aris",
+                ["segments"] = {
+                  {
+                    ["lit"] = "umm",
+                  },
+                  {
+                    ["lit"] = "gas",
+                  },
+                  {
+                    ["lit"] = "rss",
+                  },
+                  {
+                    ["lit"] = "aris",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "umm",
+                  "gas",
+                  "rss",
+                  "aris",
                 },
               },
             },
