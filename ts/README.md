@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { EleringDashboardSDK } from '@voxgig-sdk/elering-dashboard'
+import { EleringDashboardSDK } from '@voxgig-sdk/elering-dashboard-sdk'
 
 const client = new EleringDashboardSDK()
 ```
@@ -1018,7 +1018,7 @@ elering-dashboard/
 Import the SDK from the package root:
 
 ```ts
-import { EleringDashboardSDK } from '@voxgig-sdk/elering-dashboard'
+import { EleringDashboardSDK } from '@voxgig-sdk/elering-dashboard-sdk'
 ```
 
 ### Entity state

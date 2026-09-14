@@ -105,7 +105,7 @@ local result, err = client:BalanceController():load()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/elering-dashboard` | publish pending — [install from git tag](https://github.com/voxgig-sdk/elering-dashboard-sdk/releases) |
+| TypeScript | `@voxgig-sdk/elering-dashboard-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/elering-dashboard-sdk/releases) |
 | Python | `voxgig-sdk-elering-dashboard` | publish pending — [install from git tag](https://github.com/voxgig-sdk/elering-dashboard-sdk/releases) |
 | PHP | `voxgig-sdk/elering-dashboard` | publish pending — [install from git tag](https://github.com/voxgig-sdk/elering-dashboard-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/elering-dashboard-sdk/go` | `go get github.com/voxgig-sdk/elering-dashboard-sdk/go@latest` |
@@ -119,7 +119,7 @@ local result, err = client:BalanceController():load()
 ### TypeScript
 
 ```ts
-import { EleringDashboardSDK } from '@voxgig-sdk/elering-dashboard'
+import { EleringDashboardSDK } from '@voxgig-sdk/elering-dashboard-sdk'
 
 const client = new EleringDashboardSDK()
 
