@@ -16,5 +16,61 @@
     "green_controller": {
       "green_controller_ref01": {}
     }
+  },
+  "requests": {
+    "GET /api/green/certificates": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getCertificates",
+        "parameters": [
+          {
+            "description": "technology fields",
+            "in": "query",
+            "name": "technology",
+            "required": false,
+            "schema": {
+              "default": "Kõik tehnoloogiad",
+              "type": "string"
+            }
+          },
+          {
+            "description": "fuel fields",
+            "in": "query",
+            "name": "fuel",
+            "required": false,
+            "schema": {
+              "default": "Kõik kütused",
+              "type": "string"
+            }
+          },
+          {
+            "description": "transaction type fields",
+            "in": "query",
+            "name": "type",
+            "required": false,
+            "schema": {
+              "default": "TRANSACTION",
+              "enum": [
+                "TRANSACTION",
+                "PRODUCTION"
+              ],
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "*/*": {
+                "schema": {}
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

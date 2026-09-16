@@ -10,6 +10,12 @@ main: kit: entity: umm_rss_feed_controller: {
       name: "load"
       points: [
         {
+          contract: {
+            id: "GET /umm/gas/rss"
+            json: "{\"operationId\":\"rss\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/xml\":{\"schema\":{}}},\"description\":\"OK\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/umm/gas/rss"
           segments: [
@@ -29,6 +35,12 @@ main: kit: entity: umm_rss_feed_controller: {
           }
         }
         {
+          contract: {
+            id: "GET /umm/gas/rss/aris"
+            json: "{\"operationId\":\"arisRss\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/xml\":{\"schema\":{}}},\"description\":\"OK\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/umm/gas/rss/aris"
           segments: [

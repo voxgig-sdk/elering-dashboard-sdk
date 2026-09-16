@@ -19,5 +19,311 @@
     "nps_controller": {
       "nps_controller_ref01": {}
     }
+  },
+  "requests": {
+    "GET /api/nps/price/csv": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getPriceAsCSV",
+        "parameters": [
+          {
+            "allowEmptyValue": true,
+            "description": "start time for data",
+            "example": "2020-05-31T20:59:59.999Z",
+            "in": "query",
+            "name": "start",
+            "required": false,
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
+            "allowEmptyValue": true,
+            "description": "end time for data",
+            "example": "2020-06-30T20:59:59.999Z",
+            "in": "query",
+            "name": "end",
+            "required": false,
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
+            "description": "fields to include in file",
+            "in": "query",
+            "name": "fields",
+            "required": false,
+            "schema": {
+              "items": {
+                "enum": [
+                  "ee",
+                  "fi",
+                  "lv",
+                  "lt"
+                ],
+                "type": "string"
+              },
+              "type": "array"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /api/nps/turnover/csv": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getTurnoverAsCSV",
+        "parameters": [
+          {
+            "allowEmptyValue": true,
+            "description": "start time for data",
+            "example": "2020-05-31T20:59:59.999Z",
+            "in": "query",
+            "name": "start",
+            "required": false,
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
+            "allowEmptyValue": true,
+            "description": "end time for data",
+            "example": "2020-06-30T20:59:59.999Z",
+            "in": "query",
+            "name": "end",
+            "required": false,
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "fields",
+            "required": false,
+            "schema": {
+              "items": {
+                "enum": [
+                  "in",
+                  "out"
+                ],
+                "type": "string"
+              },
+              "type": "array"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /api/nps/price": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getPrice",
+        "parameters": [
+          {
+            "allowEmptyValue": true,
+            "description": "start time for data",
+            "example": "2020-05-31T20:59:59.999Z",
+            "in": "query",
+            "name": "start",
+            "required": false,
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
+            "allowEmptyValue": true,
+            "description": "end time for data",
+            "example": "2020-06-30T20:59:59.999Z",
+            "in": "query",
+            "name": "end",
+            "required": false,
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "*/*": {
+                "schema": {}
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /api/nps/turnover": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getTurnover",
+        "parameters": [
+          {
+            "allowEmptyValue": true,
+            "description": "start time for data",
+            "example": "2020-05-31T20:59:59.999Z",
+            "in": "query",
+            "name": "start",
+            "required": false,
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
+            "allowEmptyValue": true,
+            "description": "end time for data",
+            "example": "2020-06-30T20:59:59.999Z",
+            "in": "query",
+            "name": "end",
+            "required": false,
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "*/*": {
+                "schema": {}
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /api/nps/price/{group}/current": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getGroupPriceCurrent",
+        "parameters": [
+          {
+            "description": "group to fetch data for",
+            "in": "path",
+            "name": "group",
+            "required": true,
+            "schema": {
+              "enum": [
+                "EE",
+                "LT",
+                "LV",
+                "FI"
+              ],
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "*/*": {
+                "schema": {}
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /api/nps/price/{group}/latest": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getGroupPriceLatest",
+        "parameters": [
+          {
+            "description": "group to fetch data for",
+            "in": "path",
+            "name": "group",
+            "required": true,
+            "schema": {
+              "enum": [
+                "EE",
+                "LT",
+                "LV",
+                "FI"
+              ],
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "*/*": {
+                "schema": {}
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /api/nps/turnover/{group}/latest": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getGroupTurnoverLatest",
+        "parameters": [
+          {
+            "description": "group to fetch data for",
+            "in": "path",
+            "name": "group",
+            "required": true,
+            "schema": {
+              "enum": [
+                "EE",
+                "LT",
+                "LV",
+                "FI"
+              ],
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "*/*": {
+                "schema": {}
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

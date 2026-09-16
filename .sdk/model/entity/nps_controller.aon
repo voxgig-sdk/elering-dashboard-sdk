@@ -37,6 +37,12 @@ main: kit: entity: nps_controller: {
               }
             ]
           }
+          contract: {
+            id: "GET /api/nps/price/csv"
+            json: "{\"operationId\":\"getPriceAsCSV\",\"parameters\":[{\"allowEmptyValue\":true,\"description\":\"start time for data\",\"example\":\"2020-05-31T20:59:59.999Z\",\"in\":\"query\",\"name\":\"start\",\"required\":false,\"schema\":{\"format\":\"date-time\",\"type\":\"string\"}},{\"allowEmptyValue\":true,\"description\":\"end time for data\",\"example\":\"2020-06-30T20:59:59.999Z\",\"in\":\"query\",\"name\":\"end\",\"required\":false,\"schema\":{\"format\":\"date-time\",\"type\":\"string\"}},{\"description\":\"fields to include in file\",\"in\":\"query\",\"name\":\"fields\",\"required\":false,\"schema\":{\"items\":{\"enum\":[\"ee\",\"fi\",\"lv\",\"lt\"],\"type\":\"string\"},\"type\":\"array\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"description\":\"OK\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/api/nps/price/csv"
           segments: [
@@ -93,6 +99,12 @@ main: kit: entity: nps_controller: {
               }
             ]
           }
+          contract: {
+            id: "GET /api/nps/turnover/csv"
+            json: "{\"operationId\":\"getTurnoverAsCSV\",\"parameters\":[{\"allowEmptyValue\":true,\"description\":\"start time for data\",\"example\":\"2020-05-31T20:59:59.999Z\",\"in\":\"query\",\"name\":\"start\",\"required\":false,\"schema\":{\"format\":\"date-time\",\"type\":\"string\"}},{\"allowEmptyValue\":true,\"description\":\"end time for data\",\"example\":\"2020-06-30T20:59:59.999Z\",\"in\":\"query\",\"name\":\"end\",\"required\":false,\"schema\":{\"format\":\"date-time\",\"type\":\"string\"}},{\"in\":\"query\",\"name\":\"fields\",\"required\":false,\"schema\":{\"items\":{\"enum\":[\"in\",\"out\"],\"type\":\"string\"},\"type\":\"array\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"description\":\"OK\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/api/nps/turnover/csv"
           segments: [
@@ -142,6 +154,12 @@ main: kit: entity: nps_controller: {
               }
             ]
           }
+          contract: {
+            id: "GET /api/nps/price"
+            json: "{\"operationId\":\"getPrice\",\"parameters\":[{\"allowEmptyValue\":true,\"description\":\"start time for data\",\"example\":\"2020-05-31T20:59:59.999Z\",\"in\":\"query\",\"name\":\"start\",\"required\":false,\"schema\":{\"format\":\"date-time\",\"type\":\"string\"}},{\"allowEmptyValue\":true,\"description\":\"end time for data\",\"example\":\"2020-06-30T20:59:59.999Z\",\"in\":\"query\",\"name\":\"end\",\"required\":false,\"schema\":{\"format\":\"date-time\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"*/*\":{\"schema\":{}}},\"description\":\"OK\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/api/nps/price"
           segments: [
@@ -187,6 +205,12 @@ main: kit: entity: nps_controller: {
               }
             ]
           }
+          contract: {
+            id: "GET /api/nps/turnover"
+            json: "{\"operationId\":\"getTurnover\",\"parameters\":[{\"allowEmptyValue\":true,\"description\":\"start time for data\",\"example\":\"2020-05-31T20:59:59.999Z\",\"in\":\"query\",\"name\":\"start\",\"required\":false,\"schema\":{\"format\":\"date-time\",\"type\":\"string\"}},{\"allowEmptyValue\":true,\"description\":\"end time for data\",\"example\":\"2020-06-30T20:59:59.999Z\",\"in\":\"query\",\"name\":\"end\",\"required\":false,\"schema\":{\"format\":\"date-time\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"*/*\":{\"schema\":{}}},\"description\":\"OK\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/api/nps/turnover"
           segments: [
@@ -222,6 +246,12 @@ main: kit: entity: nps_controller: {
                 type: "`$STRING`"
               }
             ]
+          }
+          contract: {
+            id: "GET /api/nps/price/{group}/current"
+            json: "{\"operationId\":\"getGroupPriceCurrent\",\"parameters\":[{\"description\":\"group to fetch data for\",\"in\":\"path\",\"name\":\"group\",\"required\":true,\"schema\":{\"enum\":[\"EE\",\"LT\",\"LV\",\"FI\"],\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"*/*\":{\"schema\":{}}},\"description\":\"OK\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
           }
           method: "GET"
           orig: "/api/nps/price/{group}/current"
@@ -264,6 +294,12 @@ main: kit: entity: nps_controller: {
               }
             ]
           }
+          contract: {
+            id: "GET /api/nps/price/{group}/latest"
+            json: "{\"operationId\":\"getGroupPriceLatest\",\"parameters\":[{\"description\":\"group to fetch data for\",\"in\":\"path\",\"name\":\"group\",\"required\":true,\"schema\":{\"enum\":[\"EE\",\"LT\",\"LV\",\"FI\"],\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"*/*\":{\"schema\":{}}},\"description\":\"OK\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/api/nps/price/{group}/latest"
           segments: [
@@ -304,6 +340,12 @@ main: kit: entity: nps_controller: {
                 type: "`$STRING`"
               }
             ]
+          }
+          contract: {
+            id: "GET /api/nps/turnover/{group}/latest"
+            json: "{\"operationId\":\"getGroupTurnoverLatest\",\"parameters\":[{\"description\":\"group to fetch data for\",\"in\":\"path\",\"name\":\"group\",\"required\":true,\"schema\":{\"enum\":[\"EE\",\"LT\",\"LV\",\"FI\"],\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"*/*\":{\"schema\":{}}},\"description\":\"OK\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
           }
           method: "GET"
           orig: "/api/nps/turnover/{group}/latest"

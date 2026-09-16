@@ -37,6 +37,12 @@ main: kit: entity: gas_transmission_controller: {
               }
             ]
           }
+          contract: {
+            id: "GET /api/gas-transmission/cross-border/csv"
+            json: "{\"operationId\":\"getAllAsCSV\",\"parameters\":[{\"allowEmptyValue\":true,\"description\":\"start time for data\",\"example\":\"2020-05-31T20:59:59.999Z\",\"in\":\"query\",\"name\":\"start\",\"required\":false,\"schema\":{\"format\":\"date-time\",\"type\":\"string\"}},{\"allowEmptyValue\":true,\"description\":\"end time for data\",\"example\":\"2020-06-30T20:59:59.999Z\",\"in\":\"query\",\"name\":\"end\",\"required\":false,\"schema\":{\"format\":\"date-time\",\"type\":\"string\"}},{\"description\":\"Data fields to include in response\",\"in\":\"query\",\"name\":\"fields\",\"required\":false,\"schema\":{\"items\":{\"enum\":[\"wobbe_bc\",\"wobbe_karksi\",\"wobbe_narva\",\"wobbe_varska\",\"volume_bc\",\"volume_karksi\",\"volume_narva\",\"volume_varska\",\"gcv_bc\",\"gcv_karksi\",\"gcv_narva\",\"gcv_varska\",\"in_pressure_bc\",\"out_pressure_bc\",\"in_pressure_karksi\",\"out_pressure_karksi\",\"in_pressure_narva\",\"out_pressure_narva\",\"in_pressure_varska\",\"out_pressure_varska\"],\"type\":\"string\"},\"type\":\"array\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"description\":\"OK\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/api/gas-transmission/cross-border/csv"
           segments: [
@@ -86,6 +92,12 @@ main: kit: entity: gas_transmission_controller: {
               }
             ]
           }
+          contract: {
+            id: "GET /api/gas-transmission/cross-border"
+            json: "{\"operationId\":\"getCrossBorder_1\",\"parameters\":[{\"allowEmptyValue\":true,\"description\":\"start time for data\",\"example\":\"2020-05-31T20:59:59.999Z\",\"in\":\"query\",\"name\":\"start\",\"required\":false,\"schema\":{\"format\":\"date-time\",\"type\":\"string\"}},{\"allowEmptyValue\":true,\"description\":\"end time for data\",\"example\":\"2020-06-30T20:59:59.999Z\",\"in\":\"query\",\"name\":\"end\",\"required\":false,\"schema\":{\"format\":\"date-time\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"*/*\":{\"schema\":{}}},\"description\":\"OK\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/api/gas-transmission/cross-border"
           segments: [
@@ -111,6 +123,12 @@ main: kit: entity: gas_transmission_controller: {
           }
         }
         {
+          contract: {
+            id: "GET /api/gas-transmission/cross-border/latest"
+            json: "{\"operationId\":\"getCrossBorderLatest_1\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"*/*\":{\"schema\":{}}},\"description\":\"OK\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/api/gas-transmission/cross-border/latest"
           segments: [

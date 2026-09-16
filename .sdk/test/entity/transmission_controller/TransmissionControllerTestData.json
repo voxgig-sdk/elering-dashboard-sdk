@@ -19,5 +19,500 @@
     "transmission_controller": {
       "transmission_controller_ref01": {}
     }
+  },
+  "requests": {
+    "GET /api/transmission/cross-border-capacity/{group}/csv": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getCrossBorderCapacityByGroupAsCsv",
+        "parameters": [
+          {
+            "description": "start time for data",
+            "example": "2020-05-31T20:59:59.999Z",
+            "in": "query",
+            "name": "start",
+            "required": false,
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
+            "description": "end time for data",
+            "example": "2020-06-30T20:59:59.999Z",
+            "in": "query",
+            "name": "end",
+            "required": false,
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
+            "description": "group to select data for",
+            "in": "path",
+            "name": "group",
+            "required": true,
+            "schema": {
+              "enum": [
+                "FI",
+                "LV",
+                "RU"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "fields to include in the response",
+            "in": "query",
+            "name": "fields",
+            "required": false,
+            "schema": {
+              "items": {
+                "enum": [
+                  "in_atc",
+                  "in_ntc",
+                  "out_atc",
+                  "out_ntc"
+                ],
+                "type": "string"
+              },
+              "type": "array"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /api/transmission/cross-border-planned-trade/csv": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getCrossborderPlannedTradeCsv",
+        "parameters": [
+          {
+            "description": "start time for data",
+            "example": "2020-05-31T20:59:59.999Z",
+            "in": "query",
+            "name": "start",
+            "required": false,
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
+            "description": "end time for data",
+            "example": "2020-06-30T20:59:59.999Z",
+            "in": "query",
+            "name": "end",
+            "required": false,
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
+            "description": "fields to include in csv output",
+            "in": "query",
+            "name": "fields",
+            "required": false,
+            "schema": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /api/transmission/cross-border/csv": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getTransmissionAsCSV",
+        "parameters": [
+          {
+            "description": "start time for data",
+            "example": "2020-05-31T20:59:59.999Z",
+            "in": "query",
+            "name": "start",
+            "required": false,
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
+            "description": "end time for data",
+            "example": "2020-06-30T20:59:59.999Z",
+            "in": "query",
+            "name": "end",
+            "required": false,
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
+            "description": "fields to include in the output",
+            "in": "query",
+            "name": "fields",
+            "required": false,
+            "schema": {
+              "items": {
+                "enum": [
+                  "latvia",
+                  "russia_narva",
+                  "russia_pihkva",
+                  "finland"
+                ],
+                "type": "string"
+              },
+              "type": "array"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /api/transmission/cross-border/hourly/csv": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getTransmissionHourlyAsCSV",
+        "parameters": [
+          {
+            "description": "start time for data",
+            "example": "2020-05-31T20:59:59.999Z",
+            "in": "query",
+            "name": "start",
+            "required": false,
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
+            "description": "end time for data",
+            "example": "2020-06-30T20:59:59.999Z",
+            "in": "query",
+            "name": "end",
+            "required": false,
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
+            "description": "fields to include in the output",
+            "in": "query",
+            "name": "fields",
+            "required": false,
+            "schema": {
+              "items": {
+                "enum": [
+                  "latvia",
+                  "russia_narva",
+                  "russia_pihkva",
+                  "finland"
+                ],
+                "type": "string"
+              },
+              "type": "array"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /api/transmission/cross-border-capacity/{group}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getCrossBorderCapacityByGroup",
+        "parameters": [
+          {
+            "description": "start time for data",
+            "example": "2020-05-31T20:59:59.999Z",
+            "in": "query",
+            "name": "start",
+            "required": false,
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
+            "description": "end time for data",
+            "example": "2020-06-30T20:59:59.999Z",
+            "in": "query",
+            "name": "end",
+            "required": false,
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
+            "description": "group to select data for",
+            "in": "path",
+            "name": "group",
+            "required": true,
+            "schema": {
+              "enum": [
+                "FI",
+                "LV",
+                "RU"
+              ],
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "*/*": {
+                "schema": {}
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /api/transmission/cross-border": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getCrossBorder",
+        "parameters": [
+          {
+            "description": "start time for data",
+            "example": "2020-05-31T20:59:59.999Z",
+            "in": "query",
+            "name": "start",
+            "required": false,
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
+            "description": "end time for data",
+            "example": "2020-06-30T20:59:59.999Z",
+            "in": "query",
+            "name": "end",
+            "required": false,
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "*/*": {
+                "schema": {}
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /api/transmission/cross-border-capacity": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getCrossBorderCapacity",
+        "parameters": [
+          {
+            "description": "start time for data",
+            "example": "2020-05-31T20:59:59.999Z",
+            "in": "query",
+            "name": "start",
+            "required": false,
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
+            "description": "end time for data",
+            "example": "2020-06-30T20:59:59.999Z",
+            "in": "query",
+            "name": "end",
+            "required": false,
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "*/*": {
+                "schema": {}
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /api/transmission/cross-border-planned-trade": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getCrossborderPlannedTrade",
+        "parameters": [
+          {
+            "description": "start time for data",
+            "example": "2020-05-31T20:59:59.999Z",
+            "in": "query",
+            "name": "start",
+            "required": false,
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
+            "description": "end time for data",
+            "example": "2020-06-30T20:59:59.999Z",
+            "in": "query",
+            "name": "end",
+            "required": false,
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "*/*": {
+                "schema": {}
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /api/transmission/cross-border/hourly": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getCrossBorderHourly",
+        "parameters": [
+          {
+            "description": "start time for data",
+            "example": "2020-05-31T20:59:59.999Z",
+            "in": "query",
+            "name": "start",
+            "required": false,
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
+            "description": "end time for data",
+            "example": "2020-06-30T20:59:59.999Z",
+            "in": "query",
+            "name": "end",
+            "required": false,
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "*/*": {
+                "schema": {}
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /api/transmission/cross-border-planned-trade/latest": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getCrossborderPlannedTradeLatest",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "*/*": {
+                "schema": {}
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /api/transmission/cross-border/latest": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getCrossBorderLatest",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json; charset=UTF-8": {
+                "schema": {}
+              },
+              "application/json;charset=UTF-8": {
+                "schema": {}
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

@@ -16,5 +16,45 @@
     "umm_rss_feed_controller": {
       "umm_rss_feed_controller_ref01": {}
     }
+  },
+  "requests": {
+    "GET /umm/gas/rss": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "rss",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/xml": {
+                "schema": {}
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /umm/gas/rss/aris": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "arisRss",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/xml": {
+                "schema": {}
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

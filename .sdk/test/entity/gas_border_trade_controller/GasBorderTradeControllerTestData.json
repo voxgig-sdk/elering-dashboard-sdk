@@ -16,5 +16,26 @@
     "gas_border_trade_controller": {
       "gas_border_trade_controller_ref01": {}
     }
+  },
+  "requests": {
+    "GET /api/gas/border-trade/current": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getCurrentGasBorderTrade",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "*/*": {
+                "schema": {}
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

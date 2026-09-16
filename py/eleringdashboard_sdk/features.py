@@ -1,12 +1,18 @@
 # EleringDashboard SDK feature factory
 
 from eleringdashboard_sdk.feature.base_feature import EleringDashboardBaseFeature
+from eleringdashboard_sdk.feature.ratelimit_feature import EleringDashboardRatelimitFeature
+from eleringdashboard_sdk.feature.retry_feature import EleringDashboardRetryFeature
 from eleringdashboard_sdk.feature.test_feature import EleringDashboardTestFeature
+from eleringdashboard_sdk.feature.timeout_feature import EleringDashboardTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: EleringDashboardBaseFeature(),
+    "ratelimit": lambda: EleringDashboardRatelimitFeature(),
+    "retry": lambda: EleringDashboardRetryFeature(),
     "test": lambda: EleringDashboardTestFeature(),
+    "timeout": lambda: EleringDashboardTimeoutFeature(),
 }
 
 

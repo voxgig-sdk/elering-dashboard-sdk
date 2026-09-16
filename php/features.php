@@ -4,7 +4,10 @@ declare(strict_types=1);
 // EleringDashboard SDK feature factory
 
 require_once __DIR__ . '/feature/BaseFeature.php';
+require_once __DIR__ . '/feature/RatelimitFeature.php';
+require_once __DIR__ . '/feature/RetryFeature.php';
 require_once __DIR__ . '/feature/TestFeature.php';
+require_once __DIR__ . '/feature/TimeoutFeature.php';
 
 
 class EleringDashboardFeatures
@@ -14,8 +17,14 @@ class EleringDashboardFeatures
         switch ($name) {
             case "base":
                 return new EleringDashboardBaseFeature();
+            case "ratelimit":
+                return new EleringDashboardRatelimitFeature();
+            case "retry":
+                return new EleringDashboardRetryFeature();
             case "test":
                 return new EleringDashboardTestFeature();
+            case "timeout":
+                return new EleringDashboardTimeoutFeature();
             default:
                 return new EleringDashboardBaseFeature();
         }
@@ -31,7 +40,10 @@ class EleringDashboardFeatures
     {
         switch ($name) {
             case "base":
+            case "ratelimit":
+            case "retry":
             case "test":
+            case "timeout":
                 return true;
             default:
                 return false;

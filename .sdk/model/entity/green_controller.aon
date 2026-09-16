@@ -38,6 +38,12 @@ main: kit: entity: green_controller: {
               }
             ]
           }
+          contract: {
+            id: "GET /api/green/certificates"
+            json: "{\"operationId\":\"getCertificates\",\"parameters\":[{\"description\":\"technology fields\",\"in\":\"query\",\"name\":\"technology\",\"required\":false,\"schema\":{\"default\":\"Kõik tehnoloogiad\",\"type\":\"string\"}},{\"description\":\"fuel fields\",\"in\":\"query\",\"name\":\"fuel\",\"required\":false,\"schema\":{\"default\":\"Kõik kütused\",\"type\":\"string\"}},{\"description\":\"transaction type fields\",\"in\":\"query\",\"name\":\"type\",\"required\":false,\"schema\":{\"default\":\"TRANSACTION\",\"enum\":[\"TRANSACTION\",\"PRODUCTION\"],\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"*/*\":{\"schema\":{}}},\"description\":\"OK\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/api/green/certificates"
           segments: [

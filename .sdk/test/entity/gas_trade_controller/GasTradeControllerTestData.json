@@ -19,5 +19,105 @@
     "gas_trade_controller": {
       "gas_trade_controller_ref01": {}
     }
+  },
+  "requests": {
+    "GET /api/gas-trade/csv": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getAllAsCSV_1",
+        "parameters": [
+          {
+            "allowEmptyValue": true,
+            "description": "start time for data",
+            "example": "2020-05-31T20:59:59.999Z",
+            "in": "query",
+            "name": "start",
+            "required": false,
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
+            "allowEmptyValue": true,
+            "description": "end time for data",
+            "example": "2020-06-30T20:59:59.999Z",
+            "in": "query",
+            "name": "end",
+            "required": false,
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
+            "description": "Data fields to include in response",
+            "in": "query",
+            "name": "fields",
+            "required": false,
+            "schema": {
+              "items": {
+                "enum": [
+                  "common_price",
+                  "common_quantity",
+                  "ee_price",
+                  "ee_quantity",
+                  "lv_price",
+                  "lv_quantity",
+                  "lt_price",
+                  "lt_quantity",
+                  "fi_price"
+                ],
+                "type": "string"
+              },
+              "type": "array"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /api/gas-trade/{group}/latest": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getGroupLatest",
+        "parameters": [
+          {
+            "description": "group to fetch data for",
+            "in": "path",
+            "name": "group",
+            "required": true,
+            "schema": {
+              "enum": [
+                "COMMON",
+                "LT",
+                "LV",
+                "EE",
+                "FI"
+              ],
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "*/*": {
+                "schema": {}
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

@@ -16,5 +16,215 @@
     "umm_gas_controller": {
       "umm_gas_controller_ref01": {}
     }
+  },
+  "requests": {
+    "GET /api/umm/gas": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getAll",
+        "parameters": [
+          {
+            "description": "message statususes to fetch",
+            "in": "query",
+            "name": "status",
+            "required": false,
+            "schema": {
+              "default": "current",
+              "enum": [
+                "current",
+                "outdated"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "message event statuses to fetch",
+            "in": "query",
+            "name": "event_status",
+            "required": false,
+            "schema": {
+              "enum": [
+                "active",
+                "inactive",
+                "dismissed"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "message event types to fetch",
+            "in": "query",
+            "name": "event_type",
+            "required": false,
+            "schema": {
+              "enum": [
+                "Offshore_pipeline_unavailability",
+                "Transmission_system_unavailability",
+                "Storage_unavailability",
+                "Injection_unavailability",
+                "Withdrawal_unavailability",
+                "Gas_treatment_plant_unavailability",
+                "Regasification_plant_unavailability",
+                "Compressor_station_unavailability",
+                "Gas_production_field_unavailability",
+                "Import_contract_curtailment",
+                "Consumption_unavailability",
+                "Other_unavailability"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "message unavailability types to fetch",
+            "in": "query",
+            "name": "unavailability_type",
+            "required": false,
+            "schema": {
+              "enum": [
+                "planned",
+                "unplanned"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "message affected assets names to fetch",
+            "in": "query",
+            "name": "affected_asset_name",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "message event duration date time start to include in response",
+            "in": "query",
+            "name": "event_duration_date_time_start",
+            "required": false,
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
+            "description": "message event duration date time end to include in response",
+            "in": "query",
+            "name": "event_duration_date_time_end",
+            "required": false,
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
+            "description": "message publication datetime start to include in response",
+            "in": "query",
+            "name": "publication_datetime_start",
+            "required": false,
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "required": false,
+            "schema": {
+              "default": 1,
+              "format": "int32",
+              "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "required": false,
+            "schema": {
+              "default": "publicationDateTimeDesc",
+              "enum": [
+                "publicationDateTimeDesc",
+                "publicationDateTimeAsc",
+                "eventStartDesc",
+                "eventStartAsc",
+                "eventStopDesc",
+                "eventStopAsc"
+              ],
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "*/*": {
+                "schema": {}
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /api/umm/gas/messages": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getMessageHistory",
+        "parameters": [
+          {
+            "description": "event id",
+            "in": "query",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "*/*": {
+                "schema": {}
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /api/umm/single/{id}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getSingle",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "int64",
+              "type": "integer"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "*/*": {
+                "schema": {}
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

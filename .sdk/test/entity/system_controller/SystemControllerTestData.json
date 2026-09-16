@@ -16,5 +16,195 @@
     "system_controller": {
       "system_controller_ref01": {}
     }
+  },
+  "requests": {
+    "GET /api/system/csv": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getSystemAsCSV",
+        "parameters": [
+          {
+            "description": "start time for data",
+            "example": "2020-05-31T20:59:59.999Z",
+            "in": "query",
+            "name": "start",
+            "required": false,
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
+            "description": "end time for data",
+            "example": "2020-06-30T20:59:59.999Z",
+            "in": "query",
+            "name": "end",
+            "required": false,
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
+            "allowEmptyValue": true,
+            "description": "data fields to include in the csv file",
+            "in": "query",
+            "name": "fields",
+            "required": false,
+            "schema": {
+              "items": {
+                "enum": [
+                  "production",
+                  "consumption",
+                  "renewable_production",
+                  "frequency",
+                  "system_balance",
+                  "solar_energy_production",
+                  "ac_balance"
+                ],
+                "type": "string"
+              },
+              "type": "array"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /api/system/with-plan/csv": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getSystemWithPlanAsCSV",
+        "parameters": [
+          {
+            "description": "start time for data",
+            "example": "2020-05-31T20:59:59.999Z",
+            "in": "query",
+            "name": "start",
+            "required": false,
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
+            "description": "end time for data",
+            "example": "2020-06-30T20:59:59.999Z",
+            "in": "query",
+            "name": "end",
+            "required": false,
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
+            "allowEmptyValue": true,
+            "description": "data fields to include in the csv file",
+            "in": "query",
+            "name": "fields",
+            "required": false,
+            "schema": {
+              "items": {
+                "enum": [
+                  "production",
+                  "consumption",
+                  "renewable_production",
+                  "solar_energy_production",
+                  "solar_energy_forecast",
+                  "solar_energy_forecast_operator",
+                  "frequency",
+                  "system_balance",
+                  "ac_balance",
+                  "productionPlan",
+                  "consumptionPlan",
+                  "renewable_production_plan",
+                  "renewable_production_plan_operator",
+                  "lossesPlan",
+                  "system_balancePlan",
+                  "ac_balancePlan"
+                ],
+                "type": "string"
+              },
+              "type": "array"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /api/system/with-plan": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getSystemWithPlan",
+        "parameters": [
+          {
+            "description": "start time for data",
+            "example": "2020-05-31T20:59:59.999Z",
+            "in": "query",
+            "name": "start",
+            "required": false,
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
+            "description": "end time for data",
+            "example": "2020-06-30T20:59:59.999Z",
+            "in": "query",
+            "name": "end",
+            "required": false,
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "*/*": {
+                "schema": {}
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /api/system/latest": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getSystemLatest",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "*/*": {
+                "schema": {}
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }
