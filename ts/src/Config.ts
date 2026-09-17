@@ -127,78 +127,78 @@ class Config {
 
     entity: {
       
-      balance: {
-      },
-
-      balance_controller: {
-      },
-
-      firm: {
-      },
-
-      firm_capacity_controller: {
-      },
-
-      gas_balance_controller: {
-      },
-
-      gas_border_trade_controller: {
-      },
-
-      gas_system: {
-      },
-
-      gas_system_controller: {
-      },
-
-      gas_trade: {
-      },
-
-      gas_trade_controller: {
-      },
-
-      gas_transmission_controller: {
-      },
-
-      green_controller: {
-      },
-
-      interruptible: {
-      },
-
-      interruptible_capacity_controller: {
-      },
-
-      nomination: {
-      },
-
-      nominations_controller: {
-      },
-
-      nps_controller: {
-      },
-
-      renomination: {
-      },
-
-      renominations_controller: {
-      },
-
-      system: {
-      },
-
-      system_controller: {
-      },
-
-      transmission_controller: {
-      },
-
-      umm_gas_controller: {
-      },
-
-      umm_rss_feed_controller: {
-      },
-
+        balance: {
+        },
+  
+        balance_controller: {
+        },
+  
+        firm: {
+        },
+  
+        firm_capacity_controller: {
+        },
+  
+        gas_balance_controller: {
+        },
+  
+        gas_border_trade_controller: {
+        },
+  
+        gas_system: {
+        },
+  
+        gas_system_controller: {
+        },
+  
+        gas_trade: {
+        },
+  
+        gas_trade_controller: {
+        },
+  
+        gas_transmission_controller: {
+        },
+  
+        green_controller: {
+        },
+  
+        interruptible: {
+        },
+  
+        interruptible_capacity_controller: {
+        },
+  
+        nomination: {
+        },
+  
+        nominations_controller: {
+        },
+  
+        nps_controller: {
+        },
+  
+        renomination: {
+        },
+  
+        renominations_controller: {
+        },
+  
+        system: {
+        },
+  
+        system_controller: {
+        },
+  
+        transmission_controller: {
+        },
+  
+        umm_gas_controller: {
+        },
+  
+        umm_rss_feed_controller: {
+        },
+  
     }
   }
 

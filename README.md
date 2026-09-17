@@ -105,12 +105,12 @@ local result, err = client:BalanceController():load()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/elering-dashboard-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/elering-dashboard-sdk/releases) |
-| Python | `voxgig-sdk-elering-dashboard` | publish pending — [install from git tag](https://github.com/voxgig-sdk/elering-dashboard-sdk/releases) |
-| PHP | `voxgig-sdk/elering-dashboard` | publish pending — [install from git tag](https://github.com/voxgig-sdk/elering-dashboard-sdk/releases) |
+| TypeScript | `@voxgig-sdk/elering-dashboard-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/elering-dashboard-sdk/tags) |
+| Python | `voxgig-sdk-elering-dashboard` | publish pending — [install from git tag](https://github.com/voxgig-sdk/elering-dashboard-sdk/tags) |
+| PHP | `voxgig-sdk/elering-dashboard` | publish pending — [install from git tag](https://github.com/voxgig-sdk/elering-dashboard-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/elering-dashboard-sdk/go` | `go get github.com/voxgig-sdk/elering-dashboard-sdk/go@latest` |
-| Ruby | `voxgig-sdk-elering-dashboard` | publish pending — [install from git tag](https://github.com/voxgig-sdk/elering-dashboard-sdk/releases) |
-| Lua | `voxgig-sdk-elering-dashboard` | publish pending — [install from git tag](https://github.com/voxgig-sdk/elering-dashboard-sdk/releases) |
+| Ruby | `voxgig-sdk-elering-dashboard` | publish pending — [install from git tag](https://github.com/voxgig-sdk/elering-dashboard-sdk/tags) |
+| Lua | `voxgig-sdk-elering-dashboard` | publish pending — [install from git tag](https://github.com/voxgig-sdk/elering-dashboard-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/elering-dashboard-sdk/go-cli` | `go install github.com/voxgig-sdk/elering-dashboard-sdk/go-cli/cmd/elering-dashboard@latest` |
 | Go MCP server | `github.com/voxgig-sdk/elering-dashboard-sdk/go-mcp` | `go get github.com/voxgig-sdk/elering-dashboard-sdk/go-mcp@latest` |
 
