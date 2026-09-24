@@ -62,7 +62,7 @@ def nps_controller_basic_setup(extra)
 
   # Generate idmap via transform.
   idmap = Vs.transform(
-    ["nps_controller01", "nps_controller02", "nps_controller03", "price01", "price02", "price03", "turnover01", "turnover02", "turnover03"],
+    ["nps_controller01", "nps_controller02", "nps_controller03"],
     {
       "`$PACK`" => ["", {
         "`$KEY`" => "`$COPY`",

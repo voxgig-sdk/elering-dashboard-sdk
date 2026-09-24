@@ -20,22 +20,8 @@
   "requests": {
     "GET /api/gas/border-trade/current": {
       "provenance": "operation-contract",
-      "contract": {
-        "operationId": "getCurrentGasBorderTrade",
-        "parameters": [],
-        "protocol": "http",
-        "responses": {
-          "200": {
-            "content": {
-              "*/*": {
-                "schema": {}
-              }
-            },
-            "description": "OK"
-          }
-        },
-        "securitySource": "unspecified"
-      }
+      "version": 2,
+      "source": "openapi3"
     }
   }
 }

@@ -98,7 +98,7 @@ func transmission_controllerBasicSetup(extra map[string]any) *entityTestSetup {
 
 	// Generate idmap via transform, matching TS pattern.
 	idmap, _ := vs.Transform(
-		[]any{"transmission_controller01", "transmission_controller02", "transmission_controller03", "cross_border_capacity01", "cross_border_capacity02", "cross_border_capacity03"},
+		[]any{"transmission_controller01", "transmission_controller02", "transmission_controller03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
 				"`$KEY`": "`$COPY`",

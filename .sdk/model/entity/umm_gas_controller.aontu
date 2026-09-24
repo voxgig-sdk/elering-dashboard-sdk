@@ -1,0 +1,222 @@
+# Entity: umm_gas_controller
+
+main: kit: entity: umm_gas_controller: {
+
+  alias: field: {}
+
+  name: "umm_gas_controller"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/umm/gas"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "affected_asset_name"
+                or: "affected_asset_name"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "event_duration_date_time_end"
+                or: "event_duration_date_time_end"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "event_duration_date_time_start"
+                or: "event_duration_date_time_start"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "event_status"
+                or: "event_status"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "event_type"
+                or: "event_type"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "publication_datetime_start"
+                or: "publication_datetime_start"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "publicationDateTimeDesc"
+                k: "query"
+                n: "sort"
+                or: "sort"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "current"
+                k: "query"
+                n: "status"
+                or: "status"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "unavailability_type"
+                or: "unavailability_type"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/umm/gas"
+          q: {
+            exist: [
+              "affected_asset_name"
+              "event_duration_date_time_end"
+              "event_duration_date_time_start"
+              "event_status"
+              "event_type"
+              "page"
+              "publication_datetime_start"
+              "sort"
+              "status"
+              "unavailability_type"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "umm"
+            }
+            {
+              lit: "gas"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/umm/gas/messages"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/umm/gas/messages"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "umm"
+            }
+            {
+              lit: "gas"
+            }
+            {
+              lit: "messages"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/umm/single/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/umm/single/{id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "umm"
+            }
+            {
+              lit: "single"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

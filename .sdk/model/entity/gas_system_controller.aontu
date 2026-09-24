@@ -1,0 +1,375 @@
+# Entity: gas_system_controller
+
+main: kit: entity: gas_system_controller: {
+
+  alias: field: {}
+
+  name: "gas_system_controller"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/gas-system/csv"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "2020-06-30T20:59:59.999Z"
+                k: "query"
+                n: "end"
+                or: "end"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "field"
+                or: "field"
+                r: false
+                t: "`$ARRAY`"
+              }
+              {
+                ex: "2020-05-31T20:59:59.999Z"
+                k: "query"
+                n: "start"
+                or: "start"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/gas-system/csv"
+          q: {
+            exist: [
+              "end"
+              "field"
+              "start"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "gas-system"
+            }
+            {
+              lit: "csv"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/gas-system/daily/csv"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "2020-06-30T20:59:59.999Z"
+                k: "query"
+                n: "end"
+                or: "end"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "field"
+                or: "field"
+                r: false
+                t: "`$ARRAY`"
+              }
+              {
+                ex: "2020-05-31T20:59:59.999Z"
+                k: "query"
+                n: "start"
+                or: "start"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/gas-system/daily/csv"
+          q: {
+            exist: [
+              "end"
+              "field"
+              "start"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "gas-system"
+            }
+            {
+              lit: "daily"
+            }
+            {
+              lit: "csv"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/gas-system/m3/csv"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "2020-06-30T20:59:59.999Z"
+                k: "query"
+                n: "end"
+                or: "end"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "field"
+                or: "field"
+                r: false
+                t: "`$ARRAY`"
+              }
+              {
+                ex: "2020-05-31T20:59:59.999Z"
+                k: "query"
+                n: "start"
+                or: "start"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/gas-system/m3/csv"
+          q: {
+            exist: [
+              "end"
+              "field"
+              "start"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "gas-system"
+            }
+            {
+              lit: "m3"
+            }
+            {
+              lit: "csv"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/gas-system/daily"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "2020-06-30T20:59:59.999Z"
+                k: "query"
+                n: "end"
+                or: "end"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "2020-05-31T20:59:59.999Z"
+                k: "query"
+                n: "start"
+                or: "start"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/gas-system/daily"
+          q: {
+            exist: [
+              "end"
+              "start"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "gas-system"
+            }
+            {
+              lit: "daily"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/gas-system/daily-average"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "2020-06-30T20:59:59.999Z"
+                k: "query"
+                n: "end"
+                or: "end"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "2020-05-31T20:59:59.999Z"
+                k: "query"
+                n: "start"
+                or: "start"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/gas-system/daily-average"
+          q: {
+            exist: [
+              "end"
+              "start"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "gas-system"
+            }
+            {
+              lit: "daily-average"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/gas-system/m3"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "2020-06-30T20:59:59.999Z"
+                k: "query"
+                n: "end"
+                or: "end"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "2020-05-31T20:59:59.999Z"
+                k: "query"
+                n: "start"
+                or: "start"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/gas-system/m3"
+          q: {
+            exist: [
+              "end"
+              "start"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "gas-system"
+            }
+            {
+              lit: "m3"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/gas-system/latest"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/api/gas-system/latest"
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "gas-system"
+            }
+            {
+              lit: "latest"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

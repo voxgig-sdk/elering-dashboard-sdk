@@ -1,0 +1,79 @@
+# Entity: nominations_controller
+
+main: kit: entity: nominations_controller: {
+
+  alias: field: {}
+
+  name: "nominations_controller"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/nominations/csv"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "2020-06-30T20:59:59.999Z"
+                k: "query"
+                n: "end"
+                or: "end"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "field"
+                or: "field"
+                r: false
+                t: "`$ARRAY`"
+              }
+              {
+                ex: "2020-05-31T20:59:59.999Z"
+                k: "query"
+                n: "start"
+                or: "start"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/nominations/csv"
+          q: {
+            exist: [
+              "end"
+              "field"
+              "start"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "nominations"
+            }
+            {
+              lit: "csv"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

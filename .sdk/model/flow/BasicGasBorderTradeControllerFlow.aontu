@@ -1,0 +1,28 @@
+# BasicGasBorderTradeControllerFlow
+
+main: kit: flow: BasicGasBorderTradeControllerFlow:
+{
+  entity: "gas_border_trade_controller",
+  kind: "basic",
+  name: "BasicGasBorderTradeControllerFlow",
+  step: [
+    {
+      i: {
+        ref: "gas_border_trade_controller_ref01",
+        srcdatavar: "gas_border_trade_controller_ref01_data",
+        suffix: "_dt0"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-gas_border_trade_controller_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicGasBorderTradeControllerFlow"
+}

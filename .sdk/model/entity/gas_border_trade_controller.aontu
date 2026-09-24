@@ -1,0 +1,48 @@
+# Entity: gas_border_trade_controller
+
+main: kit: entity: gas_border_trade_controller: {
+
+  alias: field: {}
+
+  name: "gas_border_trade_controller"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/gas/border-trade/current"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/api/gas/border-trade/current"
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "gas"
+            }
+            {
+              lit: "border-trade"
+            }
+            {
+              lit: "current"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

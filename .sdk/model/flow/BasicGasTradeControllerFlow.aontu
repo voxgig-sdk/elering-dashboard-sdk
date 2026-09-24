@@ -1,0 +1,32 @@
+# BasicGasTradeControllerFlow
+
+main: kit: flow: BasicGasTradeControllerFlow:
+{
+  entity: "gas_trade_controller",
+  kind: "basic",
+  name: "BasicGasTradeControllerFlow",
+  step: [
+    {
+      i: {
+        ref: "gas_trade_controller_ref01",
+        srcdatavar: "gas_trade_controller_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "gas_trade_controller01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-gas_trade_controller_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicGasTradeControllerFlow"
+}

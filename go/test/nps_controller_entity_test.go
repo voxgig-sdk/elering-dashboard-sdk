@@ -98,7 +98,7 @@ func nps_controllerBasicSetup(extra map[string]any) *entityTestSetup {
 
 	// Generate idmap via transform, matching TS pattern.
 	idmap, _ := vs.Transform(
-		[]any{"nps_controller01", "nps_controller02", "nps_controller03", "price01", "price02", "price03", "turnover01", "turnover02", "turnover03"},
+		[]any{"nps_controller01", "nps_controller02", "nps_controller03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
 				"`$KEY`": "`$COPY`",

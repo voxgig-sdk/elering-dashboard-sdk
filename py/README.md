@@ -36,15 +36,14 @@ from eleringdashboard_sdk import EleringDashboardSDK
 client = EleringDashboardSDK()
 ```
 
-### 3. Load a transmissioncontroller
+### 3. Load a balance
 
-TransmissionController is nested under group, so provide the `group`.
 `load()` returns the ENTITY — call data_get() for the record — and raises on error.
 
 ```python
 try:
-    transmissioncontroller = client.TransmissionController().load({"group": "example_group"})
-    print(transmissioncontroller)
+    balance = client.Balance().load()
+    print(balance)
 except Exception as err:
     print(f"load failed: {err}")
 ```

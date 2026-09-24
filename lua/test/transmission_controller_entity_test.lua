@@ -72,7 +72,7 @@ function transmission_controller_basic_setup(extra)
 
   -- Generate idmap via transform.
   local idmap = vs.transform(
-    { "transmission_controller01", "transmission_controller02", "transmission_controller03", "cross_border_capacity01", "cross_border_capacity02", "cross_border_capacity03" },
+    { "transmission_controller01", "transmission_controller02", "transmission_controller03" },
     {
       ["`$PACK`"] = { "", {
         ["`$KEY`"] = "`$COPY`",

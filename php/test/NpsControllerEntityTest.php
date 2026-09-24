@@ -70,7 +70,7 @@ function nps_controller_basic_setup($extra)
 
     // Generate idmap.
     $idmap = [];
-    foreach (["nps_controller01", "nps_controller02", "nps_controller03", "price01", "price02", "price03", "turnover01", "turnover02", "turnover03"] as $k) {
+    foreach (["nps_controller01", "nps_controller02", "nps_controller03"] as $k) {
         $idmap[$k] = strtoupper($k);
     }
 

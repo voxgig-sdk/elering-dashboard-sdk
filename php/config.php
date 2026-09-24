@@ -141,24 +141,6 @@ class EleringDashboardConfig
               'name' => 'load',
               'points' => [
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'example' => '2020-06-30T20:59:59.999Z',
-                        'kind' => 'query',
-                        'name' => 'end',
-                        'orig' => 'end',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => '2020-05-31T20:59:59.999Z',
-                        'kind' => 'query',
-                        'name' => 'start',
-                        'orig' => 'start',
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/balance',
@@ -170,19 +152,38 @@ class EleringDashboardConfig
                       'lit' => 'balance',
                     ],
                   ],
+                  'parts' => [
+                    'api',
+                    'balance',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'end',
+                        'orig' => 'end',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '2020-06-30T20:59:59.999Z',
+                      ],
+                      [
+                        'name' => 'start',
+                        'orig' => 'start',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '2020-05-31T20:59:59.999Z',
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'end',
                       'start',
                     ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'api',
-                    'balance',
                   ],
                 ],
               ],
@@ -201,30 +202,6 @@ class EleringDashboardConfig
               'name' => 'load',
               'points' => [
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'example' => '2020-06-30T20:59:59.999Z',
-                        'kind' => 'query',
-                        'name' => 'end',
-                        'orig' => 'end',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'kind' => 'query',
-                        'name' => 'field',
-                        'orig' => 'field',
-                        'type' => '`$ARRAY`',
-                      ],
-                      [
-                        'example' => '2020-05-31T20:59:59.999Z',
-                        'kind' => 'query',
-                        'name' => 'start',
-                        'orig' => 'start',
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/balance/commerce/csv',
@@ -242,6 +219,41 @@ class EleringDashboardConfig
                       'lit' => 'csv',
                     ],
                   ],
+                  'parts' => [
+                    'api',
+                    'balance',
+                    'commerce',
+                    'csv',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'end',
+                        'orig' => 'end',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '2020-06-30T20:59:59.999Z',
+                      ],
+                      [
+                        'name' => 'field',
+                        'orig' => 'field',
+                        'type' => '`$ARRAY`',
+                        'kind' => 'query',
+                      ],
+                      [
+                        'name' => 'start',
+                        'orig' => 'start',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '2020-05-31T20:59:59.999Z',
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'end',
@@ -249,42 +261,8 @@ class EleringDashboardConfig
                       'start',
                     ],
                   ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'api',
-                    'balance',
-                    'commerce',
-                    'csv',
-                  ],
                 ],
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'example' => '2020-05-31T20:59:59.999Z',
-                        'kind' => 'query',
-                        'name' => 'end',
-                        'orig' => 'end',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'kind' => 'query',
-                        'name' => 'field',
-                        'orig' => 'field',
-                        'type' => '`$ARRAY`',
-                      ],
-                      [
-                        'example' => '2020-05-31T20:59:59.999Z',
-                        'kind' => 'query',
-                        'name' => 'start',
-                        'orig' => 'start',
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/balance/csv',
@@ -299,6 +277,40 @@ class EleringDashboardConfig
                       'lit' => 'csv',
                     ],
                   ],
+                  'parts' => [
+                    'api',
+                    'balance',
+                    'csv',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'end',
+                        'orig' => 'end',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '2020-05-31T20:59:59.999Z',
+                      ],
+                      [
+                        'name' => 'field',
+                        'orig' => 'field',
+                        'type' => '`$ARRAY`',
+                        'kind' => 'query',
+                      ],
+                      [
+                        'name' => 'start',
+                        'orig' => 'start',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '2020-05-31T20:59:59.999Z',
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'end',
@@ -306,41 +318,8 @@ class EleringDashboardConfig
                       'start',
                     ],
                   ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'api',
-                    'balance',
-                    'csv',
-                  ],
                 ],
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'example' => '2020-06-30T20:59:59.999Z',
-                        'kind' => 'query',
-                        'name' => 'end',
-                        'orig' => 'end',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'kind' => 'query',
-                        'name' => 'field',
-                        'orig' => 'field',
-                        'type' => '`$ARRAY`',
-                      ],
-                      [
-                        'example' => '2020-05-31T20:59:59.999Z',
-                        'kind' => 'query',
-                        'name' => 'start',
-                        'orig' => 'start',
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/balance/total/csv',
@@ -358,6 +337,41 @@ class EleringDashboardConfig
                       'lit' => 'csv',
                     ],
                   ],
+                  'parts' => [
+                    'api',
+                    'balance',
+                    'total',
+                    'csv',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'end',
+                        'orig' => 'end',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '2020-06-30T20:59:59.999Z',
+                      ],
+                      [
+                        'name' => 'field',
+                        'orig' => 'field',
+                        'type' => '`$ARRAY`',
+                        'kind' => 'query',
+                      ],
+                      [
+                        'name' => 'start',
+                        'orig' => 'start',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '2020-05-31T20:59:59.999Z',
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'end',
@@ -365,36 +379,8 @@ class EleringDashboardConfig
                       'start',
                     ],
                   ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'api',
-                    'balance',
-                    'total',
-                    'csv',
-                  ],
                 ],
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'example' => '2020-06-30T20:59:59.999Z',
-                        'kind' => 'query',
-                        'name' => 'end',
-                        'orig' => 'end',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => '2020-05-31T20:59:59.999Z',
-                        'kind' => 'query',
-                        'name' => 'field',
-                        'orig' => 'field',
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/balance/total',
@@ -409,41 +395,42 @@ class EleringDashboardConfig
                       'lit' => 'total',
                     ],
                   ],
+                  'parts' => [
+                    'api',
+                    'balance',
+                    'total',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'end',
+                        'orig' => 'end',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '2020-06-30T20:59:59.999Z',
+                      ],
+                      [
+                        'name' => 'field',
+                        'orig' => 'field',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '2020-05-31T20:59:59.999Z',
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'end',
                       'field',
                     ],
                   ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'api',
-                    'balance',
-                    'total',
-                  ],
                 ],
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'example' => '2020-06-30T20:59:59.999Z',
-                        'kind' => 'query',
-                        'name' => 'end',
-                        'orig' => 'end',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => '2020-05-31T20:59:59.999Z',
-                        'kind' => 'query',
-                        'name' => 'start',
-                        'orig' => 'start',
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/balance/commerce',
@@ -458,24 +445,42 @@ class EleringDashboardConfig
                       'lit' => 'commerce',
                     ],
                   ],
+                  'parts' => [
+                    'api',
+                    'balance',
+                    'commerce',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'end',
+                        'orig' => 'end',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '2020-06-30T20:59:59.999Z',
+                      ],
+                      [
+                        'name' => 'start',
+                        'orig' => 'start',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '2020-05-31T20:59:59.999Z',
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'end',
                       'start',
                     ],
                   ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'api',
-                    'balance',
-                    'commerce',
-                  ],
                 ],
                 [
-                  'args' => [],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/balance/commerce/latest',
@@ -493,20 +498,21 @@ class EleringDashboardConfig
                       'lit' => 'latest',
                     ],
                   ],
-                  'select' => [],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'balance',
                     'commerce',
                     'latest',
                   ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [],
+                  'select' => [],
                 ],
                 [
-                  'args' => [],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/balance/total/latest',
@@ -524,17 +530,19 @@ class EleringDashboardConfig
                       'lit' => 'latest',
                     ],
                   ],
-                  'select' => [],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'balance',
                     'total',
                     'latest',
                   ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [],
+                  'select' => [],
                 ],
               ],
             ],
@@ -552,24 +560,6 @@ class EleringDashboardConfig
               'name' => 'load',
               'points' => [
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'example' => '2020-06-30T20:59:59.999Z',
-                        'kind' => 'query',
-                        'name' => 'end',
-                        'orig' => 'end',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => '2020-05-31T20:59:59.999Z',
-                        'kind' => 'query',
-                        'name' => 'start',
-                        'orig' => 'start',
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/capacity/firm',
@@ -584,20 +574,39 @@ class EleringDashboardConfig
                       'lit' => 'firm',
                     ],
                   ],
+                  'parts' => [
+                    'api',
+                    'capacity',
+                    'firm',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'end',
+                        'orig' => 'end',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '2020-06-30T20:59:59.999Z',
+                      ],
+                      [
+                        'name' => 'start',
+                        'orig' => 'start',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '2020-05-31T20:59:59.999Z',
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'end',
                       'start',
                     ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'api',
-                    'capacity',
-                    'firm',
                   ],
                 ],
               ],
@@ -616,16 +625,48 @@ class EleringDashboardConfig
               'name' => 'load',
               'points' => [
                 [
+                  'kind' => 'http',
+                  'method' => 'GET',
+                  'orig' => '/api/capacity/firm/csv',
+                  'segments' => [
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'capacity',
+                    ],
+                    [
+                      'lit' => 'firm',
+                    ],
+                    [
+                      'lit' => 'csv',
+                    ],
+                  ],
+                  'parts' => [
+                    'api',
+                    'capacity',
+                    'firm',
+                    'csv',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
                   'args' => [
                     'query' => [
                       [
-                        'example' => '2020-05-31T20:59:59.999Z',
-                        'kind' => 'query',
                         'name' => 'end',
                         'orig' => 'end',
                         'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '2020-05-31T20:59:59.999Z',
                       ],
                       [
+                        'name' => 'field',
+                        'orig' => 'field',
+                        'type' => '`$ARRAY`',
+                        'kind' => 'query',
                         'example' => [
                           '["narva_technical_entry"',
                           '"narva_booked_entry"',
@@ -646,35 +687,14 @@ class EleringDashboardConfig
                           '"production_booked"',
                           '"production_available"]',
                         ],
-                        'kind' => 'query',
-                        'name' => 'field',
-                        'orig' => 'field',
-                        'type' => '`$ARRAY`',
                       ],
                       [
-                        'example' => '2020-05-31T20:59:59.999Z',
-                        'kind' => 'query',
                         'name' => 'start',
                         'orig' => 'start',
                         'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '2020-05-31T20:59:59.999Z',
                       ],
-                    ],
-                  ],
-                  'kind' => 'http',
-                  'method' => 'GET',
-                  'orig' => '/api/capacity/firm/csv',
-                  'segments' => [
-                    [
-                      'lit' => 'api',
-                    ],
-                    [
-                      'lit' => 'capacity',
-                    ],
-                    [
-                      'lit' => 'firm',
-                    ],
-                    [
-                      'lit' => 'csv',
                     ],
                   ],
                   'select' => [
@@ -683,16 +703,6 @@ class EleringDashboardConfig
                       'field',
                       'start',
                     ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'api',
-                    'capacity',
-                    'firm',
-                    'csv',
                   ],
                 ],
               ],
@@ -711,30 +721,6 @@ class EleringDashboardConfig
               'name' => 'load',
               'points' => [
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'example' => '2020-06-30T20:59:59.999Z',
-                        'kind' => 'query',
-                        'name' => 'end',
-                        'orig' => 'end',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'kind' => 'query',
-                        'name' => 'field',
-                        'orig' => 'field',
-                        'type' => '`$ARRAY`',
-                      ],
-                      [
-                        'example' => '2020-05-31T20:59:59.999Z',
-                        'kind' => 'query',
-                        'name' => 'start',
-                        'orig' => 'start',
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/gas-balance/price/csv',
@@ -752,6 +738,41 @@ class EleringDashboardConfig
                       'lit' => 'csv',
                     ],
                   ],
+                  'parts' => [
+                    'api',
+                    'gas-balance',
+                    'price',
+                    'csv',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'end',
+                        'orig' => 'end',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '2020-06-30T20:59:59.999Z',
+                      ],
+                      [
+                        'name' => 'field',
+                        'orig' => 'field',
+                        'type' => '`$ARRAY`',
+                        'kind' => 'query',
+                      ],
+                      [
+                        'name' => 'start',
+                        'orig' => 'start',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '2020-05-31T20:59:59.999Z',
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'end',
@@ -759,36 +780,8 @@ class EleringDashboardConfig
                       'start',
                     ],
                   ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'api',
-                    'gas-balance',
-                    'price',
-                    'csv',
-                  ],
                 ],
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'example' => '2020-06-30T20:59:59.999Z',
-                        'kind' => 'query',
-                        'name' => 'end',
-                        'orig' => 'end',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => '2020-05-31T20:59:59.999Z',
-                        'kind' => 'query',
-                        'name' => 'start',
-                        'orig' => 'start',
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/gas-balance/price',
@@ -803,20 +796,39 @@ class EleringDashboardConfig
                       'lit' => 'price',
                     ],
                   ],
+                  'parts' => [
+                    'api',
+                    'gas-balance',
+                    'price',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'end',
+                        'orig' => 'end',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '2020-06-30T20:59:59.999Z',
+                      ],
+                      [
+                        'name' => 'start',
+                        'orig' => 'start',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '2020-05-31T20:59:59.999Z',
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'end',
                       'start',
                     ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'api',
-                    'gas-balance',
-                    'price',
                   ],
                 ],
               ],
@@ -835,7 +847,6 @@ class EleringDashboardConfig
               'name' => 'load',
               'points' => [
                 [
-                  'args' => [],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/gas/border-trade/current',
@@ -853,17 +864,19 @@ class EleringDashboardConfig
                       'lit' => 'current',
                     ],
                   ],
-                  'select' => [],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'gas',
                     'border-trade',
                     'current',
                   ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [],
+                  'select' => [],
                 ],
               ],
             ],
@@ -881,24 +894,6 @@ class EleringDashboardConfig
               'name' => 'load',
               'points' => [
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'example' => '2020-06-30T20:59:59.999Z',
-                        'kind' => 'query',
-                        'name' => 'end',
-                        'orig' => 'end',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => '2020-05-31T20:59:59.999Z',
-                        'kind' => 'query',
-                        'name' => 'start',
-                        'orig' => 'start',
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/gas-system',
@@ -910,19 +905,38 @@ class EleringDashboardConfig
                       'lit' => 'gas-system',
                     ],
                   ],
+                  'parts' => [
+                    'api',
+                    'gas-system',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'end',
+                        'orig' => 'end',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '2020-06-30T20:59:59.999Z',
+                      ],
+                      [
+                        'name' => 'start',
+                        'orig' => 'start',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '2020-05-31T20:59:59.999Z',
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'end',
                       'start',
                     ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'api',
-                    'gas-system',
                   ],
                 ],
               ],
@@ -941,30 +955,6 @@ class EleringDashboardConfig
               'name' => 'load',
               'points' => [
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'example' => '2020-06-30T20:59:59.999Z',
-                        'kind' => 'query',
-                        'name' => 'end',
-                        'orig' => 'end',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'kind' => 'query',
-                        'name' => 'field',
-                        'orig' => 'field',
-                        'type' => '`$ARRAY`',
-                      ],
-                      [
-                        'example' => '2020-05-31T20:59:59.999Z',
-                        'kind' => 'query',
-                        'name' => 'start',
-                        'orig' => 'start',
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/gas-system/csv',
@@ -979,6 +969,40 @@ class EleringDashboardConfig
                       'lit' => 'csv',
                     ],
                   ],
+                  'parts' => [
+                    'api',
+                    'gas-system',
+                    'csv',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'end',
+                        'orig' => 'end',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '2020-06-30T20:59:59.999Z',
+                      ],
+                      [
+                        'name' => 'field',
+                        'orig' => 'field',
+                        'type' => '`$ARRAY`',
+                        'kind' => 'query',
+                      ],
+                      [
+                        'name' => 'start',
+                        'orig' => 'start',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '2020-05-31T20:59:59.999Z',
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'end',
@@ -986,41 +1010,8 @@ class EleringDashboardConfig
                       'start',
                     ],
                   ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'api',
-                    'gas-system',
-                    'csv',
-                  ],
                 ],
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'example' => '2020-06-30T20:59:59.999Z',
-                        'kind' => 'query',
-                        'name' => 'end',
-                        'orig' => 'end',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'kind' => 'query',
-                        'name' => 'field',
-                        'orig' => 'field',
-                        'type' => '`$ARRAY`',
-                      ],
-                      [
-                        'example' => '2020-05-31T20:59:59.999Z',
-                        'kind' => 'query',
-                        'name' => 'start',
-                        'orig' => 'start',
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/gas-system/daily/csv',
@@ -1038,6 +1029,41 @@ class EleringDashboardConfig
                       'lit' => 'csv',
                     ],
                   ],
+                  'parts' => [
+                    'api',
+                    'gas-system',
+                    'daily',
+                    'csv',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'end',
+                        'orig' => 'end',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '2020-06-30T20:59:59.999Z',
+                      ],
+                      [
+                        'name' => 'field',
+                        'orig' => 'field',
+                        'type' => '`$ARRAY`',
+                        'kind' => 'query',
+                      ],
+                      [
+                        'name' => 'start',
+                        'orig' => 'start',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '2020-05-31T20:59:59.999Z',
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'end',
@@ -1045,42 +1071,8 @@ class EleringDashboardConfig
                       'start',
                     ],
                   ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'api',
-                    'gas-system',
-                    'daily',
-                    'csv',
-                  ],
                 ],
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'example' => '2020-06-30T20:59:59.999Z',
-                        'kind' => 'query',
-                        'name' => 'end',
-                        'orig' => 'end',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'kind' => 'query',
-                        'name' => 'field',
-                        'orig' => 'field',
-                        'type' => '`$ARRAY`',
-                      ],
-                      [
-                        'example' => '2020-05-31T20:59:59.999Z',
-                        'kind' => 'query',
-                        'name' => 'start',
-                        'orig' => 'start',
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/gas-system/m3/csv',
@@ -1098,6 +1090,41 @@ class EleringDashboardConfig
                       'lit' => 'csv',
                     ],
                   ],
+                  'parts' => [
+                    'api',
+                    'gas-system',
+                    'm3',
+                    'csv',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'end',
+                        'orig' => 'end',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '2020-06-30T20:59:59.999Z',
+                      ],
+                      [
+                        'name' => 'field',
+                        'orig' => 'field',
+                        'type' => '`$ARRAY`',
+                        'kind' => 'query',
+                      ],
+                      [
+                        'name' => 'start',
+                        'orig' => 'start',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '2020-05-31T20:59:59.999Z',
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'end',
@@ -1105,36 +1132,8 @@ class EleringDashboardConfig
                       'start',
                     ],
                   ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'api',
-                    'gas-system',
-                    'm3',
-                    'csv',
-                  ],
                 ],
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'example' => '2020-06-30T20:59:59.999Z',
-                        'kind' => 'query',
-                        'name' => 'end',
-                        'orig' => 'end',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => '2020-05-31T20:59:59.999Z',
-                        'kind' => 'query',
-                        'name' => 'start',
-                        'orig' => 'start',
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/gas-system/daily',
@@ -1149,41 +1148,42 @@ class EleringDashboardConfig
                       'lit' => 'daily',
                     ],
                   ],
+                  'parts' => [
+                    'api',
+                    'gas-system',
+                    'daily',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'end',
+                        'orig' => 'end',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '2020-06-30T20:59:59.999Z',
+                      ],
+                      [
+                        'name' => 'start',
+                        'orig' => 'start',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '2020-05-31T20:59:59.999Z',
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'end',
                       'start',
                     ],
                   ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'api',
-                    'gas-system',
-                    'daily',
-                  ],
                 ],
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'example' => '2020-06-30T20:59:59.999Z',
-                        'kind' => 'query',
-                        'name' => 'end',
-                        'orig' => 'end',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => '2020-05-31T20:59:59.999Z',
-                        'kind' => 'query',
-                        'name' => 'start',
-                        'orig' => 'start',
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/gas-system/daily-average',
@@ -1198,41 +1198,42 @@ class EleringDashboardConfig
                       'lit' => 'daily-average',
                     ],
                   ],
+                  'parts' => [
+                    'api',
+                    'gas-system',
+                    'daily-average',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'end',
+                        'orig' => 'end',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '2020-06-30T20:59:59.999Z',
+                      ],
+                      [
+                        'name' => 'start',
+                        'orig' => 'start',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '2020-05-31T20:59:59.999Z',
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'end',
                       'start',
                     ],
                   ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'api',
-                    'gas-system',
-                    'daily-average',
-                  ],
                 ],
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'example' => '2020-06-30T20:59:59.999Z',
-                        'kind' => 'query',
-                        'name' => 'end',
-                        'orig' => 'end',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => '2020-05-31T20:59:59.999Z',
-                        'kind' => 'query',
-                        'name' => 'start',
-                        'orig' => 'start',
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/gas-system/m3',
@@ -1247,24 +1248,42 @@ class EleringDashboardConfig
                       'lit' => 'm3',
                     ],
                   ],
+                  'parts' => [
+                    'api',
+                    'gas-system',
+                    'm3',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'end',
+                        'orig' => 'end',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '2020-06-30T20:59:59.999Z',
+                      ],
+                      [
+                        'name' => 'start',
+                        'orig' => 'start',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '2020-05-31T20:59:59.999Z',
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'end',
                       'start',
                     ],
                   ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'api',
-                    'gas-system',
-                    'm3',
-                  ],
                 ],
                 [
-                  'args' => [],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/gas-system/latest',
@@ -1279,16 +1298,18 @@ class EleringDashboardConfig
                       'lit' => 'latest',
                     ],
                   ],
-                  'select' => [],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'gas-system',
                     'latest',
                   ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [],
+                  'select' => [],
                 ],
               ],
             ],
@@ -1306,24 +1327,6 @@ class EleringDashboardConfig
               'name' => 'load',
               'points' => [
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'example' => '2020-06-30T20:59:59.999Z',
-                        'kind' => 'query',
-                        'name' => 'end',
-                        'orig' => 'end',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => '2020-05-31T20:59:59.999Z',
-                        'kind' => 'query',
-                        'name' => 'start',
-                        'orig' => 'start',
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/gas-trade',
@@ -1335,19 +1338,38 @@ class EleringDashboardConfig
                       'lit' => 'gas-trade',
                     ],
                   ],
+                  'parts' => [
+                    'api',
+                    'gas-trade',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'end',
+                        'orig' => 'end',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '2020-06-30T20:59:59.999Z',
+                      ],
+                      [
+                        'name' => 'start',
+                        'orig' => 'start',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '2020-05-31T20:59:59.999Z',
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'end',
                       'start',
                     ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'api',
-                    'gas-trade',
                   ],
                 ],
               ],
@@ -1366,30 +1388,6 @@ class EleringDashboardConfig
               'name' => 'load',
               'points' => [
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'example' => '2020-06-30T20:59:59.999Z',
-                        'kind' => 'query',
-                        'name' => 'end',
-                        'orig' => 'end',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'kind' => 'query',
-                        'name' => 'field',
-                        'orig' => 'field',
-                        'type' => '`$ARRAY`',
-                      ],
-                      [
-                        'example' => '2020-05-31T20:59:59.999Z',
-                        'kind' => 'query',
-                        'name' => 'start',
-                        'orig' => 'start',
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/gas-trade/csv',
@@ -1404,6 +1402,40 @@ class EleringDashboardConfig
                       'lit' => 'csv',
                     ],
                   ],
+                  'parts' => [
+                    'api',
+                    'gas-trade',
+                    'csv',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'end',
+                        'orig' => 'end',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '2020-06-30T20:59:59.999Z',
+                      ],
+                      [
+                        'name' => 'field',
+                        'orig' => 'field',
+                        'type' => '`$ARRAY`',
+                        'kind' => 'query',
+                      ],
+                      [
+                        'name' => 'start',
+                        'orig' => 'start',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '2020-05-31T20:59:59.999Z',
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'end',
@@ -1411,28 +1443,8 @@ class EleringDashboardConfig
                       'start',
                     ],
                   ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'api',
-                    'gas-trade',
-                    'csv',
-                  ],
                 ],
                 [
-                  'args' => [
-                    'params' => [
-                      [
-                        'kind' => 'param',
-                        'name' => 'group',
-                        'orig' => 'group',
-                        'reqd' => true,
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/gas-trade/{group}/latest',
@@ -1450,20 +1462,32 @@ class EleringDashboardConfig
                       'lit' => 'latest',
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'group',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'gas-trade',
                     '{group}',
                     'latest',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'group',
+                        'orig' => 'group',
+                        'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                      ],
+                    ],
+                  ],
+                  'select' => [
+                    'exist' => [
+                      'group',
+                    ],
                   ],
                 ],
               ],
@@ -1472,7 +1496,7 @@ class EleringDashboardConfig
           'relations' => [
             'ancestors' => [
               [
-                'gas_trade',
+                '$.main.kit.entity.gas_trade',
               ],
             ],
           ],
@@ -1486,30 +1510,6 @@ class EleringDashboardConfig
               'name' => 'load',
               'points' => [
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'example' => '2020-06-30T20:59:59.999Z',
-                        'kind' => 'query',
-                        'name' => 'end',
-                        'orig' => 'end',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'kind' => 'query',
-                        'name' => 'field',
-                        'orig' => 'field',
-                        'type' => '`$ARRAY`',
-                      ],
-                      [
-                        'example' => '2020-05-31T20:59:59.999Z',
-                        'kind' => 'query',
-                        'name' => 'start',
-                        'orig' => 'start',
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/gas-transmission/cross-border/csv',
@@ -1527,6 +1527,41 @@ class EleringDashboardConfig
                       'lit' => 'csv',
                     ],
                   ],
+                  'parts' => [
+                    'api',
+                    'gas-transmission',
+                    'cross-border',
+                    'csv',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'end',
+                        'orig' => 'end',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '2020-06-30T20:59:59.999Z',
+                      ],
+                      [
+                        'name' => 'field',
+                        'orig' => 'field',
+                        'type' => '`$ARRAY`',
+                        'kind' => 'query',
+                      ],
+                      [
+                        'name' => 'start',
+                        'orig' => 'start',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '2020-05-31T20:59:59.999Z',
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'end',
@@ -1534,36 +1569,8 @@ class EleringDashboardConfig
                       'start',
                     ],
                   ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'api',
-                    'gas-transmission',
-                    'cross-border',
-                    'csv',
-                  ],
                 ],
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'example' => '2020-06-30T20:59:59.999Z',
-                        'kind' => 'query',
-                        'name' => 'end',
-                        'orig' => 'end',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => '2020-05-31T20:59:59.999Z',
-                        'kind' => 'query',
-                        'name' => 'start',
-                        'orig' => 'start',
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/gas-transmission/cross-border',
@@ -1578,24 +1585,42 @@ class EleringDashboardConfig
                       'lit' => 'cross-border',
                     ],
                   ],
+                  'parts' => [
+                    'api',
+                    'gas-transmission',
+                    'cross-border',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'end',
+                        'orig' => 'end',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '2020-06-30T20:59:59.999Z',
+                      ],
+                      [
+                        'name' => 'start',
+                        'orig' => 'start',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '2020-05-31T20:59:59.999Z',
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'end',
                       'start',
                     ],
                   ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'api',
-                    'gas-transmission',
-                    'cross-border',
-                  ],
                 ],
                 [
-                  'args' => [],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/gas-transmission/cross-border/latest',
@@ -1613,17 +1638,19 @@ class EleringDashboardConfig
                       'lit' => 'latest',
                     ],
                   ],
-                  'select' => [],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'gas-transmission',
                     'cross-border',
                     'latest',
                   ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [],
+                  'select' => [],
                 ],
               ],
             ],
@@ -1641,31 +1668,6 @@ class EleringDashboardConfig
               'name' => 'load',
               'points' => [
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'example' => 'Kõik kütused',
-                        'kind' => 'query',
-                        'name' => 'fuel',
-                        'orig' => 'fuel',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => 'Kõik tehnoloogiad',
-                        'kind' => 'query',
-                        'name' => 'technology',
-                        'orig' => 'technology',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => 'TRANSACTION',
-                        'kind' => 'query',
-                        'name' => 'type',
-                        'orig' => 'type',
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/green/certificates',
@@ -1680,21 +1682,47 @@ class EleringDashboardConfig
                       'lit' => 'certificates',
                     ],
                   ],
+                  'parts' => [
+                    'api',
+                    'green',
+                    'certificates',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'fuel',
+                        'orig' => 'fuel',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => 'Kõik kütused',
+                      ],
+                      [
+                        'name' => 'technology',
+                        'orig' => 'technology',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => 'Kõik tehnoloogiad',
+                      ],
+                      [
+                        'name' => 'type',
+                        'orig' => 'type',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => 'TRANSACTION',
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'fuel',
                       'technology',
                       'type',
                     ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'api',
-                    'green',
-                    'certificates',
                   ],
                 ],
               ],
@@ -1713,24 +1741,6 @@ class EleringDashboardConfig
               'name' => 'load',
               'points' => [
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'example' => '2020-06-30T20:59:59.999Z',
-                        'kind' => 'query',
-                        'name' => 'end',
-                        'orig' => 'end',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => '2020-05-31T20:59:59.999Z',
-                        'kind' => 'query',
-                        'name' => 'start',
-                        'orig' => 'start',
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/capacity/interruptible',
@@ -1745,20 +1755,39 @@ class EleringDashboardConfig
                       'lit' => 'interruptible',
                     ],
                   ],
+                  'parts' => [
+                    'api',
+                    'capacity',
+                    'interruptible',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'end',
+                        'orig' => 'end',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '2020-06-30T20:59:59.999Z',
+                      ],
+                      [
+                        'name' => 'start',
+                        'orig' => 'start',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '2020-05-31T20:59:59.999Z',
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'end',
                       'start',
                     ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'api',
-                    'capacity',
-                    'interruptible',
                   ],
                 ],
               ],
@@ -1777,30 +1806,6 @@ class EleringDashboardConfig
               'name' => 'load',
               'points' => [
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'example' => '2020-05-31T20:59:59.999Z',
-                        'kind' => 'query',
-                        'name' => 'end',
-                        'orig' => 'end',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'kind' => 'query',
-                        'name' => 'field',
-                        'orig' => 'field',
-                        'type' => '`$ARRAY`',
-                      ],
-                      [
-                        'example' => '2020-05-31T20:59:59.999Z',
-                        'kind' => 'query',
-                        'name' => 'start',
-                        'orig' => 'start',
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/capacity/interruptible/csv',
@@ -1818,22 +1823,47 @@ class EleringDashboardConfig
                       'lit' => 'csv',
                     ],
                   ],
+                  'parts' => [
+                    'api',
+                    'capacity',
+                    'interruptible',
+                    'csv',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'end',
+                        'orig' => 'end',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '2020-05-31T20:59:59.999Z',
+                      ],
+                      [
+                        'name' => 'field',
+                        'orig' => 'field',
+                        'type' => '`$ARRAY`',
+                        'kind' => 'query',
+                      ],
+                      [
+                        'name' => 'start',
+                        'orig' => 'start',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '2020-05-31T20:59:59.999Z',
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'end',
                       'field',
                       'start',
                     ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'api',
-                    'capacity',
-                    'interruptible',
-                    'csv',
                   ],
                 ],
               ],
@@ -1852,24 +1882,6 @@ class EleringDashboardConfig
               'name' => 'load',
               'points' => [
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'example' => '2020-06-30T20:59:59.999Z',
-                        'kind' => 'query',
-                        'name' => 'end',
-                        'orig' => 'end',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => '2020-05-31T20:59:59.999Z',
-                        'kind' => 'query',
-                        'name' => 'start',
-                        'orig' => 'start',
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/nominations',
@@ -1881,19 +1893,38 @@ class EleringDashboardConfig
                       'lit' => 'nominations',
                     ],
                   ],
+                  'parts' => [
+                    'api',
+                    'nominations',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'end',
+                        'orig' => 'end',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '2020-06-30T20:59:59.999Z',
+                      ],
+                      [
+                        'name' => 'start',
+                        'orig' => 'start',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '2020-05-31T20:59:59.999Z',
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'end',
                       'start',
                     ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'api',
-                    'nominations',
                   ],
                 ],
               ],
@@ -1912,30 +1943,6 @@ class EleringDashboardConfig
               'name' => 'load',
               'points' => [
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'example' => '2020-06-30T20:59:59.999Z',
-                        'kind' => 'query',
-                        'name' => 'end',
-                        'orig' => 'end',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'kind' => 'query',
-                        'name' => 'field',
-                        'orig' => 'field',
-                        'type' => '`$ARRAY`',
-                      ],
-                      [
-                        'example' => '2020-05-31T20:59:59.999Z',
-                        'kind' => 'query',
-                        'name' => 'start',
-                        'orig' => 'start',
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/nominations/csv',
@@ -1950,21 +1957,46 @@ class EleringDashboardConfig
                       'lit' => 'csv',
                     ],
                   ],
+                  'parts' => [
+                    'api',
+                    'nominations',
+                    'csv',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'end',
+                        'orig' => 'end',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '2020-06-30T20:59:59.999Z',
+                      ],
+                      [
+                        'name' => 'field',
+                        'orig' => 'field',
+                        'type' => '`$ARRAY`',
+                        'kind' => 'query',
+                      ],
+                      [
+                        'name' => 'start',
+                        'orig' => 'start',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '2020-05-31T20:59:59.999Z',
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'end',
                       'field',
                       'start',
                     ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'api',
-                    'nominations',
-                    'csv',
                   ],
                 ],
               ],
@@ -1983,30 +2015,6 @@ class EleringDashboardConfig
               'name' => 'load',
               'points' => [
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'example' => '2020-06-30T20:59:59.999Z',
-                        'kind' => 'query',
-                        'name' => 'end',
-                        'orig' => 'end',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'kind' => 'query',
-                        'name' => 'field',
-                        'orig' => 'field',
-                        'type' => '`$ARRAY`',
-                      ],
-                      [
-                        'example' => '2020-05-31T20:59:59.999Z',
-                        'kind' => 'query',
-                        'name' => 'start',
-                        'orig' => 'start',
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/nps/price/csv',
@@ -2024,6 +2032,41 @@ class EleringDashboardConfig
                       'lit' => 'csv',
                     ],
                   ],
+                  'parts' => [
+                    'api',
+                    'nps',
+                    'price',
+                    'csv',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'end',
+                        'orig' => 'end',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '2020-06-30T20:59:59.999Z',
+                      ],
+                      [
+                        'name' => 'field',
+                        'orig' => 'field',
+                        'type' => '`$ARRAY`',
+                        'kind' => 'query',
+                      ],
+                      [
+                        'name' => 'start',
+                        'orig' => 'start',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '2020-05-31T20:59:59.999Z',
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'end',
@@ -2031,42 +2074,8 @@ class EleringDashboardConfig
                       'start',
                     ],
                   ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'api',
-                    'nps',
-                    'price',
-                    'csv',
-                  ],
                 ],
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'example' => '2020-06-30T20:59:59.999Z',
-                        'kind' => 'query',
-                        'name' => 'end',
-                        'orig' => 'end',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'kind' => 'query',
-                        'name' => 'field',
-                        'orig' => 'field',
-                        'type' => '`$ARRAY`',
-                      ],
-                      [
-                        'example' => '2020-05-31T20:59:59.999Z',
-                        'kind' => 'query',
-                        'name' => 'start',
-                        'orig' => 'start',
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/nps/turnover/csv',
@@ -2084,6 +2093,41 @@ class EleringDashboardConfig
                       'lit' => 'csv',
                     ],
                   ],
+                  'parts' => [
+                    'api',
+                    'nps',
+                    'turnover',
+                    'csv',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'end',
+                        'orig' => 'end',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '2020-06-30T20:59:59.999Z',
+                      ],
+                      [
+                        'name' => 'field',
+                        'orig' => 'field',
+                        'type' => '`$ARRAY`',
+                        'kind' => 'query',
+                      ],
+                      [
+                        'name' => 'start',
+                        'orig' => 'start',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '2020-05-31T20:59:59.999Z',
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'end',
@@ -2091,36 +2135,8 @@ class EleringDashboardConfig
                       'start',
                     ],
                   ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'api',
-                    'nps',
-                    'turnover',
-                    'csv',
-                  ],
                 ],
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'example' => '2020-06-30T20:59:59.999Z',
-                        'kind' => 'query',
-                        'name' => 'end',
-                        'orig' => 'end',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => '2020-05-31T20:59:59.999Z',
-                        'kind' => 'query',
-                        'name' => 'start',
-                        'orig' => 'start',
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/nps/price',
@@ -2135,41 +2151,42 @@ class EleringDashboardConfig
                       'lit' => 'price',
                     ],
                   ],
+                  'parts' => [
+                    'api',
+                    'nps',
+                    'price',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'end',
+                        'orig' => 'end',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '2020-06-30T20:59:59.999Z',
+                      ],
+                      [
+                        'name' => 'start',
+                        'orig' => 'start',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '2020-05-31T20:59:59.999Z',
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'end',
                       'start',
                     ],
                   ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'api',
-                    'nps',
-                    'price',
-                  ],
                 ],
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'example' => '2020-06-30T20:59:59.999Z',
-                        'kind' => 'query',
-                        'name' => 'end',
-                        'orig' => 'end',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => '2020-05-31T20:59:59.999Z',
-                        'kind' => 'query',
-                        'name' => 'start',
-                        'orig' => 'start',
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/nps/turnover',
@@ -2184,34 +2201,42 @@ class EleringDashboardConfig
                       'lit' => 'turnover',
                     ],
                   ],
+                  'parts' => [
+                    'api',
+                    'nps',
+                    'turnover',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'end',
+                        'orig' => 'end',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '2020-06-30T20:59:59.999Z',
+                      ],
+                      [
+                        'name' => 'start',
+                        'orig' => 'start',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '2020-05-31T20:59:59.999Z',
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'end',
                       'start',
                     ],
                   ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'api',
-                    'nps',
-                    'turnover',
-                  ],
                 ],
                 [
-                  'args' => [
-                    'params' => [
-                      [
-                        'kind' => 'param',
-                        'name' => 'group',
-                        'orig' => 'group',
-                        'reqd' => true,
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/nps/price/{group}/current',
@@ -2232,15 +2257,6 @@ class EleringDashboardConfig
                       'lit' => 'current',
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'group',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'nps',
@@ -2248,19 +2264,29 @@ class EleringDashboardConfig
                     '{group}',
                     'current',
                   ],
-                ],
-                [
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
                   'args' => [
                     'params' => [
                       [
-                        'kind' => 'param',
                         'name' => 'group',
                         'orig' => 'group',
-                        'reqd' => true,
                         'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
                       ],
                     ],
                   ],
+                  'select' => [
+                    'exist' => [
+                      'group',
+                    ],
+                  ],
+                ],
+                [
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/nps/price/{group}/latest',
@@ -2281,15 +2307,6 @@ class EleringDashboardConfig
                       'lit' => 'latest',
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'group',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'nps',
@@ -2297,19 +2314,29 @@ class EleringDashboardConfig
                     '{group}',
                     'latest',
                   ],
-                ],
-                [
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
                   'args' => [
                     'params' => [
                       [
-                        'kind' => 'param',
                         'name' => 'group',
                         'orig' => 'group',
-                        'reqd' => true,
                         'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
                       ],
                     ],
                   ],
+                  'select' => [
+                    'exist' => [
+                      'group',
+                    ],
+                  ],
+                ],
+                [
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/nps/turnover/{group}/latest',
@@ -2330,15 +2357,6 @@ class EleringDashboardConfig
                       'lit' => 'latest',
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'group',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'nps',
@@ -2346,19 +2364,33 @@ class EleringDashboardConfig
                     '{group}',
                     'latest',
                   ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'group',
+                        'orig' => 'group',
+                        'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                      ],
+                    ],
+                  ],
+                  'select' => [
+                    'exist' => [
+                      'group',
+                    ],
+                  ],
                 ],
               ],
             ],
           ],
           'relations' => [
-            'ancestors' => [
-              [
-                'price',
-              ],
-              [
-                'turnover',
-              ],
-            ],
+            'ancestors' => [],
           ],
         ],
         'renomination' => [
@@ -2370,24 +2402,6 @@ class EleringDashboardConfig
               'name' => 'load',
               'points' => [
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'example' => '2020-06-30T20:59:59.999Z',
-                        'kind' => 'query',
-                        'name' => 'end',
-                        'orig' => 'end',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => '2020-05-31T20:59:59.999Z',
-                        'kind' => 'query',
-                        'name' => 'start',
-                        'orig' => 'start',
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/nominations/renominations',
@@ -2402,20 +2416,39 @@ class EleringDashboardConfig
                       'lit' => 'renominations',
                     ],
                   ],
+                  'parts' => [
+                    'api',
+                    'nominations',
+                    'renominations',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'end',
+                        'orig' => 'end',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '2020-06-30T20:59:59.999Z',
+                      ],
+                      [
+                        'name' => 'start',
+                        'orig' => 'start',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '2020-05-31T20:59:59.999Z',
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'end',
                       'start',
                     ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'api',
-                    'nominations',
-                    'renominations',
                   ],
                 ],
               ],
@@ -2434,30 +2467,6 @@ class EleringDashboardConfig
               'name' => 'load',
               'points' => [
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'example' => '2020-06-30T20:59:59.999Z',
-                        'kind' => 'query',
-                        'name' => 'end',
-                        'orig' => 'end',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'kind' => 'query',
-                        'name' => 'field',
-                        'orig' => 'field',
-                        'type' => '`$ARRAY`',
-                      ],
-                      [
-                        'example' => '2020-05-31T20:59:59.999Z',
-                        'kind' => 'query',
-                        'name' => 'start',
-                        'orig' => 'start',
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/nominations/renominations/csv',
@@ -2475,22 +2484,47 @@ class EleringDashboardConfig
                       'lit' => 'csv',
                     ],
                   ],
+                  'parts' => [
+                    'api',
+                    'nominations',
+                    'renominations',
+                    'csv',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'end',
+                        'orig' => 'end',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '2020-06-30T20:59:59.999Z',
+                      ],
+                      [
+                        'name' => 'field',
+                        'orig' => 'field',
+                        'type' => '`$ARRAY`',
+                        'kind' => 'query',
+                      ],
+                      [
+                        'name' => 'start',
+                        'orig' => 'start',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '2020-05-31T20:59:59.999Z',
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'end',
                       'field',
                       'start',
                     ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'api',
-                    'nominations',
-                    'renominations',
-                    'csv',
                   ],
                 ],
               ],
@@ -2509,24 +2543,6 @@ class EleringDashboardConfig
               'name' => 'load',
               'points' => [
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'example' => '2020-06-30T20:59:59.999Z',
-                        'kind' => 'query',
-                        'name' => 'end',
-                        'orig' => 'end',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => '2020-05-31T20:59:59.999Z',
-                        'kind' => 'query',
-                        'name' => 'start',
-                        'orig' => 'start',
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/system',
@@ -2538,19 +2554,38 @@ class EleringDashboardConfig
                       'lit' => 'system',
                     ],
                   ],
+                  'parts' => [
+                    'api',
+                    'system',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'end',
+                        'orig' => 'end',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '2020-06-30T20:59:59.999Z',
+                      ],
+                      [
+                        'name' => 'start',
+                        'orig' => 'start',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '2020-05-31T20:59:59.999Z',
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'end',
                       'start',
                     ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'api',
-                    'system',
                   ],
                 ],
               ],
@@ -2569,30 +2604,6 @@ class EleringDashboardConfig
               'name' => 'load',
               'points' => [
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'example' => '2020-06-30T20:59:59.999Z',
-                        'kind' => 'query',
-                        'name' => 'end',
-                        'orig' => 'end',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'kind' => 'query',
-                        'name' => 'field',
-                        'orig' => 'field',
-                        'type' => '`$ARRAY`',
-                      ],
-                      [
-                        'example' => '2020-05-31T20:59:59.999Z',
-                        'kind' => 'query',
-                        'name' => 'start',
-                        'orig' => 'start',
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/system/csv',
@@ -2607,6 +2618,40 @@ class EleringDashboardConfig
                       'lit' => 'csv',
                     ],
                   ],
+                  'parts' => [
+                    'api',
+                    'system',
+                    'csv',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'end',
+                        'orig' => 'end',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '2020-06-30T20:59:59.999Z',
+                      ],
+                      [
+                        'name' => 'field',
+                        'orig' => 'field',
+                        'type' => '`$ARRAY`',
+                        'kind' => 'query',
+                      ],
+                      [
+                        'name' => 'start',
+                        'orig' => 'start',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '2020-05-31T20:59:59.999Z',
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'end',
@@ -2614,41 +2659,8 @@ class EleringDashboardConfig
                       'start',
                     ],
                   ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'api',
-                    'system',
-                    'csv',
-                  ],
                 ],
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'example' => '2020-06-30T20:59:59.999Z',
-                        'kind' => 'query',
-                        'name' => 'end',
-                        'orig' => 'end',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'kind' => 'query',
-                        'name' => 'field',
-                        'orig' => 'field',
-                        'type' => '`$ARRAY`',
-                      ],
-                      [
-                        'example' => '2020-05-31T20:59:59.999Z',
-                        'kind' => 'query',
-                        'name' => 'start',
-                        'orig' => 'start',
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/system/with-plan/csv',
@@ -2666,6 +2678,41 @@ class EleringDashboardConfig
                       'lit' => 'csv',
                     ],
                   ],
+                  'parts' => [
+                    'api',
+                    'system',
+                    'with-plan',
+                    'csv',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'end',
+                        'orig' => 'end',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '2020-06-30T20:59:59.999Z',
+                      ],
+                      [
+                        'name' => 'field',
+                        'orig' => 'field',
+                        'type' => '`$ARRAY`',
+                        'kind' => 'query',
+                      ],
+                      [
+                        'name' => 'start',
+                        'orig' => 'start',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '2020-05-31T20:59:59.999Z',
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'end',
@@ -2673,36 +2720,8 @@ class EleringDashboardConfig
                       'start',
                     ],
                   ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'api',
-                    'system',
-                    'with-plan',
-                    'csv',
-                  ],
                 ],
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'example' => '2020-06-30T20:59:59.999Z',
-                        'kind' => 'query',
-                        'name' => 'end',
-                        'orig' => 'end',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => '2020-05-31T20:59:59.999Z',
-                        'kind' => 'query',
-                        'name' => 'start',
-                        'orig' => 'start',
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/system/with-plan',
@@ -2717,24 +2736,42 @@ class EleringDashboardConfig
                       'lit' => 'with-plan',
                     ],
                   ],
+                  'parts' => [
+                    'api',
+                    'system',
+                    'with-plan',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'end',
+                        'orig' => 'end',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '2020-06-30T20:59:59.999Z',
+                      ],
+                      [
+                        'name' => 'start',
+                        'orig' => 'start',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '2020-05-31T20:59:59.999Z',
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'end',
                       'start',
                     ],
                   ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'api',
-                    'system',
-                    'with-plan',
-                  ],
                 ],
                 [
-                  'args' => [],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/system/latest',
@@ -2749,16 +2786,18 @@ class EleringDashboardConfig
                       'lit' => 'latest',
                     ],
                   ],
-                  'select' => [],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'system',
                     'latest',
                   ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [],
+                  'select' => [],
                 ],
               ],
             ],
@@ -2776,39 +2815,6 @@ class EleringDashboardConfig
               'name' => 'load',
               'points' => [
                 [
-                  'args' => [
-                    'params' => [
-                      [
-                        'kind' => 'param',
-                        'name' => 'group',
-                        'orig' => 'group',
-                        'reqd' => true,
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                    'query' => [
-                      [
-                        'example' => '2020-06-30T20:59:59.999Z',
-                        'kind' => 'query',
-                        'name' => 'end',
-                        'orig' => 'end',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'kind' => 'query',
-                        'name' => 'field',
-                        'orig' => 'field',
-                        'type' => '`$ARRAY`',
-                      ],
-                      [
-                        'example' => '2020-05-31T20:59:59.999Z',
-                        'kind' => 'query',
-                        'name' => 'start',
-                        'orig' => 'start',
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/transmission/cross-border-capacity/{group}/csv',
@@ -2829,6 +2835,51 @@ class EleringDashboardConfig
                       'lit' => 'csv',
                     ],
                   ],
+                  'parts' => [
+                    'api',
+                    'transmission',
+                    'cross-border-capacity',
+                    '{group}',
+                    'csv',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'group',
+                        'orig' => 'group',
+                        'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                      ],
+                    ],
+                    'query' => [
+                      [
+                        'name' => 'end',
+                        'orig' => 'end',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '2020-06-30T20:59:59.999Z',
+                      ],
+                      [
+                        'name' => 'field',
+                        'orig' => 'field',
+                        'type' => '`$ARRAY`',
+                        'kind' => 'query',
+                      ],
+                      [
+                        'name' => 'start',
+                        'orig' => 'start',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '2020-05-31T20:59:59.999Z',
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'end',
@@ -2837,43 +2888,8 @@ class EleringDashboardConfig
                       'start',
                     ],
                   ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'api',
-                    'transmission',
-                    'cross-border-capacity',
-                    '{group}',
-                    'csv',
-                  ],
                 ],
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'example' => '2020-06-30T20:59:59.999Z',
-                        'kind' => 'query',
-                        'name' => 'end',
-                        'orig' => 'end',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'kind' => 'query',
-                        'name' => 'field',
-                        'orig' => 'field',
-                        'type' => '`$ARRAY`',
-                      ],
-                      [
-                        'example' => '2020-05-31T20:59:59.999Z',
-                        'kind' => 'query',
-                        'name' => 'start',
-                        'orig' => 'start',
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/transmission/cross-border-planned-trade/csv',
@@ -2891,6 +2907,41 @@ class EleringDashboardConfig
                       'lit' => 'csv',
                     ],
                   ],
+                  'parts' => [
+                    'api',
+                    'transmission',
+                    'cross-border-planned-trade',
+                    'csv',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'end',
+                        'orig' => 'end',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '2020-06-30T20:59:59.999Z',
+                      ],
+                      [
+                        'name' => 'field',
+                        'orig' => 'field',
+                        'type' => '`$ARRAY`',
+                        'kind' => 'query',
+                      ],
+                      [
+                        'name' => 'start',
+                        'orig' => 'start',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '2020-05-31T20:59:59.999Z',
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'end',
@@ -2898,42 +2949,8 @@ class EleringDashboardConfig
                       'start',
                     ],
                   ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'api',
-                    'transmission',
-                    'cross-border-planned-trade',
-                    'csv',
-                  ],
                 ],
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'example' => '2020-06-30T20:59:59.999Z',
-                        'kind' => 'query',
-                        'name' => 'end',
-                        'orig' => 'end',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'kind' => 'query',
-                        'name' => 'field',
-                        'orig' => 'field',
-                        'type' => '`$ARRAY`',
-                      ],
-                      [
-                        'example' => '2020-05-31T20:59:59.999Z',
-                        'kind' => 'query',
-                        'name' => 'start',
-                        'orig' => 'start',
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/transmission/cross-border/csv',
@@ -2951,6 +2968,41 @@ class EleringDashboardConfig
                       'lit' => 'csv',
                     ],
                   ],
+                  'parts' => [
+                    'api',
+                    'transmission',
+                    'cross-border',
+                    'csv',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'end',
+                        'orig' => 'end',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '2020-06-30T20:59:59.999Z',
+                      ],
+                      [
+                        'name' => 'field',
+                        'orig' => 'field',
+                        'type' => '`$ARRAY`',
+                        'kind' => 'query',
+                      ],
+                      [
+                        'name' => 'start',
+                        'orig' => 'start',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '2020-05-31T20:59:59.999Z',
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'end',
@@ -2958,42 +3010,8 @@ class EleringDashboardConfig
                       'start',
                     ],
                   ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'api',
-                    'transmission',
-                    'cross-border',
-                    'csv',
-                  ],
                 ],
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'example' => '2020-06-30T20:59:59.999Z',
-                        'kind' => 'query',
-                        'name' => 'end',
-                        'orig' => 'end',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'kind' => 'query',
-                        'name' => 'field',
-                        'orig' => 'field',
-                        'type' => '`$ARRAY`',
-                      ],
-                      [
-                        'example' => '2020-05-31T20:59:59.999Z',
-                        'kind' => 'query',
-                        'name' => 'start',
-                        'orig' => 'start',
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/transmission/cross-border/hourly/csv',
@@ -3014,17 +3032,6 @@ class EleringDashboardConfig
                       'lit' => 'csv',
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'end',
-                      'field',
-                      'start',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'transmission',
@@ -3032,35 +3039,44 @@ class EleringDashboardConfig
                     'hourly',
                     'csv',
                   ],
-                ],
-                [
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
                   'args' => [
-                    'params' => [
-                      [
-                        'kind' => 'param',
-                        'name' => 'group',
-                        'orig' => 'group',
-                        'reqd' => true,
-                        'type' => '`$STRING`',
-                      ],
-                    ],
                     'query' => [
                       [
-                        'example' => '2020-06-30T20:59:59.999Z',
-                        'kind' => 'query',
                         'name' => 'end',
                         'orig' => 'end',
                         'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '2020-06-30T20:59:59.999Z',
                       ],
                       [
-                        'example' => '2020-05-31T20:59:59.999Z',
+                        'name' => 'field',
+                        'orig' => 'field',
+                        'type' => '`$ARRAY`',
                         'kind' => 'query',
+                      ],
+                      [
                         'name' => 'start',
                         'orig' => 'start',
                         'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '2020-05-31T20:59:59.999Z',
                       ],
                     ],
                   ],
+                  'select' => [
+                    'exist' => [
+                      'end',
+                      'field',
+                      'start',
+                    ],
+                  ],
+                ],
+                [
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/transmission/cross-border-capacity/{group}',
@@ -3078,6 +3094,44 @@ class EleringDashboardConfig
                       'var' => 'group',
                     ],
                   ],
+                  'parts' => [
+                    'api',
+                    'transmission',
+                    'cross-border-capacity',
+                    '{group}',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'group',
+                        'orig' => 'group',
+                        'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                      ],
+                    ],
+                    'query' => [
+                      [
+                        'name' => 'end',
+                        'orig' => 'end',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '2020-06-30T20:59:59.999Z',
+                      ],
+                      [
+                        'name' => 'start',
+                        'orig' => 'start',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '2020-05-31T20:59:59.999Z',
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'end',
@@ -3085,36 +3139,8 @@ class EleringDashboardConfig
                       'start',
                     ],
                   ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'api',
-                    'transmission',
-                    'cross-border-capacity',
-                    '{group}',
-                  ],
                 ],
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'example' => '2020-06-30T20:59:59.999Z',
-                        'kind' => 'query',
-                        'name' => 'end',
-                        'orig' => 'end',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => '2020-05-31T20:59:59.999Z',
-                        'kind' => 'query',
-                        'name' => 'start',
-                        'orig' => 'start',
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/transmission/cross-border',
@@ -3129,41 +3155,42 @@ class EleringDashboardConfig
                       'lit' => 'cross-border',
                     ],
                   ],
+                  'parts' => [
+                    'api',
+                    'transmission',
+                    'cross-border',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'end',
+                        'orig' => 'end',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '2020-06-30T20:59:59.999Z',
+                      ],
+                      [
+                        'name' => 'start',
+                        'orig' => 'start',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '2020-05-31T20:59:59.999Z',
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'end',
                       'start',
                     ],
                   ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'api',
-                    'transmission',
-                    'cross-border',
-                  ],
                 ],
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'example' => '2020-06-30T20:59:59.999Z',
-                        'kind' => 'query',
-                        'name' => 'end',
-                        'orig' => 'end',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => '2020-05-31T20:59:59.999Z',
-                        'kind' => 'query',
-                        'name' => 'start',
-                        'orig' => 'start',
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/transmission/cross-border-capacity',
@@ -3178,41 +3205,42 @@ class EleringDashboardConfig
                       'lit' => 'cross-border-capacity',
                     ],
                   ],
+                  'parts' => [
+                    'api',
+                    'transmission',
+                    'cross-border-capacity',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'end',
+                        'orig' => 'end',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '2020-06-30T20:59:59.999Z',
+                      ],
+                      [
+                        'name' => 'start',
+                        'orig' => 'start',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '2020-05-31T20:59:59.999Z',
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'end',
                       'start',
                     ],
                   ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'api',
-                    'transmission',
-                    'cross-border-capacity',
-                  ],
                 ],
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'example' => '2020-06-30T20:59:59.999Z',
-                        'kind' => 'query',
-                        'name' => 'end',
-                        'orig' => 'end',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => '2020-05-31T20:59:59.999Z',
-                        'kind' => 'query',
-                        'name' => 'start',
-                        'orig' => 'start',
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/transmission/cross-border-planned-trade',
@@ -3227,41 +3255,42 @@ class EleringDashboardConfig
                       'lit' => 'cross-border-planned-trade',
                     ],
                   ],
+                  'parts' => [
+                    'api',
+                    'transmission',
+                    'cross-border-planned-trade',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'end',
+                        'orig' => 'end',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '2020-06-30T20:59:59.999Z',
+                      ],
+                      [
+                        'name' => 'start',
+                        'orig' => 'start',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '2020-05-31T20:59:59.999Z',
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'end',
                       'start',
                     ],
                   ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'api',
-                    'transmission',
-                    'cross-border-planned-trade',
-                  ],
                 ],
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'example' => '2020-06-30T20:59:59.999Z',
-                        'kind' => 'query',
-                        'name' => 'end',
-                        'orig' => 'end',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => '2020-05-31T20:59:59.999Z',
-                        'kind' => 'query',
-                        'name' => 'start',
-                        'orig' => 'start',
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/transmission/cross-border/hourly',
@@ -3279,25 +3308,43 @@ class EleringDashboardConfig
                       'lit' => 'hourly',
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'end',
-                      'start',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'transmission',
                     'cross-border',
                     'hourly',
                   ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'end',
+                        'orig' => 'end',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '2020-06-30T20:59:59.999Z',
+                      ],
+                      [
+                        'name' => 'start',
+                        'orig' => 'start',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '2020-05-31T20:59:59.999Z',
+                      ],
+                    ],
+                  ],
+                  'select' => [
+                    'exist' => [
+                      'end',
+                      'start',
+                    ],
+                  ],
                 ],
                 [
-                  'args' => [],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/transmission/cross-border-planned-trade/latest',
@@ -3315,20 +3362,21 @@ class EleringDashboardConfig
                       'lit' => 'latest',
                     ],
                   ],
-                  'select' => [],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'transmission',
                     'cross-border-planned-trade',
                     'latest',
                   ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [],
+                  'select' => [],
                 ],
                 [
-                  'args' => [],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/transmission/cross-border/latest',
@@ -3346,27 +3394,25 @@ class EleringDashboardConfig
                       'lit' => 'latest',
                     ],
                   ],
-                  'select' => [],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'transmission',
                     'cross-border',
                     'latest',
                   ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [],
+                  'select' => [],
                 ],
               ],
             ],
           ],
           'relations' => [
-            'ancestors' => [
-              [
-                'cross_border_capacity',
-              ],
-            ],
+            'ancestors' => [],
           ],
         ],
         'umm_gas_controller' => [
@@ -3378,73 +3424,6 @@ class EleringDashboardConfig
               'name' => 'load',
               'points' => [
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'kind' => 'query',
-                        'name' => 'affected_asset_name',
-                        'orig' => 'affected_asset_name',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'kind' => 'query',
-                        'name' => 'event_duration_date_time_end',
-                        'orig' => 'event_duration_date_time_end',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'kind' => 'query',
-                        'name' => 'event_duration_date_time_start',
-                        'orig' => 'event_duration_date_time_start',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'kind' => 'query',
-                        'name' => 'event_status',
-                        'orig' => 'event_status',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'kind' => 'query',
-                        'name' => 'event_type',
-                        'orig' => 'event_type',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => 1,
-                        'kind' => 'query',
-                        'name' => 'page',
-                        'orig' => 'page',
-                        'type' => '`$INTEGER`',
-                      ],
-                      [
-                        'kind' => 'query',
-                        'name' => 'publication_datetime_start',
-                        'orig' => 'publication_datetime_start',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => 'publicationDateTimeDesc',
-                        'kind' => 'query',
-                        'name' => 'sort',
-                        'orig' => 'sort',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => 'current',
-                        'kind' => 'query',
-                        'name' => 'status',
-                        'orig' => 'status',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'kind' => 'query',
-                        'name' => 'unavailability_type',
-                        'orig' => 'unavailability_type',
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/umm/gas',
@@ -3457,6 +3436,83 @@ class EleringDashboardConfig
                     ],
                     [
                       'lit' => 'gas',
+                    ],
+                  ],
+                  'parts' => [
+                    'api',
+                    'umm',
+                    'gas',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'affected_asset_name',
+                        'orig' => 'affected_asset_name',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                      ],
+                      [
+                        'name' => 'event_duration_date_time_end',
+                        'orig' => 'event_duration_date_time_end',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                      ],
+                      [
+                        'name' => 'event_duration_date_time_start',
+                        'orig' => 'event_duration_date_time_start',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                      ],
+                      [
+                        'name' => 'event_status',
+                        'orig' => 'event_status',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                      ],
+                      [
+                        'name' => 'event_type',
+                        'orig' => 'event_type',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                      ],
+                      [
+                        'name' => 'page',
+                        'orig' => 'page',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                        'example' => 1,
+                      ],
+                      [
+                        'name' => 'publication_datetime_start',
+                        'orig' => 'publication_datetime_start',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                      ],
+                      [
+                        'name' => 'sort',
+                        'orig' => 'sort',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => 'publicationDateTimeDesc',
+                      ],
+                      [
+                        'name' => 'status',
+                        'orig' => 'status',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => 'current',
+                      ],
+                      [
+                        'name' => 'unavailability_type',
+                        'orig' => 'unavailability_type',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                      ],
                     ],
                   ],
                   'select' => [
@@ -3473,28 +3529,8 @@ class EleringDashboardConfig
                       'unavailability_type',
                     ],
                   ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'api',
-                    'umm',
-                    'gas',
-                  ],
                 ],
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'kind' => 'query',
-                        'name' => 'id',
-                        'orig' => 'id',
-                        'reqd' => true,
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/umm/gas/messages',
@@ -3512,34 +3548,35 @@ class EleringDashboardConfig
                       'lit' => 'messages',
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'id',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'umm',
                     'gas',
                     'messages',
                   ],
-                ],
-                [
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
                   'args' => [
                     'query' => [
                       [
-                        'kind' => 'query',
                         'name' => 'id',
                         'orig' => 'id',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
                         'reqd' => true,
-                        'type' => '`$INTEGER`',
                       ],
                     ],
                   ],
+                  'select' => [
+                    'exist' => [
+                      'id',
+                    ],
+                  ],
+                ],
+                [
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/umm/single/{id}',
@@ -3557,20 +3594,32 @@ class EleringDashboardConfig
                       'var' => 'id',
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'id',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'umm',
                     'single',
                     '{id}',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'id',
+                        'orig' => 'id',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                        'reqd' => true,
+                      ],
+                    ],
+                  ],
+                  'select' => [
+                    'exist' => [
+                      'id',
+                    ],
                   ],
                 ],
               ],
@@ -3589,7 +3638,6 @@ class EleringDashboardConfig
               'name' => 'load',
               'points' => [
                 [
-                  'args' => [],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/umm/gas/rss',
@@ -3604,19 +3652,20 @@ class EleringDashboardConfig
                       'lit' => 'rss',
                     ],
                   ],
-                  'select' => [],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'umm',
                     'gas',
                     'rss',
                   ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [],
+                  'select' => [],
                 ],
                 [
-                  'args' => [],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/umm/gas/rss/aris',
@@ -3634,17 +3683,19 @@ class EleringDashboardConfig
                       'lit' => 'aris',
                     ],
                   ],
-                  'select' => [],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'umm',
                     'gas',
                     'rss',
                     'aris',
                   ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [],
+                  'select' => [],
                 ],
               ],
             ],

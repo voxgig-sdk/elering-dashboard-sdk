@@ -119,24 +119,6 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "2020-06-30T20:59:59.999Z",
-											"kind": "query",
-											"name": "end",
-											"orig": "end",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": "2020-05-31T20:59:59.999Z",
-											"kind": "query",
-											"name": "start",
-											"orig": "start",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/balance",
@@ -148,19 +130,38 @@ func MakeConfig() map[string]any {
 										"lit": "balance",
 									},
 								},
+								"parts": []any{
+									"api",
+									"balance",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "end",
+											"orig": "end",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-06-30T20:59:59.999Z",
+										},
+										map[string]any{
+											"name": "start",
+											"orig": "start",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-05-31T20:59:59.999Z",
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"end",
 										"start",
 									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"api",
-									"balance",
 								},
 							},
 						},
@@ -179,30 +180,6 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "2020-06-30T20:59:59.999Z",
-											"kind": "query",
-											"name": "end",
-											"orig": "end",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "field",
-											"orig": "field",
-											"type": "`$ARRAY`",
-										},
-										map[string]any{
-											"example": "2020-05-31T20:59:59.999Z",
-											"kind": "query",
-											"name": "start",
-											"orig": "start",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/balance/commerce/csv",
@@ -220,6 +197,41 @@ func MakeConfig() map[string]any {
 										"lit": "csv",
 									},
 								},
+								"parts": []any{
+									"api",
+									"balance",
+									"commerce",
+									"csv",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "end",
+											"orig": "end",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-06-30T20:59:59.999Z",
+										},
+										map[string]any{
+											"name": "field",
+											"orig": "field",
+											"type": "`$ARRAY`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "start",
+											"orig": "start",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-05-31T20:59:59.999Z",
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"end",
@@ -227,42 +239,8 @@ func MakeConfig() map[string]any {
 										"start",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"api",
-									"balance",
-									"commerce",
-									"csv",
-								},
 							},
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "2020-05-31T20:59:59.999Z",
-											"kind": "query",
-											"name": "end",
-											"orig": "end",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "field",
-											"orig": "field",
-											"type": "`$ARRAY`",
-										},
-										map[string]any{
-											"example": "2020-05-31T20:59:59.999Z",
-											"kind": "query",
-											"name": "start",
-											"orig": "start",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/balance/csv",
@@ -277,6 +255,40 @@ func MakeConfig() map[string]any {
 										"lit": "csv",
 									},
 								},
+								"parts": []any{
+									"api",
+									"balance",
+									"csv",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "end",
+											"orig": "end",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-05-31T20:59:59.999Z",
+										},
+										map[string]any{
+											"name": "field",
+											"orig": "field",
+											"type": "`$ARRAY`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "start",
+											"orig": "start",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-05-31T20:59:59.999Z",
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"end",
@@ -284,41 +296,8 @@ func MakeConfig() map[string]any {
 										"start",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"api",
-									"balance",
-									"csv",
-								},
 							},
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "2020-06-30T20:59:59.999Z",
-											"kind": "query",
-											"name": "end",
-											"orig": "end",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "field",
-											"orig": "field",
-											"type": "`$ARRAY`",
-										},
-										map[string]any{
-											"example": "2020-05-31T20:59:59.999Z",
-											"kind": "query",
-											"name": "start",
-											"orig": "start",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/balance/total/csv",
@@ -336,6 +315,41 @@ func MakeConfig() map[string]any {
 										"lit": "csv",
 									},
 								},
+								"parts": []any{
+									"api",
+									"balance",
+									"total",
+									"csv",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "end",
+											"orig": "end",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-06-30T20:59:59.999Z",
+										},
+										map[string]any{
+											"name": "field",
+											"orig": "field",
+											"type": "`$ARRAY`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "start",
+											"orig": "start",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-05-31T20:59:59.999Z",
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"end",
@@ -343,36 +357,8 @@ func MakeConfig() map[string]any {
 										"start",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"api",
-									"balance",
-									"total",
-									"csv",
-								},
 							},
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "2020-06-30T20:59:59.999Z",
-											"kind": "query",
-											"name": "end",
-											"orig": "end",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": "2020-05-31T20:59:59.999Z",
-											"kind": "query",
-											"name": "field",
-											"orig": "field",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/balance/total",
@@ -387,41 +373,42 @@ func MakeConfig() map[string]any {
 										"lit": "total",
 									},
 								},
+								"parts": []any{
+									"api",
+									"balance",
+									"total",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "end",
+											"orig": "end",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-06-30T20:59:59.999Z",
+										},
+										map[string]any{
+											"name": "field",
+											"orig": "field",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-05-31T20:59:59.999Z",
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"end",
 										"field",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"api",
-									"balance",
-									"total",
-								},
 							},
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "2020-06-30T20:59:59.999Z",
-											"kind": "query",
-											"name": "end",
-											"orig": "end",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": "2020-05-31T20:59:59.999Z",
-											"kind": "query",
-											"name": "start",
-											"orig": "start",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/balance/commerce",
@@ -436,24 +423,42 @@ func MakeConfig() map[string]any {
 										"lit": "commerce",
 									},
 								},
+								"parts": []any{
+									"api",
+									"balance",
+									"commerce",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "end",
+											"orig": "end",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-06-30T20:59:59.999Z",
+										},
+										map[string]any{
+											"name": "start",
+											"orig": "start",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-05-31T20:59:59.999Z",
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"end",
 										"start",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"api",
-									"balance",
-									"commerce",
-								},
 							},
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/balance/commerce/latest",
@@ -471,20 +476,21 @@ func MakeConfig() map[string]any {
 										"lit": "latest",
 									},
 								},
-								"select": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"balance",
 									"commerce",
 									"latest",
 								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/balance/total/latest",
@@ -502,17 +508,19 @@ func MakeConfig() map[string]any {
 										"lit": "latest",
 									},
 								},
-								"select": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"balance",
 									"total",
 									"latest",
 								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 						},
 					},
@@ -530,24 +538,6 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "2020-06-30T20:59:59.999Z",
-											"kind": "query",
-											"name": "end",
-											"orig": "end",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": "2020-05-31T20:59:59.999Z",
-											"kind": "query",
-											"name": "start",
-											"orig": "start",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/capacity/firm",
@@ -562,20 +552,39 @@ func MakeConfig() map[string]any {
 										"lit": "firm",
 									},
 								},
+								"parts": []any{
+									"api",
+									"capacity",
+									"firm",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "end",
+											"orig": "end",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-06-30T20:59:59.999Z",
+										},
+										map[string]any{
+											"name": "start",
+											"orig": "start",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-05-31T20:59:59.999Z",
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"end",
 										"start",
 									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"api",
-									"capacity",
-									"firm",
 								},
 							},
 						},
@@ -594,16 +603,48 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
+								"kind": "http",
+								"method": "GET",
+								"orig": "/api/capacity/firm/csv",
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "capacity",
+									},
+									map[string]any{
+										"lit": "firm",
+									},
+									map[string]any{
+										"lit": "csv",
+									},
+								},
+								"parts": []any{
+									"api",
+									"capacity",
+									"firm",
+									"csv",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
 								"args": map[string]any{
 									"query": []any{
 										map[string]any{
-											"example": "2020-05-31T20:59:59.999Z",
-											"kind": "query",
 											"name": "end",
 											"orig": "end",
 											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-05-31T20:59:59.999Z",
 										},
 										map[string]any{
+											"name": "field",
+											"orig": "field",
+											"type": "`$ARRAY`",
+											"kind": "query",
 											"example": []any{
 												"[\"narva_technical_entry\"",
 												"\"narva_booked_entry\"",
@@ -624,35 +665,14 @@ func MakeConfig() map[string]any {
 												"\"production_booked\"",
 												"\"production_available\"]",
 											},
-											"kind": "query",
-											"name": "field",
-											"orig": "field",
-											"type": "`$ARRAY`",
 										},
 										map[string]any{
-											"example": "2020-05-31T20:59:59.999Z",
-											"kind": "query",
 											"name": "start",
 											"orig": "start",
 											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-05-31T20:59:59.999Z",
 										},
-									},
-								},
-								"kind": "http",
-								"method": "GET",
-								"orig": "/api/capacity/firm/csv",
-								"segments": []any{
-									map[string]any{
-										"lit": "api",
-									},
-									map[string]any{
-										"lit": "capacity",
-									},
-									map[string]any{
-										"lit": "firm",
-									},
-									map[string]any{
-										"lit": "csv",
 									},
 								},
 								"select": map[string]any{
@@ -661,16 +681,6 @@ func MakeConfig() map[string]any {
 										"field",
 										"start",
 									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"api",
-									"capacity",
-									"firm",
-									"csv",
 								},
 							},
 						},
@@ -689,30 +699,6 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "2020-06-30T20:59:59.999Z",
-											"kind": "query",
-											"name": "end",
-											"orig": "end",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "field",
-											"orig": "field",
-											"type": "`$ARRAY`",
-										},
-										map[string]any{
-											"example": "2020-05-31T20:59:59.999Z",
-											"kind": "query",
-											"name": "start",
-											"orig": "start",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/gas-balance/price/csv",
@@ -730,6 +716,41 @@ func MakeConfig() map[string]any {
 										"lit": "csv",
 									},
 								},
+								"parts": []any{
+									"api",
+									"gas-balance",
+									"price",
+									"csv",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "end",
+											"orig": "end",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-06-30T20:59:59.999Z",
+										},
+										map[string]any{
+											"name": "field",
+											"orig": "field",
+											"type": "`$ARRAY`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "start",
+											"orig": "start",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-05-31T20:59:59.999Z",
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"end",
@@ -737,36 +758,8 @@ func MakeConfig() map[string]any {
 										"start",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"api",
-									"gas-balance",
-									"price",
-									"csv",
-								},
 							},
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "2020-06-30T20:59:59.999Z",
-											"kind": "query",
-											"name": "end",
-											"orig": "end",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": "2020-05-31T20:59:59.999Z",
-											"kind": "query",
-											"name": "start",
-											"orig": "start",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/gas-balance/price",
@@ -781,20 +774,39 @@ func MakeConfig() map[string]any {
 										"lit": "price",
 									},
 								},
+								"parts": []any{
+									"api",
+									"gas-balance",
+									"price",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "end",
+											"orig": "end",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-06-30T20:59:59.999Z",
+										},
+										map[string]any{
+											"name": "start",
+											"orig": "start",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-05-31T20:59:59.999Z",
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"end",
 										"start",
 									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"api",
-									"gas-balance",
-									"price",
 								},
 							},
 						},
@@ -813,7 +825,6 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/gas/border-trade/current",
@@ -831,17 +842,19 @@ func MakeConfig() map[string]any {
 										"lit": "current",
 									},
 								},
-								"select": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"gas",
 									"border-trade",
 									"current",
 								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 						},
 					},
@@ -859,24 +872,6 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "2020-06-30T20:59:59.999Z",
-											"kind": "query",
-											"name": "end",
-											"orig": "end",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": "2020-05-31T20:59:59.999Z",
-											"kind": "query",
-											"name": "start",
-											"orig": "start",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/gas-system",
@@ -888,19 +883,38 @@ func MakeConfig() map[string]any {
 										"lit": "gas-system",
 									},
 								},
+								"parts": []any{
+									"api",
+									"gas-system",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "end",
+											"orig": "end",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-06-30T20:59:59.999Z",
+										},
+										map[string]any{
+											"name": "start",
+											"orig": "start",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-05-31T20:59:59.999Z",
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"end",
 										"start",
 									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"api",
-									"gas-system",
 								},
 							},
 						},
@@ -919,30 +933,6 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "2020-06-30T20:59:59.999Z",
-											"kind": "query",
-											"name": "end",
-											"orig": "end",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "field",
-											"orig": "field",
-											"type": "`$ARRAY`",
-										},
-										map[string]any{
-											"example": "2020-05-31T20:59:59.999Z",
-											"kind": "query",
-											"name": "start",
-											"orig": "start",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/gas-system/csv",
@@ -957,6 +947,40 @@ func MakeConfig() map[string]any {
 										"lit": "csv",
 									},
 								},
+								"parts": []any{
+									"api",
+									"gas-system",
+									"csv",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "end",
+											"orig": "end",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-06-30T20:59:59.999Z",
+										},
+										map[string]any{
+											"name": "field",
+											"orig": "field",
+											"type": "`$ARRAY`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "start",
+											"orig": "start",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-05-31T20:59:59.999Z",
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"end",
@@ -964,41 +988,8 @@ func MakeConfig() map[string]any {
 										"start",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"api",
-									"gas-system",
-									"csv",
-								},
 							},
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "2020-06-30T20:59:59.999Z",
-											"kind": "query",
-											"name": "end",
-											"orig": "end",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "field",
-											"orig": "field",
-											"type": "`$ARRAY`",
-										},
-										map[string]any{
-											"example": "2020-05-31T20:59:59.999Z",
-											"kind": "query",
-											"name": "start",
-											"orig": "start",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/gas-system/daily/csv",
@@ -1016,6 +1007,41 @@ func MakeConfig() map[string]any {
 										"lit": "csv",
 									},
 								},
+								"parts": []any{
+									"api",
+									"gas-system",
+									"daily",
+									"csv",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "end",
+											"orig": "end",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-06-30T20:59:59.999Z",
+										},
+										map[string]any{
+											"name": "field",
+											"orig": "field",
+											"type": "`$ARRAY`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "start",
+											"orig": "start",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-05-31T20:59:59.999Z",
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"end",
@@ -1023,42 +1049,8 @@ func MakeConfig() map[string]any {
 										"start",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"api",
-									"gas-system",
-									"daily",
-									"csv",
-								},
 							},
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "2020-06-30T20:59:59.999Z",
-											"kind": "query",
-											"name": "end",
-											"orig": "end",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "field",
-											"orig": "field",
-											"type": "`$ARRAY`",
-										},
-										map[string]any{
-											"example": "2020-05-31T20:59:59.999Z",
-											"kind": "query",
-											"name": "start",
-											"orig": "start",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/gas-system/m3/csv",
@@ -1076,6 +1068,41 @@ func MakeConfig() map[string]any {
 										"lit": "csv",
 									},
 								},
+								"parts": []any{
+									"api",
+									"gas-system",
+									"m3",
+									"csv",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "end",
+											"orig": "end",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-06-30T20:59:59.999Z",
+										},
+										map[string]any{
+											"name": "field",
+											"orig": "field",
+											"type": "`$ARRAY`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "start",
+											"orig": "start",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-05-31T20:59:59.999Z",
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"end",
@@ -1083,36 +1110,8 @@ func MakeConfig() map[string]any {
 										"start",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"api",
-									"gas-system",
-									"m3",
-									"csv",
-								},
 							},
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "2020-06-30T20:59:59.999Z",
-											"kind": "query",
-											"name": "end",
-											"orig": "end",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": "2020-05-31T20:59:59.999Z",
-											"kind": "query",
-											"name": "start",
-											"orig": "start",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/gas-system/daily",
@@ -1127,41 +1126,42 @@ func MakeConfig() map[string]any {
 										"lit": "daily",
 									},
 								},
+								"parts": []any{
+									"api",
+									"gas-system",
+									"daily",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "end",
+											"orig": "end",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-06-30T20:59:59.999Z",
+										},
+										map[string]any{
+											"name": "start",
+											"orig": "start",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-05-31T20:59:59.999Z",
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"end",
 										"start",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"api",
-									"gas-system",
-									"daily",
-								},
 							},
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "2020-06-30T20:59:59.999Z",
-											"kind": "query",
-											"name": "end",
-											"orig": "end",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": "2020-05-31T20:59:59.999Z",
-											"kind": "query",
-											"name": "start",
-											"orig": "start",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/gas-system/daily-average",
@@ -1176,41 +1176,42 @@ func MakeConfig() map[string]any {
 										"lit": "daily-average",
 									},
 								},
+								"parts": []any{
+									"api",
+									"gas-system",
+									"daily-average",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "end",
+											"orig": "end",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-06-30T20:59:59.999Z",
+										},
+										map[string]any{
+											"name": "start",
+											"orig": "start",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-05-31T20:59:59.999Z",
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"end",
 										"start",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"api",
-									"gas-system",
-									"daily-average",
-								},
 							},
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "2020-06-30T20:59:59.999Z",
-											"kind": "query",
-											"name": "end",
-											"orig": "end",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": "2020-05-31T20:59:59.999Z",
-											"kind": "query",
-											"name": "start",
-											"orig": "start",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/gas-system/m3",
@@ -1225,24 +1226,42 @@ func MakeConfig() map[string]any {
 										"lit": "m3",
 									},
 								},
+								"parts": []any{
+									"api",
+									"gas-system",
+									"m3",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "end",
+											"orig": "end",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-06-30T20:59:59.999Z",
+										},
+										map[string]any{
+											"name": "start",
+											"orig": "start",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-05-31T20:59:59.999Z",
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"end",
 										"start",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"api",
-									"gas-system",
-									"m3",
-								},
 							},
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/gas-system/latest",
@@ -1257,16 +1276,18 @@ func MakeConfig() map[string]any {
 										"lit": "latest",
 									},
 								},
-								"select": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"gas-system",
 									"latest",
 								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 						},
 					},
@@ -1284,24 +1305,6 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "2020-06-30T20:59:59.999Z",
-											"kind": "query",
-											"name": "end",
-											"orig": "end",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": "2020-05-31T20:59:59.999Z",
-											"kind": "query",
-											"name": "start",
-											"orig": "start",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/gas-trade",
@@ -1313,19 +1316,38 @@ func MakeConfig() map[string]any {
 										"lit": "gas-trade",
 									},
 								},
+								"parts": []any{
+									"api",
+									"gas-trade",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "end",
+											"orig": "end",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-06-30T20:59:59.999Z",
+										},
+										map[string]any{
+											"name": "start",
+											"orig": "start",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-05-31T20:59:59.999Z",
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"end",
 										"start",
 									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"api",
-									"gas-trade",
 								},
 							},
 						},
@@ -1344,30 +1366,6 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "2020-06-30T20:59:59.999Z",
-											"kind": "query",
-											"name": "end",
-											"orig": "end",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "field",
-											"orig": "field",
-											"type": "`$ARRAY`",
-										},
-										map[string]any{
-											"example": "2020-05-31T20:59:59.999Z",
-											"kind": "query",
-											"name": "start",
-											"orig": "start",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/gas-trade/csv",
@@ -1382,6 +1380,40 @@ func MakeConfig() map[string]any {
 										"lit": "csv",
 									},
 								},
+								"parts": []any{
+									"api",
+									"gas-trade",
+									"csv",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "end",
+											"orig": "end",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-06-30T20:59:59.999Z",
+										},
+										map[string]any{
+											"name": "field",
+											"orig": "field",
+											"type": "`$ARRAY`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "start",
+											"orig": "start",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-05-31T20:59:59.999Z",
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"end",
@@ -1389,28 +1421,8 @@ func MakeConfig() map[string]any {
 										"start",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"api",
-									"gas-trade",
-									"csv",
-								},
 							},
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "group",
-											"orig": "group",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/gas-trade/{group}/latest",
@@ -1428,20 +1440,32 @@ func MakeConfig() map[string]any {
 										"lit": "latest",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"group",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"gas-trade",
 									"{group}",
 									"latest",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "group",
+											"orig": "group",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"group",
+									},
 								},
 							},
 						},
@@ -1450,7 +1474,7 @@ func MakeConfig() map[string]any {
 				"relations": map[string]any{
 					"ancestors": []any{
 						[]any{
-							"gas_trade",
+							"$.main.kit.entity.gas_trade",
 						},
 					},
 				},
@@ -1464,30 +1488,6 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "2020-06-30T20:59:59.999Z",
-											"kind": "query",
-											"name": "end",
-											"orig": "end",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "field",
-											"orig": "field",
-											"type": "`$ARRAY`",
-										},
-										map[string]any{
-											"example": "2020-05-31T20:59:59.999Z",
-											"kind": "query",
-											"name": "start",
-											"orig": "start",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/gas-transmission/cross-border/csv",
@@ -1505,6 +1505,41 @@ func MakeConfig() map[string]any {
 										"lit": "csv",
 									},
 								},
+								"parts": []any{
+									"api",
+									"gas-transmission",
+									"cross-border",
+									"csv",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "end",
+											"orig": "end",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-06-30T20:59:59.999Z",
+										},
+										map[string]any{
+											"name": "field",
+											"orig": "field",
+											"type": "`$ARRAY`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "start",
+											"orig": "start",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-05-31T20:59:59.999Z",
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"end",
@@ -1512,36 +1547,8 @@ func MakeConfig() map[string]any {
 										"start",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"api",
-									"gas-transmission",
-									"cross-border",
-									"csv",
-								},
 							},
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "2020-06-30T20:59:59.999Z",
-											"kind": "query",
-											"name": "end",
-											"orig": "end",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": "2020-05-31T20:59:59.999Z",
-											"kind": "query",
-											"name": "start",
-											"orig": "start",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/gas-transmission/cross-border",
@@ -1556,24 +1563,42 @@ func MakeConfig() map[string]any {
 										"lit": "cross-border",
 									},
 								},
+								"parts": []any{
+									"api",
+									"gas-transmission",
+									"cross-border",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "end",
+											"orig": "end",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-06-30T20:59:59.999Z",
+										},
+										map[string]any{
+											"name": "start",
+											"orig": "start",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-05-31T20:59:59.999Z",
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"end",
 										"start",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"api",
-									"gas-transmission",
-									"cross-border",
-								},
 							},
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/gas-transmission/cross-border/latest",
@@ -1591,17 +1616,19 @@ func MakeConfig() map[string]any {
 										"lit": "latest",
 									},
 								},
-								"select": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"gas-transmission",
 									"cross-border",
 									"latest",
 								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 						},
 					},
@@ -1619,31 +1646,6 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "Kõik kütused",
-											"kind": "query",
-											"name": "fuel",
-											"orig": "fuel",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": "Kõik tehnoloogiad",
-											"kind": "query",
-											"name": "technology",
-											"orig": "technology",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": "TRANSACTION",
-											"kind": "query",
-											"name": "type",
-											"orig": "type",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/green/certificates",
@@ -1658,21 +1660,47 @@ func MakeConfig() map[string]any {
 										"lit": "certificates",
 									},
 								},
+								"parts": []any{
+									"api",
+									"green",
+									"certificates",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "fuel",
+											"orig": "fuel",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "Kõik kütused",
+										},
+										map[string]any{
+											"name": "technology",
+											"orig": "technology",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "Kõik tehnoloogiad",
+										},
+										map[string]any{
+											"name": "type",
+											"orig": "type",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "TRANSACTION",
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"fuel",
 										"technology",
 										"type",
 									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"api",
-									"green",
-									"certificates",
 								},
 							},
 						},
@@ -1691,24 +1719,6 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "2020-06-30T20:59:59.999Z",
-											"kind": "query",
-											"name": "end",
-											"orig": "end",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": "2020-05-31T20:59:59.999Z",
-											"kind": "query",
-											"name": "start",
-											"orig": "start",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/capacity/interruptible",
@@ -1723,20 +1733,39 @@ func MakeConfig() map[string]any {
 										"lit": "interruptible",
 									},
 								},
+								"parts": []any{
+									"api",
+									"capacity",
+									"interruptible",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "end",
+											"orig": "end",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-06-30T20:59:59.999Z",
+										},
+										map[string]any{
+											"name": "start",
+											"orig": "start",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-05-31T20:59:59.999Z",
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"end",
 										"start",
 									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"api",
-									"capacity",
-									"interruptible",
 								},
 							},
 						},
@@ -1755,30 +1784,6 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "2020-05-31T20:59:59.999Z",
-											"kind": "query",
-											"name": "end",
-											"orig": "end",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "field",
-											"orig": "field",
-											"type": "`$ARRAY`",
-										},
-										map[string]any{
-											"example": "2020-05-31T20:59:59.999Z",
-											"kind": "query",
-											"name": "start",
-											"orig": "start",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/capacity/interruptible/csv",
@@ -1796,22 +1801,47 @@ func MakeConfig() map[string]any {
 										"lit": "csv",
 									},
 								},
+								"parts": []any{
+									"api",
+									"capacity",
+									"interruptible",
+									"csv",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "end",
+											"orig": "end",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-05-31T20:59:59.999Z",
+										},
+										map[string]any{
+											"name": "field",
+											"orig": "field",
+											"type": "`$ARRAY`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "start",
+											"orig": "start",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-05-31T20:59:59.999Z",
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"end",
 										"field",
 										"start",
 									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"api",
-									"capacity",
-									"interruptible",
-									"csv",
 								},
 							},
 						},
@@ -1830,24 +1860,6 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "2020-06-30T20:59:59.999Z",
-											"kind": "query",
-											"name": "end",
-											"orig": "end",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": "2020-05-31T20:59:59.999Z",
-											"kind": "query",
-											"name": "start",
-											"orig": "start",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/nominations",
@@ -1859,19 +1871,38 @@ func MakeConfig() map[string]any {
 										"lit": "nominations",
 									},
 								},
+								"parts": []any{
+									"api",
+									"nominations",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "end",
+											"orig": "end",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-06-30T20:59:59.999Z",
+										},
+										map[string]any{
+											"name": "start",
+											"orig": "start",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-05-31T20:59:59.999Z",
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"end",
 										"start",
 									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"api",
-									"nominations",
 								},
 							},
 						},
@@ -1890,30 +1921,6 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "2020-06-30T20:59:59.999Z",
-											"kind": "query",
-											"name": "end",
-											"orig": "end",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "field",
-											"orig": "field",
-											"type": "`$ARRAY`",
-										},
-										map[string]any{
-											"example": "2020-05-31T20:59:59.999Z",
-											"kind": "query",
-											"name": "start",
-											"orig": "start",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/nominations/csv",
@@ -1928,21 +1935,46 @@ func MakeConfig() map[string]any {
 										"lit": "csv",
 									},
 								},
+								"parts": []any{
+									"api",
+									"nominations",
+									"csv",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "end",
+											"orig": "end",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-06-30T20:59:59.999Z",
+										},
+										map[string]any{
+											"name": "field",
+											"orig": "field",
+											"type": "`$ARRAY`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "start",
+											"orig": "start",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-05-31T20:59:59.999Z",
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"end",
 										"field",
 										"start",
 									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"api",
-									"nominations",
-									"csv",
 								},
 							},
 						},
@@ -1961,30 +1993,6 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "2020-06-30T20:59:59.999Z",
-											"kind": "query",
-											"name": "end",
-											"orig": "end",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "field",
-											"orig": "field",
-											"type": "`$ARRAY`",
-										},
-										map[string]any{
-											"example": "2020-05-31T20:59:59.999Z",
-											"kind": "query",
-											"name": "start",
-											"orig": "start",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/nps/price/csv",
@@ -2002,6 +2010,41 @@ func MakeConfig() map[string]any {
 										"lit": "csv",
 									},
 								},
+								"parts": []any{
+									"api",
+									"nps",
+									"price",
+									"csv",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "end",
+											"orig": "end",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-06-30T20:59:59.999Z",
+										},
+										map[string]any{
+											"name": "field",
+											"orig": "field",
+											"type": "`$ARRAY`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "start",
+											"orig": "start",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-05-31T20:59:59.999Z",
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"end",
@@ -2009,42 +2052,8 @@ func MakeConfig() map[string]any {
 										"start",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"api",
-									"nps",
-									"price",
-									"csv",
-								},
 							},
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "2020-06-30T20:59:59.999Z",
-											"kind": "query",
-											"name": "end",
-											"orig": "end",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "field",
-											"orig": "field",
-											"type": "`$ARRAY`",
-										},
-										map[string]any{
-											"example": "2020-05-31T20:59:59.999Z",
-											"kind": "query",
-											"name": "start",
-											"orig": "start",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/nps/turnover/csv",
@@ -2062,6 +2071,41 @@ func MakeConfig() map[string]any {
 										"lit": "csv",
 									},
 								},
+								"parts": []any{
+									"api",
+									"nps",
+									"turnover",
+									"csv",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "end",
+											"orig": "end",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-06-30T20:59:59.999Z",
+										},
+										map[string]any{
+											"name": "field",
+											"orig": "field",
+											"type": "`$ARRAY`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "start",
+											"orig": "start",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-05-31T20:59:59.999Z",
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"end",
@@ -2069,36 +2113,8 @@ func MakeConfig() map[string]any {
 										"start",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"api",
-									"nps",
-									"turnover",
-									"csv",
-								},
 							},
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "2020-06-30T20:59:59.999Z",
-											"kind": "query",
-											"name": "end",
-											"orig": "end",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": "2020-05-31T20:59:59.999Z",
-											"kind": "query",
-											"name": "start",
-											"orig": "start",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/nps/price",
@@ -2113,41 +2129,42 @@ func MakeConfig() map[string]any {
 										"lit": "price",
 									},
 								},
+								"parts": []any{
+									"api",
+									"nps",
+									"price",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "end",
+											"orig": "end",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-06-30T20:59:59.999Z",
+										},
+										map[string]any{
+											"name": "start",
+											"orig": "start",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-05-31T20:59:59.999Z",
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"end",
 										"start",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"api",
-									"nps",
-									"price",
-								},
 							},
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "2020-06-30T20:59:59.999Z",
-											"kind": "query",
-											"name": "end",
-											"orig": "end",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": "2020-05-31T20:59:59.999Z",
-											"kind": "query",
-											"name": "start",
-											"orig": "start",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/nps/turnover",
@@ -2162,34 +2179,42 @@ func MakeConfig() map[string]any {
 										"lit": "turnover",
 									},
 								},
+								"parts": []any{
+									"api",
+									"nps",
+									"turnover",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "end",
+											"orig": "end",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-06-30T20:59:59.999Z",
+										},
+										map[string]any{
+											"name": "start",
+											"orig": "start",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-05-31T20:59:59.999Z",
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"end",
 										"start",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"api",
-									"nps",
-									"turnover",
-								},
 							},
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "group",
-											"orig": "group",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/nps/price/{group}/current",
@@ -2210,15 +2235,6 @@ func MakeConfig() map[string]any {
 										"lit": "current",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"group",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"nps",
@@ -2226,19 +2242,29 @@ func MakeConfig() map[string]any {
 									"{group}",
 									"current",
 								},
-							},
-							map[string]any{
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"kind": "param",
 											"name": "group",
 											"orig": "group",
-											"reqd": true,
 											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
 										},
 									},
 								},
+								"select": map[string]any{
+									"exist": []any{
+										"group",
+									},
+								},
+							},
+							map[string]any{
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/nps/price/{group}/latest",
@@ -2259,15 +2285,6 @@ func MakeConfig() map[string]any {
 										"lit": "latest",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"group",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"nps",
@@ -2275,19 +2292,29 @@ func MakeConfig() map[string]any {
 									"{group}",
 									"latest",
 								},
-							},
-							map[string]any{
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"kind": "param",
 											"name": "group",
 											"orig": "group",
-											"reqd": true,
 											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
 										},
 									},
 								},
+								"select": map[string]any{
+									"exist": []any{
+										"group",
+									},
+								},
+							},
+							map[string]any{
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/nps/turnover/{group}/latest",
@@ -2308,15 +2335,6 @@ func MakeConfig() map[string]any {
 										"lit": "latest",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"group",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"nps",
@@ -2324,19 +2342,33 @@ func MakeConfig() map[string]any {
 									"{group}",
 									"latest",
 								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "group",
+											"orig": "group",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"group",
+									},
+								},
 							},
 						},
 					},
 				},
 				"relations": map[string]any{
-					"ancestors": []any{
-						[]any{
-							"price",
-						},
-						[]any{
-							"turnover",
-						},
-					},
+					"ancestors": []any{},
 				},
 			},
 			"renomination": map[string]any{
@@ -2348,24 +2380,6 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "2020-06-30T20:59:59.999Z",
-											"kind": "query",
-											"name": "end",
-											"orig": "end",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": "2020-05-31T20:59:59.999Z",
-											"kind": "query",
-											"name": "start",
-											"orig": "start",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/nominations/renominations",
@@ -2380,20 +2394,39 @@ func MakeConfig() map[string]any {
 										"lit": "renominations",
 									},
 								},
+								"parts": []any{
+									"api",
+									"nominations",
+									"renominations",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "end",
+											"orig": "end",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-06-30T20:59:59.999Z",
+										},
+										map[string]any{
+											"name": "start",
+											"orig": "start",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-05-31T20:59:59.999Z",
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"end",
 										"start",
 									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"api",
-									"nominations",
-									"renominations",
 								},
 							},
 						},
@@ -2412,30 +2445,6 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "2020-06-30T20:59:59.999Z",
-											"kind": "query",
-											"name": "end",
-											"orig": "end",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "field",
-											"orig": "field",
-											"type": "`$ARRAY`",
-										},
-										map[string]any{
-											"example": "2020-05-31T20:59:59.999Z",
-											"kind": "query",
-											"name": "start",
-											"orig": "start",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/nominations/renominations/csv",
@@ -2453,22 +2462,47 @@ func MakeConfig() map[string]any {
 										"lit": "csv",
 									},
 								},
+								"parts": []any{
+									"api",
+									"nominations",
+									"renominations",
+									"csv",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "end",
+											"orig": "end",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-06-30T20:59:59.999Z",
+										},
+										map[string]any{
+											"name": "field",
+											"orig": "field",
+											"type": "`$ARRAY`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "start",
+											"orig": "start",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-05-31T20:59:59.999Z",
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"end",
 										"field",
 										"start",
 									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"api",
-									"nominations",
-									"renominations",
-									"csv",
 								},
 							},
 						},
@@ -2487,24 +2521,6 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "2020-06-30T20:59:59.999Z",
-											"kind": "query",
-											"name": "end",
-											"orig": "end",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": "2020-05-31T20:59:59.999Z",
-											"kind": "query",
-											"name": "start",
-											"orig": "start",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/system",
@@ -2516,19 +2532,38 @@ func MakeConfig() map[string]any {
 										"lit": "system",
 									},
 								},
+								"parts": []any{
+									"api",
+									"system",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "end",
+											"orig": "end",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-06-30T20:59:59.999Z",
+										},
+										map[string]any{
+											"name": "start",
+											"orig": "start",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-05-31T20:59:59.999Z",
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"end",
 										"start",
 									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"api",
-									"system",
 								},
 							},
 						},
@@ -2547,30 +2582,6 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "2020-06-30T20:59:59.999Z",
-											"kind": "query",
-											"name": "end",
-											"orig": "end",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "field",
-											"orig": "field",
-											"type": "`$ARRAY`",
-										},
-										map[string]any{
-											"example": "2020-05-31T20:59:59.999Z",
-											"kind": "query",
-											"name": "start",
-											"orig": "start",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/system/csv",
@@ -2585,6 +2596,40 @@ func MakeConfig() map[string]any {
 										"lit": "csv",
 									},
 								},
+								"parts": []any{
+									"api",
+									"system",
+									"csv",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "end",
+											"orig": "end",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-06-30T20:59:59.999Z",
+										},
+										map[string]any{
+											"name": "field",
+											"orig": "field",
+											"type": "`$ARRAY`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "start",
+											"orig": "start",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-05-31T20:59:59.999Z",
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"end",
@@ -2592,41 +2637,8 @@ func MakeConfig() map[string]any {
 										"start",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"api",
-									"system",
-									"csv",
-								},
 							},
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "2020-06-30T20:59:59.999Z",
-											"kind": "query",
-											"name": "end",
-											"orig": "end",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "field",
-											"orig": "field",
-											"type": "`$ARRAY`",
-										},
-										map[string]any{
-											"example": "2020-05-31T20:59:59.999Z",
-											"kind": "query",
-											"name": "start",
-											"orig": "start",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/system/with-plan/csv",
@@ -2644,6 +2656,41 @@ func MakeConfig() map[string]any {
 										"lit": "csv",
 									},
 								},
+								"parts": []any{
+									"api",
+									"system",
+									"with-plan",
+									"csv",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "end",
+											"orig": "end",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-06-30T20:59:59.999Z",
+										},
+										map[string]any{
+											"name": "field",
+											"orig": "field",
+											"type": "`$ARRAY`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "start",
+											"orig": "start",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-05-31T20:59:59.999Z",
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"end",
@@ -2651,36 +2698,8 @@ func MakeConfig() map[string]any {
 										"start",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"api",
-									"system",
-									"with-plan",
-									"csv",
-								},
 							},
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "2020-06-30T20:59:59.999Z",
-											"kind": "query",
-											"name": "end",
-											"orig": "end",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": "2020-05-31T20:59:59.999Z",
-											"kind": "query",
-											"name": "start",
-											"orig": "start",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/system/with-plan",
@@ -2695,24 +2714,42 @@ func MakeConfig() map[string]any {
 										"lit": "with-plan",
 									},
 								},
+								"parts": []any{
+									"api",
+									"system",
+									"with-plan",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "end",
+											"orig": "end",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-06-30T20:59:59.999Z",
+										},
+										map[string]any{
+											"name": "start",
+											"orig": "start",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-05-31T20:59:59.999Z",
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"end",
 										"start",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"api",
-									"system",
-									"with-plan",
-								},
 							},
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/system/latest",
@@ -2727,16 +2764,18 @@ func MakeConfig() map[string]any {
 										"lit": "latest",
 									},
 								},
-								"select": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"system",
 									"latest",
 								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 						},
 					},
@@ -2754,39 +2793,6 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "group",
-											"orig": "group",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-									"query": []any{
-										map[string]any{
-											"example": "2020-06-30T20:59:59.999Z",
-											"kind": "query",
-											"name": "end",
-											"orig": "end",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "field",
-											"orig": "field",
-											"type": "`$ARRAY`",
-										},
-										map[string]any{
-											"example": "2020-05-31T20:59:59.999Z",
-											"kind": "query",
-											"name": "start",
-											"orig": "start",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/transmission/cross-border-capacity/{group}/csv",
@@ -2807,6 +2813,51 @@ func MakeConfig() map[string]any {
 										"lit": "csv",
 									},
 								},
+								"parts": []any{
+									"api",
+									"transmission",
+									"cross-border-capacity",
+									"{group}",
+									"csv",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "group",
+											"orig": "group",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+									"query": []any{
+										map[string]any{
+											"name": "end",
+											"orig": "end",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-06-30T20:59:59.999Z",
+										},
+										map[string]any{
+											"name": "field",
+											"orig": "field",
+											"type": "`$ARRAY`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "start",
+											"orig": "start",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-05-31T20:59:59.999Z",
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"end",
@@ -2815,43 +2866,8 @@ func MakeConfig() map[string]any {
 										"start",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"api",
-									"transmission",
-									"cross-border-capacity",
-									"{group}",
-									"csv",
-								},
 							},
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "2020-06-30T20:59:59.999Z",
-											"kind": "query",
-											"name": "end",
-											"orig": "end",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "field",
-											"orig": "field",
-											"type": "`$ARRAY`",
-										},
-										map[string]any{
-											"example": "2020-05-31T20:59:59.999Z",
-											"kind": "query",
-											"name": "start",
-											"orig": "start",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/transmission/cross-border-planned-trade/csv",
@@ -2869,6 +2885,41 @@ func MakeConfig() map[string]any {
 										"lit": "csv",
 									},
 								},
+								"parts": []any{
+									"api",
+									"transmission",
+									"cross-border-planned-trade",
+									"csv",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "end",
+											"orig": "end",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-06-30T20:59:59.999Z",
+										},
+										map[string]any{
+											"name": "field",
+											"orig": "field",
+											"type": "`$ARRAY`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "start",
+											"orig": "start",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-05-31T20:59:59.999Z",
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"end",
@@ -2876,42 +2927,8 @@ func MakeConfig() map[string]any {
 										"start",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"api",
-									"transmission",
-									"cross-border-planned-trade",
-									"csv",
-								},
 							},
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "2020-06-30T20:59:59.999Z",
-											"kind": "query",
-											"name": "end",
-											"orig": "end",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "field",
-											"orig": "field",
-											"type": "`$ARRAY`",
-										},
-										map[string]any{
-											"example": "2020-05-31T20:59:59.999Z",
-											"kind": "query",
-											"name": "start",
-											"orig": "start",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/transmission/cross-border/csv",
@@ -2929,6 +2946,41 @@ func MakeConfig() map[string]any {
 										"lit": "csv",
 									},
 								},
+								"parts": []any{
+									"api",
+									"transmission",
+									"cross-border",
+									"csv",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "end",
+											"orig": "end",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-06-30T20:59:59.999Z",
+										},
+										map[string]any{
+											"name": "field",
+											"orig": "field",
+											"type": "`$ARRAY`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "start",
+											"orig": "start",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-05-31T20:59:59.999Z",
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"end",
@@ -2936,42 +2988,8 @@ func MakeConfig() map[string]any {
 										"start",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"api",
-									"transmission",
-									"cross-border",
-									"csv",
-								},
 							},
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "2020-06-30T20:59:59.999Z",
-											"kind": "query",
-											"name": "end",
-											"orig": "end",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "field",
-											"orig": "field",
-											"type": "`$ARRAY`",
-										},
-										map[string]any{
-											"example": "2020-05-31T20:59:59.999Z",
-											"kind": "query",
-											"name": "start",
-											"orig": "start",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/transmission/cross-border/hourly/csv",
@@ -2992,17 +3010,6 @@ func MakeConfig() map[string]any {
 										"lit": "csv",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"end",
-										"field",
-										"start",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"transmission",
@@ -3010,35 +3017,44 @@ func MakeConfig() map[string]any {
 									"hourly",
 									"csv",
 								},
-							},
-							map[string]any{
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
 								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "group",
-											"orig": "group",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
 									"query": []any{
 										map[string]any{
-											"example": "2020-06-30T20:59:59.999Z",
-											"kind": "query",
 											"name": "end",
 											"orig": "end",
 											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-06-30T20:59:59.999Z",
 										},
 										map[string]any{
-											"example": "2020-05-31T20:59:59.999Z",
+											"name": "field",
+											"orig": "field",
+											"type": "`$ARRAY`",
 											"kind": "query",
+										},
+										map[string]any{
 											"name": "start",
 											"orig": "start",
 											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-05-31T20:59:59.999Z",
 										},
 									},
 								},
+								"select": map[string]any{
+									"exist": []any{
+										"end",
+										"field",
+										"start",
+									},
+								},
+							},
+							map[string]any{
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/transmission/cross-border-capacity/{group}",
@@ -3056,6 +3072,44 @@ func MakeConfig() map[string]any {
 										"var": "group",
 									},
 								},
+								"parts": []any{
+									"api",
+									"transmission",
+									"cross-border-capacity",
+									"{group}",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "group",
+											"orig": "group",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+									"query": []any{
+										map[string]any{
+											"name": "end",
+											"orig": "end",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-06-30T20:59:59.999Z",
+										},
+										map[string]any{
+											"name": "start",
+											"orig": "start",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-05-31T20:59:59.999Z",
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"end",
@@ -3063,36 +3117,8 @@ func MakeConfig() map[string]any {
 										"start",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"api",
-									"transmission",
-									"cross-border-capacity",
-									"{group}",
-								},
 							},
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "2020-06-30T20:59:59.999Z",
-											"kind": "query",
-											"name": "end",
-											"orig": "end",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": "2020-05-31T20:59:59.999Z",
-											"kind": "query",
-											"name": "start",
-											"orig": "start",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/transmission/cross-border",
@@ -3107,41 +3133,42 @@ func MakeConfig() map[string]any {
 										"lit": "cross-border",
 									},
 								},
+								"parts": []any{
+									"api",
+									"transmission",
+									"cross-border",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "end",
+											"orig": "end",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-06-30T20:59:59.999Z",
+										},
+										map[string]any{
+											"name": "start",
+											"orig": "start",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-05-31T20:59:59.999Z",
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"end",
 										"start",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"api",
-									"transmission",
-									"cross-border",
-								},
 							},
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "2020-06-30T20:59:59.999Z",
-											"kind": "query",
-											"name": "end",
-											"orig": "end",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": "2020-05-31T20:59:59.999Z",
-											"kind": "query",
-											"name": "start",
-											"orig": "start",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/transmission/cross-border-capacity",
@@ -3156,41 +3183,42 @@ func MakeConfig() map[string]any {
 										"lit": "cross-border-capacity",
 									},
 								},
+								"parts": []any{
+									"api",
+									"transmission",
+									"cross-border-capacity",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "end",
+											"orig": "end",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-06-30T20:59:59.999Z",
+										},
+										map[string]any{
+											"name": "start",
+											"orig": "start",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-05-31T20:59:59.999Z",
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"end",
 										"start",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"api",
-									"transmission",
-									"cross-border-capacity",
-								},
 							},
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "2020-06-30T20:59:59.999Z",
-											"kind": "query",
-											"name": "end",
-											"orig": "end",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": "2020-05-31T20:59:59.999Z",
-											"kind": "query",
-											"name": "start",
-											"orig": "start",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/transmission/cross-border-planned-trade",
@@ -3205,41 +3233,42 @@ func MakeConfig() map[string]any {
 										"lit": "cross-border-planned-trade",
 									},
 								},
+								"parts": []any{
+									"api",
+									"transmission",
+									"cross-border-planned-trade",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "end",
+											"orig": "end",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-06-30T20:59:59.999Z",
+										},
+										map[string]any{
+											"name": "start",
+											"orig": "start",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-05-31T20:59:59.999Z",
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"end",
 										"start",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"api",
-									"transmission",
-									"cross-border-planned-trade",
-								},
 							},
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "2020-06-30T20:59:59.999Z",
-											"kind": "query",
-											"name": "end",
-											"orig": "end",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": "2020-05-31T20:59:59.999Z",
-											"kind": "query",
-											"name": "start",
-											"orig": "start",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/transmission/cross-border/hourly",
@@ -3257,25 +3286,43 @@ func MakeConfig() map[string]any {
 										"lit": "hourly",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"end",
-										"start",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"transmission",
 									"cross-border",
 									"hourly",
 								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "end",
+											"orig": "end",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-06-30T20:59:59.999Z",
+										},
+										map[string]any{
+											"name": "start",
+											"orig": "start",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-05-31T20:59:59.999Z",
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"end",
+										"start",
+									},
+								},
 							},
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/transmission/cross-border-planned-trade/latest",
@@ -3293,20 +3340,21 @@ func MakeConfig() map[string]any {
 										"lit": "latest",
 									},
 								},
-								"select": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"transmission",
 									"cross-border-planned-trade",
 									"latest",
 								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/transmission/cross-border/latest",
@@ -3324,27 +3372,25 @@ func MakeConfig() map[string]any {
 										"lit": "latest",
 									},
 								},
-								"select": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"transmission",
 									"cross-border",
 									"latest",
 								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 						},
 					},
 				},
 				"relations": map[string]any{
-					"ancestors": []any{
-						[]any{
-							"cross_border_capacity",
-						},
-					},
+					"ancestors": []any{},
 				},
 			},
 			"umm_gas_controller": map[string]any{
@@ -3356,73 +3402,6 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"kind": "query",
-											"name": "affected_asset_name",
-											"orig": "affected_asset_name",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "event_duration_date_time_end",
-											"orig": "event_duration_date_time_end",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "event_duration_date_time_start",
-											"orig": "event_duration_date_time_start",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "event_status",
-											"orig": "event_status",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "event_type",
-											"orig": "event_type",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": 1,
-											"kind": "query",
-											"name": "page",
-											"orig": "page",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "publication_datetime_start",
-											"orig": "publication_datetime_start",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": "publicationDateTimeDesc",
-											"kind": "query",
-											"name": "sort",
-											"orig": "sort",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": "current",
-											"kind": "query",
-											"name": "status",
-											"orig": "status",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "unavailability_type",
-											"orig": "unavailability_type",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/umm/gas",
@@ -3435,6 +3414,83 @@ func MakeConfig() map[string]any {
 									},
 									map[string]any{
 										"lit": "gas",
+									},
+								},
+								"parts": []any{
+									"api",
+									"umm",
+									"gas",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "affected_asset_name",
+											"orig": "affected_asset_name",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "event_duration_date_time_end",
+											"orig": "event_duration_date_time_end",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "event_duration_date_time_start",
+											"orig": "event_duration_date_time_start",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "event_status",
+											"orig": "event_status",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "event_type",
+											"orig": "event_type",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "page",
+											"orig": "page",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 1,
+										},
+										map[string]any{
+											"name": "publication_datetime_start",
+											"orig": "publication_datetime_start",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "sort",
+											"orig": "sort",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "publicationDateTimeDesc",
+										},
+										map[string]any{
+											"name": "status",
+											"orig": "status",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "current",
+										},
+										map[string]any{
+											"name": "unavailability_type",
+											"orig": "unavailability_type",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
 									},
 								},
 								"select": map[string]any{
@@ -3451,28 +3507,8 @@ func MakeConfig() map[string]any {
 										"unavailability_type",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"api",
-									"umm",
-									"gas",
-								},
 							},
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"kind": "query",
-											"name": "id",
-											"orig": "id",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/umm/gas/messages",
@@ -3490,34 +3526,35 @@ func MakeConfig() map[string]any {
 										"lit": "messages",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"id",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"umm",
 									"gas",
 									"messages",
 								},
-							},
-							map[string]any{
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
 								"args": map[string]any{
 									"query": []any{
 										map[string]any{
-											"kind": "query",
 											"name": "id",
 											"orig": "id",
+											"type": "`$STRING`",
+											"kind": "query",
 											"reqd": true,
-											"type": "`$INTEGER`",
 										},
 									},
 								},
+								"select": map[string]any{
+									"exist": []any{
+										"id",
+									},
+								},
+							},
+							map[string]any{
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/umm/single/{id}",
@@ -3535,20 +3572,32 @@ func MakeConfig() map[string]any {
 										"var": "id",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"id",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"umm",
 									"single",
 									"{id}",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "id",
+											"orig": "id",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"reqd": true,
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"id",
+									},
 								},
 							},
 						},
@@ -3567,7 +3616,6 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/umm/gas/rss",
@@ -3582,19 +3630,20 @@ func MakeConfig() map[string]any {
 										"lit": "rss",
 									},
 								},
-								"select": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"umm",
 									"gas",
 									"rss",
 								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/umm/gas/rss/aris",
@@ -3612,17 +3661,19 @@ func MakeConfig() map[string]any {
 										"lit": "aris",
 									},
 								},
-								"select": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"umm",
 									"gas",
 									"rss",
 									"aris",
 								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 						},
 					},

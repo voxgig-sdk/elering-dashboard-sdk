@@ -31,15 +31,13 @@ require_once 'eleringdashboard_sdk.php';
 $client = new EleringDashboardSDK();
 ```
 
-### 3. Load a transmissioncontroller
-
-TransmissionController is nested under group, so provide the `group`.
+### 3. Load a balance
 
 ```php
 try {
-    // load() returns the ENTITY — call data_get() for the TransmissionController record (throws on error).
-    $transmissioncontroller = $client->TransmissionController()->load(["group" => "example_group"]);
-    print_r($transmissioncontroller->data_get());
+    // load() returns the ENTITY — call data_get() for the Balance record (throws on error).
+    $balance = $client->Balance()->load();
+    print_r($balance->data_get());
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }

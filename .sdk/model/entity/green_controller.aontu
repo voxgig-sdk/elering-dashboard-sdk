@@ -1,0 +1,80 @@
+# Entity: green_controller
+
+main: kit: entity: green_controller: {
+
+  alias: field: {}
+
+  name: "green_controller"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/green/certificates"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "Kõik kütused"
+                k: "query"
+                n: "fuel"
+                or: "fuel"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "Kõik tehnoloogiad"
+                k: "query"
+                n: "technology"
+                or: "technology"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "TRANSACTION"
+                k: "query"
+                n: "type"
+                or: "type"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/green/certificates"
+          q: {
+            exist: [
+              "fuel"
+              "technology"
+              "type"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "green"
+            }
+            {
+              lit: "certificates"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

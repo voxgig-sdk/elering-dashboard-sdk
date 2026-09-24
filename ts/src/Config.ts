@@ -16,12 +16,6 @@ const FEATURE_CLASS: Record<string, typeof BaseFeature> = {
 }
 
 
-// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
-// the model's active plugin groups. A feature that takes a `plugins` option
-// (secrets over sekreto) reads its own entry; a feature with no plugins has
-// none. Named imports above make each definition statically reachable, so
-// an SDK carries exactly the plugin modules its model selects — the same
-// leanness the old side-effect registry imports bought, without a registry.
 const FEATURE_PLUGINS: Record<string, any[]> = {
   
 }
@@ -32,7 +26,6 @@ class Config {
   makeFeature(this: any, fn: string) {
     const fc = FEATURE_CLASS[fn]
     const fi = new fc()
-    // TODO: errors etc
     return fi
   }
 
@@ -213,24 +206,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {
-                "query": [
-                  {
-                    "example": "2020-06-30T20:59:59.999Z",
-                    "kind": "query",
-                    "name": "end",
-                    "orig": "end",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": "2020-05-31T20:59:59.999Z",
-                    "kind": "query",
-                    "name": "start",
-                    "orig": "start",
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/api/balance",
@@ -242,20 +217,39 @@ class Config {
                   "lit": "balance"
                 }
               ],
+              "parts": [
+                "api",
+                "balance"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "query": [
+                  {
+                    "name": "end",
+                    "orig": "end",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2020-06-30T20:59:59.999Z"
+                  },
+                  {
+                    "name": "start",
+                    "orig": "start",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2020-05-31T20:59:59.999Z"
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "end",
                   "start"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "api",
-                "balance"
-              ]
+              }
             }
           ]
         }
@@ -273,30 +267,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {
-                "query": [
-                  {
-                    "example": "2020-06-30T20:59:59.999Z",
-                    "kind": "query",
-                    "name": "end",
-                    "orig": "end",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "field",
-                    "orig": "field",
-                    "type": "`$ARRAY`"
-                  },
-                  {
-                    "example": "2020-05-31T20:59:59.999Z",
-                    "kind": "query",
-                    "name": "start",
-                    "orig": "start",
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/api/balance/commerce/csv",
@@ -314,49 +284,50 @@ class Config {
                   "lit": "csv"
                 }
               ],
+              "parts": [
+                "api",
+                "balance",
+                "commerce",
+                "csv"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "query": [
+                  {
+                    "name": "end",
+                    "orig": "end",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2020-06-30T20:59:59.999Z"
+                  },
+                  {
+                    "name": "field",
+                    "orig": "field",
+                    "type": "`$ARRAY`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "start",
+                    "orig": "start",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2020-05-31T20:59:59.999Z"
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "end",
                   "field",
                   "start"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "api",
-                "balance",
-                "commerce",
-                "csv"
-              ]
+              }
             },
             {
-              "args": {
-                "query": [
-                  {
-                    "example": "2020-05-31T20:59:59.999Z",
-                    "kind": "query",
-                    "name": "end",
-                    "orig": "end",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "field",
-                    "orig": "field",
-                    "type": "`$ARRAY`"
-                  },
-                  {
-                    "example": "2020-05-31T20:59:59.999Z",
-                    "kind": "query",
-                    "name": "start",
-                    "orig": "start",
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/api/balance/csv",
@@ -371,48 +342,49 @@ class Config {
                   "lit": "csv"
                 }
               ],
+              "parts": [
+                "api",
+                "balance",
+                "csv"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "query": [
+                  {
+                    "name": "end",
+                    "orig": "end",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2020-05-31T20:59:59.999Z"
+                  },
+                  {
+                    "name": "field",
+                    "orig": "field",
+                    "type": "`$ARRAY`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "start",
+                    "orig": "start",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2020-05-31T20:59:59.999Z"
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "end",
                   "field",
                   "start"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "api",
-                "balance",
-                "csv"
-              ]
+              }
             },
             {
-              "args": {
-                "query": [
-                  {
-                    "example": "2020-06-30T20:59:59.999Z",
-                    "kind": "query",
-                    "name": "end",
-                    "orig": "end",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "field",
-                    "orig": "field",
-                    "type": "`$ARRAY`"
-                  },
-                  {
-                    "example": "2020-05-31T20:59:59.999Z",
-                    "kind": "query",
-                    "name": "start",
-                    "orig": "start",
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/api/balance/total/csv",
@@ -430,43 +402,50 @@ class Config {
                   "lit": "csv"
                 }
               ],
+              "parts": [
+                "api",
+                "balance",
+                "total",
+                "csv"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "query": [
+                  {
+                    "name": "end",
+                    "orig": "end",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2020-06-30T20:59:59.999Z"
+                  },
+                  {
+                    "name": "field",
+                    "orig": "field",
+                    "type": "`$ARRAY`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "start",
+                    "orig": "start",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2020-05-31T20:59:59.999Z"
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "end",
                   "field",
                   "start"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "api",
-                "balance",
-                "total",
-                "csv"
-              ]
+              }
             },
             {
-              "args": {
-                "query": [
-                  {
-                    "example": "2020-06-30T20:59:59.999Z",
-                    "kind": "query",
-                    "name": "end",
-                    "orig": "end",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": "2020-05-31T20:59:59.999Z",
-                    "kind": "query",
-                    "name": "field",
-                    "orig": "field",
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/api/balance/total",
@@ -481,41 +460,42 @@ class Config {
                   "lit": "total"
                 }
               ],
+              "parts": [
+                "api",
+                "balance",
+                "total"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "query": [
+                  {
+                    "name": "end",
+                    "orig": "end",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2020-06-30T20:59:59.999Z"
+                  },
+                  {
+                    "name": "field",
+                    "orig": "field",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2020-05-31T20:59:59.999Z"
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "end",
                   "field"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "api",
-                "balance",
-                "total"
-              ]
+              }
             },
             {
-              "args": {
-                "query": [
-                  {
-                    "example": "2020-06-30T20:59:59.999Z",
-                    "kind": "query",
-                    "name": "end",
-                    "orig": "end",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": "2020-05-31T20:59:59.999Z",
-                    "kind": "query",
-                    "name": "start",
-                    "orig": "start",
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/api/balance/commerce",
@@ -530,24 +510,42 @@ class Config {
                   "lit": "commerce"
                 }
               ],
+              "parts": [
+                "api",
+                "balance",
+                "commerce"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "query": [
+                  {
+                    "name": "end",
+                    "orig": "end",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2020-06-30T20:59:59.999Z"
+                  },
+                  {
+                    "name": "start",
+                    "orig": "start",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2020-05-31T20:59:59.999Z"
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "end",
                   "start"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "api",
-                "balance",
-                "commerce"
-              ]
+              }
             },
             {
-              "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/api/balance/commerce/latest",
@@ -565,20 +563,21 @@ class Config {
                   "lit": "latest"
                 }
               ],
-              "select": {},
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "balance",
                 "commerce",
                 "latest"
-              ]
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {},
+              "select": {}
             },
             {
-              "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/api/balance/total/latest",
@@ -596,17 +595,19 @@ class Config {
                   "lit": "latest"
                 }
               ],
-              "select": {},
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "balance",
                 "total",
                 "latest"
-              ]
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {},
+              "select": {}
             }
           ]
         }
@@ -624,24 +625,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {
-                "query": [
-                  {
-                    "example": "2020-06-30T20:59:59.999Z",
-                    "kind": "query",
-                    "name": "end",
-                    "orig": "end",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": "2020-05-31T20:59:59.999Z",
-                    "kind": "query",
-                    "name": "start",
-                    "orig": "start",
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/api/capacity/firm",
@@ -656,21 +639,40 @@ class Config {
                   "lit": "firm"
                 }
               ],
+              "parts": [
+                "api",
+                "capacity",
+                "firm"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "query": [
+                  {
+                    "name": "end",
+                    "orig": "end",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2020-06-30T20:59:59.999Z"
+                  },
+                  {
+                    "name": "start",
+                    "orig": "start",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2020-05-31T20:59:59.999Z"
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "end",
                   "start"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "api",
-                "capacity",
-                "firm"
-              ]
+              }
             }
           ]
         }
@@ -688,16 +690,48 @@ class Config {
           "name": "load",
           "points": [
             {
+              "kind": "http",
+              "method": "GET",
+              "orig": "/api/capacity/firm/csv",
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "capacity"
+                },
+                {
+                  "lit": "firm"
+                },
+                {
+                  "lit": "csv"
+                }
+              ],
+              "parts": [
+                "api",
+                "capacity",
+                "firm",
+                "csv"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "args": {
                 "query": [
                   {
-                    "example": "2020-05-31T20:59:59.999Z",
-                    "kind": "query",
                     "name": "end",
                     "orig": "end",
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2020-05-31T20:59:59.999Z"
                   },
                   {
+                    "name": "field",
+                    "orig": "field",
+                    "type": "`$ARRAY`",
+                    "kind": "query",
                     "example": [
                       "[\"narva_technical_entry\"",
                       "\"narva_booked_entry\"",
@@ -717,55 +751,24 @@ class Config {
                       "\"production_technical\"",
                       "\"production_booked\"",
                       "\"production_available\"]"
-                    ],
-                    "kind": "query",
-                    "name": "field",
-                    "orig": "field",
-                    "type": "`$ARRAY`"
+                    ]
                   },
                   {
-                    "example": "2020-05-31T20:59:59.999Z",
-                    "kind": "query",
                     "name": "start",
                     "orig": "start",
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2020-05-31T20:59:59.999Z"
                   }
                 ]
               },
-              "kind": "http",
-              "method": "GET",
-              "orig": "/api/capacity/firm/csv",
-              "segments": [
-                {
-                  "lit": "api"
-                },
-                {
-                  "lit": "capacity"
-                },
-                {
-                  "lit": "firm"
-                },
-                {
-                  "lit": "csv"
-                }
-              ],
               "select": {
                 "exist": [
                   "end",
                   "field",
                   "start"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "api",
-                "capacity",
-                "firm",
-                "csv"
-              ]
+              }
             }
           ]
         }
@@ -783,30 +786,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {
-                "query": [
-                  {
-                    "example": "2020-06-30T20:59:59.999Z",
-                    "kind": "query",
-                    "name": "end",
-                    "orig": "end",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "field",
-                    "orig": "field",
-                    "type": "`$ARRAY`"
-                  },
-                  {
-                    "example": "2020-05-31T20:59:59.999Z",
-                    "kind": "query",
-                    "name": "start",
-                    "orig": "start",
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/api/gas-balance/price/csv",
@@ -824,43 +803,50 @@ class Config {
                   "lit": "csv"
                 }
               ],
+              "parts": [
+                "api",
+                "gas-balance",
+                "price",
+                "csv"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "query": [
+                  {
+                    "name": "end",
+                    "orig": "end",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2020-06-30T20:59:59.999Z"
+                  },
+                  {
+                    "name": "field",
+                    "orig": "field",
+                    "type": "`$ARRAY`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "start",
+                    "orig": "start",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2020-05-31T20:59:59.999Z"
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "end",
                   "field",
                   "start"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "api",
-                "gas-balance",
-                "price",
-                "csv"
-              ]
+              }
             },
             {
-              "args": {
-                "query": [
-                  {
-                    "example": "2020-06-30T20:59:59.999Z",
-                    "kind": "query",
-                    "name": "end",
-                    "orig": "end",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": "2020-05-31T20:59:59.999Z",
-                    "kind": "query",
-                    "name": "start",
-                    "orig": "start",
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/api/gas-balance/price",
@@ -875,21 +861,40 @@ class Config {
                   "lit": "price"
                 }
               ],
+              "parts": [
+                "api",
+                "gas-balance",
+                "price"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "query": [
+                  {
+                    "name": "end",
+                    "orig": "end",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2020-06-30T20:59:59.999Z"
+                  },
+                  {
+                    "name": "start",
+                    "orig": "start",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2020-05-31T20:59:59.999Z"
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "end",
                   "start"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "api",
-                "gas-balance",
-                "price"
-              ]
+              }
             }
           ]
         }
@@ -907,7 +912,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/api/gas/border-trade/current",
@@ -925,17 +929,19 @@ class Config {
                   "lit": "current"
                 }
               ],
-              "select": {},
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "gas",
                 "border-trade",
                 "current"
-              ]
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {},
+              "select": {}
             }
           ]
         }
@@ -953,24 +959,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {
-                "query": [
-                  {
-                    "example": "2020-06-30T20:59:59.999Z",
-                    "kind": "query",
-                    "name": "end",
-                    "orig": "end",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": "2020-05-31T20:59:59.999Z",
-                    "kind": "query",
-                    "name": "start",
-                    "orig": "start",
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/api/gas-system",
@@ -982,20 +970,39 @@ class Config {
                   "lit": "gas-system"
                 }
               ],
+              "parts": [
+                "api",
+                "gas-system"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "query": [
+                  {
+                    "name": "end",
+                    "orig": "end",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2020-06-30T20:59:59.999Z"
+                  },
+                  {
+                    "name": "start",
+                    "orig": "start",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2020-05-31T20:59:59.999Z"
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "end",
                   "start"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "api",
-                "gas-system"
-              ]
+              }
             }
           ]
         }
@@ -1013,30 +1020,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {
-                "query": [
-                  {
-                    "example": "2020-06-30T20:59:59.999Z",
-                    "kind": "query",
-                    "name": "end",
-                    "orig": "end",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "field",
-                    "orig": "field",
-                    "type": "`$ARRAY`"
-                  },
-                  {
-                    "example": "2020-05-31T20:59:59.999Z",
-                    "kind": "query",
-                    "name": "start",
-                    "orig": "start",
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/api/gas-system/csv",
@@ -1051,48 +1034,49 @@ class Config {
                   "lit": "csv"
                 }
               ],
+              "parts": [
+                "api",
+                "gas-system",
+                "csv"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "query": [
+                  {
+                    "name": "end",
+                    "orig": "end",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2020-06-30T20:59:59.999Z"
+                  },
+                  {
+                    "name": "field",
+                    "orig": "field",
+                    "type": "`$ARRAY`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "start",
+                    "orig": "start",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2020-05-31T20:59:59.999Z"
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "end",
                   "field",
                   "start"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "api",
-                "gas-system",
-                "csv"
-              ]
+              }
             },
             {
-              "args": {
-                "query": [
-                  {
-                    "example": "2020-06-30T20:59:59.999Z",
-                    "kind": "query",
-                    "name": "end",
-                    "orig": "end",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "field",
-                    "orig": "field",
-                    "type": "`$ARRAY`"
-                  },
-                  {
-                    "example": "2020-05-31T20:59:59.999Z",
-                    "kind": "query",
-                    "name": "start",
-                    "orig": "start",
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/api/gas-system/daily/csv",
@@ -1110,49 +1094,50 @@ class Config {
                   "lit": "csv"
                 }
               ],
+              "parts": [
+                "api",
+                "gas-system",
+                "daily",
+                "csv"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "query": [
+                  {
+                    "name": "end",
+                    "orig": "end",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2020-06-30T20:59:59.999Z"
+                  },
+                  {
+                    "name": "field",
+                    "orig": "field",
+                    "type": "`$ARRAY`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "start",
+                    "orig": "start",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2020-05-31T20:59:59.999Z"
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "end",
                   "field",
                   "start"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "api",
-                "gas-system",
-                "daily",
-                "csv"
-              ]
+              }
             },
             {
-              "args": {
-                "query": [
-                  {
-                    "example": "2020-06-30T20:59:59.999Z",
-                    "kind": "query",
-                    "name": "end",
-                    "orig": "end",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "field",
-                    "orig": "field",
-                    "type": "`$ARRAY`"
-                  },
-                  {
-                    "example": "2020-05-31T20:59:59.999Z",
-                    "kind": "query",
-                    "name": "start",
-                    "orig": "start",
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/api/gas-system/m3/csv",
@@ -1170,43 +1155,50 @@ class Config {
                   "lit": "csv"
                 }
               ],
+              "parts": [
+                "api",
+                "gas-system",
+                "m3",
+                "csv"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "query": [
+                  {
+                    "name": "end",
+                    "orig": "end",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2020-06-30T20:59:59.999Z"
+                  },
+                  {
+                    "name": "field",
+                    "orig": "field",
+                    "type": "`$ARRAY`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "start",
+                    "orig": "start",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2020-05-31T20:59:59.999Z"
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "end",
                   "field",
                   "start"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "api",
-                "gas-system",
-                "m3",
-                "csv"
-              ]
+              }
             },
             {
-              "args": {
-                "query": [
-                  {
-                    "example": "2020-06-30T20:59:59.999Z",
-                    "kind": "query",
-                    "name": "end",
-                    "orig": "end",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": "2020-05-31T20:59:59.999Z",
-                    "kind": "query",
-                    "name": "start",
-                    "orig": "start",
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/api/gas-system/daily",
@@ -1221,41 +1213,42 @@ class Config {
                   "lit": "daily"
                 }
               ],
+              "parts": [
+                "api",
+                "gas-system",
+                "daily"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "query": [
+                  {
+                    "name": "end",
+                    "orig": "end",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2020-06-30T20:59:59.999Z"
+                  },
+                  {
+                    "name": "start",
+                    "orig": "start",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2020-05-31T20:59:59.999Z"
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "end",
                   "start"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "api",
-                "gas-system",
-                "daily"
-              ]
+              }
             },
             {
-              "args": {
-                "query": [
-                  {
-                    "example": "2020-06-30T20:59:59.999Z",
-                    "kind": "query",
-                    "name": "end",
-                    "orig": "end",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": "2020-05-31T20:59:59.999Z",
-                    "kind": "query",
-                    "name": "start",
-                    "orig": "start",
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/api/gas-system/daily-average",
@@ -1270,41 +1263,42 @@ class Config {
                   "lit": "daily-average"
                 }
               ],
+              "parts": [
+                "api",
+                "gas-system",
+                "daily-average"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "query": [
+                  {
+                    "name": "end",
+                    "orig": "end",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2020-06-30T20:59:59.999Z"
+                  },
+                  {
+                    "name": "start",
+                    "orig": "start",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2020-05-31T20:59:59.999Z"
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "end",
                   "start"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "api",
-                "gas-system",
-                "daily-average"
-              ]
+              }
             },
             {
-              "args": {
-                "query": [
-                  {
-                    "example": "2020-06-30T20:59:59.999Z",
-                    "kind": "query",
-                    "name": "end",
-                    "orig": "end",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": "2020-05-31T20:59:59.999Z",
-                    "kind": "query",
-                    "name": "start",
-                    "orig": "start",
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/api/gas-system/m3",
@@ -1319,24 +1313,42 @@ class Config {
                   "lit": "m3"
                 }
               ],
+              "parts": [
+                "api",
+                "gas-system",
+                "m3"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "query": [
+                  {
+                    "name": "end",
+                    "orig": "end",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2020-06-30T20:59:59.999Z"
+                  },
+                  {
+                    "name": "start",
+                    "orig": "start",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2020-05-31T20:59:59.999Z"
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "end",
                   "start"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "api",
-                "gas-system",
-                "m3"
-              ]
+              }
             },
             {
-              "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/api/gas-system/latest",
@@ -1351,16 +1363,18 @@ class Config {
                   "lit": "latest"
                 }
               ],
-              "select": {},
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "gas-system",
                 "latest"
-              ]
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {},
+              "select": {}
             }
           ]
         }
@@ -1378,24 +1392,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {
-                "query": [
-                  {
-                    "example": "2020-06-30T20:59:59.999Z",
-                    "kind": "query",
-                    "name": "end",
-                    "orig": "end",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": "2020-05-31T20:59:59.999Z",
-                    "kind": "query",
-                    "name": "start",
-                    "orig": "start",
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/api/gas-trade",
@@ -1407,20 +1403,39 @@ class Config {
                   "lit": "gas-trade"
                 }
               ],
+              "parts": [
+                "api",
+                "gas-trade"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "query": [
+                  {
+                    "name": "end",
+                    "orig": "end",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2020-06-30T20:59:59.999Z"
+                  },
+                  {
+                    "name": "start",
+                    "orig": "start",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2020-05-31T20:59:59.999Z"
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "end",
                   "start"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "api",
-                "gas-trade"
-              ]
+              }
             }
           ]
         }
@@ -1438,30 +1453,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {
-                "query": [
-                  {
-                    "example": "2020-06-30T20:59:59.999Z",
-                    "kind": "query",
-                    "name": "end",
-                    "orig": "end",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "field",
-                    "orig": "field",
-                    "type": "`$ARRAY`"
-                  },
-                  {
-                    "example": "2020-05-31T20:59:59.999Z",
-                    "kind": "query",
-                    "name": "start",
-                    "orig": "start",
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/api/gas-trade/csv",
@@ -1476,35 +1467,49 @@ class Config {
                   "lit": "csv"
                 }
               ],
+              "parts": [
+                "api",
+                "gas-trade",
+                "csv"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "query": [
+                  {
+                    "name": "end",
+                    "orig": "end",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2020-06-30T20:59:59.999Z"
+                  },
+                  {
+                    "name": "field",
+                    "orig": "field",
+                    "type": "`$ARRAY`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "start",
+                    "orig": "start",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2020-05-31T20:59:59.999Z"
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "end",
                   "field",
                   "start"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "api",
-                "gas-trade",
-                "csv"
-              ]
+              }
             },
             {
-              "args": {
-                "params": [
-                  {
-                    "kind": "param",
-                    "name": "group",
-                    "orig": "group",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/api/gas-trade/{group}/latest",
@@ -1522,21 +1527,33 @@ class Config {
                   "lit": "latest"
                 }
               ],
-              "select": {
-                "exist": [
-                  "group"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "gas-trade",
                 "{group}",
                 "latest"
-              ]
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "params": [
+                  {
+                    "name": "group",
+                    "orig": "group",
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
+                  }
+                ]
+              },
+              "select": {
+                "exist": [
+                  "group"
+                ]
+              }
             }
           ]
         }
@@ -1544,7 +1561,7 @@ class Config {
       "relations": {
         "ancestors": [
           [
-            "gas_trade"
+            "$.main.kit.entity.gas_trade"
           ]
         ]
       }
@@ -1558,30 +1575,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {
-                "query": [
-                  {
-                    "example": "2020-06-30T20:59:59.999Z",
-                    "kind": "query",
-                    "name": "end",
-                    "orig": "end",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "field",
-                    "orig": "field",
-                    "type": "`$ARRAY`"
-                  },
-                  {
-                    "example": "2020-05-31T20:59:59.999Z",
-                    "kind": "query",
-                    "name": "start",
-                    "orig": "start",
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/api/gas-transmission/cross-border/csv",
@@ -1599,43 +1592,50 @@ class Config {
                   "lit": "csv"
                 }
               ],
+              "parts": [
+                "api",
+                "gas-transmission",
+                "cross-border",
+                "csv"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "query": [
+                  {
+                    "name": "end",
+                    "orig": "end",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2020-06-30T20:59:59.999Z"
+                  },
+                  {
+                    "name": "field",
+                    "orig": "field",
+                    "type": "`$ARRAY`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "start",
+                    "orig": "start",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2020-05-31T20:59:59.999Z"
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "end",
                   "field",
                   "start"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "api",
-                "gas-transmission",
-                "cross-border",
-                "csv"
-              ]
+              }
             },
             {
-              "args": {
-                "query": [
-                  {
-                    "example": "2020-06-30T20:59:59.999Z",
-                    "kind": "query",
-                    "name": "end",
-                    "orig": "end",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": "2020-05-31T20:59:59.999Z",
-                    "kind": "query",
-                    "name": "start",
-                    "orig": "start",
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/api/gas-transmission/cross-border",
@@ -1650,24 +1650,42 @@ class Config {
                   "lit": "cross-border"
                 }
               ],
+              "parts": [
+                "api",
+                "gas-transmission",
+                "cross-border"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "query": [
+                  {
+                    "name": "end",
+                    "orig": "end",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2020-06-30T20:59:59.999Z"
+                  },
+                  {
+                    "name": "start",
+                    "orig": "start",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2020-05-31T20:59:59.999Z"
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "end",
                   "start"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "api",
-                "gas-transmission",
-                "cross-border"
-              ]
+              }
             },
             {
-              "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/api/gas-transmission/cross-border/latest",
@@ -1685,17 +1703,19 @@ class Config {
                   "lit": "latest"
                 }
               ],
-              "select": {},
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "gas-transmission",
                 "cross-border",
                 "latest"
-              ]
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {},
+              "select": {}
             }
           ]
         }
@@ -1713,31 +1733,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {
-                "query": [
-                  {
-                    "example": "Kõik kütused",
-                    "kind": "query",
-                    "name": "fuel",
-                    "orig": "fuel",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": "Kõik tehnoloogiad",
-                    "kind": "query",
-                    "name": "technology",
-                    "orig": "technology",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": "TRANSACTION",
-                    "kind": "query",
-                    "name": "type",
-                    "orig": "type",
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/api/green/certificates",
@@ -1752,22 +1747,48 @@ class Config {
                   "lit": "certificates"
                 }
               ],
+              "parts": [
+                "api",
+                "green",
+                "certificates"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "query": [
+                  {
+                    "name": "fuel",
+                    "orig": "fuel",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "Kõik kütused"
+                  },
+                  {
+                    "name": "technology",
+                    "orig": "technology",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "Kõik tehnoloogiad"
+                  },
+                  {
+                    "name": "type",
+                    "orig": "type",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "TRANSACTION"
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "fuel",
                   "technology",
                   "type"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "api",
-                "green",
-                "certificates"
-              ]
+              }
             }
           ]
         }
@@ -1785,24 +1806,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {
-                "query": [
-                  {
-                    "example": "2020-06-30T20:59:59.999Z",
-                    "kind": "query",
-                    "name": "end",
-                    "orig": "end",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": "2020-05-31T20:59:59.999Z",
-                    "kind": "query",
-                    "name": "start",
-                    "orig": "start",
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/api/capacity/interruptible",
@@ -1817,21 +1820,40 @@ class Config {
                   "lit": "interruptible"
                 }
               ],
+              "parts": [
+                "api",
+                "capacity",
+                "interruptible"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "query": [
+                  {
+                    "name": "end",
+                    "orig": "end",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2020-06-30T20:59:59.999Z"
+                  },
+                  {
+                    "name": "start",
+                    "orig": "start",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2020-05-31T20:59:59.999Z"
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "end",
                   "start"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "api",
-                "capacity",
-                "interruptible"
-              ]
+              }
             }
           ]
         }
@@ -1849,30 +1871,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {
-                "query": [
-                  {
-                    "example": "2020-05-31T20:59:59.999Z",
-                    "kind": "query",
-                    "name": "end",
-                    "orig": "end",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "field",
-                    "orig": "field",
-                    "type": "`$ARRAY`"
-                  },
-                  {
-                    "example": "2020-05-31T20:59:59.999Z",
-                    "kind": "query",
-                    "name": "start",
-                    "orig": "start",
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/api/capacity/interruptible/csv",
@@ -1890,23 +1888,48 @@ class Config {
                   "lit": "csv"
                 }
               ],
+              "parts": [
+                "api",
+                "capacity",
+                "interruptible",
+                "csv"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "query": [
+                  {
+                    "name": "end",
+                    "orig": "end",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2020-05-31T20:59:59.999Z"
+                  },
+                  {
+                    "name": "field",
+                    "orig": "field",
+                    "type": "`$ARRAY`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "start",
+                    "orig": "start",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2020-05-31T20:59:59.999Z"
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "end",
                   "field",
                   "start"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "api",
-                "capacity",
-                "interruptible",
-                "csv"
-              ]
+              }
             }
           ]
         }
@@ -1924,24 +1947,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {
-                "query": [
-                  {
-                    "example": "2020-06-30T20:59:59.999Z",
-                    "kind": "query",
-                    "name": "end",
-                    "orig": "end",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": "2020-05-31T20:59:59.999Z",
-                    "kind": "query",
-                    "name": "start",
-                    "orig": "start",
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/api/nominations",
@@ -1953,20 +1958,39 @@ class Config {
                   "lit": "nominations"
                 }
               ],
+              "parts": [
+                "api",
+                "nominations"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "query": [
+                  {
+                    "name": "end",
+                    "orig": "end",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2020-06-30T20:59:59.999Z"
+                  },
+                  {
+                    "name": "start",
+                    "orig": "start",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2020-05-31T20:59:59.999Z"
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "end",
                   "start"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "api",
-                "nominations"
-              ]
+              }
             }
           ]
         }
@@ -1984,30 +2008,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {
-                "query": [
-                  {
-                    "example": "2020-06-30T20:59:59.999Z",
-                    "kind": "query",
-                    "name": "end",
-                    "orig": "end",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "field",
-                    "orig": "field",
-                    "type": "`$ARRAY`"
-                  },
-                  {
-                    "example": "2020-05-31T20:59:59.999Z",
-                    "kind": "query",
-                    "name": "start",
-                    "orig": "start",
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/api/nominations/csv",
@@ -2022,22 +2022,47 @@ class Config {
                   "lit": "csv"
                 }
               ],
+              "parts": [
+                "api",
+                "nominations",
+                "csv"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "query": [
+                  {
+                    "name": "end",
+                    "orig": "end",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2020-06-30T20:59:59.999Z"
+                  },
+                  {
+                    "name": "field",
+                    "orig": "field",
+                    "type": "`$ARRAY`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "start",
+                    "orig": "start",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2020-05-31T20:59:59.999Z"
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "end",
                   "field",
                   "start"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "api",
-                "nominations",
-                "csv"
-              ]
+              }
             }
           ]
         }
@@ -2055,30 +2080,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {
-                "query": [
-                  {
-                    "example": "2020-06-30T20:59:59.999Z",
-                    "kind": "query",
-                    "name": "end",
-                    "orig": "end",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "field",
-                    "orig": "field",
-                    "type": "`$ARRAY`"
-                  },
-                  {
-                    "example": "2020-05-31T20:59:59.999Z",
-                    "kind": "query",
-                    "name": "start",
-                    "orig": "start",
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/api/nps/price/csv",
@@ -2096,49 +2097,50 @@ class Config {
                   "lit": "csv"
                 }
               ],
+              "parts": [
+                "api",
+                "nps",
+                "price",
+                "csv"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "query": [
+                  {
+                    "name": "end",
+                    "orig": "end",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2020-06-30T20:59:59.999Z"
+                  },
+                  {
+                    "name": "field",
+                    "orig": "field",
+                    "type": "`$ARRAY`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "start",
+                    "orig": "start",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2020-05-31T20:59:59.999Z"
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "end",
                   "field",
                   "start"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "api",
-                "nps",
-                "price",
-                "csv"
-              ]
+              }
             },
             {
-              "args": {
-                "query": [
-                  {
-                    "example": "2020-06-30T20:59:59.999Z",
-                    "kind": "query",
-                    "name": "end",
-                    "orig": "end",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "field",
-                    "orig": "field",
-                    "type": "`$ARRAY`"
-                  },
-                  {
-                    "example": "2020-05-31T20:59:59.999Z",
-                    "kind": "query",
-                    "name": "start",
-                    "orig": "start",
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/api/nps/turnover/csv",
@@ -2156,43 +2158,50 @@ class Config {
                   "lit": "csv"
                 }
               ],
+              "parts": [
+                "api",
+                "nps",
+                "turnover",
+                "csv"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "query": [
+                  {
+                    "name": "end",
+                    "orig": "end",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2020-06-30T20:59:59.999Z"
+                  },
+                  {
+                    "name": "field",
+                    "orig": "field",
+                    "type": "`$ARRAY`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "start",
+                    "orig": "start",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2020-05-31T20:59:59.999Z"
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "end",
                   "field",
                   "start"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "api",
-                "nps",
-                "turnover",
-                "csv"
-              ]
+              }
             },
             {
-              "args": {
-                "query": [
-                  {
-                    "example": "2020-06-30T20:59:59.999Z",
-                    "kind": "query",
-                    "name": "end",
-                    "orig": "end",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": "2020-05-31T20:59:59.999Z",
-                    "kind": "query",
-                    "name": "start",
-                    "orig": "start",
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/api/nps/price",
@@ -2207,41 +2216,42 @@ class Config {
                   "lit": "price"
                 }
               ],
+              "parts": [
+                "api",
+                "nps",
+                "price"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "query": [
+                  {
+                    "name": "end",
+                    "orig": "end",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2020-06-30T20:59:59.999Z"
+                  },
+                  {
+                    "name": "start",
+                    "orig": "start",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2020-05-31T20:59:59.999Z"
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "end",
                   "start"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "api",
-                "nps",
-                "price"
-              ]
+              }
             },
             {
-              "args": {
-                "query": [
-                  {
-                    "example": "2020-06-30T20:59:59.999Z",
-                    "kind": "query",
-                    "name": "end",
-                    "orig": "end",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": "2020-05-31T20:59:59.999Z",
-                    "kind": "query",
-                    "name": "start",
-                    "orig": "start",
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/api/nps/turnover",
@@ -2256,34 +2266,42 @@ class Config {
                   "lit": "turnover"
                 }
               ],
+              "parts": [
+                "api",
+                "nps",
+                "turnover"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "query": [
+                  {
+                    "name": "end",
+                    "orig": "end",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2020-06-30T20:59:59.999Z"
+                  },
+                  {
+                    "name": "start",
+                    "orig": "start",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2020-05-31T20:59:59.999Z"
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "end",
                   "start"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "api",
-                "nps",
-                "turnover"
-              ]
+              }
             },
             {
-              "args": {
-                "params": [
-                  {
-                    "kind": "param",
-                    "name": "group",
-                    "orig": "group",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/api/nps/price/{group}/current",
@@ -2304,35 +2322,36 @@ class Config {
                   "lit": "current"
                 }
               ],
-              "select": {
-                "exist": [
-                  "group"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "nps",
                 "price",
                 "{group}",
                 "current"
-              ]
-            },
-            {
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "args": {
                 "params": [
                   {
-                    "kind": "param",
                     "name": "group",
                     "orig": "group",
-                    "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
                   }
                 ]
               },
+              "select": {
+                "exist": [
+                  "group"
+                ]
+              }
+            },
+            {
               "kind": "http",
               "method": "GET",
               "orig": "/api/nps/price/{group}/latest",
@@ -2353,35 +2372,36 @@ class Config {
                   "lit": "latest"
                 }
               ],
-              "select": {
-                "exist": [
-                  "group"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "nps",
                 "price",
                 "{group}",
                 "latest"
-              ]
-            },
-            {
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "args": {
                 "params": [
                   {
-                    "kind": "param",
                     "name": "group",
                     "orig": "group",
-                    "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
                   }
                 ]
               },
+              "select": {
+                "exist": [
+                  "group"
+                ]
+              }
+            },
+            {
               "kind": "http",
               "method": "GET",
               "orig": "/api/nps/turnover/{group}/latest",
@@ -2402,35 +2422,40 @@ class Config {
                   "lit": "latest"
                 }
               ],
-              "select": {
-                "exist": [
-                  "group"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "nps",
                 "turnover",
                 "{group}",
                 "latest"
-              ]
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "params": [
+                  {
+                    "name": "group",
+                    "orig": "group",
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
+                  }
+                ]
+              },
+              "select": {
+                "exist": [
+                  "group"
+                ]
+              }
             }
           ]
         }
       },
       "relations": {
-        "ancestors": [
-          [
-            "price"
-          ],
-          [
-            "turnover"
-          ]
-        ]
+        "ancestors": []
       }
     },
     "renomination": {
@@ -2442,24 +2467,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {
-                "query": [
-                  {
-                    "example": "2020-06-30T20:59:59.999Z",
-                    "kind": "query",
-                    "name": "end",
-                    "orig": "end",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": "2020-05-31T20:59:59.999Z",
-                    "kind": "query",
-                    "name": "start",
-                    "orig": "start",
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/api/nominations/renominations",
@@ -2474,21 +2481,40 @@ class Config {
                   "lit": "renominations"
                 }
               ],
+              "parts": [
+                "api",
+                "nominations",
+                "renominations"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "query": [
+                  {
+                    "name": "end",
+                    "orig": "end",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2020-06-30T20:59:59.999Z"
+                  },
+                  {
+                    "name": "start",
+                    "orig": "start",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2020-05-31T20:59:59.999Z"
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "end",
                   "start"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "api",
-                "nominations",
-                "renominations"
-              ]
+              }
             }
           ]
         }
@@ -2506,30 +2532,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {
-                "query": [
-                  {
-                    "example": "2020-06-30T20:59:59.999Z",
-                    "kind": "query",
-                    "name": "end",
-                    "orig": "end",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "field",
-                    "orig": "field",
-                    "type": "`$ARRAY`"
-                  },
-                  {
-                    "example": "2020-05-31T20:59:59.999Z",
-                    "kind": "query",
-                    "name": "start",
-                    "orig": "start",
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/api/nominations/renominations/csv",
@@ -2547,23 +2549,48 @@ class Config {
                   "lit": "csv"
                 }
               ],
+              "parts": [
+                "api",
+                "nominations",
+                "renominations",
+                "csv"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "query": [
+                  {
+                    "name": "end",
+                    "orig": "end",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2020-06-30T20:59:59.999Z"
+                  },
+                  {
+                    "name": "field",
+                    "orig": "field",
+                    "type": "`$ARRAY`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "start",
+                    "orig": "start",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2020-05-31T20:59:59.999Z"
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "end",
                   "field",
                   "start"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "api",
-                "nominations",
-                "renominations",
-                "csv"
-              ]
+              }
             }
           ]
         }
@@ -2581,24 +2608,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {
-                "query": [
-                  {
-                    "example": "2020-06-30T20:59:59.999Z",
-                    "kind": "query",
-                    "name": "end",
-                    "orig": "end",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": "2020-05-31T20:59:59.999Z",
-                    "kind": "query",
-                    "name": "start",
-                    "orig": "start",
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/api/system",
@@ -2610,20 +2619,39 @@ class Config {
                   "lit": "system"
                 }
               ],
+              "parts": [
+                "api",
+                "system"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "query": [
+                  {
+                    "name": "end",
+                    "orig": "end",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2020-06-30T20:59:59.999Z"
+                  },
+                  {
+                    "name": "start",
+                    "orig": "start",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2020-05-31T20:59:59.999Z"
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "end",
                   "start"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "api",
-                "system"
-              ]
+              }
             }
           ]
         }
@@ -2641,30 +2669,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {
-                "query": [
-                  {
-                    "example": "2020-06-30T20:59:59.999Z",
-                    "kind": "query",
-                    "name": "end",
-                    "orig": "end",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "field",
-                    "orig": "field",
-                    "type": "`$ARRAY`"
-                  },
-                  {
-                    "example": "2020-05-31T20:59:59.999Z",
-                    "kind": "query",
-                    "name": "start",
-                    "orig": "start",
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/api/system/csv",
@@ -2679,48 +2683,49 @@ class Config {
                   "lit": "csv"
                 }
               ],
+              "parts": [
+                "api",
+                "system",
+                "csv"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "query": [
+                  {
+                    "name": "end",
+                    "orig": "end",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2020-06-30T20:59:59.999Z"
+                  },
+                  {
+                    "name": "field",
+                    "orig": "field",
+                    "type": "`$ARRAY`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "start",
+                    "orig": "start",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2020-05-31T20:59:59.999Z"
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "end",
                   "field",
                   "start"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "api",
-                "system",
-                "csv"
-              ]
+              }
             },
             {
-              "args": {
-                "query": [
-                  {
-                    "example": "2020-06-30T20:59:59.999Z",
-                    "kind": "query",
-                    "name": "end",
-                    "orig": "end",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "field",
-                    "orig": "field",
-                    "type": "`$ARRAY`"
-                  },
-                  {
-                    "example": "2020-05-31T20:59:59.999Z",
-                    "kind": "query",
-                    "name": "start",
-                    "orig": "start",
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/api/system/with-plan/csv",
@@ -2738,43 +2743,50 @@ class Config {
                   "lit": "csv"
                 }
               ],
+              "parts": [
+                "api",
+                "system",
+                "with-plan",
+                "csv"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "query": [
+                  {
+                    "name": "end",
+                    "orig": "end",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2020-06-30T20:59:59.999Z"
+                  },
+                  {
+                    "name": "field",
+                    "orig": "field",
+                    "type": "`$ARRAY`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "start",
+                    "orig": "start",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2020-05-31T20:59:59.999Z"
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "end",
                   "field",
                   "start"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "api",
-                "system",
-                "with-plan",
-                "csv"
-              ]
+              }
             },
             {
-              "args": {
-                "query": [
-                  {
-                    "example": "2020-06-30T20:59:59.999Z",
-                    "kind": "query",
-                    "name": "end",
-                    "orig": "end",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": "2020-05-31T20:59:59.999Z",
-                    "kind": "query",
-                    "name": "start",
-                    "orig": "start",
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/api/system/with-plan",
@@ -2789,24 +2801,42 @@ class Config {
                   "lit": "with-plan"
                 }
               ],
+              "parts": [
+                "api",
+                "system",
+                "with-plan"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "query": [
+                  {
+                    "name": "end",
+                    "orig": "end",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2020-06-30T20:59:59.999Z"
+                  },
+                  {
+                    "name": "start",
+                    "orig": "start",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2020-05-31T20:59:59.999Z"
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "end",
                   "start"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "api",
-                "system",
-                "with-plan"
-              ]
+              }
             },
             {
-              "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/api/system/latest",
@@ -2821,16 +2851,18 @@ class Config {
                   "lit": "latest"
                 }
               ],
-              "select": {},
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "system",
                 "latest"
-              ]
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {},
+              "select": {}
             }
           ]
         }
@@ -2848,39 +2880,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {
-                "params": [
-                  {
-                    "kind": "param",
-                    "name": "group",
-                    "orig": "group",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  }
-                ],
-                "query": [
-                  {
-                    "example": "2020-06-30T20:59:59.999Z",
-                    "kind": "query",
-                    "name": "end",
-                    "orig": "end",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "field",
-                    "orig": "field",
-                    "type": "`$ARRAY`"
-                  },
-                  {
-                    "example": "2020-05-31T20:59:59.999Z",
-                    "kind": "query",
-                    "name": "start",
-                    "orig": "start",
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/api/transmission/cross-border-capacity/{group}/csv",
@@ -2901,6 +2900,51 @@ class Config {
                   "lit": "csv"
                 }
               ],
+              "parts": [
+                "api",
+                "transmission",
+                "cross-border-capacity",
+                "{group}",
+                "csv"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "params": [
+                  {
+                    "name": "group",
+                    "orig": "group",
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
+                  }
+                ],
+                "query": [
+                  {
+                    "name": "end",
+                    "orig": "end",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2020-06-30T20:59:59.999Z"
+                  },
+                  {
+                    "name": "field",
+                    "orig": "field",
+                    "type": "`$ARRAY`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "start",
+                    "orig": "start",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2020-05-31T20:59:59.999Z"
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "end",
@@ -2908,44 +2952,9 @@ class Config {
                   "group",
                   "start"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "api",
-                "transmission",
-                "cross-border-capacity",
-                "{group}",
-                "csv"
-              ]
+              }
             },
             {
-              "args": {
-                "query": [
-                  {
-                    "example": "2020-06-30T20:59:59.999Z",
-                    "kind": "query",
-                    "name": "end",
-                    "orig": "end",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "field",
-                    "orig": "field",
-                    "type": "`$ARRAY`"
-                  },
-                  {
-                    "example": "2020-05-31T20:59:59.999Z",
-                    "kind": "query",
-                    "name": "start",
-                    "orig": "start",
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/api/transmission/cross-border-planned-trade/csv",
@@ -2963,49 +2972,50 @@ class Config {
                   "lit": "csv"
                 }
               ],
+              "parts": [
+                "api",
+                "transmission",
+                "cross-border-planned-trade",
+                "csv"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "query": [
+                  {
+                    "name": "end",
+                    "orig": "end",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2020-06-30T20:59:59.999Z"
+                  },
+                  {
+                    "name": "field",
+                    "orig": "field",
+                    "type": "`$ARRAY`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "start",
+                    "orig": "start",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2020-05-31T20:59:59.999Z"
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "end",
                   "field",
                   "start"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "api",
-                "transmission",
-                "cross-border-planned-trade",
-                "csv"
-              ]
+              }
             },
             {
-              "args": {
-                "query": [
-                  {
-                    "example": "2020-06-30T20:59:59.999Z",
-                    "kind": "query",
-                    "name": "end",
-                    "orig": "end",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "field",
-                    "orig": "field",
-                    "type": "`$ARRAY`"
-                  },
-                  {
-                    "example": "2020-05-31T20:59:59.999Z",
-                    "kind": "query",
-                    "name": "start",
-                    "orig": "start",
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/api/transmission/cross-border/csv",
@@ -3023,49 +3033,50 @@ class Config {
                   "lit": "csv"
                 }
               ],
+              "parts": [
+                "api",
+                "transmission",
+                "cross-border",
+                "csv"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "query": [
+                  {
+                    "name": "end",
+                    "orig": "end",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2020-06-30T20:59:59.999Z"
+                  },
+                  {
+                    "name": "field",
+                    "orig": "field",
+                    "type": "`$ARRAY`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "start",
+                    "orig": "start",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2020-05-31T20:59:59.999Z"
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "end",
                   "field",
                   "start"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "api",
-                "transmission",
-                "cross-border",
-                "csv"
-              ]
+              }
             },
             {
-              "args": {
-                "query": [
-                  {
-                    "example": "2020-06-30T20:59:59.999Z",
-                    "kind": "query",
-                    "name": "end",
-                    "orig": "end",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "field",
-                    "orig": "field",
-                    "type": "`$ARRAY`"
-                  },
-                  {
-                    "example": "2020-05-31T20:59:59.999Z",
-                    "kind": "query",
-                    "name": "start",
-                    "orig": "start",
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/api/transmission/cross-border/hourly/csv",
@@ -3086,53 +3097,51 @@ class Config {
                   "lit": "csv"
                 }
               ],
-              "select": {
-                "exist": [
-                  "end",
-                  "field",
-                  "start"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "transmission",
                 "cross-border",
                 "hourly",
                 "csv"
-              ]
-            },
-            {
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "args": {
-                "params": [
-                  {
-                    "kind": "param",
-                    "name": "group",
-                    "orig": "group",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  }
-                ],
                 "query": [
                   {
-                    "example": "2020-06-30T20:59:59.999Z",
-                    "kind": "query",
                     "name": "end",
                     "orig": "end",
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2020-06-30T20:59:59.999Z"
                   },
                   {
-                    "example": "2020-05-31T20:59:59.999Z",
-                    "kind": "query",
+                    "name": "field",
+                    "orig": "field",
+                    "type": "`$ARRAY`",
+                    "kind": "query"
+                  },
+                  {
                     "name": "start",
                     "orig": "start",
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2020-05-31T20:59:59.999Z"
                   }
                 ]
               },
+              "select": {
+                "exist": [
+                  "end",
+                  "field",
+                  "start"
+                ]
+              }
+            },
+            {
               "kind": "http",
               "method": "GET",
               "orig": "/api/transmission/cross-border-capacity/{group}",
@@ -3150,43 +3159,53 @@ class Config {
                   "var": "group"
                 }
               ],
+              "parts": [
+                "api",
+                "transmission",
+                "cross-border-capacity",
+                "{group}"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "params": [
+                  {
+                    "name": "group",
+                    "orig": "group",
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
+                  }
+                ],
+                "query": [
+                  {
+                    "name": "end",
+                    "orig": "end",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2020-06-30T20:59:59.999Z"
+                  },
+                  {
+                    "name": "start",
+                    "orig": "start",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2020-05-31T20:59:59.999Z"
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "end",
                   "group",
                   "start"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "api",
-                "transmission",
-                "cross-border-capacity",
-                "{group}"
-              ]
+              }
             },
             {
-              "args": {
-                "query": [
-                  {
-                    "example": "2020-06-30T20:59:59.999Z",
-                    "kind": "query",
-                    "name": "end",
-                    "orig": "end",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": "2020-05-31T20:59:59.999Z",
-                    "kind": "query",
-                    "name": "start",
-                    "orig": "start",
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/api/transmission/cross-border",
@@ -3201,41 +3220,42 @@ class Config {
                   "lit": "cross-border"
                 }
               ],
+              "parts": [
+                "api",
+                "transmission",
+                "cross-border"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "query": [
+                  {
+                    "name": "end",
+                    "orig": "end",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2020-06-30T20:59:59.999Z"
+                  },
+                  {
+                    "name": "start",
+                    "orig": "start",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2020-05-31T20:59:59.999Z"
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "end",
                   "start"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "api",
-                "transmission",
-                "cross-border"
-              ]
+              }
             },
             {
-              "args": {
-                "query": [
-                  {
-                    "example": "2020-06-30T20:59:59.999Z",
-                    "kind": "query",
-                    "name": "end",
-                    "orig": "end",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": "2020-05-31T20:59:59.999Z",
-                    "kind": "query",
-                    "name": "start",
-                    "orig": "start",
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/api/transmission/cross-border-capacity",
@@ -3250,41 +3270,42 @@ class Config {
                   "lit": "cross-border-capacity"
                 }
               ],
+              "parts": [
+                "api",
+                "transmission",
+                "cross-border-capacity"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "query": [
+                  {
+                    "name": "end",
+                    "orig": "end",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2020-06-30T20:59:59.999Z"
+                  },
+                  {
+                    "name": "start",
+                    "orig": "start",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2020-05-31T20:59:59.999Z"
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "end",
                   "start"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "api",
-                "transmission",
-                "cross-border-capacity"
-              ]
+              }
             },
             {
-              "args": {
-                "query": [
-                  {
-                    "example": "2020-06-30T20:59:59.999Z",
-                    "kind": "query",
-                    "name": "end",
-                    "orig": "end",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": "2020-05-31T20:59:59.999Z",
-                    "kind": "query",
-                    "name": "start",
-                    "orig": "start",
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/api/transmission/cross-border-planned-trade",
@@ -3299,41 +3320,42 @@ class Config {
                   "lit": "cross-border-planned-trade"
                 }
               ],
+              "parts": [
+                "api",
+                "transmission",
+                "cross-border-planned-trade"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "query": [
+                  {
+                    "name": "end",
+                    "orig": "end",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2020-06-30T20:59:59.999Z"
+                  },
+                  {
+                    "name": "start",
+                    "orig": "start",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2020-05-31T20:59:59.999Z"
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "end",
                   "start"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "api",
-                "transmission",
-                "cross-border-planned-trade"
-              ]
+              }
             },
             {
-              "args": {
-                "query": [
-                  {
-                    "example": "2020-06-30T20:59:59.999Z",
-                    "kind": "query",
-                    "name": "end",
-                    "orig": "end",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": "2020-05-31T20:59:59.999Z",
-                    "kind": "query",
-                    "name": "start",
-                    "orig": "start",
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/api/transmission/cross-border/hourly",
@@ -3351,25 +3373,43 @@ class Config {
                   "lit": "hourly"
                 }
               ],
-              "select": {
-                "exist": [
-                  "end",
-                  "start"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "transmission",
                 "cross-border",
                 "hourly"
-              ]
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "query": [
+                  {
+                    "name": "end",
+                    "orig": "end",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2020-06-30T20:59:59.999Z"
+                  },
+                  {
+                    "name": "start",
+                    "orig": "start",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2020-05-31T20:59:59.999Z"
+                  }
+                ]
+              },
+              "select": {
+                "exist": [
+                  "end",
+                  "start"
+                ]
+              }
             },
             {
-              "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/api/transmission/cross-border-planned-trade/latest",
@@ -3387,20 +3427,21 @@ class Config {
                   "lit": "latest"
                 }
               ],
-              "select": {},
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "transmission",
                 "cross-border-planned-trade",
                 "latest"
-              ]
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {},
+              "select": {}
             },
             {
-              "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/api/transmission/cross-border/latest",
@@ -3418,27 +3459,25 @@ class Config {
                   "lit": "latest"
                 }
               ],
-              "select": {},
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "transmission",
                 "cross-border",
                 "latest"
-              ]
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {},
+              "select": {}
             }
           ]
         }
       },
       "relations": {
-        "ancestors": [
-          [
-            "cross_border_capacity"
-          ]
-        ]
+        "ancestors": []
       }
     },
     "umm_gas_controller": {
@@ -3450,73 +3489,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {
-                "query": [
-                  {
-                    "kind": "query",
-                    "name": "affected_asset_name",
-                    "orig": "affected_asset_name",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "event_duration_date_time_end",
-                    "orig": "event_duration_date_time_end",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "event_duration_date_time_start",
-                    "orig": "event_duration_date_time_start",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "event_status",
-                    "orig": "event_status",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "event_type",
-                    "orig": "event_type",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": 1,
-                    "kind": "query",
-                    "name": "page",
-                    "orig": "page",
-                    "type": "`$INTEGER`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "publication_datetime_start",
-                    "orig": "publication_datetime_start",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": "publicationDateTimeDesc",
-                    "kind": "query",
-                    "name": "sort",
-                    "orig": "sort",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": "current",
-                    "kind": "query",
-                    "name": "status",
-                    "orig": "status",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "unavailability_type",
-                    "orig": "unavailability_type",
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/api/umm/gas",
@@ -3531,6 +3503,83 @@ class Config {
                   "lit": "gas"
                 }
               ],
+              "parts": [
+                "api",
+                "umm",
+                "gas"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "query": [
+                  {
+                    "name": "affected_asset_name",
+                    "orig": "affected_asset_name",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "event_duration_date_time_end",
+                    "orig": "event_duration_date_time_end",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "event_duration_date_time_start",
+                    "orig": "event_duration_date_time_start",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "event_status",
+                    "orig": "event_status",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "event_type",
+                    "orig": "event_type",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "page",
+                    "orig": "page",
+                    "type": "`$INTEGER`",
+                    "kind": "query",
+                    "example": 1
+                  },
+                  {
+                    "name": "publication_datetime_start",
+                    "orig": "publication_datetime_start",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "sort",
+                    "orig": "sort",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "publicationDateTimeDesc"
+                  },
+                  {
+                    "name": "status",
+                    "orig": "status",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "current"
+                  },
+                  {
+                    "name": "unavailability_type",
+                    "orig": "unavailability_type",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "affected_asset_name",
@@ -3544,29 +3593,9 @@ class Config {
                   "status",
                   "unavailability_type"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "api",
-                "umm",
-                "gas"
-              ]
+              }
             },
             {
-              "args": {
-                "query": [
-                  {
-                    "kind": "query",
-                    "name": "id",
-                    "orig": "id",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/api/umm/gas/messages",
@@ -3584,34 +3613,35 @@ class Config {
                   "lit": "messages"
                 }
               ],
-              "select": {
-                "exist": [
-                  "id"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "umm",
                 "gas",
                 "messages"
-              ]
-            },
-            {
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "args": {
                 "query": [
                   {
-                    "kind": "query",
                     "name": "id",
                     "orig": "id",
-                    "reqd": true,
-                    "type": "`$INTEGER`"
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "reqd": true
                   }
                 ]
               },
+              "select": {
+                "exist": [
+                  "id"
+                ]
+              }
+            },
+            {
               "kind": "http",
               "method": "GET",
               "orig": "/api/umm/single/{id}",
@@ -3629,21 +3659,33 @@ class Config {
                   "var": "id"
                 }
               ],
-              "select": {
-                "exist": [
-                  "id"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "umm",
                 "single",
                 "{id}"
-              ]
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "query": [
+                  {
+                    "name": "id",
+                    "orig": "id",
+                    "type": "`$INTEGER`",
+                    "kind": "query",
+                    "reqd": true
+                  }
+                ]
+              },
+              "select": {
+                "exist": [
+                  "id"
+                ]
+              }
             }
           ]
         }
@@ -3661,7 +3703,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/umm/gas/rss",
@@ -3676,19 +3717,20 @@ class Config {
                   "lit": "rss"
                 }
               ],
-              "select": {},
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "umm",
                 "gas",
                 "rss"
-              ]
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {},
+              "select": {}
             },
             {
-              "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/umm/gas/rss/aris",
@@ -3706,17 +3748,19 @@ class Config {
                   "lit": "aris"
                 }
               ],
-              "select": {},
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "umm",
                 "gas",
                 "rss",
                 "aris"
-              ]
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {},
+              "select": {}
             }
           ]
         }

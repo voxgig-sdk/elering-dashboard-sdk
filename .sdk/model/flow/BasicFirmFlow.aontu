@@ -1,0 +1,28 @@
+# BasicFirmFlow
+
+main: kit: flow: BasicFirmFlow:
+{
+  entity: "firm",
+  kind: "basic",
+  name: "BasicFirmFlow",
+  step: [
+    {
+      i: {
+        ref: "firm_ref01",
+        srcdatavar: "firm_ref01_data",
+        suffix: "_dt0"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-firm_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicFirmFlow"
+}

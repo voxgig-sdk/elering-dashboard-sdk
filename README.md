@@ -14,7 +14,7 @@ Metadata kindly supplied by [www.freepublicapis.com](https://www.freepublicapis.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI with an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
 
-> **Features:** `ratelimit`, `retry`, `test`, `timeout` — opt-in,
+> **Features:** `undefined`, `undefined`, `undefined`, `undefined` — opt-in,
 > inactive until switched on, and configured per client. See the Features
 > section of any SDK README below for what each one does.
 
@@ -123,12 +123,9 @@ import { EleringDashboardSDK } from '@voxgig-sdk/elering-dashboard-sdk'
 
 const client = new EleringDashboardSDK()
 
-
-// Load a specific transmissioncontroller (returns a TransmissionController)
-const transmissioncontroller = await client.TransmissionController().load({
-  group: 'example_group',
-})
-console.log(transmissioncontroller)
+// Load balance data (returns a Balance)
+const balance = await client.Balance().load()
+console.log(balance)
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -233,15 +230,12 @@ import sdk "github.com/voxgig-sdk/elering-dashboard-sdk/go"
 
 client := sdk.New()
 
-
-// Load a specific transmissioncontroller
-transmissionController, err := client.TransmissionController(nil).Load(
-    map[string]any{"group": "example_group"}, nil,
-)
+// Load balance data
+balance, err := client.Balance(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(transmissionController)
+fmt.Println(balance)
 ```
 
 ### Ruby
