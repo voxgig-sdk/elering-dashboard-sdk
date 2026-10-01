@@ -479,6 +479,7 @@ API path: `/api/transmission/cross-border-capacity/{group}/csv`
 
 | Field | Description |
 | --- | --- |
+| `"id"` |  |
 
 Operations: Load.
 
@@ -970,10 +971,16 @@ Create an instance: `ummGasController := client.UmmGasController(nil)`
 | --- | --- |
 | `Load(match, ctrl)` | Load a single entity by match criteria. |
 
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
 #### Example: Load
 
 ```go
-ummGasController, err := client.UmmGasController(nil).Load(map[string]any{"id": 1}, nil)
+ummGasController, err := client.UmmGasController(nil).Load(map[string]any{"id": "umm_gas_controller_id"}, nil)
 if err != nil {
     panic(err)
 }

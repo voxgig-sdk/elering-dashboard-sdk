@@ -1,0 +1,7 @@
+{
+  point: "warning"
+  note: "Path placeholder {id} on entity=umm_gas_controller op=load path=/api/umm/single/{id} has no declared parameter, so it is taken as a required string."
+  entity: "umm_gas_controller"
+  path: "/api/umm/single/{id}"
+  op: "load"
+}

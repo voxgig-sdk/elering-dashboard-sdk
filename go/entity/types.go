@@ -246,7 +246,7 @@ type UmmGasController struct {
 
 // UmmGasControllerLoadMatch is the typed request payload for UmmGasController.LoadTyped.
 type UmmGasControllerLoadMatch struct {
-	Id int `json:"id"`
+	Id string `json:"id"`
 }
 
 // UmmRssFeedController is the typed data model for the umm_rss_feed_controller entity.

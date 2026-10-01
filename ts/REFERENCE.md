@@ -1356,6 +1356,12 @@ Return a copy of the entity options.
 const umm_gas_controller = client.UmmGasController()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `load(match: object, ctrl?: object)`
@@ -1363,7 +1369,7 @@ const umm_gas_controller = client.UmmGasController()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.UmmGasController().load({ id: 1 })
+const result = await client.UmmGasController().load({ id: 'umm_gas_controller_id' })
 ```
 
 ### Common Methods

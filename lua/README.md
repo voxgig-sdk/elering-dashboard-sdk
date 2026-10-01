@@ -446,6 +446,7 @@ API path: `/api/transmission/cross-border-capacity/{group}/csv`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Load.
 
@@ -849,10 +850,16 @@ Create an instance: `local umm_gas_controller = client:UmmGasController(nil)`
 | --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
 
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
 #### Example: Load
 
 ```lua
-local umm_gas_controller, err = client:UmmGasController():load({ id = 1 })
+local umm_gas_controller, err = client:UmmGasController():load({ id = "umm_gas_controller_id" })
 ```
 
 

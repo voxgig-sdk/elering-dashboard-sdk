@@ -1176,6 +1176,12 @@ ummGasController := client.UmmGasController(nil)
 fmt.Println(ummGasController.GetName()) // "umm_gas_controller"
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
@@ -1183,7 +1189,7 @@ fmt.Println(ummGasController.GetName()) // "umm_gas_controller"
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.UmmGasController(nil).Load(map[string]any{"id": 1}, nil)
+result, err := client.UmmGasController(nil).Load(map[string]any{"id": "umm_gas_controller_id"}, nil)
 if err != nil {
     panic(err)
 }

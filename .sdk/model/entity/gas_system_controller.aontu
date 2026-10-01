@@ -28,7 +28,7 @@ main: kit: entity: gas_system_controller: {
               {
                 k: "query"
                 n: "field"
-                or: "field"
+                or: "fields"
                 r: false
                 t: "`$ARRAY`"
               }
@@ -86,7 +86,7 @@ main: kit: entity: gas_system_controller: {
               {
                 k: "query"
                 n: "field"
-                or: "field"
+                or: "fields"
                 r: false
                 t: "`$ARRAY`"
               }
@@ -147,7 +147,7 @@ main: kit: entity: gas_system_controller: {
               {
                 k: "query"
                 n: "field"
-                or: "field"
+                or: "fields"
                 r: false
                 t: "`$ARRAY`"
               }

@@ -215,7 +215,7 @@ local function make_config()
                     },
                     {
                       ["name"] = "field",
-                      ["orig"] = "field",
+                      ["orig"] = "fields",
                       ["type"] = "`$ARRAY`",
                       ["kind"] = "query",
                     },
@@ -272,7 +272,7 @@ local function make_config()
                     },
                     {
                       ["name"] = "field",
-                      ["orig"] = "field",
+                      ["orig"] = "fields",
                       ["type"] = "`$ARRAY`",
                       ["kind"] = "query",
                     },
@@ -333,7 +333,7 @@ local function make_config()
                     },
                     {
                       ["name"] = "field",
-                      ["orig"] = "field",
+                      ["orig"] = "fields",
                       ["type"] = "`$ARRAY`",
                       ["kind"] = "query",
                     },
@@ -390,7 +390,7 @@ local function make_config()
                     },
                     {
                       ["name"] = "field",
-                      ["orig"] = "field",
+                      ["orig"] = "fields",
                       ["type"] = "`$STRING`",
                       ["kind"] = "query",
                       ["example"] = "2020-05-31T20:59:59.999Z",
@@ -638,7 +638,7 @@ local function make_config()
                     },
                     {
                       ["name"] = "field",
-                      ["orig"] = "field",
+                      ["orig"] = "fields",
                       ["type"] = "`$ARRAY`",
                       ["kind"] = "query",
                       ["example"] = {
@@ -734,7 +734,7 @@ local function make_config()
                     },
                     {
                       ["name"] = "field",
-                      ["orig"] = "field",
+                      ["orig"] = "fields",
                       ["type"] = "`$ARRAY`",
                       ["kind"] = "query",
                     },
@@ -964,7 +964,7 @@ local function make_config()
                     },
                     {
                       ["name"] = "field",
-                      ["orig"] = "field",
+                      ["orig"] = "fields",
                       ["type"] = "`$ARRAY`",
                       ["kind"] = "query",
                     },
@@ -1025,7 +1025,7 @@ local function make_config()
                     },
                     {
                       ["name"] = "field",
-                      ["orig"] = "field",
+                      ["orig"] = "fields",
                       ["type"] = "`$ARRAY`",
                       ["kind"] = "query",
                     },
@@ -1086,7 +1086,7 @@ local function make_config()
                     },
                     {
                       ["name"] = "field",
-                      ["orig"] = "field",
+                      ["orig"] = "fields",
                       ["type"] = "`$ARRAY`",
                       ["kind"] = "query",
                     },
@@ -1397,7 +1397,7 @@ local function make_config()
                     },
                     {
                       ["name"] = "field",
-                      ["orig"] = "field",
+                      ["orig"] = "fields",
                       ["type"] = "`$ARRAY`",
                       ["kind"] = "query",
                     },
@@ -1523,7 +1523,7 @@ local function make_config()
                     },
                     {
                       ["name"] = "field",
-                      ["orig"] = "field",
+                      ["orig"] = "fields",
                       ["type"] = "`$ARRAY`",
                       ["kind"] = "query",
                     },
@@ -1819,7 +1819,7 @@ local function make_config()
                     },
                     {
                       ["name"] = "field",
-                      ["orig"] = "field",
+                      ["orig"] = "fields",
                       ["type"] = "`$ARRAY`",
                       ["kind"] = "query",
                     },
@@ -1952,7 +1952,7 @@ local function make_config()
                     },
                     {
                       ["name"] = "field",
-                      ["orig"] = "field",
+                      ["orig"] = "fields",
                       ["type"] = "`$ARRAY`",
                       ["kind"] = "query",
                     },
@@ -2028,7 +2028,7 @@ local function make_config()
                     },
                     {
                       ["name"] = "field",
-                      ["orig"] = "field",
+                      ["orig"] = "fields",
                       ["type"] = "`$ARRAY`",
                       ["kind"] = "query",
                     },
@@ -2089,7 +2089,7 @@ local function make_config()
                     },
                     {
                       ["name"] = "field",
-                      ["orig"] = "field",
+                      ["orig"] = "fields",
                       ["type"] = "`$ARRAY`",
                       ["kind"] = "query",
                     },
@@ -2480,7 +2480,7 @@ local function make_config()
                     },
                     {
                       ["name"] = "field",
-                      ["orig"] = "field",
+                      ["orig"] = "fields",
                       ["type"] = "`$ARRAY`",
                       ["kind"] = "query",
                     },
@@ -2613,7 +2613,7 @@ local function make_config()
                     },
                     {
                       ["name"] = "field",
-                      ["orig"] = "field",
+                      ["orig"] = "fields",
                       ["type"] = "`$ARRAY`",
                       ["kind"] = "query",
                     },
@@ -2674,7 +2674,7 @@ local function make_config()
                     },
                     {
                       ["name"] = "field",
-                      ["orig"] = "field",
+                      ["orig"] = "fields",
                       ["type"] = "`$ARRAY`",
                       ["kind"] = "query",
                     },
@@ -2841,7 +2841,7 @@ local function make_config()
                     },
                     {
                       ["name"] = "field",
-                      ["orig"] = "field",
+                      ["orig"] = "fields",
                       ["type"] = "`$ARRAY`",
                       ["kind"] = "query",
                     },
@@ -2903,7 +2903,7 @@ local function make_config()
                     },
                     {
                       ["name"] = "field",
-                      ["orig"] = "field",
+                      ["orig"] = "fields",
                       ["type"] = "`$ARRAY`",
                       ["kind"] = "query",
                     },
@@ -2964,7 +2964,7 @@ local function make_config()
                     },
                     {
                       ["name"] = "field",
-                      ["orig"] = "field",
+                      ["orig"] = "fields",
                       ["type"] = "`$ARRAY`",
                       ["kind"] = "query",
                     },
@@ -3029,7 +3029,7 @@ local function make_config()
                     },
                     {
                       ["name"] = "field",
-                      ["orig"] = "field",
+                      ["orig"] = "fields",
                       ["type"] = "`$ARRAY`",
                       ["kind"] = "query",
                     },
@@ -3390,7 +3390,17 @@ local function make_config()
         },
       },
       ["umm_gas_controller"] = {
-        ["fields"] = {},
+        ["fields"] = {
+          {
+            ["name"] = "id",
+            ["title"] = "Id",
+            ["type"] = "`$STRING`",
+          },
+        },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
+        },
         ["name"] = "umm_gas_controller",
         ["op"] = {
           ["load"] = {
@@ -3580,6 +3590,15 @@ local function make_config()
                   ["res"] = "`body`",
                 },
                 ["args"] = {
+                  ["params"] = {
+                    {
+                      ["name"] = "id",
+                      ["orig"] = "id",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "param",
+                      ["reqd"] = true,
+                    },
+                  },
                   ["query"] = {
                     {
                       ["name"] = "id",

@@ -28,7 +28,7 @@ main: kit: entity: gas_trade_controller: {
               {
                 k: "query"
                 n: "field"
-                or: "field"
+                or: "fields"
                 r: false
                 t: "`$ARRAY`"
               }

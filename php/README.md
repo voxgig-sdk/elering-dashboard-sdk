@@ -12,9 +12,14 @@ The SDK exposes the API as capitalised, semantic **Entities** — for example `$
 
 ## Install
 This package is not yet published to Packagist. Install it from the
-GitHub release tag (`php/vX.Y.Z`):
+GitHub release tag (`php/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/elering-dashboard-sdk/releases)), or
+from a clone as a Composer path repository:
 
-- Releases: [https://github.com/voxgig-sdk/elering-dashboard-sdk/releases](https://github.com/voxgig-sdk/elering-dashboard-sdk/releases)
+```bash
+git clone https://github.com/voxgig-sdk/elering-dashboard-sdk
+composer config repositories.elering-dashboard-sdk path ./elering-dashboard-sdk/php
+composer require voxgig-sdk/elering-dashboard-sdk:@dev
+```
 
 
 ## Tutorial: your first API call
@@ -469,6 +474,7 @@ API path: `/api/transmission/cross-border-capacity/{group}/csv`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Load.
 
@@ -894,11 +900,17 @@ Create an instance: `$umm_gas_controller = $client->UmmGasController();`
 | --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
 
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
 #### Example: Load
 
 ```php
 // load() returns the ENTITY — call data_get() for the UmmGasController record (throws on error).
-$umm_gas_controller = $client->UmmGasController()->load(["id" => 1]);
+$umm_gas_controller = $client->UmmGasController()->load(["id" => "umm_gas_controller_id"]);
 ```
 
 

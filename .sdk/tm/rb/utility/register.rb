@@ -33,6 +33,8 @@ require_relative 'transform_response'
 
 EleringDashboardUtility.registrar = ->(u) {
   u.clean = EleringDashboardUtilities::Clean
+  u.clean_add = EleringDashboardUtilities::CleanAdd
+  u.clean_explain = EleringDashboardUtilities::CleanExplain
   u.done = EleringDashboardUtilities::Done
   u.make_error = EleringDashboardUtilities::MakeError
   u.feature_add = EleringDashboardUtilities::FeatureAdd

@@ -37,6 +37,8 @@ require_once __DIR__ . '/TransformResponse.php';
 
 EleringDashboardUtility::setRegistrar(function (EleringDashboardUtility $u): void {
     $u->clean = [EleringDashboardClean::class, 'call'];
+    $u->clean_add = [EleringDashboardClean::class, 'add'];
+    $u->clean_explain = [EleringDashboardDone::class, 'clean_explain'];
     $u->done = [EleringDashboardDone::class, 'call'];
     $u->make_error = [EleringDashboardMakeError::class, 'call'];
     $u->feature_add = [EleringDashboardFeatureAdd::class, 'call'];

@@ -28,7 +28,7 @@ main: kit: entity: gas_transmission_controller: {
               {
                 k: "query"
                 n: "field"
-                or: "field"
+                or: "fields"
                 r: false
                 t: "`$ARRAY`"
               }

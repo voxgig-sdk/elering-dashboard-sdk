@@ -219,7 +219,7 @@ func MakeConfig() map[string]any {
 										},
 										map[string]any{
 											"name": "field",
-											"orig": "field",
+											"orig": "fields",
 											"type": "`$ARRAY`",
 											"kind": "query",
 										},
@@ -276,7 +276,7 @@ func MakeConfig() map[string]any {
 										},
 										map[string]any{
 											"name": "field",
-											"orig": "field",
+											"orig": "fields",
 											"type": "`$ARRAY`",
 											"kind": "query",
 										},
@@ -337,7 +337,7 @@ func MakeConfig() map[string]any {
 										},
 										map[string]any{
 											"name": "field",
-											"orig": "field",
+											"orig": "fields",
 											"type": "`$ARRAY`",
 											"kind": "query",
 										},
@@ -394,7 +394,7 @@ func MakeConfig() map[string]any {
 										},
 										map[string]any{
 											"name": "field",
-											"orig": "field",
+											"orig": "fields",
 											"type": "`$STRING`",
 											"kind": "query",
 											"example": "2020-05-31T20:59:59.999Z",
@@ -642,7 +642,7 @@ func MakeConfig() map[string]any {
 										},
 										map[string]any{
 											"name": "field",
-											"orig": "field",
+											"orig": "fields",
 											"type": "`$ARRAY`",
 											"kind": "query",
 											"example": []any{
@@ -738,7 +738,7 @@ func MakeConfig() map[string]any {
 										},
 										map[string]any{
 											"name": "field",
-											"orig": "field",
+											"orig": "fields",
 											"type": "`$ARRAY`",
 											"kind": "query",
 										},
@@ -968,7 +968,7 @@ func MakeConfig() map[string]any {
 										},
 										map[string]any{
 											"name": "field",
-											"orig": "field",
+											"orig": "fields",
 											"type": "`$ARRAY`",
 											"kind": "query",
 										},
@@ -1029,7 +1029,7 @@ func MakeConfig() map[string]any {
 										},
 										map[string]any{
 											"name": "field",
-											"orig": "field",
+											"orig": "fields",
 											"type": "`$ARRAY`",
 											"kind": "query",
 										},
@@ -1090,7 +1090,7 @@ func MakeConfig() map[string]any {
 										},
 										map[string]any{
 											"name": "field",
-											"orig": "field",
+											"orig": "fields",
 											"type": "`$ARRAY`",
 											"kind": "query",
 										},
@@ -1401,7 +1401,7 @@ func MakeConfig() map[string]any {
 										},
 										map[string]any{
 											"name": "field",
-											"orig": "field",
+											"orig": "fields",
 											"type": "`$ARRAY`",
 											"kind": "query",
 										},
@@ -1527,7 +1527,7 @@ func MakeConfig() map[string]any {
 										},
 										map[string]any{
 											"name": "field",
-											"orig": "field",
+											"orig": "fields",
 											"type": "`$ARRAY`",
 											"kind": "query",
 										},
@@ -1823,7 +1823,7 @@ func MakeConfig() map[string]any {
 										},
 										map[string]any{
 											"name": "field",
-											"orig": "field",
+											"orig": "fields",
 											"type": "`$ARRAY`",
 											"kind": "query",
 										},
@@ -1956,7 +1956,7 @@ func MakeConfig() map[string]any {
 										},
 										map[string]any{
 											"name": "field",
-											"orig": "field",
+											"orig": "fields",
 											"type": "`$ARRAY`",
 											"kind": "query",
 										},
@@ -2032,7 +2032,7 @@ func MakeConfig() map[string]any {
 										},
 										map[string]any{
 											"name": "field",
-											"orig": "field",
+											"orig": "fields",
 											"type": "`$ARRAY`",
 											"kind": "query",
 										},
@@ -2093,7 +2093,7 @@ func MakeConfig() map[string]any {
 										},
 										map[string]any{
 											"name": "field",
-											"orig": "field",
+											"orig": "fields",
 											"type": "`$ARRAY`",
 											"kind": "query",
 										},
@@ -2484,7 +2484,7 @@ func MakeConfig() map[string]any {
 										},
 										map[string]any{
 											"name": "field",
-											"orig": "field",
+											"orig": "fields",
 											"type": "`$ARRAY`",
 											"kind": "query",
 										},
@@ -2617,7 +2617,7 @@ func MakeConfig() map[string]any {
 										},
 										map[string]any{
 											"name": "field",
-											"orig": "field",
+											"orig": "fields",
 											"type": "`$ARRAY`",
 											"kind": "query",
 										},
@@ -2678,7 +2678,7 @@ func MakeConfig() map[string]any {
 										},
 										map[string]any{
 											"name": "field",
-											"orig": "field",
+											"orig": "fields",
 											"type": "`$ARRAY`",
 											"kind": "query",
 										},
@@ -2845,7 +2845,7 @@ func MakeConfig() map[string]any {
 										},
 										map[string]any{
 											"name": "field",
-											"orig": "field",
+											"orig": "fields",
 											"type": "`$ARRAY`",
 											"kind": "query",
 										},
@@ -2907,7 +2907,7 @@ func MakeConfig() map[string]any {
 										},
 										map[string]any{
 											"name": "field",
-											"orig": "field",
+											"orig": "fields",
 											"type": "`$ARRAY`",
 											"kind": "query",
 										},
@@ -2968,7 +2968,7 @@ func MakeConfig() map[string]any {
 										},
 										map[string]any{
 											"name": "field",
-											"orig": "field",
+											"orig": "fields",
 											"type": "`$ARRAY`",
 											"kind": "query",
 										},
@@ -3033,7 +3033,7 @@ func MakeConfig() map[string]any {
 										},
 										map[string]any{
 											"name": "field",
-											"orig": "field",
+											"orig": "fields",
 											"type": "`$ARRAY`",
 											"kind": "query",
 										},
@@ -3394,7 +3394,17 @@ func MakeConfig() map[string]any {
 				},
 			},
 			"umm_gas_controller": map[string]any{
-				"fields": []any{},
+				"fields": []any{
+					map[string]any{
+						"name": "id",
+						"title": "Id",
+						"type": "`$STRING`",
+					},
+				},
+				"id": map[string]any{
+					"field": "id",
+					"name": "id",
+				},
 				"name": "umm_gas_controller",
 				"op": map[string]any{
 					"load": map[string]any{
@@ -3584,6 +3594,15 @@ func MakeConfig() map[string]any {
 									"res": "`body`",
 								},
 								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "id",
+											"orig": "id",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
 									"query": []any{
 										map[string]any{
 											"name": "id",

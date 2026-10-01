@@ -190,10 +190,11 @@ export interface TransmissionControllerLoadMatch {
 }
 
 export interface UmmGasController {
+  id?: string
 }
 
 export interface UmmGasControllerLoadMatch {
-  id: number
+  id: string
 }
 
 export interface UmmRssFeedController {

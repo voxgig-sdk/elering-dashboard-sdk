@@ -1190,6 +1190,12 @@ Return the entity name.
 local umm_gas_controller = client:UmmGasController(nil)
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -1197,7 +1203,7 @@ local umm_gas_controller = client:UmmGasController(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:UmmGasController():load({ id = 1 })
+local result, err = client:UmmGasController():load({ id = "umm_gas_controller_id" })
 ```
 
 ### Common Methods

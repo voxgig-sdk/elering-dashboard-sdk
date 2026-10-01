@@ -462,6 +462,7 @@ API path: `/api/transmission/cross-border-capacity/{group}/csv`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Load.
 
@@ -865,10 +866,16 @@ Create an instance: `umm_gas_controller = client.UmmGasController()`
 | --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
 
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `str` |  |
+
 #### Example: Load
 
 ```python
-umm_gas_controller = client.UmmGasController().load({"id": 1})
+umm_gas_controller = client.UmmGasController().load({"id": "umm_gas_controller_id"})
 ```
 
 

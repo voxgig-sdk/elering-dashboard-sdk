@@ -12,9 +12,18 @@ The SDK exposes the API as capitalised, semantic **Entities** — for example `c
 
 ## Install
 This package is not yet published to RubyGems. Install it from the
-GitHub release tag (`rb/vX.Y.Z`):
+GitHub release tag (`rb/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/elering-dashboard-sdk/releases)), or
+from a clone:
 
-- Releases: [https://github.com/voxgig-sdk/elering-dashboard-sdk/releases](https://github.com/voxgig-sdk/elering-dashboard-sdk/releases)
+```bash
+git clone https://github.com/voxgig-sdk/elering-dashboard-sdk
+```
+
+Then add it to your `Gemfile` by path, and run `bundle install`:
+
+```ruby
+gem "voxgig-sdk-elering-dashboard-sdk", path: "./elering-dashboard-sdk/rb"
+```
 
 
 ## Tutorial: your first API call
@@ -456,6 +465,7 @@ API path: `/api/transmission/cross-border-capacity/{group}/csv`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Load.
 
@@ -881,11 +891,17 @@ Create an instance: `umm_gas_controller = client.UmmGasController`
 | --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
 
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `String` |  |
+
 #### Example: Load
 
 ```ruby
 # load returns the ENTITY — call data_get for the UmmGasController record (raises on error).
-umm_gas_controller = client.UmmGasController.load({ "id" => 1 })
+umm_gas_controller = client.UmmGasController.load({ "id" => "umm_gas_controller_id" })
 ```
 
 

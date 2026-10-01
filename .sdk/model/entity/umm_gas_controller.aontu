@@ -4,6 +4,20 @@ main: kit: entity: umm_gas_controller: {
 
   alias: field: {}
 
+  fields: {
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
   name: "umm_gas_controller"
   op: {
     load: {
@@ -174,6 +188,15 @@ main: kit: entity: umm_gas_controller: {
             version: 2
           }
           g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
             query: [
               {
                 k: "query"
@@ -212,9 +235,6 @@ main: kit: entity: umm_gas_controller: {
         }
       ]
     }
-  }
-
-  fields: {
   }
 
 

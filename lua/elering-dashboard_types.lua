@@ -147,9 +147,10 @@
 ---@field start? string
 
 ---@class UmmGasController
+---@field id? string
 
 ---@class UmmGasControllerLoadMatch
----@field id number
+---@field id string
 
 ---@class UmmRssFeedController
 

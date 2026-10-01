@@ -15,9 +15,13 @@ predictable and low-friction for both humans and AI agents.
 
 ## Install
 This package is not yet published to npm. Install it from the GitHub
-release tag (`ts/vX.Y.Z`):
+release tag (`ts/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/elering-dashboard-sdk/releases)), or from a
+clone, which carries the compiled `dist/`:
 
-- Releases: [https://github.com/voxgig-sdk/elering-dashboard-sdk/releases](https://github.com/voxgig-sdk/elering-dashboard-sdk/releases)
+```bash
+git clone https://github.com/voxgig-sdk/elering-dashboard-sdk
+npm install ./elering-dashboard-sdk/ts
+```
 
 
 ## Tutorial: your first API call
@@ -511,6 +515,7 @@ API path: `/api/transmission/cross-border-capacity/{group}/csv`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: load.
 
@@ -914,10 +919,16 @@ Create an instance: `const umm_gas_controller = client.UmmGasController()`
 | --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
 
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
 #### Example: Load
 
 ```ts
-const umm_gas_controller = await client.UmmGasController().load({ id: 1 })
+const umm_gas_controller = await client.UmmGasController().load({ id: 'umm_gas_controller_id' })
 ```
 
 

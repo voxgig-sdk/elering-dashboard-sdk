@@ -28,7 +28,7 @@ main: kit: entity: system_controller: {
               {
                 k: "query"
                 n: "field"
-                or: "field"
+                or: "fields"
                 r: false
                 t: "`$ARRAY`"
               }
@@ -86,7 +86,7 @@ main: kit: entity: system_controller: {
               {
                 k: "query"
                 n: "field"
-                or: "field"
+                or: "fields"
                 r: false
                 t: "`$ARRAY`"
               }

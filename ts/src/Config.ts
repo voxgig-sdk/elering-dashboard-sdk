@@ -306,7 +306,7 @@ class Config {
                   },
                   {
                     "name": "field",
-                    "orig": "field",
+                    "orig": "fields",
                     "type": "`$ARRAY`",
                     "kind": "query"
                   },
@@ -363,7 +363,7 @@ class Config {
                   },
                   {
                     "name": "field",
-                    "orig": "field",
+                    "orig": "fields",
                     "type": "`$ARRAY`",
                     "kind": "query"
                   },
@@ -424,7 +424,7 @@ class Config {
                   },
                   {
                     "name": "field",
-                    "orig": "field",
+                    "orig": "fields",
                     "type": "`$ARRAY`",
                     "kind": "query"
                   },
@@ -481,7 +481,7 @@ class Config {
                   },
                   {
                     "name": "field",
-                    "orig": "field",
+                    "orig": "fields",
                     "type": "`$STRING`",
                     "kind": "query",
                     "example": "2020-05-31T20:59:59.999Z"
@@ -729,7 +729,7 @@ class Config {
                   },
                   {
                     "name": "field",
-                    "orig": "field",
+                    "orig": "fields",
                     "type": "`$ARRAY`",
                     "kind": "query",
                     "example": [
@@ -825,7 +825,7 @@ class Config {
                   },
                   {
                     "name": "field",
-                    "orig": "field",
+                    "orig": "fields",
                     "type": "`$ARRAY`",
                     "kind": "query"
                   },
@@ -1055,7 +1055,7 @@ class Config {
                   },
                   {
                     "name": "field",
-                    "orig": "field",
+                    "orig": "fields",
                     "type": "`$ARRAY`",
                     "kind": "query"
                   },
@@ -1116,7 +1116,7 @@ class Config {
                   },
                   {
                     "name": "field",
-                    "orig": "field",
+                    "orig": "fields",
                     "type": "`$ARRAY`",
                     "kind": "query"
                   },
@@ -1177,7 +1177,7 @@ class Config {
                   },
                   {
                     "name": "field",
-                    "orig": "field",
+                    "orig": "fields",
                     "type": "`$ARRAY`",
                     "kind": "query"
                   },
@@ -1488,7 +1488,7 @@ class Config {
                   },
                   {
                     "name": "field",
-                    "orig": "field",
+                    "orig": "fields",
                     "type": "`$ARRAY`",
                     "kind": "query"
                   },
@@ -1614,7 +1614,7 @@ class Config {
                   },
                   {
                     "name": "field",
-                    "orig": "field",
+                    "orig": "fields",
                     "type": "`$ARRAY`",
                     "kind": "query"
                   },
@@ -1910,7 +1910,7 @@ class Config {
                   },
                   {
                     "name": "field",
-                    "orig": "field",
+                    "orig": "fields",
                     "type": "`$ARRAY`",
                     "kind": "query"
                   },
@@ -2043,7 +2043,7 @@ class Config {
                   },
                   {
                     "name": "field",
-                    "orig": "field",
+                    "orig": "fields",
                     "type": "`$ARRAY`",
                     "kind": "query"
                   },
@@ -2119,7 +2119,7 @@ class Config {
                   },
                   {
                     "name": "field",
-                    "orig": "field",
+                    "orig": "fields",
                     "type": "`$ARRAY`",
                     "kind": "query"
                   },
@@ -2180,7 +2180,7 @@ class Config {
                   },
                   {
                     "name": "field",
-                    "orig": "field",
+                    "orig": "fields",
                     "type": "`$ARRAY`",
                     "kind": "query"
                   },
@@ -2571,7 +2571,7 @@ class Config {
                   },
                   {
                     "name": "field",
-                    "orig": "field",
+                    "orig": "fields",
                     "type": "`$ARRAY`",
                     "kind": "query"
                   },
@@ -2704,7 +2704,7 @@ class Config {
                   },
                   {
                     "name": "field",
-                    "orig": "field",
+                    "orig": "fields",
                     "type": "`$ARRAY`",
                     "kind": "query"
                   },
@@ -2765,7 +2765,7 @@ class Config {
                   },
                   {
                     "name": "field",
-                    "orig": "field",
+                    "orig": "fields",
                     "type": "`$ARRAY`",
                     "kind": "query"
                   },
@@ -2932,7 +2932,7 @@ class Config {
                   },
                   {
                     "name": "field",
-                    "orig": "field",
+                    "orig": "fields",
                     "type": "`$ARRAY`",
                     "kind": "query"
                   },
@@ -2994,7 +2994,7 @@ class Config {
                   },
                   {
                     "name": "field",
-                    "orig": "field",
+                    "orig": "fields",
                     "type": "`$ARRAY`",
                     "kind": "query"
                   },
@@ -3055,7 +3055,7 @@ class Config {
                   },
                   {
                     "name": "field",
-                    "orig": "field",
+                    "orig": "fields",
                     "type": "`$ARRAY`",
                     "kind": "query"
                   },
@@ -3120,7 +3120,7 @@ class Config {
                   },
                   {
                     "name": "field",
-                    "orig": "field",
+                    "orig": "fields",
                     "type": "`$ARRAY`",
                     "kind": "query"
                   },
@@ -3481,7 +3481,17 @@ class Config {
       }
     },
     "umm_gas_controller": {
-      "fields": [],
+      "fields": [
+        {
+          "name": "id",
+          "title": "Id",
+          "type": "`$STRING`"
+        }
+      ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "umm_gas_controller",
       "op": {
         "load": {
@@ -3671,6 +3681,15 @@ class Config {
                 "res": "`body`"
               },
               "args": {
+                "params": [
+                  {
+                    "name": "id",
+                    "orig": "id",
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
+                  }
+                ],
                 "query": [
                   {
                     "name": "id",

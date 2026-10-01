@@ -61,13 +61,19 @@ func TestUmmGasControllerEntity(t *testing.T) {
 
 		// LOAD
 		ummGasControllerRef01Ent := client.UmmGasController(nil)
-		ummGasControllerRef01MatchDt0 := map[string]any{}
+		ummGasControllerRef01MatchDt0 := map[string]any{
+			"id": ummGasControllerRef01Data["id"],
+		}
 		ummGasControllerRef01DataDt0Loaded, err := ummGasControllerRef01Ent.Load(ummGasControllerRef01MatchDt0, nil)
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		if ummGasControllerRef01DataDt0Loaded == nil {
-			t.Fatal("expected load result to be non-nil")
+		ummGasControllerRef01DataDt0LoadResult := core.ToMapAny(entityData(ummGasControllerRef01DataDt0Loaded))
+		if ummGasControllerRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
+		}
+		if ummGasControllerRef01DataDt0LoadResult["id"] != ummGasControllerRef01Data["id"] {
+			t.Fatal("expected load result id to match")
 		}
 
 	})

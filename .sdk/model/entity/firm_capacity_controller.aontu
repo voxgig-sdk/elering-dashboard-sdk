@@ -48,7 +48,7 @@ main: kit: entity: firm_capacity_controller: {
                 ]
                 k: "query"
                 n: "field"
-                or: "field"
+                or: "fields"
                 r: false
                 t: "`$ARRAY`"
               }

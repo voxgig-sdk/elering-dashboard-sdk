@@ -1218,7 +1218,15 @@ declare class Config {
             };
         };
         umm_gas_controller: {
-            fields: never[];
+            fields: {
+                name: string;
+                title: string;
+                type: string;
+            }[];
+            id: {
+                field: string;
+                name: string;
+            };
             name: string;
             op: {
                 load: {
@@ -1257,6 +1265,33 @@ declare class Config {
                                 kind: string;
                                 example: string;
                             })[];
+                            params?: undefined;
+                        };
+                        select: {
+                            exist: string[];
+                        };
+                    } | {
+                        kind: string;
+                        method: string;
+                        orig: string;
+                        segments: {
+                            lit: string;
+                        }[];
+                        parts: string[];
+                        rename: {};
+                        transform: {
+                            req: string;
+                            res: string;
+                        };
+                        args: {
+                            query: {
+                                name: string;
+                                orig: string;
+                                type: string;
+                                kind: string;
+                                reqd: boolean;
+                            }[];
+                            params?: undefined;
                         };
                         select: {
                             exist: string[];
@@ -1279,6 +1314,13 @@ declare class Config {
                             res: string;
                         };
                         args: {
+                            params: {
+                                name: string;
+                                orig: string;
+                                type: string;
+                                kind: string;
+                                reqd: boolean;
+                            }[];
                             query: {
                                 name: string;
                                 orig: string;

@@ -241,7 +241,7 @@ class EleringDashboardConfig
                       ],
                       [
                         'name' => 'field',
-                        'orig' => 'field',
+                        'orig' => 'fields',
                         'type' => '`$ARRAY`',
                         'kind' => 'query',
                       ],
@@ -298,7 +298,7 @@ class EleringDashboardConfig
                       ],
                       [
                         'name' => 'field',
-                        'orig' => 'field',
+                        'orig' => 'fields',
                         'type' => '`$ARRAY`',
                         'kind' => 'query',
                       ],
@@ -359,7 +359,7 @@ class EleringDashboardConfig
                       ],
                       [
                         'name' => 'field',
-                        'orig' => 'field',
+                        'orig' => 'fields',
                         'type' => '`$ARRAY`',
                         'kind' => 'query',
                       ],
@@ -416,7 +416,7 @@ class EleringDashboardConfig
                       ],
                       [
                         'name' => 'field',
-                        'orig' => 'field',
+                        'orig' => 'fields',
                         'type' => '`$STRING`',
                         'kind' => 'query',
                         'example' => '2020-05-31T20:59:59.999Z',
@@ -664,7 +664,7 @@ class EleringDashboardConfig
                       ],
                       [
                         'name' => 'field',
-                        'orig' => 'field',
+                        'orig' => 'fields',
                         'type' => '`$ARRAY`',
                         'kind' => 'query',
                         'example' => [
@@ -760,7 +760,7 @@ class EleringDashboardConfig
                       ],
                       [
                         'name' => 'field',
-                        'orig' => 'field',
+                        'orig' => 'fields',
                         'type' => '`$ARRAY`',
                         'kind' => 'query',
                       ],
@@ -990,7 +990,7 @@ class EleringDashboardConfig
                       ],
                       [
                         'name' => 'field',
-                        'orig' => 'field',
+                        'orig' => 'fields',
                         'type' => '`$ARRAY`',
                         'kind' => 'query',
                       ],
@@ -1051,7 +1051,7 @@ class EleringDashboardConfig
                       ],
                       [
                         'name' => 'field',
-                        'orig' => 'field',
+                        'orig' => 'fields',
                         'type' => '`$ARRAY`',
                         'kind' => 'query',
                       ],
@@ -1112,7 +1112,7 @@ class EleringDashboardConfig
                       ],
                       [
                         'name' => 'field',
-                        'orig' => 'field',
+                        'orig' => 'fields',
                         'type' => '`$ARRAY`',
                         'kind' => 'query',
                       ],
@@ -1423,7 +1423,7 @@ class EleringDashboardConfig
                       ],
                       [
                         'name' => 'field',
-                        'orig' => 'field',
+                        'orig' => 'fields',
                         'type' => '`$ARRAY`',
                         'kind' => 'query',
                       ],
@@ -1549,7 +1549,7 @@ class EleringDashboardConfig
                       ],
                       [
                         'name' => 'field',
-                        'orig' => 'field',
+                        'orig' => 'fields',
                         'type' => '`$ARRAY`',
                         'kind' => 'query',
                       ],
@@ -1845,7 +1845,7 @@ class EleringDashboardConfig
                       ],
                       [
                         'name' => 'field',
-                        'orig' => 'field',
+                        'orig' => 'fields',
                         'type' => '`$ARRAY`',
                         'kind' => 'query',
                       ],
@@ -1978,7 +1978,7 @@ class EleringDashboardConfig
                       ],
                       [
                         'name' => 'field',
-                        'orig' => 'field',
+                        'orig' => 'fields',
                         'type' => '`$ARRAY`',
                         'kind' => 'query',
                       ],
@@ -2054,7 +2054,7 @@ class EleringDashboardConfig
                       ],
                       [
                         'name' => 'field',
-                        'orig' => 'field',
+                        'orig' => 'fields',
                         'type' => '`$ARRAY`',
                         'kind' => 'query',
                       ],
@@ -2115,7 +2115,7 @@ class EleringDashboardConfig
                       ],
                       [
                         'name' => 'field',
-                        'orig' => 'field',
+                        'orig' => 'fields',
                         'type' => '`$ARRAY`',
                         'kind' => 'query',
                       ],
@@ -2506,7 +2506,7 @@ class EleringDashboardConfig
                       ],
                       [
                         'name' => 'field',
-                        'orig' => 'field',
+                        'orig' => 'fields',
                         'type' => '`$ARRAY`',
                         'kind' => 'query',
                       ],
@@ -2639,7 +2639,7 @@ class EleringDashboardConfig
                       ],
                       [
                         'name' => 'field',
-                        'orig' => 'field',
+                        'orig' => 'fields',
                         'type' => '`$ARRAY`',
                         'kind' => 'query',
                       ],
@@ -2700,7 +2700,7 @@ class EleringDashboardConfig
                       ],
                       [
                         'name' => 'field',
-                        'orig' => 'field',
+                        'orig' => 'fields',
                         'type' => '`$ARRAY`',
                         'kind' => 'query',
                       ],
@@ -2867,7 +2867,7 @@ class EleringDashboardConfig
                       ],
                       [
                         'name' => 'field',
-                        'orig' => 'field',
+                        'orig' => 'fields',
                         'type' => '`$ARRAY`',
                         'kind' => 'query',
                       ],
@@ -2929,7 +2929,7 @@ class EleringDashboardConfig
                       ],
                       [
                         'name' => 'field',
-                        'orig' => 'field',
+                        'orig' => 'fields',
                         'type' => '`$ARRAY`',
                         'kind' => 'query',
                       ],
@@ -2990,7 +2990,7 @@ class EleringDashboardConfig
                       ],
                       [
                         'name' => 'field',
-                        'orig' => 'field',
+                        'orig' => 'fields',
                         'type' => '`$ARRAY`',
                         'kind' => 'query',
                       ],
@@ -3055,7 +3055,7 @@ class EleringDashboardConfig
                       ],
                       [
                         'name' => 'field',
-                        'orig' => 'field',
+                        'orig' => 'fields',
                         'type' => '`$ARRAY`',
                         'kind' => 'query',
                       ],
@@ -3416,7 +3416,17 @@ class EleringDashboardConfig
           ],
         ],
         'umm_gas_controller' => [
-          'fields' => [],
+          'fields' => [
+            [
+              'name' => 'id',
+              'title' => 'Id',
+              'type' => '`$STRING`',
+            ],
+          ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
+          ],
           'name' => 'umm_gas_controller',
           'op' => [
             'load' => [
@@ -3606,6 +3616,15 @@ class EleringDashboardConfig
                     'res' => '`body`',
                   ],
                   'args' => [
+                    'params' => [
+                      [
+                        'name' => 'id',
+                        'orig' => 'id',
+                        'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                      ],
+                    ],
                     'query' => [
                       [
                         'name' => 'id',

@@ -226,12 +226,12 @@ class TransmissionControllerLoadMatch(TransmissionControllerLoadMatchRequired, t
     start: str
 
 
-class UmmGasController(TypedDict):
-    pass
+class UmmGasController(TypedDict, total=False):
+    id: str
 
 
 class UmmGasControllerLoadMatch(TypedDict):
-    id: int
+    id: str
 
 
 class UmmRssFeedController(TypedDict):

@@ -1165,6 +1165,12 @@ Return the entity name.
 umm_gas_controller = client.UmmGasController()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
 ### Operations
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -1172,7 +1178,7 @@ umm_gas_controller = client.UmmGasController()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.UmmGasController().load({"id": 1})
+result = client.UmmGasController().load({"id": "umm_gas_controller_id"})
 ```
 
 ### Common Methods

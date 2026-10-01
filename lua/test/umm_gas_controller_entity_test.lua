@@ -44,10 +44,14 @@ describe("UmmGasControllerEntity", function()
 
     -- LOAD
     local umm_gas_controller_ref01_ent = client:UmmGasController(nil)
-    local umm_gas_controller_ref01_match_dt0 = {}
+    local umm_gas_controller_ref01_match_dt0 = {
+      id = umm_gas_controller_ref01_data["id"],
+    }
     local umm_gas_controller_ref01_data_dt0_loaded, err = umm_gas_controller_ref01_ent:load(umm_gas_controller_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_not_nil(umm_gas_controller_ref01_data_dt0_loaded)
+    local umm_gas_controller_ref01_data_dt0_load_result = helpers.to_map(type(umm_gas_controller_ref01_data_dt0_loaded) == 'table' and umm_gas_controller_ref01_data_dt0_loaded.data_get and umm_gas_controller_ref01_data_dt0_loaded:data_get() or umm_gas_controller_ref01_data_dt0_loaded)
+    assert.is_not_nil(umm_gas_controller_ref01_data_dt0_load_result)
+    assert.are.equal(umm_gas_controller_ref01_data_dt0_load_result["id"], umm_gas_controller_ref01_data["id"])
 
   end)
 end)

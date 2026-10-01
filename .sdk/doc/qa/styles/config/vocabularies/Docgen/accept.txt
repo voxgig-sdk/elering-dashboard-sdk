@@ -414,6 +414,7 @@ initialiser
 [Ff][Uu][Ee][Ll]
 [Tt][Ee][Cc][Hh][Nn][Oo][Ll][Oo][Gg][Yy]
 [Tt][Yy][Pp][Ee]
+[Ii][Dd]
 [Aa][Ff][Ff][Ee][Cc][Tt][Ee][Dd]
 [Aa][Ss][Ss][Ee][Tt]
 [Nn][Aa][Mm][Ee]

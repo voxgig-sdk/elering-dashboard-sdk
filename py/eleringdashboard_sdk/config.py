@@ -244,7 +244,7 @@ def make_config():
                     },
                     {
                       "name": "field",
-                      "orig": "field",
+                      "orig": "fields",
                       "type": "`$ARRAY`",
                       "kind": "query",
                     },
@@ -301,7 +301,7 @@ def make_config():
                     },
                     {
                       "name": "field",
-                      "orig": "field",
+                      "orig": "fields",
                       "type": "`$ARRAY`",
                       "kind": "query",
                     },
@@ -362,7 +362,7 @@ def make_config():
                     },
                     {
                       "name": "field",
-                      "orig": "field",
+                      "orig": "fields",
                       "type": "`$ARRAY`",
                       "kind": "query",
                     },
@@ -419,7 +419,7 @@ def make_config():
                     },
                     {
                       "name": "field",
-                      "orig": "field",
+                      "orig": "fields",
                       "type": "`$STRING`",
                       "kind": "query",
                       "example": "2020-05-31T20:59:59.999Z",
@@ -667,7 +667,7 @@ def make_config():
                     },
                     {
                       "name": "field",
-                      "orig": "field",
+                      "orig": "fields",
                       "type": "`$ARRAY`",
                       "kind": "query",
                       "example": [
@@ -763,7 +763,7 @@ def make_config():
                     },
                     {
                       "name": "field",
-                      "orig": "field",
+                      "orig": "fields",
                       "type": "`$ARRAY`",
                       "kind": "query",
                     },
@@ -993,7 +993,7 @@ def make_config():
                     },
                     {
                       "name": "field",
-                      "orig": "field",
+                      "orig": "fields",
                       "type": "`$ARRAY`",
                       "kind": "query",
                     },
@@ -1054,7 +1054,7 @@ def make_config():
                     },
                     {
                       "name": "field",
-                      "orig": "field",
+                      "orig": "fields",
                       "type": "`$ARRAY`",
                       "kind": "query",
                     },
@@ -1115,7 +1115,7 @@ def make_config():
                     },
                     {
                       "name": "field",
-                      "orig": "field",
+                      "orig": "fields",
                       "type": "`$ARRAY`",
                       "kind": "query",
                     },
@@ -1426,7 +1426,7 @@ def make_config():
                     },
                     {
                       "name": "field",
-                      "orig": "field",
+                      "orig": "fields",
                       "type": "`$ARRAY`",
                       "kind": "query",
                     },
@@ -1552,7 +1552,7 @@ def make_config():
                     },
                     {
                       "name": "field",
-                      "orig": "field",
+                      "orig": "fields",
                       "type": "`$ARRAY`",
                       "kind": "query",
                     },
@@ -1848,7 +1848,7 @@ def make_config():
                     },
                     {
                       "name": "field",
-                      "orig": "field",
+                      "orig": "fields",
                       "type": "`$ARRAY`",
                       "kind": "query",
                     },
@@ -1981,7 +1981,7 @@ def make_config():
                     },
                     {
                       "name": "field",
-                      "orig": "field",
+                      "orig": "fields",
                       "type": "`$ARRAY`",
                       "kind": "query",
                     },
@@ -2057,7 +2057,7 @@ def make_config():
                     },
                     {
                       "name": "field",
-                      "orig": "field",
+                      "orig": "fields",
                       "type": "`$ARRAY`",
                       "kind": "query",
                     },
@@ -2118,7 +2118,7 @@ def make_config():
                     },
                     {
                       "name": "field",
-                      "orig": "field",
+                      "orig": "fields",
                       "type": "`$ARRAY`",
                       "kind": "query",
                     },
@@ -2509,7 +2509,7 @@ def make_config():
                     },
                     {
                       "name": "field",
-                      "orig": "field",
+                      "orig": "fields",
                       "type": "`$ARRAY`",
                       "kind": "query",
                     },
@@ -2642,7 +2642,7 @@ def make_config():
                     },
                     {
                       "name": "field",
-                      "orig": "field",
+                      "orig": "fields",
                       "type": "`$ARRAY`",
                       "kind": "query",
                     },
@@ -2703,7 +2703,7 @@ def make_config():
                     },
                     {
                       "name": "field",
-                      "orig": "field",
+                      "orig": "fields",
                       "type": "`$ARRAY`",
                       "kind": "query",
                     },
@@ -2870,7 +2870,7 @@ def make_config():
                     },
                     {
                       "name": "field",
-                      "orig": "field",
+                      "orig": "fields",
                       "type": "`$ARRAY`",
                       "kind": "query",
                     },
@@ -2932,7 +2932,7 @@ def make_config():
                     },
                     {
                       "name": "field",
-                      "orig": "field",
+                      "orig": "fields",
                       "type": "`$ARRAY`",
                       "kind": "query",
                     },
@@ -2993,7 +2993,7 @@ def make_config():
                     },
                     {
                       "name": "field",
-                      "orig": "field",
+                      "orig": "fields",
                       "type": "`$ARRAY`",
                       "kind": "query",
                     },
@@ -3058,7 +3058,7 @@ def make_config():
                     },
                     {
                       "name": "field",
-                      "orig": "field",
+                      "orig": "fields",
                       "type": "`$ARRAY`",
                       "kind": "query",
                     },
@@ -3419,7 +3419,17 @@ def make_config():
         },
       },
       "umm_gas_controller": {
-        "fields": [],
+        "fields": [
+          {
+            "name": "id",
+            "title": "Id",
+            "type": "`$STRING`",
+          },
+        ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "umm_gas_controller",
         "op": {
           "load": {
@@ -3609,6 +3619,15 @@ def make_config():
                   "res": "`body`",
                 },
                 "args": {
+                  "params": [
+                    {
+                      "name": "id",
+                      "orig": "id",
+                      "type": "`$STRING`",
+                      "kind": "param",
+                      "reqd": True,
+                    },
+                  ],
                   "query": [
                     {
                       "name": "id",

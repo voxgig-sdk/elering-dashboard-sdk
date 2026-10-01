@@ -287,12 +287,13 @@ class TransmissionControllerLoadMatch
 /** UmmGasController entity data model. */
 class UmmGasController
 {
+    public ?string $id = null;
 }
 
 /** Request payload for UmmGasController#load. */
 class UmmGasControllerLoadMatch
 {
-    public int $id;
+    public string $id;
 }
 
 /** UmmRssFeedController entity data model. */

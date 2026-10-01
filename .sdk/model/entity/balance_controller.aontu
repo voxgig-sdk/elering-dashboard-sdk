@@ -28,7 +28,7 @@ main: kit: entity: balance_controller: {
               {
                 k: "query"
                 n: "field"
-                or: "field"
+                or: "fields"
                 r: false
                 t: "`$ARRAY`"
               }
@@ -89,7 +89,7 @@ main: kit: entity: balance_controller: {
               {
                 k: "query"
                 n: "field"
-                or: "field"
+                or: "fields"
                 r: false
                 t: "`$ARRAY`"
               }
@@ -147,7 +147,7 @@ main: kit: entity: balance_controller: {
               {
                 k: "query"
                 n: "field"
-                or: "field"
+                or: "fields"
                 r: false
                 t: "`$ARRAY`"
               }
@@ -209,7 +209,7 @@ main: kit: entity: balance_controller: {
                 ex: "2020-05-31T20:59:59.999Z"
                 k: "query"
                 n: "field"
-                or: "field"
+                or: "fields"
                 r: false
                 t: "`$STRING`"
               }

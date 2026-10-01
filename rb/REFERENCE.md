@@ -1193,6 +1193,12 @@ Return the entity name.
 umm_gas_controller = client.UmmGasController
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
 ### Operations
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -1200,7 +1206,7 @@ umm_gas_controller = client.UmmGasController
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.UmmGasController.load({ "id" => 1 })
+result = client.UmmGasController.load({ "id" => "umm_gas_controller_id" })
 ```
 
 ### Common Methods

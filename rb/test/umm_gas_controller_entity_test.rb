@@ -41,9 +41,13 @@ class UmmGasControllerEntityTest < Minitest::Test
 
     # LOAD
     umm_gas_controller_ref01_ent = client.UmmGasController(nil)
-    umm_gas_controller_ref01_match_dt0 = {}
+    umm_gas_controller_ref01_match_dt0 = {
+      "id" => umm_gas_controller_ref01_data["id"],
+    }
     umm_gas_controller_ref01_data_dt0_loaded = umm_gas_controller_ref01_ent.load(umm_gas_controller_ref01_match_dt0, nil)
-    assert !umm_gas_controller_ref01_data_dt0_loaded.nil?
+    umm_gas_controller_ref01_data_dt0_load_result = Helpers.to_map(umm_gas_controller_ref01_data_dt0_loaded.respond_to?(:data_get) ? umm_gas_controller_ref01_data_dt0_loaded.data_get : umm_gas_controller_ref01_data_dt0_loaded)
+    assert !umm_gas_controller_ref01_data_dt0_load_result.nil?
+    assert_equal umm_gas_controller_ref01_data_dt0_load_result["id"], umm_gas_controller_ref01_data["id"]
 
   end
 end

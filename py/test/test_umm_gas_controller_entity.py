@@ -48,9 +48,13 @@ class TestUmmGasControllerEntity:
 
         # LOAD
         umm_gas_controller_ref01_ent = client.UmmGasController(None)
-        umm_gas_controller_ref01_match_dt0 = {}
+        umm_gas_controller_ref01_match_dt0 = {
+            "id": umm_gas_controller_ref01_data["id"],
+        }
         umm_gas_controller_ref01_data_dt0_loaded = umm_gas_controller_ref01_ent.load(umm_gas_controller_ref01_match_dt0, None)
-        assert umm_gas_controller_ref01_data_dt0_loaded is not None
+        umm_gas_controller_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(umm_gas_controller_ref01_data_dt0_loaded))
+        assert umm_gas_controller_ref01_data_dt0_load_result is not None
+        assert umm_gas_controller_ref01_data_dt0_load_result["id"] == umm_gas_controller_ref01_data["id"]
 
 
 

@@ -414,13 +414,18 @@ TransmissionControllerLoadMatch = Struct.new(
 )
 
 # UmmGasController entity data model.
-class UmmGasController
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+UmmGasController = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for UmmGasController#load.
 #
 # @!attribute [rw] id
-#   @return [Integer]
+#   @return [String]
 UmmGasControllerLoadMatch = Struct.new(
   :id,
   keyword_init: true

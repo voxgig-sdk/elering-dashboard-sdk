@@ -1192,6 +1192,12 @@ Return the entity name.
 $umm_gas_controller = $client->UmmGasController();
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -1199,7 +1205,7 @@ $umm_gas_controller = $client->UmmGasController();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->UmmGasController()->load(["id" => 1]);
+$result = $client->UmmGasController()->load(["id" => "umm_gas_controller_id"]);
 ```
 
 ### Common Methods

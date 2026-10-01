@@ -48,9 +48,13 @@ class UmmGasControllerEntityTest extends TestCase
 
         // LOAD
         $umm_gas_controller_ref01_ent = $client->UmmGasController(null);
-        $umm_gas_controller_ref01_match_dt0 = [];
+        $umm_gas_controller_ref01_match_dt0 = [
+            "id" => $umm_gas_controller_ref01_data["id"],
+        ];
         $umm_gas_controller_ref01_data_dt0_loaded = $umm_gas_controller_ref01_ent->load($umm_gas_controller_ref01_match_dt0, null);
-        $this->assertNotNull($umm_gas_controller_ref01_data_dt0_loaded);
+        $umm_gas_controller_ref01_data_dt0_load_result = Helpers::to_map(is_object($umm_gas_controller_ref01_data_dt0_loaded) && method_exists($umm_gas_controller_ref01_data_dt0_loaded, 'data_get') ? $umm_gas_controller_ref01_data_dt0_loaded->data_get() : $umm_gas_controller_ref01_data_dt0_loaded);
+        $this->assertNotNull($umm_gas_controller_ref01_data_dt0_load_result);
+        $this->assertEquals($umm_gas_controller_ref01_data_dt0_load_result["id"], $umm_gas_controller_ref01_data["id"]);
 
     }
 }
