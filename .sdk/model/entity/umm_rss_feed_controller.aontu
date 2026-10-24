@@ -17,6 +17,11 @@ main: kit: entity: umm_rss_feed_controller: {
           }
           m: "GET"
           o: "/umm/gas/rss"
+          rs: {
+            binary: true
+            kind: "raw"
+            media: "application/xml"
+          }
           s: [
             {
               lit: "umm"
@@ -41,6 +46,11 @@ main: kit: entity: umm_rss_feed_controller: {
           }
           m: "GET"
           o: "/umm/gas/rss/aris"
+          rs: {
+            binary: true
+            kind: "raw"
+            media: "application/xml"
+          }
           s: [
             {
               lit: "umm"

@@ -37,11 +37,9 @@ main: kit: entity: renomination: {
           }
           m: "GET"
           o: "/api/nominations/renominations"
-          q: {
-            exist: [
-              "end"
-              "start"
-            ]
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {

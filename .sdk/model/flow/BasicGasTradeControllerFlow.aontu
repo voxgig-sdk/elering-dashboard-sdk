@@ -13,10 +13,6 @@ main: kit: flow: BasicGasTradeControllerFlow:
         suffix: "_dt0"
       }
 
-      m: {
-        id: "gas_trade_controller01"
-      }
-
       o: "load",
       v: [
         {

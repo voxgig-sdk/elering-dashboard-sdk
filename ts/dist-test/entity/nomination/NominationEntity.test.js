@@ -54,6 +54,14 @@ const utility_1 = require("../../utility");
         const ent = testsdk.Nomination();
         (0, node_assert_1.default)(null != ent);
     });
+    (0, node_test_1.test)('validate', async (t) => {
+        if (null == __1.config.feature?.validate) {
+            t.skip('feature not present in this SDK: validate');
+            return;
+        }
+        const client = __1.EleringDashboardSDK.test(undefined, { feature: { validate: { active: true } } });
+        await node_assert_1.default.rejects(client.Nomination().load({ "end": 1 }), (err) => 'validate_failed' === err.code);
+    });
     (0, node_test_1.test)('basic', async (t) => {
         const live = 'TRUE' === process.env.ELERING_DASHBOARD_TEST_LIVE;
         for (const op of ['load']) {
@@ -62,7 +70,7 @@ const utility_1 = require("../../utility");
         }
         const setup = basicSetup();
         if (setup.live) {
-            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": {}, "name": "nomination", "op": { "load": { "input": "data", "name": "load", "points": [{ "a": true, "co": { "id": "GET /api/nominations", "source": "openapi3", "version": 2 }, "g": { "query": [{ "a": true, "ex": "2020-06-30T20:59:59.999Z", "k": "query", "n": "end", "or": "end", "r": false, "t": "`$STRING`", "index$": 0 }, { "a": true, "ex": "2020-05-31T20:59:59.999Z", "k": "query", "n": "start", "or": "start", "r": false, "t": "`$STRING`", "index$": 1 }] }, "k": "http", "m": "GET", "o": "/api/nominations", "q": { "exist": ["end", "start"] }, "r": {}, "s": [{ "lit": "api" }, { "lit": "nominations" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "load" } }, "relations": { "ancestors": [] }, "key$": "nomination", "name__orig": "nomination", "Name": "Nomination", "name_": "nomination", "name-": "nomination", "NAME": "NOMINATION", "index$": 14 }, { "active": true, "entity": "nomination", "key$": "BasicNominationFlow", "kind": "basic", "name": "BasicNominationFlow", "param": {}, "step": [{ "a": true, "d": {}, "i": { "ref": "nomination_ref01", "srcdatavar": "nomination_ref01_data", "suffix": "_dt0" }, "m": {}, "o": "load", "s": [], "v": [{ "apply": "TextFieldMark", "def": { "mark": "Mark01-nomination_ref01" } }], "index$": 0 }] }, 'Nomination', { "GET /api/nominations": { "protocol": "http", "parameters": [{ "name": "start", "in": "query", "description": "start time for data", "required": false, "allowEmptyValue": true, "schema": { "type": "string", "format": "date-time" }, "example": "2020-05-31T20:59:59.999Z", "index$": 0 }, { "name": "end", "in": "query", "description": "end time for data", "required": false, "allowEmptyValue": true, "schema": { "type": "string", "format": "date-time" }, "example": "2020-06-30T20:59:59.999Z", "index$": 1 }] } });
+            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": {}, "name": "nomination", "op": { "load": { "input": "data", "name": "load", "points": [{ "a": true, "co": { "id": "GET /api/nominations", "source": "openapi3", "version": 2 }, "g": { "query": [{ "a": true, "ex": "2020-06-30T20:59:59.999Z", "k": "query", "n": "end", "or": "end", "r": false, "t": "`$STRING`", "index$": 0 }, { "a": true, "ex": "2020-05-31T20:59:59.999Z", "k": "query", "n": "start", "or": "start", "r": false, "t": "`$STRING`", "index$": 1 }] }, "k": "http", "m": "GET", "o": "/api/nominations", "q": {}, "r": {}, "rs": { "kind": "json", "media": "application/json" }, "s": [{ "lit": "api" }, { "lit": "nominations" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "load" } }, "relations": { "ancestors": [] }, "key$": "nomination", "name__orig": "nomination", "Name": "Nomination", "name_": "nomination", "name-": "nomination", "NAME": "NOMINATION", "index$": 14 }, { "active": true, "entity": "nomination", "key$": "BasicNominationFlow", "kind": "basic", "name": "BasicNominationFlow", "param": {}, "step": [{ "a": true, "d": {}, "i": { "ref": "nomination_ref01", "srcdatavar": "nomination_ref01_data", "suffix": "_dt0" }, "m": {}, "o": "load", "s": [], "v": [{ "apply": "TextFieldMark", "def": { "mark": "Mark01-nomination_ref01" } }], "index$": 0 }] }, 'Nomination', { "GET /api/nominations": { "protocol": "http", "parameters": [{ "name": "start", "in": "query", "description": "start time for data", "required": false, "allowEmptyValue": true, "schema": { "type": "string", "format": "date-time" }, "example": "2020-05-31T20:59:59.999Z", "index$": 0 }, { "name": "end", "in": "query", "description": "end time for data", "required": false, "allowEmptyValue": true, "schema": { "type": "string", "format": "date-time" }, "example": "2020-06-30T20:59:59.999Z", "index$": 1 }] } }, { strict: LIVE_STRICT, t });
         }
         const client = setup.client;
         const struct = setup.struct;
@@ -76,6 +84,11 @@ const utility_1 = require("../../utility");
         (0, node_assert_1.default)(null != nomination_ref01_data_dt0);
     });
 });
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true;
 function basicSetup(extra) {
     // TODO: fix test def options
     const options = {}; // null

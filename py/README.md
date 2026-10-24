@@ -15,7 +15,7 @@ keeps the cognitive load low.
 
 ## Install
 This package is not yet published to PyPI. Install it from the GitHub
-release tag (`py/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/elering-dashboard-sdk/releases)) or
+release tag (`py/vX.Y.Z`, see [Tags](https://github.com/voxgig-sdk/elering-dashboard-sdk/tags)) or
 from a source checkout:
 
 ```bash
@@ -43,7 +43,7 @@ client = EleringDashboardSDK()
 ```python
 try:
     balance = client.Balance().load()
-    print(balance)
+    print(balance.data_get())
 except Exception as err:
     print(f"load failed: {err}")
 ```
@@ -56,7 +56,7 @@ Entity operations raise on failure, so wrap them in `try` / `except`:
 ```python
 try:
     balancecontroller = client.BalanceController().load()
-    print(balancecontroller)
+    print(balancecontroller.data_get())
 except Exception as err:
     print(f"load failed: {err}")
 ```
@@ -122,10 +122,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = EleringDashboardSDK.test()
 
-# Entity ops return the ENTITY and raises on error;
-# call data_get() for the record.
+# Entity ops return the entity, and list one per record; they raise on error.
 balancecontroller = client.BalanceController().load()
-# balancecontroller contains the mock response record
+# data_get() on an entity reads its mock response record
 ```
 
 ### Use a custom fetch function
@@ -232,7 +231,7 @@ All entities share the same interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
-| `load` | `(reqmatch, ctrl) -> any` | Load a single entity by match criteria. Raises on error. |
+| `load` | `(reqmatch, ctrl) -> any` | Load a single entity by match criteria, and return it. Raises on error. |
 | `data_get` | `() -> dict` | Get entity data. |
 | `data_set` | `(data)` | Set entity data. |
 | `match_get` | `() -> dict` | Get entity match criteria. |
@@ -242,9 +241,9 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the ENTITY (call data_get() for the record) (a `dict` for single-entity
-ops, a `list` for `list`) and raise on error. Wrap calls in
-`try`/`except` to handle failures.
+Entity operations return the entity, and `list` a `list` of entities, one
+per record; an entity's `data_get()` reads its record (a `dict`). They raise
+on error, so wrap calls in `try`/`except` to handle failures.
 
 The `direct()` escape hatch never raises — it returns a result `dict`
 you branch on via `result["ok"]`:
@@ -276,7 +275,7 @@ API path: `/api/balance`
 
 Operations: Load.
 
-API path: `/api/balance/commerce/csv`
+API path: `/api/balance/commerce`
 
 #### Firm
 
@@ -303,7 +302,7 @@ API path: `/api/capacity/firm/csv`
 
 Operations: Load.
 
-API path: `/api/gas-balance/price/csv`
+API path: `/api/gas-balance/price`
 
 #### GasBorderTradeController
 
@@ -348,7 +347,7 @@ API path: `/api/gas-trade`
 
 Operations: Load.
 
-API path: `/api/gas-trade/csv`
+API path: `/api/gas-trade/{group}/latest`
 
 #### GasTransmissionController
 
@@ -357,7 +356,7 @@ API path: `/api/gas-trade/csv`
 
 Operations: Load.
 
-API path: `/api/gas-transmission/cross-border/csv`
+API path: `/api/gas-transmission/cross-border`
 
 #### GreenController
 
@@ -411,7 +410,7 @@ API path: `/api/nominations/csv`
 
 Operations: Load.
 
-API path: `/api/nps/price/csv`
+API path: `/api/nps/price/{group}/current`
 
 #### Renomination
 
@@ -456,7 +455,7 @@ API path: `/api/system/csv`
 
 Operations: Load.
 
-API path: `/api/transmission/cross-border-capacity/{group}/csv`
+API path: `/api/transmission/cross-border-capacity/{group}`
 
 #### UmmGasController
 
@@ -466,7 +465,7 @@ API path: `/api/transmission/cross-border-capacity/{group}/csv`
 
 Operations: Load.
 
-API path: `/api/umm/gas`
+API path: `/api/umm/gas/messages`
 
 #### UmmRssFeedController
 

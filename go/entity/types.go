@@ -29,7 +29,6 @@ type BalanceController struct {
 // BalanceControllerLoadMatch is the typed request payload for BalanceController.LoadTyped.
 type BalanceControllerLoadMatch struct {
 	End *string `json:"end,omitempty"`
-	Field *[]any `json:"field,omitempty"`
 	Start *string `json:"start,omitempty"`
 }
 

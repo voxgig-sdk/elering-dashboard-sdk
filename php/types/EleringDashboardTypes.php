@@ -33,7 +33,6 @@ class BalanceController
 class BalanceControllerLoadMatch
 {
     public ?string $end = null;
-    public ?array $field = null;
     public ?string $start = null;
 }
 

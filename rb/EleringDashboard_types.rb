@@ -34,14 +34,10 @@ end
 # @!attribute [rw] end
 #   @return [String, nil]
 #
-# @!attribute [rw] field
-#   @return [Array, nil]
-#
 # @!attribute [rw] start
 #   @return [String, nil]
 BalanceControllerLoadMatch = Struct.new(
   :end,
-  :field,
   :start,
   keyword_init: true
 )

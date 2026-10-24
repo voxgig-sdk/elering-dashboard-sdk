@@ -37,11 +37,9 @@ main: kit: entity: firm: {
           }
           m: "GET"
           o: "/api/capacity/firm"
-          q: {
-            exist: [
-              "end"
-              "start"
-            ]
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {

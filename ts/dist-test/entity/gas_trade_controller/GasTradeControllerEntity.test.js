@@ -54,6 +54,14 @@ const utility_1 = require("../../utility");
         const ent = testsdk.GasTradeController();
         (0, node_assert_1.default)(null != ent);
     });
+    (0, node_test_1.test)('validate', async (t) => {
+        if (null == __1.config.feature?.validate) {
+            t.skip('feature not present in this SDK: validate');
+            return;
+        }
+        const client = __1.EleringDashboardSDK.test(undefined, { feature: { validate: { active: true } } });
+        await node_assert_1.default.rejects(client.GasTradeController().load({ "end": 1 }), (err) => 'validate_failed' === err.code);
+    });
     (0, node_test_1.test)('basic', async (t) => {
         const live = 'TRUE' === process.env.ELERING_DASHBOARD_TEST_LIVE;
         for (const op of ['load']) {
@@ -62,20 +70,23 @@ const utility_1 = require("../../utility");
         }
         const setup = basicSetup();
         if (setup.live) {
-            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": {}, "name": "gas_trade_controller", "op": { "load": { "input": "data", "name": "load", "points": [{ "a": true, "co": { "id": "GET /api/gas-trade/csv", "source": "openapi3", "version": 2 }, "g": { "query": [{ "a": true, "ex": "2020-06-30T20:59:59.999Z", "k": "query", "n": "end", "or": "end", "r": false, "t": "`$STRING`", "index$": 0 }, { "a": true, "k": "query", "n": "field", "or": "fields", "r": false, "t": "`$ARRAY`", "index$": 1 }, { "a": true, "ex": "2020-05-31T20:59:59.999Z", "k": "query", "n": "start", "or": "start", "r": false, "t": "`$STRING`", "index$": 2 }] }, "k": "http", "m": "GET", "o": "/api/gas-trade/csv", "q": { "exist": ["end", "field", "start"] }, "r": {}, "s": [{ "lit": "api" }, { "lit": "gas-trade" }, { "lit": "csv" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }, { "a": true, "co": { "id": "GET /api/gas-trade/{group}/latest", "source": "openapi3", "version": 2 }, "g": { "params": [{ "a": true, "k": "param", "n": "group", "or": "group", "r": true, "t": "`$STRING`", "index$": 0 }] }, "k": "http", "m": "GET", "o": "/api/gas-trade/{group}/latest", "q": { "exist": ["group"] }, "r": {}, "s": [{ "lit": "api" }, { "lit": "gas-trade" }, { "var": "group" }, { "lit": "latest" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 1 }], "key$": "load" } }, "relations": { "ancestors": [["$.main.kit.entity.gas_trade"]] }, "key$": "gas_trade_controller", "name__orig": "gas_trade_controller", "Name": "GasTradeController", "name_": "gas_trade_controller", "name-": "gas-trade-controller", "NAME": "GAS_TRADE_CONTROLLER", "index$": 9 }, { "active": true, "entity": "gas_trade_controller", "key$": "BasicGasTradeControllerFlow", "kind": "basic", "name": "BasicGasTradeControllerFlow", "param": {}, "step": [{ "a": true, "d": {}, "i": { "ref": "gas_trade_controller_ref01", "srcdatavar": "gas_trade_controller_ref01_data", "suffix": "_dt0" }, "m": { "id": "gas_trade_controller01" }, "o": "load", "s": [], "v": [{ "apply": "TextFieldMark", "def": { "mark": "Mark01-gas_trade_controller_ref01" } }], "index$": 0 }] }, 'GasTradeController', { "GET /api/gas-trade/csv": { "protocol": "http", "parameters": [{ "name": "start", "in": "query", "description": "start time for data", "required": false, "allowEmptyValue": true, "schema": { "type": "string", "format": "date-time" }, "example": "2020-05-31T20:59:59.999Z", "index$": 0 }, { "name": "end", "in": "query", "description": "end time for data", "required": false, "allowEmptyValue": true, "schema": { "type": "string", "format": "date-time" }, "example": "2020-06-30T20:59:59.999Z", "index$": 1 }, { "name": "fields", "in": "query", "description": "Data fields to include in response", "required": false, "schema": { "type": "array", "items": { "type": "string", "enum": ["common_price", "common_quantity", "ee_price", "ee_quantity", "lv_price", "lv_quantity", "lt_price", "lt_quantity", "fi_price"] } }, "index$": 2 }] }, "GET /api/gas-trade/{group}/latest": { "protocol": "http", "parameters": [{ "name": "group", "in": "path", "description": "group to fetch data for", "required": true, "schema": { "type": "string", "enum": ["COMMON", "LT", "LV", "EE", "FI"] }, "index$": 0 }] } });
+            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": {}, "name": "gas_trade_controller", "op": { "load": { "input": "data", "name": "load", "points": [{ "a": true, "co": { "id": "GET /api/gas-trade/{group}/latest", "source": "openapi3", "version": 2 }, "g": { "params": [{ "a": true, "k": "param", "n": "group", "or": "group", "r": true, "t": "`$STRING`", "index$": 0 }] }, "k": "http", "m": "GET", "o": "/api/gas-trade/{group}/latest", "q": { "exist": ["group"] }, "r": {}, "rs": { "kind": "json", "media": "application/json" }, "s": [{ "lit": "api" }, { "lit": "gas-trade" }, { "var": "group" }, { "lit": "latest" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }, { "a": true, "co": { "id": "GET /api/gas-trade/csv", "source": "openapi3", "version": 2 }, "g": { "query": [{ "a": true, "ex": "2020-06-30T20:59:59.999Z", "k": "query", "n": "end", "or": "end", "r": false, "t": "`$STRING`", "index$": 0 }, { "a": true, "k": "query", "n": "field", "or": "fields", "r": false, "t": "`$ARRAY`", "index$": 1 }, { "a": true, "ex": "2020-05-31T20:59:59.999Z", "k": "query", "n": "start", "or": "start", "r": false, "t": "`$STRING`", "index$": 2 }] }, "k": "http", "m": "GET", "o": "/api/gas-trade/csv", "q": {}, "r": {}, "s": [{ "lit": "api" }, { "lit": "gas-trade" }, { "lit": "csv" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 1 }], "key$": "load" } }, "relations": { "ancestors": [["$.main.kit.entity.gas_trade"]] }, "key$": "gas_trade_controller", "name__orig": "gas_trade_controller", "Name": "GasTradeController", "name_": "gas_trade_controller", "name-": "gas-trade-controller", "NAME": "GAS_TRADE_CONTROLLER", "index$": 9 }, { "active": true, "entity": "gas_trade_controller", "key$": "BasicGasTradeControllerFlow", "kind": "basic", "name": "BasicGasTradeControllerFlow", "param": {}, "step": [{ "a": true, "d": {}, "i": { "ref": "gas_trade_controller_ref01", "srcdatavar": "gas_trade_controller_ref01_data", "suffix": "_dt0" }, "m": {}, "o": "load", "s": [], "v": [{ "apply": "TextFieldMark", "def": { "mark": "Mark01-gas_trade_controller_ref01" } }], "index$": 0 }] }, 'GasTradeController', { "GET /api/gas-trade/{group}/latest": { "protocol": "http", "parameters": [{ "name": "group", "in": "path", "description": "group to fetch data for", "required": true, "schema": { "type": "string", "enum": ["COMMON", "LT", "LV", "EE", "FI"] }, "index$": 0 }] }, "GET /api/gas-trade/csv": { "protocol": "http", "parameters": [{ "name": "start", "in": "query", "description": "start time for data", "required": false, "allowEmptyValue": true, "schema": { "type": "string", "format": "date-time" }, "example": "2020-05-31T20:59:59.999Z", "index$": 0 }, { "name": "end", "in": "query", "description": "end time for data", "required": false, "allowEmptyValue": true, "schema": { "type": "string", "format": "date-time" }, "example": "2020-06-30T20:59:59.999Z", "index$": 1 }, { "name": "fields", "in": "query", "description": "Data fields to include in response", "required": false, "schema": { "type": "array", "items": { "type": "string", "enum": ["common_price", "common_quantity", "ee_price", "ee_quantity", "lv_price", "lv_quantity", "lt_price", "lt_quantity", "fi_price"] } }, "index$": 2 }] } }, { strict: LIVE_STRICT, t });
         }
         const client = setup.client;
         const struct = setup.struct;
         const isempty = struct.isempty;
         const select = struct.select;
         let gas_trade_controller_ref01_data = Object.values(setup.data.existing.gas_trade_controller)[0];
-        // LOAD
+        // LOAD: skipped — no entity id field and load requires path params.
+        // Entity-var is declared here so later flow steps still compile.
         const gas_trade_controller_ref01_ent = client.GasTradeController();
-        const gas_trade_controller_ref01_match_dt0 = {};
-        const gas_trade_controller_ref01_data_dt0 = (await gas_trade_controller_ref01_ent.load(gas_trade_controller_ref01_match_dt0)).data();
-        (0, node_assert_1.default)(null != gas_trade_controller_ref01_data_dt0);
     });
 });
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true;
 function basicSetup(extra) {
     // TODO: fix test def options
     const options = {}; // null

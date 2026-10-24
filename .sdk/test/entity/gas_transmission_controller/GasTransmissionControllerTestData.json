@@ -18,12 +18,12 @@
     }
   },
   "requests": {
-    "GET /api/gas-transmission/cross-border/csv": {
+    "GET /api/gas-transmission/cross-border": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"
     },
-    "GET /api/gas-transmission/cross-border": {
+    "GET /api/gas-transmission/cross-border/csv": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"

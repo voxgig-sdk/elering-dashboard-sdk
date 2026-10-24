@@ -71,6 +71,7 @@ func MakeConfig() map[string]any {
 				},
 				"optspec": map[string]any{
 					"clearTimer": "`$FUNCTION`",
+					"now": "`$FUNCTION`",
 					"setTimer": "`$FUNCTION`",
 				},
 				"strict": false,
@@ -157,11 +158,10 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"end",
-										"start",
-									},
+								"select": map[string]any{},
+								"response": map[string]any{
+									"kind": "json",
+									"media": "application/json",
 								},
 							},
 						},
@@ -179,6 +179,55 @@ func MakeConfig() map[string]any {
 						"input": "data",
 						"name": "load",
 						"points": []any{
+							map[string]any{
+								"kind": "http",
+								"method": "GET",
+								"orig": "/api/balance/commerce",
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "balance",
+									},
+									map[string]any{
+										"lit": "commerce",
+									},
+								},
+								"parts": []any{
+									"api",
+									"balance",
+									"commerce",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "end",
+											"orig": "end",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-06-30T20:59:59.999Z",
+										},
+										map[string]any{
+											"name": "start",
+											"orig": "start",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-05-31T20:59:59.999Z",
+										},
+									},
+								},
+								"select": map[string]any{},
+								"response": map[string]any{
+									"kind": "json",
+									"media": "application/json",
+								},
+							},
 							map[string]any{
 								"kind": "http",
 								"method": "GET",
@@ -232,12 +281,42 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"end",
-										"field",
-										"start",
+								"select": map[string]any{},
+							},
+							map[string]any{
+								"kind": "http",
+								"method": "GET",
+								"orig": "/api/balance/commerce/latest",
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
 									},
+									map[string]any{
+										"lit": "balance",
+									},
+									map[string]any{
+										"lit": "commerce",
+									},
+									map[string]any{
+										"lit": "latest",
+									},
+								},
+								"parts": []any{
+									"api",
+									"balance",
+									"commerce",
+									"latest",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{},
+								"select": map[string]any{},
+								"response": map[string]any{
+									"kind": "json",
+									"media": "application/json",
 								},
 							},
 							map[string]any{
@@ -289,12 +368,55 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"end",
-										"field",
-										"start",
+								"select": map[string]any{},
+							},
+							map[string]any{
+								"kind": "http",
+								"method": "GET",
+								"orig": "/api/balance/total",
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
 									},
+									map[string]any{
+										"lit": "balance",
+									},
+									map[string]any{
+										"lit": "total",
+									},
+								},
+								"parts": []any{
+									"api",
+									"balance",
+									"total",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "end",
+											"orig": "end",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-06-30T20:59:59.999Z",
+										},
+										map[string]any{
+											"name": "field",
+											"orig": "fields",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-05-31T20:59:59.999Z",
+										},
+									},
+								},
+								"select": map[string]any{},
+								"response": map[string]any{
+									"kind": "json",
+									"media": "application/json",
 								},
 							},
 							map[string]any{
@@ -350,144 +472,6 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"end",
-										"field",
-										"start",
-									},
-								},
-							},
-							map[string]any{
-								"kind": "http",
-								"method": "GET",
-								"orig": "/api/balance/total",
-								"segments": []any{
-									map[string]any{
-										"lit": "api",
-									},
-									map[string]any{
-										"lit": "balance",
-									},
-									map[string]any{
-										"lit": "total",
-									},
-								},
-								"parts": []any{
-									"api",
-									"balance",
-									"total",
-								},
-								"rename": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"name": "end",
-											"orig": "end",
-											"type": "`$STRING`",
-											"kind": "query",
-											"example": "2020-06-30T20:59:59.999Z",
-										},
-										map[string]any{
-											"name": "field",
-											"orig": "fields",
-											"type": "`$STRING`",
-											"kind": "query",
-											"example": "2020-05-31T20:59:59.999Z",
-										},
-									},
-								},
-								"select": map[string]any{
-									"exist": []any{
-										"end",
-										"field",
-									},
-								},
-							},
-							map[string]any{
-								"kind": "http",
-								"method": "GET",
-								"orig": "/api/balance/commerce",
-								"segments": []any{
-									map[string]any{
-										"lit": "api",
-									},
-									map[string]any{
-										"lit": "balance",
-									},
-									map[string]any{
-										"lit": "commerce",
-									},
-								},
-								"parts": []any{
-									"api",
-									"balance",
-									"commerce",
-								},
-								"rename": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"name": "end",
-											"orig": "end",
-											"type": "`$STRING`",
-											"kind": "query",
-											"example": "2020-06-30T20:59:59.999Z",
-										},
-										map[string]any{
-											"name": "start",
-											"orig": "start",
-											"type": "`$STRING`",
-											"kind": "query",
-											"example": "2020-05-31T20:59:59.999Z",
-										},
-									},
-								},
-								"select": map[string]any{
-									"exist": []any{
-										"end",
-										"start",
-									},
-								},
-							},
-							map[string]any{
-								"kind": "http",
-								"method": "GET",
-								"orig": "/api/balance/commerce/latest",
-								"segments": []any{
-									map[string]any{
-										"lit": "api",
-									},
-									map[string]any{
-										"lit": "balance",
-									},
-									map[string]any{
-										"lit": "commerce",
-									},
-									map[string]any{
-										"lit": "latest",
-									},
-								},
-								"parts": []any{
-									"api",
-									"balance",
-									"commerce",
-									"latest",
-								},
-								"rename": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"args": map[string]any{},
 								"select": map[string]any{},
 							},
 							map[string]any{
@@ -521,6 +505,10 @@ func MakeConfig() map[string]any {
 								},
 								"args": map[string]any{},
 								"select": map[string]any{},
+								"response": map[string]any{
+									"kind": "json",
+									"media": "application/json",
+								},
 							},
 						},
 					},
@@ -580,11 +568,10 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"end",
-										"start",
-									},
+								"select": map[string]any{},
+								"response": map[string]any{
+									"kind": "json",
+									"media": "application/json",
 								},
 							},
 						},
@@ -675,13 +662,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"end",
-										"field",
-										"start",
-									},
-								},
+								"select": map[string]any{},
 							},
 						},
 					},
@@ -698,6 +679,55 @@ func MakeConfig() map[string]any {
 						"input": "data",
 						"name": "load",
 						"points": []any{
+							map[string]any{
+								"kind": "http",
+								"method": "GET",
+								"orig": "/api/gas-balance/price",
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "gas-balance",
+									},
+									map[string]any{
+										"lit": "price",
+									},
+								},
+								"parts": []any{
+									"api",
+									"gas-balance",
+									"price",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "end",
+											"orig": "end",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-06-30T20:59:59.999Z",
+										},
+										map[string]any{
+											"name": "start",
+											"orig": "start",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-05-31T20:59:59.999Z",
+										},
+									},
+								},
+								"select": map[string]any{},
+								"response": map[string]any{
+									"kind": "json",
+									"media": "application/json",
+								},
+							},
 							map[string]any{
 								"kind": "http",
 								"method": "GET",
@@ -751,63 +781,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"end",
-										"field",
-										"start",
-									},
-								},
-							},
-							map[string]any{
-								"kind": "http",
-								"method": "GET",
-								"orig": "/api/gas-balance/price",
-								"segments": []any{
-									map[string]any{
-										"lit": "api",
-									},
-									map[string]any{
-										"lit": "gas-balance",
-									},
-									map[string]any{
-										"lit": "price",
-									},
-								},
-								"parts": []any{
-									"api",
-									"gas-balance",
-									"price",
-								},
-								"rename": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"name": "end",
-											"orig": "end",
-											"type": "`$STRING`",
-											"kind": "query",
-											"example": "2020-06-30T20:59:59.999Z",
-										},
-										map[string]any{
-											"name": "start",
-											"orig": "start",
-											"type": "`$STRING`",
-											"kind": "query",
-											"example": "2020-05-31T20:59:59.999Z",
-										},
-									},
-								},
-								"select": map[string]any{
-									"exist": []any{
-										"end",
-										"start",
-									},
-								},
+								"select": map[string]any{},
 							},
 						},
 					},
@@ -855,6 +829,10 @@ func MakeConfig() map[string]any {
 								},
 								"args": map[string]any{},
 								"select": map[string]any{},
+								"response": map[string]any{
+									"kind": "json",
+									"media": "application/json",
+								},
 							},
 						},
 					},
@@ -910,11 +888,10 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"end",
-										"start",
-									},
+								"select": map[string]any{},
+								"response": map[string]any{
+									"kind": "json",
+									"media": "application/json",
 								},
 							},
 						},
@@ -981,12 +958,104 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"end",
-										"field",
-										"start",
+								"select": map[string]any{},
+							},
+							map[string]any{
+								"kind": "http",
+								"method": "GET",
+								"orig": "/api/gas-system/daily",
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
 									},
+									map[string]any{
+										"lit": "gas-system",
+									},
+									map[string]any{
+										"lit": "daily",
+									},
+								},
+								"parts": []any{
+									"api",
+									"gas-system",
+									"daily",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "end",
+											"orig": "end",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-06-30T20:59:59.999Z",
+										},
+										map[string]any{
+											"name": "start",
+											"orig": "start",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-05-31T20:59:59.999Z",
+										},
+									},
+								},
+								"select": map[string]any{},
+								"response": map[string]any{
+									"kind": "json",
+									"media": "application/json",
+								},
+							},
+							map[string]any{
+								"kind": "http",
+								"method": "GET",
+								"orig": "/api/gas-system/daily-average",
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "gas-system",
+									},
+									map[string]any{
+										"lit": "daily-average",
+									},
+								},
+								"parts": []any{
+									"api",
+									"gas-system",
+									"daily-average",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "end",
+											"orig": "end",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-06-30T20:59:59.999Z",
+										},
+										map[string]any{
+											"name": "start",
+											"orig": "start",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-05-31T20:59:59.999Z",
+										},
+									},
+								},
+								"select": map[string]any{},
+								"response": map[string]any{
+									"kind": "json",
+									"media": "application/json",
 								},
 							},
 							map[string]any{
@@ -1042,12 +1111,87 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"end",
-										"field",
-										"start",
+								"select": map[string]any{},
+							},
+							map[string]any{
+								"kind": "http",
+								"method": "GET",
+								"orig": "/api/gas-system/latest",
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
 									},
+									map[string]any{
+										"lit": "gas-system",
+									},
+									map[string]any{
+										"lit": "latest",
+									},
+								},
+								"parts": []any{
+									"api",
+									"gas-system",
+									"latest",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{},
+								"select": map[string]any{},
+								"response": map[string]any{
+									"kind": "json",
+									"media": "application/json",
+								},
+							},
+							map[string]any{
+								"kind": "http",
+								"method": "GET",
+								"orig": "/api/gas-system/m3",
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "gas-system",
+									},
+									map[string]any{
+										"lit": "m3",
+									},
+								},
+								"parts": []any{
+									"api",
+									"gas-system",
+									"m3",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "end",
+											"orig": "end",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-06-30T20:59:59.999Z",
+										},
+										map[string]any{
+											"name": "start",
+											"orig": "start",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-05-31T20:59:59.999Z",
+										},
+									},
+								},
+								"select": map[string]any{},
+								"response": map[string]any{
+									"kind": "json",
+									"media": "application/json",
 								},
 							},
 							map[string]any{
@@ -1103,190 +1247,6 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"end",
-										"field",
-										"start",
-									},
-								},
-							},
-							map[string]any{
-								"kind": "http",
-								"method": "GET",
-								"orig": "/api/gas-system/daily",
-								"segments": []any{
-									map[string]any{
-										"lit": "api",
-									},
-									map[string]any{
-										"lit": "gas-system",
-									},
-									map[string]any{
-										"lit": "daily",
-									},
-								},
-								"parts": []any{
-									"api",
-									"gas-system",
-									"daily",
-								},
-								"rename": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"name": "end",
-											"orig": "end",
-											"type": "`$STRING`",
-											"kind": "query",
-											"example": "2020-06-30T20:59:59.999Z",
-										},
-										map[string]any{
-											"name": "start",
-											"orig": "start",
-											"type": "`$STRING`",
-											"kind": "query",
-											"example": "2020-05-31T20:59:59.999Z",
-										},
-									},
-								},
-								"select": map[string]any{
-									"exist": []any{
-										"end",
-										"start",
-									},
-								},
-							},
-							map[string]any{
-								"kind": "http",
-								"method": "GET",
-								"orig": "/api/gas-system/daily-average",
-								"segments": []any{
-									map[string]any{
-										"lit": "api",
-									},
-									map[string]any{
-										"lit": "gas-system",
-									},
-									map[string]any{
-										"lit": "daily-average",
-									},
-								},
-								"parts": []any{
-									"api",
-									"gas-system",
-									"daily-average",
-								},
-								"rename": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"name": "end",
-											"orig": "end",
-											"type": "`$STRING`",
-											"kind": "query",
-											"example": "2020-06-30T20:59:59.999Z",
-										},
-										map[string]any{
-											"name": "start",
-											"orig": "start",
-											"type": "`$STRING`",
-											"kind": "query",
-											"example": "2020-05-31T20:59:59.999Z",
-										},
-									},
-								},
-								"select": map[string]any{
-									"exist": []any{
-										"end",
-										"start",
-									},
-								},
-							},
-							map[string]any{
-								"kind": "http",
-								"method": "GET",
-								"orig": "/api/gas-system/m3",
-								"segments": []any{
-									map[string]any{
-										"lit": "api",
-									},
-									map[string]any{
-										"lit": "gas-system",
-									},
-									map[string]any{
-										"lit": "m3",
-									},
-								},
-								"parts": []any{
-									"api",
-									"gas-system",
-									"m3",
-								},
-								"rename": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"name": "end",
-											"orig": "end",
-											"type": "`$STRING`",
-											"kind": "query",
-											"example": "2020-06-30T20:59:59.999Z",
-										},
-										map[string]any{
-											"name": "start",
-											"orig": "start",
-											"type": "`$STRING`",
-											"kind": "query",
-											"example": "2020-05-31T20:59:59.999Z",
-										},
-									},
-								},
-								"select": map[string]any{
-									"exist": []any{
-										"end",
-										"start",
-									},
-								},
-							},
-							map[string]any{
-								"kind": "http",
-								"method": "GET",
-								"orig": "/api/gas-system/latest",
-								"segments": []any{
-									map[string]any{
-										"lit": "api",
-									},
-									map[string]any{
-										"lit": "gas-system",
-									},
-									map[string]any{
-										"lit": "latest",
-									},
-								},
-								"parts": []any{
-									"api",
-									"gas-system",
-									"latest",
-								},
-								"rename": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"args": map[string]any{},
 								"select": map[string]any{},
 							},
 						},
@@ -1343,11 +1303,10 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"end",
-										"start",
-									},
+								"select": map[string]any{},
+								"response": map[string]any{
+									"kind": "json",
+									"media": "application/json",
 								},
 							},
 						},
@@ -1365,6 +1324,56 @@ func MakeConfig() map[string]any {
 						"input": "data",
 						"name": "load",
 						"points": []any{
+							map[string]any{
+								"kind": "http",
+								"method": "GET",
+								"orig": "/api/gas-trade/{group}/latest",
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "gas-trade",
+									},
+									map[string]any{
+										"var": "group",
+									},
+									map[string]any{
+										"lit": "latest",
+									},
+								},
+								"parts": []any{
+									"api",
+									"gas-trade",
+									"{group}",
+									"latest",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "group",
+											"orig": "group",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"group",
+									},
+								},
+								"response": map[string]any{
+									"kind": "json",
+									"media": "application/json",
+								},
+							},
 							map[string]any{
 								"kind": "http",
 								"method": "GET",
@@ -1414,59 +1423,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"end",
-										"field",
-										"start",
-									},
-								},
-							},
-							map[string]any{
-								"kind": "http",
-								"method": "GET",
-								"orig": "/api/gas-trade/{group}/latest",
-								"segments": []any{
-									map[string]any{
-										"lit": "api",
-									},
-									map[string]any{
-										"lit": "gas-trade",
-									},
-									map[string]any{
-										"var": "group",
-									},
-									map[string]any{
-										"lit": "latest",
-									},
-								},
-								"parts": []any{
-									"api",
-									"gas-trade",
-									"{group}",
-									"latest",
-								},
-								"rename": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"name": "group",
-											"orig": "group",
-											"type": "`$STRING`",
-											"kind": "param",
-											"reqd": true,
-										},
-									},
-								},
-								"select": map[string]any{
-									"exist": []any{
-										"group",
-									},
-								},
+								"select": map[string]any{},
 							},
 						},
 					},
@@ -1487,6 +1444,55 @@ func MakeConfig() map[string]any {
 						"input": "data",
 						"name": "load",
 						"points": []any{
+							map[string]any{
+								"kind": "http",
+								"method": "GET",
+								"orig": "/api/gas-transmission/cross-border",
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "gas-transmission",
+									},
+									map[string]any{
+										"lit": "cross-border",
+									},
+								},
+								"parts": []any{
+									"api",
+									"gas-transmission",
+									"cross-border",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "end",
+											"orig": "end",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-06-30T20:59:59.999Z",
+										},
+										map[string]any{
+											"name": "start",
+											"orig": "start",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-05-31T20:59:59.999Z",
+										},
+									},
+								},
+								"select": map[string]any{},
+								"response": map[string]any{
+									"kind": "json",
+									"media": "application/json",
+								},
+							},
 							map[string]any{
 								"kind": "http",
 								"method": "GET",
@@ -1540,63 +1546,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"end",
-										"field",
-										"start",
-									},
-								},
-							},
-							map[string]any{
-								"kind": "http",
-								"method": "GET",
-								"orig": "/api/gas-transmission/cross-border",
-								"segments": []any{
-									map[string]any{
-										"lit": "api",
-									},
-									map[string]any{
-										"lit": "gas-transmission",
-									},
-									map[string]any{
-										"lit": "cross-border",
-									},
-								},
-								"parts": []any{
-									"api",
-									"gas-transmission",
-									"cross-border",
-								},
-								"rename": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"name": "end",
-											"orig": "end",
-											"type": "`$STRING`",
-											"kind": "query",
-											"example": "2020-06-30T20:59:59.999Z",
-										},
-										map[string]any{
-											"name": "start",
-											"orig": "start",
-											"type": "`$STRING`",
-											"kind": "query",
-											"example": "2020-05-31T20:59:59.999Z",
-										},
-									},
-								},
-								"select": map[string]any{
-									"exist": []any{
-										"end",
-										"start",
-									},
-								},
+								"select": map[string]any{},
 							},
 							map[string]any{
 								"kind": "http",
@@ -1629,6 +1579,10 @@ func MakeConfig() map[string]any {
 								},
 								"args": map[string]any{},
 								"select": map[string]any{},
+								"response": map[string]any{
+									"kind": "json",
+									"media": "application/json",
+								},
 							},
 						},
 					},
@@ -1695,12 +1649,10 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"fuel",
-										"technology",
-										"type",
-									},
+								"select": map[string]any{},
+								"response": map[string]any{
+									"kind": "json",
+									"media": "application/json",
 								},
 							},
 						},
@@ -1761,11 +1713,10 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"end",
-										"start",
-									},
+								"select": map[string]any{},
+								"response": map[string]any{
+									"kind": "json",
+									"media": "application/json",
 								},
 							},
 						},
@@ -1836,13 +1787,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"end",
-										"field",
-										"start",
-									},
-								},
+								"select": map[string]any{},
 							},
 						},
 					},
@@ -1898,11 +1843,10 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"end",
-										"start",
-									},
+								"select": map[string]any{},
+								"response": map[string]any{
+									"kind": "json",
+									"media": "application/json",
 								},
 							},
 						},
@@ -1969,13 +1913,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"end",
-										"field",
-										"start",
-									},
-								},
+								"select": map[string]any{},
 							},
 						},
 					},
@@ -1992,6 +1930,217 @@ func MakeConfig() map[string]any {
 						"input": "data",
 						"name": "load",
 						"points": []any{
+							map[string]any{
+								"kind": "http",
+								"method": "GET",
+								"orig": "/api/nps/price/{group}/current",
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "nps",
+									},
+									map[string]any{
+										"lit": "price",
+									},
+									map[string]any{
+										"var": "group",
+									},
+									map[string]any{
+										"lit": "current",
+									},
+								},
+								"parts": []any{
+									"api",
+									"nps",
+									"price",
+									"{group}",
+									"current",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "group",
+											"orig": "group",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"group",
+									},
+								},
+								"response": map[string]any{
+									"kind": "json",
+									"media": "application/json",
+								},
+							},
+							map[string]any{
+								"kind": "http",
+								"method": "GET",
+								"orig": "/api/nps/price/{group}/latest",
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "nps",
+									},
+									map[string]any{
+										"lit": "price",
+									},
+									map[string]any{
+										"var": "group",
+									},
+									map[string]any{
+										"lit": "latest",
+									},
+								},
+								"parts": []any{
+									"api",
+									"nps",
+									"price",
+									"{group}",
+									"latest",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "group",
+											"orig": "group",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"group",
+									},
+								},
+								"response": map[string]any{
+									"kind": "json",
+									"media": "application/json",
+								},
+							},
+							map[string]any{
+								"kind": "http",
+								"method": "GET",
+								"orig": "/api/nps/turnover/{group}/latest",
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "nps",
+									},
+									map[string]any{
+										"lit": "turnover",
+									},
+									map[string]any{
+										"var": "group",
+									},
+									map[string]any{
+										"lit": "latest",
+									},
+								},
+								"parts": []any{
+									"api",
+									"nps",
+									"turnover",
+									"{group}",
+									"latest",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "group",
+											"orig": "group",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"group",
+									},
+								},
+								"response": map[string]any{
+									"kind": "json",
+									"media": "application/json",
+								},
+							},
+							map[string]any{
+								"kind": "http",
+								"method": "GET",
+								"orig": "/api/nps/price",
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "nps",
+									},
+									map[string]any{
+										"lit": "price",
+									},
+								},
+								"parts": []any{
+									"api",
+									"nps",
+									"price",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "end",
+											"orig": "end",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-06-30T20:59:59.999Z",
+										},
+										map[string]any{
+											"name": "start",
+											"orig": "start",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-05-31T20:59:59.999Z",
+										},
+									},
+								},
+								"select": map[string]any{},
+								"response": map[string]any{
+									"kind": "json",
+									"media": "application/json",
+								},
+							},
 							map[string]any{
 								"kind": "http",
 								"method": "GET",
@@ -2045,12 +2194,55 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"end",
-										"field",
-										"start",
+								"select": map[string]any{},
+							},
+							map[string]any{
+								"kind": "http",
+								"method": "GET",
+								"orig": "/api/nps/turnover",
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
 									},
+									map[string]any{
+										"lit": "nps",
+									},
+									map[string]any{
+										"lit": "turnover",
+									},
+								},
+								"parts": []any{
+									"api",
+									"nps",
+									"turnover",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "end",
+											"orig": "end",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-06-30T20:59:59.999Z",
+										},
+										map[string]any{
+											"name": "start",
+											"orig": "start",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-05-31T20:59:59.999Z",
+										},
+									},
+								},
+								"select": map[string]any{},
+								"response": map[string]any{
+									"kind": "json",
+									"media": "application/json",
 								},
 							},
 							map[string]any{
@@ -2106,263 +2298,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"end",
-										"field",
-										"start",
-									},
-								},
-							},
-							map[string]any{
-								"kind": "http",
-								"method": "GET",
-								"orig": "/api/nps/price",
-								"segments": []any{
-									map[string]any{
-										"lit": "api",
-									},
-									map[string]any{
-										"lit": "nps",
-									},
-									map[string]any{
-										"lit": "price",
-									},
-								},
-								"parts": []any{
-									"api",
-									"nps",
-									"price",
-								},
-								"rename": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"name": "end",
-											"orig": "end",
-											"type": "`$STRING`",
-											"kind": "query",
-											"example": "2020-06-30T20:59:59.999Z",
-										},
-										map[string]any{
-											"name": "start",
-											"orig": "start",
-											"type": "`$STRING`",
-											"kind": "query",
-											"example": "2020-05-31T20:59:59.999Z",
-										},
-									},
-								},
-								"select": map[string]any{
-									"exist": []any{
-										"end",
-										"start",
-									},
-								},
-							},
-							map[string]any{
-								"kind": "http",
-								"method": "GET",
-								"orig": "/api/nps/turnover",
-								"segments": []any{
-									map[string]any{
-										"lit": "api",
-									},
-									map[string]any{
-										"lit": "nps",
-									},
-									map[string]any{
-										"lit": "turnover",
-									},
-								},
-								"parts": []any{
-									"api",
-									"nps",
-									"turnover",
-								},
-								"rename": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"name": "end",
-											"orig": "end",
-											"type": "`$STRING`",
-											"kind": "query",
-											"example": "2020-06-30T20:59:59.999Z",
-										},
-										map[string]any{
-											"name": "start",
-											"orig": "start",
-											"type": "`$STRING`",
-											"kind": "query",
-											"example": "2020-05-31T20:59:59.999Z",
-										},
-									},
-								},
-								"select": map[string]any{
-									"exist": []any{
-										"end",
-										"start",
-									},
-								},
-							},
-							map[string]any{
-								"kind": "http",
-								"method": "GET",
-								"orig": "/api/nps/price/{group}/current",
-								"segments": []any{
-									map[string]any{
-										"lit": "api",
-									},
-									map[string]any{
-										"lit": "nps",
-									},
-									map[string]any{
-										"lit": "price",
-									},
-									map[string]any{
-										"var": "group",
-									},
-									map[string]any{
-										"lit": "current",
-									},
-								},
-								"parts": []any{
-									"api",
-									"nps",
-									"price",
-									"{group}",
-									"current",
-								},
-								"rename": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"name": "group",
-											"orig": "group",
-											"type": "`$STRING`",
-											"kind": "param",
-											"reqd": true,
-										},
-									},
-								},
-								"select": map[string]any{
-									"exist": []any{
-										"group",
-									},
-								},
-							},
-							map[string]any{
-								"kind": "http",
-								"method": "GET",
-								"orig": "/api/nps/price/{group}/latest",
-								"segments": []any{
-									map[string]any{
-										"lit": "api",
-									},
-									map[string]any{
-										"lit": "nps",
-									},
-									map[string]any{
-										"lit": "price",
-									},
-									map[string]any{
-										"var": "group",
-									},
-									map[string]any{
-										"lit": "latest",
-									},
-								},
-								"parts": []any{
-									"api",
-									"nps",
-									"price",
-									"{group}",
-									"latest",
-								},
-								"rename": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"name": "group",
-											"orig": "group",
-											"type": "`$STRING`",
-											"kind": "param",
-											"reqd": true,
-										},
-									},
-								},
-								"select": map[string]any{
-									"exist": []any{
-										"group",
-									},
-								},
-							},
-							map[string]any{
-								"kind": "http",
-								"method": "GET",
-								"orig": "/api/nps/turnover/{group}/latest",
-								"segments": []any{
-									map[string]any{
-										"lit": "api",
-									},
-									map[string]any{
-										"lit": "nps",
-									},
-									map[string]any{
-										"lit": "turnover",
-									},
-									map[string]any{
-										"var": "group",
-									},
-									map[string]any{
-										"lit": "latest",
-									},
-								},
-								"parts": []any{
-									"api",
-									"nps",
-									"turnover",
-									"{group}",
-									"latest",
-								},
-								"rename": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"name": "group",
-											"orig": "group",
-											"type": "`$STRING`",
-											"kind": "param",
-											"reqd": true,
-										},
-									},
-								},
-								"select": map[string]any{
-									"exist": []any{
-										"group",
-									},
-								},
+								"select": map[string]any{},
 							},
 						},
 					},
@@ -2422,11 +2358,10 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"end",
-										"start",
-									},
+								"select": map[string]any{},
+								"response": map[string]any{
+									"kind": "json",
+									"media": "application/json",
 								},
 							},
 						},
@@ -2497,13 +2432,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"end",
-										"field",
-										"start",
-									},
-								},
+								"select": map[string]any{},
 							},
 						},
 					},
@@ -2559,11 +2488,10 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"end",
-										"start",
-									},
+								"select": map[string]any{},
+								"response": map[string]any{
+									"kind": "json",
+									"media": "application/json",
 								},
 							},
 						},
@@ -2630,12 +2558,87 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"end",
-										"field",
-										"start",
+								"select": map[string]any{},
+							},
+							map[string]any{
+								"kind": "http",
+								"method": "GET",
+								"orig": "/api/system/latest",
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
 									},
+									map[string]any{
+										"lit": "system",
+									},
+									map[string]any{
+										"lit": "latest",
+									},
+								},
+								"parts": []any{
+									"api",
+									"system",
+									"latest",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{},
+								"select": map[string]any{},
+								"response": map[string]any{
+									"kind": "json",
+									"media": "application/json",
+								},
+							},
+							map[string]any{
+								"kind": "http",
+								"method": "GET",
+								"orig": "/api/system/with-plan",
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "system",
+									},
+									map[string]any{
+										"lit": "with-plan",
+									},
+								},
+								"parts": []any{
+									"api",
+									"system",
+									"with-plan",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "end",
+											"orig": "end",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-06-30T20:59:59.999Z",
+										},
+										map[string]any{
+											"name": "start",
+											"orig": "start",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-05-31T20:59:59.999Z",
+										},
+									},
+								},
+								"select": map[string]any{},
+								"response": map[string]any{
+									"kind": "json",
+									"media": "application/json",
 								},
 							},
 							map[string]any{
@@ -2691,33 +2694,46 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"end",
-										"field",
-										"start",
-									},
-								},
+								"select": map[string]any{},
 							},
+						},
+					},
+				},
+				"relations": map[string]any{
+					"ancestors": []any{},
+				},
+			},
+			"transmission_controller": map[string]any{
+				"fields": []any{},
+				"name": "transmission_controller",
+				"op": map[string]any{
+					"load": map[string]any{
+						"input": "data",
+						"name": "load",
+						"points": []any{
 							map[string]any{
 								"kind": "http",
 								"method": "GET",
-								"orig": "/api/system/with-plan",
+								"orig": "/api/transmission/cross-border-capacity/{group}",
 								"segments": []any{
 									map[string]any{
 										"lit": "api",
 									},
 									map[string]any{
-										"lit": "system",
+										"lit": "transmission",
 									},
 									map[string]any{
-										"lit": "with-plan",
+										"lit": "cross-border-capacity",
+									},
+									map[string]any{
+										"var": "group",
 									},
 								},
 								"parts": []any{
 									"api",
-									"system",
-									"with-plan",
+									"transmission",
+									"cross-border-capacity",
+									"{group}",
 								},
 								"rename": map[string]any{},
 								"transform": map[string]any{
@@ -2725,6 +2741,15 @@ func MakeConfig() map[string]any {
 									"res": "`body`",
 								},
 								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "group",
+											"orig": "group",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
 									"query": []any{
 										map[string]any{
 											"name": "end",
@@ -2744,54 +2769,14 @@ func MakeConfig() map[string]any {
 								},
 								"select": map[string]any{
 									"exist": []any{
-										"end",
-										"start",
+										"group",
 									},
+								},
+								"response": map[string]any{
+									"kind": "json",
+									"media": "application/json",
 								},
 							},
-							map[string]any{
-								"kind": "http",
-								"method": "GET",
-								"orig": "/api/system/latest",
-								"segments": []any{
-									map[string]any{
-										"lit": "api",
-									},
-									map[string]any{
-										"lit": "system",
-									},
-									map[string]any{
-										"lit": "latest",
-									},
-								},
-								"parts": []any{
-									"api",
-									"system",
-									"latest",
-								},
-								"rename": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"args": map[string]any{},
-								"select": map[string]any{},
-							},
-						},
-					},
-				},
-				"relations": map[string]any{
-					"ancestors": []any{},
-				},
-			},
-			"transmission_controller": map[string]any{
-				"fields": []any{},
-				"name": "transmission_controller",
-				"op": map[string]any{
-					"load": map[string]any{
-						"input": "data",
-						"name": "load",
-						"points": []any{
 							map[string]any{
 								"kind": "http",
 								"method": "GET",
@@ -2860,11 +2845,155 @@ func MakeConfig() map[string]any {
 								},
 								"select": map[string]any{
 									"exist": []any{
-										"end",
-										"field",
 										"group",
-										"start",
 									},
+								},
+							},
+							map[string]any{
+								"kind": "http",
+								"method": "GET",
+								"orig": "/api/transmission/cross-border",
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "transmission",
+									},
+									map[string]any{
+										"lit": "cross-border",
+									},
+								},
+								"parts": []any{
+									"api",
+									"transmission",
+									"cross-border",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "end",
+											"orig": "end",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-06-30T20:59:59.999Z",
+										},
+										map[string]any{
+											"name": "start",
+											"orig": "start",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-05-31T20:59:59.999Z",
+										},
+									},
+								},
+								"select": map[string]any{},
+								"response": map[string]any{
+									"kind": "json",
+									"media": "application/json",
+								},
+							},
+							map[string]any{
+								"kind": "http",
+								"method": "GET",
+								"orig": "/api/transmission/cross-border-capacity",
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "transmission",
+									},
+									map[string]any{
+										"lit": "cross-border-capacity",
+									},
+								},
+								"parts": []any{
+									"api",
+									"transmission",
+									"cross-border-capacity",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "end",
+											"orig": "end",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-06-30T20:59:59.999Z",
+										},
+										map[string]any{
+											"name": "start",
+											"orig": "start",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-05-31T20:59:59.999Z",
+										},
+									},
+								},
+								"select": map[string]any{},
+								"response": map[string]any{
+									"kind": "json",
+									"media": "application/json",
+								},
+							},
+							map[string]any{
+								"kind": "http",
+								"method": "GET",
+								"orig": "/api/transmission/cross-border-planned-trade",
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "transmission",
+									},
+									map[string]any{
+										"lit": "cross-border-planned-trade",
+									},
+								},
+								"parts": []any{
+									"api",
+									"transmission",
+									"cross-border-planned-trade",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "end",
+											"orig": "end",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-06-30T20:59:59.999Z",
+										},
+										map[string]any{
+											"name": "start",
+											"orig": "start",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-05-31T20:59:59.999Z",
+										},
+									},
+								},
+								"select": map[string]any{},
+								"response": map[string]any{
+									"kind": "json",
+									"media": "application/json",
 								},
 							},
 							map[string]any{
@@ -2920,12 +3049,42 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"end",
-										"field",
-										"start",
+								"select": map[string]any{},
+							},
+							map[string]any{
+								"kind": "http",
+								"method": "GET",
+								"orig": "/api/transmission/cross-border-planned-trade/latest",
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
 									},
+									map[string]any{
+										"lit": "transmission",
+									},
+									map[string]any{
+										"lit": "cross-border-planned-trade",
+									},
+									map[string]any{
+										"lit": "latest",
+									},
+								},
+								"parts": []any{
+									"api",
+									"transmission",
+									"cross-border-planned-trade",
+									"latest",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{},
+								"select": map[string]any{},
+								"response": map[string]any{
+									"kind": "json",
+									"media": "application/json",
 								},
 							},
 							map[string]any{
@@ -2981,12 +3140,59 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"end",
-										"field",
-										"start",
+								"select": map[string]any{},
+							},
+							map[string]any{
+								"kind": "http",
+								"method": "GET",
+								"orig": "/api/transmission/cross-border/hourly",
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
 									},
+									map[string]any{
+										"lit": "transmission",
+									},
+									map[string]any{
+										"lit": "cross-border",
+									},
+									map[string]any{
+										"lit": "hourly",
+									},
+								},
+								"parts": []any{
+									"api",
+									"transmission",
+									"cross-border",
+									"hourly",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "end",
+											"orig": "end",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-06-30T20:59:59.999Z",
+										},
+										map[string]any{
+											"name": "start",
+											"orig": "start",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2020-05-31T20:59:59.999Z",
+										},
+									},
+								},
+								"select": map[string]any{},
+								"response": map[string]any{
+									"kind": "json",
+									"media": "application/json",
 								},
 							},
 							map[string]any{
@@ -3046,312 +3252,6 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"end",
-										"field",
-										"start",
-									},
-								},
-							},
-							map[string]any{
-								"kind": "http",
-								"method": "GET",
-								"orig": "/api/transmission/cross-border-capacity/{group}",
-								"segments": []any{
-									map[string]any{
-										"lit": "api",
-									},
-									map[string]any{
-										"lit": "transmission",
-									},
-									map[string]any{
-										"lit": "cross-border-capacity",
-									},
-									map[string]any{
-										"var": "group",
-									},
-								},
-								"parts": []any{
-									"api",
-									"transmission",
-									"cross-border-capacity",
-									"{group}",
-								},
-								"rename": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"name": "group",
-											"orig": "group",
-											"type": "`$STRING`",
-											"kind": "param",
-											"reqd": true,
-										},
-									},
-									"query": []any{
-										map[string]any{
-											"name": "end",
-											"orig": "end",
-											"type": "`$STRING`",
-											"kind": "query",
-											"example": "2020-06-30T20:59:59.999Z",
-										},
-										map[string]any{
-											"name": "start",
-											"orig": "start",
-											"type": "`$STRING`",
-											"kind": "query",
-											"example": "2020-05-31T20:59:59.999Z",
-										},
-									},
-								},
-								"select": map[string]any{
-									"exist": []any{
-										"end",
-										"group",
-										"start",
-									},
-								},
-							},
-							map[string]any{
-								"kind": "http",
-								"method": "GET",
-								"orig": "/api/transmission/cross-border",
-								"segments": []any{
-									map[string]any{
-										"lit": "api",
-									},
-									map[string]any{
-										"lit": "transmission",
-									},
-									map[string]any{
-										"lit": "cross-border",
-									},
-								},
-								"parts": []any{
-									"api",
-									"transmission",
-									"cross-border",
-								},
-								"rename": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"name": "end",
-											"orig": "end",
-											"type": "`$STRING`",
-											"kind": "query",
-											"example": "2020-06-30T20:59:59.999Z",
-										},
-										map[string]any{
-											"name": "start",
-											"orig": "start",
-											"type": "`$STRING`",
-											"kind": "query",
-											"example": "2020-05-31T20:59:59.999Z",
-										},
-									},
-								},
-								"select": map[string]any{
-									"exist": []any{
-										"end",
-										"start",
-									},
-								},
-							},
-							map[string]any{
-								"kind": "http",
-								"method": "GET",
-								"orig": "/api/transmission/cross-border-capacity",
-								"segments": []any{
-									map[string]any{
-										"lit": "api",
-									},
-									map[string]any{
-										"lit": "transmission",
-									},
-									map[string]any{
-										"lit": "cross-border-capacity",
-									},
-								},
-								"parts": []any{
-									"api",
-									"transmission",
-									"cross-border-capacity",
-								},
-								"rename": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"name": "end",
-											"orig": "end",
-											"type": "`$STRING`",
-											"kind": "query",
-											"example": "2020-06-30T20:59:59.999Z",
-										},
-										map[string]any{
-											"name": "start",
-											"orig": "start",
-											"type": "`$STRING`",
-											"kind": "query",
-											"example": "2020-05-31T20:59:59.999Z",
-										},
-									},
-								},
-								"select": map[string]any{
-									"exist": []any{
-										"end",
-										"start",
-									},
-								},
-							},
-							map[string]any{
-								"kind": "http",
-								"method": "GET",
-								"orig": "/api/transmission/cross-border-planned-trade",
-								"segments": []any{
-									map[string]any{
-										"lit": "api",
-									},
-									map[string]any{
-										"lit": "transmission",
-									},
-									map[string]any{
-										"lit": "cross-border-planned-trade",
-									},
-								},
-								"parts": []any{
-									"api",
-									"transmission",
-									"cross-border-planned-trade",
-								},
-								"rename": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"name": "end",
-											"orig": "end",
-											"type": "`$STRING`",
-											"kind": "query",
-											"example": "2020-06-30T20:59:59.999Z",
-										},
-										map[string]any{
-											"name": "start",
-											"orig": "start",
-											"type": "`$STRING`",
-											"kind": "query",
-											"example": "2020-05-31T20:59:59.999Z",
-										},
-									},
-								},
-								"select": map[string]any{
-									"exist": []any{
-										"end",
-										"start",
-									},
-								},
-							},
-							map[string]any{
-								"kind": "http",
-								"method": "GET",
-								"orig": "/api/transmission/cross-border/hourly",
-								"segments": []any{
-									map[string]any{
-										"lit": "api",
-									},
-									map[string]any{
-										"lit": "transmission",
-									},
-									map[string]any{
-										"lit": "cross-border",
-									},
-									map[string]any{
-										"lit": "hourly",
-									},
-								},
-								"parts": []any{
-									"api",
-									"transmission",
-									"cross-border",
-									"hourly",
-								},
-								"rename": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"name": "end",
-											"orig": "end",
-											"type": "`$STRING`",
-											"kind": "query",
-											"example": "2020-06-30T20:59:59.999Z",
-										},
-										map[string]any{
-											"name": "start",
-											"orig": "start",
-											"type": "`$STRING`",
-											"kind": "query",
-											"example": "2020-05-31T20:59:59.999Z",
-										},
-									},
-								},
-								"select": map[string]any{
-									"exist": []any{
-										"end",
-										"start",
-									},
-								},
-							},
-							map[string]any{
-								"kind": "http",
-								"method": "GET",
-								"orig": "/api/transmission/cross-border-planned-trade/latest",
-								"segments": []any{
-									map[string]any{
-										"lit": "api",
-									},
-									map[string]any{
-										"lit": "transmission",
-									},
-									map[string]any{
-										"lit": "cross-border-planned-trade",
-									},
-									map[string]any{
-										"lit": "latest",
-									},
-								},
-								"parts": []any{
-									"api",
-									"transmission",
-									"cross-border-planned-trade",
-									"latest",
-								},
-								"rename": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"args": map[string]any{},
 								"select": map[string]any{},
 							},
 							map[string]any{
@@ -3385,6 +3285,16 @@ func MakeConfig() map[string]any {
 								},
 								"args": map[string]any{},
 								"select": map[string]any{},
+								"response": map[string]any{
+									"alternatives": []any{
+										map[string]any{
+											"kind": "json",
+											"media": "application/json;charset=UTF-8",
+										},
+									},
+									"kind": "json",
+									"media": "application/json; charset=UTF-8",
+								},
 							},
 						},
 					},
@@ -3411,6 +3321,117 @@ func MakeConfig() map[string]any {
 						"input": "data",
 						"name": "load",
 						"points": []any{
+							map[string]any{
+								"kind": "http",
+								"method": "GET",
+								"orig": "/api/umm/gas/messages",
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "umm",
+									},
+									map[string]any{
+										"lit": "gas",
+									},
+									map[string]any{
+										"lit": "messages",
+									},
+								},
+								"parts": []any{
+									"api",
+									"umm",
+									"gas",
+									"messages",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "id",
+											"orig": "id",
+											"type": "`$STRING`",
+											"kind": "query",
+											"reqd": true,
+											"field": true,
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"id",
+									},
+								},
+								"response": map[string]any{
+									"kind": "json",
+									"media": "application/json",
+								},
+							},
+							map[string]any{
+								"kind": "http",
+								"method": "GET",
+								"orig": "/api/umm/single/{id}",
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "umm",
+									},
+									map[string]any{
+										"lit": "single",
+									},
+									map[string]any{
+										"var": "id",
+									},
+								},
+								"parts": []any{
+									"api",
+									"umm",
+									"single",
+									"{id}",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "id",
+											"orig": "id",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+									"query": []any{
+										map[string]any{
+											"name": "id",
+											"orig": "id",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"reqd": true,
+											"field": true,
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"id",
+									},
+								},
+								"response": map[string]any{
+									"kind": "json",
+									"media": "application/json",
+								},
+							},
 							map[string]any{
 								"kind": "http",
 								"method": "GET",
@@ -3503,120 +3524,10 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"affected_asset_name",
-										"event_duration_date_time_end",
-										"event_duration_date_time_start",
-										"event_status",
-										"event_type",
-										"page",
-										"publication_datetime_start",
-										"sort",
-										"status",
-										"unavailability_type",
-									},
-								},
-							},
-							map[string]any{
-								"kind": "http",
-								"method": "GET",
-								"orig": "/api/umm/gas/messages",
-								"segments": []any{
-									map[string]any{
-										"lit": "api",
-									},
-									map[string]any{
-										"lit": "umm",
-									},
-									map[string]any{
-										"lit": "gas",
-									},
-									map[string]any{
-										"lit": "messages",
-									},
-								},
-								"parts": []any{
-									"api",
-									"umm",
-									"gas",
-									"messages",
-								},
-								"rename": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"name": "id",
-											"orig": "id",
-											"type": "`$STRING`",
-											"kind": "query",
-											"reqd": true,
-										},
-									},
-								},
-								"select": map[string]any{
-									"exist": []any{
-										"id",
-									},
-								},
-							},
-							map[string]any{
-								"kind": "http",
-								"method": "GET",
-								"orig": "/api/umm/single/{id}",
-								"segments": []any{
-									map[string]any{
-										"lit": "api",
-									},
-									map[string]any{
-										"lit": "umm",
-									},
-									map[string]any{
-										"lit": "single",
-									},
-									map[string]any{
-										"var": "id",
-									},
-								},
-								"parts": []any{
-									"api",
-									"umm",
-									"single",
-									"{id}",
-								},
-								"rename": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"name": "id",
-											"orig": "id",
-											"type": "`$STRING`",
-											"kind": "param",
-											"reqd": true,
-										},
-									},
-									"query": []any{
-										map[string]any{
-											"name": "id",
-											"orig": "id",
-											"type": "`$INTEGER`",
-											"kind": "query",
-											"reqd": true,
-										},
-									},
-								},
-								"select": map[string]any{
-									"exist": []any{
-										"id",
-									},
+								"select": map[string]any{},
+								"response": map[string]any{
+									"kind": "json",
+									"media": "application/json",
 								},
 							},
 						},
@@ -3661,6 +3572,11 @@ func MakeConfig() map[string]any {
 								},
 								"args": map[string]any{},
 								"select": map[string]any{},
+								"response": map[string]any{
+									"binary": true,
+									"kind": "raw",
+									"media": "application/xml",
+								},
 							},
 							map[string]any{
 								"kind": "http",
@@ -3693,6 +3609,11 @@ func MakeConfig() map[string]any {
 								},
 								"args": map[string]any{},
 								"select": map[string]any{},
+								"response": map[string]any{
+									"binary": true,
+									"kind": "raw",
+									"media": "application/xml",
+								},
 							},
 						},
 					},

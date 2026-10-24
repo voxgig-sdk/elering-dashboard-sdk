@@ -54,6 +54,14 @@ const utility_1 = require("../../utility");
         const ent = testsdk.GreenController();
         (0, node_assert_1.default)(null != ent);
     });
+    (0, node_test_1.test)('validate', async (t) => {
+        if (null == __1.config.feature?.validate) {
+            t.skip('feature not present in this SDK: validate');
+            return;
+        }
+        const client = __1.EleringDashboardSDK.test(undefined, { feature: { validate: { active: true } } });
+        await node_assert_1.default.rejects(client.GreenController().load({ "fuel": 1 }), (err) => 'validate_failed' === err.code);
+    });
     (0, node_test_1.test)('basic', async (t) => {
         const live = 'TRUE' === process.env.ELERING_DASHBOARD_TEST_LIVE;
         for (const op of ['load']) {
@@ -62,7 +70,7 @@ const utility_1 = require("../../utility");
         }
         const setup = basicSetup();
         if (setup.live) {
-            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": {}, "name": "green_controller", "op": { "load": { "input": "data", "name": "load", "points": [{ "a": true, "co": { "id": "GET /api/green/certificates", "source": "openapi3", "version": 2 }, "g": { "query": [{ "a": true, "ex": "Kõik kütused", "k": "query", "n": "fuel", "or": "fuel", "r": false, "t": "`$STRING`", "index$": 0 }, { "a": true, "ex": "Kõik tehnoloogiad", "k": "query", "n": "technology", "or": "technology", "r": false, "t": "`$STRING`", "index$": 1 }, { "a": true, "ex": "TRANSACTION", "k": "query", "n": "type", "or": "type", "r": false, "t": "`$STRING`", "index$": 2 }] }, "k": "http", "m": "GET", "o": "/api/green/certificates", "q": { "exist": ["fuel", "technology", "type"] }, "r": {}, "s": [{ "lit": "api" }, { "lit": "green" }, { "lit": "certificates" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "load" } }, "relations": { "ancestors": [] }, "key$": "green_controller", "name__orig": "green_controller", "Name": "GreenController", "name_": "green_controller", "name-": "green-controller", "NAME": "GREEN_CONTROLLER", "index$": 11 }, { "active": true, "entity": "green_controller", "key$": "BasicGreenControllerFlow", "kind": "basic", "name": "BasicGreenControllerFlow", "param": {}, "step": [{ "a": true, "d": {}, "i": { "ref": "green_controller_ref01", "srcdatavar": "green_controller_ref01_data", "suffix": "_dt0" }, "m": {}, "o": "load", "s": [], "v": [{ "apply": "TextFieldMark", "def": { "mark": "Mark01-green_controller_ref01" } }], "index$": 0 }] }, 'GreenController', { "GET /api/green/certificates": { "protocol": "http", "parameters": [{ "name": "technology", "in": "query", "description": "technology fields", "required": false, "schema": { "type": "string", "default": "Kõik tehnoloogiad" }, "index$": 0 }, { "name": "fuel", "in": "query", "description": "fuel fields", "required": false, "schema": { "type": "string", "default": "Kõik kütused" }, "index$": 1 }, { "name": "type", "in": "query", "description": "transaction type fields", "required": false, "schema": { "type": "string", "default": "TRANSACTION", "enum": ["TRANSACTION", "PRODUCTION"] }, "index$": 2 }] } });
+            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": {}, "name": "green_controller", "op": { "load": { "input": "data", "name": "load", "points": [{ "a": true, "co": { "id": "GET /api/green/certificates", "source": "openapi3", "version": 2 }, "g": { "query": [{ "a": true, "ex": "Kõik kütused", "k": "query", "n": "fuel", "or": "fuel", "r": false, "t": "`$STRING`", "index$": 0 }, { "a": true, "ex": "Kõik tehnoloogiad", "k": "query", "n": "technology", "or": "technology", "r": false, "t": "`$STRING`", "index$": 1 }, { "a": true, "ex": "TRANSACTION", "k": "query", "n": "type", "or": "type", "r": false, "t": "`$STRING`", "index$": 2 }] }, "k": "http", "m": "GET", "o": "/api/green/certificates", "q": {}, "r": {}, "rs": { "kind": "json", "media": "application/json" }, "s": [{ "lit": "api" }, { "lit": "green" }, { "lit": "certificates" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "load" } }, "relations": { "ancestors": [] }, "key$": "green_controller", "name__orig": "green_controller", "Name": "GreenController", "name_": "green_controller", "name-": "green-controller", "NAME": "GREEN_CONTROLLER", "index$": 11 }, { "active": true, "entity": "green_controller", "key$": "BasicGreenControllerFlow", "kind": "basic", "name": "BasicGreenControllerFlow", "param": {}, "step": [{ "a": true, "d": {}, "i": { "ref": "green_controller_ref01", "srcdatavar": "green_controller_ref01_data", "suffix": "_dt0" }, "m": {}, "o": "load", "s": [], "v": [{ "apply": "TextFieldMark", "def": { "mark": "Mark01-green_controller_ref01" } }], "index$": 0 }] }, 'GreenController', { "GET /api/green/certificates": { "protocol": "http", "parameters": [{ "name": "technology", "in": "query", "description": "technology fields", "required": false, "schema": { "type": "string", "default": "Kõik tehnoloogiad" }, "index$": 0 }, { "name": "fuel", "in": "query", "description": "fuel fields", "required": false, "schema": { "type": "string", "default": "Kõik kütused" }, "index$": 1 }, { "name": "type", "in": "query", "description": "transaction type fields", "required": false, "schema": { "type": "string", "default": "TRANSACTION", "enum": ["TRANSACTION", "PRODUCTION"] }, "index$": 2 }] } }, { strict: LIVE_STRICT, t });
         }
         const client = setup.client;
         const struct = setup.struct;
@@ -76,6 +84,11 @@ const utility_1 = require("../../utility");
         (0, node_assert_1.default)(null != green_controller_ref01_data_dt0);
     });
 });
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true;
 function basicSetup(extra) {
     // TODO: fix test def options
     const options = {}; // null

@@ -44,13 +44,6 @@ main: kit: entity: nominations_controller: {
           }
           m: "GET"
           o: "/api/nominations/csv"
-          q: {
-            exist: [
-              "end"
-              "field"
-              "start"
-            ]
-          }
           s: [
             {
               lit: "api"

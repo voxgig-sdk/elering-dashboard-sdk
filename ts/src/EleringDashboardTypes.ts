@@ -18,7 +18,6 @@ export interface BalanceController {
 
 export interface BalanceControllerLoadMatch {
   end?: string
-  field?: any[]
   start?: string
 }
 

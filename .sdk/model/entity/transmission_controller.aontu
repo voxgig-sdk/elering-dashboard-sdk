@@ -11,6 +11,71 @@ main: kit: entity: transmission_controller: {
       points: [
         {
           co: {
+            id: "GET /api/transmission/cross-border-capacity/{group}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "group"
+                or: "group"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: "2020-06-30T20:59:59.999Z"
+                k: "query"
+                n: "end"
+                or: "end"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "2020-05-31T20:59:59.999Z"
+                k: "query"
+                n: "start"
+                or: "start"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/transmission/cross-border-capacity/{group}"
+          q: {
+            exist: [
+              "group"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "transmission"
+            }
+            {
+              lit: "cross-border-capacity"
+            }
+            {
+              var: "group"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
             id: "GET /api/transmission/cross-border-capacity/{group}/csv"
             source: "openapi3"
             version: 2
@@ -55,10 +120,7 @@ main: kit: entity: transmission_controller: {
           o: "/api/transmission/cross-border-capacity/{group}/csv"
           q: {
             exist: [
-              "end"
-              "field"
               "group"
-              "start"
             ]
           }
           s: [
@@ -76,255 +138,6 @@ main: kit: entity: transmission_controller: {
             }
             {
               lit: "csv"
-            }
-          ]
-          t: {
-            req: "`reqdata`"
-            res: "`body`"
-          }
-        }
-        {
-          co: {
-            id: "GET /api/transmission/cross-border-planned-trade/csv"
-            source: "openapi3"
-            version: 2
-          }
-          g: {
-            query: [
-              {
-                ex: "2020-06-30T20:59:59.999Z"
-                k: "query"
-                n: "end"
-                or: "end"
-                r: false
-                t: "`$STRING`"
-              }
-              {
-                k: "query"
-                n: "field"
-                or: "fields"
-                r: false
-                t: "`$ARRAY`"
-              }
-              {
-                ex: "2020-05-31T20:59:59.999Z"
-                k: "query"
-                n: "start"
-                or: "start"
-                r: false
-                t: "`$STRING`"
-              }
-            ]
-          }
-          m: "GET"
-          o: "/api/transmission/cross-border-planned-trade/csv"
-          q: {
-            exist: [
-              "end"
-              "field"
-              "start"
-            ]
-          }
-          s: [
-            {
-              lit: "api"
-            }
-            {
-              lit: "transmission"
-            }
-            {
-              lit: "cross-border-planned-trade"
-            }
-            {
-              lit: "csv"
-            }
-          ]
-          t: {
-            req: "`reqdata`"
-            res: "`body`"
-          }
-        }
-        {
-          co: {
-            id: "GET /api/transmission/cross-border/csv"
-            source: "openapi3"
-            version: 2
-          }
-          g: {
-            query: [
-              {
-                ex: "2020-06-30T20:59:59.999Z"
-                k: "query"
-                n: "end"
-                or: "end"
-                r: false
-                t: "`$STRING`"
-              }
-              {
-                k: "query"
-                n: "field"
-                or: "fields"
-                r: false
-                t: "`$ARRAY`"
-              }
-              {
-                ex: "2020-05-31T20:59:59.999Z"
-                k: "query"
-                n: "start"
-                or: "start"
-                r: false
-                t: "`$STRING`"
-              }
-            ]
-          }
-          m: "GET"
-          o: "/api/transmission/cross-border/csv"
-          q: {
-            exist: [
-              "end"
-              "field"
-              "start"
-            ]
-          }
-          s: [
-            {
-              lit: "api"
-            }
-            {
-              lit: "transmission"
-            }
-            {
-              lit: "cross-border"
-            }
-            {
-              lit: "csv"
-            }
-          ]
-          t: {
-            req: "`reqdata`"
-            res: "`body`"
-          }
-        }
-        {
-          co: {
-            id: "GET /api/transmission/cross-border/hourly/csv"
-            source: "openapi3"
-            version: 2
-          }
-          g: {
-            query: [
-              {
-                ex: "2020-06-30T20:59:59.999Z"
-                k: "query"
-                n: "end"
-                or: "end"
-                r: false
-                t: "`$STRING`"
-              }
-              {
-                k: "query"
-                n: "field"
-                or: "fields"
-                r: false
-                t: "`$ARRAY`"
-              }
-              {
-                ex: "2020-05-31T20:59:59.999Z"
-                k: "query"
-                n: "start"
-                or: "start"
-                r: false
-                t: "`$STRING`"
-              }
-            ]
-          }
-          m: "GET"
-          o: "/api/transmission/cross-border/hourly/csv"
-          q: {
-            exist: [
-              "end"
-              "field"
-              "start"
-            ]
-          }
-          s: [
-            {
-              lit: "api"
-            }
-            {
-              lit: "transmission"
-            }
-            {
-              lit: "cross-border"
-            }
-            {
-              lit: "hourly"
-            }
-            {
-              lit: "csv"
-            }
-          ]
-          t: {
-            req: "`reqdata`"
-            res: "`body`"
-          }
-        }
-        {
-          co: {
-            id: "GET /api/transmission/cross-border-capacity/{group}"
-            source: "openapi3"
-            version: 2
-          }
-          g: {
-            params: [
-              {
-                k: "param"
-                n: "group"
-                or: "group"
-                r: true
-                t: "`$STRING`"
-              }
-            ]
-            query: [
-              {
-                ex: "2020-06-30T20:59:59.999Z"
-                k: "query"
-                n: "end"
-                or: "end"
-                r: false
-                t: "`$STRING`"
-              }
-              {
-                ex: "2020-05-31T20:59:59.999Z"
-                k: "query"
-                n: "start"
-                or: "start"
-                r: false
-                t: "`$STRING`"
-              }
-            ]
-          }
-          m: "GET"
-          o: "/api/transmission/cross-border-capacity/{group}"
-          q: {
-            exist: [
-              "end"
-              "group"
-              "start"
-            ]
-          }
-          s: [
-            {
-              lit: "api"
-            }
-            {
-              lit: "transmission"
-            }
-            {
-              lit: "cross-border-capacity"
-            }
-            {
-              var: "group"
             }
           ]
           t: {
@@ -360,11 +173,9 @@ main: kit: entity: transmission_controller: {
           }
           m: "GET"
           o: "/api/transmission/cross-border"
-          q: {
-            exist: [
-              "end"
-              "start"
-            ]
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {
@@ -410,11 +221,9 @@ main: kit: entity: transmission_controller: {
           }
           m: "GET"
           o: "/api/transmission/cross-border-capacity"
-          q: {
-            exist: [
-              "end"
-              "start"
-            ]
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {
@@ -460,11 +269,9 @@ main: kit: entity: transmission_controller: {
           }
           m: "GET"
           o: "/api/transmission/cross-border-planned-trade"
-          q: {
-            exist: [
-              "end"
-              "start"
-            ]
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {
@@ -475,6 +282,145 @@ main: kit: entity: transmission_controller: {
             }
             {
               lit: "cross-border-planned-trade"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/transmission/cross-border-planned-trade/csv"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "2020-06-30T20:59:59.999Z"
+                k: "query"
+                n: "end"
+                or: "end"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "field"
+                or: "fields"
+                r: false
+                t: "`$ARRAY`"
+              }
+              {
+                ex: "2020-05-31T20:59:59.999Z"
+                k: "query"
+                n: "start"
+                or: "start"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/transmission/cross-border-planned-trade/csv"
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "transmission"
+            }
+            {
+              lit: "cross-border-planned-trade"
+            }
+            {
+              lit: "csv"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/transmission/cross-border-planned-trade/latest"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/api/transmission/cross-border-planned-trade/latest"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "transmission"
+            }
+            {
+              lit: "cross-border-planned-trade"
+            }
+            {
+              lit: "latest"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/transmission/cross-border/csv"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "2020-06-30T20:59:59.999Z"
+                k: "query"
+                n: "end"
+                or: "end"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "field"
+                or: "fields"
+                r: false
+                t: "`$ARRAY`"
+              }
+              {
+                ex: "2020-05-31T20:59:59.999Z"
+                k: "query"
+                n: "start"
+                or: "start"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/transmission/cross-border/csv"
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "transmission"
+            }
+            {
+              lit: "cross-border"
+            }
+            {
+              lit: "csv"
             }
           ]
           t: {
@@ -510,11 +456,9 @@ main: kit: entity: transmission_controller: {
           }
           m: "GET"
           o: "/api/transmission/cross-border/hourly"
-          q: {
-            exist: [
-              "end"
-              "start"
-            ]
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {
@@ -537,12 +481,39 @@ main: kit: entity: transmission_controller: {
         }
         {
           co: {
-            id: "GET /api/transmission/cross-border-planned-trade/latest"
+            id: "GET /api/transmission/cross-border/hourly/csv"
             source: "openapi3"
             version: 2
           }
+          g: {
+            query: [
+              {
+                ex: "2020-06-30T20:59:59.999Z"
+                k: "query"
+                n: "end"
+                or: "end"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "field"
+                or: "fields"
+                r: false
+                t: "`$ARRAY`"
+              }
+              {
+                ex: "2020-05-31T20:59:59.999Z"
+                k: "query"
+                n: "start"
+                or: "start"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
           m: "GET"
-          o: "/api/transmission/cross-border-planned-trade/latest"
+          o: "/api/transmission/cross-border/hourly/csv"
           s: [
             {
               lit: "api"
@@ -551,10 +522,13 @@ main: kit: entity: transmission_controller: {
               lit: "transmission"
             }
             {
-              lit: "cross-border-planned-trade"
+              lit: "cross-border"
             }
             {
-              lit: "latest"
+              lit: "hourly"
+            }
+            {
+              lit: "csv"
             }
           ]
           t: {
@@ -570,6 +544,16 @@ main: kit: entity: transmission_controller: {
           }
           m: "GET"
           o: "/api/transmission/cross-border/latest"
+          rs: {
+            alternatives: [
+              {
+                kind: "json"
+                media: "application/json;charset=UTF-8"
+              }
+            ]
+            kind: "json"
+            media: "application/json; charset=UTF-8"
+          }
           s: [
             {
               lit: "api"

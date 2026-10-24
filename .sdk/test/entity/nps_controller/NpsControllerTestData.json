@@ -21,26 +21,6 @@
     }
   },
   "requests": {
-    "GET /api/nps/price/csv": {
-      "provenance": "operation-contract",
-      "version": 2,
-      "source": "openapi3"
-    },
-    "GET /api/nps/turnover/csv": {
-      "provenance": "operation-contract",
-      "version": 2,
-      "source": "openapi3"
-    },
-    "GET /api/nps/price": {
-      "provenance": "operation-contract",
-      "version": 2,
-      "source": "openapi3"
-    },
-    "GET /api/nps/turnover": {
-      "provenance": "operation-contract",
-      "version": 2,
-      "source": "openapi3"
-    },
     "GET /api/nps/price/{group}/current": {
       "provenance": "operation-contract",
       "version": 2,
@@ -52,6 +32,26 @@
       "source": "openapi3"
     },
     "GET /api/nps/turnover/{group}/latest": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/nps/price": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/nps/price/csv": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/nps/turnover": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/nps/turnover/csv": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"

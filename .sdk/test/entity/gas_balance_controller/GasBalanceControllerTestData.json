@@ -18,12 +18,12 @@
     }
   },
   "requests": {
-    "GET /api/gas-balance/price/csv": {
+    "GET /api/gas-balance/price": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"
     },
-    "GET /api/gas-balance/price": {
+    "GET /api/gas-balance/price/csv": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"

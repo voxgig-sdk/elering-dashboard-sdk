@@ -13,10 +13,6 @@ main: kit: flow: BasicUmmGasControllerFlow:
         suffix: "_dt0"
       }
 
-      m: {
-        id: "umm_gas_controller01"
-      }
-
       o: "load",
       v: [
         {

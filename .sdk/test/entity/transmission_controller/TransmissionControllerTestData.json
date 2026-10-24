@@ -21,27 +21,12 @@
     }
   },
   "requests": {
-    "GET /api/transmission/cross-border-capacity/{group}/csv": {
-      "provenance": "operation-contract",
-      "version": 2,
-      "source": "openapi3"
-    },
-    "GET /api/transmission/cross-border-planned-trade/csv": {
-      "provenance": "operation-contract",
-      "version": 2,
-      "source": "openapi3"
-    },
-    "GET /api/transmission/cross-border/csv": {
-      "provenance": "operation-contract",
-      "version": 2,
-      "source": "openapi3"
-    },
-    "GET /api/transmission/cross-border/hourly/csv": {
-      "provenance": "operation-contract",
-      "version": 2,
-      "source": "openapi3"
-    },
     "GET /api/transmission/cross-border-capacity/{group}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/transmission/cross-border-capacity/{group}/csv": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"
@@ -61,12 +46,27 @@
       "version": 2,
       "source": "openapi3"
     },
-    "GET /api/transmission/cross-border/hourly": {
+    "GET /api/transmission/cross-border-planned-trade/csv": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"
     },
     "GET /api/transmission/cross-border-planned-trade/latest": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/transmission/cross-border/csv": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/transmission/cross-border/hourly": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/transmission/cross-border/hourly/csv": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"

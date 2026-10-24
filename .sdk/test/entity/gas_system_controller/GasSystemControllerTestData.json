@@ -23,16 +23,6 @@
       "version": 2,
       "source": "openapi3"
     },
-    "GET /api/gas-system/daily/csv": {
-      "provenance": "operation-contract",
-      "version": 2,
-      "source": "openapi3"
-    },
-    "GET /api/gas-system/m3/csv": {
-      "provenance": "operation-contract",
-      "version": 2,
-      "source": "openapi3"
-    },
     "GET /api/gas-system/daily": {
       "provenance": "operation-contract",
       "version": 2,
@@ -43,12 +33,22 @@
       "version": 2,
       "source": "openapi3"
     },
-    "GET /api/gas-system/m3": {
+    "GET /api/gas-system/daily/csv": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"
     },
     "GET /api/gas-system/latest": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/gas-system/m3": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/gas-system/m3/csv": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"

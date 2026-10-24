@@ -9,7 +9,7 @@ import { createLiveTransport } from '../../live-runner'
 import { runLiveEntity } from '../../live-entity'
 
 
-import { EleringDashboardSDK, BaseFeature, stdutil } from '../../..'
+import { EleringDashboardSDK, BaseFeature, config, stdutil } from '../../..'
 
 import {
   envOverride,
@@ -41,6 +41,8 @@ describe('UmmRssFeedControllerEntity', async () => {
   })
 
 
+
+
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.ELERING_DASHBOARD_TEST_LIVE
@@ -51,7 +53,7 @@ describe('UmmRssFeedControllerEntity', async () => {
     
     const setup = basicSetup()
     if (setup.live) {
-      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{},"name":"umm_rss_feed_controller","op":{"load":{"input":"data","name":"load","points":[{"a":true,"co":{"id":"GET /umm/gas/rss","source":"openapi3","version":2},"g":{},"k":"http","m":"GET","o":"/umm/gas/rss","q":{},"r":{},"s":[{"lit":"umm"},{"lit":"gas"},{"lit":"rss"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0},{"a":true,"co":{"id":"GET /umm/gas/rss/aris","source":"openapi3","version":2},"g":{},"k":"http","m":"GET","o":"/umm/gas/rss/aris","q":{},"r":{},"s":[{"lit":"umm"},{"lit":"gas"},{"lit":"rss"},{"lit":"aris"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":1}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"umm_rss_feed_controller","name__orig":"umm_rss_feed_controller","Name":"UmmRssFeedController","name_":"umm_rss_feed_controller","name-":"umm-rss-feed-controller","NAME":"UMM_RSS_FEED_CONTROLLER","index$":23}, {"active":true,"entity":"umm_rss_feed_controller","key$":"BasicUmmRssFeedControllerFlow","kind":"basic","name":"BasicUmmRssFeedControllerFlow","param":{},"step":[{"a":true,"d":{},"i":{"ref":"umm_rss_feed_controller_ref01","srcdatavar":"umm_rss_feed_controller_ref01_data","suffix":"_dt0"},"m":{},"o":"load","s":[],"v":[{"apply":"TextFieldMark","def":{"mark":"Mark01-umm_rss_feed_controller_ref01"}}],"index$":0}]}, 'UmmRssFeedController', {"GET /umm/gas/rss":{"protocol":"http","parameters":[]},"GET /umm/gas/rss/aris":{"protocol":"http","parameters":[]}})
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{},"name":"umm_rss_feed_controller","op":{"load":{"input":"data","name":"load","points":[{"a":true,"co":{"id":"GET /umm/gas/rss","source":"openapi3","version":2},"g":{},"k":"http","m":"GET","o":"/umm/gas/rss","q":{},"r":{},"rs":{"binary":true,"kind":"raw","media":"application/xml"},"s":[{"lit":"umm"},{"lit":"gas"},{"lit":"rss"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0},{"a":true,"co":{"id":"GET /umm/gas/rss/aris","source":"openapi3","version":2},"g":{},"k":"http","m":"GET","o":"/umm/gas/rss/aris","q":{},"r":{},"rs":{"binary":true,"kind":"raw","media":"application/xml"},"s":[{"lit":"umm"},{"lit":"gas"},{"lit":"rss"},{"lit":"aris"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":1}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"umm_rss_feed_controller","name__orig":"umm_rss_feed_controller","Name":"UmmRssFeedController","name_":"umm_rss_feed_controller","name-":"umm-rss-feed-controller","NAME":"UMM_RSS_FEED_CONTROLLER","index$":23}, {"active":true,"entity":"umm_rss_feed_controller","key$":"BasicUmmRssFeedControllerFlow","kind":"basic","name":"BasicUmmRssFeedControllerFlow","param":{},"step":[{"a":true,"d":{},"i":{"ref":"umm_rss_feed_controller_ref01","srcdatavar":"umm_rss_feed_controller_ref01_data","suffix":"_dt0"},"m":{},"o":"load","s":[],"v":[{"apply":"TextFieldMark","def":{"mark":"Mark01-umm_rss_feed_controller_ref01"}}],"index$":0}]}, 'UmmRssFeedController', {"GET /umm/gas/rss":{"protocol":"http","parameters":[]},"GET /umm/gas/rss/aris":{"protocol":"http","parameters":[]}}, { strict: LIVE_STRICT, t })
     }
     const client = setup.client
     const struct = setup.struct
@@ -72,6 +74,12 @@ describe('UmmRssFeedControllerEntity', async () => {
 })
 
 
+
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true
 
 function basicSetup(extra?: any) {
   // TODO: fix test def options

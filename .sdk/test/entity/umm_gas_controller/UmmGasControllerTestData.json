@@ -18,17 +18,17 @@
     }
   },
   "requests": {
-    "GET /api/umm/gas": {
-      "provenance": "operation-contract",
-      "version": 2,
-      "source": "openapi3"
-    },
     "GET /api/umm/gas/messages": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"
     },
     "GET /api/umm/single/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/umm/gas": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"

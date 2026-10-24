@@ -54,6 +54,14 @@ const utility_1 = require("../../utility");
         const ent = testsdk.Interruptible();
         (0, node_assert_1.default)(null != ent);
     });
+    (0, node_test_1.test)('validate', async (t) => {
+        if (null == __1.config.feature?.validate) {
+            t.skip('feature not present in this SDK: validate');
+            return;
+        }
+        const client = __1.EleringDashboardSDK.test(undefined, { feature: { validate: { active: true } } });
+        await node_assert_1.default.rejects(client.Interruptible().load({ "end": 1 }), (err) => 'validate_failed' === err.code);
+    });
     (0, node_test_1.test)('basic', async (t) => {
         const live = 'TRUE' === process.env.ELERING_DASHBOARD_TEST_LIVE;
         for (const op of ['load']) {
@@ -62,7 +70,7 @@ const utility_1 = require("../../utility");
         }
         const setup = basicSetup();
         if (setup.live) {
-            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": {}, "name": "interruptible", "op": { "load": { "input": "data", "name": "load", "points": [{ "a": true, "co": { "id": "GET /api/capacity/interruptible", "source": "openapi3", "version": 2 }, "g": { "query": [{ "a": true, "ex": "2020-06-30T20:59:59.999Z", "k": "query", "n": "end", "or": "end", "r": false, "t": "`$STRING`", "index$": 0 }, { "a": true, "ex": "2020-05-31T20:59:59.999Z", "k": "query", "n": "start", "or": "start", "r": false, "t": "`$STRING`", "index$": 1 }] }, "k": "http", "m": "GET", "o": "/api/capacity/interruptible", "q": { "exist": ["end", "start"] }, "r": {}, "s": [{ "lit": "api" }, { "lit": "capacity" }, { "lit": "interruptible" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "load" } }, "relations": { "ancestors": [] }, "key$": "interruptible", "name__orig": "interruptible", "Name": "Interruptible", "name_": "interruptible", "name-": "interruptible", "NAME": "INTERRUPTIBLE", "index$": 12 }, { "active": true, "entity": "interruptible", "key$": "BasicInterruptibleFlow", "kind": "basic", "name": "BasicInterruptibleFlow", "param": {}, "step": [{ "a": true, "d": {}, "i": { "ref": "interruptible_ref01", "srcdatavar": "interruptible_ref01_data", "suffix": "_dt0" }, "m": {}, "o": "load", "s": [], "v": [{ "apply": "TextFieldMark", "def": { "mark": "Mark01-interruptible_ref01" } }], "index$": 0 }] }, 'Interruptible', { "GET /api/capacity/interruptible": { "protocol": "http", "parameters": [{ "name": "start", "in": "query", "description": "start time for data", "required": false, "allowEmptyValue": true, "schema": { "type": "string", "format": "date-time" }, "example": "2020-05-31T20:59:59.999Z", "index$": 0 }, { "name": "end", "in": "query", "description": "end time for data", "required": false, "allowEmptyValue": true, "schema": { "type": "string", "format": "date-time" }, "example": "2020-06-30T20:59:59.999Z", "index$": 1 }] } });
+            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": {}, "name": "interruptible", "op": { "load": { "input": "data", "name": "load", "points": [{ "a": true, "co": { "id": "GET /api/capacity/interruptible", "source": "openapi3", "version": 2 }, "g": { "query": [{ "a": true, "ex": "2020-06-30T20:59:59.999Z", "k": "query", "n": "end", "or": "end", "r": false, "t": "`$STRING`", "index$": 0 }, { "a": true, "ex": "2020-05-31T20:59:59.999Z", "k": "query", "n": "start", "or": "start", "r": false, "t": "`$STRING`", "index$": 1 }] }, "k": "http", "m": "GET", "o": "/api/capacity/interruptible", "q": {}, "r": {}, "rs": { "kind": "json", "media": "application/json" }, "s": [{ "lit": "api" }, { "lit": "capacity" }, { "lit": "interruptible" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "load" } }, "relations": { "ancestors": [] }, "key$": "interruptible", "name__orig": "interruptible", "Name": "Interruptible", "name_": "interruptible", "name-": "interruptible", "NAME": "INTERRUPTIBLE", "index$": 12 }, { "active": true, "entity": "interruptible", "key$": "BasicInterruptibleFlow", "kind": "basic", "name": "BasicInterruptibleFlow", "param": {}, "step": [{ "a": true, "d": {}, "i": { "ref": "interruptible_ref01", "srcdatavar": "interruptible_ref01_data", "suffix": "_dt0" }, "m": {}, "o": "load", "s": [], "v": [{ "apply": "TextFieldMark", "def": { "mark": "Mark01-interruptible_ref01" } }], "index$": 0 }] }, 'Interruptible', { "GET /api/capacity/interruptible": { "protocol": "http", "parameters": [{ "name": "start", "in": "query", "description": "start time for data", "required": false, "allowEmptyValue": true, "schema": { "type": "string", "format": "date-time" }, "example": "2020-05-31T20:59:59.999Z", "index$": 0 }, { "name": "end", "in": "query", "description": "end time for data", "required": false, "allowEmptyValue": true, "schema": { "type": "string", "format": "date-time" }, "example": "2020-06-30T20:59:59.999Z", "index$": 1 }] } }, { strict: LIVE_STRICT, t });
         }
         const client = setup.client;
         const struct = setup.struct;
@@ -76,6 +84,11 @@ const utility_1 = require("../../utility");
         (0, node_assert_1.default)(null != interruptible_ref01_data_dt0);
     });
 });
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true;
 function basicSetup(extra) {
     // TODO: fix test def options
     const options = {}; // null

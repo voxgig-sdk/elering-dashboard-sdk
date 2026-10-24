@@ -9,7 +9,7 @@ import { createLiveTransport } from '../../live-runner'
 import { runLiveEntity } from '../../live-entity'
 
 
-import { EleringDashboardSDK, BaseFeature, stdutil } from '../../..'
+import { EleringDashboardSDK, BaseFeature, config, stdutil } from '../../..'
 
 import {
   envOverride,
@@ -41,6 +41,18 @@ describe('GasSystemEntity', async () => {
   })
 
 
+  test('validate', async (t) => {
+    if (null == (config as any).feature?.validate) {
+      t.skip('feature not present in this SDK: validate')
+      return
+    }
+    const client = EleringDashboardSDK.test(undefined, { feature: { validate: { active: true } } })
+    await assert.rejects(client.GasSystem().load({"end":1} as any),
+      (err: any) => 'validate_failed' === err.code)
+  })
+
+
+
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.ELERING_DASHBOARD_TEST_LIVE
@@ -51,7 +63,7 @@ describe('GasSystemEntity', async () => {
     
     const setup = basicSetup()
     if (setup.live) {
-      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{},"name":"gas_system","op":{"load":{"input":"data","name":"load","points":[{"a":true,"co":{"id":"GET /api/gas-system","source":"openapi3","version":2},"g":{"query":[{"a":true,"ex":"2020-06-30T20:59:59.999Z","k":"query","n":"end","or":"end","r":false,"t":"`$STRING`","index$":0},{"a":true,"ex":"2020-05-31T20:59:59.999Z","k":"query","n":"start","or":"start","r":false,"t":"`$STRING`","index$":1}]},"k":"http","m":"GET","o":"/api/gas-system","q":{"exist":["end","start"]},"r":{},"s":[{"lit":"api"},{"lit":"gas-system"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"gas_system","name__orig":"gas_system","Name":"GasSystem","name_":"gas_system","name-":"gas-system","NAME":"GAS_SYSTEM","index$":6}, {"active":true,"entity":"gas_system","key$":"BasicGasSystemFlow","kind":"basic","name":"BasicGasSystemFlow","param":{},"step":[{"a":true,"d":{},"i":{"ref":"gas_system_ref01","srcdatavar":"gas_system_ref01_data","suffix":"_dt0"},"m":{},"o":"load","s":[],"v":[{"apply":"TextFieldMark","def":{"mark":"Mark01-gas_system_ref01"}}],"index$":0}]}, 'GasSystem', {"GET /api/gas-system":{"protocol":"http","parameters":[{"name":"start","in":"query","description":"start time for data","required":false,"allowEmptyValue":true,"schema":{"type":"string","format":"date-time"},"example":"2020-05-31T20:59:59.999Z","index$":0},{"name":"end","in":"query","description":"end time for data","required":false,"allowEmptyValue":true,"schema":{"type":"string","format":"date-time"},"example":"2020-06-30T20:59:59.999Z","index$":1}]}})
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{},"name":"gas_system","op":{"load":{"input":"data","name":"load","points":[{"a":true,"co":{"id":"GET /api/gas-system","source":"openapi3","version":2},"g":{"query":[{"a":true,"ex":"2020-06-30T20:59:59.999Z","k":"query","n":"end","or":"end","r":false,"t":"`$STRING`","index$":0},{"a":true,"ex":"2020-05-31T20:59:59.999Z","k":"query","n":"start","or":"start","r":false,"t":"`$STRING`","index$":1}]},"k":"http","m":"GET","o":"/api/gas-system","q":{},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"api"},{"lit":"gas-system"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"gas_system","name__orig":"gas_system","Name":"GasSystem","name_":"gas_system","name-":"gas-system","NAME":"GAS_SYSTEM","index$":6}, {"active":true,"entity":"gas_system","key$":"BasicGasSystemFlow","kind":"basic","name":"BasicGasSystemFlow","param":{},"step":[{"a":true,"d":{},"i":{"ref":"gas_system_ref01","srcdatavar":"gas_system_ref01_data","suffix":"_dt0"},"m":{},"o":"load","s":[],"v":[{"apply":"TextFieldMark","def":{"mark":"Mark01-gas_system_ref01"}}],"index$":0}]}, 'GasSystem', {"GET /api/gas-system":{"protocol":"http","parameters":[{"name":"start","in":"query","description":"start time for data","required":false,"allowEmptyValue":true,"schema":{"type":"string","format":"date-time"},"example":"2020-05-31T20:59:59.999Z","index$":0},{"name":"end","in":"query","description":"end time for data","required":false,"allowEmptyValue":true,"schema":{"type":"string","format":"date-time"},"example":"2020-06-30T20:59:59.999Z","index$":1}]}}, { strict: LIVE_STRICT, t })
     }
     const client = setup.client
     const struct = setup.struct
@@ -72,6 +84,12 @@ describe('GasSystemEntity', async () => {
 })
 
 
+
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true
 
 function basicSetup(extra?: any) {
   // TODO: fix test def options

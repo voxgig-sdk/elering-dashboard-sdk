@@ -21,12 +21,12 @@
     }
   },
   "requests": {
-    "GET /api/gas-trade/csv": {
+    "GET /api/gas-trade/{group}/latest": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"
     },
-    "GET /api/gas-trade/{group}/latest": {
+    "GET /api/gas-trade/csv": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"

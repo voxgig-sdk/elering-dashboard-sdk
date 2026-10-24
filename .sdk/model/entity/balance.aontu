@@ -37,11 +37,9 @@ main: kit: entity: balance: {
           }
           m: "GET"
           o: "/api/balance"
-          q: {
-            exist: [
-              "end"
-              "start"
-            ]
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {

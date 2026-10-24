@@ -16,7 +16,6 @@
 
 ---@class BalanceControllerLoadMatch
 ---@field end? string
----@field field? table
 ---@field start? string
 
 ---@class Firm

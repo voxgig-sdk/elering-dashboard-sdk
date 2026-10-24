@@ -45,12 +45,9 @@ main: kit: entity: green_controller: {
           }
           m: "GET"
           o: "/api/green/certificates"
-          q: {
-            exist: [
-              "fuel"
-              "technology"
-              "type"
-            ]
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {

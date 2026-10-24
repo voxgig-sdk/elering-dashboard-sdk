@@ -11,6 +11,54 @@ main: kit: entity: balance_controller: {
       points: [
         {
           co: {
+            id: "GET /api/balance/commerce"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "2020-06-30T20:59:59.999Z"
+                k: "query"
+                n: "end"
+                or: "end"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "2020-05-31T20:59:59.999Z"
+                k: "query"
+                n: "start"
+                or: "start"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/balance/commerce"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "balance"
+            }
+            {
+              lit: "commerce"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
             id: "GET /api/balance/commerce/csv"
             source: "openapi3"
             version: 2
@@ -44,13 +92,6 @@ main: kit: entity: balance_controller: {
           }
           m: "GET"
           o: "/api/balance/commerce/csv"
-          q: {
-            exist: [
-              "end"
-              "field"
-              "start"
-            ]
-          }
           s: [
             {
               lit: "api"
@@ -63,6 +104,37 @@ main: kit: entity: balance_controller: {
             }
             {
               lit: "csv"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/balance/commerce/latest"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/api/balance/commerce/latest"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "balance"
+            }
+            {
+              lit: "commerce"
+            }
+            {
+              lit: "latest"
             }
           ]
           t: {
@@ -105,13 +177,6 @@ main: kit: entity: balance_controller: {
           }
           m: "GET"
           o: "/api/balance/csv"
-          q: {
-            exist: [
-              "end"
-              "field"
-              "start"
-            ]
-          }
           s: [
             {
               lit: "api"
@@ -121,6 +186,54 @@ main: kit: entity: balance_controller: {
             }
             {
               lit: "csv"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/balance/total"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "2020-06-30T20:59:59.999Z"
+                k: "query"
+                n: "end"
+                or: "end"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "2020-05-31T20:59:59.999Z"
+                k: "query"
+                n: "field"
+                or: "fields"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/balance/total"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "balance"
+            }
+            {
+              lit: "total"
             }
           ]
           t: {
@@ -163,13 +276,6 @@ main: kit: entity: balance_controller: {
           }
           m: "GET"
           o: "/api/balance/total/csv"
-          q: {
-            exist: [
-              "end"
-              "field"
-              "start"
-            ]
-          }
           s: [
             {
               lit: "api"
@@ -191,139 +297,16 @@ main: kit: entity: balance_controller: {
         }
         {
           co: {
-            id: "GET /api/balance/total"
-            source: "openapi3"
-            version: 2
-          }
-          g: {
-            query: [
-              {
-                ex: "2020-06-30T20:59:59.999Z"
-                k: "query"
-                n: "end"
-                or: "end"
-                r: false
-                t: "`$STRING`"
-              }
-              {
-                ex: "2020-05-31T20:59:59.999Z"
-                k: "query"
-                n: "field"
-                or: "fields"
-                r: false
-                t: "`$STRING`"
-              }
-            ]
-          }
-          m: "GET"
-          o: "/api/balance/total"
-          q: {
-            exist: [
-              "end"
-              "field"
-            ]
-          }
-          s: [
-            {
-              lit: "api"
-            }
-            {
-              lit: "balance"
-            }
-            {
-              lit: "total"
-            }
-          ]
-          t: {
-            req: "`reqdata`"
-            res: "`body`"
-          }
-        }
-        {
-          co: {
-            id: "GET /api/balance/commerce"
-            source: "openapi3"
-            version: 2
-          }
-          g: {
-            query: [
-              {
-                ex: "2020-06-30T20:59:59.999Z"
-                k: "query"
-                n: "end"
-                or: "end"
-                r: false
-                t: "`$STRING`"
-              }
-              {
-                ex: "2020-05-31T20:59:59.999Z"
-                k: "query"
-                n: "start"
-                or: "start"
-                r: false
-                t: "`$STRING`"
-              }
-            ]
-          }
-          m: "GET"
-          o: "/api/balance/commerce"
-          q: {
-            exist: [
-              "end"
-              "start"
-            ]
-          }
-          s: [
-            {
-              lit: "api"
-            }
-            {
-              lit: "balance"
-            }
-            {
-              lit: "commerce"
-            }
-          ]
-          t: {
-            req: "`reqdata`"
-            res: "`body`"
-          }
-        }
-        {
-          co: {
-            id: "GET /api/balance/commerce/latest"
-            source: "openapi3"
-            version: 2
-          }
-          m: "GET"
-          o: "/api/balance/commerce/latest"
-          s: [
-            {
-              lit: "api"
-            }
-            {
-              lit: "balance"
-            }
-            {
-              lit: "commerce"
-            }
-            {
-              lit: "latest"
-            }
-          ]
-          t: {
-            req: "`reqdata`"
-            res: "`body`"
-          }
-        }
-        {
-          co: {
             id: "GET /api/balance/total/latest"
             source: "openapi3"
             version: 2
           }
           m: "GET"
           o: "/api/balance/total/latest"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
           s: [
             {
               lit: "api"

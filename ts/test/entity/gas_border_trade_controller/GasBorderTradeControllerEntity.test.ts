@@ -9,7 +9,7 @@ import { createLiveTransport } from '../../live-runner'
 import { runLiveEntity } from '../../live-entity'
 
 
-import { EleringDashboardSDK, BaseFeature, stdutil } from '../../..'
+import { EleringDashboardSDK, BaseFeature, config, stdutil } from '../../..'
 
 import {
   envOverride,
@@ -41,6 +41,8 @@ describe('GasBorderTradeControllerEntity', async () => {
   })
 
 
+
+
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.ELERING_DASHBOARD_TEST_LIVE
@@ -51,7 +53,7 @@ describe('GasBorderTradeControllerEntity', async () => {
     
     const setup = basicSetup()
     if (setup.live) {
-      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{},"name":"gas_border_trade_controller","op":{"load":{"input":"data","name":"load","points":[{"a":true,"co":{"id":"GET /api/gas/border-trade/current","source":"openapi3","version":2},"g":{},"k":"http","m":"GET","o":"/api/gas/border-trade/current","q":{},"r":{},"s":[{"lit":"api"},{"lit":"gas"},{"lit":"border-trade"},{"lit":"current"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"gas_border_trade_controller","name__orig":"gas_border_trade_controller","Name":"GasBorderTradeController","name_":"gas_border_trade_controller","name-":"gas-border-trade-controller","NAME":"GAS_BORDER_TRADE_CONTROLLER","index$":5}, {"active":true,"entity":"gas_border_trade_controller","key$":"BasicGasBorderTradeControllerFlow","kind":"basic","name":"BasicGasBorderTradeControllerFlow","param":{},"step":[{"a":true,"d":{},"i":{"ref":"gas_border_trade_controller_ref01","srcdatavar":"gas_border_trade_controller_ref01_data","suffix":"_dt0"},"m":{},"o":"load","s":[],"v":[{"apply":"TextFieldMark","def":{"mark":"Mark01-gas_border_trade_controller_ref01"}}],"index$":0}]}, 'GasBorderTradeController', {"GET /api/gas/border-trade/current":{"protocol":"http","parameters":[]}})
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{},"name":"gas_border_trade_controller","op":{"load":{"input":"data","name":"load","points":[{"a":true,"co":{"id":"GET /api/gas/border-trade/current","source":"openapi3","version":2},"g":{},"k":"http","m":"GET","o":"/api/gas/border-trade/current","q":{},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"api"},{"lit":"gas"},{"lit":"border-trade"},{"lit":"current"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"gas_border_trade_controller","name__orig":"gas_border_trade_controller","Name":"GasBorderTradeController","name_":"gas_border_trade_controller","name-":"gas-border-trade-controller","NAME":"GAS_BORDER_TRADE_CONTROLLER","index$":5}, {"active":true,"entity":"gas_border_trade_controller","key$":"BasicGasBorderTradeControllerFlow","kind":"basic","name":"BasicGasBorderTradeControllerFlow","param":{},"step":[{"a":true,"d":{},"i":{"ref":"gas_border_trade_controller_ref01","srcdatavar":"gas_border_trade_controller_ref01_data","suffix":"_dt0"},"m":{},"o":"load","s":[],"v":[{"apply":"TextFieldMark","def":{"mark":"Mark01-gas_border_trade_controller_ref01"}}],"index$":0}]}, 'GasBorderTradeController', {"GET /api/gas/border-trade/current":{"protocol":"http","parameters":[]}}, { strict: LIVE_STRICT, t })
     }
     const client = setup.client
     const struct = setup.struct
@@ -72,6 +74,12 @@ describe('GasBorderTradeControllerEntity', async () => {
 })
 
 
+
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true
 
 function basicSetup(extra?: any) {
   // TODO: fix test def options

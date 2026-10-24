@@ -84,9 +84,12 @@ class NominationEntity extends EleringDashboardEntityBase_1.EleringDashboardEnti
         catch (err) {
             // What a hook throws here must not escape the cleaning below.
             try {
-                fres = featureHook(ctx, 'PreUnexpected');
-                if (fres instanceof Promise) {
-                    await fres;
+                // Once per operation: makeError fires it for its own error.
+                if (!ctx.unexpectedFired) {
+                    fres = featureHook(ctx, 'PreUnexpected');
+                    if (fres instanceof Promise) {
+                        await fres;
+                    }
                 }
             }
             catch (hookerr) {
@@ -98,7 +101,7 @@ class NominationEntity extends EleringDashboardEntityBase_1.EleringDashboardEnti
             }
             else {
                 // Off-happy-path (throw disabled): typed as any so the method's
-                // Promise<Nomination> return stays clean under strict null checks.
+                // Promise<NominationEntity> return stays clean under strict null checks.
                 return undefined;
             }
         }

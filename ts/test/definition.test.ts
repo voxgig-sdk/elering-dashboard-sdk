@@ -20,51 +20,23 @@ const PLAN: any[] = [
       "start": "2020-05-31T20:59:59.999Z"
     },
     "headers": [],
+    "cookies": [],
+    "responseMedia": [
+      "*/*"
+    ],
     "query": [
       "start",
       "end"
     ],
-    "auth": null,
-    "status": 200,
-    "sample": null,
-    "idField": "id"
-  },
-  {
-    "entity": "balance_controller",
-    "accessor": "BalanceController",
-    "op": "load",
-    "method": "GET",
-    "path": "/api/balance/total",
-    "args": [],
-    "select": {
-      "end": "2020-06-30T20:59:59.999Z",
-      "field": "v1"
-    },
-    "headers": [],
-    "query": [
-      "fields",
-      "end"
-    ],
-    "auth": null,
-    "status": 200,
-    "sample": null,
-    "idField": "id"
-  },
-  {
-    "entity": "balance_controller",
-    "accessor": "BalanceController",
-    "op": "load",
-    "method": "GET",
-    "path": "/api/balance/commerce",
-    "args": [],
-    "select": {
-      "end": "2020-06-30T20:59:59.999Z",
-      "start": "2020-05-31T20:59:59.999Z"
-    },
-    "headers": [],
-    "query": [
-      "start",
-      "end"
+    "queryArgs": [
+      {
+        "name": "end",
+        "wire": "end"
+      },
+      {
+        "name": "start",
+        "wire": "start"
+      }
     ],
     "auth": null,
     "status": 200,
@@ -83,9 +55,23 @@ const PLAN: any[] = [
       "start": "2020-05-31T20:59:59.999Z"
     },
     "headers": [],
+    "cookies": [],
+    "responseMedia": [
+      "*/*"
+    ],
     "query": [
       "start",
       "end"
+    ],
+    "queryArgs": [
+      {
+        "name": "end",
+        "wire": "end"
+      },
+      {
+        "name": "start",
+        "wire": "start"
+      }
     ],
     "auth": null,
     "status": 200,
@@ -105,54 +91,25 @@ const PLAN: any[] = [
       "start": "2020-05-31T20:59:59.999Z"
     },
     "headers": [],
+    "cookies": [],
     "query": [
       "start",
       "end",
       "fields"
     ],
-    "auth": null,
-    "status": 200,
-    "sample": null,
-    "idField": "id"
-  },
-  {
-    "entity": "gas_balance_controller",
-    "accessor": "GasBalanceController",
-    "op": "load",
-    "method": "GET",
-    "path": "/api/gas-balance/price/csv",
-    "args": [],
-    "select": {
-      "end": "2020-06-30T20:59:59.999Z",
-      "field": "v1",
-      "start": "2020-05-31T20:59:59.999Z"
-    },
-    "headers": [],
-    "query": [
-      "start",
-      "end",
-      "fields"
-    ],
-    "auth": null,
-    "status": 200,
-    "sample": null,
-    "idField": "id"
-  },
-  {
-    "entity": "gas_balance_controller",
-    "accessor": "GasBalanceController",
-    "op": "load",
-    "method": "GET",
-    "path": "/api/gas-balance/price",
-    "args": [],
-    "select": {
-      "end": "2020-06-30T20:59:59.999Z",
-      "start": "2020-05-31T20:59:59.999Z"
-    },
-    "headers": [],
-    "query": [
-      "start",
-      "end"
+    "queryArgs": [
+      {
+        "name": "end",
+        "wire": "end"
+      },
+      {
+        "name": "field",
+        "wire": "fields"
+      },
+      {
+        "name": "start",
+        "wire": "start"
+      }
     ],
     "auth": null,
     "status": 200,
@@ -168,7 +125,12 @@ const PLAN: any[] = [
     "args": [],
     "select": {},
     "headers": [],
+    "cookies": [],
+    "responseMedia": [
+      "*/*"
+    ],
     "query": [],
+    "queryArgs": [],
     "auth": null,
     "status": 200,
     "sample": null,
@@ -186,25 +148,24 @@ const PLAN: any[] = [
       "start": "2020-05-31T20:59:59.999Z"
     },
     "headers": [],
+    "cookies": [],
+    "responseMedia": [
+      "*/*"
+    ],
     "query": [
       "start",
       "end"
     ],
-    "auth": null,
-    "status": 200,
-    "sample": null,
-    "idField": "id"
-  },
-  {
-    "entity": "gas_system_controller",
-    "accessor": "GasSystemController",
-    "op": "load",
-    "method": "GET",
-    "path": "/api/gas-system/latest",
-    "args": [],
-    "select": {},
-    "headers": [],
-    "query": [],
+    "queryArgs": [
+      {
+        "name": "end",
+        "wire": "end"
+      },
+      {
+        "name": "start",
+        "wire": "start"
+      }
+    ],
     "auth": null,
     "status": 200,
     "sample": null,
@@ -222,32 +183,23 @@ const PLAN: any[] = [
       "start": "2020-05-31T20:59:59.999Z"
     },
     "headers": [],
+    "cookies": [],
+    "responseMedia": [
+      "*/*"
+    ],
     "query": [
       "start",
       "end"
     ],
-    "auth": null,
-    "status": 200,
-    "sample": null,
-    "idField": "id"
-  },
-  {
-    "entity": "gas_trade_controller",
-    "accessor": "GasTradeController",
-    "op": "load",
-    "method": "GET",
-    "path": "/api/gas-trade/csv",
-    "args": [],
-    "select": {
-      "end": "2020-06-30T20:59:59.999Z",
-      "field": "v1",
-      "start": "2020-05-31T20:59:59.999Z"
-    },
-    "headers": [],
-    "query": [
-      "start",
-      "end",
-      "fields"
+    "queryArgs": [
+      {
+        "name": "end",
+        "wire": "end"
+      },
+      {
+        "name": "start",
+        "wire": "start"
+      }
     ],
     "auth": null,
     "status": 200,
@@ -269,18 +221,23 @@ const PLAN: any[] = [
     ],
     "select": {},
     "headers": [],
+    "cookies": [],
+    "responseMedia": [
+      "*/*"
+    ],
     "query": [],
+    "queryArgs": [],
     "auth": null,
     "status": 200,
     "sample": null,
     "idField": "id"
   },
   {
-    "entity": "gas_transmission_controller",
-    "accessor": "GasTransmissionController",
+    "entity": "gas_trade_controller",
+    "accessor": "GasTradeController",
     "op": "load",
     "method": "GET",
-    "path": "/api/gas-transmission/cross-border/csv",
+    "path": "/api/gas-trade/csv",
     "args": [],
     "select": {
       "end": "2020-06-30T20:59:59.999Z",
@@ -288,47 +245,26 @@ const PLAN: any[] = [
       "start": "2020-05-31T20:59:59.999Z"
     },
     "headers": [],
+    "cookies": [],
     "query": [
       "start",
       "end",
       "fields"
     ],
-    "auth": null,
-    "status": 200,
-    "sample": null,
-    "idField": "id"
-  },
-  {
-    "entity": "gas_transmission_controller",
-    "accessor": "GasTransmissionController",
-    "op": "load",
-    "method": "GET",
-    "path": "/api/gas-transmission/cross-border",
-    "args": [],
-    "select": {
-      "end": "2020-06-30T20:59:59.999Z",
-      "start": "2020-05-31T20:59:59.999Z"
-    },
-    "headers": [],
-    "query": [
-      "start",
-      "end"
+    "queryArgs": [
+      {
+        "name": "end",
+        "wire": "end"
+      },
+      {
+        "name": "field",
+        "wire": "fields"
+      },
+      {
+        "name": "start",
+        "wire": "start"
+      }
     ],
-    "auth": null,
-    "status": 200,
-    "sample": null,
-    "idField": "id"
-  },
-  {
-    "entity": "gas_transmission_controller",
-    "accessor": "GasTransmissionController",
-    "op": "load",
-    "method": "GET",
-    "path": "/api/gas-transmission/cross-border/latest",
-    "args": [],
-    "select": {},
-    "headers": [],
-    "query": [],
     "auth": null,
     "status": 200,
     "sample": null,
@@ -342,15 +278,33 @@ const PLAN: any[] = [
     "path": "/api/green/certificates",
     "args": [],
     "select": {
-      "fuel": "v1",
-      "technology": "v1",
-      "type": "v1"
+      "fuel": "Kõik kütused",
+      "technology": "Kõik tehnoloogiad",
+      "type": "TRANSACTION"
     },
     "headers": [],
+    "cookies": [],
+    "responseMedia": [
+      "*/*"
+    ],
     "query": [
       "technology",
       "fuel",
       "type"
+    ],
+    "queryArgs": [
+      {
+        "name": "fuel",
+        "wire": "fuel"
+      },
+      {
+        "name": "technology",
+        "wire": "technology"
+      },
+      {
+        "name": "type",
+        "wire": "type"
+      }
     ],
     "auth": null,
     "status": 200,
@@ -369,9 +323,23 @@ const PLAN: any[] = [
       "start": "2020-05-31T20:59:59.999Z"
     },
     "headers": [],
+    "cookies": [],
+    "responseMedia": [
+      "*/*"
+    ],
     "query": [
       "start",
       "end"
+    ],
+    "queryArgs": [
+      {
+        "name": "end",
+        "wire": "end"
+      },
+      {
+        "name": "start",
+        "wire": "start"
+      }
     ],
     "auth": null,
     "status": 200,
@@ -391,10 +359,25 @@ const PLAN: any[] = [
       "start": "2020-05-31T20:59:59.999Z"
     },
     "headers": [],
+    "cookies": [],
     "query": [
       "start",
       "end",
       "fields"
+    ],
+    "queryArgs": [
+      {
+        "name": "end",
+        "wire": "end"
+      },
+      {
+        "name": "field",
+        "wire": "fields"
+      },
+      {
+        "name": "start",
+        "wire": "start"
+      }
     ],
     "auth": null,
     "status": 200,
@@ -413,9 +396,23 @@ const PLAN: any[] = [
       "start": "2020-05-31T20:59:59.999Z"
     },
     "headers": [],
+    "cookies": [],
+    "responseMedia": [
+      "*/*"
+    ],
     "query": [
       "start",
       "end"
+    ],
+    "queryArgs": [
+      {
+        "name": "end",
+        "wire": "end"
+      },
+      {
+        "name": "start",
+        "wire": "start"
+      }
     ],
     "auth": null,
     "status": 200,
@@ -435,10 +432,25 @@ const PLAN: any[] = [
       "start": "2020-05-31T20:59:59.999Z"
     },
     "headers": [],
+    "cookies": [],
     "query": [
       "start",
       "end",
       "fields"
+    ],
+    "queryArgs": [
+      {
+        "name": "end",
+        "wire": "end"
+      },
+      {
+        "name": "field",
+        "wire": "fields"
+      },
+      {
+        "name": "start",
+        "wire": "start"
+      }
     ],
     "auth": null,
     "status": 200,
@@ -457,9 +469,23 @@ const PLAN: any[] = [
       "start": "2020-05-31T20:59:59.999Z"
     },
     "headers": [],
+    "cookies": [],
+    "responseMedia": [
+      "*/*"
+    ],
     "query": [
       "start",
       "end"
+    ],
+    "queryArgs": [
+      {
+        "name": "end",
+        "wire": "end"
+      },
+      {
+        "name": "start",
+        "wire": "start"
+      }
     ],
     "auth": null,
     "status": 200,
@@ -479,10 +505,25 @@ const PLAN: any[] = [
       "start": "2020-05-31T20:59:59.999Z"
     },
     "headers": [],
+    "cookies": [],
     "query": [
       "start",
       "end",
       "fields"
+    ],
+    "queryArgs": [
+      {
+        "name": "end",
+        "wire": "end"
+      },
+      {
+        "name": "field",
+        "wire": "fields"
+      },
+      {
+        "name": "start",
+        "wire": "start"
+      }
     ],
     "auth": null,
     "status": 200,
@@ -501,101 +542,23 @@ const PLAN: any[] = [
       "start": "2020-05-31T20:59:59.999Z"
     },
     "headers": [],
+    "cookies": [],
+    "responseMedia": [
+      "*/*"
+    ],
     "query": [
       "start",
       "end"
     ],
-    "auth": null,
-    "status": 200,
-    "sample": null,
-    "idField": "id"
-  },
-  {
-    "entity": "system_controller",
-    "accessor": "SystemController",
-    "op": "load",
-    "method": "GET",
-    "path": "/api/system/with-plan",
-    "args": [],
-    "select": {
-      "end": "2020-06-30T20:59:59.999Z",
-      "start": "2020-05-31T20:59:59.999Z"
-    },
-    "headers": [],
-    "query": [
-      "start",
-      "end"
-    ],
-    "auth": null,
-    "status": 200,
-    "sample": null,
-    "idField": "id"
-  },
-  {
-    "entity": "system_controller",
-    "accessor": "SystemController",
-    "op": "load",
-    "method": "GET",
-    "path": "/api/system/latest",
-    "args": [],
-    "select": {},
-    "headers": [],
-    "query": [],
-    "auth": null,
-    "status": 200,
-    "sample": null,
-    "idField": "id"
-  },
-  {
-    "entity": "transmission_controller",
-    "accessor": "TransmissionController",
-    "op": "load",
-    "method": "GET",
-    "path": "/api/transmission/cross-border-capacity/{group}/csv",
-    "args": [
+    "queryArgs": [
       {
-        "name": "group",
-        "wire": "group",
-        "value": "p1"
-      }
-    ],
-    "select": {
-      "end": "2020-06-30T20:59:59.999Z",
-      "field": "v1",
-      "start": "2020-05-31T20:59:59.999Z"
-    },
-    "headers": [],
-    "query": [
-      "start",
-      "end",
-      "fields"
-    ],
-    "auth": null,
-    "status": 200,
-    "sample": null,
-    "idField": "id"
-  },
-  {
-    "entity": "transmission_controller",
-    "accessor": "TransmissionController",
-    "op": "load",
-    "method": "GET",
-    "path": "/api/transmission/cross-border-capacity/{group}",
-    "args": [
+        "name": "end",
+        "wire": "end"
+      },
       {
-        "name": "group",
-        "wire": "group",
-        "value": "p1"
+        "name": "start",
+        "wire": "start"
       }
-    ],
-    "select": {
-      "end": "2020-06-30T20:59:59.999Z",
-      "start": "2020-05-31T20:59:59.999Z"
-    },
-    "headers": [],
-    "query": [
-      "start",
-      "end"
     ],
     "auth": null,
     "status": 200,
@@ -615,13 +578,17 @@ const PLAN: any[] = [
       "event_duration_date_time_start": "v1",
       "event_status": "v1",
       "event_type": "v1",
-      "page": "v1",
+      "page": 1,
       "publication_datetime_start": "v1",
-      "sort": "v1",
-      "status": "v1",
+      "sort": "publicationDateTimeDesc",
+      "status": "current",
       "unavailability_type": "v1"
     },
     "headers": [],
+    "cookies": [],
+    "responseMedia": [
+      "*/*"
+    ],
     "query": [
       "status",
       "event_status",
@@ -633,6 +600,48 @@ const PLAN: any[] = [
       "publication_datetime_start",
       "page",
       "sort"
+    ],
+    "queryArgs": [
+      {
+        "name": "affected_asset_name",
+        "wire": "affected_asset_name"
+      },
+      {
+        "name": "event_duration_date_time_end",
+        "wire": "event_duration_date_time_end"
+      },
+      {
+        "name": "event_duration_date_time_start",
+        "wire": "event_duration_date_time_start"
+      },
+      {
+        "name": "event_status",
+        "wire": "event_status"
+      },
+      {
+        "name": "event_type",
+        "wire": "event_type"
+      },
+      {
+        "name": "page",
+        "wire": "page"
+      },
+      {
+        "name": "publication_datetime_start",
+        "wire": "publication_datetime_start"
+      },
+      {
+        "name": "sort",
+        "wire": "sort"
+      },
+      {
+        "name": "status",
+        "wire": "status"
+      },
+      {
+        "name": "unavailability_type",
+        "wire": "unavailability_type"
+      }
     ],
     "auth": null,
     "status": 200,

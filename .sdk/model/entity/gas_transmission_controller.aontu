@@ -11,6 +11,54 @@ main: kit: entity: gas_transmission_controller: {
       points: [
         {
           co: {
+            id: "GET /api/gas-transmission/cross-border"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "2020-06-30T20:59:59.999Z"
+                k: "query"
+                n: "end"
+                or: "end"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "2020-05-31T20:59:59.999Z"
+                k: "query"
+                n: "start"
+                or: "start"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/gas-transmission/cross-border"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "gas-transmission"
+            }
+            {
+              lit: "cross-border"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
             id: "GET /api/gas-transmission/cross-border/csv"
             source: "openapi3"
             version: 2
@@ -44,13 +92,6 @@ main: kit: entity: gas_transmission_controller: {
           }
           m: "GET"
           o: "/api/gas-transmission/cross-border/csv"
-          q: {
-            exist: [
-              "end"
-              "field"
-              "start"
-            ]
-          }
           s: [
             {
               lit: "api"
@@ -72,62 +113,16 @@ main: kit: entity: gas_transmission_controller: {
         }
         {
           co: {
-            id: "GET /api/gas-transmission/cross-border"
-            source: "openapi3"
-            version: 2
-          }
-          g: {
-            query: [
-              {
-                ex: "2020-06-30T20:59:59.999Z"
-                k: "query"
-                n: "end"
-                or: "end"
-                r: false
-                t: "`$STRING`"
-              }
-              {
-                ex: "2020-05-31T20:59:59.999Z"
-                k: "query"
-                n: "start"
-                or: "start"
-                r: false
-                t: "`$STRING`"
-              }
-            ]
-          }
-          m: "GET"
-          o: "/api/gas-transmission/cross-border"
-          q: {
-            exist: [
-              "end"
-              "start"
-            ]
-          }
-          s: [
-            {
-              lit: "api"
-            }
-            {
-              lit: "gas-transmission"
-            }
-            {
-              lit: "cross-border"
-            }
-          ]
-          t: {
-            req: "`reqdata`"
-            res: "`body`"
-          }
-        }
-        {
-          co: {
             id: "GET /api/gas-transmission/cross-border/latest"
             source: "openapi3"
             version: 2
           }
           m: "GET"
           o: "/api/gas-transmission/cross-border/latest"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
           s: [
             {
               lit: "api"

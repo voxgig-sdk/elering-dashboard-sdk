@@ -31,7 +31,6 @@ class BalanceController(TypedDict):
 
 class BalanceControllerLoadMatch(TypedDict, total=False):
     end: str
-    field: list
     start: str
 
 

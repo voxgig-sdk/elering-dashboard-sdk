@@ -44,13 +44,6 @@ main: kit: entity: interruptible_capacity_controller: {
           }
           m: "GET"
           o: "/api/capacity/interruptible/csv"
-          q: {
-            exist: [
-              "end"
-              "field"
-              "start"
-            ]
-          }
           s: [
             {
               lit: "api"

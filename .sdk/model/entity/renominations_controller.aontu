@@ -44,13 +44,6 @@ main: kit: entity: renominations_controller: {
           }
           m: "GET"
           o: "/api/nominations/renominations/csv"
-          q: {
-            exist: [
-              "end"
-              "field"
-              "start"
-            ]
-          }
           s: [
             {
               lit: "api"

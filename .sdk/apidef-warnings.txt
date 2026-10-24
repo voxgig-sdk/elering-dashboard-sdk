@@ -5,3 +5,169 @@
   path: "/api/umm/single/{id}"
   op: "load"
 }
+
+
+{
+  point: "warning"
+  note: "Points GET /api/balance/commerce, GET /api/balance/commerce/csv, GET /api/balance/commerce/latest, GET /api/balance/csv, GET /api/balance/total, GET /api/balance/total/csv and GET /api/balance/total/latest on entity=balance_controller op=load have the same selector (exist: none), so only GET /api/balance/commerce is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "balance_controller"
+  op: "load"
+  points: [
+    "GET /api/balance/commerce"
+    "GET /api/balance/commerce/csv"
+    "GET /api/balance/commerce/latest"
+    "GET /api/balance/csv"
+    "GET /api/balance/total"
+    "GET /api/balance/total/csv"
+    "GET /api/balance/total/latest"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points GET /api/gas-balance/price and GET /api/gas-balance/price/csv on entity=gas_balance_controller op=load have the same selector (exist: none), so only GET /api/gas-balance/price is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "gas_balance_controller"
+  op: "load"
+  points: [
+    "GET /api/gas-balance/price"
+    "GET /api/gas-balance/price/csv"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points GET /api/gas-system/csv, GET /api/gas-system/daily, GET /api/gas-system/daily-average, GET /api/gas-system/daily/csv, GET /api/gas-system/latest, GET /api/gas-system/m3 and GET /api/gas-system/m3/csv on entity=gas_system_controller op=load have the same selector (exist: none), so only GET /api/gas-system/csv is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "gas_system_controller"
+  op: "load"
+  points: [
+    "GET /api/gas-system/csv"
+    "GET /api/gas-system/daily"
+    "GET /api/gas-system/daily-average"
+    "GET /api/gas-system/daily/csv"
+    "GET /api/gas-system/latest"
+    "GET /api/gas-system/m3"
+    "GET /api/gas-system/m3/csv"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points GET /api/gas-transmission/cross-border, GET /api/gas-transmission/cross-border/csv and GET /api/gas-transmission/cross-border/latest on entity=gas_transmission_controller op=load have the same selector (exist: none), so only GET /api/gas-transmission/cross-border is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "gas_transmission_controller"
+  op: "load"
+  points: [
+    "GET /api/gas-transmission/cross-border"
+    "GET /api/gas-transmission/cross-border/csv"
+    "GET /api/gas-transmission/cross-border/latest"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points GET /api/nps/price/{group}/current, GET /api/nps/price/{group}/latest and GET /api/nps/turnover/{group}/latest on entity=nps_controller op=load have the same selector (exist: group), so only GET /api/nps/price/{group}/current is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "nps_controller"
+  op: "load"
+  points: [
+    "GET /api/nps/price/{group}/current"
+    "GET /api/nps/price/{group}/latest"
+    "GET /api/nps/turnover/{group}/latest"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points GET /api/nps/price, GET /api/nps/price/csv, GET /api/nps/turnover and GET /api/nps/turnover/csv on entity=nps_controller op=load have the same selector (exist: none), so only GET /api/nps/price is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "nps_controller"
+  op: "load"
+  points: [
+    "GET /api/nps/price"
+    "GET /api/nps/price/csv"
+    "GET /api/nps/turnover"
+    "GET /api/nps/turnover/csv"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points GET /api/system/csv, GET /api/system/latest, GET /api/system/with-plan and GET /api/system/with-plan/csv on entity=system_controller op=load have the same selector (exist: none), so only GET /api/system/csv is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "system_controller"
+  op: "load"
+  points: [
+    "GET /api/system/csv"
+    "GET /api/system/latest"
+    "GET /api/system/with-plan"
+    "GET /api/system/with-plan/csv"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points GET /api/transmission/cross-border-capacity/{group} and GET /api/transmission/cross-border-capacity/{group}/csv on entity=transmission_controller op=load have the same selector (exist: group), so only GET /api/transmission/cross-border-capacity/{group} is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "transmission_controller"
+  op: "load"
+  points: [
+    "GET /api/transmission/cross-border-capacity/{group}"
+    "GET /api/transmission/cross-border-capacity/{group}/csv"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points GET /api/transmission/cross-border, GET /api/transmission/cross-border-capacity, GET /api/transmission/cross-border-planned-trade, GET /api/transmission/cross-border-planned-trade/csv, GET /api/transmission/cross-border-planned-trade/latest, GET /api/transmission/cross-border/csv, GET /api/transmission/cross-border/hourly, GET /api/transmission/cross-border/hourly/csv and GET /api/transmission/cross-border/latest on entity=transmission_controller op=load have the same selector (exist: none), so only GET /api/transmission/cross-border is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "transmission_controller"
+  op: "load"
+  points: [
+    "GET /api/transmission/cross-border"
+    "GET /api/transmission/cross-border-capacity"
+    "GET /api/transmission/cross-border-planned-trade"
+    "GET /api/transmission/cross-border-planned-trade/csv"
+    "GET /api/transmission/cross-border-planned-trade/latest"
+    "GET /api/transmission/cross-border/csv"
+    "GET /api/transmission/cross-border/hourly"
+    "GET /api/transmission/cross-border/hourly/csv"
+    "GET /api/transmission/cross-border/latest"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points GET /api/umm/gas/messages and GET /api/umm/single/{id} on entity=umm_gas_controller op=load have the same selector (exist: id), so only GET /api/umm/gas/messages is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "umm_gas_controller"
+  op: "load"
+  points: [
+    "GET /api/umm/gas/messages"
+    "GET /api/umm/single/{id}"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points GET /umm/gas/rss and GET /umm/gas/rss/aris on entity=umm_rss_feed_controller op=load have the same selector (exist: none), so only GET /umm/gas/rss is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "umm_rss_feed_controller"
+  op: "load"
+  points: [
+    "GET /umm/gas/rss"
+    "GET /umm/gas/rss/aris"
+  ]
+
+}

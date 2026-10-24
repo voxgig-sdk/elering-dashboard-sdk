@@ -84,9 +84,12 @@ class InterruptibleEntity extends EleringDashboardEntityBase_1.EleringDashboardE
         catch (err) {
             // What a hook throws here must not escape the cleaning below.
             try {
-                fres = featureHook(ctx, 'PreUnexpected');
-                if (fres instanceof Promise) {
-                    await fres;
+                // Once per operation: makeError fires it for its own error.
+                if (!ctx.unexpectedFired) {
+                    fres = featureHook(ctx, 'PreUnexpected');
+                    if (fres instanceof Promise) {
+                        await fres;
+                    }
                 }
             }
             catch (hookerr) {
@@ -98,7 +101,7 @@ class InterruptibleEntity extends EleringDashboardEntityBase_1.EleringDashboardE
             }
             else {
                 // Off-happy-path (throw disabled): typed as any so the method's
-                // Promise<Interruptible> return stays clean under strict null checks.
+                // Promise<InterruptibleEntity> return stays clean under strict null checks.
                 return undefined;
             }
         }

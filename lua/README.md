@@ -12,7 +12,7 @@ It exposes the API as capitalised, semantic **Entities** — e.g. `client:Balanc
 
 ## Install
 This package is not yet published to LuaRocks. Install it from the
-GitHub release tag (`lua/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/elering-dashboard-sdk/releases)),
+GitHub release tag (`lua/vX.Y.Z`, see [Tags](https://github.com/voxgig-sdk/elering-dashboard-sdk/tags)),
 or add the source directory to your `LUA_PATH`:
 
 ```bash
@@ -35,10 +35,12 @@ local client = sdk.new()
 
 ### 3. Load a balance
 
+`load` returns the entity; `data_get()` reads its record.
+
 ```lua
 local balance, err = client:Balance():load()
 if err then error(err) end
-print(balance)
+for k, val in pairs(balance:data_get()) do print(k, val) end
 ```
 
 
@@ -107,7 +109,7 @@ Create a mock client for unit testing — no server required:
 local client = sdk.test()
 
 local result, err = client:BalanceController():load()
--- result is the returned data; err is set on failure
+-- result is the entity; data_get() reads its mock record; err is set on failure
 ```
 
 ### Use a custom fetch function
@@ -216,7 +218,7 @@ All entities share the same interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
-| `load` | `(reqmatch, ctrl) -> any, err` | Load a single entity by match criteria. |
+| `load` | `(reqmatch, ctrl) -> any, err` | Load a single entity by match criteria, and return it. |
 | `data_get` | `() -> table` | Get entity data. |
 | `data_set` | `(data)` | Set entity data. |
 | `match_get` | `() -> table` | Get entity match criteria. |
@@ -226,18 +228,18 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `(value, err)`. The `value` is the operation's
-data **directly** — there is no wrapper:
+Entity operations return `(value, err)`. The `value` is the entity
+itself — there is no wrapper:
 
 | Operation | `value` |
 | --- | --- |
-| `load` | the entity record (a `table`) |
+| `load` | the entity, whose `data_get()` reads its record (a `table`) |
 
 Check `err` first (it is non-`nil` on failure), then use `value`:
 
     local balance, err = client:Balance():load()
     if err then error(err) end
-    -- balance is the loaded record
+    -- balance is the loaded entity
 
 Only `direct()` returns a response envelope — a `table` with `ok`,
 `status`, `headers`, and `data` keys.
@@ -260,7 +262,7 @@ API path: `/api/balance`
 
 Operations: Load.
 
-API path: `/api/balance/commerce/csv`
+API path: `/api/balance/commerce`
 
 #### Firm
 
@@ -287,7 +289,7 @@ API path: `/api/capacity/firm/csv`
 
 Operations: Load.
 
-API path: `/api/gas-balance/price/csv`
+API path: `/api/gas-balance/price`
 
 #### GasBorderTradeController
 
@@ -332,7 +334,7 @@ API path: `/api/gas-trade`
 
 Operations: Load.
 
-API path: `/api/gas-trade/csv`
+API path: `/api/gas-trade/{group}/latest`
 
 #### GasTransmissionController
 
@@ -341,7 +343,7 @@ API path: `/api/gas-trade/csv`
 
 Operations: Load.
 
-API path: `/api/gas-transmission/cross-border/csv`
+API path: `/api/gas-transmission/cross-border`
 
 #### GreenController
 
@@ -395,7 +397,7 @@ API path: `/api/nominations/csv`
 
 Operations: Load.
 
-API path: `/api/nps/price/csv`
+API path: `/api/nps/price/{group}/current`
 
 #### Renomination
 
@@ -440,7 +442,7 @@ API path: `/api/system/csv`
 
 Operations: Load.
 
-API path: `/api/transmission/cross-border-capacity/{group}/csv`
+API path: `/api/transmission/cross-border-capacity/{group}`
 
 #### UmmGasController
 
@@ -450,7 +452,7 @@ API path: `/api/transmission/cross-border-capacity/{group}/csv`
 
 Operations: Load.
 
-API path: `/api/umm/gas`
+API path: `/api/umm/gas/messages`
 
 #### UmmRssFeedController
 

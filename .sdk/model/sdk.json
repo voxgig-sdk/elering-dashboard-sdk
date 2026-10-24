@@ -135,13 +135,12 @@
                   "k": "http",
                   "m": "GET",
                   "o": "/api/balance",
-                  "q": {
-                    "exist": [
-                      "end",
-                      "start"
-                    ]
-                  },
+                  "q": {},
                   "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "api"
@@ -174,6 +173,60 @@
               "input": "data",
               "name": "load",
               "points": [
+                {
+                  "a": true,
+                  "co": {
+                    "id": "GET /api/balance/commerce",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "query": [
+                      {
+                        "a": true,
+                        "ex": "2020-06-30T20:59:59.999Z",
+                        "k": "query",
+                        "n": "end",
+                        "or": "end",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "2020-05-31T20:59:59.999Z",
+                        "k": "query",
+                        "n": "start",
+                        "or": "start",
+                        "r": false,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/balance/commerce",
+                  "q": {},
+                  "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
+                  "s": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "balance"
+                    },
+                    {
+                      "lit": "commerce"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                },
                 {
                   "a": true,
                   "co": {
@@ -214,13 +267,7 @@
                   "k": "http",
                   "m": "GET",
                   "o": "/api/balance/commerce/csv",
-                  "q": {
-                    "exist": [
-                      "end",
-                      "field",
-                      "start"
-                    ]
-                  },
+                  "q": {},
                   "r": {},
                   "s": [
                     {
@@ -234,6 +281,42 @@
                     },
                     {
                       "lit": "csv"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                },
+                {
+                  "a": true,
+                  "co": {
+                    "id": "GET /api/balance/commerce/latest",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {},
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/balance/commerce/latest",
+                  "q": {},
+                  "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
+                  "s": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "balance"
+                    },
+                    {
+                      "lit": "commerce"
+                    },
+                    {
+                      "lit": "latest"
                     }
                   ],
                   "t": {
@@ -281,13 +364,7 @@
                   "k": "http",
                   "m": "GET",
                   "o": "/api/balance/csv",
-                  "q": {
-                    "exist": [
-                      "end",
-                      "field",
-                      "start"
-                    ]
-                  },
+                  "q": {},
                   "r": {},
                   "s": [
                     {
@@ -298,6 +375,60 @@
                     },
                     {
                       "lit": "csv"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                },
+                {
+                  "a": true,
+                  "co": {
+                    "id": "GET /api/balance/total",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "query": [
+                      {
+                        "a": true,
+                        "ex": "2020-06-30T20:59:59.999Z",
+                        "k": "query",
+                        "n": "end",
+                        "or": "end",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "2020-05-31T20:59:59.999Z",
+                        "k": "query",
+                        "n": "field",
+                        "or": "fields",
+                        "r": false,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/balance/total",
+                  "q": {},
+                  "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
+                  "s": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "balance"
+                    },
+                    {
+                      "lit": "total"
                     }
                   ],
                   "t": {
@@ -345,13 +476,7 @@
                   "k": "http",
                   "m": "GET",
                   "o": "/api/balance/total/csv",
-                  "q": {
-                    "exist": [
-                      "end",
-                      "field",
-                      "start"
-                    ]
-                  },
+                  "q": {},
                   "r": {},
                   "s": [
                     {
@@ -375,148 +500,6 @@
                 {
                   "a": true,
                   "co": {
-                    "id": "GET /api/balance/total",
-                    "source": "openapi3",
-                    "version": 2
-                  },
-                  "g": {
-                    "query": [
-                      {
-                        "a": true,
-                        "ex": "2020-06-30T20:59:59.999Z",
-                        "k": "query",
-                        "n": "end",
-                        "or": "end",
-                        "r": false,
-                        "t": "`$STRING`"
-                      },
-                      {
-                        "a": true,
-                        "ex": "2020-05-31T20:59:59.999Z",
-                        "k": "query",
-                        "n": "field",
-                        "or": "fields",
-                        "r": false,
-                        "t": "`$STRING`"
-                      }
-                    ]
-                  },
-                  "k": "http",
-                  "m": "GET",
-                  "o": "/api/balance/total",
-                  "q": {
-                    "exist": [
-                      "end",
-                      "field"
-                    ]
-                  },
-                  "r": {},
-                  "s": [
-                    {
-                      "lit": "api"
-                    },
-                    {
-                      "lit": "balance"
-                    },
-                    {
-                      "lit": "total"
-                    }
-                  ],
-                  "t": {
-                    "req": "`reqdata`",
-                    "res": "`body`"
-                  }
-                },
-                {
-                  "a": true,
-                  "co": {
-                    "id": "GET /api/balance/commerce",
-                    "source": "openapi3",
-                    "version": 2
-                  },
-                  "g": {
-                    "query": [
-                      {
-                        "a": true,
-                        "ex": "2020-06-30T20:59:59.999Z",
-                        "k": "query",
-                        "n": "end",
-                        "or": "end",
-                        "r": false,
-                        "t": "`$STRING`"
-                      },
-                      {
-                        "a": true,
-                        "ex": "2020-05-31T20:59:59.999Z",
-                        "k": "query",
-                        "n": "start",
-                        "or": "start",
-                        "r": false,
-                        "t": "`$STRING`"
-                      }
-                    ]
-                  },
-                  "k": "http",
-                  "m": "GET",
-                  "o": "/api/balance/commerce",
-                  "q": {
-                    "exist": [
-                      "end",
-                      "start"
-                    ]
-                  },
-                  "r": {},
-                  "s": [
-                    {
-                      "lit": "api"
-                    },
-                    {
-                      "lit": "balance"
-                    },
-                    {
-                      "lit": "commerce"
-                    }
-                  ],
-                  "t": {
-                    "req": "`reqdata`",
-                    "res": "`body`"
-                  }
-                },
-                {
-                  "a": true,
-                  "co": {
-                    "id": "GET /api/balance/commerce/latest",
-                    "source": "openapi3",
-                    "version": 2
-                  },
-                  "g": {},
-                  "k": "http",
-                  "m": "GET",
-                  "o": "/api/balance/commerce/latest",
-                  "q": {},
-                  "r": {},
-                  "s": [
-                    {
-                      "lit": "api"
-                    },
-                    {
-                      "lit": "balance"
-                    },
-                    {
-                      "lit": "commerce"
-                    },
-                    {
-                      "lit": "latest"
-                    }
-                  ],
-                  "t": {
-                    "req": "`reqdata`",
-                    "res": "`body`"
-                  }
-                },
-                {
-                  "a": true,
-                  "co": {
                     "id": "GET /api/balance/total/latest",
                     "source": "openapi3",
                     "version": 2
@@ -527,6 +510,10 @@
                   "o": "/api/balance/total/latest",
                   "q": {},
                   "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "api"
@@ -597,13 +584,12 @@
                   "k": "http",
                   "m": "GET",
                   "o": "/api/capacity/firm",
-                  "q": {
-                    "exist": [
-                      "end",
-                      "start"
-                    ]
-                  },
+                  "q": {},
                   "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "api"
@@ -699,13 +685,7 @@
                   "k": "http",
                   "m": "GET",
                   "o": "/api/capacity/firm/csv",
-                  "q": {
-                    "exist": [
-                      "end",
-                      "field",
-                      "start"
-                    ]
-                  },
+                  "q": {},
                   "r": {},
                   "s": [
                     {
@@ -748,6 +728,60 @@
                 {
                   "a": true,
                   "co": {
+                    "id": "GET /api/gas-balance/price",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "query": [
+                      {
+                        "a": true,
+                        "ex": "2020-06-30T20:59:59.999Z",
+                        "k": "query",
+                        "n": "end",
+                        "or": "end",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "2020-05-31T20:59:59.999Z",
+                        "k": "query",
+                        "n": "start",
+                        "or": "start",
+                        "r": false,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/gas-balance/price",
+                  "q": {},
+                  "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
+                  "s": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "gas-balance"
+                    },
+                    {
+                      "lit": "price"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                },
+                {
+                  "a": true,
+                  "co": {
                     "id": "GET /api/gas-balance/price/csv",
                     "source": "openapi3",
                     "version": 2
@@ -785,13 +819,7 @@
                   "k": "http",
                   "m": "GET",
                   "o": "/api/gas-balance/price/csv",
-                  "q": {
-                    "exist": [
-                      "end",
-                      "field",
-                      "start"
-                    ]
-                  },
+                  "q": {},
                   "r": {},
                   "s": [
                     {
@@ -805,61 +833,6 @@
                     },
                     {
                       "lit": "csv"
-                    }
-                  ],
-                  "t": {
-                    "req": "`reqdata`",
-                    "res": "`body`"
-                  }
-                },
-                {
-                  "a": true,
-                  "co": {
-                    "id": "GET /api/gas-balance/price",
-                    "source": "openapi3",
-                    "version": 2
-                  },
-                  "g": {
-                    "query": [
-                      {
-                        "a": true,
-                        "ex": "2020-06-30T20:59:59.999Z",
-                        "k": "query",
-                        "n": "end",
-                        "or": "end",
-                        "r": false,
-                        "t": "`$STRING`"
-                      },
-                      {
-                        "a": true,
-                        "ex": "2020-05-31T20:59:59.999Z",
-                        "k": "query",
-                        "n": "start",
-                        "or": "start",
-                        "r": false,
-                        "t": "`$STRING`"
-                      }
-                    ]
-                  },
-                  "k": "http",
-                  "m": "GET",
-                  "o": "/api/gas-balance/price",
-                  "q": {
-                    "exist": [
-                      "end",
-                      "start"
-                    ]
-                  },
-                  "r": {},
-                  "s": [
-                    {
-                      "lit": "api"
-                    },
-                    {
-                      "lit": "gas-balance"
-                    },
-                    {
-                      "lit": "price"
                     }
                   ],
                   "t": {
@@ -899,6 +872,10 @@
                   "o": "/api/gas/border-trade/current",
                   "q": {},
                   "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "api"
@@ -969,13 +946,12 @@
                   "k": "http",
                   "m": "GET",
                   "o": "/api/gas-system",
-                  "q": {
-                    "exist": [
-                      "end",
-                      "start"
-                    ]
-                  },
+                  "q": {},
                   "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "api"
@@ -1048,13 +1024,7 @@
                   "k": "http",
                   "m": "GET",
                   "o": "/api/gas-system/csv",
-                  "q": {
-                    "exist": [
-                      "end",
-                      "field",
-                      "start"
-                    ]
-                  },
+                  "q": {},
                   "r": {},
                   "s": [
                     {
@@ -1062,140 +1032,6 @@
                     },
                     {
                       "lit": "gas-system"
-                    },
-                    {
-                      "lit": "csv"
-                    }
-                  ],
-                  "t": {
-                    "req": "`reqdata`",
-                    "res": "`body`"
-                  }
-                },
-                {
-                  "a": true,
-                  "co": {
-                    "id": "GET /api/gas-system/daily/csv",
-                    "source": "openapi3",
-                    "version": 2
-                  },
-                  "g": {
-                    "query": [
-                      {
-                        "a": true,
-                        "ex": "2020-06-30T20:59:59.999Z",
-                        "k": "query",
-                        "n": "end",
-                        "or": "end",
-                        "r": false,
-                        "t": "`$STRING`"
-                      },
-                      {
-                        "a": true,
-                        "k": "query",
-                        "n": "field",
-                        "or": "fields",
-                        "r": false,
-                        "t": "`$ARRAY`"
-                      },
-                      {
-                        "a": true,
-                        "ex": "2020-05-31T20:59:59.999Z",
-                        "k": "query",
-                        "n": "start",
-                        "or": "start",
-                        "r": false,
-                        "t": "`$STRING`"
-                      }
-                    ]
-                  },
-                  "k": "http",
-                  "m": "GET",
-                  "o": "/api/gas-system/daily/csv",
-                  "q": {
-                    "exist": [
-                      "end",
-                      "field",
-                      "start"
-                    ]
-                  },
-                  "r": {},
-                  "s": [
-                    {
-                      "lit": "api"
-                    },
-                    {
-                      "lit": "gas-system"
-                    },
-                    {
-                      "lit": "daily"
-                    },
-                    {
-                      "lit": "csv"
-                    }
-                  ],
-                  "t": {
-                    "req": "`reqdata`",
-                    "res": "`body`"
-                  }
-                },
-                {
-                  "a": true,
-                  "co": {
-                    "id": "GET /api/gas-system/m3/csv",
-                    "source": "openapi3",
-                    "version": 2
-                  },
-                  "g": {
-                    "query": [
-                      {
-                        "a": true,
-                        "ex": "2020-06-30T20:59:59.999Z",
-                        "k": "query",
-                        "n": "end",
-                        "or": "end",
-                        "r": false,
-                        "t": "`$STRING`"
-                      },
-                      {
-                        "a": true,
-                        "k": "query",
-                        "n": "field",
-                        "or": "fields",
-                        "r": false,
-                        "t": "`$ARRAY`"
-                      },
-                      {
-                        "a": true,
-                        "ex": "2020-05-31T20:59:59.999Z",
-                        "k": "query",
-                        "n": "start",
-                        "or": "start",
-                        "r": false,
-                        "t": "`$STRING`"
-                      }
-                    ]
-                  },
-                  "k": "http",
-                  "m": "GET",
-                  "o": "/api/gas-system/m3/csv",
-                  "q": {
-                    "exist": [
-                      "end",
-                      "field",
-                      "start"
-                    ]
-                  },
-                  "r": {},
-                  "s": [
-                    {
-                      "lit": "api"
-                    },
-                    {
-                      "lit": "gas-system"
-                    },
-                    {
-                      "lit": "m3"
                     },
                     {
                       "lit": "csv"
@@ -1238,13 +1074,12 @@
                   "k": "http",
                   "m": "GET",
                   "o": "/api/gas-system/daily",
-                  "q": {
-                    "exist": [
-                      "end",
-                      "start"
-                    ]
-                  },
+                  "q": {},
                   "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "api"
@@ -1293,13 +1128,12 @@
                   "k": "http",
                   "m": "GET",
                   "o": "/api/gas-system/daily-average",
-                  "q": {
-                    "exist": [
-                      "end",
-                      "start"
-                    ]
-                  },
+                  "q": {},
                   "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "api"
@@ -1309,6 +1143,100 @@
                     },
                     {
                       "lit": "daily-average"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                },
+                {
+                  "a": true,
+                  "co": {
+                    "id": "GET /api/gas-system/daily/csv",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "query": [
+                      {
+                        "a": true,
+                        "ex": "2020-06-30T20:59:59.999Z",
+                        "k": "query",
+                        "n": "end",
+                        "or": "end",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "k": "query",
+                        "n": "field",
+                        "or": "fields",
+                        "r": false,
+                        "t": "`$ARRAY`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "2020-05-31T20:59:59.999Z",
+                        "k": "query",
+                        "n": "start",
+                        "or": "start",
+                        "r": false,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/gas-system/daily/csv",
+                  "q": {},
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "gas-system"
+                    },
+                    {
+                      "lit": "daily"
+                    },
+                    {
+                      "lit": "csv"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                },
+                {
+                  "a": true,
+                  "co": {
+                    "id": "GET /api/gas-system/latest",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {},
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/gas-system/latest",
+                  "q": {},
+                  "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
+                  "s": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "gas-system"
+                    },
+                    {
+                      "lit": "latest"
                     }
                   ],
                   "t": {
@@ -1348,13 +1276,12 @@
                   "k": "http",
                   "m": "GET",
                   "o": "/api/gas-system/m3",
-                  "q": {
-                    "exist": [
-                      "end",
-                      "start"
-                    ]
-                  },
+                  "q": {},
                   "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "api"
@@ -1374,14 +1301,43 @@
                 {
                   "a": true,
                   "co": {
-                    "id": "GET /api/gas-system/latest",
+                    "id": "GET /api/gas-system/m3/csv",
                     "source": "openapi3",
                     "version": 2
                   },
-                  "g": {},
+                  "g": {
+                    "query": [
+                      {
+                        "a": true,
+                        "ex": "2020-06-30T20:59:59.999Z",
+                        "k": "query",
+                        "n": "end",
+                        "or": "end",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "k": "query",
+                        "n": "field",
+                        "or": "fields",
+                        "r": false,
+                        "t": "`$ARRAY`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "2020-05-31T20:59:59.999Z",
+                        "k": "query",
+                        "n": "start",
+                        "or": "start",
+                        "r": false,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
                   "k": "http",
                   "m": "GET",
-                  "o": "/api/gas-system/latest",
+                  "o": "/api/gas-system/m3/csv",
                   "q": {},
                   "r": {},
                   "s": [
@@ -1392,7 +1348,10 @@
                       "lit": "gas-system"
                     },
                     {
-                      "lit": "latest"
+                      "lit": "m3"
+                    },
+                    {
+                      "lit": "csv"
                     }
                   ],
                   "t": {
@@ -1451,13 +1410,12 @@
                   "k": "http",
                   "m": "GET",
                   "o": "/api/gas-trade",
-                  "q": {
-                    "exist": [
-                      "end",
-                      "start"
-                    ]
-                  },
+                  "q": {},
                   "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "api"
@@ -1490,6 +1448,57 @@
               "input": "data",
               "name": "load",
               "points": [
+                {
+                  "a": true,
+                  "co": {
+                    "id": "GET /api/gas-trade/{group}/latest",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "params": [
+                      {
+                        "a": true,
+                        "k": "param",
+                        "n": "group",
+                        "or": "group",
+                        "r": true,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/gas-trade/{group}/latest",
+                  "q": {
+                    "exist": [
+                      "group"
+                    ]
+                  },
+                  "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
+                  "s": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "gas-trade"
+                    },
+                    {
+                      "var": "group"
+                    },
+                    {
+                      "lit": "latest"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                },
                 {
                   "a": true,
                   "co": {
@@ -1530,13 +1539,7 @@
                   "k": "http",
                   "m": "GET",
                   "o": "/api/gas-trade/csv",
-                  "q": {
-                    "exist": [
-                      "end",
-                      "field",
-                      "start"
-                    ]
-                  },
+                  "q": {},
                   "r": {},
                   "s": [
                     {
@@ -1547,53 +1550,6 @@
                     },
                     {
                       "lit": "csv"
-                    }
-                  ],
-                  "t": {
-                    "req": "`reqdata`",
-                    "res": "`body`"
-                  }
-                },
-                {
-                  "a": true,
-                  "co": {
-                    "id": "GET /api/gas-trade/{group}/latest",
-                    "source": "openapi3",
-                    "version": 2
-                  },
-                  "g": {
-                    "params": [
-                      {
-                        "a": true,
-                        "k": "param",
-                        "n": "group",
-                        "or": "group",
-                        "r": true,
-                        "t": "`$STRING`"
-                      }
-                    ]
-                  },
-                  "k": "http",
-                  "m": "GET",
-                  "o": "/api/gas-trade/{group}/latest",
-                  "q": {
-                    "exist": [
-                      "group"
-                    ]
-                  },
-                  "r": {},
-                  "s": [
-                    {
-                      "lit": "api"
-                    },
-                    {
-                      "lit": "gas-trade"
-                    },
-                    {
-                      "var": "group"
-                    },
-                    {
-                      "lit": "latest"
                     }
                   ],
                   "t": {
@@ -1624,6 +1580,60 @@
               "input": "data",
               "name": "load",
               "points": [
+                {
+                  "a": true,
+                  "co": {
+                    "id": "GET /api/gas-transmission/cross-border",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "query": [
+                      {
+                        "a": true,
+                        "ex": "2020-06-30T20:59:59.999Z",
+                        "k": "query",
+                        "n": "end",
+                        "or": "end",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "2020-05-31T20:59:59.999Z",
+                        "k": "query",
+                        "n": "start",
+                        "or": "start",
+                        "r": false,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/gas-transmission/cross-border",
+                  "q": {},
+                  "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
+                  "s": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "gas-transmission"
+                    },
+                    {
+                      "lit": "cross-border"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                },
                 {
                   "a": true,
                   "co": {
@@ -1664,13 +1674,7 @@
                   "k": "http",
                   "m": "GET",
                   "o": "/api/gas-transmission/cross-border/csv",
-                  "q": {
-                    "exist": [
-                      "end",
-                      "field",
-                      "start"
-                    ]
-                  },
+                  "q": {},
                   "r": {},
                   "s": [
                     {
@@ -1694,61 +1698,6 @@
                 {
                   "a": true,
                   "co": {
-                    "id": "GET /api/gas-transmission/cross-border",
-                    "source": "openapi3",
-                    "version": 2
-                  },
-                  "g": {
-                    "query": [
-                      {
-                        "a": true,
-                        "ex": "2020-06-30T20:59:59.999Z",
-                        "k": "query",
-                        "n": "end",
-                        "or": "end",
-                        "r": false,
-                        "t": "`$STRING`"
-                      },
-                      {
-                        "a": true,
-                        "ex": "2020-05-31T20:59:59.999Z",
-                        "k": "query",
-                        "n": "start",
-                        "or": "start",
-                        "r": false,
-                        "t": "`$STRING`"
-                      }
-                    ]
-                  },
-                  "k": "http",
-                  "m": "GET",
-                  "o": "/api/gas-transmission/cross-border",
-                  "q": {
-                    "exist": [
-                      "end",
-                      "start"
-                    ]
-                  },
-                  "r": {},
-                  "s": [
-                    {
-                      "lit": "api"
-                    },
-                    {
-                      "lit": "gas-transmission"
-                    },
-                    {
-                      "lit": "cross-border"
-                    }
-                  ],
-                  "t": {
-                    "req": "`reqdata`",
-                    "res": "`body`"
-                  }
-                },
-                {
-                  "a": true,
-                  "co": {
                     "id": "GET /api/gas-transmission/cross-border/latest",
                     "source": "openapi3",
                     "version": 2
@@ -1759,6 +1708,10 @@
                   "o": "/api/gas-transmission/cross-border/latest",
                   "q": {},
                   "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "api"
@@ -1838,14 +1791,12 @@
                   "k": "http",
                   "m": "GET",
                   "o": "/api/green/certificates",
-                  "q": {
-                    "exist": [
-                      "fuel",
-                      "technology",
-                      "type"
-                    ]
-                  },
+                  "q": {},
                   "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "api"
@@ -1913,13 +1864,12 @@
                   "k": "http",
                   "m": "GET",
                   "o": "/api/capacity/interruptible",
-                  "q": {
-                    "exist": [
-                      "end",
-                      "start"
-                    ]
-                  },
+                  "q": {},
                   "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "api"
@@ -1995,13 +1945,7 @@
                   "k": "http",
                   "m": "GET",
                   "o": "/api/capacity/interruptible/csv",
-                  "q": {
-                    "exist": [
-                      "end",
-                      "field",
-                      "start"
-                    ]
-                  },
+                  "q": {},
                   "r": {},
                   "s": [
                     {
@@ -2073,13 +2017,12 @@
                   "k": "http",
                   "m": "GET",
                   "o": "/api/nominations",
-                  "q": {
-                    "exist": [
-                      "end",
-                      "start"
-                    ]
-                  },
+                  "q": {},
                   "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "api"
@@ -2152,13 +2095,7 @@
                   "k": "http",
                   "m": "GET",
                   "o": "/api/nominations/csv",
-                  "q": {
-                    "exist": [
-                      "end",
-                      "field",
-                      "start"
-                    ]
-                  },
+                  "q": {},
                   "r": {},
                   "s": [
                     {
@@ -2198,250 +2135,6 @@
                 {
                   "a": true,
                   "co": {
-                    "id": "GET /api/nps/price/csv",
-                    "source": "openapi3",
-                    "version": 2
-                  },
-                  "g": {
-                    "query": [
-                      {
-                        "a": true,
-                        "ex": "2020-06-30T20:59:59.999Z",
-                        "k": "query",
-                        "n": "end",
-                        "or": "end",
-                        "r": false,
-                        "t": "`$STRING`"
-                      },
-                      {
-                        "a": true,
-                        "k": "query",
-                        "n": "field",
-                        "or": "fields",
-                        "r": false,
-                        "t": "`$ARRAY`"
-                      },
-                      {
-                        "a": true,
-                        "ex": "2020-05-31T20:59:59.999Z",
-                        "k": "query",
-                        "n": "start",
-                        "or": "start",
-                        "r": false,
-                        "t": "`$STRING`"
-                      }
-                    ]
-                  },
-                  "k": "http",
-                  "m": "GET",
-                  "o": "/api/nps/price/csv",
-                  "q": {
-                    "exist": [
-                      "end",
-                      "field",
-                      "start"
-                    ]
-                  },
-                  "r": {},
-                  "s": [
-                    {
-                      "lit": "api"
-                    },
-                    {
-                      "lit": "nps"
-                    },
-                    {
-                      "lit": "price"
-                    },
-                    {
-                      "lit": "csv"
-                    }
-                  ],
-                  "t": {
-                    "req": "`reqdata`",
-                    "res": "`body`"
-                  }
-                },
-                {
-                  "a": true,
-                  "co": {
-                    "id": "GET /api/nps/turnover/csv",
-                    "source": "openapi3",
-                    "version": 2
-                  },
-                  "g": {
-                    "query": [
-                      {
-                        "a": true,
-                        "ex": "2020-06-30T20:59:59.999Z",
-                        "k": "query",
-                        "n": "end",
-                        "or": "end",
-                        "r": false,
-                        "t": "`$STRING`"
-                      },
-                      {
-                        "a": true,
-                        "k": "query",
-                        "n": "field",
-                        "or": "fields",
-                        "r": false,
-                        "t": "`$ARRAY`"
-                      },
-                      {
-                        "a": true,
-                        "ex": "2020-05-31T20:59:59.999Z",
-                        "k": "query",
-                        "n": "start",
-                        "or": "start",
-                        "r": false,
-                        "t": "`$STRING`"
-                      }
-                    ]
-                  },
-                  "k": "http",
-                  "m": "GET",
-                  "o": "/api/nps/turnover/csv",
-                  "q": {
-                    "exist": [
-                      "end",
-                      "field",
-                      "start"
-                    ]
-                  },
-                  "r": {},
-                  "s": [
-                    {
-                      "lit": "api"
-                    },
-                    {
-                      "lit": "nps"
-                    },
-                    {
-                      "lit": "turnover"
-                    },
-                    {
-                      "lit": "csv"
-                    }
-                  ],
-                  "t": {
-                    "req": "`reqdata`",
-                    "res": "`body`"
-                  }
-                },
-                {
-                  "a": true,
-                  "co": {
-                    "id": "GET /api/nps/price",
-                    "source": "openapi3",
-                    "version": 2
-                  },
-                  "g": {
-                    "query": [
-                      {
-                        "a": true,
-                        "ex": "2020-06-30T20:59:59.999Z",
-                        "k": "query",
-                        "n": "end",
-                        "or": "end",
-                        "r": false,
-                        "t": "`$STRING`"
-                      },
-                      {
-                        "a": true,
-                        "ex": "2020-05-31T20:59:59.999Z",
-                        "k": "query",
-                        "n": "start",
-                        "or": "start",
-                        "r": false,
-                        "t": "`$STRING`"
-                      }
-                    ]
-                  },
-                  "k": "http",
-                  "m": "GET",
-                  "o": "/api/nps/price",
-                  "q": {
-                    "exist": [
-                      "end",
-                      "start"
-                    ]
-                  },
-                  "r": {},
-                  "s": [
-                    {
-                      "lit": "api"
-                    },
-                    {
-                      "lit": "nps"
-                    },
-                    {
-                      "lit": "price"
-                    }
-                  ],
-                  "t": {
-                    "req": "`reqdata`",
-                    "res": "`body`"
-                  }
-                },
-                {
-                  "a": true,
-                  "co": {
-                    "id": "GET /api/nps/turnover",
-                    "source": "openapi3",
-                    "version": 2
-                  },
-                  "g": {
-                    "query": [
-                      {
-                        "a": true,
-                        "ex": "2020-06-30T20:59:59.999Z",
-                        "k": "query",
-                        "n": "end",
-                        "or": "end",
-                        "r": false,
-                        "t": "`$STRING`"
-                      },
-                      {
-                        "a": true,
-                        "ex": "2020-05-31T20:59:59.999Z",
-                        "k": "query",
-                        "n": "start",
-                        "or": "start",
-                        "r": false,
-                        "t": "`$STRING`"
-                      }
-                    ]
-                  },
-                  "k": "http",
-                  "m": "GET",
-                  "o": "/api/nps/turnover",
-                  "q": {
-                    "exist": [
-                      "end",
-                      "start"
-                    ]
-                  },
-                  "r": {},
-                  "s": [
-                    {
-                      "lit": "api"
-                    },
-                    {
-                      "lit": "nps"
-                    },
-                    {
-                      "lit": "turnover"
-                    }
-                  ],
-                  "t": {
-                    "req": "`reqdata`",
-                    "res": "`body`"
-                  }
-                },
-                {
-                  "a": true,
-                  "co": {
                     "id": "GET /api/nps/price/{group}/current",
                     "source": "openapi3",
                     "version": 2
@@ -2467,6 +2160,10 @@
                     ]
                   },
                   "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "api"
@@ -2517,6 +2214,10 @@
                     ]
                   },
                   "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "api"
@@ -2567,6 +2268,10 @@
                     ]
                   },
                   "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "api"
@@ -2582,6 +2287,236 @@
                     },
                     {
                       "lit": "latest"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                },
+                {
+                  "a": true,
+                  "co": {
+                    "id": "GET /api/nps/price",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "query": [
+                      {
+                        "a": true,
+                        "ex": "2020-06-30T20:59:59.999Z",
+                        "k": "query",
+                        "n": "end",
+                        "or": "end",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "2020-05-31T20:59:59.999Z",
+                        "k": "query",
+                        "n": "start",
+                        "or": "start",
+                        "r": false,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/nps/price",
+                  "q": {},
+                  "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
+                  "s": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "nps"
+                    },
+                    {
+                      "lit": "price"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                },
+                {
+                  "a": true,
+                  "co": {
+                    "id": "GET /api/nps/price/csv",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "query": [
+                      {
+                        "a": true,
+                        "ex": "2020-06-30T20:59:59.999Z",
+                        "k": "query",
+                        "n": "end",
+                        "or": "end",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "k": "query",
+                        "n": "field",
+                        "or": "fields",
+                        "r": false,
+                        "t": "`$ARRAY`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "2020-05-31T20:59:59.999Z",
+                        "k": "query",
+                        "n": "start",
+                        "or": "start",
+                        "r": false,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/nps/price/csv",
+                  "q": {},
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "nps"
+                    },
+                    {
+                      "lit": "price"
+                    },
+                    {
+                      "lit": "csv"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                },
+                {
+                  "a": true,
+                  "co": {
+                    "id": "GET /api/nps/turnover",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "query": [
+                      {
+                        "a": true,
+                        "ex": "2020-06-30T20:59:59.999Z",
+                        "k": "query",
+                        "n": "end",
+                        "or": "end",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "2020-05-31T20:59:59.999Z",
+                        "k": "query",
+                        "n": "start",
+                        "or": "start",
+                        "r": false,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/nps/turnover",
+                  "q": {},
+                  "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
+                  "s": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "nps"
+                    },
+                    {
+                      "lit": "turnover"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                },
+                {
+                  "a": true,
+                  "co": {
+                    "id": "GET /api/nps/turnover/csv",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "query": [
+                      {
+                        "a": true,
+                        "ex": "2020-06-30T20:59:59.999Z",
+                        "k": "query",
+                        "n": "end",
+                        "or": "end",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "k": "query",
+                        "n": "field",
+                        "or": "fields",
+                        "r": false,
+                        "t": "`$ARRAY`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "2020-05-31T20:59:59.999Z",
+                        "k": "query",
+                        "n": "start",
+                        "or": "start",
+                        "r": false,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/nps/turnover/csv",
+                  "q": {},
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "nps"
+                    },
+                    {
+                      "lit": "turnover"
+                    },
+                    {
+                      "lit": "csv"
                     }
                   ],
                   "t": {
@@ -2640,13 +2575,12 @@
                   "k": "http",
                   "m": "GET",
                   "o": "/api/nominations/renominations",
-                  "q": {
-                    "exist": [
-                      "end",
-                      "start"
-                    ]
-                  },
+                  "q": {},
                   "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "api"
@@ -2722,13 +2656,7 @@
                   "k": "http",
                   "m": "GET",
                   "o": "/api/nominations/renominations/csv",
-                  "q": {
-                    "exist": [
-                      "end",
-                      "field",
-                      "start"
-                    ]
-                  },
+                  "q": {},
                   "r": {},
                   "s": [
                     {
@@ -2800,13 +2728,12 @@
                   "k": "http",
                   "m": "GET",
                   "o": "/api/system",
-                  "q": {
-                    "exist": [
-                      "end",
-                      "start"
-                    ]
-                  },
+                  "q": {},
                   "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "api"
@@ -2879,13 +2806,7 @@
                   "k": "http",
                   "m": "GET",
                   "o": "/api/system/csv",
-                  "q": {
-                    "exist": [
-                      "end",
-                      "field",
-                      "start"
-                    ]
-                  },
+                  "q": {},
                   "r": {},
                   "s": [
                     {
@@ -2896,6 +2817,93 @@
                     },
                     {
                       "lit": "csv"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                },
+                {
+                  "a": true,
+                  "co": {
+                    "id": "GET /api/system/latest",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {},
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/system/latest",
+                  "q": {},
+                  "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
+                  "s": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "system"
+                    },
+                    {
+                      "lit": "latest"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                },
+                {
+                  "a": true,
+                  "co": {
+                    "id": "GET /api/system/with-plan",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "query": [
+                      {
+                        "a": true,
+                        "ex": "2020-06-30T20:59:59.999Z",
+                        "k": "query",
+                        "n": "end",
+                        "or": "end",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "2020-05-31T20:59:59.999Z",
+                        "k": "query",
+                        "n": "start",
+                        "or": "start",
+                        "r": false,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/system/with-plan",
+                  "q": {},
+                  "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
+                  "s": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "system"
+                    },
+                    {
+                      "lit": "with-plan"
                     }
                   ],
                   "t": {
@@ -2943,13 +2951,7 @@
                   "k": "http",
                   "m": "GET",
                   "o": "/api/system/with-plan/csv",
-                  "q": {
-                    "exist": [
-                      "end",
-                      "field",
-                      "start"
-                    ]
-                  },
+                  "q": {},
                   "r": {},
                   "s": [
                     {
@@ -2963,90 +2965,6 @@
                     },
                     {
                       "lit": "csv"
-                    }
-                  ],
-                  "t": {
-                    "req": "`reqdata`",
-                    "res": "`body`"
-                  }
-                },
-                {
-                  "a": true,
-                  "co": {
-                    "id": "GET /api/system/with-plan",
-                    "source": "openapi3",
-                    "version": 2
-                  },
-                  "g": {
-                    "query": [
-                      {
-                        "a": true,
-                        "ex": "2020-06-30T20:59:59.999Z",
-                        "k": "query",
-                        "n": "end",
-                        "or": "end",
-                        "r": false,
-                        "t": "`$STRING`"
-                      },
-                      {
-                        "a": true,
-                        "ex": "2020-05-31T20:59:59.999Z",
-                        "k": "query",
-                        "n": "start",
-                        "or": "start",
-                        "r": false,
-                        "t": "`$STRING`"
-                      }
-                    ]
-                  },
-                  "k": "http",
-                  "m": "GET",
-                  "o": "/api/system/with-plan",
-                  "q": {
-                    "exist": [
-                      "end",
-                      "start"
-                    ]
-                  },
-                  "r": {},
-                  "s": [
-                    {
-                      "lit": "api"
-                    },
-                    {
-                      "lit": "system"
-                    },
-                    {
-                      "lit": "with-plan"
-                    }
-                  ],
-                  "t": {
-                    "req": "`reqdata`",
-                    "res": "`body`"
-                  }
-                },
-                {
-                  "a": true,
-                  "co": {
-                    "id": "GET /api/system/latest",
-                    "source": "openapi3",
-                    "version": 2
-                  },
-                  "g": {},
-                  "k": "http",
-                  "m": "GET",
-                  "o": "/api/system/latest",
-                  "q": {},
-                  "r": {},
-                  "s": [
-                    {
-                      "lit": "api"
-                    },
-                    {
-                      "lit": "system"
-                    },
-                    {
-                      "lit": "latest"
                     }
                   ],
                   "t": {
@@ -3073,6 +2991,77 @@
               "input": "data",
               "name": "load",
               "points": [
+                {
+                  "a": true,
+                  "co": {
+                    "id": "GET /api/transmission/cross-border-capacity/{group}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "params": [
+                      {
+                        "a": true,
+                        "k": "param",
+                        "n": "group",
+                        "or": "group",
+                        "r": true,
+                        "t": "`$STRING`"
+                      }
+                    ],
+                    "query": [
+                      {
+                        "a": true,
+                        "ex": "2020-06-30T20:59:59.999Z",
+                        "k": "query",
+                        "n": "end",
+                        "or": "end",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "2020-05-31T20:59:59.999Z",
+                        "k": "query",
+                        "n": "start",
+                        "or": "start",
+                        "r": false,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/transmission/cross-border-capacity/{group}",
+                  "q": {
+                    "exist": [
+                      "group"
+                    ]
+                  },
+                  "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
+                  "s": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "transmission"
+                    },
+                    {
+                      "lit": "cross-border-capacity"
+                    },
+                    {
+                      "var": "group"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                },
                 {
                   "a": true,
                   "co": {
@@ -3125,10 +3114,7 @@
                   "o": "/api/transmission/cross-border-capacity/{group}/csv",
                   "q": {
                     "exist": [
-                      "end",
-                      "field",
-                      "group",
-                      "start"
+                      "group"
                     ]
                   },
                   "r": {},
@@ -3147,279 +3133,6 @@
                     },
                     {
                       "lit": "csv"
-                    }
-                  ],
-                  "t": {
-                    "req": "`reqdata`",
-                    "res": "`body`"
-                  }
-                },
-                {
-                  "a": true,
-                  "co": {
-                    "id": "GET /api/transmission/cross-border-planned-trade/csv",
-                    "source": "openapi3",
-                    "version": 2
-                  },
-                  "g": {
-                    "query": [
-                      {
-                        "a": true,
-                        "ex": "2020-06-30T20:59:59.999Z",
-                        "k": "query",
-                        "n": "end",
-                        "or": "end",
-                        "r": false,
-                        "t": "`$STRING`"
-                      },
-                      {
-                        "a": true,
-                        "k": "query",
-                        "n": "field",
-                        "or": "fields",
-                        "r": false,
-                        "t": "`$ARRAY`"
-                      },
-                      {
-                        "a": true,
-                        "ex": "2020-05-31T20:59:59.999Z",
-                        "k": "query",
-                        "n": "start",
-                        "or": "start",
-                        "r": false,
-                        "t": "`$STRING`"
-                      }
-                    ]
-                  },
-                  "k": "http",
-                  "m": "GET",
-                  "o": "/api/transmission/cross-border-planned-trade/csv",
-                  "q": {
-                    "exist": [
-                      "end",
-                      "field",
-                      "start"
-                    ]
-                  },
-                  "r": {},
-                  "s": [
-                    {
-                      "lit": "api"
-                    },
-                    {
-                      "lit": "transmission"
-                    },
-                    {
-                      "lit": "cross-border-planned-trade"
-                    },
-                    {
-                      "lit": "csv"
-                    }
-                  ],
-                  "t": {
-                    "req": "`reqdata`",
-                    "res": "`body`"
-                  }
-                },
-                {
-                  "a": true,
-                  "co": {
-                    "id": "GET /api/transmission/cross-border/csv",
-                    "source": "openapi3",
-                    "version": 2
-                  },
-                  "g": {
-                    "query": [
-                      {
-                        "a": true,
-                        "ex": "2020-06-30T20:59:59.999Z",
-                        "k": "query",
-                        "n": "end",
-                        "or": "end",
-                        "r": false,
-                        "t": "`$STRING`"
-                      },
-                      {
-                        "a": true,
-                        "k": "query",
-                        "n": "field",
-                        "or": "fields",
-                        "r": false,
-                        "t": "`$ARRAY`"
-                      },
-                      {
-                        "a": true,
-                        "ex": "2020-05-31T20:59:59.999Z",
-                        "k": "query",
-                        "n": "start",
-                        "or": "start",
-                        "r": false,
-                        "t": "`$STRING`"
-                      }
-                    ]
-                  },
-                  "k": "http",
-                  "m": "GET",
-                  "o": "/api/transmission/cross-border/csv",
-                  "q": {
-                    "exist": [
-                      "end",
-                      "field",
-                      "start"
-                    ]
-                  },
-                  "r": {},
-                  "s": [
-                    {
-                      "lit": "api"
-                    },
-                    {
-                      "lit": "transmission"
-                    },
-                    {
-                      "lit": "cross-border"
-                    },
-                    {
-                      "lit": "csv"
-                    }
-                  ],
-                  "t": {
-                    "req": "`reqdata`",
-                    "res": "`body`"
-                  }
-                },
-                {
-                  "a": true,
-                  "co": {
-                    "id": "GET /api/transmission/cross-border/hourly/csv",
-                    "source": "openapi3",
-                    "version": 2
-                  },
-                  "g": {
-                    "query": [
-                      {
-                        "a": true,
-                        "ex": "2020-06-30T20:59:59.999Z",
-                        "k": "query",
-                        "n": "end",
-                        "or": "end",
-                        "r": false,
-                        "t": "`$STRING`"
-                      },
-                      {
-                        "a": true,
-                        "k": "query",
-                        "n": "field",
-                        "or": "fields",
-                        "r": false,
-                        "t": "`$ARRAY`"
-                      },
-                      {
-                        "a": true,
-                        "ex": "2020-05-31T20:59:59.999Z",
-                        "k": "query",
-                        "n": "start",
-                        "or": "start",
-                        "r": false,
-                        "t": "`$STRING`"
-                      }
-                    ]
-                  },
-                  "k": "http",
-                  "m": "GET",
-                  "o": "/api/transmission/cross-border/hourly/csv",
-                  "q": {
-                    "exist": [
-                      "end",
-                      "field",
-                      "start"
-                    ]
-                  },
-                  "r": {},
-                  "s": [
-                    {
-                      "lit": "api"
-                    },
-                    {
-                      "lit": "transmission"
-                    },
-                    {
-                      "lit": "cross-border"
-                    },
-                    {
-                      "lit": "hourly"
-                    },
-                    {
-                      "lit": "csv"
-                    }
-                  ],
-                  "t": {
-                    "req": "`reqdata`",
-                    "res": "`body`"
-                  }
-                },
-                {
-                  "a": true,
-                  "co": {
-                    "id": "GET /api/transmission/cross-border-capacity/{group}",
-                    "source": "openapi3",
-                    "version": 2
-                  },
-                  "g": {
-                    "params": [
-                      {
-                        "a": true,
-                        "k": "param",
-                        "n": "group",
-                        "or": "group",
-                        "r": true,
-                        "t": "`$STRING`"
-                      }
-                    ],
-                    "query": [
-                      {
-                        "a": true,
-                        "ex": "2020-06-30T20:59:59.999Z",
-                        "k": "query",
-                        "n": "end",
-                        "or": "end",
-                        "r": false,
-                        "t": "`$STRING`"
-                      },
-                      {
-                        "a": true,
-                        "ex": "2020-05-31T20:59:59.999Z",
-                        "k": "query",
-                        "n": "start",
-                        "or": "start",
-                        "r": false,
-                        "t": "`$STRING`"
-                      }
-                    ]
-                  },
-                  "k": "http",
-                  "m": "GET",
-                  "o": "/api/transmission/cross-border-capacity/{group}",
-                  "q": {
-                    "exist": [
-                      "end",
-                      "group",
-                      "start"
-                    ]
-                  },
-                  "r": {},
-                  "s": [
-                    {
-                      "lit": "api"
-                    },
-                    {
-                      "lit": "transmission"
-                    },
-                    {
-                      "lit": "cross-border-capacity"
-                    },
-                    {
-                      "var": "group"
                     }
                   ],
                   "t": {
@@ -3459,13 +3172,12 @@
                   "k": "http",
                   "m": "GET",
                   "o": "/api/transmission/cross-border",
-                  "q": {
-                    "exist": [
-                      "end",
-                      "start"
-                    ]
-                  },
+                  "q": {},
                   "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "api"
@@ -3514,13 +3226,12 @@
                   "k": "http",
                   "m": "GET",
                   "o": "/api/transmission/cross-border-capacity",
-                  "q": {
-                    "exist": [
-                      "end",
-                      "start"
-                    ]
-                  },
+                  "q": {},
                   "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "api"
@@ -3569,12 +3280,69 @@
                   "k": "http",
                   "m": "GET",
                   "o": "/api/transmission/cross-border-planned-trade",
-                  "q": {
-                    "exist": [
-                      "end",
-                      "start"
+                  "q": {},
+                  "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
+                  "s": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "transmission"
+                    },
+                    {
+                      "lit": "cross-border-planned-trade"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                },
+                {
+                  "a": true,
+                  "co": {
+                    "id": "GET /api/transmission/cross-border-planned-trade/csv",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "query": [
+                      {
+                        "a": true,
+                        "ex": "2020-06-30T20:59:59.999Z",
+                        "k": "query",
+                        "n": "end",
+                        "or": "end",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "k": "query",
+                        "n": "field",
+                        "or": "fields",
+                        "r": false,
+                        "t": "`$ARRAY`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "2020-05-31T20:59:59.999Z",
+                        "k": "query",
+                        "n": "start",
+                        "or": "start",
+                        "r": false,
+                        "t": "`$STRING`"
+                      }
                     ]
                   },
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/transmission/cross-border-planned-trade/csv",
+                  "q": {},
                   "r": {},
                   "s": [
                     {
@@ -3585,6 +3353,106 @@
                     },
                     {
                       "lit": "cross-border-planned-trade"
+                    },
+                    {
+                      "lit": "csv"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                },
+                {
+                  "a": true,
+                  "co": {
+                    "id": "GET /api/transmission/cross-border-planned-trade/latest",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {},
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/transmission/cross-border-planned-trade/latest",
+                  "q": {},
+                  "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
+                  "s": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "transmission"
+                    },
+                    {
+                      "lit": "cross-border-planned-trade"
+                    },
+                    {
+                      "lit": "latest"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                },
+                {
+                  "a": true,
+                  "co": {
+                    "id": "GET /api/transmission/cross-border/csv",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "query": [
+                      {
+                        "a": true,
+                        "ex": "2020-06-30T20:59:59.999Z",
+                        "k": "query",
+                        "n": "end",
+                        "or": "end",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "k": "query",
+                        "n": "field",
+                        "or": "fields",
+                        "r": false,
+                        "t": "`$ARRAY`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "2020-05-31T20:59:59.999Z",
+                        "k": "query",
+                        "n": "start",
+                        "or": "start",
+                        "r": false,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/transmission/cross-border/csv",
+                  "q": {},
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "transmission"
+                    },
+                    {
+                      "lit": "cross-border"
+                    },
+                    {
+                      "lit": "csv"
                     }
                   ],
                   "t": {
@@ -3624,13 +3492,12 @@
                   "k": "http",
                   "m": "GET",
                   "o": "/api/transmission/cross-border/hourly",
-                  "q": {
-                    "exist": [
-                      "end",
-                      "start"
-                    ]
-                  },
+                  "q": {},
                   "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "api"
@@ -3653,14 +3520,43 @@
                 {
                   "a": true,
                   "co": {
-                    "id": "GET /api/transmission/cross-border-planned-trade/latest",
+                    "id": "GET /api/transmission/cross-border/hourly/csv",
                     "source": "openapi3",
                     "version": 2
                   },
-                  "g": {},
+                  "g": {
+                    "query": [
+                      {
+                        "a": true,
+                        "ex": "2020-06-30T20:59:59.999Z",
+                        "k": "query",
+                        "n": "end",
+                        "or": "end",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "k": "query",
+                        "n": "field",
+                        "or": "fields",
+                        "r": false,
+                        "t": "`$ARRAY`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "2020-05-31T20:59:59.999Z",
+                        "k": "query",
+                        "n": "start",
+                        "or": "start",
+                        "r": false,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
                   "k": "http",
                   "m": "GET",
-                  "o": "/api/transmission/cross-border-planned-trade/latest",
+                  "o": "/api/transmission/cross-border/hourly/csv",
                   "q": {},
                   "r": {},
                   "s": [
@@ -3671,10 +3567,13 @@
                       "lit": "transmission"
                     },
                     {
-                      "lit": "cross-border-planned-trade"
+                      "lit": "cross-border"
                     },
                     {
-                      "lit": "latest"
+                      "lit": "hourly"
+                    },
+                    {
+                      "lit": "csv"
                     }
                   ],
                   "t": {
@@ -3695,6 +3594,16 @@
                   "o": "/api/transmission/cross-border/latest",
                   "q": {},
                   "r": {},
+                  "rs": {
+                    "alternatives": [
+                      {
+                        "kind": "json",
+                        "media": "application/json;charset=UTF-8"
+                      }
+                    ],
+                    "kind": "json",
+                    "media": "application/json; charset=UTF-8"
+                  },
                   "s": [
                     {
                       "lit": "api"
@@ -3745,6 +3654,118 @@
               "input": "data",
               "name": "load",
               "points": [
+                {
+                  "a": true,
+                  "co": {
+                    "id": "GET /api/umm/gas/messages",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "query": [
+                      {
+                        "a": true,
+                        "k": "query",
+                        "n": "id",
+                        "or": "id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/umm/gas/messages",
+                  "q": {
+                    "exist": [
+                      "id"
+                    ]
+                  },
+                  "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
+                  "s": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "umm"
+                    },
+                    {
+                      "lit": "gas"
+                    },
+                    {
+                      "lit": "messages"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                },
+                {
+                  "a": true,
+                  "co": {
+                    "id": "GET /api/umm/single/{id}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "params": [
+                      {
+                        "a": true,
+                        "k": "param",
+                        "n": "id",
+                        "or": "id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      }
+                    ],
+                    "query": [
+                      {
+                        "a": true,
+                        "k": "query",
+                        "n": "id",
+                        "or": "id",
+                        "r": true,
+                        "t": "`$INTEGER`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/umm/single/{id}",
+                  "q": {
+                    "exist": [
+                      "id"
+                    ]
+                  },
+                  "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
+                  "s": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "umm"
+                    },
+                    {
+                      "lit": "single"
+                    },
+                    {
+                      "var": "id"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                },
                 {
                   "a": true,
                   "co": {
@@ -3842,21 +3863,12 @@
                   "k": "http",
                   "m": "GET",
                   "o": "/api/umm/gas",
-                  "q": {
-                    "exist": [
-                      "affected_asset_name",
-                      "event_duration_date_time_end",
-                      "event_duration_date_time_start",
-                      "event_status",
-                      "event_type",
-                      "page",
-                      "publication_datetime_start",
-                      "sort",
-                      "status",
-                      "unavailability_type"
-                    ]
-                  },
+                  "q": {},
                   "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "api"
@@ -3866,110 +3878,6 @@
                     },
                     {
                       "lit": "gas"
-                    }
-                  ],
-                  "t": {
-                    "req": "`reqdata`",
-                    "res": "`body`"
-                  }
-                },
-                {
-                  "a": true,
-                  "co": {
-                    "id": "GET /api/umm/gas/messages",
-                    "source": "openapi3",
-                    "version": 2
-                  },
-                  "g": {
-                    "query": [
-                      {
-                        "a": true,
-                        "k": "query",
-                        "n": "id",
-                        "or": "id",
-                        "r": true,
-                        "t": "`$STRING`"
-                      }
-                    ]
-                  },
-                  "k": "http",
-                  "m": "GET",
-                  "o": "/api/umm/gas/messages",
-                  "q": {
-                    "exist": [
-                      "id"
-                    ]
-                  },
-                  "r": {},
-                  "s": [
-                    {
-                      "lit": "api"
-                    },
-                    {
-                      "lit": "umm"
-                    },
-                    {
-                      "lit": "gas"
-                    },
-                    {
-                      "lit": "messages"
-                    }
-                  ],
-                  "t": {
-                    "req": "`reqdata`",
-                    "res": "`body`"
-                  }
-                },
-                {
-                  "a": true,
-                  "co": {
-                    "id": "GET /api/umm/single/{id}",
-                    "source": "openapi3",
-                    "version": 2
-                  },
-                  "g": {
-                    "params": [
-                      {
-                        "a": true,
-                        "k": "param",
-                        "n": "id",
-                        "or": "id",
-                        "r": true,
-                        "t": "`$STRING`"
-                      }
-                    ],
-                    "query": [
-                      {
-                        "a": true,
-                        "k": "query",
-                        "n": "id",
-                        "or": "id",
-                        "r": true,
-                        "t": "`$INTEGER`"
-                      }
-                    ]
-                  },
-                  "k": "http",
-                  "m": "GET",
-                  "o": "/api/umm/single/{id}",
-                  "q": {
-                    "exist": [
-                      "id"
-                    ]
-                  },
-                  "r": {},
-                  "s": [
-                    {
-                      "lit": "api"
-                    },
-                    {
-                      "lit": "umm"
-                    },
-                    {
-                      "lit": "single"
-                    },
-                    {
-                      "var": "id"
                     }
                   ],
                   "t": {
@@ -4009,6 +3917,11 @@
                   "o": "/umm/gas/rss",
                   "q": {},
                   "r": {},
+                  "rs": {
+                    "binary": true,
+                    "kind": "raw",
+                    "media": "application/xml"
+                  },
                   "s": [
                     {
                       "lit": "umm"
@@ -4038,6 +3951,11 @@
                   "o": "/umm/gas/rss/aris",
                   "q": {},
                   "r": {},
+                  "rs": {
+                    "binary": true,
+                    "kind": "raw",
+                    "media": "application/xml"
+                  },
                   "s": [
                     {
                       "lit": "umm"
@@ -4387,6 +4305,7 @@
             },
             "optspec": {
               "clearTimer": "`$FUNCTION`",
+              "now": "`$FUNCTION`",
               "setTimer": "`$FUNCTION`"
             },
             "strict": false
@@ -4732,9 +4651,7 @@
                 "srcdatavar": "gas_trade_controller_ref01_data",
                 "suffix": "_dt0"
               },
-              "m": {
-                "id": "gas_trade_controller01"
-              },
+              "m": {},
               "o": "load",
               "s": [],
               "v": [
@@ -4974,9 +4891,7 @@
                 "srcdatavar": "nps_controller_ref01_data",
                 "suffix": "_dt0"
               },
-              "m": {
-                "id": "nps_controller01"
-              },
+              "m": {},
               "o": "load",
               "s": [],
               "v": [
@@ -5156,9 +5071,7 @@
                 "srcdatavar": "umm_gas_controller_ref01_data",
                 "suffix": "_dt0"
               },
-              "m": {
-                "id": "umm_gas_controller01"
-              },
+              "m": {},
               "o": "load",
               "s": [],
               "v": [
@@ -5226,7 +5139,7 @@
       "optspec": {
         "allow": {
           "method": "GET,PUT,POST,PATCH,DELETE,OPTIONS",
-          "op": "create,update,load,list,remove,command,direct,graphql"
+          "op": "create,update,patch,load,list,remove,command,direct,graphql"
         },
         "apikey": "",
         "auth": {
@@ -5279,6 +5192,11 @@
         "top": {
           "active": true
         }
+      },
+      "publisher": {
+        "name": "",
+        "security": "",
+        "url": ""
       },
       "repo": {
         "host": "github.com",
@@ -5509,7 +5427,10 @@
             "version": "0.0.1"
           },
           "superseded": [],
-          "title": "Go MCP server"
+          "title": "Go MCP server",
+          "tool": {
+            "write": false
+          }
         },
         "lua": {
           "active": true,
@@ -5886,6 +5807,17 @@
           "base": "",
           "strict": true
         }
+      },
+      "text": {
+        "about_md": "",
+        "docs_url": "",
+        "entity_desc": {},
+        "homepage": "",
+        "meta_source": "",
+        "summary": "",
+        "tagline": "",
+        "title": "",
+        "website": ""
       }
     }
   },

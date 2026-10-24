@@ -64,13 +64,6 @@ main: kit: entity: firm_capacity_controller: {
           }
           m: "GET"
           o: "/api/capacity/firm/csv"
-          q: {
-            exist: [
-              "end"
-              "field"
-              "start"
-            ]
-          }
           s: [
             {
               lit: "api"

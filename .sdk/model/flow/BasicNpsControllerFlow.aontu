@@ -13,10 +13,6 @@ main: kit: flow: BasicNpsControllerFlow:
         suffix: "_dt0"
       }
 
-      m: {
-        id: "nps_controller01"
-      }
-
       o: "load",
       v: [
         {

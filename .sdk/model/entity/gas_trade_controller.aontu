@@ -11,6 +11,53 @@ main: kit: entity: gas_trade_controller: {
       points: [
         {
           co: {
+            id: "GET /api/gas-trade/{group}/latest"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "group"
+                or: "group"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/gas-trade/{group}/latest"
+          q: {
+            exist: [
+              "group"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "gas-trade"
+            }
+            {
+              var: "group"
+            }
+            {
+              lit: "latest"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
             id: "GET /api/gas-trade/csv"
             source: "openapi3"
             version: 2
@@ -44,13 +91,6 @@ main: kit: entity: gas_trade_controller: {
           }
           m: "GET"
           o: "/api/gas-trade/csv"
-          q: {
-            exist: [
-              "end"
-              "field"
-              "start"
-            ]
-          }
           s: [
             {
               lit: "api"
@@ -60,49 +100,6 @@ main: kit: entity: gas_trade_controller: {
             }
             {
               lit: "csv"
-            }
-          ]
-          t: {
-            req: "`reqdata`"
-            res: "`body`"
-          }
-        }
-        {
-          co: {
-            id: "GET /api/gas-trade/{group}/latest"
-            source: "openapi3"
-            version: 2
-          }
-          g: {
-            params: [
-              {
-                k: "param"
-                n: "group"
-                or: "group"
-                r: true
-                t: "`$STRING`"
-              }
-            ]
-          }
-          m: "GET"
-          o: "/api/gas-trade/{group}/latest"
-          q: {
-            exist: [
-              "group"
-            ]
-          }
-          s: [
-            {
-              lit: "api"
-            }
-            {
-              lit: "gas-trade"
-            }
-            {
-              var: "group"
-            }
-            {
-              lit: "latest"
             }
           ]
           t: {

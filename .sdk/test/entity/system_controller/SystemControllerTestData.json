@@ -23,7 +23,7 @@
       "version": 2,
       "source": "openapi3"
     },
-    "GET /api/system/with-plan/csv": {
+    "GET /api/system/latest": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"
@@ -33,7 +33,7 @@
       "version": 2,
       "source": "openapi3"
     },
-    "GET /api/system/latest": {
+    "GET /api/system/with-plan/csv": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"

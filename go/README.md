@@ -16,7 +16,7 @@ go get github.com/voxgig-sdk/elering-dashboard-sdk/go@latest
 ```
 
 The Go module proxy resolves the version from the `go/vX.Y.Z` GitHub
-release tag — see [Releases](https://github.com/voxgig-sdk/elering-dashboard-sdk/releases) for the available versions.
+release tag — see [Tags](https://github.com/voxgig-sdk/elering-dashboard-sdk/tags) for the available versions.
 
 To vendor from a local checkout instead, clone this repo alongside your
 project and add a `replace` directive pointing at the checked-out
@@ -35,9 +35,10 @@ loading a specific record.
 ### Quickstart
 
 A complete program: create a client, then call the entity operations.
-Each operation returns `(value, error)` — the value is the data itself
-(there is no `{ok, data}` wrapper), so check `err` and use the value
-directly.
+Each operation returns `(value, error)` — the value is the entity, and for
+`List` a `[]any` of entities, one per record (there is no `{ok, data}`
+wrapper), so check `err` and read a record through the entity's
+`Data()`.
 
 ```go
 package main
@@ -50,12 +51,12 @@ import (
 func main() {
     client := sdk.New()
 
-    // Load a single balance — the value is the loaded record.
+    // Load a single balance — the value is the entity; Data() reads its record.
     balance, err := client.Balance(nil).Load(nil, nil)
     if err != nil {
         panic(err)
     }
-    fmt.Println(balance)
+    fmt.Println(balance.(sdk.Entity).Data())
 }
 ```
 
@@ -141,7 +142,7 @@ balanceController, err := client.BalanceController(nil).Load(
 if err != nil {
     panic(err)
 }
-fmt.Println(balanceController) // the returned mock data
+fmt.Println(balanceController.(sdk.Entity).Data()) // the entity's mock record
 ```
 
 ### Use a custom fetch function
@@ -249,7 +250,7 @@ All entities implement the `EleringDashboardEntity` interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
-| `Load` | `(reqmatch, ctrl map[string]any) (any, error)` | Load a single entity by match criteria. |
+| `Load` | `(reqmatch, ctrl map[string]any) (any, error)` | Load a single entity by match criteria, and return it. |
 | `Data` | `(args ...any) any` | Get or set entity data. |
 | `Match` | `(args ...any) any` | Get or set entity match criteria. |
 | `Make` | `() Entity` | Create a new instance with the same options. |
@@ -257,12 +258,12 @@ All entities implement the `EleringDashboardEntity` interface.
 
 ### Result shape
 
-Entity operations return `(value, error)`. The `value` is the
-operation's data **directly** — there is no wrapper:
+Entity operations return `(value, error)`. The `value` is the entity
+itself — there is no wrapper:
 
 | Operation | `value` |
 | --- | --- |
-| `Load` | the entity record (`map[string]any`) |
+| `Load` | the entity, whose `Data()` reads its record (`map[string]any`) |
 
 Check `err` first, then use the value directly (or the typed
 `...Typed` variants, which return the entity's model struct and a typed
@@ -270,7 +271,7 @@ slice):
 
     balance, err := client.Balance(nil).Load(nil, nil)
     if err != nil { /* handle */ }
-    // balance is the returned record
+    // balance is the entity; balance.(sdk.Entity).Data() reads its record
 
 Only `Direct()` returns a response envelope — a `map[string]any` with
 `"ok"`, `"status"`, `"headers"`, and `"data"` keys.
@@ -293,7 +294,7 @@ API path: `/api/balance`
 
 Operations: Load.
 
-API path: `/api/balance/commerce/csv`
+API path: `/api/balance/commerce`
 
 #### Firm
 
@@ -320,7 +321,7 @@ API path: `/api/capacity/firm/csv`
 
 Operations: Load.
 
-API path: `/api/gas-balance/price/csv`
+API path: `/api/gas-balance/price`
 
 #### GasBorderTradeController
 
@@ -365,7 +366,7 @@ API path: `/api/gas-trade`
 
 Operations: Load.
 
-API path: `/api/gas-trade/csv`
+API path: `/api/gas-trade/{group}/latest`
 
 #### GasTransmissionController
 
@@ -374,7 +375,7 @@ API path: `/api/gas-trade/csv`
 
 Operations: Load.
 
-API path: `/api/gas-transmission/cross-border/csv`
+API path: `/api/gas-transmission/cross-border`
 
 #### GreenController
 
@@ -428,7 +429,7 @@ API path: `/api/nominations/csv`
 
 Operations: Load.
 
-API path: `/api/nps/price/csv`
+API path: `/api/nps/price/{group}/current`
 
 #### Renomination
 
@@ -473,7 +474,7 @@ API path: `/api/system/csv`
 
 Operations: Load.
 
-API path: `/api/transmission/cross-border-capacity/{group}/csv`
+API path: `/api/transmission/cross-border-capacity/{group}`
 
 #### UmmGasController
 
@@ -483,7 +484,7 @@ API path: `/api/transmission/cross-border-capacity/{group}/csv`
 
 Operations: Load.
 
-API path: `/api/umm/gas`
+API path: `/api/umm/gas/messages`
 
 #### UmmRssFeedController
 
@@ -516,7 +517,7 @@ balance, err := client.Balance(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(balance) // the loaded record
+fmt.Println(balance.(sdk.Entity).Data()) // the loaded entity's record
 ```
 
 
@@ -537,7 +538,7 @@ balanceController, err := client.BalanceController(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(balanceController) // the loaded record
+fmt.Println(balanceController.(sdk.Entity).Data()) // the loaded entity's record
 ```
 
 
@@ -558,7 +559,7 @@ firm, err := client.Firm(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(firm) // the loaded record
+fmt.Println(firm.(sdk.Entity).Data()) // the loaded entity's record
 ```
 
 
@@ -579,7 +580,7 @@ firmCapacityController, err := client.FirmCapacityController(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(firmCapacityController) // the loaded record
+fmt.Println(firmCapacityController.(sdk.Entity).Data()) // the loaded entity's record
 ```
 
 
@@ -600,7 +601,7 @@ gasBalanceController, err := client.GasBalanceController(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(gasBalanceController) // the loaded record
+fmt.Println(gasBalanceController.(sdk.Entity).Data()) // the loaded entity's record
 ```
 
 
@@ -621,7 +622,7 @@ gasBorderTradeController, err := client.GasBorderTradeController(nil).Load(nil, 
 if err != nil {
     panic(err)
 }
-fmt.Println(gasBorderTradeController) // the loaded record
+fmt.Println(gasBorderTradeController.(sdk.Entity).Data()) // the loaded entity's record
 ```
 
 
@@ -642,7 +643,7 @@ gasSystem, err := client.GasSystem(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(gasSystem) // the loaded record
+fmt.Println(gasSystem.(sdk.Entity).Data()) // the loaded entity's record
 ```
 
 
@@ -663,7 +664,7 @@ gasSystemController, err := client.GasSystemController(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(gasSystemController) // the loaded record
+fmt.Println(gasSystemController.(sdk.Entity).Data()) // the loaded entity's record
 ```
 
 
@@ -684,7 +685,7 @@ gasTrade, err := client.GasTrade(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(gasTrade) // the loaded record
+fmt.Println(gasTrade.(sdk.Entity).Data()) // the loaded entity's record
 ```
 
 
@@ -705,7 +706,7 @@ gasTradeController, err := client.GasTradeController(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(gasTradeController) // the loaded record
+fmt.Println(gasTradeController.(sdk.Entity).Data()) // the loaded entity's record
 ```
 
 
@@ -726,7 +727,7 @@ gasTransmissionController, err := client.GasTransmissionController(nil).Load(nil
 if err != nil {
     panic(err)
 }
-fmt.Println(gasTransmissionController) // the loaded record
+fmt.Println(gasTransmissionController.(sdk.Entity).Data()) // the loaded entity's record
 ```
 
 
@@ -747,7 +748,7 @@ greenController, err := client.GreenController(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(greenController) // the loaded record
+fmt.Println(greenController.(sdk.Entity).Data()) // the loaded entity's record
 ```
 
 
@@ -768,7 +769,7 @@ interruptible, err := client.Interruptible(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(interruptible) // the loaded record
+fmt.Println(interruptible.(sdk.Entity).Data()) // the loaded entity's record
 ```
 
 
@@ -789,7 +790,7 @@ interruptibleCapacityController, err := client.InterruptibleCapacityController(n
 if err != nil {
     panic(err)
 }
-fmt.Println(interruptibleCapacityController) // the loaded record
+fmt.Println(interruptibleCapacityController.(sdk.Entity).Data()) // the loaded entity's record
 ```
 
 
@@ -810,7 +811,7 @@ nomination, err := client.Nomination(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(nomination) // the loaded record
+fmt.Println(nomination.(sdk.Entity).Data()) // the loaded entity's record
 ```
 
 
@@ -831,7 +832,7 @@ nominationsController, err := client.NominationsController(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(nominationsController) // the loaded record
+fmt.Println(nominationsController.(sdk.Entity).Data()) // the loaded entity's record
 ```
 
 
@@ -852,7 +853,7 @@ npsController, err := client.NpsController(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(npsController) // the loaded record
+fmt.Println(npsController.(sdk.Entity).Data()) // the loaded entity's record
 ```
 
 
@@ -873,7 +874,7 @@ renomination, err := client.Renomination(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(renomination) // the loaded record
+fmt.Println(renomination.(sdk.Entity).Data()) // the loaded entity's record
 ```
 
 
@@ -894,7 +895,7 @@ renominationsController, err := client.RenominationsController(nil).Load(nil, ni
 if err != nil {
     panic(err)
 }
-fmt.Println(renominationsController) // the loaded record
+fmt.Println(renominationsController.(sdk.Entity).Data()) // the loaded entity's record
 ```
 
 
@@ -915,7 +916,7 @@ system, err := client.System(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(system) // the loaded record
+fmt.Println(system.(sdk.Entity).Data()) // the loaded entity's record
 ```
 
 
@@ -936,7 +937,7 @@ systemController, err := client.SystemController(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(systemController) // the loaded record
+fmt.Println(systemController.(sdk.Entity).Data()) // the loaded entity's record
 ```
 
 
@@ -957,7 +958,7 @@ transmissionController, err := client.TransmissionController(nil).Load(map[strin
 if err != nil {
     panic(err)
 }
-fmt.Println(transmissionController) // the loaded record
+fmt.Println(transmissionController.(sdk.Entity).Data()) // the loaded entity's record
 ```
 
 
@@ -984,7 +985,7 @@ ummGasController, err := client.UmmGasController(nil).Load(map[string]any{"id": 
 if err != nil {
     panic(err)
 }
-fmt.Println(ummGasController) // the loaded record
+fmt.Println(ummGasController.(sdk.Entity).Data()) // the loaded entity's record
 ```
 
 
@@ -1005,7 +1006,7 @@ ummRssFeedController, err := client.UmmRssFeedController(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(ummRssFeedController) // the loaded record
+fmt.Println(ummRssFeedController.(sdk.Entity).Data()) // the loaded entity's record
 ```
 
 ## Features
@@ -1142,7 +1143,9 @@ The Go SDK uses `map[string]any` throughout rather than typed structs.
 This mirrors the dynamic nature of the API and keeps the SDK
 flexible — no code generation is needed when the API schema changes.
 
-Use `core.ToMapAny()` to safely cast results and nested data.
+An operation returns the entity, and its `Data()` returns the record. Use
+`core.ToMapAny()` to safely cast that record, or data nested in it, to
+`map[string]any`: it returns `nil` for anything else, an entity included.
 
 ### Package structure
 

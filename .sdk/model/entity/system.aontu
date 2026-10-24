@@ -37,11 +37,9 @@ main: kit: entity: system: {
           }
           m: "GET"
           o: "/api/system"
-          q: {
-            exist: [
-              "end"
-              "start"
-            ]
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {

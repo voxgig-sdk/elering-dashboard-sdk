@@ -17,6 +17,10 @@ main: kit: entity: gas_border_trade_controller: {
           }
           m: "GET"
           o: "/api/gas/border-trade/current"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
           s: [
             {
               lit: "api"

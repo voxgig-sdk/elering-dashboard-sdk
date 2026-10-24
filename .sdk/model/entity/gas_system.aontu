@@ -37,11 +37,9 @@ main: kit: entity: gas_system: {
           }
           m: "GET"
           o: "/api/gas-system"
-          q: {
-            exist: [
-              "end"
-              "start"
-            ]
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {

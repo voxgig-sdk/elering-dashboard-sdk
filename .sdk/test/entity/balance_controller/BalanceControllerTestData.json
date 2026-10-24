@@ -18,7 +18,17 @@
     }
   },
   "requests": {
+    "GET /api/balance/commerce": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
     "GET /api/balance/commerce/csv": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/balance/commerce/latest": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"
@@ -28,22 +38,12 @@
       "version": 2,
       "source": "openapi3"
     },
-    "GET /api/balance/total/csv": {
-      "provenance": "operation-contract",
-      "version": 2,
-      "source": "openapi3"
-    },
     "GET /api/balance/total": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"
     },
-    "GET /api/balance/commerce": {
-      "provenance": "operation-contract",
-      "version": 2,
-      "source": "openapi3"
-    },
-    "GET /api/balance/commerce/latest": {
+    "GET /api/balance/total/csv": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"
